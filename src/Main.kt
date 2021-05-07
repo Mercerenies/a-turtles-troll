@@ -4,6 +4,7 @@ package com.mercerenies.turtletroll
 import com.mercerenies.turtletroll.event.BlockBreakEventListener
 import com.mercerenies.turtletroll.event.NullAction
 import com.mercerenies.turtletroll.event.ReplaceDropsAction
+import com.mercerenies.turtletroll.event.SilverfishAttackAction
 import com.mercerenies.turtletroll.event.Weight
 
 import org.bukkit.Bukkit
@@ -23,8 +24,11 @@ class Main : JavaPlugin() {
     val STONE_TOOLS = arrayOf(Material.STONE_PICKAXE, Material.STONE_HOE, Material.STONE_SWORD,
                               Material.STONE_AXE, Material.STONE_SHOVEL)
 
-    val BREAK_EVENTS = listOf(Weight(NullAction, 10),
-                              Weight(ReplaceDropsAction(ItemStack(Material.DIRT, 64)), 1))
+    val BREAK_EVENTS = listOf(
+      Weight(NullAction, 1), // 10
+      Weight(ReplaceDropsAction(ItemStack(Material.DIRT, 64)), 1),
+      Weight(SilverfishAttackAction, 1),
+    )
 
   }
 
