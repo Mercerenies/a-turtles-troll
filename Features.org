@@ -1,0 +1,5 @@
+
+* FEATURES
+  + All recipes which produce stone tools are disabled.
+  + Half of the time, blocks will drop 64 dirt instead of what they're
+    supposed to.
