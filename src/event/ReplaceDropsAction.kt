@@ -17,11 +17,12 @@ class ReplaceDropsAction(val itemStack: ItemStack) : BlockBreakAction {
 
   override fun trigger(event: BlockBreakEvent) {
     val w = event.block.world
-    val loc = event.block.location
-    val item = w.spawnEntity(loc, EntityType.DROPPED_ITEM) as Item
+    val loc = event.block.location.add(0.5, 0.5, 0.5)
 
     event.block.type = Material.AIR
     event.setCancelled(true)
+
+    val item = w.spawnEntity(loc, EntityType.DROPPED_ITEM) as Item
     item.itemStack = itemStack.clone()
 
   }
