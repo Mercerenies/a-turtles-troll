@@ -13,7 +13,7 @@ class RecipeDeleter(vararg val materials: Material) {
 
   fun removeRecipes(server: Server) {
     storedRecipes = server.recipeIterator().retainAll {
-      materials.contains(it.result.type)
+      !materials.contains(it.result.type)
     }
   }
 
