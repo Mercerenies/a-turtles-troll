@@ -1,6 +1,7 @@
 
 package com.mercerenies.turtletroll.event
 
+import org.bukkit.Material
 import org.bukkit.event.block.BlockBreakEvent
 import org.bukkit.inventory.ItemStack
 import org.bukkit.entity.Item
@@ -18,7 +19,11 @@ class ReplaceDropsAction(val itemStack: ItemStack) : BlockBreakAction {
     val w = event.block.world
     val loc = event.block.location
     val item = w.spawnEntity(loc, EntityType.DROPPED_ITEM) as Item
+
+    event.block.type = Material.AIR
+    event.setCancelled(true)
     item.itemStack = itemStack.clone()
+
   }
 
 }
