@@ -25,9 +25,9 @@ class Main : JavaPlugin() {
                               Material.STONE_AXE, Material.STONE_SHOVEL)
 
     val BREAK_EVENTS = listOf(
-      Weight(NullAction, 1), // 10
-      Weight(ReplaceDropsAction(ItemStack(Material.DIRT, 64)), 1),
-      Weight(SilverfishAttackAction, 1),
+      Weight(NullAction, 1.0),
+      Weight(ReplaceDropsAction(ItemStack(Material.DIRT, 64)), 1.0),
+      Weight(SilverfishAttackAction(), 1.0),
     )
 
   }
