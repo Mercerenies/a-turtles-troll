@@ -1,5 +1,5 @@
 
-package com.mercerenies.turtletroll.event
+package com.mercerenies.turtletroll.drop
 
 import com.mercerenies.turtletroll.ext.*
 

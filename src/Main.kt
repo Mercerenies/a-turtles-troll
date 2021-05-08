@@ -1,11 +1,11 @@
 
 package com.mercerenies.turtletroll
 
-import com.mercerenies.turtletroll.event.BlockBreakEventListener
-import com.mercerenies.turtletroll.event.NullAction
-import com.mercerenies.turtletroll.event.ReplaceDropsAction
-import com.mercerenies.turtletroll.event.SilverfishAttackAction
-import com.mercerenies.turtletroll.event.Weight
+import com.mercerenies.turtletroll.drop.BlockBreakEventListener
+import com.mercerenies.turtletroll.drop.NullAction
+import com.mercerenies.turtletroll.drop.ReplaceDropsAction
+import com.mercerenies.turtletroll.drop.SilverfishAttackAction
+import com.mercerenies.turtletroll.drop.Weight
 
 import org.bukkit.Bukkit
 import org.bukkit.Material

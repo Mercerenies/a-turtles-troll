@@ -1,5 +1,5 @@
 
-package com.mercerenies.turtletroll.event
+package com.mercerenies.turtletroll.drop
 
 import org.bukkit.Material
 import org.bukkit.block.Block
