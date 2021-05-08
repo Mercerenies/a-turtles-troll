@@ -3,11 +3,11 @@ package com.mercerenies.turtletroll.event
 
 import kotlin.random.Random
 
-data class Weight<out T>(val value: T, val weight: Int)
+data class Weight<out T>(val value: T, val weight: Double)
 
 fun<T> sample(list: List<Weight<T>>, random: Random = Random.Default): T {
   val total = list.map { it.weight }.sum()
-  var n = random.nextInt(total)
+  var n = random.nextDouble(total)
   for (curr in list) {
     n -= curr.weight
     if (n < 0) {

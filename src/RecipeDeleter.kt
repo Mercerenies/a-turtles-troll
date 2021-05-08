@@ -1,6 +1,8 @@
 
 package com.mercerenies.turtletroll
 
+import com.mercerenies.turtletroll.ext.*;
+
 import org.bukkit.Server
 import org.bukkit.Material
 import org.bukkit.inventory.Recipe
