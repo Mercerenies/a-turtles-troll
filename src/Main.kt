@@ -5,7 +5,6 @@ import com.mercerenies.turtletroll.drop.BlockBreakEventListener
 import com.mercerenies.turtletroll.drop.NullAction
 import com.mercerenies.turtletroll.drop.ReplaceDropsAction
 import com.mercerenies.turtletroll.drop.SilverfishAttackAction
-import com.mercerenies.turtletroll.drop.Weight
 
 import org.bukkit.Bukkit
 import org.bukkit.Material

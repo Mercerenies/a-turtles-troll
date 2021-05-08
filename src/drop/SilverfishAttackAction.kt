@@ -2,6 +2,7 @@
 package com.mercerenies.turtletroll.drop
 
 import com.mercerenies.turtletroll.ext.*
+import com.mercerenies.turtletroll.Infestation
 
 import org.bukkit.Bukkit
 import org.bukkit.Material
