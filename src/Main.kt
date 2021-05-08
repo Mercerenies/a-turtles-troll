@@ -5,6 +5,7 @@ import com.mercerenies.turtletroll.drop.BlockBreakEventListener
 import com.mercerenies.turtletroll.drop.NullAction
 import com.mercerenies.turtletroll.drop.ReplaceDropsAction
 import com.mercerenies.turtletroll.drop.nearby.SilverfishAttackAction
+import com.mercerenies.turtletroll.drop.nearby.BeeAttackAction
 
 import org.bukkit.Bukkit
 import org.bukkit.Material
@@ -27,6 +28,7 @@ class Main : JavaPlugin() {
       Weight(NullAction, 1.0),
       Weight(ReplaceDropsAction(ItemStack(Material.DIRT, 64)), 1.0),
       Weight(SilverfishAttackAction(), 1.0),
+      Weight(BeeAttackAction(), 1.0),
     )
 
   }
