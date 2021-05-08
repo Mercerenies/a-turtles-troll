@@ -1,5 +1,5 @@
 
-package com.mercerenies.turtletroll.drop
+package com.mercerenies.turtletroll.drop.nearby
 
 import com.mercerenies.turtletroll.Infestation
 
