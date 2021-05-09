@@ -4,6 +4,8 @@ package com.mercerenies.turtletroll
 import com.mercerenies.turtletroll.drop.BlockBreakEventListener
 import com.mercerenies.turtletroll.drop.NullAction
 import com.mercerenies.turtletroll.drop.ReplaceDropsAction
+import com.mercerenies.turtletroll.drop.CancelDropAction
+import com.mercerenies.turtletroll.drop.filter
 import com.mercerenies.turtletroll.drop.nearby.SilverfishAttackAction
 import com.mercerenies.turtletroll.drop.nearby.BeeAttackAction
 
@@ -16,13 +18,20 @@ import org.bukkit.inventory.ItemStack
 import kotlin.collections.ArrayList
 
 class Main : JavaPlugin() {
-  val breakListener = BlockBreakEventListener(BREAK_EVENTS)
+  val breakListener = BlockBreakEventListener(BREAK_OVERRIDES, BREAK_EVENTS)
   val recipeDeleter = RecipeDeleter(*STONE_TOOLS)
 
   companion object {
 
     val STONE_TOOLS = arrayOf(Material.STONE_PICKAXE, Material.STONE_HOE, Material.STONE_SWORD,
                               Material.STONE_AXE, Material.STONE_SHOVEL)
+
+    val NO_DROP_ON = arrayOf(Material.CRAFTING_TABLE, Material.FURNACE,
+                             Material.SMOKER, Material.BLAST_FURNACE)
+
+    val BREAK_OVERRIDES = listOf(
+      CancelDropAction.filter { NO_DROP_ON.contains(it.block.type) },
+    )
 
     val BREAK_EVENTS = listOf(
       Weight(NullAction, 1.0),
