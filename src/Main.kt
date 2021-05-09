@@ -8,6 +8,7 @@ import com.mercerenies.turtletroll.drop.CancelDropAction
 import com.mercerenies.turtletroll.drop.filter
 import com.mercerenies.turtletroll.drop.nearby.SilverfishAttackAction
 import com.mercerenies.turtletroll.drop.nearby.BeeAttackAction
+import com.mercerenies.turtletroll.chicken.ChickenDamageListener
 
 import org.bukkit.Bukkit
 import org.bukkit.Material
@@ -19,6 +20,7 @@ import kotlin.collections.ArrayList
 
 class Main : JavaPlugin() {
   val breakListener = BlockBreakEventListener(BREAK_OVERRIDES, BREAK_EVENTS)
+  val chickenListener = ChickenDamageListener()
   val recipeDeleter = RecipeDeleter(*STONE_TOOLS)
 
   companion object {
@@ -44,6 +46,7 @@ class Main : JavaPlugin() {
 
   override fun onEnable() {
     Bukkit.getPluginManager().registerEvents(breakListener, this)
+    Bukkit.getPluginManager().registerEvents(chickenListener, this)
     val server = Bukkit.getServer()
     recipeDeleter.removeRecipes(server)
   }

@@ -1,6 +1,11 @@
 
 * FEATURES
   + All recipes which produce stone tools are disabled
+  + Chickens explode when any damage (even fatal damage) is dealt to
+    them for any reason
+  + The following passive mobs are always replaced with chickens:
+    cows, pigs, llamas, bats, donkeys, horses, sheep, mules, and
+    parrots
 ** BLOCK DROP FEATURES
    + All blocks have a chance of dropping 64 dirt instead of the
      intended drop
@@ -17,3 +22,5 @@
   + tall grass gives poison
   + something underwater
   + ghasts should free spawn
+  + Ores (diamond, iron, etc) should have a higher than average chance
+    of tripping the 64-dirt condition
