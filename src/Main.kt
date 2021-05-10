@@ -22,6 +22,7 @@ class Main : JavaPlugin() {
   val chickenListener = ChickenDamageListener()
   val recipeDeleter = RecipeDeleter(*STONE_TOOLS)
   val anvilRunnable = AnvilRunnable()
+  val grassListener = GrassPoisonListener()
 
   companion object {
 
@@ -47,6 +48,7 @@ class Main : JavaPlugin() {
   override fun onEnable() {
     Bukkit.getPluginManager().registerEvents(breakListener, this)
     Bukkit.getPluginManager().registerEvents(chickenListener, this)
+    Bukkit.getPluginManager().registerEvents(grassListener, this)
     val server = Bukkit.getServer()
     recipeDeleter.removeRecipes(server)
     anvilRunnable.register(this)
