@@ -25,6 +25,7 @@ class Main : JavaPlugin() {
   val anvilRunnable = AnvilRunnable()
   val grassListener = GrassPoisonListener()
   val ghastListener = GhastSpawnerListener()
+  val skeleListener = SkeletonWitherListener()
 
   companion object {
 
@@ -52,6 +53,7 @@ class Main : JavaPlugin() {
     Bukkit.getPluginManager().registerEvents(chickenListener, this)
     Bukkit.getPluginManager().registerEvents(grassListener, this)
     Bukkit.getPluginManager().registerEvents(ghastListener, this)
+    Bukkit.getPluginManager().registerEvents(skeleListener, this)
     val server = Bukkit.getServer()
     recipeDeleter.removeRecipes(server)
     anvilRunnable.register(this)

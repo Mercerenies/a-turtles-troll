@@ -10,6 +10,8 @@
     on your head
   + Tall grass, ferns, and dead bushes give you poison and slowness on contact
   + Ghasts spawn in all dimensions
+  + If the player is hit by a skeleton arrow in the Nether, they get
+    the Wither effect
 ** BLOCK DROP FEATURES
    + All blocks have a chance of dropping 64 dirt instead of the
      intended drop
@@ -20,9 +22,9 @@
    + The following blocks will never drop anything: crafting table,
      furnace, blast furnace, smoker
 * IDEAS
-  + skeles in nether give wither
   + something underwater
   + Ores (diamond, iron, etc) should have a higher than average chance
     of tripping the 64-dirt condition
   + something with lightning?
   + wolves?
+  + netherrack and end stone do something?
