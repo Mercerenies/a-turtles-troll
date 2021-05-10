@@ -6,6 +6,8 @@
   + The following passive mobs are always replaced with chickens:
     cows, pigs, llamas, bats, donkeys, horses, sheep, mules, and
     parrots
+  + If you stand still for more than ten seconds, an anvil will drop
+    on your head
 ** BLOCK DROP FEATURES
    + All blocks have a chance of dropping 64 dirt instead of the
      intended drop
@@ -16,8 +18,6 @@
    + The following blocks will never drop anything: crafting table,
      furnace, blast furnace, smoker
 * IDEAS
-  + chickens explode on contact
-  + anvil if you stand still
   + skeles in nether give wither
   + tall grass gives poison
   + something underwater

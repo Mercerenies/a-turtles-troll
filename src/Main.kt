@@ -9,6 +9,7 @@ import com.mercerenies.turtletroll.drop.filter
 import com.mercerenies.turtletroll.drop.nearby.SilverfishAttackAction
 import com.mercerenies.turtletroll.drop.nearby.BeeAttackAction
 import com.mercerenies.turtletroll.chicken.ChickenDamageListener
+import com.mercerenies.turtletroll.anvil.AnvilRunnable
 
 import org.bukkit.Bukkit
 import org.bukkit.Material
@@ -16,12 +17,11 @@ import org.bukkit.plugin.java.JavaPlugin
 import org.bukkit.inventory.Recipe
 import org.bukkit.inventory.ItemStack
 
-import kotlin.collections.ArrayList
-
 class Main : JavaPlugin() {
   val breakListener = BlockBreakEventListener(BREAK_OVERRIDES, BREAK_EVENTS)
   val chickenListener = ChickenDamageListener()
   val recipeDeleter = RecipeDeleter(*STONE_TOOLS)
+  val anvilRunnable = AnvilRunnable()
 
   companion object {
 
@@ -49,10 +49,14 @@ class Main : JavaPlugin() {
     Bukkit.getPluginManager().registerEvents(chickenListener, this)
     val server = Bukkit.getServer()
     recipeDeleter.removeRecipes(server)
+    anvilRunnable.register(this)
   }
 
   override fun onDisable() {
     recipeDeleter.addRecipes(server)
+    try {
+      anvilRunnable.cancel()
+    } catch (_: IllegalStateException) {}
   }
 
 }
