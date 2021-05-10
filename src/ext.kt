@@ -17,6 +17,9 @@ fun Location.nearby(distance: Int): List<Location> {
   return result
 }
 
+fun Location.isExposedToSky(): Boolean =
+  this.getBlock().getLightFromSky() == 15.toByte()
+
 fun<T> MutableIterator<T>.retainAll(func: (T) -> Boolean): List<T> {
   val result = ArrayList<T>()
   while (this.hasNext()) {

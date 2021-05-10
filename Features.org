@@ -9,6 +9,7 @@
   + If you stand still for more than ten seconds, an anvil will drop
     on your head
   + Tall grass, ferns, and dead bushes give you poison and slowness on contact
+  + Ghasts spawn in all dimensions
 ** BLOCK DROP FEATURES
    + All blocks have a chance of dropping 64 dirt instead of the
      intended drop
@@ -21,6 +22,7 @@
 * IDEAS
   + skeles in nether give wither
   + something underwater
-  + ghasts should free spawn
   + Ores (diamond, iron, etc) should have a higher than average chance
     of tripping the 64-dirt condition
+  + something with lightning?
+  + wolves?
