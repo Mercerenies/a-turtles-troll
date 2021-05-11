@@ -10,6 +10,7 @@ import com.mercerenies.turtletroll.drop.nearby.SilverfishAttackAction
 import com.mercerenies.turtletroll.drop.nearby.BeeAttackAction
 import com.mercerenies.turtletroll.chicken.ChickenDamageListener
 import com.mercerenies.turtletroll.anvil.AnvilRunnable
+import com.mercerenies.turtletroll.transformed.GhastSpawnerListener
 
 import org.bukkit.Bukkit
 import org.bukkit.Material
