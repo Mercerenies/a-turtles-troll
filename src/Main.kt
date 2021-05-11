@@ -10,7 +10,6 @@ import com.mercerenies.turtletroll.drop.nearby.SilverfishAttackAction
 import com.mercerenies.turtletroll.drop.nearby.BeeAttackAction
 import com.mercerenies.turtletroll.chicken.ChickenDamageListener
 import com.mercerenies.turtletroll.anvil.AnvilRunnable
-import com.mercerenies.turtletroll.GhastSpawnerListener
 
 import org.bukkit.Bukkit
 import org.bukkit.Material
@@ -26,6 +25,7 @@ class Main : JavaPlugin() {
   val grassListener = GrassPoisonListener()
   val ghastListener = GhastSpawnerListener()
   val skeleListener = SkeletonWitherListener()
+  val electricListener = ElectricWaterListener(this)
 
   companion object {
 
@@ -54,6 +54,7 @@ class Main : JavaPlugin() {
     Bukkit.getPluginManager().registerEvents(grassListener, this)
     Bukkit.getPluginManager().registerEvents(ghastListener, this)
     Bukkit.getPluginManager().registerEvents(skeleListener, this)
+    Bukkit.getPluginManager().registerEvents(electricListener, this)
     val server = Bukkit.getServer()
     recipeDeleter.removeRecipes(server)
     anvilRunnable.register(this)
