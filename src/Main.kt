@@ -11,6 +11,7 @@ import com.mercerenies.turtletroll.drop.nearby.BeeAttackAction
 import com.mercerenies.turtletroll.chicken.ChickenDamageListener
 import com.mercerenies.turtletroll.anvil.AnvilRunnable
 import com.mercerenies.turtletroll.transformed.GhastSpawnerListener
+import com.mercerenies.turtletroll.transformed.RavagerSpawnerListener
 
 import org.bukkit.Bukkit
 import org.bukkit.Material
@@ -25,6 +26,7 @@ class Main : JavaPlugin() {
   val anvilRunnable = AnvilRunnable()
   val grassListener = GrassPoisonListener()
   val ghastListener = GhastSpawnerListener()
+  val ravagerListener = RavagerSpawnerListener()
   val skeleListener = SkeletonWitherListener()
   val electricListener = ElectricWaterListener(this)
   val zombifyListener = ZombifyTradeListener()
@@ -65,6 +67,7 @@ class Main : JavaPlugin() {
     Bukkit.getPluginManager().registerEvents(chickenListener, this)
     Bukkit.getPluginManager().registerEvents(grassListener, this)
     Bukkit.getPluginManager().registerEvents(ghastListener, this)
+    Bukkit.getPluginManager().registerEvents(ravagerListener, this)
     Bukkit.getPluginManager().registerEvents(skeleListener, this)
     Bukkit.getPluginManager().registerEvents(electricListener, this)
     Bukkit.getPluginManager().registerEvents(zombifyListener, this)
