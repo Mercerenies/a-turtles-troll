@@ -5,6 +5,7 @@ import com.mercerenies.turtletroll.drop.BlockBreakEventListener
 import com.mercerenies.turtletroll.drop.NullAction
 import com.mercerenies.turtletroll.drop.ReplaceDropsAction
 import com.mercerenies.turtletroll.drop.CancelDropAction
+import com.mercerenies.turtletroll.drop.EndermiteSpawnAction
 import com.mercerenies.turtletroll.drop.filter
 import com.mercerenies.turtletroll.drop.nearby.SilverfishAttackAction
 import com.mercerenies.turtletroll.drop.nearby.BeeAttackAction
@@ -49,6 +50,7 @@ class Main : JavaPlugin() {
     val FREQUENT_DIRT_DROP = REGULAR_DIRT_DROP.filter { FREQUENT_DIRT_DROP_TRIGGERS.contains(it.block.type) }
 
     val BREAK_OVERRIDES = listOf(
+      EndermiteSpawnAction,
       CancelDropAction.filter { NO_DROP_ON.contains(it.block.type) },
     )
 

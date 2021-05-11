@@ -33,7 +33,6 @@ interface TransformedSpawnerListener : Listener {
   fun onEntitySpawn(event: EntitySpawnEvent) {
     val world = event.location.world!!
     if (shouldAttemptReplace(event)) {
-      println(this)
       if (Random.nextDouble() < chance) {
         event.setCancelled(true)
         val newEntity = world.spawnEntity(event.location.add(offset), targetEntity)

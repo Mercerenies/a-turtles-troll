@@ -15,6 +15,7 @@
   + Water electrocutes you, unless in a boat
   + If the player opens the trading UI, the relevant villager becomes
     a zombie after trading is complete
+  + Half of hoglins turn into ravagers
 ** BLOCK DROP FEATURES
    + All blocks have a chance of dropping 64 dirt instead of the
      intended drop
@@ -27,6 +28,11 @@
      blocks
    + The following blocks will never drop anything: crafting table,
      furnace, blast furnace, smoker
+   + End stone will always spawn an endermite when broken and will not
+     drop itself as a block
 * IDEAS
   + wolves?
-  + netherrack and end stone do something?
+  + netherrack do something?
+  + skele horse?
+  + snow?
+  + leaves fire?
