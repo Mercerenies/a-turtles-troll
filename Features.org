@@ -13,6 +13,8 @@
   + If the player is hit by a skeleton arrow in the Nether, they get
     the Wither effect
   + Water electrocutes you, unless in a boat
+  + If the player opens the trading UI, the relevant villager becomes
+    a zombie after trading is complete
 ** BLOCK DROP FEATURES
    + All blocks have a chance of dropping 64 dirt instead of the
      intended drop
@@ -25,6 +27,5 @@
 * IDEAS
   + Ores (diamond, iron, etc) should have a higher than average chance
     of tripping the 64-dirt condition
-  + something with lightning?
   + wolves?
   + netherrack and end stone do something?
