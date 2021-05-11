@@ -36,15 +36,25 @@ class Main : JavaPlugin() {
     val NO_DROP_ON = arrayOf(Material.CRAFTING_TABLE, Material.FURNACE,
                              Material.SMOKER, Material.BLAST_FURNACE)
 
+    val FREQUENT_DIRT_DROP_TRIGGERS = setOf(
+      Material.COAL_ORE, Material.IRON_ORE, Material.LAPIS_ORE,
+      Material.GOLD_ORE, Material.DIAMOND_ORE, Material.EMERALD_ORE,
+      Material.NETHER_QUARTZ_ORE, Material.NETHER_GOLD_ORE, Material.ANCIENT_DEBRIS
+    )
+
+    val REGULAR_DIRT_DROP = ReplaceDropsAction(ItemStack(Material.DIRT, 64))
+    val FREQUENT_DIRT_DROP = REGULAR_DIRT_DROP.filter { FREQUENT_DIRT_DROP_TRIGGERS.contains(it.block.type) }
+
     val BREAK_OVERRIDES = listOf(
       CancelDropAction.filter { NO_DROP_ON.contains(it.block.type) },
     )
 
     val BREAK_EVENTS = listOf(
       Weight(NullAction, 1.0),
-      Weight(ReplaceDropsAction(ItemStack(Material.DIRT, 64)), 1.0),
-      Weight(SilverfishAttackAction(), 1.0),
-      Weight(BeeAttackAction(), 1.0),
+      Weight(REGULAR_DIRT_DROP, 0.3),
+      Weight(FREQUENT_DIRT_DROP, 1.0),
+      Weight(SilverfishAttackAction(), 0.2),
+      Weight(BeeAttackAction(), 0.2),
     )
 
   }

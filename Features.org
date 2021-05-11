@@ -18,6 +18,9 @@
 ** BLOCK DROP FEATURES
    + All blocks have a chance of dropping 64 dirt instead of the
      intended drop
+   + The following blocks have a higher chance of dropping dirt: iron,
+     coal, lapis, gold, diamond, emerald, nether quartz, nether gold,
+     ancient debris
    + All stone/cobble/stone brick blocks have a chance of spawning a
      silverfish and potentially several more nearby
    + All wood blocks have a chance of spawning bees in all nearby wood
@@ -25,7 +28,5 @@
    + The following blocks will never drop anything: crafting table,
      furnace, blast furnace, smoker
 * IDEAS
-  + Ores (diamond, iron, etc) should have a higher than average chance
-    of tripping the 64-dirt condition
   + wolves?
   + netherrack and end stone do something?
