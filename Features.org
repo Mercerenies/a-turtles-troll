@@ -16,6 +16,7 @@
   + If the player opens the trading UI, the relevant villager becomes
     a zombie after trading is complete
   + Half of hoglins turn into ravagers
+  + Leaves catch fire when you walk on them
 ** BLOCK DROP FEATURES
    + All blocks have a chance of dropping 64 dirt instead of the
      intended drop
@@ -35,4 +36,3 @@
   + netherrack do something?
   + skele horse?
   + snow?
-  + leaves fire?

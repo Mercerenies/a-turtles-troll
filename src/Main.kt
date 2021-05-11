@@ -31,6 +31,7 @@ class Main : JavaPlugin() {
   val skeleListener = SkeletonWitherListener()
   val electricListener = ElectricWaterListener(this)
   val zombifyListener = ZombifyTradeListener()
+  val leavesListener = LeavesFireListener(this)
 
   companion object {
 
@@ -73,6 +74,7 @@ class Main : JavaPlugin() {
     Bukkit.getPluginManager().registerEvents(skeleListener, this)
     Bukkit.getPluginManager().registerEvents(electricListener, this)
     Bukkit.getPluginManager().registerEvents(zombifyListener, this)
+    Bukkit.getPluginManager().registerEvents(leavesListener, this)
     val server = Bukkit.getServer()
     recipeDeleter.removeRecipes(server)
     anvilRunnable.register(this)
