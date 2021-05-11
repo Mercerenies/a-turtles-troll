@@ -15,7 +15,7 @@ class GrassPoisonListener : Listener {
     val TICKS_PER_SECOND = 20
     val BLOCKS = setOf(
       Material.GRASS, Material.TALL_GRASS, Material.FERN,
-      Material.LARGE_FERN, Material.DEAD_BUSH
+      Material.LARGE_FERN, Material.DEAD_BUSH, Material.CRIMSON_ROOTS, Material.WARPED_ROOTS
     )
   }
 
