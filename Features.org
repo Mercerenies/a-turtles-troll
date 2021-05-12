@@ -17,6 +17,8 @@
     a zombie after trading is complete
   + Half of hoglins turn into ravagers
   + Leaves catch fire when you walk on them
+  + Snow makes you go fast
+  + Blazes will spawn evokers
 ** BLOCK DROP FEATURES
    + All blocks have a chance of dropping 64 dirt instead of the
      intended drop
@@ -31,8 +33,6 @@
      furnace, blast furnace, smoker
    + End stone will always spawn an endermite when broken and will not
      drop itself as a block
-* IDEAS
-  + wolves?
-  + netherrack do something?
-  + skele horse?
-  + snow?
+   + If you destroy any common nether blocks, all nearby common nether
+     blocks will be destroyed; these include: netherrack, nylium (both
+     kinds), soul sand, and soul soil
