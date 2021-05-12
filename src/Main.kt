@@ -9,6 +9,7 @@ import com.mercerenies.turtletroll.drop.EndermiteSpawnAction
 import com.mercerenies.turtletroll.drop.filter
 import com.mercerenies.turtletroll.drop.nearby.SilverfishAttackAction
 import com.mercerenies.turtletroll.drop.nearby.BeeAttackAction
+import com.mercerenies.turtletroll.drop.nearby.NetherrackBoomAction
 import com.mercerenies.turtletroll.chicken.ChickenDamageListener
 import com.mercerenies.turtletroll.anvil.AnvilRunnable
 import com.mercerenies.turtletroll.transformed.GhastSpawnerListener
@@ -52,6 +53,7 @@ class Main : JavaPlugin() {
 
     val BREAK_OVERRIDES = listOf(
       EndermiteSpawnAction,
+      NetherrackBoomAction(),
       CancelDropAction.filter { NO_DROP_ON.contains(it.block.type) },
     )
 
