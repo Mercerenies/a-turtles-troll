@@ -10,6 +10,7 @@ for the full feature list.
 # Version 1.1
 
 * Stripped wood will now correctly trigger the bee effect
+* Nether brick works like netherrack and other "common nether materials" now
 
 # Version 1.0
 

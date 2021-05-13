@@ -18,7 +18,8 @@ class NetherrackBoomAction(
 
   companion object {
     val BLOCK_TYPES = setOf(Material.NETHERRACK, Material.CRIMSON_NYLIUM, Material.WARPED_NYLIUM,
-                            Material.SOUL_SAND, Material.SOUL_SOIL)
+                            Material.SOUL_SAND, Material.SOUL_SOIL, Material.NETHER_BRICKS,
+                            Material.CRACKED_NETHER_BRICKS, Material.CHISELED_NETHER_BRICKS)
   }
 
   override fun shouldTrigger(event: BlockBreakEvent): Boolean =

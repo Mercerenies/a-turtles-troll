@@ -35,4 +35,10 @@
      drop itself as a block
    + If you destroy any common nether blocks, all nearby common nether
      blocks will be destroyed; these include: netherrack, nylium (both
-     kinds), soul sand, and soul soil
+     kinds), soul sand, and soul soil, nether bricks.
+* IDEAS (UNIMPLEMENTED)
+  + Netherrack effect should not override the dirt drop possible effect
+  + Individual features should be able to be turned on/off with commands or config
+  + Sand?
+  + Doors?
+  + Wolves?
