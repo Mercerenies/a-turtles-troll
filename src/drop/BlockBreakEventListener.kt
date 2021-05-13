@@ -15,17 +15,21 @@ class BlockBreakEventListener(
 
   @EventHandler
   fun onBlockBreak(event: BlockBreakEvent) {
-    val overrideAction = overrideRules.find { it.shouldTrigger(event) }
-    if (overrideAction != null) {
-      // Override
-      overrideAction.trigger(event);
-    } else {
-      // Regular dice roll
-      val validActions = actions.filter { it.value.shouldTrigger(event) }
-      if (!validActions.isEmpty()) {
-        val action = sample(validActions)
+    for (action in overrideRules) {
+      if (action.shouldTrigger(event)) {
         action.trigger(event)
+        if (action.fullyOverridesOthers()) {
+          // If any single "full override" happens, then stop the
+          // function. Otherwise, keep running as normal.
+          return
+        }
       }
+    }
+    // Regular dice roll
+    val validActions = actions.filter { it.value.shouldTrigger(event) }
+    if (!validActions.isEmpty()) {
+      val action = sample(validActions)
+      action.trigger(event)
     }
   }
 

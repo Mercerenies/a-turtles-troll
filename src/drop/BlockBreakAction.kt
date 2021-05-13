@@ -7,6 +7,8 @@ interface BlockBreakAction {
 
   fun shouldTrigger(event: BlockBreakEvent): Boolean
 
+  fun fullyOverridesOthers(): Boolean = true
+
   fun trigger(event: BlockBreakEvent)
 
 }

@@ -25,6 +25,8 @@ class NetherrackBoomAction(
   override fun shouldTrigger(event: BlockBreakEvent): Boolean =
     BLOCK_TYPES.contains(event.block.type)
 
+  override fun fullyOverridesOthers(): Boolean = false
+
   override fun onActivate(event: BlockBreakEvent) {}
 
   override fun onActivateNearby(event: BlockBreakEvent, loc: Location) {
