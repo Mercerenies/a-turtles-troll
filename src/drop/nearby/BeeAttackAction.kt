@@ -19,12 +19,12 @@ class BeeAttackAction(
 
   companion object {
     val BLOCKS = setOf(
-      Material.OAK_LOG, Material.OAK_PLANKS, Material.STRIPPED_OAK_LOG,
-      Material.SPRUCE_LOG, Material.SPRUCE_PLANKS, Material.STRIPPED_SPRUCE_LOG,
-      Material.JUNGLE_LOG, Material.JUNGLE_PLANKS, Material.STRIPPED_JUNGLE_LOG,
-      Material.BIRCH_LOG, Material.BIRCH_PLANKS, Material.STRIPPED_BIRCH_LOG,
-      Material.ACACIA_LOG, Material.ACACIA_PLANKS, Material.STRIPPED_ACACIA_LOG,
-      Material.DARK_OAK_LOG, Material.DARK_OAK_PLANKS, Material.STRIPPED_DARK_OAK_LOG,
+      Material.OAK_LOG, Material.OAK_PLANKS, Material.STRIPPED_OAK_LOG, Material.STRIPPED_OAK_WOOD,
+      Material.SPRUCE_LOG, Material.SPRUCE_PLANKS, Material.STRIPPED_SPRUCE_LOG, Material.STRIPPED_SPRUCE_WOOD,
+      Material.JUNGLE_LOG, Material.JUNGLE_PLANKS, Material.STRIPPED_JUNGLE_LOG, Material.STRIPPED_JUNGLE_WOOD,
+      Material.BIRCH_LOG, Material.BIRCH_PLANKS, Material.STRIPPED_BIRCH_LOG, Material.STRIPPED_BIRCH_WOOD,
+      Material.ACACIA_LOG, Material.ACACIA_PLANKS, Material.STRIPPED_ACACIA_LOG, Material.STRIPPED_ACACIA_WOOD,
+      Material.DARK_OAK_LOG, Material.DARK_OAK_PLANKS, Material.STRIPPED_DARK_OAK_LOG, Material.STRIPPED_DARK_OAK_WOOD,
     )
   }
 

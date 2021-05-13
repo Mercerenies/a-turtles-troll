@@ -7,6 +7,10 @@ for the full feature list.
 
 ## Changelog
 
+# Version 1.1
+
+* Stripped wood will now correctly trigger the bee effect
+
 # Version 1.0
 
 * Initial release
