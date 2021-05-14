@@ -11,6 +11,7 @@ for the full feature list.
 
 * Stripped wood will now correctly trigger the bee effect
 * Nether brick works like netherrack and other "common nether materials" now
+* Rabbits are replaced by chickens now
 
 # Version 1.0
 

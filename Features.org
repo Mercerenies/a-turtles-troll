@@ -1,11 +1,11 @@
 
 * FEATURES
   + stonetools :: All recipes which produce stone tools are disabled
-  + Chickens explode when any damage (even fatal damage) is dealt to
-    them for any reason
-  + The following passive mobs are always replaced with chickens:
-    cows, pigs, llamas, bats, donkeys, horses, sheep, mules, and
-    parrots
+  + chickens :: Chickens explode when any damage (even fatal damage)
+                is dealt to them for any reason
+    - The following passive mobs are always replaced with chickens:
+      cows, pigs, llamas, bats, donkeys, horses, sheep, mules,
+      rabbits, and parrots
   + If you stand still for more than ten seconds, an anvil will drop
     on your head
   + Tall grass, ferns, and dead bushes give you poison and slowness on contact

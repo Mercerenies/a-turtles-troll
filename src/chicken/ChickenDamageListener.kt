@@ -26,7 +26,7 @@ class ChickenDamageListener(
       EntityType.COW, EntityType.PIG, EntityType.LLAMA,
       EntityType.BAT, EntityType.DONKEY, EntityType.HORSE,
       EntityType.MULE, EntityType.PARROT, EntityType.SHEEP,
-      EntityType.CHICKEN,
+      EntityType.CHICKEN, EntityType.RABBIT,
     )
   }
 
