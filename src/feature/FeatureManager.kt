@@ -30,7 +30,7 @@ class FeatureManager(val features: List<Feature>) : CommandExecutor, TabComplete
         val feature = findFeature(parsed.featureName)
         if (feature != null) {
           feature.enable()
-          Bukkit.broadcastMessage("[Turtle] §2${feature.name()}§r is now enabled.")
+          Bukkit.broadcastMessage("[Turtle] §2${feature.name}§r is now enabled.")
           return true
         } else {
           return false
@@ -40,14 +40,14 @@ class FeatureManager(val features: List<Feature>) : CommandExecutor, TabComplete
         val feature = findFeature(parsed.featureName)
         if (feature != null) {
           feature.disable()
-          Bukkit.broadcastMessage("[Turtle] §4${feature.name()}§r is now disabled.")
+          Bukkit.broadcastMessage("[Turtle] §4${feature.name}§r is now disabled.")
           return true
         } else {
           return false
         }
       }
       FeatureParser.List -> {
-        val msg = features.map { it.coloredName() }.joinToString("§r, ")
+        val msg = features.map { it.coloredName }.joinToString("§r, ")
         sender.sendMessage("[Turtle] ${msg}")
         return true
       }
@@ -66,12 +66,12 @@ class FeatureManager(val features: List<Feature>) : CommandExecutor, TabComplete
       2 -> if (args[0] == "list") {
         null
       } else {
-        features.map { it.name() }.filter { it.startsWith(args[1]) }
+        features.map { it.name }.filter { it.startsWith(args[1]) }
       }
       else -> null
     }
 
   private fun findFeature(name: String): Feature? =
-    features.find { it.name().equals(name, ignoreCase = true) }
+    features.find { it.name.equals(name, ignoreCase = true) }
 
 }

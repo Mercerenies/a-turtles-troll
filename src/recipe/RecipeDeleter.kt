@@ -18,9 +18,9 @@ open class RecipeDeleter(
   var storedRecipes: List<Recipe> = ArrayList()
     private set
 
-  override fun name(): String = "recipes"
+  override val name = "recipes"
 
-  override fun description() = "Disables specific crafting recipes"
+  override val description = "Disables specific crafting recipes"
 
   override fun enable() {
     super.enable()

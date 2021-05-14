@@ -5,9 +5,9 @@ package com.mercerenies.turtletroll.feature
 // they are enabled until told otherwise.
 interface Feature {
 
-  fun name(): String
+  val name: String
 
-  fun description(): String
+  val description: String
 
   fun enable()
 
@@ -15,11 +15,12 @@ interface Feature {
 
   fun isEnabled(): Boolean
 
-  fun coloredName(): String =
-    if (isEnabled()) {
-      "§2${name()}"
-    } else {
-      "§4${name()}"
-    }
+  val coloredName: String
+    get() =
+      if (isEnabled()) {
+        "§2${name}"
+      } else {
+        "§4${name}"
+      }
 
 }

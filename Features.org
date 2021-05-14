@@ -1,6 +1,6 @@
 
 * FEATURES
-  + All recipes which produce stone tools are disabled
+  + stonetools :: All recipes which produce stone tools are disabled
   + Chickens explode when any damage (even fatal damage) is dealt to
     them for any reason
   + The following passive mobs are always replaced with chickens:

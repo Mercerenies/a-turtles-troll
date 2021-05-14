@@ -18,8 +18,8 @@ class StoneRecipeDeleter(private val server: Server) : RecipeDeleter(server, STO
     )
   }
 
-  override fun name(): String = "stonetools"
+  override val name = "stonetools"
 
-  override fun description() = "Disables crafting of all stone tools"
+  override val description = "Disables crafting of all stone tools"
 
 }
