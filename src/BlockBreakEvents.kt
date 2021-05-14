@@ -7,10 +7,12 @@ import com.mercerenies.turtletroll.drop.ReplaceDropsAction
 import com.mercerenies.turtletroll.drop.CancelDropAction
 import com.mercerenies.turtletroll.drop.EndermiteSpawnAction
 import com.mercerenies.turtletroll.drop.filter
+import com.mercerenies.turtletroll.drop.asFeature
 import com.mercerenies.turtletroll.drop.nearby.SilverfishAttackAction
 import com.mercerenies.turtletroll.drop.nearby.BeeAttackAction
 import com.mercerenies.turtletroll.drop.nearby.NetherrackBoomAction
 import com.mercerenies.turtletroll.feature.Feature
+import com.mercerenies.turtletroll.feature.CompositeFeature
 
 import org.bukkit.inventory.ItemStack
 import org.bukkit.event.Listener
@@ -18,7 +20,29 @@ import org.bukkit.Material
 
 class BlockBreakEvents {
 
-  val listener = BlockBreakEventListener(BREAK_OVERRIDES, BREAK_EVENTS)
+  private val regularDirtDrop = REGULAR_DIRT_DROP.asFeature("dirt1", "")
+  private val frequentDirtDrop = FREQUENT_DIRT_DROP.asFeature("dirt2", "")
+  private val dirtDropFeature = CompositeFeature(
+    "dirtstacks",
+    "Replaces drops with dirt stacks at random",
+    listOf(regularDirtDrop, frequentDirtDrop),
+  )
+
+  private val breakOverrides = listOf(
+    EndermiteSpawnAction,
+    NetherrackBoomAction(),
+    CancelDropAction.filter { NO_DROP_ON.contains(it.block.type) },
+  )
+
+  private val breakEvents = listOf(
+    Weight(NullAction, 1.0),
+    Weight(regularDirtDrop, 0.3),
+    Weight(frequentDirtDrop, 1.0),
+    Weight(SilverfishAttackAction(), 0.2),
+    Weight(BeeAttackAction(), 0.2),
+  )
+
+  val listener = BlockBreakEventListener(overrideRules = breakOverrides, actions = breakEvents)
 
   companion object {
 
@@ -34,30 +58,10 @@ class BlockBreakEvents {
     val REGULAR_DIRT_DROP = ReplaceDropsAction(ItemStack(Material.DIRT, 64))
     val FREQUENT_DIRT_DROP = REGULAR_DIRT_DROP.filter { FREQUENT_DIRT_DROP_TRIGGERS.contains(it.block.type) }
 
-    /*
-    val DIRT_DROP_FEATURE = CompositeFeature(
-      "dirtstacks",
-      "Replaces drops with dirt stacks at random",
-      listOf(REGULAR_DIRT_DROP, FREQUENT_DIRT_DROP),
-    )
-    */
-
-    val BREAK_OVERRIDES = listOf(
-      EndermiteSpawnAction,
-      NetherrackBoomAction(),
-      CancelDropAction.filter { NO_DROP_ON.contains(it.block.type) },
-    )
-
-    val BREAK_EVENTS = listOf(
-      Weight(NullAction, 1.0),
-      Weight(REGULAR_DIRT_DROP, 0.3),
-      Weight(FREQUENT_DIRT_DROP, 1.0),
-      Weight(SilverfishAttackAction(), 0.2),
-      Weight(BeeAttackAction(), 0.2),
-    )
-
   }
 
-  fun getFeatures(): List<Feature> = listOf()
+  fun getFeatures(): List<Feature> = listOf(
+    dirtDropFeature,
+  )
 
 }
