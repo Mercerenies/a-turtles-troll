@@ -27,19 +27,41 @@ class BlockBreakEvents {
     "Replaces drops with dirt stacks at random",
     listOf(regularDirtDrop, frequentDirtDrop),
   )
+  private val silverfishAttackAction = SilverfishAttackAction().asFeature(
+    "silverfish",
+    "Breaking stone blocks will sometimes result in a silverfish attack",
+  )
+  private val beeAttackAction = BeeAttackAction().asFeature(
+    "bees",
+    "Breaking wood will sometimes result in a bee attack",
+  )
+  private val endermiteSpawnAction = EndermiteSpawnAction.asFeature(
+    "endermites",
+    "End stones will always spawn endermites when broken",
+  )
+  private val netherrackBoomAction = NetherrackBoomAction().asFeature(
+    "netherrack",
+    "Common nether materials cause a cascading effect, breaking nearby blocks when broken",
+  )
+  private val cancelDropAction = CancelDropAction.filter {
+    NO_DROP_ON.contains(it.block.type)
+  }.asFeature(
+    "nodrops",
+    "Several block types refuse to drop when broken",
+  )
 
   private val breakOverrides = listOf(
-    EndermiteSpawnAction,
-    NetherrackBoomAction(),
-    CancelDropAction.filter { NO_DROP_ON.contains(it.block.type) },
+    endermiteSpawnAction,
+    netherrackBoomAction,
+    cancelDropAction,
   )
 
   private val breakEvents = listOf(
     Weight(NullAction, 1.0),
     Weight(regularDirtDrop, 0.3),
     Weight(frequentDirtDrop, 1.0),
-    Weight(SilverfishAttackAction(), 0.2),
-    Weight(BeeAttackAction(), 0.2),
+    Weight(silverfishAttackAction, 0.2),
+    Weight(beeAttackAction, 0.2),
   )
 
   val listener = BlockBreakEventListener(overrideRules = breakOverrides, actions = breakEvents)
@@ -61,7 +83,8 @@ class BlockBreakEvents {
   }
 
   fun getFeatures(): List<Feature> = listOf(
-    dirtDropFeature,
+    dirtDropFeature, silverfishAttackAction, beeAttackAction,
+    endermiteSpawnAction, netherrackBoomAction, cancelDropAction,
   )
 
 }

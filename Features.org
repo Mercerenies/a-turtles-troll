@@ -26,21 +26,24 @@
      - The following blocks have a higher chance of dropping dirt:
        iron, coal, lapis, gold, diamond, emerald, nether quartz,
        nether gold, ancient debris
-   + All stone/cobble/stone brick blocks have a chance of spawning a
-     silverfish and potentially several more nearby
-   + All wood blocks have a chance of spawning bees in all nearby wood
-     blocks
-   + The following blocks will never drop anything: crafting table,
-     furnace, blast furnace, smoker
-   + End stone will always spawn an endermite when broken and will not
-     drop itself as a block
-   + If you destroy any common nether blocks, all nearby common nether
-     blocks will be destroyed; these include: netherrack, nylium (both
-     kinds), soul sand, and soul soil, nether bricks.
+   + silverfish :: All stone/cobble/stone brick blocks have a chance
+                   of spawning a silverfish and potentially several
+                   more nearby
+   + bees :: All wood blocks have a chance of spawning bees in all
+             nearby wood blocks
+   + nodrops :: The following blocks will never drop anything:
+                crafting table, furnace, blast furnace, smoker
+   + endermites :: End stone will always spawn an endermite when
+                   broken and will not drop itself as a block
+   + netherrack :: If you destroy any common nether blocks, all nearby
+                   common nether blocks will be destroyed; these
+                   include: netherrack, nylium (both kinds), soul
+                   sand, and soul soil, nether bricks.
 * IDEAS (UNIMPLEMENTED)
-  + Individual features should be able to be turned on/off with commands or config
   + Sand?
   + Doors?
   + Wolves?
   + Flowers?
   + Phantoms?
+  + More silverfish in stronghold?
+  + Arrow bombs?
