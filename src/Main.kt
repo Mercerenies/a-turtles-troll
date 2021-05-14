@@ -22,6 +22,7 @@ class Main : JavaPlugin() {
     recipeDeleter.removeRecipes()
     anvilRunnable.register(this)
     this.getCommand("turtle")!!.setExecutor(featureManager)
+    this.getCommand("turtle")!!.setTabCompleter(featureManager)
   }
 
   override fun onDisable() {
@@ -30,6 +31,7 @@ class Main : JavaPlugin() {
       anvilRunnable.cancel()
     } catch (_: IllegalStateException) {}
     this.getCommand("turtle")?.setExecutor(null)
+    this.getCommand("turtle")?.setTabCompleter(null)
   }
 
 }

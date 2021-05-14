@@ -2,13 +2,14 @@
 package com.mercerenies.turtletroll.feature
 
 import org.bukkit.Bukkit
+import org.bukkit.command.TabCompleter
 import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender
 import org.bukkit.command.Command
 
 import kotlin.collections.joinToString
 
-class FeatureManager(val features: List<Feature>) : CommandExecutor {
+class FeatureManager(val features: List<Feature>) : CommandExecutor, TabCompleter {
 
   override fun onCommand(
     sender: CommandSender,
@@ -53,6 +54,22 @@ class FeatureManager(val features: List<Feature>) : CommandExecutor {
     }
 
   }
+
+  override fun onTabComplete(
+    sender: CommandSender,
+    command: Command,
+    alias: String,
+    args: Array<String>,
+  ): List<String>? =
+    when (args.size) {
+      1 -> listOf("on", "off", "list").filter { it.startsWith(args[0]) }
+      2 -> if (args[0] == "list") {
+        null
+      } else {
+        features.map { it.name() }.filter { it.startsWith(args[1]) }
+      }
+      else -> null
+    }
 
   private fun findFeature(name: String): Feature? =
     features.find { it.name().equals(name, ignoreCase = true) }
