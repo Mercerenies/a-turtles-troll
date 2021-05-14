@@ -17,7 +17,11 @@ import kotlin.random.Random
 
 class RavagerSpawnerListener(
   override val chance: Double = 0.5
-) : TransformedSpawnerListener {
+) : TransformedSpawnerListener() {
+
+  override val name = "ravagers"
+
+  override val description = "Allows ravagers to spawn in the Nether"
 
   override val targetEntity: EntityType = EntityType.RAVAGER
 
@@ -26,6 +30,9 @@ class RavagerSpawnerListener(
 
   @EventHandler
   fun onChunkPopulate(event: ChunkPopulateEvent) {
+    if (!isEnabled()) {
+      return
+    }
     val entities = event.chunk.entities
     for (entity in entities) {
       if (entity.type == EntityType.HOGLIN) {

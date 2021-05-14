@@ -4,6 +4,7 @@ package com.mercerenies.turtletroll.transformed
 import com.mercerenies.turtletroll.ext.*
 import com.mercerenies.turtletroll.Weight
 import com.mercerenies.turtletroll.sample
+import com.mercerenies.turtletroll.feature.AbstractFeature
 
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
@@ -16,21 +17,24 @@ import org.bukkit.util.Vector
 
 import kotlin.random.Random
 
-interface TransformedSpawnerListener : Listener {
+abstract class TransformedSpawnerListener() : AbstractFeature(), Listener {
 
-  val chance: Double
+  abstract val chance: Double
 
-  val targetEntity: EntityType
+  abstract val targetEntity: EntityType
 
-  val offset: Vector
+  open val offset: Vector
     get() = Vector(0.0, 0.0, 0.0)
 
-  fun shouldAttemptReplace(event: EntitySpawnEvent): Boolean
+  abstract fun shouldAttemptReplace(event: EntitySpawnEvent): Boolean
 
-  fun onSpawn(entity: Entity) {}
+  open fun onSpawn(entity: Entity) {}
 
   @EventHandler
-  fun onEntitySpawn(event: EntitySpawnEvent) {
+  open fun onEntitySpawn(event: EntitySpawnEvent) {
+    if (!isEnabled()) {
+      return
+    }
     val world = event.location.world!!
     if (shouldAttemptReplace(event)) {
       if (Random.nextDouble() < chance) {

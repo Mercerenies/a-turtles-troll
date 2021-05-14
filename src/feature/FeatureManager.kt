@@ -47,7 +47,7 @@ class FeatureManager(val features: List<Feature>) : CommandExecutor, TabComplete
         }
       }
       FeatureParser.List -> {
-        val msg = features.map { it.coloredName }.joinToString("§r, ")
+        val msg = features.sortedBy { it.name }.map { it.coloredName }.joinToString("§r, ")
         sender.sendMessage("[Turtle] ${msg}")
         return true
       }

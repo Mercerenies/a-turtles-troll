@@ -6,16 +6,17 @@
     - The following passive mobs are always replaced with chickens:
       cows, pigs, llamas, bats, donkeys, horses, sheep, mules,
       rabbits, and parrots
-  + If you stand still for more than ten seconds, an anvil will drop
-    on your head
-  + Tall grass, ferns, and dead bushes give you poison and slowness on contact
-  + Ghasts spawn in all dimensions
+  + anvil :: If you stand still for more than ten seconds, an anvil
+             will drop on your head
+  + tallgrass :: Tall grass, ferns, and dead bushes give you poison
+                 and slowness on contact
+  + ghasts :: Ghasts spawn in all dimensions
   + If the player is hit by a skeleton arrow in the Nether, they get
     the Wither effect
   + Water electrocutes you, unless in a boat
   + If the player opens the trading UI, the relevant villager becomes
     a zombie after trading is complete
-  + Half of hoglins turn into ravagers
+  + ravagers :: Half of hoglins turn into ravagers
   + Leaves catch fire when you walk on them
   + Snow makes you go fast
   + Blazes will spawn evokers
@@ -37,8 +38,8 @@
      blocks will be destroyed; these include: netherrack, nylium (both
      kinds), soul sand, and soul soil, nether bricks.
 * IDEAS (UNIMPLEMENTED)
-  + Netherrack effect should not override the dirt drop possible effect
   + Individual features should be able to be turned on/off with commands or config
   + Sand?
   + Doors?
   + Wolves?
+  + Flowers?

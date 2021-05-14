@@ -1,6 +1,8 @@
 
 package com.mercerenies.turtletroll
 
+import com.mercerenies.turtletroll.feature.AbstractFeature
+
 import org.bukkit.Material
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
@@ -9,7 +11,7 @@ import org.bukkit.entity.Player
 import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
 
-class GrassPoisonListener : Listener {
+class GrassPoisonListener : AbstractFeature(), Listener {
 
   companion object {
     val TICKS_PER_SECOND = 20
@@ -19,8 +21,15 @@ class GrassPoisonListener : Listener {
     )
   }
 
+  override val name = "tallgrass"
+
+  override val description = "Tall grass poisons and slows its victims"
+
   @EventHandler
   fun onPlayerMove(event: PlayerMoveEvent) {
+    if (!isEnabled()) {
+      return
+    }
     val block = event.getTo()?.getBlock()
     if ((block != null) && (BLOCKS.contains(block.type))) {
       val player = event.player

@@ -18,7 +18,11 @@ import kotlin.random.Random
 
 class GhastSpawnerListener(
   override val chance: Double = 0.2
-) : TransformedSpawnerListener {
+) : TransformedSpawnerListener() {
+
+  override val name = "ghasts"
+
+  override val description = "Allows ghasts to spawn in all dimensions"
 
   override val targetEntity: EntityType = EntityType.GHAST
 
@@ -37,6 +41,9 @@ class GhastSpawnerListener(
 
   @EventHandler
   fun onChunkPopulate(event: ChunkPopulateEvent) {
+    if (!isEnabled()) {
+      return
+    }
     val entities = event.chunk.entities
     for (entity in entities) {
       if (entity.type == EntityType.ENDERMAN) {
