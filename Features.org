@@ -20,6 +20,8 @@
   + forestfire :: Leaves catch fire when you walk on them
   + snowspeed :: Snow makes you go fast
   + blazepower :: Blazes will spawn evokers
+  + witherrose :: All flowers (and berry bushes) give the Wither
+                  effect on contact now, or when picked up
 ** BLOCK DROP FEATURES
    + dirtstacks :: All blocks have a chance of dropping 64 dirt
                    instead of the intended drop
