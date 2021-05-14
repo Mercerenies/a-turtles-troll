@@ -12,6 +12,9 @@ class FilteredAction<out T : BlockBreakAction>(
     return filter(event) && value.shouldTrigger(event)
   }
 
+  override fun fullyOverridesOthers(): Boolean =
+    value.fullyOverridesOthers()
+
   override fun trigger(event: BlockBreakEvent) {
     value.trigger(event)
   }
