@@ -3,6 +3,7 @@ package com.mercerenies.turtletroll
 
 import com.mercerenies.turtletroll.Weight
 import com.mercerenies.turtletroll.sample
+import com.mercerenies.turtletroll.feature.AbstractFeature
 
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
@@ -15,7 +16,7 @@ import org.bukkit.scheduler.BukkitRunnable
 import kotlin.random.Random
 import kotlin.collections.HashSet
 
-class BlazeAttackListener(val plugin: Plugin) : Listener {
+class BlazeAttackListener(val plugin: Plugin) : AbstractFeature(), Listener {
   val memory = HashSet<Blaze>()
 
   companion object {
@@ -29,8 +30,15 @@ class BlazeAttackListener(val plugin: Plugin) : Listener {
     }
   }
 
+  override val name = "blazepower"
+
+  override val description = "Blazes will spawn Evokers"
+
   @EventHandler
   fun onProjectileLaunch(event: ProjectileLaunchEvent) {
+    if (!isEnabled()) {
+      return
+    }
     val projectile = event.entity
     val source = projectile.shooter
     if (source is Blaze) {

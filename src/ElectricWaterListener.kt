@@ -1,6 +1,8 @@
 
 package com.mercerenies.turtletroll
 
+import com.mercerenies.turtletroll.feature.AbstractFeature
+
 import org.bukkit.Material
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
@@ -14,7 +16,7 @@ import org.bukkit.plugin.Plugin
 
 import kotlin.collections.HashSet
 
-class ElectricWaterListener(val plugin: Plugin) : Listener {
+class ElectricWaterListener(val plugin: Plugin) : AbstractFeature(), Listener {
   private var memory = HashSet<Player>()
 
   companion object {
@@ -33,6 +35,10 @@ class ElectricWaterListener(val plugin: Plugin) : Listener {
 
   }
 
+  override val name = "zapwater"
+
+  override val description = "Water electrocutes any players in it"
+
   private inner class PlayerCooldown(val player: Player) : BukkitRunnable() {
     override fun run() {
       memory.remove(player)
@@ -41,6 +47,9 @@ class ElectricWaterListener(val plugin: Plugin) : Listener {
 
   @EventHandler
   fun onPlayerMove(event: PlayerMoveEvent) {
+    if (!isEnabled()) {
+      return
+    }
     val block = event.getTo()?.getBlock()
     if ((block != null) && (isWet(block))) {
       val player = event.player

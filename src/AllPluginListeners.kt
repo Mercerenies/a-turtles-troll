@@ -75,7 +75,9 @@ class AllPluginListeners(val plugin: Plugin) : Iterable<Listener> {
 
   fun getFeatures(): List<Feature> =
     listOf(
-      chickenListener, ghastListener, ravagerListener,
+      chickenListener, grassListener, snowListener,
+      ghastListener, ravagerListener, skeleListener,
+      blazeListener, zombifyListener, leavesListener,
     )
 
   override fun iterator(): Iterator<Listener> =

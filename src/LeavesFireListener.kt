@@ -1,6 +1,8 @@
 
 package com.mercerenies.turtletroll
 
+import com.mercerenies.turtletroll.feature.AbstractFeature
+
 import org.bukkit.Material
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
@@ -14,8 +16,12 @@ import org.bukkit.plugin.Plugin
 
 import kotlin.collections.HashSet
 
-class LeavesFireListener(val plugin: Plugin) : Listener {
+class LeavesFireListener(val plugin: Plugin) : AbstractFeature(), Listener {
   private var memory = HashSet<Location>()
+
+  override val name = "forestfire"
+
+  override val description = "Leaves catch fire when you walk on them"
 
   companion object {
     val TICKS_PER_SECOND = 20
@@ -35,6 +41,9 @@ class LeavesFireListener(val plugin: Plugin) : Listener {
 
   @EventHandler
   fun onPlayerMove(event: PlayerMoveEvent) {
+    if (!isEnabled()) {
+      return
+    }
     val loc = event.getTo()
     if (loc != null) {
       val block = loc.clone().add(0.0, -1.0, 0.0).getBlock()

@@ -1,6 +1,8 @@
 
 package com.mercerenies.turtletroll
 
+import com.mercerenies.turtletroll.feature.AbstractFeature
+
 import org.bukkit.Material
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
@@ -13,11 +15,18 @@ import org.bukkit.entity.Player
 
 import kotlin.collections.HashMap
 
-class ZombifyTradeListener() : Listener {
+class ZombifyTradeListener() : AbstractFeature(), Listener {
   private val playerUI = HashMap<Player, Villager>()
+
+  override val name = "zombietrade"
+
+  override val description = "Villagers turn into zombies after being traded with"
 
   @EventHandler
   fun onPlayerInteractEntity(event: PlayerInteractEntityEvent) {
+    if (!isEnabled()) {
+      return
+    }
     val target = event.getRightClicked()
     if (target is Villager) {
       playerUI[event.player] = target
@@ -26,6 +35,9 @@ class ZombifyTradeListener() : Listener {
 
   @EventHandler
   fun onInventoryClose(event: InventoryCloseEvent) {
+    if (!isEnabled()) {
+      return
+    }
     val inv = event.inventory
     if (inv is MerchantInventory) {
       val target = playerUI[event.player]

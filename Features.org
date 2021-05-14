@@ -11,15 +11,15 @@
   + tallgrass :: Tall grass, ferns, and dead bushes give you poison
                  and slowness on contact
   + ghasts :: Ghasts spawn in all dimensions
-  + If the player is hit by a skeleton arrow in the Nether, they get
-    the Wither effect
-  + Water electrocutes you, unless in a boat
-  + If the player opens the trading UI, the relevant villager becomes
-    a zombie after trading is complete
+  + witherarrow :: If the player is hit by a skeleton arrow in the
+                   Nether, they get the Wither effect
+  + zapwater :: Water electrocutes you, unless in a boat
+  + zombietrade :: If the player opens the trading UI, the relevant
+                   villager becomes a zombie after trading is complete
   + ravagers :: Half of hoglins turn into ravagers
-  + Leaves catch fire when you walk on them
-  + Snow makes you go fast
-  + Blazes will spawn evokers
+  + forestfire :: Leaves catch fire when you walk on them
+  + snowspeed :: Snow makes you go fast
+  + blazepower :: Blazes will spawn evokers
 ** BLOCK DROP FEATURES
    + All blocks have a chance of dropping 64 dirt instead of the
      intended drop
