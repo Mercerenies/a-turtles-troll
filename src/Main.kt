@@ -13,7 +13,7 @@ class Main : JavaPlugin() {
   val recipeDeleter = StoneRecipeDeleter(Bukkit.getServer())
   val anvilRunnable = AnvilRunnable()
   val listenerManager = AllPluginListeners(this)
-  val featureManager = FeatureManager(listOf(recipeDeleter))
+  val featureManager = FeatureManager(listOf(recipeDeleter) + listenerManager.getFeatures())
 
   override fun onEnable() {
     for (listener in listenerManager) {

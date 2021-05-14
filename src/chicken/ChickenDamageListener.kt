@@ -3,6 +3,7 @@ package com.mercerenies.turtletroll.chicken
 
 import com.mercerenies.turtletroll.Weight
 import com.mercerenies.turtletroll.sample
+import com.mercerenies.turtletroll.feature.AbstractFeature
 
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
@@ -16,7 +17,7 @@ import kotlin.random.Random
 
 class ChickenDamageListener(
   val bannedMobs: Set<EntityType> = DEFAULT_BANNED_MOBS
-) : Listener {
+) : AbstractFeature(), Listener {
   // We don't want onEntitySpawn to trigger on our *own* EntitySpawn
   private var recursionBlock = false
 
@@ -29,8 +30,15 @@ class ChickenDamageListener(
     )
   }
 
+  override val name = "chickens"
+
+  override val description = "Replaces passive mobs with chickens and makes chickens explode"
+
   @EventHandler
   fun onEntityDamageByEntity(event: EntityDamageByEntityEvent) {
+    if (!isEnabled()) {
+      return
+    }
     val victim = event.entity
     if (victim is Chicken) {
       victim.health = 0.0
@@ -40,6 +48,9 @@ class ChickenDamageListener(
 
   @EventHandler
   fun onEntitySpawn(event: EntitySpawnEvent) {
+    if (!isEnabled()) {
+      return
+    }
     val entity = event.entity
     if ((!recursionBlock) && (bannedMobs.contains(entity.type))) {
 
@@ -61,6 +72,9 @@ class ChickenDamageListener(
 
   @EventHandler
   fun onChunkPopulate(event: ChunkPopulateEvent) {
+    if (!isEnabled()) {
+      return
+    }
     val entities = event.chunk.entities
     for (entity in entities) {
       if (bannedMobs.contains(entity.type)) {

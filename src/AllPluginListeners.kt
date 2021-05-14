@@ -13,6 +13,7 @@ import com.mercerenies.turtletroll.drop.nearby.NetherrackBoomAction
 import com.mercerenies.turtletroll.chicken.ChickenDamageListener
 import com.mercerenies.turtletroll.transformed.GhastSpawnerListener
 import com.mercerenies.turtletroll.transformed.RavagerSpawnerListener
+import com.mercerenies.turtletroll.feature.Feature
 
 import org.bukkit.Bukkit
 import org.bukkit.Material
@@ -70,6 +71,11 @@ class AllPluginListeners(val plugin: Plugin) : Iterable<Listener> {
       breakListener, chickenListener, grassListener, snowListener,
       ghastListener, ravagerListener, skeleListener, electricListener,
       blazeListener, zombifyListener, leavesListener
+    )
+
+  fun getFeatures(): List<Feature> =
+    listOf(
+      chickenListener,
     )
 
   override fun iterator(): Iterator<Listener> =
