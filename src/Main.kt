@@ -2,37 +2,34 @@
 package com.mercerenies.turtletroll
 
 import com.mercerenies.turtletroll.anvil.AnvilRunnable
+import com.mercerenies.turtletroll.feature.FeatureManager
+import com.mercerenies.turtletroll.recipe.StoneRecipeDeleter
 
 import org.bukkit.Bukkit
 import org.bukkit.Material
 import org.bukkit.plugin.java.JavaPlugin
 
 class Main : JavaPlugin() {
-  val recipeDeleter = RecipeDeleter(*STONE_TOOLS)
+  val recipeDeleter = StoneRecipeDeleter(Bukkit.getServer())
   val anvilRunnable = AnvilRunnable()
   val listenerManager = AllPluginListeners(this)
-
-  companion object {
-
-    val STONE_TOOLS = arrayOf(Material.STONE_PICKAXE, Material.STONE_HOE, Material.STONE_SWORD,
-                              Material.STONE_AXE, Material.STONE_SHOVEL)
-
-  }
+  val featureManager = FeatureManager(listOf(recipeDeleter))
 
   override fun onEnable() {
-    val server = Bukkit.getServer()
     for (listener in listenerManager) {
       Bukkit.getPluginManager().registerEvents(listener, this)
     }
-    recipeDeleter.removeRecipes(server)
+    recipeDeleter.removeRecipes()
     anvilRunnable.register(this)
+    this.getCommand("turtle")!!.setExecutor(featureManager)
   }
 
   override fun onDisable() {
-    recipeDeleter.addRecipes(server)
+    recipeDeleter.addRecipes()
     try {
       anvilRunnable.cancel()
     } catch (_: IllegalStateException) {}
+    this.getCommand("turtle")?.setExecutor(null)
   }
 
 }
