@@ -14,6 +14,8 @@ for the full feature list.
 * Nether brick works like netherrack and other "common nether materials" now
 * Rabbits are replaced by chickens now
 * All flowers (and berry bushes) give the wither effect now
+* A higher percentage of chickens will spawn with baby zombie riders now
+* End stones have the same effect as snow (Haste)
 
 # Version 1.0
 
