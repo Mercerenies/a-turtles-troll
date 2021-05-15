@@ -11,11 +11,11 @@ import org.bukkit.entity.EntityType
 
 import kotlin.random.Random
 
-class SilverfishAttackAction(
+open class SilverfishAttackAction(
   val bombData: SilverfishAttackBomb = SilverfishAttackBomb.DEFAULT
 ) : NearbyAction {
 
-  override fun shouldTrigger(event: BlockBreakEvent): Boolean =
+  override open fun shouldTrigger(event: BlockBreakEvent): Boolean =
     Infestation.canInfest(event.block.type)
 
   override fun onActivate(event: BlockBreakEvent) {

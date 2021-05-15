@@ -9,6 +9,7 @@ import com.mercerenies.turtletroll.drop.EndermiteSpawnAction
 import com.mercerenies.turtletroll.drop.filter
 import com.mercerenies.turtletroll.drop.asFeature
 import com.mercerenies.turtletroll.drop.nearby.SilverfishAttackAction
+import com.mercerenies.turtletroll.drop.nearby.StrongholdSilverfishAttackAction
 import com.mercerenies.turtletroll.drop.nearby.BeeAttackAction
 import com.mercerenies.turtletroll.drop.nearby.NetherrackBoomAction
 import com.mercerenies.turtletroll.feature.Feature
@@ -30,6 +31,10 @@ class BlockBreakEvents {
   private val silverfishAttackAction = SilverfishAttackAction().asFeature(
     "silverfish",
     "Breaking stone blocks will sometimes result in a silverfish attack",
+  )
+  private val strongholdAttackAction = StrongholdSilverfishAttackAction().asFeature(
+    "stronghold",
+    "Breaking stone bricks will always result in a silverfish attack",
   )
   private val beeAttackAction = BeeAttackAction().asFeature(
     "bees",
@@ -54,6 +59,7 @@ class BlockBreakEvents {
     endermiteSpawnAction,
     netherrackBoomAction,
     cancelDropAction,
+    strongholdAttackAction,
   )
 
   private val breakEvents = listOf(
@@ -85,6 +91,7 @@ class BlockBreakEvents {
   fun getFeatures(): List<Feature> = listOf(
     dirtDropFeature, silverfishAttackAction, beeAttackAction,
     endermiteSpawnAction, netherrackBoomAction, cancelDropAction,
+    strongholdAttackAction,
   )
 
 }

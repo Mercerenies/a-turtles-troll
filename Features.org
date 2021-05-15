@@ -32,6 +32,8 @@
    + silverfish :: All stone/cobble/stone brick blocks have a chance
                    of spawning a silverfish and potentially several
                    more nearby
+   + stronghold :: As *silverfish*, but stone bricks have a 100%
+                   chance of spawning several silverfish
    + bees :: All wood blocks have a chance of spawning bees in all
              nearby wood blocks
    + nodrops :: The following blocks will never drop anything:
