@@ -74,8 +74,10 @@ class BlockBreakEvents {
 
   companion object {
 
-    val NO_DROP_ON = arrayOf(Material.CRAFTING_TABLE, Material.FURNACE,
-                             Material.SMOKER, Material.BLAST_FURNACE)
+    val NO_DROP_ON = setOf(
+      Material.CRAFTING_TABLE, Material.FURNACE,
+      Material.SMOKER, Material.BLAST_FURNACE
+    )
 
     val FREQUENT_DIRT_DROP_TRIGGERS = setOf(
       Material.COAL_ORE, Material.IRON_ORE, Material.LAPIS_ORE,

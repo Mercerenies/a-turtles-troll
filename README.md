@@ -16,6 +16,7 @@ for the full feature list.
 * All flowers (and berry bushes) give the wither effect now
 * A higher percentage of chickens will spawn with baby zombie riders now
 * End stones have the same effect as snow (Haste)
+* Doors break after some number of uses
 
 # Version 1.0
 

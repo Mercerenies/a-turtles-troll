@@ -23,6 +23,8 @@
   + witherrose :: All flowers (and berry bushes) give the Wither
                   effect on contact now, or when picked up
   + endspeed :: End stones make you go fast
+  + doordrop :: Doors break after some number of uses, and doors don't
+                drop anything when broken
 ** BLOCK DROP FEATURES
    + dirtstacks :: All blocks have a chance of dropping 64 dirt
                    instead of the intended drop
@@ -46,8 +48,6 @@
                    sand, and soul soil, nether bricks.
 * IDEAS (UNIMPLEMENTED)
   + Sand?
-  + Doors?
   + Wolves?
   + Phantoms?
-  + More silverfish in stronghold?
   + Arrow bombs?
