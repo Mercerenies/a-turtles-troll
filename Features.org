@@ -25,6 +25,9 @@
   + endspeed :: End stones make you go fast
   + doordrop :: Doors break after some number of uses, and doors don't
                 drop anything when broken
+  + weepingangel :: Armor stands will chase you when you're not
+                    looking at them (disabled by default, as the
+                    feature can be quite laggy)
 ** BLOCK DROP FEATURES
    + dirtstacks :: All blocks have a chance of dropping 64 dirt
                    instead of the intended drop

@@ -17,6 +17,7 @@ for the full feature list.
 * A higher percentage of chickens will spawn with baby zombie riders now
 * End stones have the same effect as snow (Haste)
 * Doors break after some number of uses
+* Weeping Angels effect on armor stands
 
 # Version 1.0
 

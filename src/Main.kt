@@ -23,6 +23,8 @@ class Main : JavaPlugin() {
     }
     recipeDeleter.removeRecipes()
     anvilRunnable.register(this)
+    listenerManager.angelManager.register()
+    listenerManager.angelManager.disable() // Disabled by default (due to lag)
     this.getCommand("turtle")!!.setExecutor(featureManager)
     this.getCommand("turtle")!!.setTabCompleter(featureManager)
   }
@@ -31,6 +33,9 @@ class Main : JavaPlugin() {
     recipeDeleter.addRecipes()
     try {
       anvilRunnable.cancel()
+    } catch (_: IllegalStateException) {}
+    try {
+      listenerManager.angelManager.cancel()
     } catch (_: IllegalStateException) {}
     this.getCommand("turtle")?.setExecutor(null)
     this.getCommand("turtle")?.setTabCompleter(null)
