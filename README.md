@@ -19,6 +19,7 @@ for the full feature list.
 * End stones have the same effect as snow (Haste)
 * Doors break after some number of uses
 * Weeping Angels effect on armor stands
+* Several blocks turn into bedrock when mined
 
 # Version 1.0
 

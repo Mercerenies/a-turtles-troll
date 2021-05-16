@@ -5,6 +5,7 @@ import com.mercerenies.turtletroll.drop.BlockBreakEventListener
 import com.mercerenies.turtletroll.drop.NullAction
 import com.mercerenies.turtletroll.drop.ReplaceDropsAction
 import com.mercerenies.turtletroll.drop.CancelDropAction
+import com.mercerenies.turtletroll.drop.BedrockAction
 import com.mercerenies.turtletroll.drop.EndermiteSpawnAction
 import com.mercerenies.turtletroll.drop.filter
 import com.mercerenies.turtletroll.drop.asFeature
@@ -54,11 +55,18 @@ class BlockBreakEvents {
     "nodrops",
     "Several block types refuse to drop when broken",
   )
+  private val bedrockAction = BedrockAction.filter {
+    BEDROCK_BLOCKS.contains(it.block.type)
+  }.asFeature(
+    "bedrock",
+    "Several block types transform into bedrock when mined",
+  )
 
   private val breakOverrides = listOf(
     endermiteSpawnAction,
     netherrackBoomAction,
     cancelDropAction,
+    bedrockAction,
     strongholdAttackAction,
   )
 
@@ -88,12 +96,19 @@ class BlockBreakEvents {
     val REGULAR_DIRT_DROP = ReplaceDropsAction(ItemStack(Material.DIRT, 64))
     val FREQUENT_DIRT_DROP = REGULAR_DIRT_DROP.filter { FREQUENT_DIRT_DROP_TRIGGERS.contains(it.block.type) }
 
+    val BEDROCK_BLOCKS =
+      LeavesFireListener.BLOCKS + setOf(
+        Material.NETHER_WART_BLOCK, Material.WARPED_WART_BLOCK,
+        Material.DIORITE, Material.ANDESITE, Material.GRANITE,
+        Material.BASALT, Material.BLACKSTONE,
+      )
+
   }
 
   fun getFeatures(): List<Feature> = listOf(
     dirtDropFeature, silverfishAttackAction, beeAttackAction,
     endermiteSpawnAction, netherrackBoomAction, cancelDropAction,
-    strongholdAttackAction,
+    strongholdAttackAction, bedrockAction,
   )
 
 }

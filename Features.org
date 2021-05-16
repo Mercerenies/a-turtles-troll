@@ -48,7 +48,10 @@
    + netherrack :: If you destroy any common nether blocks, all nearby
                    common nether blocks will be destroyed; these
                    include: netherrack, nylium (both kinds), soul
-                   sand, and soul soil, nether bricks.
+                   sand, and soul soil, nether bricks
+   + bedrock :: The following blocks transform into bedrock when
+                mined: leaves, wart blocks, warped wart blocks,
+                diorite, andesite, granite, basalt, blackstone
 * IDEAS (UNIMPLEMENTED)
   + Sand?
   + Wolves?
