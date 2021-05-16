@@ -25,6 +25,8 @@ class BeeAttackAction(
       Material.BIRCH_LOG, Material.BIRCH_PLANKS, Material.STRIPPED_BIRCH_LOG, Material.STRIPPED_BIRCH_WOOD,
       Material.ACACIA_LOG, Material.ACACIA_PLANKS, Material.STRIPPED_ACACIA_LOG, Material.STRIPPED_ACACIA_WOOD,
       Material.DARK_OAK_LOG, Material.DARK_OAK_PLANKS, Material.STRIPPED_DARK_OAK_LOG, Material.STRIPPED_DARK_OAK_WOOD,
+      Material.CRIMSON_HYPHAE, Material.CRIMSON_PLANKS, Material.CRIMSON_STEM, Material.STRIPPED_CRIMSON_HYPHAE, Material.STRIPPED_CRIMSON_STEM,
+      Material.WARPED_HYPHAE, Material.WARPED_PLANKS, Material.WARPED_STEM, Material.WARPED_HYPHAE, Material.WARPED_STEM,
     )
   }
 

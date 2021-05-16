@@ -54,3 +54,4 @@
   + Wolves?
   + Phantoms?
   + Arrow bombs?
+  + Leaves turn to bedrock when you break them?

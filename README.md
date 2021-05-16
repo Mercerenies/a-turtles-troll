@@ -11,6 +11,7 @@ for the full feature list.
 
 * All features can be toggled on an individual basis using the `/turtle` command now
 * Stripped wood will now correctly trigger the bee effect
+* Crimson and warped stems can now trigger the bee effect
 * Nether brick works like netherrack and other "common nether materials" now
 * Rabbits are replaced by chickens now
 * All flowers (and berry bushes) give the wither effect now
