@@ -20,6 +20,8 @@ for the full feature list.
 * Doors break after some number of uses
 * Weeping Angels effect on armor stands
 * Several blocks turn into bedrock when mined
+* When the player stands on some blocks, sand will fall from above
+* Standing on ore gives Levitation
 
 # Version 1.0
 
