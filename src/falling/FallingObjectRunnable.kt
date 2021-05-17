@@ -9,6 +9,7 @@ import org.bukkit.plugin.Plugin
 import org.bukkit.Location
 import org.bukkit.Bukkit
 import org.bukkit.Material
+import org.bukkit.block.Block
 
 abstract class FallingObjectRunnable : BukkitRunnable(), Feature {
   private var _enabled: Boolean = true
@@ -37,16 +38,21 @@ abstract class FallingObjectRunnable : BukkitRunnable(), Feature {
 
   open fun updatePlayer(player: Player) {}
 
+  open fun canDropThroughBlock(block: Block): Boolean =
+    block.isEmpty()
+
   fun doDrop(player: Player) {
     val loc = player.location
     loc.y += 1
     var maxDistLeft = maxDropHeight
-    while ((maxDistLeft > 0) && (loc.getBlock().isEmpty())) {
+    while ((maxDistLeft > 0) && (canDropThroughBlock(loc.getBlock()))) {
       maxDistLeft -= 1
       loc.y += 1
     }
     loc.y -= 1
-    loc.getBlock().type = blockToDrop
+    if (loc.getBlock().type == Material.AIR) {
+      loc.getBlock().type = blockToDrop
+    }
   }
 
   override fun run() {

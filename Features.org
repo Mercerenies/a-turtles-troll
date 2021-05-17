@@ -28,6 +28,8 @@
   + weepingangel :: Armor stands will chase you when you're not
                     looking at them (disabled by default, as the
                     feature can be quite laggy)
+  + sandattack :: While standing on certain blocks, sand will
+                  constantly fall from above
 ** BLOCK DROP FEATURES
    + dirtstacks :: All blocks have a chance of dropping 64 dirt
                    instead of the intended drop
