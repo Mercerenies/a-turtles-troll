@@ -1,7 +1,7 @@
 
 package com.mercerenies.turtletroll
 
-import com.mercerenies.turtletroll.anvil.AnvilRunnable
+import com.mercerenies.turtletroll.falling.AnvilRunnable
 import com.mercerenies.turtletroll.feature.FeatureManager
 import com.mercerenies.turtletroll.recipe.StoneRecipeDeleter
 
