@@ -9,6 +9,8 @@ for the full feature list.
 
 # Version 1.2
 
+* Buttons have durability now, similar to doors
+
 # Version 1.1
 
 * All features can be toggled on an individual basis using the `/turtle` command now

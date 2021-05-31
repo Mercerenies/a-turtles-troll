@@ -25,6 +25,8 @@
   + endspeed :: End stones make you go fast
   + doordrop :: Doors break after some number of uses, and doors don't
                 drop anything when broken
+  + buttondrop :: Buttons break after some number of uses, and buttons
+                  don't drop anything when broken
   + weepingangel :: Armor stands will chase you when you're not
                     looking at them (disabled by default, as the
                     feature can be quite laggy)
@@ -57,7 +59,6 @@
                 mined: leaves, wart blocks, warped wart blocks,
                 diorite, andesite, granite, basalt, blackstone
 * IDEAS (UNIMPLEMENTED)
-  + Sand?
   + Wolves?
   + Phantoms?
   + Arrow bombs?
