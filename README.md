@@ -12,6 +12,8 @@ for the full feature list.
 * Buttons and levers have durability now, similar to doors
 * Pressure plates have a slight chance of catching fire when you step
   on them
+* Decreased the rate of bats turning into chickens as a lag-prevention
+  measure
 
 # Version 1.1
 

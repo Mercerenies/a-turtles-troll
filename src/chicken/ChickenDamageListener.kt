@@ -58,7 +58,7 @@ class ChickenDamageListener(
 
       // This special check for bats specifically is to prevent the
       // server from becoming overloaded
-      if ((entity.type == EntityType.BAT) && (Random.nextDouble() < 0.1)) {
+      if ((entity.type == EntityType.BAT) && (Random.nextDouble() < 0.75)) {
         return
       }
 
