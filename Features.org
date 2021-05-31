@@ -34,6 +34,8 @@
                   constantly fall from above: sand, gravel, end stone
   + levitation :: When standing on ore blocks, the player is given the
                   Levitation effect
+  + platefire :: Pressure plates have a slight chance of catching fire
+                 when you step on them
 ** BLOCK DROP FEATURES
    + dirtstacks :: All blocks have a chance of dropping 64 dirt
                    instead of the intended drop

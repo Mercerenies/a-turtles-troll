@@ -10,6 +10,8 @@ for the full feature list.
 # Version 1.2
 
 * Buttons and levers have durability now, similar to doors
+* Pressure plates have a slight chance of catching fire when you step
+  on them
 
 # Version 1.1
 
