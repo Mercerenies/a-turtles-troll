@@ -7,6 +7,8 @@ for the full feature list.
 
 ## Changelog
 
+# Version 1.2
+
 # Version 1.1
 
 * All features can be toggled on an individual basis using the `/turtle` command now
