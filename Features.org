@@ -25,8 +25,8 @@
   + endspeed :: End stones make you go fast
   + doordrop :: Doors break after some number of uses, and doors don't
                 drop anything when broken
-  + buttondrop :: Buttons break after some number of uses, and buttons
-                  don't drop anything when broken
+  + buttondrop :: Buttons and levers break after some number of uses;
+                  buttons and levers don't drop anything when broken
   + weepingangel :: Armor stands will chase you when you're not
                     looking at them (disabled by default, as the
                     feature can be quite laggy)

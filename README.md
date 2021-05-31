@@ -9,7 +9,7 @@ for the full feature list.
 
 # Version 1.2
 
-* Buttons have durability now, similar to doors
+* Buttons and levers have durability now, similar to doors
 
 # Version 1.1
 

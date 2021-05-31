@@ -25,7 +25,7 @@ class ButtonDamageListener(
       Material.ACACIA_BUTTON, Material.BIRCH_BUTTON, Material.CRIMSON_BUTTON,
       Material.DARK_OAK_BUTTON, Material.JUNGLE_BUTTON, Material.OAK_BUTTON,
       Material.POLISHED_BLACKSTONE_BUTTON, Material.SPRUCE_BUTTON,
-      Material.STONE_BUTTON, Material.WARPED_BUTTON,
+      Material.STONE_BUTTON, Material.WARPED_BUTTON, Material.LEVER,
     )
 
   }
