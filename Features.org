@@ -37,6 +37,9 @@
   + platefire :: Pressure plates have a slight chance of catching fire
                  when you step on them
   + slowslab :: Slabs slow you down
+  + torches :: The following blocks break if you look at them:
+               torches, redstone torches, soul torches, lanterns, and
+               soul lanterns
 ** BLOCK DROP FEATURES
    + dirtstacks :: All blocks have a chance of dropping 64 dirt
                    instead of the intended drop

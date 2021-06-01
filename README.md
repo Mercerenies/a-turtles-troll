@@ -15,6 +15,7 @@ for the full feature list.
 * Decreased the rate of bats turning into chickens as a lag-prevention
   measure
 * Slabs slow the player down
+* Torches and lanterns break if you look at them
 
 # Version 1.1
 
