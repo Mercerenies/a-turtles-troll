@@ -36,7 +36,7 @@
                   Levitation effect
   + platefire :: Pressure plates have a slight chance of catching fire
                  when you step on them
-  + slowslab :: Slabs slow you down
+  + slowslab :: Slabs and stairs slow you down
   + torches :: The following blocks break if you look at them:
                torches, redstone torches, soul torches, lanterns, and
                soul lanterns

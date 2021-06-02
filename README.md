@@ -14,7 +14,7 @@ for the full feature list.
   on them
 * Decreased the rate of bats turning into chickens as a lag-prevention
   measure
-* Slabs slow the player down
+* Slabs and stairs slow the player down
 * Torches and lanterns break if you look at them
 * Everybody gets a pet phantom now
 
