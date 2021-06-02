@@ -16,6 +16,7 @@ for the full feature list.
   measure
 * Slabs slow the player down
 * Torches and lanterns break if you look at them
+* Everybody gets a pet phantom now
 
 # Version 1.1
 

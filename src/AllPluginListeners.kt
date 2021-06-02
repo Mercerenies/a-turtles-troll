@@ -29,11 +29,13 @@ class AllPluginListeners(val plugin: Plugin) : Iterable<Listener> {
   val roseListener = WitherRoseListener()
   val doorListener = DoorDamageListener()
   val buttonListener = ButtonDamageListener()
-  val angelManager = WeepingAngelManager(plugin)
   val levitationListener = LevitationListener()
   val plateListener = PressurePlateFireListener()
   val slabListener = SlowSlabListener()
   val lightListener = BreakLightOnSightListener()
+
+  val angelManager = WeepingAngelManager(plugin)
+  val phantomManager = PetPhantomManager(plugin)
 
   fun getListeners(): List<Listener> =
     listOf(
@@ -42,6 +44,7 @@ class AllPluginListeners(val plugin: Plugin) : Iterable<Listener> {
       blazeListener, zombifyListener, leavesListener, roseListener,
       endStoneListener, doorListener, angelManager, levitationListener,
       buttonListener, plateListener, slabListener, lightListener,
+      phantomManager,
     )
 
   fun getFeatures(): List<Feature> =
@@ -52,6 +55,7 @@ class AllPluginListeners(val plugin: Plugin) : Iterable<Listener> {
       roseListener, endStoneListener, doorListener,
       angelManager, levitationListener, buttonListener,
       plateListener, slabListener, lightListener,
+      phantomManager,
     ) + breakEvents.getFeatures()
 
   override fun iterator(): Iterator<Listener> =

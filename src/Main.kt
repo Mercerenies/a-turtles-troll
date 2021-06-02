@@ -35,6 +35,7 @@ class Main : JavaPlugin() {
     anvilRunnable.register(this)
     sandAttackRunnable.register(this)
     listenerManager.angelManager.register()
+    listenerManager.phantomManager.register()
     //listenerManager.angelManager.disable() // Disabled by default (due to lag)
     this.getCommand("turtle")!!.setExecutor(featureManager)
     this.getCommand("turtle")!!.setTabCompleter(featureManager)
@@ -50,6 +51,9 @@ class Main : JavaPlugin() {
     } catch (_: IllegalStateException) {}
     try {
       listenerManager.angelManager.cancel()
+    } catch (_: IllegalStateException) {}
+    try {
+      listenerManager.phantomManager.cancel()
     } catch (_: IllegalStateException) {}
     this.getCommand("turtle")?.setExecutor(null)
     this.getCommand("turtle")?.setTabCompleter(null)
