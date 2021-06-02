@@ -42,6 +42,9 @@ class WeepingAngelManager(
     fun getAngelInLineOfSight(angels: List<ArmorStand>, entity: LivingEntity): ArmorStand? {
       for (block in entity.getLineOfSight(null, 32)) {
         for (angel in angels) {
+          if (angel.world != entity.world) {
+            continue
+          }
           if (angel.location.distanceSquared(block.location) < DISTANCE_SQUARED_THRESHOLD) {
             if (angel.location.distanceSquared(entity.location) > DEATH_SQUARED_THRESHOLD) {
               return angel
