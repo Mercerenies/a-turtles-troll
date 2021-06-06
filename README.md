@@ -7,6 +7,11 @@ for the full feature list.
 
 ## Changelog
 
+# Version 1.3
+
+* Weeping Angels will now spawn rarely in the wild
+* Fixed several of the glitchier aspects of the Weeping Angels effect
+
 # Version 1.2
 
 * Buttons and levers have durability now, similar to doors

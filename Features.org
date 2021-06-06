@@ -28,8 +28,8 @@
   + buttondrop :: Buttons and levers break after some number of uses;
                   buttons and levers don't drop anything when broken
   + weepingangel :: Armor stands will chase you when you're not
-                    looking at them (disabled by default, as the
-                    feature can be quite laggy)
+                    looking at them, and armor stands will rarely
+                    spawn in place of some mobs
   + sandattack :: While standing on the following blocks, sand will
                   constantly fall from above: sand, gravel, end stone
   + levitation :: When standing on ore blocks, the player is given the
@@ -68,5 +68,11 @@
                 diorite, andesite, granite, basalt, blackstone
 * IDEAS (UNIMPLEMENTED)
   + Wolves?
-  + Phantoms?
   + Arrow bombs?
+  + Arrows?
+  + Fishing?
+  + Polar bears?
+  + Test weeping angel spawn rate (don't forget to kill existing ones)
+  + Cooldown after you kill your pet phantom
+  + Pet phantom distance should be adjusted and tested further
+  + Mimics

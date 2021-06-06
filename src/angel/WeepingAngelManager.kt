@@ -40,7 +40,7 @@ class WeepingAngelManager(
     val DEATH_SQUARED_THRESHOLD = 1.5
     val TOUCHING_SQUARED_THRESHOLD = 0.75
 
-    val MOB_REPLACE_CHANCE = 0.01 ////
+    val MOB_REPLACE_CHANCE = 0.01
     val MOBS_TO_REPLACE = setOf(
       EntityType.ZOMBIE, EntityType.SKELETON, EntityType.SPIDER, EntityType.ZOMBIFIED_PIGLIN,
       EntityType.STRAY, EntityType.HUSK,
@@ -67,11 +67,6 @@ class WeepingAngelManager(
 
     fun getAngelInLineOfSight(entity: LivingEntity): ArmorStand? =
       getAngelInLineOfSight(getAllAngels(), entity)
-
-    private fun spawnArmorStand(location: Location): ArmorStand {
-      val armor_stand = location.world!!.spawnEntity(location, EntityType.ARMOR_STAND) as ArmorStand
-      return armor_stand
-    }
 
   }
 
@@ -186,7 +181,7 @@ class WeepingAngelManager(
     if (MOBS_TO_REPLACE.contains(event.entity.type)) {
       if (Random.nextDouble() < MOB_REPLACE_CHANCE) {
         event.setCancelled(true)
-        spawnArmorStand(event.location)
+        ArmorStandSpawner.spawn(event.location)
       }
     }
   }
