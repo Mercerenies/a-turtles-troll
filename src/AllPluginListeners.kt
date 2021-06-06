@@ -6,6 +6,7 @@ import com.mercerenies.turtletroll.transformed.GhastSpawnerListener
 import com.mercerenies.turtletroll.transformed.RavagerSpawnerListener
 import com.mercerenies.turtletroll.durability.DoorDamageListener
 import com.mercerenies.turtletroll.durability.ButtonDamageListener
+import com.mercerenies.turtletroll.angel.WeepingAngelManager
 import com.mercerenies.turtletroll.feature.Feature
 
 import org.bukkit.plugin.Plugin

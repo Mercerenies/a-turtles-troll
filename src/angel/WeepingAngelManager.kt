@@ -1,5 +1,5 @@
 
-package com.mercerenies.turtletroll
+package com.mercerenies.turtletroll.angel
 
 import com.mercerenies.turtletroll.feature.Feature
 
@@ -7,6 +7,7 @@ import org.bukkit.scheduler.BukkitRunnable
 import org.bukkit.entity.Player
 import org.bukkit.entity.ArmorStand
 import org.bukkit.entity.LivingEntity
+import org.bukkit.entity.EntityType
 import org.bukkit.plugin.Plugin
 import org.bukkit.Location
 import org.bukkit.Bukkit
@@ -15,8 +16,10 @@ import org.bukkit.event.Listener
 import org.bukkit.event.EventHandler
 import org.bukkit.event.player.PlayerMoveEvent
 import org.bukkit.event.entity.EntityDeathEvent
+import org.bukkit.event.entity.EntitySpawnEvent
 
 import kotlin.collections.HashMap
+import kotlin.random.Random
 
 class WeepingAngelManager(
   val plugin: Plugin,
@@ -36,6 +39,12 @@ class WeepingAngelManager(
     val DISTANCE_SQUARED_THRESHOLD = 1.0
     val DEATH_SQUARED_THRESHOLD = 1.5
     val TOUCHING_SQUARED_THRESHOLD = 0.75
+
+    val MOB_REPLACE_CHANCE = 0.01 ////
+    val MOBS_TO_REPLACE = setOf(
+      EntityType.ZOMBIE, EntityType.SKELETON, EntityType.SPIDER, EntityType.ZOMBIFIED_PIGLIN,
+      EntityType.STRAY, EntityType.HUSK,
+    )
 
     fun getAllAngels(): List<ArmorStand> =
       Bukkit.getWorlds().flatMap { it.getEntitiesByClass(ArmorStand::class.java) }
@@ -58,6 +67,11 @@ class WeepingAngelManager(
 
     fun getAngelInLineOfSight(entity: LivingEntity): ArmorStand? =
       getAngelInLineOfSight(getAllAngels(), entity)
+
+    private fun spawnArmorStand(location: Location): ArmorStand {
+      val armor_stand = location.world!!.spawnEntity(location, EntityType.ARMOR_STAND) as ArmorStand
+      return armor_stand
+    }
 
   }
 
@@ -160,6 +174,19 @@ class WeepingAngelManager(
     if (entity is ArmorStand) {
       if (activeAngels.contains(entity)) {
         activeAngels.remove(entity)
+      }
+    }
+  }
+
+  @EventHandler
+  fun onEntitySpawn(event: EntitySpawnEvent) {
+    if (!isEnabled()) {
+      return
+    }
+    if (MOBS_TO_REPLACE.contains(event.entity.type)) {
+      if (Random.nextDouble() < MOB_REPLACE_CHANCE) {
+        event.setCancelled(true)
+        spawnArmorStand(event.location)
       }
     }
   }
