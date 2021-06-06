@@ -10,6 +10,7 @@ for the full feature list.
 # Version 1.3
 
 * Weeping Angels will now spawn rarely in the wild
+* Weeping Angels now provide a custom death message
 * Fixed several of the glitchier aspects of the Weeping Angels effect
 
 # Version 1.2

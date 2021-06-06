@@ -15,8 +15,10 @@ import org.bukkit.Material
 import org.bukkit.event.Listener
 import org.bukkit.event.EventHandler
 import org.bukkit.event.player.PlayerMoveEvent
+import org.bukkit.event.entity.PlayerDeathEvent
 import org.bukkit.event.entity.EntityDeathEvent
 import org.bukkit.event.entity.EntitySpawnEvent
+import org.bukkit.event.entity.EntityDamageByEntityEvent
 
 import kotlin.collections.HashMap
 import kotlin.random.Random
@@ -182,6 +184,20 @@ class WeepingAngelManager(
       if (Random.nextDouble() < MOB_REPLACE_CHANCE) {
         event.setCancelled(true)
         ArmorStandSpawner.spawn(event.location)
+      }
+    }
+  }
+
+  @EventHandler
+  fun onPlayerDeath(event: PlayerDeathEvent) {
+    if (!isEnabled()) {
+      return
+    }
+    val cause = event.entity.getLastDamageCause()
+    if (cause is EntityDamageByEntityEvent) {
+      val damager = cause.getDamager()
+      if ((damager is ArmorStand) && (activeAngels.contains(damager))) {
+        event.setDeathMessage("${event.entity.getDisplayName()} blinked.")
       }
     }
   }
