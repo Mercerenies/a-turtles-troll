@@ -10,8 +10,10 @@ import org.bukkit.entity.LivingEntity
 import org.bukkit.entity.EntityType
 import org.bukkit.plugin.Plugin
 import org.bukkit.Location
+import org.bukkit.Color
 import org.bukkit.Bukkit
 import org.bukkit.Material
+import org.bukkit.Particle
 import org.bukkit.event.Listener
 import org.bukkit.event.EventHandler
 import org.bukkit.event.player.PlayerMoveEvent
@@ -100,6 +102,9 @@ class WeepingAngelManager(
       val lookingAt = getAngelInLineOfSight(allAngels, player)
       if (lookingAt != null) {
         safeAngels.add(lookingAt)
+        val location = lookingAt.location.clone().add(0.0, 1.0, 0.0)
+        val world = lookingAt.world
+        world.spawnParticle(Particle.REDSTONE, location, 4, 0.25, 0.5, 0.25, Particle.DustOptions(Color.ORANGE, 1.0f))
       }
     }
 
