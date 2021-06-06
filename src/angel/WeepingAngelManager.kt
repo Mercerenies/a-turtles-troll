@@ -44,7 +44,7 @@ class WeepingAngelManager(
     val DEATH_SQUARED_THRESHOLD = 1.5
     val TOUCHING_SQUARED_THRESHOLD = 0.75
 
-    val MOB_REPLACE_CHANCE = 0.01
+    val MOB_REPLACE_CHANCE = 0.05
     val MOBS_TO_REPLACE = setOf(
       EntityType.ZOMBIE, EntityType.SKELETON, EntityType.SPIDER, EntityType.ZOMBIFIED_PIGLIN,
       EntityType.STRAY, EntityType.HUSK,
