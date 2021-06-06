@@ -14,6 +14,7 @@ import org.bukkit.Material
 import org.bukkit.event.Listener
 import org.bukkit.event.EventHandler
 import org.bukkit.event.player.PlayerMoveEvent
+import org.bukkit.event.entity.EntityDeathEvent
 
 import kotlin.collections.HashMap
 
@@ -32,9 +33,9 @@ class WeepingAngelManager(
   companion object {
     val TICKS_PER_SECOND = 20
 
-    val DISTANCE_SQUARED_THRESHOLD = 1.25
+    val DISTANCE_SQUARED_THRESHOLD = 1.0
     val DEATH_SQUARED_THRESHOLD = 1.5
-    val TOUCHING_SQUARED_THRESHOLD = 0.25
+    val TOUCHING_SQUARED_THRESHOLD = 0.75
 
     fun getAllAngels(): List<ArmorStand> =
       Bukkit.getWorlds().flatMap { it.getEntitiesByClass(ArmorStand::class.java) }
@@ -97,6 +98,23 @@ class WeepingAngelManager(
       val entry = iter.next()
       val angel = entry.key
       val info = entry.value
+
+      // Purge dead angels
+      if (angel.health <= 0.0) {
+        iter.remove()
+        continue
+      }
+
+      val targetVec = info.target.location.clone().subtract(angel.location).toVector()
+      if (targetVec.lengthSquared() < TOUCHING_SQUARED_THRESHOLD) {
+        // We're close enough to damage the player (we can do this even if we're safe)
+        info.target.damage(5.0, angel) // TODO Get a custom name?
+        if (info.target.health <= 0.0) {
+          iter.remove()
+          continue
+        }
+      }
+
       if (safeAngels.contains(angel)) {
         continue
       }
@@ -109,13 +127,6 @@ class WeepingAngelManager(
       }
 
       // Face and move toward the player
-      val targetVec = info.target.location.clone().subtract(angel.location).toVector()
-      if (targetVec.lengthSquared() < TOUCHING_SQUARED_THRESHOLD) {
-        // We're close enough to instant-kill the player
-        info.target.damage(9999.0, angel) // TODO Get a custom name?
-        iter.remove()
-        continue
-      }
       val yaw = Math.toDegrees(Math.atan2(- targetVec.getX(), targetVec.getZ())).toFloat()
       val pitch = Math.toDegrees(Math.atan2(- targetVec.getY(), Math.sqrt(targetVec.getX() * targetVec.getX() + targetVec.getZ() * targetVec.getZ()))).toFloat()
       angel.setRotation(yaw, pitch)
@@ -140,6 +151,16 @@ class WeepingAngelManager(
       // the angel was previously targeting someone else, it should
       // aim for the new target.
       activeAngels[angel] = AngelInfo(player)
+    }
+  }
+
+  @EventHandler
+  fun onEntityDeath(event: EntityDeathEvent) {
+    val entity = event.entity
+    if (entity is ArmorStand) {
+      if (activeAngels.contains(entity)) {
+        activeAngels.remove(entity)
+      }
     }
   }
 

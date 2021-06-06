@@ -74,7 +74,7 @@ class PetPhantomManager(
         }
       } else {
         phantom.target = player
-        println(player.location.distance(phantom.location))
+        // println(player.location.distance(phantom.location))
         if (phantom.health <= 0) {
           knownPhantoms.remove(player)
         }

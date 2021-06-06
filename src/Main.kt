@@ -36,7 +36,6 @@ class Main : JavaPlugin() {
     sandAttackRunnable.register(this)
     listenerManager.angelManager.register()
     listenerManager.phantomManager.register()
-    //listenerManager.angelManager.disable() // Disabled by default (due to lag)
     this.getCommand("turtle")!!.setExecutor(featureManager)
     this.getCommand("turtle")!!.setTabCompleter(featureManager)
   }
