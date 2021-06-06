@@ -42,6 +42,8 @@
                soul lanterns
   + phantoms :: Every player will always have a phantom pursuing them,
                 and phantoms are immune to fire damage
+  + lavalaunch :: Touching lava causes you to launch a short distance
+                  into the air
 ** BLOCK DROP FEATURES
    + dirtstacks :: All blocks have a chance of dropping 64 dirt
                    instead of the intended drop
@@ -76,3 +78,6 @@
   + Cooldown after you kill your pet phantom
   + Pet phantom distance should be adjusted and tested further
   + Mimics
+  + Torch cooldown before breaking on sight (when placed)
+  + Boots against grass
+  + Pumpkin slow mining fatigue but okay to swim
