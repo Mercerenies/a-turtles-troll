@@ -32,10 +32,12 @@ class PetPhantomManager(
     val MIN_SPAWN_HEIGHT = 6
     val MAX_SPAWN_HEIGHT = 20
 
-    val MAX_DISTANCE_SQUARED = 65536
+    val MAX_DISTANCE_SQUARED = 4096.0
 
     private fun shouldRespawn(player: Player, phantom: Phantom): Boolean {
-      return (player.world != phantom.world) || (player.location.distanceSquared(phantom.location) > MAX_DISTANCE_SQUARED)
+      val dz = player.location.z - phantom.location.z
+      val dx = player.location.x - phantom.location.x
+      return (player.world != phantom.world) || (dx * dx + dz * dz > MAX_DISTANCE_SQUARED)
     }
 
   }
