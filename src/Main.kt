@@ -36,6 +36,7 @@ class Main : JavaPlugin() {
     sandAttackRunnable.register(this)
     listenerManager.angelManager.register()
     listenerManager.phantomManager.register()
+    listenerManager.pumpkinManager.register(this)
     this.getCommand("turtle")!!.setExecutor(featureManager)
     this.getCommand("turtle")!!.setTabCompleter(featureManager)
   }
@@ -53,6 +54,9 @@ class Main : JavaPlugin() {
     } catch (_: IllegalStateException) {}
     try {
       listenerManager.phantomManager.cancel()
+    } catch (_: IllegalStateException) {}
+    try {
+      listenerManager.pumpkinManager.cancel()
     } catch (_: IllegalStateException) {}
     this.getCommand("turtle")?.setExecutor(null)
     this.getCommand("turtle")?.setTabCompleter(null)

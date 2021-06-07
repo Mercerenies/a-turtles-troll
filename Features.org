@@ -44,6 +44,8 @@
                 and phantoms are immune to fire damage
   + lavalaunch :: Touching lava causes you to launch a short distance
                   into the air
+  + pumpkins :: Wearing a pumpking on your head protects you from
+                **zapwater** but gives you slowness and mining fatigue
 ** BLOCK DROP FEATURES
    + dirtstacks :: All blocks have a chance of dropping 64 dirt
                    instead of the intended drop
@@ -75,4 +77,3 @@
   + Fishing?
   + Polar bears?
   + Mimics
-  + Pumpkin slow mining fatigue but okay to swim

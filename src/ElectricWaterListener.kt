@@ -2,6 +2,7 @@
 package com.mercerenies.turtletroll
 
 import com.mercerenies.turtletroll.feature.AbstractFeature
+import com.mercerenies.turtletroll.feature.HasEnabledStatus
 
 import org.bukkit.Material
 import org.bukkit.event.EventHandler
@@ -14,7 +15,10 @@ import org.bukkit.block.`data`.Waterlogged
 import org.bukkit.scheduler.BukkitRunnable
 import org.bukkit.plugin.Plugin
 
-class ElectricWaterListener(val plugin: Plugin) : AbstractFeature(), Listener {
+class ElectricWaterListener(
+  val plugin: Plugin,
+  val pumpkinFeature: HasEnabledStatus,
+) : AbstractFeature(), Listener {
   private var memory = CooldownMemory<Player>(plugin)
 
   companion object {
@@ -61,7 +65,7 @@ class ElectricWaterListener(val plugin: Plugin) : AbstractFeature(), Listener {
       return false
     }
     // Pumpkins provide immunity against the electricity effect
-    if (player.inventory.helmet?.getType() == Material.CARVED_PUMPKIN) {
+    if ((player.inventory.helmet?.getType() == Material.CARVED_PUMPKIN) && (pumpkinFeature.isEnabled())){
       return false // TODO Conditional on the pumpkin feature being active
     }
     return true

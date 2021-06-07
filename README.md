@@ -16,7 +16,7 @@ for the full feature list.
   boots; instead, your boots lose one durability when you touch tall
   grass
 * Wearing a pumpkin on your head allows you to go in water without
-  getting electrocuted
+  getting electrocuted (but provides mining fatigue and slowness)
 * Weeping Angels will now spawn rarely in the wild
 * Weeping Angels now provide a custom death message
 * Fixed several of the glitchier aspects of the Weeping Angels effect

@@ -15,6 +15,11 @@ import org.bukkit.event.Listener
 import kotlin.collections.Iterable
 
 class AllPluginListeners(val plugin: Plugin) : Iterable<Listener> {
+  val pumpkinManager = PumpkinSlownessManager()
+  val angelManager = WeepingAngelManager(plugin)
+  val phantomManager = PetPhantomManager(plugin)
+
+
   val breakEvents = BlockBreakEvents()
   val chickenListener = ChickenDamageListener()
   val grassListener = GrassPoisonListener()
@@ -23,7 +28,7 @@ class AllPluginListeners(val plugin: Plugin) : Iterable<Listener> {
   val ghastListener = GhastSpawnerListener()
   val ravagerListener = RavagerSpawnerListener()
   val skeleListener = SkeletonWitherListener()
-  val electricListener = ElectricWaterListener(plugin)
+  val electricListener = ElectricWaterListener(plugin, pumpkinManager)
   val blazeListener = BlazeAttackListener(plugin)
   val zombifyListener = ZombifyTradeListener()
   val leavesListener = LeavesFireListener(plugin)
@@ -36,9 +41,6 @@ class AllPluginListeners(val plugin: Plugin) : Iterable<Listener> {
   val lightListener = BreakLightOnSightListener(plugin)
   val lavaListener = LavaLaunchListener()
 
-  val angelManager = WeepingAngelManager(plugin)
-  val phantomManager = PetPhantomManager(plugin)
-
   fun getListeners(): List<Listener> =
     listOf(
       breakEvents.listener, chickenListener, grassListener, snowListener,
@@ -46,7 +48,7 @@ class AllPluginListeners(val plugin: Plugin) : Iterable<Listener> {
       blazeListener, zombifyListener, leavesListener, roseListener,
       endStoneListener, doorListener, angelManager, levitationListener,
       buttonListener, plateListener, slabListener, lightListener,
-      phantomManager, lavaListener,
+      phantomManager, lavaListener, pumpkinManager,
     )
 
   fun getFeatures(): List<Feature> =
@@ -57,7 +59,7 @@ class AllPluginListeners(val plugin: Plugin) : Iterable<Listener> {
       roseListener, endStoneListener, doorListener,
       angelManager, levitationListener, buttonListener,
       plateListener, slabListener, lightListener,
-      phantomManager, lavaListener,
+      phantomManager, lavaListener, pumpkinManager,
     ) + breakEvents.getFeatures()
 
   override fun iterator(): Iterator<Listener> =
