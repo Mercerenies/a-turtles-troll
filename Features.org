@@ -74,7 +74,5 @@
   + Arrows?
   + Fishing?
   + Polar bears?
-  + Cooldown after you kill your pet phantom
-  + Pet phantom distance should be adjusted and tested further
   + Mimics
   + Pumpkin slow mining fatigue but okay to swim

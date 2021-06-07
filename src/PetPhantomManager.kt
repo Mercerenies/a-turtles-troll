@@ -42,6 +42,8 @@ class PetPhantomManager(
 
   }
 
+  private val safePlayers = CooldownMemory<Player>(plugin);
+
   private val knownPhantoms = HashMap<Player, Phantom>();
 
   override val name = "phantoms"
@@ -60,14 +62,15 @@ class PetPhantomManager(
     for (player in Bukkit.getOnlinePlayers()) {
       val phantom = knownPhantoms[player]
       if ((phantom == null) || (shouldRespawn(player, phantom))) {
-        if (random.nextDouble() < spawnChance) {
+        if ((random.nextDouble() < spawnChance) && (!safePlayers.contains(player))) {
           spawnPhantom(player)
         }
       } else {
         phantom.target = player
-        // println(player.location.distance(phantom.location))
         if (phantom.health <= 0) {
           knownPhantoms.remove(player)
+          // The phantom died, so give the player a cooldown
+          safePlayers.add(player, TICKS_PER_SECOND * 30L)
         }
       }
     }

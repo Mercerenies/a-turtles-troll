@@ -18,6 +18,7 @@ for the full feature list.
 * Weeping Angels will now spawn rarely in the wild
 * Weeping Angels now provide a custom death message
 * Fixed several of the glitchier aspects of the Weeping Angels effect
+* Pet phantoms have a respawn cooldown now
 
 # Version 1.2
 
