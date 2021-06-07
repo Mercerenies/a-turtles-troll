@@ -2,8 +2,8 @@
 package com.mercerenies.turtletroll.falling
 
 import com.mercerenies.turtletroll.feature.Feature
+import com.mercerenies.turtletroll.feature.RunnableFeature
 
-import org.bukkit.scheduler.BukkitRunnable
 import org.bukkit.entity.Player
 import org.bukkit.plugin.Plugin
 import org.bukkit.Location
@@ -11,8 +11,7 @@ import org.bukkit.Bukkit
 import org.bukkit.Material
 import org.bukkit.block.Block
 
-abstract class FallingObjectRunnable : BukkitRunnable(), Feature {
-  private var _enabled: Boolean = true
+abstract class FallingObjectRunnable : RunnableFeature() {
 
   companion object {
     val TICKS_PER_SECOND = 20
@@ -23,16 +22,6 @@ abstract class FallingObjectRunnable : BukkitRunnable(), Feature {
   abstract val blockToDrop: Material
 
   abstract val delayTime: Long
-
-  override fun enable() {
-    _enabled = true
-  }
-
-  override fun disable() {
-    _enabled = false
-  }
-
-  override fun isEnabled() = _enabled
 
   open fun shouldDropOn(player: Player): Boolean = true
 
@@ -56,7 +45,7 @@ abstract class FallingObjectRunnable : BukkitRunnable(), Feature {
   }
 
   override fun run() {
-    if (!_enabled) {
+    if (!isEnabled()) {
       return
     }
     val players = Bukkit.getServer().getOnlinePlayers()

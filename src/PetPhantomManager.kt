@@ -2,6 +2,7 @@
 package com.mercerenies.turtletroll
 
 import com.mercerenies.turtletroll.feature.Feature
+import com.mercerenies.turtletroll.feature.RunnableFeature
 
 import org.bukkit.scheduler.BukkitRunnable
 import org.bukkit.entity.Player
@@ -23,7 +24,7 @@ class PetPhantomManager(
   val plugin: Plugin,
   val spawnChance: Double = 0.33,
   val random: Random = Random.Default,
-) : BukkitRunnable(), Feature, Listener {
+) : RunnableFeature(), Listener {
 
   companion object {
     val TICKS_PER_SECOND = 20
@@ -41,21 +42,9 @@ class PetPhantomManager(
 
   private val knownPhantoms = HashMap<Player, Phantom>();
 
-  private var _enabled: Boolean = true
-
   override val name = "phantoms"
 
   override val description = "Everyone gets a pet phantom"
-
-  override fun enable() {
-    _enabled = true
-  }
-
-  override fun disable() {
-    _enabled = false
-  }
-
-  override fun isEnabled() = _enabled
 
   fun register() {
     this.runTaskTimer(plugin, 1L, 3L * TICKS_PER_SECOND)

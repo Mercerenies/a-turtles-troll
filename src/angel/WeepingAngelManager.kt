@@ -2,8 +2,8 @@
 package com.mercerenies.turtletroll.angel
 
 import com.mercerenies.turtletroll.feature.Feature
+import com.mercerenies.turtletroll.feature.RunnableFeature
 
-import org.bukkit.scheduler.BukkitRunnable
 import org.bukkit.entity.Player
 import org.bukkit.entity.ArmorStand
 import org.bukkit.entity.LivingEntity
@@ -28,10 +28,8 @@ import kotlin.random.Random
 class WeepingAngelManager(
   val plugin: Plugin,
   val movementSpeed: Double = 1.0, // Meters per tick
-) : BukkitRunnable(), Feature, Listener {
+) : RunnableFeature(), Listener {
   private var activeAngels = HashMap<ArmorStand, AngelInfo>()
-
-  private var _enabled: Boolean = true
 
   private data class AngelInfo(
     val target: Player,
@@ -77,16 +75,6 @@ class WeepingAngelManager(
   override val name = "weepingangel"
 
   override val description = "Armor stands move when you're not looking"
-
-  override fun enable() {
-    _enabled = true
-  }
-
-  override fun disable() {
-    _enabled = false
-  }
-
-  override fun isEnabled() = _enabled
 
   override fun run() {
     if (!isEnabled()) {
