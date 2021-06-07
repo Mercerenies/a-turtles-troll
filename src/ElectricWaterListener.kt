@@ -43,13 +43,28 @@ class ElectricWaterListener(val plugin: Plugin) : AbstractFeature(), Listener {
       return
     }
     val block = event.getTo()?.getBlock()
-    if ((block != null) && (isWet(block))) {
-      val player = event.player
-      // Boats provide immunity against the electricity effect
-      if (player.getVehicle() !is Boat) {
-        strike(player)
-      }
+    val player = event.player
+    if (shouldStrike(player, block)) {
+      strike(player)
     }
+  }
+
+  private fun shouldStrike(player: Player, block: Block?): Boolean {
+    if (block == null) {
+      return false
+    }
+    if (!isWet(block)) {
+      return false
+    }
+    // Boats provide immunity against the electricity effect
+    if (player.getVehicle() is Boat) {
+      return false
+    }
+    // Pumpkins provide immunity against the electricity effect
+    if (player.inventory.helmet?.getType() == Material.CARVED_PUMPKIN) {
+      return false // TODO Conditional on the pumpkin feature being active
+    }
+    return true
   }
 
   private fun strike(player: Player) {

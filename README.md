@@ -15,6 +15,8 @@ for the full feature list.
 * The grass poison/slowness effect will not apply if you're wearing
   boots; instead, your boots lose one durability when you touch tall
   grass
+* Wearing a pumpkin on your head allows you to go in water without
+  getting electrocuted
 * Weeping Angels will now spawn rarely in the wild
 * Weeping Angels now provide a custom death message
 * Fixed several of the glitchier aspects of the Weeping Angels effect
