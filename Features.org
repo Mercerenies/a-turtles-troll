@@ -74,9 +74,7 @@
   + Arrows?
   + Fishing?
   + Polar bears?
-  + Test weeping angel spawn rate (don't forget to kill existing ones)
   + Cooldown after you kill your pet phantom
   + Pet phantom distance should be adjusted and tested further
   + Mimics
-  + Boots against grass
   + Pumpkin slow mining fatigue but okay to swim

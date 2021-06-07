@@ -10,11 +10,14 @@ for the full feature list.
 # Version 1.3
 
 * Touching lava causes players to launch a short distance into the air
+* Torches and lanterns have a cooldown after being placed during which
+  they will not break
+* The grass poison/slowness effect will not apply if you're wearing
+  boots; instead, your boots lose one durability when you touch tall
+  grass
 * Weeping Angels will now spawn rarely in the wild
 * Weeping Angels now provide a custom death message
 * Fixed several of the glitchier aspects of the Weeping Angels effect
-* Torches and lanterns have a cooldown after being placed during which
-  they will not break
 
 # Version 1.2
 
