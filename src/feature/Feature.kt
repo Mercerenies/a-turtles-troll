@@ -3,7 +3,7 @@ package com.mercerenies.turtletroll.feature
 
 // Features should initialize in the "enabled" state and may assume
 // they are enabled until told otherwise.
-interface Feature {
+interface Feature : HasEnabledStatus {
 
   val name: String
 
@@ -12,8 +12,6 @@ interface Feature {
   fun enable()
 
   fun disable()
-
-  fun isEnabled(): Boolean
 
   val coloredName: String
     get() =
