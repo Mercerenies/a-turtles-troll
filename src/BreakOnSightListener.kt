@@ -13,16 +13,10 @@ import org.bukkit.plugin.Plugin
 import org.bukkit.scheduler.BukkitRunnable
 
 abstract class BreakOnSightListener(val plugin: Plugin) : AbstractFeature(), Listener {
-  val memory = HashSet<Location>()
+  val memory = CooldownMemory<Location>(plugin)
 
   companion object {
     val TICKS_PER_SECOND = 20
-  }
-
-  private inner class PlaceCooldown(val location: Location) : BukkitRunnable() {
-    override fun run() {
-      memory.remove(location)
-    }
   }
 
   // How many ticks is a block safe after being placed?
@@ -49,8 +43,7 @@ abstract class BreakOnSightListener(val plugin: Plugin) : AbstractFeature(), Lis
     }
     val targetBlock = event.getBlockPlaced()
     if (shouldDrop(targetBlock)) {
-      memory.add(targetBlock.location)
-      PlaceCooldown(targetBlock.location).runTaskLater(plugin, safetyDelay.toLong())
+      memory.add(targetBlock.location, safetyDelay.toLong())
     }
   }
 

@@ -14,21 +14,15 @@ import org.bukkit.plugin.Plugin
 import org.bukkit.scheduler.BukkitRunnable
 
 import kotlin.random.Random
-import kotlin.collections.HashSet
 
 class BlazeAttackListener(val plugin: Plugin) : AbstractFeature(), Listener {
-  val memory = HashSet<Blaze>()
 
   companion object {
     val TICKS_PER_SECOND = 20
     val COOLDOWN_TIME = TICKS_PER_SECOND * 10
   }
 
-  private inner class BlazeCooldown(val blaze: Blaze) : BukkitRunnable() {
-    override fun run() {
-      memory.remove(blaze)
-    }
-  }
+  private val memory = CooldownMemory<Blaze>(plugin)
 
   override val name = "blazepower"
 
@@ -45,8 +39,7 @@ class BlazeAttackListener(val plugin: Plugin) : AbstractFeature(), Listener {
       if (!memory.contains(source)) {
         event.setCancelled(true)
         projectile.location.world!!.spawnEntity(projectile.location, EntityType.EVOKER)
-        memory.add(source)
-        BlazeCooldown(source).runTaskLater(plugin, COOLDOWN_TIME.toLong())
+        memory.add(source, COOLDOWN_TIME.toLong())
       }
     }
   }

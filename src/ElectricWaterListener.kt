@@ -14,10 +14,8 @@ import org.bukkit.block.`data`.Waterlogged
 import org.bukkit.scheduler.BukkitRunnable
 import org.bukkit.plugin.Plugin
 
-import kotlin.collections.HashSet
-
 class ElectricWaterListener(val plugin: Plugin) : AbstractFeature(), Listener {
-  private var memory = HashSet<Player>()
+  private var memory = CooldownMemory<Player>(plugin)
 
   companion object {
     val TICKS_PER_SECOND = 20
@@ -39,12 +37,6 @@ class ElectricWaterListener(val plugin: Plugin) : AbstractFeature(), Listener {
 
   override val description = "Water electrocutes any players in it"
 
-  private inner class PlayerCooldown(val player: Player) : BukkitRunnable() {
-    override fun run() {
-      memory.remove(player)
-    }
-  }
-
   @EventHandler
   fun onPlayerMove(event: PlayerMoveEvent) {
     if (!isEnabled()) {
@@ -62,9 +54,8 @@ class ElectricWaterListener(val plugin: Plugin) : AbstractFeature(), Listener {
 
   private fun strike(player: Player) {
     if (!memory.contains(player)) {
-      memory.add(player)
+      memory.add(player, COOLDOWN_TIME.toLong())
       player.world.strikeLightning(player.location)
-      PlayerCooldown(player).runTaskLater(plugin, COOLDOWN_TIME.toLong())
     }
   }
 
