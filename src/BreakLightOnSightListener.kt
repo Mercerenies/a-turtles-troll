@@ -3,8 +3,9 @@ package com.mercerenies.turtletroll
 
 import org.bukkit.Material
 import org.bukkit.block.Block
+import org.bukkit.plugin.Plugin
 
-class BreakLightOnSightListener() : BreakOnSightListener() {
+class BreakLightOnSightListener(_plugin: Plugin) : BreakOnSightListener(_plugin) {
 
   companion object {
     val BLOCKS = setOf(

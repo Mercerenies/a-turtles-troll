@@ -33,7 +33,7 @@ class AllPluginListeners(val plugin: Plugin) : Iterable<Listener> {
   val levitationListener = LevitationListener()
   val plateListener = PressurePlateFireListener()
   val slabListener = SlowSlabListener()
-  val lightListener = BreakLightOnSightListener()
+  val lightListener = BreakLightOnSightListener(plugin)
   val lavaListener = LavaLaunchListener()
 
   val angelManager = WeepingAngelManager(plugin)

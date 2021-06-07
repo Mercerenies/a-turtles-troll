@@ -13,6 +13,8 @@ for the full feature list.
 * Weeping Angels will now spawn rarely in the wild
 * Weeping Angels now provide a custom death message
 * Fixed several of the glitchier aspects of the Weeping Angels effect
+* Torches and lanterns have a cooldown after being placed during which
+  they will not break
 
 # Version 1.2
 
