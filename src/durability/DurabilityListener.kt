@@ -15,6 +15,7 @@ import org.bukkit.entity.Villager
 import org.bukkit.entity.Player
 import org.bukkit.block.Block
 import org.bukkit.block.`data`.Bisected
+import org.bukkit.Sound
 
 import kotlin.collections.HashMap
 
@@ -71,6 +72,7 @@ abstract class DurabilityListener() : AbstractFeature(), Listener {
 
   private fun decrementValue(event: PlayerInteractEvent, loc: Location) {
     val uses = memory[loc] ?: maxUses
+    loc.world!!.playSound(loc, Sound.ENTITY_ZOMBIE_ATTACK_WOODEN_DOOR, 1.0f, 0.0f)
     if (uses == 1) {
       memory.remove(loc)
       event.setCancelled(true)
