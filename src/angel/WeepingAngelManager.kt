@@ -112,7 +112,7 @@ class WeepingAngelManager(
       val targetVec = info.target.location.clone().subtract(angel.location).toVector()
       if (targetVec.lengthSquared() < TOUCHING_SQUARED_THRESHOLD) {
         // We're close enough to damage the player (we can do this even if we're safe)
-        info.target.damage(5.0, angel) // TODO Get a custom name?
+        info.target.damage(5.0, angel)
         if (info.target.health <= 0.0) {
           iter.remove()
           continue
