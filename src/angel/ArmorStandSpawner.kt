@@ -23,6 +23,7 @@ object ArmorStandSpawner {
 
   fun spawn(location: Location): ArmorStand {
     val stand = location.world!!.spawnEntity(location, EntityType.ARMOR_STAND) as ArmorStand
+    stand.setArms(true)
     val equipment = stand.getEquipment()
     if (equipment != null) {
       equipment.helmet = generateArmorPiece(ArmorSlot.HELMET)
