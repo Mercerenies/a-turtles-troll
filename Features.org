@@ -46,6 +46,8 @@
                   into the air
   + pumpkins :: Wearing a pumpking on your head protects you from
                 **zapwater** but gives you slowness and mining fatigue
+  + mimics :: Chests will spawn in the wild which, if opened, will
+              kill you
 ** BLOCK DROP FEATURES
    + dirtstacks :: All blocks have a chance of dropping 64 dirt
                    instead of the intended drop

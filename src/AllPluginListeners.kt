@@ -7,6 +7,7 @@ import com.mercerenies.turtletroll.transformed.RavagerSpawnerListener
 import com.mercerenies.turtletroll.durability.DoorDamageListener
 import com.mercerenies.turtletroll.durability.ButtonDamageListener
 import com.mercerenies.turtletroll.angel.WeepingAngelManager
+import com.mercerenies.turtletroll.mimic.MimicListener
 import com.mercerenies.turtletroll.feature.Feature
 
 import org.bukkit.plugin.Plugin
@@ -18,7 +19,6 @@ class AllPluginListeners(val plugin: Plugin) : Iterable<Listener> {
   val pumpkinManager = PumpkinSlownessManager()
   val angelManager = WeepingAngelManager(plugin)
   val phantomManager = PetPhantomManager(plugin)
-
 
   val breakEvents = BlockBreakEvents()
   val chickenListener = ChickenDamageListener()
@@ -40,6 +40,7 @@ class AllPluginListeners(val plugin: Plugin) : Iterable<Listener> {
   val slabListener = SlowSlabListener()
   val lightListener = BreakLightOnSightListener(plugin)
   val lavaListener = LavaLaunchListener()
+  val mimicListener = MimicListener(plugin)
 
   fun getListeners(): List<Listener> =
     listOf(
@@ -48,7 +49,7 @@ class AllPluginListeners(val plugin: Plugin) : Iterable<Listener> {
       blazeListener, zombifyListener, leavesListener, roseListener,
       endStoneListener, doorListener, angelManager, levitationListener,
       buttonListener, plateListener, slabListener, lightListener,
-      phantomManager, lavaListener, pumpkinManager,
+      phantomManager, lavaListener, pumpkinManager, mimicListener,
     )
 
   fun getFeatures(): List<Feature> =
@@ -60,6 +61,7 @@ class AllPluginListeners(val plugin: Plugin) : Iterable<Listener> {
       angelManager, levitationListener, buttonListener,
       plateListener, slabListener, lightListener,
       phantomManager, lavaListener, pumpkinManager,
+      mimicListener,
     ) + breakEvents.getFeatures()
 
   override fun iterator(): Iterator<Listener> =

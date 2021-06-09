@@ -9,6 +9,8 @@ for the full feature list.
 
 # Version 1.3
 
+* Mimics will spawn, which look like chests but kill you instantly if
+  opened
 * Touching lava causes players to launch a short distance into the air
 * Torches and lanterns have a cooldown after being placed during which
   they will not break
