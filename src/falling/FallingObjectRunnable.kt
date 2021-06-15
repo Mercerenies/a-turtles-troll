@@ -17,6 +17,8 @@ abstract class FallingObjectRunnable : RunnableFeature() {
     val TICKS_PER_SECOND = 20
   }
 
+  open val minDropHeight: Int = 1
+
   abstract val maxDropHeight: Int
 
   abstract val blockToDrop: Material
@@ -32,8 +34,8 @@ abstract class FallingObjectRunnable : RunnableFeature() {
 
   fun doDrop(player: Player) {
     val loc = player.location
-    loc.y += 1
-    var maxDistLeft = maxDropHeight
+    loc.y += minDropHeight
+    var maxDistLeft = (maxDropHeight - minDropHeight)
     while ((maxDistLeft > 0) && (canDropThroughBlock(loc.getBlock()))) {
       maxDistLeft -= 1
       loc.y += 1

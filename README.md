@@ -11,6 +11,7 @@ for the full feature list.
 
 * Beds don't drop when mined anymore
 * Bats never transform into chickens anymore
+* Anvils have a minimum height above you they can spawn
 
 # Version 1.3
 

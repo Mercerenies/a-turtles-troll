@@ -19,6 +19,8 @@ class AnvilRunnable : FallingObjectRunnable() {
 
   override val description = "Drops an anvil on players who forget to move"
 
+  override val minDropHeight = 7
+
   override val maxDropHeight = 15
 
   override val blockToDrop = Material.ANVIL
