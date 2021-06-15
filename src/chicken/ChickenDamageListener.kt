@@ -26,7 +26,7 @@ class ChickenDamageListener(
   companion object {
     val DEFAULT_BANNED_MOBS = setOf(
       EntityType.COW, EntityType.PIG, EntityType.LLAMA,
-      EntityType.BAT, EntityType.DONKEY, EntityType.HORSE,
+      EntityType.DONKEY, EntityType.HORSE,
       EntityType.MULE, EntityType.PARROT, EntityType.SHEEP,
       EntityType.CHICKEN, EntityType.RABBIT,
     )
@@ -55,13 +55,6 @@ class ChickenDamageListener(
     }
     val entity = event.entity
     if ((!recursionBlock) && (bannedMobs.contains(entity.type))) {
-
-      // This special check for bats specifically is to prevent the
-      // server from becoming overloaded
-      if ((entity.type == EntityType.BAT) && (Random.nextDouble() < 0.75)) {
-        return
-      }
-
       event.setCancelled(true)
       recursionBlock = true
       try {

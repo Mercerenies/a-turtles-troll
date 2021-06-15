@@ -4,8 +4,8 @@
   + chickens :: Chickens explode when any damage (even fatal damage)
                 is dealt to them for any reason
     - The following passive mobs are always replaced with chickens:
-      cows, pigs, llamas, bats, donkeys, horses, sheep, mules,
-      rabbits, and parrots
+      cows, pigs, llamas, donkeys, horses, sheep, mules, rabbits, and
+      parrots
   + anvil :: If you stand still for more than ten seconds, an anvil
              will drop on your head
   + tallgrass :: Tall grass, ferns, and dead bushes give you poison

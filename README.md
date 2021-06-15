@@ -10,6 +10,7 @@ for the full feature list.
 # Version 1.4
 
 * Beds don't drop when mined anymore
+* Bats never transform into chickens anymore
 
 # Version 1.3
 
