@@ -9,6 +9,7 @@ import com.mercerenies.turtletroll.durability.ButtonDamageListener
 import com.mercerenies.turtletroll.angel.WeepingAngelManager
 import com.mercerenies.turtletroll.mimic.MimicListener
 import com.mercerenies.turtletroll.feature.Feature
+import com.mercerenies.turtletroll.feature.CompositeFeature
 
 import org.bukkit.plugin.Plugin
 import org.bukkit.event.Listener
@@ -41,6 +42,17 @@ class AllPluginListeners(val plugin: Plugin) : Iterable<Listener> {
   val lightListener = BreakLightOnSightListener(plugin)
   val lavaListener = LavaLaunchListener()
   val mimicListener = MimicListener(plugin)
+  val bedListener = BedDropListener()
+
+  // CancelDropAction is a BlockBreakAction and BedDropListener is a
+  // Bukkit event listener, but conceptually they do the same thing,
+  // so we want to treat them as one feature.
+  private val dropCompositeFeature =
+    CompositeFeature(
+      breakEvents.cancelDropAction.name,
+      breakEvents.cancelDropAction.description,
+      listOf(breakEvents.cancelDropAction, bedListener)
+    )
 
   fun getListeners(): List<Listener> =
     listOf(
@@ -50,6 +62,7 @@ class AllPluginListeners(val plugin: Plugin) : Iterable<Listener> {
       endStoneListener, doorListener, angelManager, levitationListener,
       buttonListener, plateListener, slabListener, lightListener,
       phantomManager, lavaListener, pumpkinManager, mimicListener,
+      bedListener,
     )
 
   fun getFeatures(): List<Feature> =
@@ -61,8 +74,8 @@ class AllPluginListeners(val plugin: Plugin) : Iterable<Listener> {
       angelManager, levitationListener, buttonListener,
       plateListener, slabListener, lightListener,
       phantomManager, lavaListener, pumpkinManager,
-      mimicListener,
-    ) + breakEvents.getFeatures()
+      mimicListener, dropCompositeFeature,
+    ) + (breakEvents.getFeatures() - breakEvents.cancelDropAction)
 
   override fun iterator(): Iterator<Listener> =
     getListeners().iterator()

@@ -49,7 +49,7 @@ class BlockBreakEvents {
     "netherrack",
     "Common nether materials cause a cascading effect, breaking nearby blocks when broken",
   )
-  private val cancelDropAction = CancelDropAction.filter {
+  val cancelDropAction = CancelDropAction.filter { // Public because we're going to compose it in AllPluginListeners
     NO_DROP_ON.contains(it.block.type)
   }.asFeature(
     "nodrops",
@@ -84,7 +84,7 @@ class BlockBreakEvents {
 
     val NO_DROP_ON = setOf(
       Material.CRAFTING_TABLE, Material.FURNACE,
-      Material.SMOKER, Material.BLAST_FURNACE
+      Material.SMOKER, Material.BLAST_FURNACE,
     )
 
     val FREQUENT_DIRT_DROP_TRIGGERS = setOf(

@@ -7,6 +7,10 @@ for the full feature list.
 
 ## Changelog
 
+# Version 1.4
+
+* Beds don't drop when mined anymore
+
 # Version 1.3
 
 * Mimics will spawn, which look like chests but kill you instantly if
