@@ -19,7 +19,7 @@ class BreakLightOnSightListener(_plugin: Plugin) : BreakOnSightListener(_plugin)
 
   override val description: String = "Torches and similar light sources break when you look at them"
 
-  override fun shouldDrop(block: Block): Boolean =
+  override fun shouldTrigger(block: Block): Boolean =
     BLOCKS.contains(block.type)
 
 }

@@ -14,6 +14,8 @@ for the full feature list.
 * Anvils have a minimum height above you they can spawn
 * Drastically increased the pet phantom respawn cooldown (to 10
   minutes)
+* Torches and other lights now turn into redstone torches rather than
+  dropping when you look at them
 
 # Version 1.3
 

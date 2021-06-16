@@ -37,9 +37,9 @@
   + platefire :: Pressure plates have a slight chance of catching fire
                  when you step on them
   + slowslab :: Slabs and stairs slow you down
-  + torches :: The following blocks break if you look at them:
-               torches, redstone torches, soul torches, lanterns, and
-               soul lanterns
+  + torches :: The following blocks turn into redstone torches if you
+               look at them: torches, redstone torches, soul torches,
+               lanterns, and soul lanterns
   + phantoms :: Every player will always have a phantom pursuing them,
                 and phantoms are immune to fire damage
   + lavalaunch :: Touching lava causes you to launch a short distance
