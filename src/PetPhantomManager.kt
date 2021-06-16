@@ -28,6 +28,7 @@ class PetPhantomManager(
 
   companion object {
     val TICKS_PER_SECOND = 20
+    val SECONDS_COOLDOWN_AFTER_KILL = 600
 
     val MIN_SPAWN_HEIGHT = 6
     val MAX_SPAWN_HEIGHT = 20
@@ -70,7 +71,7 @@ class PetPhantomManager(
         if (phantom.health <= 0) {
           knownPhantoms.remove(player)
           // The phantom died, so give the player a cooldown
-          safePlayers.add(player, TICKS_PER_SECOND * 30L)
+          safePlayers.add(player, (TICKS_PER_SECOND * SECONDS_COOLDOWN_AFTER_KILL).toLong())
         }
       }
     }
