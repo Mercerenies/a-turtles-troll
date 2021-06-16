@@ -1,12 +1,18 @@
 
 package com.mercerenies.turtletroll
 
+import com.mercerenies.turtletroll.feature.HasEnabledStatus
+
 import org.bukkit.Material
+import org.bukkit.entity.Player
 import org.bukkit.block.Block
 import org.bukkit.block.`data`.Directional
 import org.bukkit.plugin.Plugin
 
-class TransformTorchOnSightListener(_plugin: Plugin) : OnSightListener(_plugin) {
+class TransformTorchOnSightListener(
+  _plugin: Plugin,
+  val pumpkinFeature: HasEnabledStatus,
+) : OnSightListener(_plugin) {
 
   companion object {
     val BLOCKS = setOf(
@@ -26,7 +32,11 @@ class TransformTorchOnSightListener(_plugin: Plugin) : OnSightListener(_plugin) 
   override fun shouldTrigger(block: Block): Boolean =
     BLOCKS.contains(block.type)
 
-  override fun performEffect(block: Block) {
+  override fun performEffect(player: Player, block: Block) {
+    if ((player.inventory.helmet?.getType() == Material.CARVED_PUMPKIN) && (pumpkinFeature.isEnabled())) {
+      return
+    }
+
     if (WALL_BLOCKS.contains(block.type)) {
       val facing = (block.blockData as Directional).facing
       block.type = Material.REDSTONE_WALL_TORCH

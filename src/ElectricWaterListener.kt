@@ -66,7 +66,7 @@ class ElectricWaterListener(
     }
     // Pumpkins provide immunity against the electricity effect
     if ((player.inventory.helmet?.getType() == Material.CARVED_PUMPKIN) && (pumpkinFeature.isEnabled())){
-      return false // TODO Conditional on the pumpkin feature being active
+      return false
     }
     return true
   }

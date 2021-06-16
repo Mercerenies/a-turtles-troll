@@ -7,6 +7,7 @@ import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerMoveEvent
 import org.bukkit.event.block.BlockPlaceEvent
+import org.bukkit.entity.Player
 import org.bukkit.block.Block
 import org.bukkit.Location
 import org.bukkit.plugin.Plugin
@@ -24,7 +25,7 @@ abstract class OnSightListener(val plugin: Plugin) : AbstractFeature(), Listener
 
   abstract fun shouldTrigger(block: Block): Boolean
 
-  abstract fun performEffect(block: Block)
+  abstract fun performEffect(player: Player, block: Block)
 
   @EventHandler
   fun onPlayerMove(event: PlayerMoveEvent) {
@@ -34,7 +35,7 @@ abstract class OnSightListener(val plugin: Plugin) : AbstractFeature(), Listener
     val player = event.getPlayer()
     val targetBlock = player.getTargetBlock(null, 32)
     if ((shouldTrigger(targetBlock)) && (!memory.contains(targetBlock.location))) {
-      performEffect(targetBlock)
+      performEffect(player, targetBlock)
     }
   }
 

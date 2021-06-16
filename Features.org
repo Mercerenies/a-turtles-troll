@@ -45,7 +45,8 @@
   + lavalaunch :: Touching lava causes you to launch a short distance
                   into the air
   + pumpkins :: Wearing a pumpking on your head protects you from
-                **zapwater** but gives you slowness and mining fatigue
+                **zapwater** and **torches** but gives you slowness
+                and mining fatigue
   + mimics :: Chests will spawn in the wild which, if opened, will
               kill you
 ** BLOCK DROP FEATURES
