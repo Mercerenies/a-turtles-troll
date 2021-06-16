@@ -47,6 +47,8 @@ class SlowSlabListener : AbstractFeature(), Listener {
     )
   }
 
+  private val bootsDamager = BootsDamager()
+
   override val name = "slowslab"
 
   override val description = "Half slabs and stairs slow you down"
@@ -59,7 +61,9 @@ class SlowSlabListener : AbstractFeature(), Listener {
     val block = event.getTo()?.getBlock()
     if ((block != null) && (BLOCKS.contains(block.type))) {
       val player = event.player
-      player.addPotionEffect(PotionEffect(PotionEffectType.SLOW, TICKS_PER_SECOND * 10, 3))
+      if (!bootsDamager.tryWearDownBoots(player)) {
+        player.addPotionEffect(PotionEffect(PotionEffectType.SLOW, TICKS_PER_SECOND * 10, 3))
+      }
     }
   }
 

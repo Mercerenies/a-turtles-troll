@@ -16,6 +16,8 @@ for the full feature list.
   minutes)
 * Torches and other lights now turn into redstone torches rather than
   dropping when you look at them
+* The slow slab effect and wither rose effect are both disabled if
+  you're wearing boots, similar to grass poison now
 
 # Version 1.3
 

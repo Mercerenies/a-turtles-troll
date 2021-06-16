@@ -15,8 +15,9 @@ import org.bukkit.inventory.meta.Damageable
 import kotlin.random.Random
 
 class GrassPoisonListener(
-  val bootsDamageChance: Double = 1.00
+  _bootsDamageChance: Double = 1.00
 ): AbstractFeature(), Listener {
+  private val bootsDamager = BootsDamager(_bootsDamageChance)
 
   companion object {
     val TICKS_PER_SECOND = 20
@@ -38,31 +39,11 @@ class GrassPoisonListener(
     val block = event.getTo()?.getBlock()
     if ((block != null) && (BLOCKS.contains(block.type))) {
       val player = event.player
-      if (!tryWearDownBoots(player)) {
+      if (!bootsDamager.tryWearDownBoots(player)) {
         player.addPotionEffect(PotionEffect(PotionEffectType.POISON, TICKS_PER_SECOND * 5, 0))
         player.addPotionEffect(PotionEffect(PotionEffectType.SLOW, TICKS_PER_SECOND * 10, 1))
       }
     }
-  }
-
-  // Returns whether the damage was blocked and the player is safe
-  private fun tryWearDownBoots(player: Player): Boolean {
-    val boots = player.inventory.boots
-    if (boots == null) {
-      return false
-    }
-    val meta = boots.getItemMeta()
-    if (!(meta is Damageable)) {
-      return false
-    }
-    if (Random.nextDouble() <= bootsDamageChance) {
-      meta.damage += 1
-      boots.setItemMeta(meta)
-      if (meta.damage >= boots.getType().getMaxDurability()) {
-        player.inventory.boots = null
-      }
-    }
-    return true
   }
 
 }

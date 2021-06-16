@@ -26,6 +26,8 @@ class WitherRoseListener : AbstractFeature(), Listener {
     )
   }
 
+  private val bootsDamager = BootsDamager()
+
   override val name = "witherrose"
 
   override val description = "All flowers behave like wither roses"
@@ -37,8 +39,9 @@ class WitherRoseListener : AbstractFeature(), Listener {
     }
     val block = event.getTo()?.getBlock()
     if ((block != null) && (BLOCKS.contains(block.type))) {
-      applyWither(event.player)
-
+      if (!bootsDamager.tryWearDownBoots(event.player)) {
+        applyWither(event.player)
+      }
     }
   }
 
