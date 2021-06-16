@@ -21,6 +21,7 @@ import org.bukkit.event.entity.PlayerDeathEvent
 import org.bukkit.event.entity.EntityDeathEvent
 import org.bukkit.event.entity.EntitySpawnEvent
 import org.bukkit.event.entity.EntityDamageByEntityEvent
+import org.bukkit.Sound
 
 import kotlin.collections.HashMap
 import kotlin.random.Random
@@ -135,6 +136,7 @@ class WeepingAngelManager(
       val pitch = Math.toDegrees(Math.atan2(- targetVec.getY(), Math.sqrt(targetVec.getX() * targetVec.getX() + targetVec.getZ() * targetVec.getZ()))).toFloat()
       angel.setRotation(yaw, pitch)
       angel.setVelocity(targetVec.normalize().multiply(movementSpeed))
+      angel.world.playSound(angel.location, Sound.ENTITY_GHAST_SCREAM, 1.0f, 0.0f)
     }
 
   }
