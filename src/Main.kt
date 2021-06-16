@@ -4,7 +4,9 @@ package com.mercerenies.turtletroll
 import com.mercerenies.turtletroll.falling.AnvilRunnable
 import com.mercerenies.turtletroll.falling.SandAttackRunnable
 import com.mercerenies.turtletroll.feature.FeatureManager
+import com.mercerenies.turtletroll.feature.CompositeFeature
 import com.mercerenies.turtletroll.recipe.StoneRecipeDeleter
+import com.mercerenies.turtletroll.recipe.AnvilRecipeFeature
 
 import org.bukkit.Bukkit
 import org.bukkit.Material
@@ -14,9 +16,18 @@ class Main : JavaPlugin() {
   val recipeDeleter = StoneRecipeDeleter(Bukkit.getServer())
   val anvilRunnable = AnvilRunnable()
   val sandAttackRunnable = SandAttackRunnable(SAND_ATTACK_TRIGGERS)
+
+  val anvilRecipeFeature = AnvilRecipeFeature(this)
+
+  val anvilFeature = CompositeFeature(
+    anvilRunnable.name,
+    anvilRunnable.description,
+    listOf(anvilRunnable, anvilRecipeFeature),
+  )
+
   val listenerManager = AllPluginListeners(this)
   val featureManager = FeatureManager(
-    listOf(recipeDeleter, anvilRunnable, sandAttackRunnable) + listenerManager.getFeatures()
+    listOf(recipeDeleter, anvilFeature, sandAttackRunnable) + listenerManager.getFeatures()
   )
 
   companion object {
@@ -32,6 +43,7 @@ class Main : JavaPlugin() {
       Bukkit.getPluginManager().registerEvents(listener, this)
     }
     recipeDeleter.removeRecipes()
+    anvilRecipeFeature.addRecipes()
     anvilRunnable.register(this)
     sandAttackRunnable.register(this)
     listenerManager.angelManager.register()
@@ -43,6 +55,7 @@ class Main : JavaPlugin() {
 
   override fun onDisable() {
     recipeDeleter.addRecipes()
+    anvilRecipeFeature.removeRecipes()
     try {
       anvilRunnable.cancel()
     } catch (_: IllegalStateException) {}

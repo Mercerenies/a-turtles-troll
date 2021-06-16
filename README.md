@@ -10,6 +10,7 @@ for the full feature list.
 # Version 1.4
 
 * Beds don't drop when mined anymore
+* Anvils can be smelted into iron nuggets
 * Bats never transform into chickens anymore
 * Anvils have a minimum height above you they can spawn
 * Drastically increased the pet phantom respawn cooldown (to 10

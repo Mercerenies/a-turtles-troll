@@ -7,7 +7,8 @@
       cows, pigs, llamas, donkeys, horses, sheep, mules, rabbits, and
       parrots
   + anvil :: If you stand still for more than ten seconds, an anvil
-             will drop on your head
+             will drop on your head; anvils can be smelted into iron
+             nuggets
   + tallgrass :: Tall grass, ferns, and dead bushes give you poison
                  and slowness on contact
   + ghasts :: Ghasts spawn in all dimensions
@@ -79,4 +80,3 @@
   + Arrows?
   + Fishing?
   + Polar bears?
-  + Mimics
