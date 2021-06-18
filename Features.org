@@ -50,6 +50,7 @@
                 and mining fatigue
   + mimics :: Chests will spawn in the wild which, if opened, will
               kill you
+  + eggs :: Almost any mob can spawn from an egg
 ** BLOCK DROP FEATURES
    + dirtstacks :: All blocks have a chance of dropping 64 dirt
                    instead of the intended drop
@@ -80,3 +81,9 @@
   + Arrows?
   + Fishing?
   + Polar bears?
+  + Pufferfish?
+  + Killer rabbits?
+  + Need to fix villagers being wrong profession after corruption
+  + Giants?
+  + Illusioner?
+  + Make eggs more easily obtainable and/or rain from the heavens
