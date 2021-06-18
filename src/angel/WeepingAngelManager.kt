@@ -3,6 +3,7 @@ package com.mercerenies.turtletroll.angel
 
 import com.mercerenies.turtletroll.feature.Feature
 import com.mercerenies.turtletroll.feature.RunnableFeature
+import com.mercerenies.turtletroll.SpawnReason
 
 import org.bukkit.entity.Player
 import org.bukkit.entity.ArmorStand
@@ -19,7 +20,7 @@ import org.bukkit.event.EventHandler
 import org.bukkit.event.player.PlayerMoveEvent
 import org.bukkit.event.entity.PlayerDeathEvent
 import org.bukkit.event.entity.EntityDeathEvent
-import org.bukkit.event.entity.EntitySpawnEvent
+import org.bukkit.event.entity.CreatureSpawnEvent
 import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.bukkit.Sound
 
@@ -171,8 +172,11 @@ class WeepingAngelManager(
   }
 
   @EventHandler
-  fun onEntitySpawn(event: EntitySpawnEvent) {
+  fun onCreatureSpawn(event: CreatureSpawnEvent) {
     if (!isEnabled()) {
+      return
+    }
+    if (!SpawnReason.isNatural(event)) {
       return
     }
     if (MOBS_TO_REPLACE.contains(event.entity.type)) {

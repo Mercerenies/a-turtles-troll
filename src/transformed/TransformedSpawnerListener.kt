@@ -8,7 +8,7 @@ import com.mercerenies.turtletroll.feature.AbstractFeature
 
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
-import org.bukkit.event.entity.EntitySpawnEvent
+import org.bukkit.event.entity.CreatureSpawnEvent
 import org.bukkit.event.world.ChunkPopulateEvent
 import org.bukkit.entity.Entity
 import org.bukkit.entity.EntityType
@@ -26,12 +26,12 @@ abstract class TransformedSpawnerListener() : AbstractFeature(), Listener {
   open val offset: Vector
     get() = Vector(0.0, 0.0, 0.0)
 
-  abstract fun shouldAttemptReplace(event: EntitySpawnEvent): Boolean
+  abstract fun shouldAttemptReplace(event: CreatureSpawnEvent): Boolean
 
   open fun onSpawn(entity: Entity) {}
 
   @EventHandler
-  open fun onEntitySpawn(event: EntitySpawnEvent) {
+  open fun onCreatureSpawn(event: CreatureSpawnEvent) {
     if (!isEnabled()) {
       return
     }

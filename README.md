@@ -19,6 +19,8 @@ for the full feature list.
   dropping when you look at them
 * The slow slab effect and wither rose effect are both disabled if
   you're wearing boots, similar to grass poison now
+* All of the effects that involve mob spawning are corrected to only
+  affect natural mob spawning, not eggs or spawners
 
 # Version 1.3
 

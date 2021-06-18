@@ -4,10 +4,11 @@ package com.mercerenies.turtletroll.transformed
 import com.mercerenies.turtletroll.ext.*
 import com.mercerenies.turtletroll.Weight
 import com.mercerenies.turtletroll.sample
+import com.mercerenies.turtletroll.SpawnReason
 
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
-import org.bukkit.event.entity.EntitySpawnEvent
+import org.bukkit.event.entity.CreatureSpawnEvent
 import org.bukkit.event.world.ChunkPopulateEvent
 import org.bukkit.entity.Ghast
 import org.bukkit.entity.EntityType
@@ -28,7 +29,11 @@ class GhastSpawnerListener(
 
   override val offset: Vector = Vector(0.0, 2.0, 0.0)
 
-  override fun shouldAttemptReplace(event: EntitySpawnEvent): Boolean {
+  override fun shouldAttemptReplace(event: CreatureSpawnEvent): Boolean {
+    if (!SpawnReason.isNatural(event)) {
+      return false
+    }
+
     val entity = event.entity
     val world = event.location.world!!
     if ((HOSTILES.contains(entity.type)) && (WORLDS.contains(world.environment))) {

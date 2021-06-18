@@ -4,11 +4,12 @@ package com.mercerenies.turtletroll.chicken
 import com.mercerenies.turtletroll.Weight
 import com.mercerenies.turtletroll.sample
 import com.mercerenies.turtletroll.feature.AbstractFeature
+import com.mercerenies.turtletroll.SpawnReason
 
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.entity.EntityDamageByEntityEvent
-import org.bukkit.event.entity.EntitySpawnEvent
+import org.bukkit.event.entity.CreatureSpawnEvent
 import org.bukkit.event.world.ChunkPopulateEvent
 import org.bukkit.entity.Chicken
 import org.bukkit.entity.Zombie
@@ -22,12 +23,14 @@ class ChickenDamageListener(
   val zombieRiderChance: Double = 0.1,
 ) : AbstractFeature(), Listener {
   companion object {
+
     val DEFAULT_BANNED_MOBS = setOf(
       EntityType.COW, EntityType.PIG, EntityType.LLAMA,
       EntityType.DONKEY, EntityType.HORSE,
       EntityType.MULE, EntityType.PARROT, EntityType.SHEEP,
       EntityType.RABBIT,
     )
+
   }
 
   override val name = "chickens"
@@ -47,8 +50,11 @@ class ChickenDamageListener(
   }
 
   @EventHandler
-  fun onEntitySpawn(event: EntitySpawnEvent) {
+  fun onCreatureSpawn(event: CreatureSpawnEvent) {
     if (!isEnabled()) {
+      return
+    }
+    if (!SpawnReason.isNatural(event)) {
       return
     }
     val entity = event.entity
