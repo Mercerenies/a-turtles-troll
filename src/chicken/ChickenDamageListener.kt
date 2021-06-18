@@ -13,6 +13,7 @@ import org.bukkit.event.world.ChunkPopulateEvent
 import org.bukkit.entity.Chicken
 import org.bukkit.entity.Zombie
 import org.bukkit.entity.EntityType
+import org.bukkit.Location
 
 import kotlin.random.Random
 
@@ -20,15 +21,12 @@ class ChickenDamageListener(
   val bannedMobs: Set<EntityType> = DEFAULT_BANNED_MOBS,
   val zombieRiderChance: Double = 0.1,
 ) : AbstractFeature(), Listener {
-  // We don't want onEntitySpawn to trigger on our *own* EntitySpawn
-  private var recursionBlock = false
-
   companion object {
     val DEFAULT_BANNED_MOBS = setOf(
       EntityType.COW, EntityType.PIG, EntityType.LLAMA,
       EntityType.DONKEY, EntityType.HORSE,
       EntityType.MULE, EntityType.PARROT, EntityType.SHEEP,
-      EntityType.CHICKEN, EntityType.RABBIT,
+      EntityType.RABBIT,
     )
   }
 
@@ -54,21 +52,13 @@ class ChickenDamageListener(
       return
     }
     val entity = event.entity
-    if ((!recursionBlock) && (bannedMobs.contains(entity.type))) {
+    if (bannedMobs.contains(entity.type)) {
       event.setCancelled(true)
-      recursionBlock = true
-      try {
-        val world = event.location.world!!
-        val chicken = world.spawnEntity(event.location, EntityType.CHICKEN) as Chicken
-        // Consider spawning a rider
-        if (Random.nextDouble() < zombieRiderChance) {
-          val rider = world.spawnEntity(event.location, EntityType.ZOMBIE) as Zombie
-          rider.setBaby()
-          chicken.addPassenger(rider)
-        }
-      } finally {
-        recursionBlock = false
-      }
+      val world = event.location.world!!
+      val chicken = world.spawnEntity(event.location, EntityType.CHICKEN) as Chicken
+      considerAddingRider(event.location, chicken)
+    } else if (entity is Chicken) {
+      considerAddingRider(event.location, entity)
     }
   }
 
@@ -83,6 +73,15 @@ class ChickenDamageListener(
         entity.location.world!!.spawnEntity(entity.location, EntityType.CHICKEN)
         entity.remove()
       }
+    }
+  }
+
+  private fun considerAddingRider(location: Location, chicken: Chicken) {
+    // Consider spawning a rider
+    if (Random.nextDouble() < zombieRiderChance) {
+      val rider = location.world!!.spawnEntity(location, EntityType.ZOMBIE) as Zombie
+      rider.setBaby()
+      chicken.addPassenger(rider)
     }
   }
 
