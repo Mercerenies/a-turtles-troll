@@ -23,6 +23,7 @@ import org.bukkit.event.entity.EntityDeathEvent
 import org.bukkit.event.entity.CreatureSpawnEvent
 import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.bukkit.Sound
+import org.bukkit.util.EulerAngle
 
 import kotlin.collections.HashMap
 import kotlin.random.Random
@@ -71,6 +72,16 @@ class WeepingAngelManager(
 
     fun getAngelInLineOfSight(entity: LivingEntity): ArmorStand? =
       getAngelInLineOfSight(getAllAngels(), entity)
+
+    fun assignIdlePose(angel: ArmorStand) {
+      angel.setLeftArmPose(EulerAngle(-130.0, 50.0, 10.0))
+      angel.setRightArmPose(EulerAngle(-130.0, -50.0, -10.0))
+    }
+
+    fun assignAttackPose(angel: ArmorStand) {
+      angel.setLeftArmPose(EulerAngle(-90.0, 0.0, 0.0))
+      angel.setRightArmPose(EulerAngle(-90.0, 0.0, 0.0))
+    }
 
   }
 
@@ -138,6 +149,7 @@ class WeepingAngelManager(
       angel.setRotation(yaw, pitch)
       angel.setVelocity(targetVec.normalize().multiply(movementSpeed))
       angel.world.playSound(angel.location, Sound.ENTITY_GHAST_SCREAM, 1.0f, 0.0f)
+      assignAttackPose(angel)
     }
 
   }
@@ -158,6 +170,7 @@ class WeepingAngelManager(
       // the angel was previously targeting someone else, it should
       // aim for the new target.
       activeAngels[angel] = AngelInfo(player)
+      assignIdlePose(angel)
     }
   }
 
@@ -182,7 +195,8 @@ class WeepingAngelManager(
     if (MOBS_TO_REPLACE.contains(event.entity.type)) {
       if (Random.nextDouble() < MOB_REPLACE_CHANCE) {
         event.setCancelled(true)
-        ArmorStandSpawner.spawn(event.location)
+        val angel = ArmorStandSpawner.spawn(event.location)
+        assignIdlePose(angel)
       }
     }
   }
