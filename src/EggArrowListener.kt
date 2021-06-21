@@ -29,7 +29,7 @@ class EggArrowListener(val chance: Double = 1.0) : AbstractFeature(), Listener {
   override val description = "Skeletons will sometimes throw eggs"
 
   @EventHandler
-  fun onEntitySpawn(event: ProjectileLaunchEvent) {
+  fun onProjectileLaunch(event: ProjectileLaunchEvent) {
     if (!isEnabled()) {
       return
     }

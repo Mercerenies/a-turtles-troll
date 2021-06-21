@@ -51,6 +51,7 @@
               kill you
   + eggs :: Almost any mob can spawn from an egg
   + eggarrow :: Skeletons will fire eggs in addition to arrows
+  + eggdrop :: Several mobs will drop eggs when killed
 ** BLOCK DROP FEATURES
    + dirtstacks :: All blocks have a chance of dropping 64 dirt
                    instead of the intended drop
