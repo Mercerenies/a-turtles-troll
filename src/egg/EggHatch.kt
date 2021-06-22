@@ -15,7 +15,9 @@ import org.bukkit.entity.EntityType
 import org.bukkit.entity.*
 import org.bukkit.material.Colorable
 import org.bukkit.DyeColor
+import org.bukkit.Material
 import org.bukkit.plugin.Plugin
+import org.bukkit.inventory.ItemStack
 
 import kotlin.random.Random
 
@@ -90,6 +92,7 @@ object EggHatch {
     Weight(SpawnEntityEffect(Giant::class), 0.2),
     Weight(SpawnEntityEffect(ZombieHorse::class), 1.3),
     Weight(SpawnEntityEffect(Illusioner::class), 0.2),
+    Weight(SpawnItemEffect(ItemStack(Material.DIAMOND, 1)), 2.0),
   )
 
   private fun randomizeCatData(entity: Cat) {

@@ -49,7 +49,7 @@
                 and mining fatigue
   + mimics :: Chests will spawn in the wild which, if opened, will
               kill you
-  + eggs :: Almost any mob can spawn from an egg
+  + eggs :: Almost any mob (or diamonds) can spawn from an egg
   + eggarrow :: Skeletons will fire eggs in addition to arrows
   + eggdrop :: Several mobs will drop eggs when killed
 ** BLOCK DROP FEATURES

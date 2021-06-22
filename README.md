@@ -12,6 +12,7 @@ for the full feature list.
 * Beds don't drop when mined anymore
 * Anvils can be smelted into iron nuggets
 * Almost any mob can spawn from an egg
+* Diamonds can spawn from an egg
 * Skeletons will fire eggs in addition to arrows
 * Several mobs drop eggs when killed
 * Bats and rabbits never transform into chickens anymore
