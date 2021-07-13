@@ -7,6 +7,11 @@ for the full feature list.
 
 ## Changelog
 
+# Version 1.5
+
+* A Turtle's Troll is now built for Minecraft 1.17 against the latest
+  Spigot API.
+
 # Version 1.4
 
 * Beds don't drop when mined anymore
