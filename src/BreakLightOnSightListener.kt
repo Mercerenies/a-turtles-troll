@@ -1,11 +1,17 @@
 
 package com.mercerenies.turtletroll
 
+import com.mercerenies.turtletroll.feature.HasEnabledStatus
+
 import org.bukkit.Material
 import org.bukkit.block.Block
 import org.bukkit.plugin.Plugin
+import org.bukkit.entity.Player
 
-class BreakLightOnSightListener(_plugin: Plugin) : BreakOnSightListener(_plugin) {
+class BreakLightOnSightListener(
+  _plugin: Plugin,
+  val pumpkinFeature: HasEnabledStatus,
+) : BreakOnSightListener(_plugin) {
 
   companion object {
     val BLOCKS = setOf(
@@ -19,7 +25,11 @@ class BreakLightOnSightListener(_plugin: Plugin) : BreakOnSightListener(_plugin)
 
   override val description: String = "Torches and similar light sources break when you look at them"
 
-  override fun shouldTrigger(block: Block): Boolean =
-    BLOCKS.contains(block.type)
+  override fun shouldTrigger(player: Player, block: Block): Boolean {
+    if ((player.inventory.helmet?.getType() == Material.CARVED_PUMPKIN) && (pumpkinFeature.isEnabled())) {
+      return false
+    }
+    return BLOCKS.contains(block.type)
+  }
 
 }

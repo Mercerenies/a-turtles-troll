@@ -29,7 +29,7 @@ class TransformTorchOnSightListener(
 
   override val description: String = "Torches and other lights transform into redstone torches when you look at them"
 
-  override fun shouldTrigger(block: Block): Boolean =
+  override fun shouldTrigger(player: Player, block: Block): Boolean =
     BLOCKS.contains(block.type)
 
   override fun performEffect(player: Player, block: Block) {

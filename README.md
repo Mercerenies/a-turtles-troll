@@ -10,7 +10,8 @@ for the full feature list.
 # Version 1.5
 
 * A Turtle's Troll is now built for Minecraft 1.17 against the latest
-  Spigot API.
+  Spigot API
+* Restored torch/light behavior to drop when looked at
 
 # Version 1.4
 

@@ -23,7 +23,7 @@ abstract class OnSightListener(val plugin: Plugin) : AbstractFeature(), Listener
   // How many ticks is a block safe after being placed?
   open val safetyDelay: Int = TICKS_PER_SECOND * 3
 
-  abstract fun shouldTrigger(block: Block): Boolean
+  abstract fun shouldTrigger(player: Player, block: Block): Boolean
 
   abstract fun performEffect(player: Player, block: Block)
 
@@ -34,7 +34,7 @@ abstract class OnSightListener(val plugin: Plugin) : AbstractFeature(), Listener
     }
     val player = event.getPlayer()
     val targetBlock = player.getTargetBlock(null, 32)
-    if ((shouldTrigger(targetBlock)) && (!memory.contains(targetBlock.location))) {
+    if ((shouldTrigger(player, targetBlock)) && (!memory.contains(targetBlock.location))) {
       performEffect(player, targetBlock)
     }
   }
@@ -45,7 +45,7 @@ abstract class OnSightListener(val plugin: Plugin) : AbstractFeature(), Listener
       return
     }
     val targetBlock = event.getBlockPlaced()
-    if (shouldTrigger(targetBlock)) {
+    if (shouldTrigger(event.player, targetBlock)) {
       memory.add(targetBlock.location, safetyDelay.toLong())
     }
   }
