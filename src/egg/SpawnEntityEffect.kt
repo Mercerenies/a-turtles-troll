@@ -2,8 +2,11 @@
 package com.mercerenies.turtletroll.egg
 
 import org.bukkit.Location
+import org.bukkit.Material
 import org.bukkit.entity.Entity
 import org.bukkit.entity.Ageable
+import org.bukkit.entity.LivingEntity
+import org.bukkit.inventory.ItemStack
 
 import kotlin.reflect.KClass
 import kotlin.random.Random
@@ -30,5 +33,12 @@ fun<T : Ageable> SpawnEntityEffect<T>.maybeBaby(chance: Double): SpawnEntityEffe
   this.andThen { entity ->
     if (Random.nextDouble() < chance) {
       entity.setBaby()
+    }
+  }
+
+fun<T : LivingEntity> SpawnEntityEffect<T>.withHelmet(helmet: Material, chance: Double): SpawnEntityEffect<T> =
+  this.andThen { entity ->
+    if (Random.nextDouble() < chance) {
+      entity.equipment?.helmet = ItemStack(helmet)
     }
   }

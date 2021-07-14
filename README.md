@@ -12,6 +12,8 @@ for the full feature list.
 * A Turtle's Troll is now built for Minecraft 1.17 against the latest
   Spigot API
 * Restored torch/light behavior to drop when looked at
+* Added axolotls to the list of egg hatch mob possibilities
+* Undead mobs now often hatch from eggs with helmets
 
 # Version 1.4
 
