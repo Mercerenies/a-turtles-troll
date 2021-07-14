@@ -49,6 +49,7 @@ class AllPluginListeners(val plugin: Plugin) : Iterable<Listener> {
   val eggListener = EggListener(EggHatch.defaultEffects(plugin))
   val eggArrowListener = EggArrowListener()
   val eggDropListener = EggDropListener()
+  val witherArmorListener = WitherArmorListener()
 
   // CancelDropAction is a BlockBreakAction and BedDropListener is a
   // Bukkit event listener, but conceptually they do the same thing,
@@ -69,6 +70,7 @@ class AllPluginListeners(val plugin: Plugin) : Iterable<Listener> {
       buttonListener, plateListener, slabListener, lightListener,
       phantomManager, lavaListener, pumpkinManager, mimicListener,
       bedListener, eggListener, eggArrowListener, eggDropListener,
+      witherArmorListener,
     )
 
   fun getFeatures(): List<Feature> =
@@ -81,7 +83,7 @@ class AllPluginListeners(val plugin: Plugin) : Iterable<Listener> {
       plateListener, slabListener, lightListener,
       phantomManager, lavaListener, pumpkinManager,
       mimicListener, dropCompositeFeature, eggListener,
-      eggArrowListener, eggDropListener,
+      eggArrowListener, eggDropListener, witherArmorListener,
     ) + (breakEvents.getFeatures() - breakEvents.cancelDropAction)
 
   override fun iterator(): Iterator<Listener> =
