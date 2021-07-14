@@ -53,6 +53,7 @@
   + eggarrow :: Skeletons will fire eggs in addition to arrows
   + eggdrop :: Several mobs will drop eggs when killed
   + witherskele :: Wither skeletons spawn with full diamond armor
+  + moss :: Moss generates in all overworld chunks and spreads rapidly
 ** BLOCK DROP FEATURES
    + dirtstacks :: All blocks have a chance of dropping 64 dirt
                    instead of the intended drop
@@ -89,3 +90,5 @@
   + Illusioner?
   + Moss?
   + Stalactites?
+  + Copper should be like other ores (levitation, drop rules, etc)
+  + Deepslate (etc) is a type of stone that can be infested, etc

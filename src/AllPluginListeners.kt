@@ -22,6 +22,7 @@ class AllPluginListeners(val plugin: Plugin) : Iterable<Listener> {
   val pumpkinManager = PumpkinSlownessManager()
   val angelManager = WeepingAngelManager(plugin)
   val phantomManager = PetPhantomManager(plugin)
+  val mossManager = ContagiousMossManager()
 
   val breakEvents = BlockBreakEvents()
   val chickenListener = ChickenDamageListener()
@@ -70,7 +71,7 @@ class AllPluginListeners(val plugin: Plugin) : Iterable<Listener> {
       buttonListener, plateListener, slabListener, lightListener,
       phantomManager, lavaListener, pumpkinManager, mimicListener,
       bedListener, eggListener, eggArrowListener, eggDropListener,
-      witherArmorListener,
+      witherArmorListener, mossManager,
     )
 
   fun getFeatures(): List<Feature> =
@@ -84,6 +85,7 @@ class AllPluginListeners(val plugin: Plugin) : Iterable<Listener> {
       phantomManager, lavaListener, pumpkinManager,
       mimicListener, dropCompositeFeature, eggListener,
       eggArrowListener, eggDropListener, witherArmorListener,
+      mossManager,
     ) + (breakEvents.getFeatures() - breakEvents.cancelDropAction)
 
   override fun iterator(): Iterator<Listener> =

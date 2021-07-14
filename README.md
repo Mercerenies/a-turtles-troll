@@ -12,6 +12,7 @@ for the full feature list.
 * A Turtle's Troll is now built for Minecraft 1.17 against the latest
   Spigot API
 * Wither skeletons spawn with full diamond armor now
+* Moss generates in all overworld chunks and spreads rapidly
 * Restored torch/light behavior to drop when looked at
 * Added axolotls, goats, and glow squids to the list of egg hatch mob
   possibilities

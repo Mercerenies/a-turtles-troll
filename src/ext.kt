@@ -3,6 +3,8 @@ package com.mercerenies.turtletroll.ext
 
 import org.bukkit.Location
 
+import kotlin.random.Random
+
 fun Location.nearby(distance: Int): List<Location> {
   val result = ArrayList<Location>()
   for (z in -distance..distance) {
@@ -31,3 +33,10 @@ fun<T> MutableIterator<T>.retainAll(func: (T) -> Boolean): List<T> {
   }
   return result
 }
+
+fun<T> List<T>.sample(): T? =
+  if (this.size == 0) {
+    null
+  } else {
+    this[Random.nextInt(this.size)]
+  }
