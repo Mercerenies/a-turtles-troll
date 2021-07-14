@@ -34,6 +34,7 @@ object EggHatch {
     Weight(SpawnEntityEffect(Cow::class).maybeBaby(0.1), 0.6),
     Weight(SpawnEntityEffect(Donkey::class).maybeBaby(0.1), 0.6),
     Weight(SpawnEntityEffect(Fox::class).maybeBaby(0.1), 0.6),
+    Weight(SpawnEntityEffect(Goat::class), 0.4),
     Weight(SpawnEntityEffect(GlowSquid::class), 0.6),
     Weight(SpawnEntityEffect(Horse::class).maybeBaby(0.1), 0.6),
     Weight(SpawnEntityEffect(MushroomCow::class).maybeBaby(0.1).andThen(this::randomizeMushroomCow), 0.6),

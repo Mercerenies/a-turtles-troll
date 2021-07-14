@@ -87,3 +87,5 @@
   + Killer rabbits?
   + Giants?
   + Illusioner?
+  + Moss?
+  + Stalactites?
