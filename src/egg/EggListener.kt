@@ -12,6 +12,7 @@ import org.bukkit.event.entity.ProjectileHitEvent
 import org.bukkit.event.entity.CreatureSpawnEvent
 import org.bukkit.event.player.PlayerEggThrowEvent
 import org.bukkit.entity.EntityType
+import org.bukkit.entity.Projectile
 import org.bukkit.entity.Player
 
 import kotlin.random.Random
@@ -23,22 +24,22 @@ class EggListener(val effects: List<Weight<EggHatchEffect>>) : AbstractFeature()
   override val description = "Throwing eggs can hatch just about anything"
 
   @EventHandler
-  fun onPlayerEggThrow(event: PlayerEggThrowEvent) {
-    if (!isEnabled()) {
-      return
-    }
-    event.setHatching(true)
-    event.setNumHatches(1)
-  }
-
-  @EventHandler
   fun onCreatureSpawn(event: CreatureSpawnEvent) {
     if (!isEnabled()) {
       return
     }
     if ((event.spawnReason == CreatureSpawnEvent.SpawnReason.EGG) || (event.spawnReason == CreatureSpawnEvent.SpawnReason.DISPENSE_EGG)) {
       event.setCancelled(true)
-      sample(effects).onEggHatch(event.location)
+    }
+  }
+
+  @EventHandler
+  fun onProjectileHit(event: ProjectileHitEvent) {
+    if (!isEnabled()) {
+      return
+    }
+    if (event.entity.type == EntityType.EGG) {
+      sample(effects).onEggHatch(event.entity.location)
     }
   }
 

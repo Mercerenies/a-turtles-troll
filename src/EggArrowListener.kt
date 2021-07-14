@@ -37,10 +37,8 @@ class EggArrowListener(val chance: Double = 1.0) : AbstractFeature(), Listener {
     val source = entity.getShooter()
     if ((entity is Arrow) && (source is Entity) && (SKELETONS.contains(source.getType()))) {
       if (Random.nextDouble() < chance) {
-        repeat(2) {
-          val egg = entity.world.spawn(entity.location, Egg::class.java)
-          egg.velocity = entity.velocity
-        }
+        val egg = entity.world.spawn(entity.location, Egg::class.java)
+        egg.velocity = entity.velocity
       }
     }
   }
