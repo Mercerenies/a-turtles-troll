@@ -12,6 +12,7 @@ import org.bukkit.inventory.MerchantInventory
 import org.bukkit.entity.EntityType
 import org.bukkit.entity.Villager
 import org.bukkit.entity.Player
+import org.bukkit.entity.ZombieVillager
 
 import kotlin.collections.HashMap
 
@@ -42,8 +43,9 @@ class ZombifyTradeListener() : AbstractFeature(), Listener {
     if (inv is MerchantInventory) {
       val target = playerUI[event.player]
       if (target != null) {
-        println("Tripped")
-        target.world.spawnEntity(target.location, EntityType.ZOMBIE_VILLAGER)
+        val zombie = target.world.spawn(target.location, ZombieVillager::class.java)
+        zombie.villagerType = target.villagerType
+        zombie.villagerProfession = target.profession
         target.remove()
         playerUI.remove(event.player)
       }

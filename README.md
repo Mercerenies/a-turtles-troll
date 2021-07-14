@@ -11,9 +11,12 @@ for the full feature list.
 
 * A Turtle's Troll is now built for Minecraft 1.17 against the latest
   Spigot API
+* Wither skeletons spawn with full diamond armor now
 * Restored torch/light behavior to drop when looked at
 * Added axolotls to the list of egg hatch mob possibilities
 * Undead mobs now often hatch from eggs with helmets
+* Villagers who transform into zombie villagers via trading keep the
+  correct profession now
 
 # Version 1.4
 

@@ -85,8 +85,5 @@
   + Polar bears?
   + Pufferfish?
   + Killer rabbits?
-  + Need to fix villagers being wrong profession after corruption
   + Giants?
   + Illusioner?
-  + Make eggs more easily obtainable and/or rain from the heavens
-  + Wither skeles need armor :)
