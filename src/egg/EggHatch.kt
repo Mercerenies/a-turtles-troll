@@ -26,6 +26,7 @@ object EggHatch {
 
   // Intentionally omitted: Elder guardian, Ender dragon, Wither
   fun defaultEffects(plugin: Plugin) = listOf(
+    Weight(SpawnEntityEffect(Axolotl::class).maybeBaby(0.1), 1.8),
     Weight(BatFlockEffect(6), 7.0),
     Weight(SpawnEntityEffect(Cat::class).maybeBaby(0.1).andThen(this::randomizeCatData), 1.2),
     Weight(SpawnEntityEffect(Chicken::class).maybeBaby(0.1), 1.0),
