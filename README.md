@@ -19,6 +19,14 @@ for the full feature list.
 * Undead mobs now often hatch from eggs with helmets
 * Villagers who transform into zombie villagers via trading keep the
   correct profession now
+* Copper ore and deepslate ores now count as ores for drop and
+  levitation purposes
+* 1.17 slab and stair blocks behave like other slab and stair blocks
+  for the slowness effect
+* Deepslate can produce a silverfish effect now, like other stone
+  blocks
+* Azalea leaves are leaves, for the purposes of fire and bedrock
+  effects
 
 # Version 1.4
 

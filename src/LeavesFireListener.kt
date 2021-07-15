@@ -27,8 +27,8 @@ class LeavesFireListener(val plugin: Plugin) : AbstractFeature(), Listener {
     val TICKS_PER_SECOND = 20
     val DELAY = TICKS_PER_SECOND
     val BLOCKS = setOf(
-      Material.ACACIA_LEAVES, Material.BIRCH_LEAVES, Material.DARK_OAK_LEAVES,
-      Material.OAK_LEAVES, Material.JUNGLE_LEAVES, Material.SPRUCE_LEAVES,
+      Material.ACACIA_LEAVES, Material.AZALEA_LEAVES, Material.BIRCH_LEAVES, Material.DARK_OAK_LEAVES,
+      Material.FLOWERING_AZALEA_LEAVES, Material.OAK_LEAVES, Material.JUNGLE_LEAVES, Material.SPRUCE_LEAVES,
     )
   }
 

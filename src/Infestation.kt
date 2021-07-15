@@ -11,8 +11,10 @@ object Infestation {
       Material.COBBLESTONE -> Material.INFESTED_COBBLESTONE
       Material.STONE_BRICKS -> Material.INFESTED_STONE_BRICKS
       Material.CRACKED_STONE_BRICKS -> Material.INFESTED_CRACKED_STONE_BRICKS
+      Material.CHISELED_STONE_BRICKS -> Material.INFESTED_CHISELED_STONE_BRICKS
       Material.MOSSY_STONE_BRICKS -> Material.INFESTED_MOSSY_STONE_BRICKS
       Material.STONE -> Material.INFESTED_STONE
+      Material.DEEPSLATE -> Material.INFESTED_DEEPSLATE
       else -> null
     }
 

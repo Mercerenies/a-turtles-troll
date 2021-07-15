@@ -58,11 +58,11 @@
    + dirtstacks :: All blocks have a chance of dropping 64 dirt
                    instead of the intended drop
      - The following blocks have a higher chance of dropping dirt:
-       iron, coal, lapis, gold, diamond, emerald, nether quartz,
-       nether gold, ancient debris
-   + silverfish :: All stone/cobble/stone brick blocks have a chance
-                   of spawning a silverfish and potentially several
-                   more nearby
+       iron, coal, lapis, gold, diamond, emerald, copper, nether
+       quartz, nether gold, ancient debris
+   + silverfish :: All stone/cobble/stone brick/deepslate blocks have
+                   a chance of spawning a silverfish and potentially
+                   several more nearby
    + stronghold :: As *silverfish*, but stone bricks have a 100%
                    chance of spawning several silverfish
    + bees :: All wood blocks have a chance of spawning bees in all
