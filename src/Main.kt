@@ -44,6 +44,7 @@ class Main : JavaPlugin() {
     }
     recipeDeleter.removeRecipes()
     anvilRecipeFeature.addRecipes()
+    listenerManager.explosiveArrowManager.addRecipes()
     anvilRunnable.register(this)
     sandAttackRunnable.register(this)
     listenerManager.angelManager.register()
@@ -57,6 +58,7 @@ class Main : JavaPlugin() {
   override fun onDisable() {
     recipeDeleter.addRecipes()
     anvilRecipeFeature.removeRecipes()
+    listenerManager.explosiveArrowManager.removeRecipes()
     try {
       anvilRunnable.cancel()
     } catch (_: IllegalStateException) {}

@@ -80,15 +80,11 @@
                 diorite, andesite, granite, basalt, blackstone
 * IDEAS (UNIMPLEMENTED)
   + Wolves?
-  + Arrow bombs?
-  + Arrows?
   + Fishing?
   + Polar bears?
   + Pufferfish?
   + Killer rabbits?
   + Giants?
   + Illusioner?
-  + Moss?
   + Stalactites?
-  + Copper should be like other ores (levitation, drop rules, etc)
-  + Deepslate (etc) is a type of stone that can be infested, etc
+  + The cake is a lie
