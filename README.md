@@ -11,6 +11,8 @@ for the full feature list.
 
 * A Turtle's Troll is now built for Minecraft 1.17 against the latest
   Spigot API
+* Cakes spawn in the wild and, when eaten, grant one of several random
+  effects
 * Explosive arrows can be crafted with arrows and gunpowder
 * Wither skeletons spawn with full diamond armor now
 * Moss generates in all overworld chunks and spreads rapidly

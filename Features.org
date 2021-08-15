@@ -54,6 +54,9 @@
   + eggdrop :: Several mobs will drop eggs when killed
   + witherskele :: Wither skeletons spawn with full diamond armor
   + moss :: Moss generates in all overworld chunks and spreads rapidly
+  + cakes :: Cakes spawn in the wild and, when eaten, grant one of
+             several random effects; the more cakes you eat in a short
+             period of time, the worse the effect will be
 ** BLOCK DROP FEATURES
    + dirtstacks :: All blocks have a chance of dropping 64 dirt
                    instead of the intended drop
@@ -87,4 +90,4 @@
   + Giants?
   + Illusioner?
   + Stalactites?
-  + The cake is a lie
+  + Confusion / Blindness
