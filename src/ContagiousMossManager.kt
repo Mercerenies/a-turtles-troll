@@ -27,20 +27,6 @@ class ContagiousMossManager : RunnableFeature(), Listener {
   companion object {
     val TICKS_PER_SECOND = 20
 
-    fun getRandomBlock(chunk: Chunk): Block {
-      val x = Random.nextInt(16)
-      val y = Random.nextInt(64) // Below sea level
-      val z = Random.nextInt(16)
-      return chunk.getBlock(x, y, z)
-    }
-
-    fun getRandomBlockNear(block: Block): Block {
-      val x = block.getX() + Random.nextInt(-15, 16)
-      val y = Random.nextInt(256)
-      val z = block.getZ() + Random.nextInt(-15, 16)
-      return block.location.world!!.getBlockAt(x, y, z)
-    }
-
     fun isAdjacentToMoss(block: Block): Boolean {
       for (loc in block.location.nearby(1)) {
         if (loc.block.type == Material.MOSS_BLOCK) {
@@ -66,7 +52,7 @@ class ContagiousMossManager : RunnableFeature(), Listener {
       if (player != null) {
         if (player.world.environment == World.Environment.NORMAL) {
           val playerPosBlock = player.location.block
-          val randBlock = getRandomBlockNear(playerPosBlock)
+          val randBlock = BlockSelector.getRandomBlockNear(playerPosBlock)
           if (isAdjacentToMoss(randBlock)) {
             randBlock.type = Material.MOSS_BLOCK
             return // Only modify one block per test
@@ -83,7 +69,7 @@ class ContagiousMossManager : RunnableFeature(), Listener {
     }
     if (event.chunk.world.environment == World.Environment.NORMAL) {
       // Unconditionally get a block and convert it to moss block
-      val block = getRandomBlock(event.chunk)
+      val block = BlockSelector.getRandomBlock(event.chunk, BlockSelector.SEA_LEVEL)
       block.type = Material.MOSS_BLOCK
     }
   }
