@@ -7,6 +7,11 @@ for the full feature list.
 
 ## Changelog
 
+# Version 1.6
+
+* Pointed dripstone stalactites generate in the wild and will fall if
+  you walk below them
+
 # Version 1.5
 
 * A Turtle's Troll is now built for Minecraft 1.17 against the latest

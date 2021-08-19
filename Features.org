@@ -57,6 +57,8 @@
   + cakes :: Cakes spawn in the wild and, when eaten, grant one of
              several random effects; the more cakes you eat in a short
              period of time, the worse the effect will be
+  + dripstone :: Dripstone stalactites randomly generate in the wild,
+                 and dripstone will fall if the player walks below it
 ** BLOCK DROP FEATURES
    + dirtstacks :: All blocks have a chance of dropping 64 dirt
                    instead of the intended drop

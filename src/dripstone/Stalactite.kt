@@ -2,6 +2,7 @@
 package com.mercerenies.turtletroll.dripstone
 
 import org.bukkit.block.Block
+import org.bukkit.block.BlockFace
 import org.bukkit.Material
 import org.bukkit.Location
 import org.bukkit.block.`data`.type.PointedDripstone
@@ -44,10 +45,44 @@ data class Stalactite(val blocks: Set<EqBlock>) {
       return Stalactite(arr)
     }
 
+    // From bottom to top
+    fun thicknessForLength(length: Int): List<PointedDripstone.Thickness> {
+      when(length) {
+        0 -> return listOf()
+        1 -> return listOf(PointedDripstone.Thickness.TIP)
+        2 -> return listOf(PointedDripstone.Thickness.TIP, PointedDripstone.Thickness.FRUSTUM)
+        else -> {
+          val result = ArrayList<PointedDripstone.Thickness>()
+          result.add(PointedDripstone.Thickness.TIP)
+          result.add(PointedDripstone.Thickness.FRUSTUM)
+          repeat(length-3) {
+            result.add(PointedDripstone.Thickness.MIDDLE)
+          }
+          result.add(PointedDripstone.Thickness.BASE)
+          return result
+        }
+      }
+    }
+
   }
+
+  // Blocks sorted by Y coordinate (from lowest to highest)
+  val sortedBlocks: List<Block>
+    get() = blocks.map { it.block }.sortedBy { it.location.getY() }
 
   constructor(blocks: Collection<Block>) :
     this(HashSet(blocks.map { EqBlock(it) }))
+
+  // Update the thickness (called when the stalactite grows)
+  fun updateData() {
+    val sortedBlocks = this.sortedBlocks
+    for ((block, thickness) in sortedBlocks.zip(thicknessForLength(sortedBlocks.size))) {
+      val blockData = block.getBlockData() as PointedDripstone
+      blockData.setThickness(thickness)
+      blockData.setVerticalDirection(BlockFace.DOWN)
+      block.setBlockData(blockData)
+    }
+  }
 
   fun drop() {
     for (block in blocks) {
@@ -61,6 +96,18 @@ data class Stalactite(val blocks: Set<EqBlock>) {
         println("Oh no! Something went wrong during my horrible NMS hack. Please report: ${e}")
       }
     }
+  }
+
+  fun grow(): Stalactite {
+    val bottom = this.sortedBlocks[0]
+    val loc = bottom.location.clone().add(0.0, -1.0, 0.0)
+    loc.block.type = Material.POINTED_DRIPSTONE
+    val blockData = loc.block.getBlockData() as PointedDripstone
+    blockData.setVerticalDirection(BlockFace.DOWN)
+    loc.block.setBlockData(blockData)
+    val newStalactite = fromPart(loc.block)
+    newStalactite.updateData()
+    return newStalactite
   }
 
 }

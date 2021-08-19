@@ -4,6 +4,7 @@ package com.mercerenies.turtletroll.dripstone
 import com.mercerenies.turtletroll.feature.Feature
 import com.mercerenies.turtletroll.feature.RunnableFeature
 import com.mercerenies.turtletroll.CooldownMemory
+import com.mercerenies.turtletroll.BlockSelector
 import com.mercerenies.turtletroll.ext.*
 
 import org.bukkit.entity.Player
@@ -55,6 +56,15 @@ class DripstoneManager(val plugin: Plugin) : RunnableFeature(), Listener {
       return null
     }
 
+    fun findImmediatelyAboveStalactite(block: Block): Stalactite? {
+      val loc = block.location.clone().add(0.0, 1.0, 0.0)
+      if (loc.block.type == Material.POINTED_DRIPSTONE) {
+        return Stalactite.fromPart(loc.block)
+      } else {
+        return null
+      }
+    }
+
   }
 
   private val _placedBlocks = CooldownMemory<Stalactite>(plugin)
@@ -63,26 +73,55 @@ class DripstoneManager(val plugin: Plugin) : RunnableFeature(), Listener {
 
   override val description = "Dripstone generates randomly and falls if you walk under it"
 
-  override fun run() {
-    if (!isEnabled()) {
-      return
-    }
-/*
-    val onlinePlayers = Bukkit.getOnlinePlayers().toList()
+  private fun tryGrowExisting(onlinePlayers: List<Player>) {
     repeat(100) {
       val player = onlinePlayers.sample()
       if (player != null) {
-        if (player.world.environment == World.Environment.NORMAL) {
-          val playerPosBlock = player.location.block
-          val randBlock = getRandomBlockNear(playerPosBlock)
-          if (isAdjacentToMoss(randBlock)) {
-            randBlock.type = Material.MOSS_BLOCK
-            return // Only modify one block per test
+        val playerPosBlock = player.location.block
+        val randBlock = BlockSelector.getRandomBlockNear(playerPosBlock)
+        // Only applies to air
+        if (randBlock.type == Material.AIR) {
+          // Check for existing
+          val existingStalactite = findImmediatelyAboveStalactite(randBlock)
+          if (existingStalactite != null) {
+            existingStalactite.grow()
+            _placedBlocks.add(existingStalactite, (TICKS_PER_SECOND * 2).toLong())
+            return
           }
         }
       }
     }
-*/
+  }
+
+  private fun tryGrowNew(onlinePlayers: List<Player>) {
+    repeat(50) {
+      val player = onlinePlayers.sample()
+      if (player != null) {
+        val playerPosBlock = player.location.block
+        val randBlock = BlockSelector.getRandomBlockNear(playerPosBlock)
+        // Only applies to air
+        if (randBlock.type == Material.AIR) {
+          // Check for solid block (to start a new stalactite)
+          val aboveBlock = randBlock.location.clone().add(0.0, 1.0, 0.0).block
+          if (aboveBlock.getType().isSolid()) {
+            randBlock.type = Material.POINTED_DRIPSTONE
+            val newStalactite = Stalactite.fromPart(randBlock)
+            newStalactite.updateData()
+            _placedBlocks.add(newStalactite, (TICKS_PER_SECOND * 2).toLong())
+            return
+          }
+        }
+      }
+    }
+  }
+
+  override fun run() {
+    if (!isEnabled()) {
+      return
+    }
+    val onlinePlayers = Bukkit.getOnlinePlayers().toList()
+    tryGrowExisting(onlinePlayers)
+    tryGrowNew(onlinePlayers)
   }
 
   @EventHandler
