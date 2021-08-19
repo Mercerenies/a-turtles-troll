@@ -19,6 +19,18 @@ fun Location.nearby(distance: Int): List<Location> {
   return result
 }
 
+fun Location.nearbyXZ(distance: Int): List<Location> {
+  val result = ArrayList<Location>()
+  for (z in -distance..distance) {
+    for (x in -distance..distance) {
+      if (Math.abs(x) + Math.abs(z) <= distance) {
+        result.add(Location(this.world, x.toDouble(), 0.0, z.toDouble()).add(this))
+      }
+    }
+  }
+  return result
+}
+
 fun Location.isExposedToSky(): Boolean =
   this.getBlock().getLightFromSky() == 15.toByte()
 
