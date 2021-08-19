@@ -12,6 +12,7 @@ import com.mercerenies.turtletroll.cake.CakeListener
 import com.mercerenies.turtletroll.cake.CakeEat
 import com.mercerenies.turtletroll.egg.EggListener
 import com.mercerenies.turtletroll.egg.EggHatch
+import com.mercerenies.turtletroll.dripstone.DripstoneManager
 import com.mercerenies.turtletroll.feature.Feature
 import com.mercerenies.turtletroll.feature.CompositeFeature
 
@@ -26,6 +27,7 @@ class AllPluginListeners(val plugin: Plugin) : Iterable<Listener> {
   val phantomManager = PetPhantomManager(plugin)
   val mossManager = ContagiousMossManager()
   val explosiveArrowManager = ExplosiveArrowManager(plugin)
+  val dripstoneManager = DripstoneManager(plugin)
 
   val breakEvents = BlockBreakEvents()
   val chickenListener = ChickenDamageListener()
@@ -76,7 +78,7 @@ class AllPluginListeners(val plugin: Plugin) : Iterable<Listener> {
       phantomManager, lavaListener, pumpkinManager, mimicListener,
       bedListener, eggListener, eggArrowListener, eggDropListener,
       witherArmorListener, mossManager, explosiveArrowManager,
-      cakeListener
+      cakeListener, dripstoneManager,
     )
 
   fun getFeatures(): List<Feature> =
@@ -91,6 +93,7 @@ class AllPluginListeners(val plugin: Plugin) : Iterable<Listener> {
       mimicListener, dropCompositeFeature, eggListener,
       eggArrowListener, eggDropListener, witherArmorListener,
       mossManager, explosiveArrowManager, cakeListener,
+      dripstoneManager,
     ) + (breakEvents.getFeatures() - breakEvents.cancelDropAction)
 
   override fun iterator(): Iterator<Listener> =
