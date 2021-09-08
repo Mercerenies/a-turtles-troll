@@ -7,6 +7,10 @@ for the full feature list.
 
 ## Changelog
 
+# Version 1.7
+
+* Chipped and damaged anvils can be smelted, like regular anvils.
+
 # Version 1.6
 
 * Pointed dripstone stalactites generate in the wild and will fall if

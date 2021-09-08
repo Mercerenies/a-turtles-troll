@@ -12,7 +12,9 @@ import org.bukkit.inventory.ItemStack
 class AnvilRecipeFeature(val plugin: Plugin) : AbstractFeature() {
 
   companion object {
-    val RECIPE_KEY = "anvil_smelt"
+    val RECIPE_KEY0 = "anvil_smelt"
+    val RECIPE_KEY1 = "anvil_smelt1"
+    val RECIPE_KEY2 = "anvil_smelt2"
     val TICKS_PER_SECOND = 20
   }
 
@@ -20,7 +22,9 @@ class AnvilRecipeFeature(val plugin: Plugin) : AbstractFeature() {
 
   override val description = "Anvils can be smelted"
 
-  val namespacedKey = NamespacedKey(plugin, RECIPE_KEY)
+  val namespacedKey0 = NamespacedKey(plugin, RECIPE_KEY0)
+  val namespacedKey1 = NamespacedKey(plugin, RECIPE_KEY1)
+  val namespacedKey2 = NamespacedKey(plugin, RECIPE_KEY2)
 
   override fun enable() {
     if (!isEnabled()) {
@@ -37,12 +41,22 @@ class AnvilRecipeFeature(val plugin: Plugin) : AbstractFeature() {
   }
 
   fun addRecipes() {
-    val recipe = FurnaceRecipe(namespacedKey, ItemStack(Material.IRON_NUGGET), Material.ANVIL, 0.2f, TICKS_PER_SECOND * 10)
-    Bukkit.addRecipe(recipe)
+
+    val recipe0 = FurnaceRecipe(namespacedKey0, ItemStack(Material.IRON_NUGGET), Material.ANVIL, 0.2f, TICKS_PER_SECOND * 10)
+    Bukkit.addRecipe(recipe0)
+
+    val recipe1 = FurnaceRecipe(namespacedKey1, ItemStack(Material.IRON_NUGGET), Material.CHIPPED_ANVIL, 0.2f, TICKS_PER_SECOND * 10)
+    Bukkit.addRecipe(recipe1)
+
+    val recipe2 = FurnaceRecipe(namespacedKey2, ItemStack(Material.IRON_NUGGET), Material.DAMAGED_ANVIL, 0.2f, TICKS_PER_SECOND * 10)
+    Bukkit.addRecipe(recipe2)
+
   }
 
   fun removeRecipes() {
-    Bukkit.removeRecipe(namespacedKey)
+    Bukkit.removeRecipe(namespacedKey0)
+    Bukkit.removeRecipe(namespacedKey1)
+    Bukkit.removeRecipe(namespacedKey2)
   }
 
 }
