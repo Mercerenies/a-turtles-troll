@@ -59,6 +59,7 @@
              period of time, the worse the effect will be
   + dripstone :: Dripstone stalactites randomly generate in the wild,
                  and dripstone will fall if the player walks below it
+  + glass :: Breaking glass gives you the Unluck effect for seven years
 ** BLOCK DROP FEATURES
    + dirtstacks :: All blocks have a chance of dropping 64 dirt
                    instead of the intended drop

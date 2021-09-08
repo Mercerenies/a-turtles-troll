@@ -10,6 +10,8 @@ for the full feature list.
 # Version 1.7
 
 * Chipped and damaged anvils can be smelted, like regular anvils.
+* Breaking glass gives the victim seven years of the Unluck potion
+  effect.
 
 # Version 1.6
 
