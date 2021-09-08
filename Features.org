@@ -92,5 +92,7 @@
   + Killer rabbits?
   + Giants?
   + Illusioner?
-  + Stalactites?
   + Confusion / Blindness
+  + Dragon TNT
+  + Dragon Dirt
+  + Blaze Crystals
