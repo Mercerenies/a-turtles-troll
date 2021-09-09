@@ -63,6 +63,7 @@
   + explosivearrow :: Explosive arrows can be crafted from arrows and
                       gunpowder, and player-thrown tridents explode on
                       contact
+  + enddirt :: Dirt placed in the End turns into a Shulker
 ** BLOCK DROP FEATURES
    + dirtstacks :: All blocks have a chance of dropping 64 dirt
                    instead of the intended drop
@@ -97,5 +98,4 @@
   + Illusioner?
   + Confusion / Blindness
   + Dragon TNT
-  + Dragon Dirt
   + Blaze Crystals
