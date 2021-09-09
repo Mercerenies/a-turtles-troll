@@ -12,6 +12,8 @@ for the full feature list.
 * Chipped and damaged anvils can be smelted, like regular anvils.
 * Breaking glass gives the victim seven years of the Unluck potion
   effect.
+* Fixed an issue with passive mobs failing to convert to chickens in
+  Minecraft 1.17.
 
 # Version 1.6
 

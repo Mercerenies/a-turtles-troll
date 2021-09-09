@@ -15,14 +15,19 @@ import org.bukkit.entity.Chicken
 import org.bukkit.entity.Zombie
 import org.bukkit.entity.EntityType
 import org.bukkit.Location
+import org.bukkit.Chunk
+import org.bukkit.plugin.Plugin
+import org.bukkit.scheduler.BukkitRunnable
 
 import kotlin.random.Random
 
 class ChickenDamageListener(
+  val plugin: Plugin,
   val bannedMobs: Set<EntityType> = DEFAULT_BANNED_MOBS,
   val zombieRiderChance: Double = 0.1,
 ) : AbstractFeature(), Listener {
   companion object {
+    val DELAY = 3
 
     val DEFAULT_BANNED_MOBS = setOf(
       EntityType.COW, EntityType.PIG, EntityType.LLAMA,
@@ -30,6 +35,18 @@ class ChickenDamageListener(
       EntityType.MULE, EntityType.PARROT, EntityType.SHEEP,
     )
 
+  }
+
+  private inner class ReplaceMobsRunnable(val chunk: Chunk) : BukkitRunnable() {
+    override fun run() {
+      val entities = chunk.entities
+      for (entity in entities) {
+        if (bannedMobs.contains(entity.type)) {
+          entity.location.world!!.spawnEntity(entity.location, EntityType.CHICKEN)
+          entity.remove()
+        }
+      }
+    }
   }
 
   override val name = "chickens"
@@ -72,13 +89,8 @@ class ChickenDamageListener(
     if (!isEnabled()) {
       return
     }
-    val entities = event.chunk.entities
-    for (entity in entities) {
-      if (bannedMobs.contains(entity.type)) {
-        entity.location.world!!.spawnEntity(entity.location, EntityType.CHICKEN)
-        entity.remove()
-      }
-    }
+    val chunk = event.getChunk()
+    ReplaceMobsRunnable(chunk).runTaskLater(plugin, DELAY.toLong())
   }
 
   private fun considerAddingRider(location: Location, chicken: Chicken) {

@@ -30,7 +30,7 @@ class AllPluginListeners(val plugin: Plugin) : Iterable<Listener> {
   val dripstoneManager = DripstoneManager(plugin)
 
   val breakEvents = BlockBreakEvents()
-  val chickenListener = ChickenDamageListener()
+  val chickenListener = ChickenDamageListener(plugin)
   val grassListener = GrassPoisonListener()
   val snowListener = SnowListener()
   val endStoneListener = EndStoneListener()
