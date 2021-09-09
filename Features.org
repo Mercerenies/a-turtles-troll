@@ -1,69 +1,52 @@
 
 * FEATURES
-  + stonetools :: All recipes which produce stone tools are disabled
-  + chickens :: Chickens explode when any damage (even fatal damage)
-                is dealt to them for any reason
-    - The following passive mobs are always replaced with chickens:
-      cows, pigs, llamas, donkeys, horses, sheep, mules, and parrots
-  + anvil :: If you stand still for more than ten seconds, an anvil
-             will drop on your head; anvils can be smelted into iron
-             nuggets
-  + tallgrass :: Tall grass, ferns, and dead bushes give you poison
-                 and slowness on contact
-  + ghasts :: Ghasts spawn in all dimensions
-  + witherarrow :: If the player is hit by a skeleton arrow in the
-                   Nether, they get the Wither effect
-  + zapwater :: Water electrocutes you, unless in a boat
-  + zombietrade :: If the player opens the trading UI, the relevant
-                   villager becomes a zombie after trading is complete
-  + ravagers :: Half of hoglins turn into ravagers
-  + forestfire :: Leaves catch fire when you walk on them
-  + snowspeed :: Snow makes you go fast
-  + blazepower :: Blazes will spawn evokers
-  + witherrose :: All flowers (and berry bushes) give the Wither
-                  effect on contact now, or when picked up
-  + endspeed :: End stones make you go fast
-  + doordrop :: Doors break after some number of uses, and doors don't
-                drop anything when broken
-  + buttondrop :: Buttons and levers break after some number of uses;
-                  buttons and levers don't drop anything when broken
-  + weepingangel :: Armor stands will chase you when you're not
-                    looking at them, and armor stands will rarely
-                    spawn in place of some mobs
-  + sandattack :: While standing on the following blocks, sand will
-                  constantly fall from above: sand, gravel, end stone
-  + levitation :: When standing on ore blocks, the player is given the
-                  Levitation effect
-  + platefire :: Pressure plates have a slight chance of catching fire
-                 when you step on them
-  + slowslab :: Slabs and stairs slow you down
-  + torches :: The following blocks turn into redstone torches if you
-               look at them: torches, redstone torches, soul torches,
-               lanterns, and soul lanterns
-  + phantoms :: Every player will always have a phantom pursuing them,
-                and phantoms are immune to fire damage
-  + lavalaunch :: Touching lava causes you to launch a short distance
-                  into the air
-  + pumpkins :: Wearing a pumpking on your head protects you from
-                **zapwater** and **torches** but gives you slowness
-                and mining fatigue
-  + mimics :: Chests will spawn in the wild which, if opened, will
-              kill you
-  + eggs :: Almost any mob (or diamonds) can spawn from an egg
-  + eggarrow :: Skeletons will fire eggs in addition to arrows
-  + eggdrop :: Several mobs will drop eggs when killed
-  + witherskele :: Wither skeletons spawn with full diamond armor
-  + moss :: Moss generates in all overworld chunks and spreads rapidly
-  + cakes :: Cakes spawn in the wild and, when eaten, grant one of
-             several random effects; the more cakes you eat in a short
-             period of time, the worse the effect will be
-  + dripstone :: Dripstone stalactites randomly generate in the wild,
-                 and dripstone will fall if the player walks below it
-  + glass :: Breaking glass gives you the Unluck effect for seven years
-  + explosivearrow :: Explosive arrows can be crafted from arrows and
-                      gunpowder, and player-thrown tridents explode on
-                      contact
-  + enddirt :: Dirt placed in the End turns into a Shulker
+** MOVEMENT HAZARD FEATURES
+   + levitation :: When standing on ore blocks, the player is given
+                   the Levitation effect
+   + platefire :: Pressure plates have a slight chance of catching
+                  fire when you step on them
+   + slowslab :: Slabs and stairs slow you down
+   + zapwater :: Water electrocutes you, unless in a boat
+   + zombietrade :: If the player opens the trading UI, the relevant
+                    villager becomes a zombie after trading is
+                    complete
+   + forestfire :: Leaves catch fire when you walk on them
+   + snowspeed :: Snow makes you go fast
+   + endspeed :: End stones make you go fast
+   + tallgrass :: Tall grass, ferns, and dead bushes give you poison
+                  and slowness on contact
+   + lavalaunch :: Touching lava causes you to launch a short distance
+                   into the air
+   + sandattack :: While standing on the following blocks, sand will
+                   constantly fall from above: sand, gravel, end stone
+   + witherrose :: All flowers (and berry bushes) give the Wither
+                   effect on contact now, or when picked up
+** CUSTOM SPAWNING FEATURES
+   + weepingangel :: Armor stands will chase you when you're not
+                     looking at them, and armor stands will rarely
+                     spawn in place of some mobs
+   + chickens :: Chickens explode when any damage (even fatal damage)
+                 is dealt to them for any reason
+     - The following passive mobs are always replaced with chickens:
+       cows, pigs, llamas, donkeys, horses, sheep, mules, and parrots
+   + ghasts :: Ghasts spawn in all dimensions
+   + ravagers :: Half of hoglins turn into ravagers
+   + moss :: Moss generates in all overworld chunks and spreads
+             rapidly
+   + cakes :: Cakes spawn in the wild and, when eaten, grant one of
+              several random effects; the more cakes you eat in a
+              short period of time, the worse the effect will be
+   + dripstone :: Dripstone stalactites randomly generate in the wild,
+                  and dripstone will fall if the player walks below it
+   + phantoms :: Every player will always have a phantom pursuing
+                 them, and phantoms are immune to fire damage
+   + mimics :: Chests will spawn in the wild which, if opened, will
+               kill you
+   + witherskele :: Wither skeletons spawn with full diamond armor
+** EGG FEATURES
+   + eggs :: Almost any mob (or diamonds) can spawn from an egg
+   + eggarrow :: Skeletons will fire eggs in addition to arrows
+   + eggdrop :: Several mobs will drop eggs when killed
 ** BLOCK DROP FEATURES
    + dirtstacks :: All blocks have a chance of dropping 64 dirt
                    instead of the intended drop
@@ -88,6 +71,30 @@
    + bedrock :: The following blocks transform into bedrock when
                 mined: leaves, wart blocks, warped wart blocks,
                 diorite, andesite, granite, basalt, blackstone
+   + doordrop :: Doors break after some number of uses, and doors
+                 don't drop anything when broken
+   + buttondrop :: Buttons and levers break after some number of uses;
+                   buttons and levers don't drop anything when broken
+   + glass :: Breaking glass gives you the Unluck effect for seven
+              years
+** MISCELLANEOUS FEATURES
+   + stonetools :: All recipes which produce stone tools are disabled
+   + anvil :: If you stand still for more than ten seconds, an anvil
+              will drop on your head; anvils can be smelted into iron
+              nuggets
+   + witherarrow :: If the player is hit by a skeleton arrow in the
+                    Nether, they get the Wither effect
+   + blazepower :: Blazes will spawn evokers
+   + torches :: The following blocks turn into redstone torches if you
+                look at them: torches, redstone torches, soul torches,
+                lanterns, and soul lanterns
+   + pumpkins :: Wearing a pumpking on your head protects you from
+                 **zapwater** and **torches** but gives you slowness
+                 and mining fatigue
+   + explosivearrow :: Explosive arrows can be crafted from arrows and
+                       gunpowder, and player-thrown tridents explode
+                       on contact
+   + enddirt :: Dirt placed in the End turns into a Shulker
 * IDEAS (UNIMPLEMENTED)
   + Wolves?
   + Fishing?
