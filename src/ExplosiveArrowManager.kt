@@ -15,6 +15,7 @@ import org.bukkit.inventory.ShapelessRecipe
 import org.bukkit.inventory.ItemStack
 import org.bukkit.persistence.PersistentDataType
 import org.bukkit.entity.AbstractArrow
+import org.bukkit.entity.Trident
 import org.bukkit.entity.Player
 import org.bukkit.inventory.PlayerInventory
 
@@ -59,7 +60,7 @@ class ExplosiveArrowManager(val plugin: Plugin) : AbstractFeature(), Listener {
 
   override val name = "explosivearrow"
 
-  override val description = "Explosive arrows can be crafted"
+  override val description = "Explosive arrows can be crafted, and tridents explode"
 
   val recipeKeys = listOf(
     NamespacedKey(plugin, RECIPE_KEY1),
@@ -129,7 +130,10 @@ class ExplosiveArrowManager(val plugin: Plugin) : AbstractFeature(), Listener {
     val shooter = entity.shooter
     if ((entity is AbstractArrow) && (shooter is Player)) {
       val arrow = identifyFiredArrow(shooter.getInventory())
-      val strength = arrow?.itemMeta?.persistentDataContainer?.get(markerKey, PersistentDataType.INTEGER)
+      var strength = arrow?.itemMeta?.persistentDataContainer?.get(markerKey, PersistentDataType.INTEGER)
+      if (entity is Trident) {
+        strength = 3
+      }
       if (strength != null) {
         entity.persistentDataContainer.set(markerKey, PersistentDataType.INTEGER, strength)
       }

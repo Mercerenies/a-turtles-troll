@@ -60,6 +60,9 @@
   + dripstone :: Dripstone stalactites randomly generate in the wild,
                  and dripstone will fall if the player walks below it
   + glass :: Breaking glass gives you the Unluck effect for seven years
+  + explosivearrow :: Explosive arrows can be crafted from arrows and
+                      gunpowder, and player-thrown tridents explode on
+                      contact
 ** BLOCK DROP FEATURES
    + dirtstacks :: All blocks have a chance of dropping 64 dirt
                    instead of the intended drop
