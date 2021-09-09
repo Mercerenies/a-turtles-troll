@@ -5,6 +5,7 @@ import com.mercerenies.turtletroll.ext.*
 import com.mercerenies.turtletroll.Weight
 import com.mercerenies.turtletroll.sample
 import com.mercerenies.turtletroll.SpawnReason
+import com.mercerenies.turtletroll.ReplaceMobsRunnable
 
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
@@ -12,13 +13,17 @@ import org.bukkit.event.entity.CreatureSpawnEvent
 import org.bukkit.event.world.ChunkPopulateEvent
 import org.bukkit.entity.Ghast
 import org.bukkit.entity.EntityType
+import org.bukkit.entity.Entity
 import org.bukkit.World
+import org.bukkit.Chunk
 import org.bukkit.util.Vector
+import org.bukkit.plugin.Plugin
 
 import kotlin.random.Random
 
 class GhastSpawnerListener(
-  override val chance: Double = 0.2
+  val plugin: Plugin,
+  override val chance: Double = 0.2,
 ) : TransformedSpawnerListener() {
 
   override val name = "ghasts"
@@ -28,6 +33,15 @@ class GhastSpawnerListener(
   override val targetEntity: EntityType = EntityType.GHAST
 
   override val offset: Vector = Vector(0.0, 2.0, 0.0)
+
+  private inner class EndermenToGhasts(_chunk: Chunk) : ReplaceMobsRunnable(_chunk) {
+    override fun replaceWith(entity: Entity): EntityType? =
+      if (entity.type == EntityType.ENDERMAN) {
+        EntityType.GHAST
+      } else {
+        null
+      }
+  }
 
   override fun shouldAttemptReplace(event: CreatureSpawnEvent): Boolean {
     if (!SpawnReason.isNatural(event)) {
@@ -49,13 +63,8 @@ class GhastSpawnerListener(
     if (!isEnabled()) {
       return
     }
-    val entities = event.chunk.entities
-    for (entity in entities) {
-      if (entity.type == EntityType.ENDERMAN) {
-        entity.location.world!!.spawnEntity(entity.location, EntityType.GHAST)
-        entity.remove()
-      }
-    }
+    val chunk = event.getChunk()
+    EndermenToGhasts(chunk).schedule(plugin)
   }
 
   companion object {

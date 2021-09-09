@@ -5,6 +5,7 @@ import com.mercerenies.turtletroll.Weight
 import com.mercerenies.turtletroll.sample
 import com.mercerenies.turtletroll.feature.AbstractFeature
 import com.mercerenies.turtletroll.SpawnReason
+import com.mercerenies.turtletroll.ReplaceMobsRunnable
 
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
@@ -14,6 +15,7 @@ import org.bukkit.event.world.ChunkPopulateEvent
 import org.bukkit.entity.Chicken
 import org.bukkit.entity.Zombie
 import org.bukkit.entity.EntityType
+import org.bukkit.entity.Entity
 import org.bukkit.Location
 import org.bukkit.Chunk
 import org.bukkit.plugin.Plugin
@@ -27,7 +29,6 @@ class ChickenDamageListener(
   val zombieRiderChance: Double = 0.1,
 ) : AbstractFeature(), Listener {
   companion object {
-    val DELAY = 3
 
     val DEFAULT_BANNED_MOBS = setOf(
       EntityType.COW, EntityType.PIG, EntityType.LLAMA,
@@ -37,16 +38,13 @@ class ChickenDamageListener(
 
   }
 
-  private inner class ReplaceMobsRunnable(val chunk: Chunk) : BukkitRunnable() {
-    override fun run() {
-      val entities = chunk.entities
-      for (entity in entities) {
-        if (bannedMobs.contains(entity.type)) {
-          entity.location.world!!.spawnEntity(entity.location, EntityType.CHICKEN)
-          entity.remove()
-        }
+  private inner class ReplaceWithChicken(_chunk: Chunk) : ReplaceMobsRunnable(_chunk) {
+    override fun replaceWith(entity: Entity): EntityType? =
+      if (bannedMobs.contains(entity.type)) {
+        EntityType.CHICKEN
+      } else {
+        null
       }
-    }
   }
 
   override val name = "chickens"
@@ -90,7 +88,7 @@ class ChickenDamageListener(
       return
     }
     val chunk = event.getChunk()
-    ReplaceMobsRunnable(chunk).runTaskLater(plugin, DELAY.toLong())
+    ReplaceWithChicken(chunk).schedule(plugin)
   }
 
   private fun considerAddingRider(location: Location, chicken: Chicken) {
