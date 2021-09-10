@@ -11,13 +11,14 @@ for the full feature list.
 
 * Chipped and damaged anvils can be smelted, like regular anvils.
 * Breaking glass gives the victim seven years of the Unluck potion
-  effect.
+  effect
 * Several crops turn to obsidian if not harvested within ten minutes
-  of maturing.
+  of maturing
 * Tridents always explode on contact now
 * Dirt placed in the End turns into a Shulker now
+* Dolphin's Grace now prevents the electric water effect
 * Fixed an issue with passive mobs failing to convert to chickens in
-  Minecraft 1.17.
+  Minecraft 1.17
 
 # Version 1.6
 

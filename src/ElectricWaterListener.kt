@@ -14,6 +14,7 @@ import org.bukkit.block.Block
 import org.bukkit.block.`data`.Waterlogged
 import org.bukkit.scheduler.BukkitRunnable
 import org.bukkit.plugin.Plugin
+import org.bukkit.potion.PotionEffectType
 
 class ElectricWaterListener(
   val plugin: Plugin,
@@ -66,6 +67,10 @@ class ElectricWaterListener(
     }
     // Pumpkins provide immunity against the electricity effect
     if ((player.inventory.helmet?.getType() == Material.CARVED_PUMPKIN) && (pumpkinFeature.isEnabled())){
+      return false
+    }
+    // Dolphin's Grace provides immunity against the electricity effect
+    if (player.hasPotionEffect(PotionEffectType.DOLPHINS_GRACE)) {
       return false
     }
     return true

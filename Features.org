@@ -6,7 +6,8 @@
    + platefire :: Pressure plates have a slight chance of catching
                   fire when you step on them
    + slowslab :: Slabs and stairs slow you down
-   + zapwater :: Water electrocutes you, unless in a boat
+   + zapwater :: Water electrocutes you, unless in a boat or under
+                 Dolphin's Grace
    + zombietrade :: If the player opens the trading UI, the relevant
                     villager becomes a zombie after trading is
                     complete
