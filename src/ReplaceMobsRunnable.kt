@@ -9,8 +9,12 @@ import org.bukkit.plugin.Plugin
 
 abstract class ReplaceMobsRunnable(val chunk: Chunk) : BukkitRunnable() {
 
+  companion object {
+    val DELAY = 3L
+  }
+
   fun schedule(plugin: Plugin) {
-    runTaskLater(plugin, 3L)
+    runTaskLater(plugin, DELAY)
   }
 
   override fun run() {

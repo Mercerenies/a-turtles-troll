@@ -14,6 +14,7 @@ for the full feature list.
   effect
 * Several crops turn to obsidian if not harvested within ten minutes
   of maturing
+* Ender Crystals spawn with Blaze spawners beneath them
 * Tridents always explode on contact now
 * Dirt placed in the End turns into a Shulker now
 * Dolphin's Grace now prevents the electric water effect

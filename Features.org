@@ -44,6 +44,8 @@
    + mimics :: Chests will spawn in the wild which, if opened, will
                kill you
    + witherskele :: Wither skeletons spawn with full diamond armor
+   + endcrystal :: Ender Crystals spawn with Blaze spawners beneath
+                   them
 ** EGG FEATURES
    + eggs :: Almost any mob (or diamonds) can spawn from an egg
    + eggarrow :: Skeletons will fire eggs in addition to arrows
