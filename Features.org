@@ -95,6 +95,10 @@
                        gunpowder, and player-thrown tridents explode
                        on contact
    + enddirt :: Dirt placed in the End turns into a Shulker
+   + obsidian :: Several crops turn to obsidian if not harvested
+                 within ten minutes of maturing
+     - The following crops are affected: beetroots, carrots, cocoa,
+       nether warts, potatoes, sweet berry bushes, and wheat
 * IDEAS (UNIMPLEMENTED)
   + Wolves?
   + Fishing?
