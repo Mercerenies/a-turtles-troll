@@ -102,6 +102,8 @@
                  within ten minutes of maturing
      - The following crops are affected: beetroots, carrots, cocoa,
        nether warts, potatoes, sweet berry bushes, and wheat
+   + dragonbomb :: The Ender Dragon drops TNT at regular intervals;
+                   the Ender Dragon is immune to explosion damage
 * IDEAS (UNIMPLEMENTED)
   + Wolves?
   + Fishing?
@@ -111,5 +113,4 @@
   + Giants?
   + Illusioner?
   + Confusion / Blindness
-  + Dragon TNT
-  + Blaze Crystals
+  + Drowned

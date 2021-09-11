@@ -52,6 +52,7 @@ class Main : JavaPlugin() {
     listenerManager.pumpkinManager.register(this)
     listenerManager.mossManager.register(this)
     listenerManager.dripstoneManager.register()
+    listenerManager.dragonBombManager.register()
     this.getCommand("turtle")!!.setExecutor(featureManager)
     this.getCommand("turtle")!!.setTabCompleter(featureManager)
   }
@@ -80,6 +81,9 @@ class Main : JavaPlugin() {
     } catch (_: IllegalStateException) {}
     try {
       listenerManager.dripstoneManager.cancel()
+    } catch (_: IllegalStateException) {}
+    try {
+      listenerManager.dragonBombManager.cancel()
     } catch (_: IllegalStateException) {}
     this.getCommand("turtle")?.setExecutor(null)
     this.getCommand("turtle")?.setTabCompleter(null)
