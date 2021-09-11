@@ -58,7 +58,6 @@ class ObsidianGrowthListener(
     }
     val blockData = event.getNewState().getBlockData()
     if (blockData is Ageable) {
-      println("" + blockData.getAge() + " " + blockData.getMaximumAge())
       if (blockData.getAge() == blockData.getMaximumAge()) {
         TurnToObsidian(block.location, block.type).runTaskLater(plugin, delay * TICKS_PER_SECOND)
       }
