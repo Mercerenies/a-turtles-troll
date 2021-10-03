@@ -119,3 +119,63 @@
   + Confusion / Blindness
   + Drowned
   + Crops turn into whole trees via **overgrowth** rather than single logs?
+  + Fish into drowneds
+** HATCRAFTER'S IDEAS
+   + Standing on ice/packed ice sets you on fire
+   + Llamas are hostile and have extra knockback on their spit
+   + Cookies, when eaten, have a random effect (lower numbered effects
+     are more likely)
+     - Player gets a random item (**any** item)
+     - A piece of paper is given to the player with a fortune on it
+     - A cookie is given to the player
+     - The player gets a random first-level potion effect applied to
+       them
+     - The player gets the effect of some other food item at random
+     - Two silverfish spawn by the player
+     - The player is teleported to their spawn point
+     - The player is teleported to the world spawn point
+     - A creeper is spawned on the player
+     - All the player's empty inventory slots are filled with dirt
+     - The player dies
+     - All the player's inventory slots are filled with dirt
+   + Snowballs have reverse knockback
+   + Grass spread is slower
+   + Polar bears have Haste 3
+   + Lava spreads faster, and even faster in the Nether
+   + When a wood block is mined, it drops a random wood block
+   + When a wood plank is mined, it drops a random wood plank
+   + Taking fall damage gives the player slowness and nausea for 5
+     seconds
+   + Every 30 seconds, a phantom has a chance of becoming a witch
+     (witches don't take fall damage)
+   + If an axolotl dies, the nearest player also dies
+   + Wandering traders now offer 3 emeralds in exchange for a random
+     item
+   + Every hostile mob has a very small chance of dropping a random item
+   + Shearing a sheep gives you 2x the wool
+   + Shearing a sheep creates an explosion that only damages the
+     player and knocks them back
+   + Eating food has a slim chance to give the player another random
+     food item
+   + Carving a pumpkin gives melon seeds; melon slices are craftable into pumpkin seeds
+   + When a pumpkin is broken is drops melon slices and vice versa
+   + When a zombie would transform into a Drowned, it instead turns
+     into a giant
+   + At dusk they get a cookie named "Nighttime Cookie" and at dawn
+     they get one called "Daytime Cookie". These cookies don't stack
+   + Every in-game day, all players will use the same skin as a random
+     player
+   + Cats spawn a bat on death
+   + Bats spawn a cat on death
+   + Slimes come in even bigger sizes
+   + When a pillager dies, it splits into small or medium slimes
+   + Vex will occasionally transform into strays
+   + Turtle shell and chainmail are the only craftable helmets
+   + Chainmail armor is craftable from buckets of lava
+   + When the player takes damage, they might drop redstone
+     - Excludes damage from fire, lava, poison, and wither
+   + Upon picking up redstone, the player takes damage
+   + Every mob has a small chance of dropping redstone
+   + Redstone torches drop redstone
+   + Pausing the game causes the player to throw the item they
+     currently have selected in their hotbar
