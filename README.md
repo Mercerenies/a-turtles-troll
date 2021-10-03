@@ -7,7 +7,12 @@ for the full feature list.
 
 ## Changelog
 
-# Version 1.7
+### Version 1.8
+
+* The obsidian crop overgrowth effect has been changed to turn crops
+  into logs instead.
+
+### Version 1.7
 
 * Chipped and damaged anvils can be smelted, like regular anvils.
 * Breaking glass gives the victim seven years of the Unluck potion
@@ -23,12 +28,12 @@ for the full feature list.
 * Fixed an issue with passive mobs failing to convert to chickens in
   Minecraft 1.17
 
-# Version 1.6
+### Version 1.6
 
 * Pointed dripstone stalactites generate in the wild and will fall if
   you walk below them
 
-# Version 1.5
+### Version 1.5
 
 * A Turtle's Troll is now built for Minecraft 1.17 against the latest
   Spigot API
@@ -52,7 +57,7 @@ for the full feature list.
 * Azalea leaves are leaves, for the purposes of fire and bedrock
   effects
 
-# Version 1.4
+### Version 1.4
 
 * Beds don't drop when mined anymore
 * Anvils can be smelted into iron nuggets
@@ -71,7 +76,7 @@ for the full feature list.
 * All of the effects that involve mob spawning are corrected to only
   affect natural mob spawning, not eggs or spawners
 
-# Version 1.3
+### Version 1.3
 
 * Mimics will spawn, which look like chests but kill you instantly if
   opened
@@ -88,7 +93,7 @@ for the full feature list.
 * Fixed several of the glitchier aspects of the Weeping Angels effect
 * Pet phantoms have a respawn cooldown now
 
-# Version 1.2
+### Version 1.2
 
 * Buttons and levers have durability now, similar to doors
 * Pressure plates have a slight chance of catching fire when you step
@@ -99,7 +104,7 @@ for the full feature list.
 * Torches and lanterns break if you look at them
 * Everybody gets a pet phantom now
 
-# Version 1.1
+### Version 1.1
 
 * All features can be toggled on an individual basis using the `/turtle` command now
 * Stripped wood will now correctly trigger the bee effect
@@ -115,6 +120,6 @@ for the full feature list.
 * When the player stands on some blocks, sand will fall from above
 * Standing on ore gives Levitation
 
-# Version 1.0
+### Version 1.0
 
 * Initial release

@@ -98,8 +98,8 @@
                        gunpowder, and player-thrown tridents explode
                        on contact
    + enddirt :: Dirt placed in the End turns into a Shulker
-   + obsidian :: Several crops turn to obsidian if not harvested
-                 within ten minutes of maturing
+   + overgrowth :: Several crops turn to a random log if not harvested
+                   within ten minutes of maturing
      - The following crops are affected: beetroots, carrots, cocoa,
        nether warts, potatoes, sweet berry bushes, and wheat
    + dragonbomb :: The Ender Dragon drops TNT at regular intervals;
@@ -114,3 +114,4 @@
   + Illusioner?
   + Confusion / Blindness
   + Drowned
+  + Crops turn into whole trees via **overgrowth** rather than single logs?

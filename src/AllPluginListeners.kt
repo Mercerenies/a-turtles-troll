@@ -60,7 +60,7 @@ class AllPluginListeners(val plugin: Plugin) : Iterable<Listener> {
   val witherArmorListener = WitherArmorListener()
   val glassLuckListener = GlassLuckListener()
   val endDirtListener = EndDirtListener()
-  val obsidianGrowthListener = ObsidianGrowthListener(plugin)
+  val overgrowthListener = OvergrowthListener(plugin, OvergrowthListener::randomWood)
   val endCrystalListener = EndCrystalListener(plugin)
 
   // CancelDropAction is a BlockBreakAction and BedDropListener is a
@@ -84,7 +84,7 @@ class AllPluginListeners(val plugin: Plugin) : Iterable<Listener> {
       bedListener, eggListener, eggArrowListener, eggDropListener,
       witherArmorListener, mossManager, explosiveArrowManager,
       cakeListener, dripstoneManager, glassLuckListener, endDirtListener,
-      obsidianGrowthListener, endCrystalListener, dragonBombManager,
+      overgrowthListener, endCrystalListener, dragonBombManager,
     )
 
   fun getFeatures(): List<Feature> =
@@ -100,7 +100,7 @@ class AllPluginListeners(val plugin: Plugin) : Iterable<Listener> {
       eggArrowListener, eggDropListener, witherArmorListener,
       mossManager, explosiveArrowManager, cakeListener,
       dripstoneManager, glassLuckListener, endDirtListener,
-      obsidianGrowthListener, endCrystalListener,
+      overgrowthListener, endCrystalListener,
       dragonBombManager,
     ) + (breakEvents.getFeatures() - breakEvents.cancelDropAction)
 
