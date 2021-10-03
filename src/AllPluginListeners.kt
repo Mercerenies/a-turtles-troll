@@ -63,6 +63,7 @@ class AllPluginListeners(val plugin: Plugin) : Iterable<Listener> {
   val endDirtListener = EndDirtListener()
   val overgrowthListener = OvergrowthListener(plugin, OvergrowthListener::randomWood)
   val endCrystalListener = EndCrystalListener(plugin)
+  val pillagerGunListener = PillagerGunListener()
 
   // CancelDropAction is a BlockBreakAction and BedDropListener is a
   // Bukkit event listener, but conceptually they do the same thing,
@@ -86,6 +87,7 @@ class AllPluginListeners(val plugin: Plugin) : Iterable<Listener> {
       witherArmorListener, mossManager, explosiveArrowManager,
       cakeListener, dripstoneManager, glassLuckListener, endDirtListener,
       overgrowthListener, endCrystalListener, dragonBombManager, pufferfishRainManager,
+      pillagerGunListener,
     )
 
   fun getFeatures(): List<Feature> =
@@ -103,6 +105,7 @@ class AllPluginListeners(val plugin: Plugin) : Iterable<Listener> {
       dripstoneManager, glassLuckListener, endDirtListener,
       overgrowthListener, endCrystalListener,
       dragonBombManager, pufferfishRainManager,
+      pillagerGunListener,
     ) + (breakEvents.getFeatures() - breakEvents.cancelDropAction)
 
   override fun iterator(): Iterator<Listener> =

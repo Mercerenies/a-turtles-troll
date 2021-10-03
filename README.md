@@ -10,6 +10,8 @@ for the full feature list.
 ### Version 1.8
 
 * Pufferfish rain on all players at noon
+* Pillagers spawn with crossbows named "AK47" which have Quick Charge
+  V.
 * The obsidian crop overgrowth effect has been changed to turn crops
   into logs instead.
 
