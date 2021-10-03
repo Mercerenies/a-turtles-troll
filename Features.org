@@ -46,6 +46,9 @@
    + witherskele :: Wither skeletons spawn with full diamond armor
    + endcrystal :: Ender Crystals spawn with Blaze spawners beneath
                    them
+   + pufferfish :: At high noon, pufferfish rain from the sky on all
+                   players; pufferfish are not damaged by drowning,
+                   dryout, or fall damage
 ** EGG FEATURES
    + eggs :: Almost any mob (or diamonds) can spawn from an egg
    + eggarrow :: Skeletons will fire eggs in addition to arrows
@@ -108,7 +111,6 @@
   + Wolves?
   + Fishing?
   + Polar bears?
-  + Pufferfish?
   + Killer rabbits?
   + Giants?
   + Illusioner?

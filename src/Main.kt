@@ -47,6 +47,7 @@ class Main : JavaPlugin() {
     listenerManager.explosiveArrowManager.addRecipes()
     anvilRunnable.register(this)
     sandAttackRunnable.register(this)
+    listenerManager.pufferfishRainManager.register()
     listenerManager.angelManager.register()
     listenerManager.phantomManager.register()
     listenerManager.pumpkinManager.register(this)
@@ -66,6 +67,9 @@ class Main : JavaPlugin() {
     } catch (_: IllegalStateException) {}
     try {
       sandAttackRunnable.cancel()
+    } catch (_: IllegalStateException) {}
+    try {
+      listenerManager.pufferfishRainManager.cancel()
     } catch (_: IllegalStateException) {}
     try {
       listenerManager.angelManager.cancel()

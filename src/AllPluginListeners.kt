@@ -29,6 +29,7 @@ class AllPluginListeners(val plugin: Plugin) : Iterable<Listener> {
   val explosiveArrowManager = ExplosiveArrowManager(plugin)
   val dripstoneManager = DripstoneManager(plugin)
   val dragonBombManager = DragonBombManager(plugin)
+  val pufferfishRainManager = PufferfishRainManager(plugin)
 
   val breakEvents = BlockBreakEvents()
   val chickenListener = ChickenDamageListener(plugin)
@@ -84,7 +85,7 @@ class AllPluginListeners(val plugin: Plugin) : Iterable<Listener> {
       bedListener, eggListener, eggArrowListener, eggDropListener,
       witherArmorListener, mossManager, explosiveArrowManager,
       cakeListener, dripstoneManager, glassLuckListener, endDirtListener,
-      overgrowthListener, endCrystalListener, dragonBombManager,
+      overgrowthListener, endCrystalListener, dragonBombManager, pufferfishRainManager,
     )
 
   fun getFeatures(): List<Feature> =
@@ -101,7 +102,7 @@ class AllPluginListeners(val plugin: Plugin) : Iterable<Listener> {
       mossManager, explosiveArrowManager, cakeListener,
       dripstoneManager, glassLuckListener, endDirtListener,
       overgrowthListener, endCrystalListener,
-      dragonBombManager,
+      dragonBombManager, pufferfishRainManager,
     ) + (breakEvents.getFeatures() - breakEvents.cancelDropAction)
 
   override fun iterator(): Iterator<Listener> =
