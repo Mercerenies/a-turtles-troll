@@ -16,12 +16,12 @@ import org.bukkit.plugin.Plugin
 
 import kotlin.collections.HashSet
 
-class LeavesFireListener(val plugin: Plugin) : AbstractFeature(), Listener {
+class ForestFireListener(val plugin: Plugin) : AbstractFeature(), Listener {
   private var memory = HashSet<Location>()
 
   override val name = "forestfire"
 
-  override val description = "Leaves catch fire when you walk on them"
+  override val description = "Leaves and ice catch fire when you walk on them"
 
   companion object {
     val TICKS_PER_SECOND = 20
@@ -29,6 +29,7 @@ class LeavesFireListener(val plugin: Plugin) : AbstractFeature(), Listener {
     val BLOCKS = setOf(
       Material.ACACIA_LEAVES, Material.AZALEA_LEAVES, Material.BIRCH_LEAVES, Material.DARK_OAK_LEAVES,
       Material.FLOWERING_AZALEA_LEAVES, Material.OAK_LEAVES, Material.JUNGLE_LEAVES, Material.SPRUCE_LEAVES,
+      Material.BLUE_ICE, Material.FROSTED_ICE, Material.ICE, Material.PACKED_ICE,
     )
   }
 

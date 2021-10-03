@@ -42,7 +42,7 @@ class AllPluginListeners(val plugin: Plugin) : Iterable<Listener> {
   val electricListener = ElectricWaterListener(plugin, pumpkinManager)
   val blazeListener = BlazeAttackListener(plugin)
   val zombifyListener = ZombifyTradeListener()
-  val leavesListener = LeavesFireListener(plugin)
+  val forestFireListener = ForestFireListener(plugin)
   val roseListener = WitherRoseListener()
   val doorListener = DoorDamageListener()
   val buttonListener = ButtonDamageListener()
@@ -79,7 +79,7 @@ class AllPluginListeners(val plugin: Plugin) : Iterable<Listener> {
     listOf(
       breakEvents.listener, chickenListener, grassListener, snowListener,
       ghastListener, ravagerListener, skeleListener, electricListener,
-      blazeListener, zombifyListener, leavesListener, roseListener,
+      blazeListener, zombifyListener, forestFireListener, roseListener,
       endStoneListener, doorListener, angelManager, levitationListener,
       buttonListener, plateListener, slabListener, lightListener,
       phantomManager, lavaListener, pumpkinManager, mimicListener,
@@ -94,7 +94,7 @@ class AllPluginListeners(val plugin: Plugin) : Iterable<Listener> {
     listOf(
       chickenListener, grassListener, snowListener,
       ghastListener, ravagerListener, skeleListener,
-      blazeListener, zombifyListener, leavesListener,
+      blazeListener, zombifyListener, forestFireListener,
       roseListener, endStoneListener, doorListener,
       angelManager, levitationListener, buttonListener,
       plateListener, slabListener, lightListener,

@@ -11,7 +11,7 @@
    + zombietrade :: If the player opens the trading UI, the relevant
                     villager becomes a zombie after trading is
                     complete
-   + forestfire :: Leaves catch fire when you walk on them
+   + forestfire :: Leaves and ice catch fire when you walk on them
    + snowspeed :: Snow makes you go fast
    + endspeed :: End stones make you go fast
    + tallgrass :: Tall grass, ferns, and dead bushes give you poison
@@ -77,8 +77,8 @@
                    include: netherrack, nylium (both kinds), soul
                    sand, and soul soil, nether bricks
    + bedrock :: The following blocks transform into bedrock when
-                mined: leaves, wart blocks, warped wart blocks,
-                diorite, andesite, granite, basalt, blackstone
+                mined: leaves, ice blocks, wart blocks, warped wart
+                blocks, diorite, andesite, granite, basalt, blackstone
    + doordrop :: Doors break after some number of uses, and doors
                  don't drop anything when broken
    + buttondrop :: Buttons and levers break after some number of uses;
@@ -120,6 +120,7 @@
   + Drowned
   + Crops turn into whole trees via **overgrowth** rather than single logs?
   + Fish into drowneds
+  + Killing a charged creeper is a guaranteed diamond drop
 ** HATCRAFTER'S IDEAS
    + Standing on ice/packed ice sets you on fire
    + Llamas are hostile and have extra knockback on their spit

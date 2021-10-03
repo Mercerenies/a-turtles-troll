@@ -100,7 +100,7 @@ class BlockBreakEvents {
     val FREQUENT_DIRT_DROP = REGULAR_DIRT_DROP.filter { FREQUENT_DIRT_DROP_TRIGGERS.contains(it.block.type) }
 
     val BEDROCK_BLOCKS =
-      LeavesFireListener.BLOCKS + setOf(
+      ForestFireListener.BLOCKS + setOf(
         Material.NETHER_WART_BLOCK, Material.WARPED_WART_BLOCK,
         Material.DIORITE, Material.ANDESITE, Material.GRANITE,
         Material.BASALT, Material.BLACKSTONE,

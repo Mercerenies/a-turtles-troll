@@ -11,9 +11,12 @@ for the full feature list.
 
 * Pufferfish rain on all players at noon
 * Pillagers spawn with crossbows named "AK47" which have Quick Charge
-  V.
+  V
+* **forestfire** effect has been extended to apply to ice as well as
+  leaves
+* Ice blocks turn to bedrock when broken
 * The obsidian crop overgrowth effect has been changed to turn crops
-  into logs instead.
+  into logs instead
 
 ### Version 1.7
 
