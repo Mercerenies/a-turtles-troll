@@ -15,7 +15,7 @@ import org.bukkit.enchantments.Enchantment
 
 import kotlin.random.Random
 
-class PillagerGunListener(val chance: Double = 1.0) : AbstractFeature(), Listener {
+class PillagerGunListener() : AbstractFeature(), Listener {
 
   override val name: String = "ak47"
 
