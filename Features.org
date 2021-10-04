@@ -23,6 +23,8 @@
    + witherrose :: All flowers (and berry bushes) give the Wither
                    effect on contact now, or when picked up
    + classiclava :: Lava spreads further in the overworld and the End
+   + fall :: Taking fall damage causes you to suffer the Slowness and
+             Confusion effects for a bit
 ** CUSTOM SPAWNING FEATURES
    + weepingangel :: Armor stands will chase you when you're not
                      looking at them, and armor stands will rarely

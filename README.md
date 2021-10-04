@@ -10,6 +10,7 @@ for the full feature list.
 ### Version 1.8
 
 * Pufferfish rain on all players at noon
+* Taking fall damage causes the Slowness and Confusion effects
 * Pillagers spawn with crossbows named "AK47" which have Quick Charge
   V
 * Lava spreads further in the overworld and the End
