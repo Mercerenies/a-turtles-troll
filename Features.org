@@ -22,6 +22,7 @@
                    constantly fall from above: sand, gravel, end stone
    + witherrose :: All flowers (and berry bushes) give the Wither
                    effect on contact now, or when picked up
+   + classiclava :: Lava spreads further in the overworld and the End
 ** CUSTOM SPAWNING FEATURES
    + weepingangel :: Armor stands will chase you when you're not
                      looking at them, and armor stands will rarely
@@ -122,7 +123,6 @@
   + Fish into drowneds
   + Killing a charged creeper is a guaranteed diamond drop
 ** HATCRAFTER'S IDEAS
-   + Standing on ice/packed ice sets you on fire
    + Llamas are hostile and have extra knockback on their spit
    + Cookies, when eaten, have a random effect (lower numbered effects
      are more likely)

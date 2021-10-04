@@ -12,6 +12,7 @@ for the full feature list.
 * Pufferfish rain on all players at noon
 * Pillagers spawn with crossbows named "AK47" which have Quick Charge
   V
+* Lava spreads further in the overworld and the End
 * **forestfire** effect has been extended to apply to ice as well as
   leaves
 * Ice blocks turn to bedrock when broken
