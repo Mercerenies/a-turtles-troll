@@ -4,6 +4,7 @@ package com.mercerenies.turtletroll
 import com.mercerenies.turtletroll.chicken.ChickenDamageListener
 import com.mercerenies.turtletroll.transformed.GhastSpawnerListener
 import com.mercerenies.turtletroll.transformed.RavagerSpawnerListener
+import com.mercerenies.turtletroll.transformed.DrownedSpawnerListener
 import com.mercerenies.turtletroll.durability.DoorDamageListener
 import com.mercerenies.turtletroll.durability.ButtonDamageListener
 import com.mercerenies.turtletroll.angel.WeepingAngelManager
@@ -67,6 +68,7 @@ class AllPluginListeners(val plugin: Plugin) : Iterable<Listener> {
   val pillagerGunListener = PillagerGunListener()
   val fallDamageListener = FallDamageListener()
   val chargedCreeperListener = ChargedCreeperListener()
+  val drownedListener = DrownedSpawnerListener(plugin)
 
   // CancelDropAction is a BlockBreakAction and BedDropListener is a
   // Bukkit event listener, but conceptually they do the same thing,
@@ -91,6 +93,7 @@ class AllPluginListeners(val plugin: Plugin) : Iterable<Listener> {
       cakeListener, dripstoneManager, glassLuckListener, endDirtListener,
       overgrowthListener, endCrystalListener, dragonBombManager, pufferfishRainManager,
       pillagerGunListener, classicLavaManager, fallDamageListener, chargedCreeperListener,
+      drownedListener,
     )
 
   fun getFeatures(): List<Feature> =
@@ -110,6 +113,7 @@ class AllPluginListeners(val plugin: Plugin) : Iterable<Listener> {
       dragonBombManager, pufferfishRainManager,
       pillagerGunListener, classicLavaManager,
       fallDamageListener, chargedCreeperListener,
+      drownedListener,
     ) + (breakEvents.getFeatures() - breakEvents.cancelDropAction)
 
   override fun iterator(): Iterator<Listener> =

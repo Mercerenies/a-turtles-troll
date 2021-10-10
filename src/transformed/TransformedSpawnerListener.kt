@@ -22,6 +22,9 @@ abstract class TransformedSpawnerListener() : AbstractFeature(), Listener {
 
   abstract val targetEntity: EntityType
 
+  open val cancelOriginal: Boolean
+    get() = true
+
   open val offset: Vector
     get() = Vector(0.0, 0.0, 0.0)
 
@@ -37,7 +40,9 @@ abstract class TransformedSpawnerListener() : AbstractFeature(), Listener {
     val world = event.location.world!!
     if (shouldAttemptReplace(event)) {
       if (Random.nextDouble() < chance) {
-        event.setCancelled(true)
+        if (cancelOriginal) {
+          event.setCancelled(true)
+        }
         val newEntity = world.spawnEntity(event.location.add(offset), targetEntity)
         onSpawn(newEntity)
       }

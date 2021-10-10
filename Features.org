@@ -53,7 +53,9 @@
                    players; pufferfish are not damaged by drowning,
                    dryout, or fall damage
    + ak47 :: Pillagers spawn with a crossbow called "AK47" which has
-             Quick Charge V.
+             Quick Charge V
+   + drowned :: Whenever a fish spawns, a Drowned spawns alongside it;
+                Drowned zombies always spawn with leather helmets
 ** EGG FEATURES
    + eggs :: Almost any mob (or diamonds) can spawn from an egg
    + eggarrow :: Skeletons will fire eggs in addition to arrows
@@ -125,6 +127,7 @@
   + Drowned
   + Crops turn into whole trees via **overgrowth** rather than single logs?
   + Fish into drowneds
+  + Gravestones
 ** HATCRAFTER'S IDEAS
    + Llamas are hostile and have extra knockback on their spit
    + Cookies, when eaten, have a random effect (lower numbered effects
