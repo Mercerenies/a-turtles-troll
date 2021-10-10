@@ -116,6 +116,8 @@
                    the Ender Dragon is immune to explosion damage
    + chargedcreeper :: Killing a charged creeper always drops a
                        diamond
+   + gravestone :: Whenever a player dies, a gravestone appears at the
+                   site of death
 * IDEAS (UNIMPLEMENTED)
   + Wolves?
   + Fishing?
@@ -123,11 +125,8 @@
   + Killer rabbits?
   + Giants?
   + Illusioner?
-  + Confusion / Blindness
-  + Drowned
+  + Blindness
   + Crops turn into whole trees via **overgrowth** rather than single logs?
-  + Fish into drowneds
-  + Gravestones
 ** HATCRAFTER'S IDEAS
    + Llamas are hostile and have extra knockback on their spit
    + Cookies, when eaten, have a random effect (lower numbered effects

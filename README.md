@@ -9,6 +9,7 @@ for the full feature list.
 
 ### Version 1.9
 
+* Whenever a player dies, a gravestone appears at the site of death
 * Killing a charged creeper always drops a diamond
 * Drowned zombies spawn alongside fish
 * Angels, mimics, and cakes all have local spawn limits now
