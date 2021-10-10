@@ -10,6 +10,7 @@ for the full feature list.
 ### Version 1.9
 
 * Whenever a player dies, a gravestone appears at the site of death
+* When an axolotl dies, the nearest player also dies (within 32 blocks)
 * Killing a charged creeper always drops a diamond
 * Drowned zombies spawn alongside fish
 * Angels, mimics, and cakes all have local spawn limits now

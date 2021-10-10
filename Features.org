@@ -25,6 +25,8 @@
    + classiclava :: Lava spreads further in the overworld and the End
    + fall :: Taking fall damage causes you to suffer the Slowness and
              Confusion effects for a bit
+   + axolotl :: When an axolotl dies, the nearest player (within 32
+                blocks) also dies
 ** CUSTOM SPAWNING FEATURES
    + weepingangel :: Armor stands will chase you when you're not
                      looking at them, and armor stands will rarely
@@ -154,7 +156,6 @@
      seconds
    + Every 30 seconds, a phantom has a chance of becoming a witch
      (witches don't take fall damage)
-   + If an axolotl dies, the nearest player also dies
    + Wandering traders now offer 3 emeralds in exchange for a random
      item
    + Every hostile mob has a very small chance of dropping a random item

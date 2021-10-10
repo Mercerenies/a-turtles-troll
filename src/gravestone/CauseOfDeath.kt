@@ -127,6 +127,7 @@ data class VanillaMob(val entityType: EntityType) : CauseOfDeath {
 
   override fun toInscription(): String =
     when (entityType) {
+      EntityType.AXOLOTL -> "Salamander"
       EntityType.ARROW, EntityType.TRIDENT -> "Sharp rock"
       EntityType.BEE -> "Seinfeld"
       EntityType.BLAZE, EntityType.MAGMA_CUBE -> "Flamey boi"
