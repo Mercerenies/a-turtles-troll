@@ -7,6 +7,8 @@ import com.mercerenies.turtletroll.SpawnReason
 import com.mercerenies.turtletroll.ext.*
 import com.mercerenies.turtletroll.Weight
 import com.mercerenies.turtletroll.sample
+import com.mercerenies.turtletroll.BlockSelector
+import com.mercerenies.turtletroll.mimic.MimicListener
 
 import org.bukkit.entity.Player
 import org.bukkit.entity.LivingEntity
@@ -119,16 +121,18 @@ class CakeListener(
       return
     }
     if (MOBS_TO_REPLACE.contains(event.entity.type)) {
-      if (Random.nextDouble() < MOB_REPLACE_CHANCE) {
-        val below = event.location.clone().add(0.0, -1.0, 0.0)
-        if (below.block.type != Material.AIR) {
-          event.setCancelled(true)
-          event.location.block.type = makeCake()
-          val blockData = event.location.block.getBlockData()
-          if (blockData is Lightable) {
-            blockData.setLit(true)
+      if (BlockSelector.countNearbyMatching(event.location.block, MimicListener.SAFETY_RADIUS, BlockSelector::isMimicOrCake) < 1) {
+        if (Random.nextDouble() < MOB_REPLACE_CHANCE) {
+          val below = event.location.clone().add(0.0, -1.0, 0.0)
+          if (below.block.type != Material.AIR) {
+            event.setCancelled(true)
+            event.location.block.type = makeCake()
+            val blockData = event.location.block.getBlockData()
+            if (blockData is Lightable) {
+              blockData.setLit(true)
+            }
+            event.location.block.setBlockData(blockData)
           }
-          event.location.block.setBlockData(blockData)
         }
       }
     }

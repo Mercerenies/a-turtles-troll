@@ -1,6 +1,9 @@
 
 package com.mercerenies.turtletroll
 
+import com.mercerenies.turtletroll.mimic.MimicIdentifier
+import com.mercerenies.turtletroll.cake.CakeListener
+
 import org.bukkit.Chunk
 import org.bukkit.block.Block
 
@@ -24,5 +27,24 @@ object BlockSelector {
     val z = block.getZ() + Random.nextInt(-15, 16)
     return block.location.world!!.getBlockAt(x, y, z)
   }
+
+  fun countNearbyMatching(block: Block, distance: Int, condition: (Block) -> Boolean): Int {
+    var count = 0
+    for (dx in -distance..distance) {
+      for (dy in -distance..distance) {
+        for (dz in -distance..distance) {
+          val testBlock = block.location.clone().add(dx.toDouble(), dy.toDouble(), dz.toDouble()).block
+          if (condition(testBlock)) {
+            count += 1
+          }
+        }
+      }
+    }
+    return count
+  }
+
+  // Used to detect mimics and cakes for spawn limits
+  fun isMimicOrCake(block: Block): Boolean =
+    MimicIdentifier.isMimic(block) || CakeListener.isCake(block.type)
 
 }

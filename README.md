@@ -7,6 +7,10 @@ for the full feature list.
 
 ## Changelog
 
+### Version 1.9
+
+* Angels, mimics, and cakes all have local spawn limits now
+
 ### Version 1.8
 
 * Pufferfish rain on all players at noon

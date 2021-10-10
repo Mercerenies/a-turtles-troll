@@ -4,6 +4,7 @@ package com.mercerenies.turtletroll.mimic
 import com.mercerenies.turtletroll.feature.Feature
 import com.mercerenies.turtletroll.feature.AbstractFeature
 import com.mercerenies.turtletroll.SpawnReason
+import com.mercerenies.turtletroll.BlockSelector
 
 import org.bukkit.entity.Player
 import org.bukkit.entity.LivingEntity
@@ -35,6 +36,8 @@ class MimicListener(
   companion object {
     val TICKS_PER_SECOND = 20
     val KILL_DELAY = TICKS_PER_SECOND
+
+    val SAFETY_RADIUS = 8
 
     val MOB_REPLACE_CHANCE = 0.05
     val MOBS_TO_REPLACE = setOf(
@@ -70,11 +73,13 @@ class MimicListener(
       return
     }
     if (MOBS_TO_REPLACE.contains(event.entity.type)) {
-      if (Random.nextDouble() < MOB_REPLACE_CHANCE) {
-        val below = event.location.clone().add(0.0, -1.0, 0.0)
-        if (below.block.type != Material.AIR) {
-          event.setCancelled(true)
-          MimicIdentifier.spawnMimic(event.location.block)
+      if (BlockSelector.countNearbyMatching(event.location.block, SAFETY_RADIUS, BlockSelector::isMimicOrCake) < 1) {
+        if (Random.nextDouble() < MOB_REPLACE_CHANCE) {
+          val below = event.location.clone().add(0.0, -1.0, 0.0)
+          if (below.block.type != Material.AIR) {
+            event.setCancelled(true)
+            MimicIdentifier.spawnMimic(event.location.block)
+          }
         }
       }
     }
