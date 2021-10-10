@@ -9,6 +9,7 @@ for the full feature list.
 
 ### Version 1.9
 
+* Killing a charged creeper always drops a diamond
 * Angels, mimics, and cakes all have local spawn limits now
 * Fixed a bug with the Weeping Angel pursuit code
 

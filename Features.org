@@ -112,6 +112,8 @@
        nether warts, potatoes, sweet berry bushes, and wheat
    + dragonbomb :: The Ender Dragon drops TNT at regular intervals;
                    the Ender Dragon is immune to explosion damage
+   + chargedcreeper :: Killing a charged creeper always drops a
+                       diamond
 * IDEAS (UNIMPLEMENTED)
   + Wolves?
   + Fishing?
@@ -123,7 +125,6 @@
   + Drowned
   + Crops turn into whole trees via **overgrowth** rather than single logs?
   + Fish into drowneds
-  + Killing a charged creeper is a guaranteed diamond drop
 ** HATCRAFTER'S IDEAS
    + Llamas are hostile and have extra knockback on their spit
    + Cookies, when eaten, have a random effect (lower numbered effects
