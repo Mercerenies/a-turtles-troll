@@ -10,6 +10,7 @@ for the full feature list.
 ### Version 1.9
 
 * Angels, mimics, and cakes all have local spawn limits now
+* Fixed a bug with the Weeping Angel pursuit code
 
 ### Version 1.8
 

@@ -131,6 +131,13 @@ class WeepingAngelManager(
         continue
       }
 
+      // If the player has logged off or is in a different world, then
+      // cancel the attack
+      if ((!onlinePlayers.contains(info.target)) || (info.target.world != angel.world)) {
+        iter.remove()
+        continue
+      }
+
       val targetVec = info.target.location.clone().subtract(angel.location).toVector()
       if (targetVec.lengthSquared() < TOUCHING_SQUARED_THRESHOLD) {
         // We're close enough to damage the player (we can do this even if we're safe)
@@ -142,13 +149,6 @@ class WeepingAngelManager(
       }
 
       if (safeAngels.contains(angel)) {
-        continue
-      }
-
-      // If the player has logged off or is in a different world, then
-      // cancel the attack
-      if ((!onlinePlayers.contains(info.target)) || (info.target.world != angel.world)) {
-        iter.remove()
         continue
       }
 
