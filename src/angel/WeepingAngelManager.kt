@@ -45,6 +45,9 @@ class WeepingAngelManager(
     val DEATH_SQUARED_THRESHOLD = 1.5
     val TOUCHING_SQUARED_THRESHOLD = 0.75
 
+    val MAX_ANGELS_PER_CHUNK = 2
+    val CHUNK_SIZE = 16
+
     val MOB_REPLACE_CHANCE = 0.05
     val MOBS_TO_REPLACE = setOf(
       EntityType.ZOMBIE, EntityType.SKELETON, EntityType.SPIDER, EntityType.ZOMBIFIED_PIGLIN,
@@ -53,6 +56,12 @@ class WeepingAngelManager(
 
     fun getAllAngels(): List<ArmorStand> =
       Bukkit.getWorlds().flatMap { it.getEntitiesByClass(ArmorStand::class.java) }
+
+    fun getNearbyAngels(baseLoc: Location): List<ArmorStand> =
+      baseLoc.getWorld()!!.getEntitiesByClass(ArmorStand::class.java).filter { entity ->
+        val distance = Math.abs(entity.location.x - baseLoc.x) + Math.abs(entity.location.z - baseLoc.z)
+        distance < CHUNK_SIZE
+      }
 
     fun getAngelInLineOfSight(angels: List<ArmorStand>, entity: LivingEntity): ArmorStand? {
       for (block in entity.getLineOfSight(null, 32)) {
@@ -193,10 +202,12 @@ class WeepingAngelManager(
       return
     }
     if (MOBS_TO_REPLACE.contains(event.entity.type)) {
-      if (Random.nextDouble() < MOB_REPLACE_CHANCE) {
-        event.setCancelled(true)
-        val angel = ArmorStandSpawner.spawn(event.location)
-        assignIdlePose(angel)
+      if (getNearbyAngels(event.location).size < MAX_ANGELS_PER_CHUNK) {
+        if (Random.nextDouble() < MOB_REPLACE_CHANCE) {
+          event.setCancelled(true)
+          val angel = ArmorStandSpawner.spawn(event.location)
+          assignIdlePose(angel)
+        }
       }
     }
   }
