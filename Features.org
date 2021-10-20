@@ -187,3 +187,8 @@
    + Redstone torches drop redstone
    + Pausing the game causes the player to throw the item they
      currently have selected in their hotbar
+   + Breeding animals sometimes spawns a Vindicator named "Johnny"
+   + Creepers spawn with 2 minutes of a random status effect
+   + mobGriefing is off
+     - If a player dies, mobGriefing is enabled for 10 minutes
+     - Bonus points if the game shames whoever activated it
