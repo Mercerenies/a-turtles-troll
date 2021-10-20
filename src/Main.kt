@@ -7,6 +7,7 @@ import com.mercerenies.turtletroll.feature.FeatureManager
 import com.mercerenies.turtletroll.feature.CompositeFeature
 import com.mercerenies.turtletroll.recipe.StoneRecipeDeleter
 import com.mercerenies.turtletroll.recipe.AnvilRecipeFeature
+import com.mercerenies.turtletroll.recipe.AngelRecipeFeature
 
 import org.bukkit.Bukkit
 import org.bukkit.Material
@@ -18,6 +19,9 @@ class Main : JavaPlugin() {
   val sandAttackRunnable = SandAttackRunnable(SAND_ATTACK_TRIGGERS)
 
   val anvilRecipeFeature = AnvilRecipeFeature(this)
+  val angelRecipeFeature = AngelRecipeFeature(this)
+
+  val listenerManager = AllPluginListeners(this)
 
   val anvilFeature = CompositeFeature(
     anvilRunnable.name,
@@ -25,9 +29,14 @@ class Main : JavaPlugin() {
     listOf(anvilRunnable, anvilRecipeFeature),
   )
 
-  val listenerManager = AllPluginListeners(this)
+  val angelFeature = CompositeFeature(
+    listenerManager.angelManager.name,
+    listenerManager.angelManager.description,
+    listOf(listenerManager.angelManager, angelRecipeFeature),
+  )
+
   val featureManager = FeatureManager(
-    listOf(recipeDeleter, anvilFeature, sandAttackRunnable) + listenerManager.getFeatures()
+    listOf(recipeDeleter, anvilFeature, angelFeature, sandAttackRunnable) + listenerManager.getFeatures()
   )
 
   companion object {
@@ -44,6 +53,7 @@ class Main : JavaPlugin() {
     }
     recipeDeleter.removeRecipes()
     anvilRecipeFeature.addRecipes()
+    angelRecipeFeature.addRecipes()
     listenerManager.explosiveArrowManager.addRecipes()
     anvilRunnable.register(this)
     sandAttackRunnable.register(this)
@@ -62,6 +72,7 @@ class Main : JavaPlugin() {
   override fun onDisable() {
     recipeDeleter.addRecipes()
     anvilRecipeFeature.removeRecipes()
+    angelRecipeFeature.removeRecipes()
     listenerManager.explosiveArrowManager.removeRecipes()
     try {
       anvilRunnable.cancel()

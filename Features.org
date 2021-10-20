@@ -30,7 +30,8 @@
 ** CUSTOM SPAWNING FEATURES
    + weepingangel :: Armor stands will chase you when you're not
                      looking at them, and armor stands will rarely
-                     spawn in place of some mobs
+                     spawn in place of some mobs; armor stands can be
+                     crafted into wooden slabs
    + chickens :: Chickens explode when any damage (even fatal damage)
                  is dealt to them for any reason
      - The following passive mobs are always replaced with chickens:

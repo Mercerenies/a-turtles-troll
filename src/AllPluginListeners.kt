@@ -25,7 +25,7 @@ import kotlin.collections.Iterable
 
 class AllPluginListeners(val plugin: Plugin) : Iterable<Listener> {
   val pumpkinManager = PumpkinSlownessManager()
-  val angelManager = WeepingAngelManager(plugin)
+  val angelManager = WeepingAngelManager(plugin) // Not included in feature list (!!)
   val phantomManager = PetPhantomManager(plugin)
   val mossManager = ContagiousMossManager()
   val explosiveArrowManager = ExplosiveArrowManager(plugin)
@@ -105,7 +105,7 @@ class AllPluginListeners(val plugin: Plugin) : Iterable<Listener> {
       ghastListener, ravagerListener, skeleListener,
       blazeListener, zombifyListener, forestFireListener,
       roseListener, endStoneListener, doorListener,
-      angelManager, levitationListener, buttonListener,
+      levitationListener, buttonListener,
       plateListener, slabListener, lightListener,
       phantomManager, lavaListener, pumpkinManager,
       mimicListener, dropCompositeFeature, eggListener,
