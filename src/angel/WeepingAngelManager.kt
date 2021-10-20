@@ -83,8 +83,10 @@ class WeepingAngelManager(
       getAngelInLineOfSight(getAllAngels(), entity)
 
     fun assignIdlePose(angel: ArmorStand) {
-      angel.setLeftArmPose(EulerAngle(-130.0, 50.0, 10.0))
-      angel.setRightArmPose(EulerAngle(-130.0, -50.0, -10.0))
+      // left: -130, 50, 10
+      // right: -130, -50, -10
+      angel.setLeftArmPose(EulerAngle(2.269, -0.873, 0.175))
+      angel.setRightArmPose(EulerAngle(2.269, 0.873, -0.175))
     }
 
     fun assignAttackPose(angel: ArmorStand) {

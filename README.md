@@ -7,6 +7,12 @@ for the full feature list.
 
 ## Changelog
 
+### Version 1.10
+
+* Tenth version hype! I'd like to thank my friends for dealing with my
+  shenanigans through *ten* versions of this thing. Love you guys <3
+* Weeping Angel arm pose is fixed now.
+
 ### Version 1.9
 
 * Whenever a player dies, a gravestone appears at the site of death
