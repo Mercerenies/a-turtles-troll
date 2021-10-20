@@ -11,8 +11,9 @@ for the full feature list.
 
 * Tenth version hype! I'd like to thank my friends for dealing with my
   shenanigans through *ten* versions of this thing. Love you guys <3
-* Weeping Angel arm pose is fixed now.
+* Weeping Angel arm pose is fixed now
 * Armor stands can be crafted into jungle wood slabs now
+* Lowered the rate of dripstone stalactites spawning
 
 ### Version 1.9
 
@@ -38,7 +39,7 @@ for the full feature list.
 
 ### Version 1.7
 
-* Chipped and damaged anvils can be smelted, like regular anvils.
+* Chipped and damaged anvils can be smelted, like regular anvils
 * Breaking glass gives the victim seven years of the Unluck potion
   effect
 * Several crops turn to obsidian if not harvested within ten minutes

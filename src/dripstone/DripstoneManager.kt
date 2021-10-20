@@ -156,7 +156,7 @@ class DripstoneManager(val plugin: Plugin) : RunnableFeature(), Listener {
   }
 
   fun register() {
-    this.runTaskTimer(plugin, 1L, 4L)
+    this.runTaskTimer(plugin, 1L, 10L)
   }
 
 }
