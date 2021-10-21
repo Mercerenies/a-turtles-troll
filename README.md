@@ -14,6 +14,7 @@ for the full feature list.
 * Each day at dawn, the gods will demand to see someone die in a
   specific way; if nobody dies that way on that day, then no one will
   be allowed to sleep that night
+* Ghast fireballs erupt into lava on contact
 * Ghasts instantly burn in daylight
 * Weeping Angel arm pose is fixed now
 * Armor stands can be crafted into jungle wood slabs now
