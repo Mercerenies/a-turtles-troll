@@ -3,6 +3,9 @@ package com.mercerenies.turtletroll.gravestone
 
 import com.mercerenies.turtletroll.feature.Feature
 import com.mercerenies.turtletroll.feature.RunnableFeature
+import com.mercerenies.turtletroll.Weight
+import com.mercerenies.turtletroll.sample
+import com.mercerenies.turtletroll.ext.*
 
 import org.bukkit.entity.Player
 import org.bukkit.entity.PufferFish
@@ -28,6 +31,28 @@ class BedtimeManager(val plugin: Plugin) : RunnableFeature(), Listener {
     val DAWN_TIME = 0L
     val DUSK_TIME = 12000L
 
+    val EASY = listOf(
+      DeathCondition.True, DeathCondition.MustBeMimic, DeathCondition.MustBeVector,
+      DeathCondition.MustBeAngel, DeathCondition.FireDamage, DeathCondition.Falling,
+      DeathCondition.MustBeBee, DeathCondition.MustBeSilverfish,
+    )
+
+    val MEDIUM = listOf(
+      DeathCondition.Explosion, DeathCondition.MustBeZombie, DeathCondition.MustBeGhast,
+      DeathCondition.MustBeRavager,
+    )
+
+    val HARD = listOf(
+      DeathCondition.Drowning, DeathCondition.MustBeEnderman, DeathCondition.MustBeIronGolem,
+      DeathCondition.MustBeBlaze,
+    )
+
+    val CONDITION_LIST = listOf(
+      Weight(EASY, 5.0),
+      Weight(MEDIUM, 3.0),
+      Weight(HARD, 1.0),
+    )
+
     fun getSystemTime(): Long {
       for (world in Bukkit.getServer().getWorlds()) {
         if (world.environment == World.Environment.NORMAL) {
@@ -36,6 +61,10 @@ class BedtimeManager(val plugin: Plugin) : RunnableFeature(), Listener {
       }
       return 0L // That's not good :(
     }
+
+    private fun chooseCondition(): DeathCondition =
+      // Choose difficulty first, then choose a death condition in that difficulty tier
+      sample(CONDITION_LIST).sample()!!
 
   }
 
@@ -73,9 +102,8 @@ class BedtimeManager(val plugin: Plugin) : RunnableFeature(), Listener {
         if ((time > DAWN_TIME) && (time < DUSK_TIME)) {
           state = State.Daytime
           isAppeased = false
-          condition = DeathCondition.True
-          Bukkit.broadcastMessage("Start of day :)")
-          ////
+          condition = chooseCondition()
+          Bukkit.broadcastMessage("Today, the gods would like to see someone die ${condition.description}")
         }
       }
 

@@ -124,6 +124,8 @@
                        diamond
    + gravestone :: Whenever a player dies, a gravestone appears at the
                    site of death
+   + bedtime :: At dawn, a demand is made by the gods; if that demand
+                is not met, then players cannot sleep that night
 * IDEAS (UNIMPLEMENTED)
   + Wolves?
   + Fishing?
@@ -133,7 +135,8 @@
   + Illusioner?
   + Blindness
   + Crops turn into whole trees via **overgrowth** rather than single logs?
-  + Conditions before you can sleep a night away
+  + More **bedtime** conditions
+  + Ghasts spawn lava at pos
 ** HATCRAFTER'S IDEAS
    + Llamas are hostile and have extra knockback on their spit
    + Cookies, when eaten, have a random effect (lower numbered effects
