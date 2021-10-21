@@ -29,7 +29,7 @@ class AllPluginListeners(val plugin: Plugin) : Iterable<Listener> {
   val phantomManager = PetPhantomManager(plugin)
   val mossManager = ContagiousMossManager()
   val explosiveArrowManager = ExplosiveArrowManager(plugin)
-  val dripstoneManager = DripstoneManager(plugin)
+  val dripstoneManager = DripstoneManager(plugin) // Not included in feature list (!!)
   val dragonBombManager = DragonBombManager(plugin)
   val pufferfishRainManager = PufferfishRainManager(plugin)
   val classicLavaManager = ClassicLavaManager(plugin)
@@ -111,7 +111,7 @@ class AllPluginListeners(val plugin: Plugin) : Iterable<Listener> {
       mimicListener, dropCompositeFeature, eggListener,
       eggArrowListener, eggDropListener, witherArmorListener,
       mossManager, explosiveArrowManager, cakeListener,
-      dripstoneManager, glassLuckListener, endDirtListener,
+      glassLuckListener, endDirtListener,
       overgrowthListener, endCrystalListener,
       dragonBombManager, pufferfishRainManager,
       pillagerGunListener, classicLavaManager,

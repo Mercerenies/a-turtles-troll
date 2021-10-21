@@ -14,6 +14,7 @@ for the full feature list.
 * Weeping Angel arm pose is fixed now
 * Armor stands can be crafted into jungle wood slabs now
 * Lowered the rate of dripstone stalactites spawning
+* Pointed dripstone can be used in place of flint to craft arrows
 
 ### Version 1.9
 
