@@ -40,15 +40,12 @@ class ClassicLavaManager(val plugin: Plugin) : RunnableFeature(), Listener {
     if (!isEnabled()) {
       return
     }
-    if (!isActiveFor(event.getBlock().world.environment)) {
-      return
-    }
     val from = event.getBlock()
     val to = event.getToBlock()
     if (from.type == Material.LAVA) {
       if (memory.contains(EqBlock(from))) {
         ignorer.ignore(to)
-      } else {
+      } else if (isActiveFor(from.world.environment)) {
         to.type = Material.LAVA
         val blockData = to.getBlockData()
         if (blockData is Levelled) {

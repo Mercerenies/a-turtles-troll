@@ -139,7 +139,6 @@
   + Blindness
   + Crops turn into whole trees via **overgrowth** rather than single logs?
   + More **bedtime** conditions
-  + Ghasts spawn lava at pos
 ** HATCRAFTER'S IDEAS
    + Llamas are hostile and have extra knockback on their spit
    + Cookies, when eaten, have a random effect (lower numbered effects
