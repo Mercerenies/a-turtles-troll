@@ -76,6 +76,7 @@ class Main : JavaPlugin() {
     listenerManager.dripstoneManager.register()
     listenerManager.dragonBombManager.register()
     listenerManager.classicLavaManager.register()
+    listenerManager.bedtimeManager.register()
     this.getCommand("turtle")!!.setExecutor(featureManager)
     this.getCommand("turtle")!!.setTabCompleter(featureManager)
   }
@@ -118,6 +119,9 @@ class Main : JavaPlugin() {
     } catch (_: IllegalStateException) {}
     try {
       listenerManager.classicLavaManager.cancel()
+    } catch (_: IllegalStateException) {}
+    try {
+      listenerManager.bedtimeManager.cancel()
     } catch (_: IllegalStateException) {}
     this.getCommand("turtle")?.setExecutor(null)
     this.getCommand("turtle")?.setTabCompleter(null)
