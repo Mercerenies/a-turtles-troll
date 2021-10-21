@@ -5,17 +5,12 @@ import com.mercerenies.turtletroll.Weight
 import com.mercerenies.turtletroll.sample
 import com.mercerenies.turtletroll.feature.AbstractFeature
 
-import org.bukkit.util.Vector
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.entity.ProjectileHitEvent
 import org.bukkit.event.entity.CreatureSpawnEvent
-import org.bukkit.event.player.PlayerEggThrowEvent
 import org.bukkit.entity.EntityType
-import org.bukkit.entity.Projectile
-import org.bukkit.entity.Player
 
-import kotlin.random.Random
 
 class EggListener(val effects: List<Weight<EggHatchEffect>>) : AbstractFeature(), Listener {
 

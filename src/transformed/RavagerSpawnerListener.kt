@@ -6,14 +6,11 @@ import com.mercerenies.turtletroll.SpawnReason
 import com.mercerenies.turtletroll.ReplaceMobsRunnable
 
 import org.bukkit.event.EventHandler
-import org.bukkit.event.Listener
 import org.bukkit.event.entity.CreatureSpawnEvent
 import org.bukkit.event.world.ChunkPopulateEvent
 import org.bukkit.entity.EntityType
 import org.bukkit.entity.Entity
-import org.bukkit.World
 import org.bukkit.Chunk
-import org.bukkit.util.Vector
 import org.bukkit.plugin.Plugin
 
 import kotlin.random.Random

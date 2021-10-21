@@ -6,7 +6,6 @@ import com.mercerenies.turtletroll.ext.*;
 import org.bukkit.Server
 import org.bukkit.Material
 
-import kotlin.collections.ArrayList
 
 class StoneRecipeDeleter(private val server: Server) : RecipeDeleter(server, STONE_TOOLS) {
 

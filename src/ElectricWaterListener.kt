@@ -12,7 +12,6 @@ import org.bukkit.entity.Player
 import org.bukkit.entity.Boat
 import org.bukkit.block.Block
 import org.bukkit.block.`data`.Waterlogged
-import org.bukkit.scheduler.BukkitRunnable
 import org.bukkit.plugin.Plugin
 import org.bukkit.potion.PotionEffectType
 

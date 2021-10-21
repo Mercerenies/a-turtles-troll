@@ -6,7 +6,7 @@ for (@*ARGS) -> $input-filename {
     my @imports;
     # Find imports
     for (@contents) {
-        if (m:s/^^ "import" "com.mercerenies.turtletroll" [ "." \w+ ] * "." ( \w+ ) $$/) {
+        if (m:s/^^ "import" [ \w+ "." ] * ( \w+ ) $$/) {
             push @imports, $0.Str;
         }
     }

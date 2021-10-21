@@ -17,7 +17,6 @@ import org.bukkit.entity.Entity
 import org.bukkit.Location
 import org.bukkit.Chunk
 import org.bukkit.plugin.Plugin
-import org.bukkit.scheduler.BukkitRunnable
 
 import kotlin.random.Random
 

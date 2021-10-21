@@ -11,8 +11,6 @@ import org.bukkit.event.block.BlockFromToEvent
 import org.bukkit.Material
 import org.bukkit.World
 import org.bukkit.plugin.Plugin
-import org.bukkit.enchantments.Enchantment
-import org.bukkit.block.Block
 import org.bukkit.block.`data`.Levelled
 
 import kotlin.random.Random

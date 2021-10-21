@@ -3,12 +3,10 @@ package com.mercerenies.turtletroll
 
 import com.mercerenies.turtletroll.feature.AbstractFeature
 
-import org.bukkit.util.Vector
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.entity.EntityDeathEvent
 import org.bukkit.entity.EntityType
-import org.bukkit.entity.Entity
 import org.bukkit.inventory.ItemStack
 import org.bukkit.Material
 

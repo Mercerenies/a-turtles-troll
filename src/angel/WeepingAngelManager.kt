@@ -12,7 +12,6 @@ import org.bukkit.plugin.Plugin
 import org.bukkit.Location
 import org.bukkit.Color
 import org.bukkit.Bukkit
-import org.bukkit.Material
 import org.bukkit.Particle
 import org.bukkit.event.Listener
 import org.bukkit.event.EventHandler

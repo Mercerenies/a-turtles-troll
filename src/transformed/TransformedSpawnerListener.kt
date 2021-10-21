@@ -9,7 +9,6 @@ import org.bukkit.event.Listener
 import org.bukkit.event.entity.CreatureSpawnEvent
 import org.bukkit.entity.Entity
 import org.bukkit.entity.EntityType
-import org.bukkit.World
 import org.bukkit.util.Vector
 
 import kotlin.random.Random

@@ -3,15 +3,12 @@ package com.mercerenies.turtletroll.egg
 
 import org.bukkit.Location
 import org.bukkit.Material
-import org.bukkit.entity.Entity
 import org.bukkit.entity.Skeleton
 import org.bukkit.entity.SkeletonHorse
 import org.bukkit.plugin.Plugin
 import org.bukkit.scheduler.BukkitRunnable
 import org.bukkit.inventory.ItemStack
 
-import kotlin.reflect.KClass
-import kotlin.random.Random
 
 class SkeletonTrapEffect(
   val count: Int,

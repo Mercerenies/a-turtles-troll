@@ -3,13 +3,11 @@ package com.mercerenies.turtletroll
 
 import com.mercerenies.turtletroll.feature.AbstractFeature
 
-import org.bukkit.Material
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.inventory.InventoryCloseEvent
 import org.bukkit.event.player.PlayerInteractEntityEvent
 import org.bukkit.inventory.MerchantInventory
-import org.bukkit.entity.EntityType
 import org.bukkit.entity.Villager
 import org.bukkit.entity.Player
 import org.bukkit.entity.ZombieVillager

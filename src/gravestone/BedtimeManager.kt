@@ -6,22 +6,15 @@ import com.mercerenies.turtletroll.Weight
 import com.mercerenies.turtletroll.sample
 import com.mercerenies.turtletroll.ext.*
 
-import org.bukkit.entity.Player
-import org.bukkit.entity.PufferFish
 import org.bukkit.plugin.Plugin
-import org.bukkit.Location
 import org.bukkit.Bukkit
 import org.bukkit.World
-import org.bukkit.Material
-import org.bukkit.block.Block
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
-import org.bukkit.event.entity.EntityDamageEvent
 import org.bukkit.event.entity.PlayerDeathEvent
 import org.bukkit.event.player.PlayerBedEnterEvent
 import org.bukkit.event.Listener
 
-import kotlin.random.Random
 
 class BedtimeManager(val plugin: Plugin) : RunnableFeature(), Listener {
 

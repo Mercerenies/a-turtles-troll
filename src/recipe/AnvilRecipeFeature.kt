@@ -3,8 +3,6 @@ package com.mercerenies.turtletroll.recipe
 
 
 import org.bukkit.plugin.Plugin
-import org.bukkit.Bukkit
-import org.bukkit.NamespacedKey
 import org.bukkit.Material
 import org.bukkit.inventory.Recipe
 import org.bukkit.inventory.FurnaceRecipe

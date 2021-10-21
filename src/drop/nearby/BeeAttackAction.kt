@@ -4,13 +4,11 @@ package com.mercerenies.turtletroll.drop.nearby
 import com.mercerenies.turtletroll.ext.*
 
 import org.bukkit.Material
-import org.bukkit.World
 import org.bukkit.Location
 import org.bukkit.event.block.BlockBreakEvent
 import org.bukkit.entity.EntityType
 import org.bukkit.entity.Bee
 
-import kotlin.random.Random
 
 class BeeAttackAction(
   private val radius: Int = 5

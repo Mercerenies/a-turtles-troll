@@ -5,15 +5,10 @@ import com.mercerenies.turtletroll.feature.AbstractFeature
 
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
-import org.bukkit.event.entity.EntityDamageByEntityEvent
-import org.bukkit.event.entity.CreatureSpawnEvent
 import org.bukkit.event.player.PlayerPortalEvent
 import org.bukkit.event.world.ChunkPopulateEvent
-import org.bukkit.entity.Chicken
 import org.bukkit.entity.EnderCrystal
 import org.bukkit.entity.EntityType
-import org.bukkit.entity.Entity
-import org.bukkit.Location
 import org.bukkit.Chunk
 import org.bukkit.World
 import org.bukkit.Material
@@ -21,7 +16,6 @@ import org.bukkit.plugin.Plugin
 import org.bukkit.scheduler.BukkitRunnable
 import org.bukkit.block.CreatureSpawner
 
-import kotlin.random.Random
 
 class EndCrystalListener(
   val plugin: Plugin,

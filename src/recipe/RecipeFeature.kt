@@ -6,7 +6,6 @@ import com.mercerenies.turtletroll.feature.AbstractFeature
 import org.bukkit.plugin.Plugin
 import org.bukkit.Bukkit
 import org.bukkit.NamespacedKey
-import org.bukkit.Material
 import org.bukkit.inventory.Recipe
 
 import kotlin.reflect.KClass

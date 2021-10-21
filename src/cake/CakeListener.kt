@@ -10,30 +10,20 @@ import com.mercerenies.turtletroll.BlockSelector
 import com.mercerenies.turtletroll.mimic.MimicListener
 
 import org.bukkit.entity.Player
-import org.bukkit.entity.LivingEntity
 import org.bukkit.entity.EntityType
 import org.bukkit.plugin.Plugin
-import org.bukkit.Location
-import org.bukkit.Color
-import org.bukkit.Bukkit
 import org.bukkit.Material
-import org.bukkit.Particle
 import org.bukkit.event.Listener
 import org.bukkit.event.EventHandler
 import org.bukkit.event.block.Action
-import org.bukkit.event.player.PlayerMoveEvent
 import org.bukkit.event.player.PlayerInteractEvent
-import org.bukkit.event.entity.PlayerDeathEvent
-import org.bukkit.event.entity.EntityDeathEvent
 import org.bukkit.event.entity.CreatureSpawnEvent
-import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.bukkit.scheduler.BukkitRunnable
 import org.bukkit.block.`data`.Lightable
 
 import kotlin.collections.HashMap
 import kotlin.random.Random
 import kotlin.math.pow
-import kotlin.math.exp
 
 class CakeListener(
   val plugin: Plugin,

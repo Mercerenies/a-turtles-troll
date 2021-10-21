@@ -7,15 +7,10 @@ import com.mercerenies.turtletroll.feature.AbstractFeature
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.entity.CreatureSpawnEvent
-import org.bukkit.entity.Entity
-import org.bukkit.entity.EntityType
 import org.bukkit.entity.WitherSkeleton
-import org.bukkit.World
 import org.bukkit.Material
-import org.bukkit.util.Vector
 import org.bukkit.inventory.ItemStack
 
-import kotlin.random.Random
 
 class WitherArmorListener(val chance: Double = 1.0) : AbstractFeature(), Listener {
 

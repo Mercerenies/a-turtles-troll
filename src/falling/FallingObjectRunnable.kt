@@ -5,7 +5,6 @@ import com.mercerenies.turtletroll.feature.RunnableFeature
 
 import org.bukkit.entity.Player
 import org.bukkit.plugin.Plugin
-import org.bukkit.Location
 import org.bukkit.Bukkit
 import org.bukkit.Material
 import org.bukkit.block.Block

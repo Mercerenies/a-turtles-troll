@@ -3,16 +3,10 @@ package com.mercerenies.turtletroll
 
 import com.mercerenies.turtletroll.feature.AbstractFeature
 
-import org.bukkit.Material
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerFishEvent
-import org.bukkit.entity.Player
-import org.bukkit.potion.PotionEffect
-import org.bukkit.potion.PotionEffectType
-import org.bukkit.inventory.meta.Damageable
 
-import kotlin.random.Random
 
 // This is really janky, even by my standards, so it's not currently
 // used :)

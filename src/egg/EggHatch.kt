@@ -3,13 +3,6 @@ package com.mercerenies.turtletroll.egg
 
 import com.mercerenies.turtletroll.Weight
 
-import org.bukkit.util.Vector
-import org.bukkit.event.EventHandler
-import org.bukkit.event.Listener
-import org.bukkit.event.entity.ProjectileHitEvent
-import org.bukkit.event.entity.CreatureSpawnEvent
-import org.bukkit.event.player.PlayerEggThrowEvent
-import org.bukkit.entity.EntityType
 import org.bukkit.entity.*
 import org.bukkit.material.Colorable
 import org.bukkit.DyeColor
@@ -17,7 +10,6 @@ import org.bukkit.Material
 import org.bukkit.plugin.Plugin
 import org.bukkit.inventory.ItemStack
 
-import kotlin.random.Random
 
 // Helper for common egg hatch effects
 object EggHatch {

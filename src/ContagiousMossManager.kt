@@ -4,22 +4,15 @@ package com.mercerenies.turtletroll
 import com.mercerenies.turtletroll.feature.RunnableFeature
 import com.mercerenies.turtletroll.ext.*
 
-import org.bukkit.entity.Player
 import org.bukkit.plugin.Plugin
-import org.bukkit.Location
 import org.bukkit.Bukkit
 import org.bukkit.Material
-import org.bukkit.Chunk
 import org.bukkit.World
-import org.bukkit.entity.Entity
 import org.bukkit.block.Block
 import org.bukkit.event.Listener
 import org.bukkit.event.EventHandler
 import org.bukkit.event.world.ChunkPopulateEvent
-import org.bukkit.potion.PotionEffect
-import org.bukkit.potion.PotionEffectType
 
-import kotlin.random.Random
 
 class ContagiousMossManager : RunnableFeature(), Listener {
 

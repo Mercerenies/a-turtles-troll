@@ -3,14 +3,10 @@ package com.mercerenies.turtletroll
 
 import com.mercerenies.turtletroll.feature.RunnableFeature
 
-import org.bukkit.entity.Player
 import org.bukkit.entity.Ghast
 import org.bukkit.plugin.Plugin
-import org.bukkit.Location
 import org.bukkit.Bukkit
-import org.bukkit.Material
 import org.bukkit.World
-import org.bukkit.block.Block
 
 class GhastBurnRunnable(val plugin: Plugin) : RunnableFeature() {
 

@@ -5,31 +5,18 @@ import com.mercerenies.turtletroll.feature.RunnableFeature
 import com.mercerenies.turtletroll.CooldownMemory
 import com.mercerenies.turtletroll.ext.*
 
-import org.bukkit.entity.Player
 import org.bukkit.plugin.Plugin
-import org.bukkit.Location
 import org.bukkit.Bukkit
-import org.bukkit.Material
-import org.bukkit.Chunk
-import org.bukkit.World
 import org.bukkit.NamespacedKey
-import org.bukkit.entity.Entity
 import org.bukkit.entity.EnderDragon
 import org.bukkit.entity.EnderCrystal
 import org.bukkit.entity.TNTPrimed
-import org.bukkit.block.Block
-import org.bukkit.block.BlockFace
 import org.bukkit.event.Listener
 import org.bukkit.event.EventHandler
-import org.bukkit.event.player.PlayerMoveEvent
-import org.bukkit.event.block.BlockPlaceEvent
 import org.bukkit.event.entity.EntityDamageEvent
-import org.bukkit.potion.PotionEffect
-import org.bukkit.potion.PotionEffectType
 import org.bukkit.persistence.PersistentDataType
 import org.bukkit.attribute.Attribute
 
-import kotlin.random.Random
 
 class DragonBombManager(val plugin: Plugin) : RunnableFeature(), Listener {
 

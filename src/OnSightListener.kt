@@ -11,7 +11,6 @@ import org.bukkit.entity.Player
 import org.bukkit.block.Block
 import org.bukkit.Location
 import org.bukkit.plugin.Plugin
-import org.bukkit.scheduler.BukkitRunnable
 
 abstract class OnSightListener(val plugin: Plugin) : AbstractFeature(), Listener {
   val memory = CooldownMemory<Location>(plugin)

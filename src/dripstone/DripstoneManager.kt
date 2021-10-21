@@ -8,12 +8,8 @@ import com.mercerenies.turtletroll.ext.*
 
 import org.bukkit.entity.Player
 import org.bukkit.plugin.Plugin
-import org.bukkit.Location
 import org.bukkit.Bukkit
 import org.bukkit.Material
-import org.bukkit.Chunk
-import org.bukkit.World
-import org.bukkit.entity.Entity
 import org.bukkit.block.Block
 import org.bukkit.block.BlockFace
 import org.bukkit.block.`data`.type.PointedDripstone
@@ -21,10 +17,7 @@ import org.bukkit.event.Listener
 import org.bukkit.event.EventHandler
 import org.bukkit.event.player.PlayerMoveEvent
 import org.bukkit.event.block.BlockPlaceEvent
-import org.bukkit.potion.PotionEffect
-import org.bukkit.potion.PotionEffectType
 
-import kotlin.random.Random
 
 class DripstoneManager(val plugin: Plugin) : RunnableFeature(), Listener {
 

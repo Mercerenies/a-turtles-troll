@@ -7,13 +7,9 @@ import com.mercerenies.turtletroll.feature.AbstractFeature
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.entity.EntitySpawnEvent
-import org.bukkit.event.world.ChunkPopulateEvent
-import org.bukkit.entity.EntityType
 import org.bukkit.entity.Pillager
-import org.bukkit.World
 import org.bukkit.enchantments.Enchantment
 
-import kotlin.random.Random
 
 class PillagerGunListener() : AbstractFeature(), Listener {
 

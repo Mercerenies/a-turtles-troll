@@ -17,7 +17,6 @@ import com.mercerenies.turtletroll.feature.Feature
 import com.mercerenies.turtletroll.feature.CompositeFeature
 
 import org.bukkit.inventory.ItemStack
-import org.bukkit.event.Listener
 import org.bukkit.Material
 
 class BlockBreakEvents {

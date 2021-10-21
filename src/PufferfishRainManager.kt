@@ -6,11 +6,8 @@ import com.mercerenies.turtletroll.feature.RunnableFeature
 import org.bukkit.entity.Player
 import org.bukkit.entity.PufferFish
 import org.bukkit.plugin.Plugin
-import org.bukkit.Location
 import org.bukkit.Bukkit
 import org.bukkit.World
-import org.bukkit.Material
-import org.bukkit.block.Block
 import org.bukkit.event.EventHandler
 import org.bukkit.event.entity.EntityDamageEvent
 import org.bukkit.event.Listener

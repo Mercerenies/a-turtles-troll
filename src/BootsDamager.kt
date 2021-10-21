@@ -2,7 +2,6 @@
 package com.mercerenies.turtletroll
 
 import org.bukkit.inventory.meta.Damageable
-import org.bukkit.Material
 import org.bukkit.entity.Player
 
 import kotlin.random.Random

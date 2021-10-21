@@ -9,9 +9,7 @@ import org.bukkit.event.entity.ProjectileLaunchEvent
 import org.bukkit.entity.Blaze
 import org.bukkit.entity.EntityType
 import org.bukkit.plugin.Plugin
-import org.bukkit.scheduler.BukkitRunnable
 
-import kotlin.random.Random
 
 class BlazeAttackListener(val plugin: Plugin) : AbstractFeature(), Listener {
 

@@ -1,11 +1,8 @@
 
 package com.mercerenies.turtletroll.falling
 
-import org.bukkit.scheduler.BukkitRunnable
 import org.bukkit.entity.Player
-import org.bukkit.plugin.Plugin
 import org.bukkit.Location
-import org.bukkit.Bukkit
 import org.bukkit.Material
 
 import kotlin.collections.HashMap

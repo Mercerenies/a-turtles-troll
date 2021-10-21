@@ -3,18 +3,14 @@ package com.mercerenies.turtletroll
 
 import com.mercerenies.turtletroll.feature.RunnableFeature
 
-import org.bukkit.scheduler.BukkitRunnable
 import org.bukkit.entity.Player
 import org.bukkit.plugin.Plugin
-import org.bukkit.Location
 import org.bukkit.Bukkit
-import org.bukkit.Material
 import org.bukkit.entity.Phantom
 import org.bukkit.entity.EntityType
 import org.bukkit.event.Listener
 import org.bukkit.event.EventHandler
 import org.bukkit.event.entity.EntityDamageEvent
-import org.bukkit.event.entity.EntityDamageByEntityEvent
 
 import kotlin.collections.HashMap
 import kotlin.random.Random

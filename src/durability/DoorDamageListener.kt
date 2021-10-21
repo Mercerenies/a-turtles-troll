@@ -3,17 +3,9 @@ package com.mercerenies.turtletroll.durability
 
 import org.bukkit.Material
 import org.bukkit.Location
-import org.bukkit.inventory.EquipmentSlot
-import org.bukkit.event.EventHandler
-import org.bukkit.event.player.PlayerInteractEvent
-import org.bukkit.event.block.BlockBreakEvent
-import org.bukkit.entity.EntityType
-import org.bukkit.entity.Villager
-import org.bukkit.entity.Player
 import org.bukkit.block.Block
 import org.bukkit.block.`data`.Bisected
 
-import kotlin.collections.HashMap
 
 class DoorDamageListener(
   override val maxUses: Int = 16,

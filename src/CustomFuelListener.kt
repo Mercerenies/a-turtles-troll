@@ -6,13 +6,8 @@ import com.mercerenies.turtletroll.feature.AbstractFeature
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.inventory.FurnaceBurnEvent
-import org.bukkit.event.inventory.InventoryClickEvent
-import org.bukkit.inventory.ItemStack
 import org.bukkit.Material
-import org.bukkit.Bukkit
-import org.bukkit.Location
 
-import kotlin.random.Random
 
 // Not working yet :(
 class CustomFuelListener() : AbstractFeature(), Listener {
