@@ -1,8 +1,6 @@
 
 package com.mercerenies.turtletroll.chicken
 
-import com.mercerenies.turtletroll.Weight
-import com.mercerenies.turtletroll.sample
 import com.mercerenies.turtletroll.feature.AbstractFeature
 import com.mercerenies.turtletroll.SpawnReason
 import com.mercerenies.turtletroll.ReplaceMobsRunnable

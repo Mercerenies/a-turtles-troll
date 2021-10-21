@@ -1,11 +1,7 @@
 
 package com.mercerenies.turtletroll
 
-import com.mercerenies.turtletroll.Weight
-import com.mercerenies.turtletroll.sample
 import com.mercerenies.turtletroll.feature.AbstractFeature
-import com.mercerenies.turtletroll.SpawnReason
-import com.mercerenies.turtletroll.ReplaceMobsRunnable
 
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener

@@ -1,8 +1,6 @@
 
 package com.mercerenies.turtletroll
 
-import com.mercerenies.turtletroll.Weight
-import com.mercerenies.turtletroll.sample
 import com.mercerenies.turtletroll.feature.AbstractFeature
 
 import org.bukkit.util.Vector

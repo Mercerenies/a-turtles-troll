@@ -2,8 +2,6 @@
 package com.mercerenies.turtletroll.transformed
 
 import com.mercerenies.turtletroll.ext.*
-import com.mercerenies.turtletroll.Weight
-import com.mercerenies.turtletroll.sample
 import com.mercerenies.turtletroll.SpawnReason
 import com.mercerenies.turtletroll.ReplaceMobsRunnable
 

@@ -2,8 +2,6 @@
 package com.mercerenies.turtletroll.cake
 
 import com.mercerenies.turtletroll.Weight
-import com.mercerenies.turtletroll.sample
-import com.mercerenies.turtletroll.feature.AbstractFeature
 
 import org.bukkit.util.Vector
 import org.bukkit.event.EventHandler

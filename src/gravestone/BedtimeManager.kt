@@ -1,7 +1,6 @@
 
 package com.mercerenies.turtletroll.gravestone
 
-import com.mercerenies.turtletroll.feature.Feature
 import com.mercerenies.turtletroll.feature.RunnableFeature
 import com.mercerenies.turtletroll.Weight
 import com.mercerenies.turtletroll.sample

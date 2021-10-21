@@ -1,10 +1,7 @@
 
 package com.mercerenies.turtletroll.gravestone
 
-import com.mercerenies.turtletroll.feature.Feature
 import com.mercerenies.turtletroll.feature.AbstractFeature
-import com.mercerenies.turtletroll.SpawnReason
-import com.mercerenies.turtletroll.BlockSelector
 
 import org.bukkit.entity.Player
 import org.bukkit.entity.LivingEntity

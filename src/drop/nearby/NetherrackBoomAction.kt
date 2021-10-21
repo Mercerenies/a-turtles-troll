@@ -2,7 +2,6 @@
 package com.mercerenies.turtletroll.drop.nearby
 
 import com.mercerenies.turtletroll.ext.*
-import com.mercerenies.turtletroll.Infestation
 
 import org.bukkit.Material
 import org.bukkit.World

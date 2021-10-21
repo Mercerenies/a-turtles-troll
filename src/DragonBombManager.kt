@@ -1,10 +1,8 @@
 
 package com.mercerenies.turtletroll
 
-import com.mercerenies.turtletroll.feature.Feature
 import com.mercerenies.turtletroll.feature.RunnableFeature
 import com.mercerenies.turtletroll.CooldownMemory
-import com.mercerenies.turtletroll.BlockSelector
 import com.mercerenies.turtletroll.ext.*
 
 import org.bukkit.entity.Player

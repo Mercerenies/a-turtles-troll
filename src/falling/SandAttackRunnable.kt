@@ -1,8 +1,6 @@
 
 package com.mercerenies.turtletroll.falling
 
-import com.mercerenies.turtletroll.feature.Feature
-
 import org.bukkit.scheduler.BukkitRunnable
 import org.bukkit.entity.Player
 import org.bukkit.plugin.Plugin

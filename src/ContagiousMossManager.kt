@@ -1,7 +1,6 @@
 
 package com.mercerenies.turtletroll
 
-import com.mercerenies.turtletroll.feature.Feature
 import com.mercerenies.turtletroll.feature.RunnableFeature
 import com.mercerenies.turtletroll.ext.*
 

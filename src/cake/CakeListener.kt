@@ -1,7 +1,6 @@
 
 package com.mercerenies.turtletroll.cake
 
-import com.mercerenies.turtletroll.feature.Feature
 import com.mercerenies.turtletroll.feature.AbstractFeature
 import com.mercerenies.turtletroll.SpawnReason
 import com.mercerenies.turtletroll.ext.*
