@@ -1,8 +1,6 @@
 
 package com.mercerenies.turtletroll.recipe
 
-import com.mercerenies.turtletroll.feature.AbstractFeature
-
 import org.bukkit.plugin.Plugin
 import org.bukkit.Bukkit
 import org.bukkit.NamespacedKey
