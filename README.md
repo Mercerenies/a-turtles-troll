@@ -11,6 +11,7 @@ for the full feature list.
 
 * Tenth version hype! I'd like to thank my friends for dealing with my
   shenanigans through *ten* versions of this thing. Love you guys <3
+* Ghasts instantly burn in daylight
 * Weeping Angel arm pose is fixed now
 * Armor stands can be crafted into jungle wood slabs now
 * Lowered the rate of dripstone stalactites spawning

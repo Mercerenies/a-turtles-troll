@@ -17,6 +17,7 @@ import org.bukkit.plugin.java.JavaPlugin
 class Main : JavaPlugin() {
   val recipeDeleter = StoneRecipeDeleter(Bukkit.getServer())
   val anvilRunnable = AnvilRunnable()
+  val ghastBurnRunnable = GhastBurnRunnable(this)
   val sandAttackRunnable = SandAttackRunnable(SAND_ATTACK_TRIGGERS)
 
   val anvilRecipeFeature = AnvilRecipeFeature(this)
@@ -44,7 +45,7 @@ class Main : JavaPlugin() {
   )
 
   val featureManager = FeatureManager(
-    listOf(recipeDeleter, anvilFeature, angelFeature, dripstoneFeature, sandAttackRunnable) + listenerManager.getFeatures()
+    listOf(recipeDeleter, anvilFeature, angelFeature, dripstoneFeature, sandAttackRunnable, ghastBurnRunnable) + listenerManager.getFeatures()
   )
 
   companion object {
@@ -66,6 +67,7 @@ class Main : JavaPlugin() {
     listenerManager.explosiveArrowManager.addRecipes()
     anvilRunnable.register(this)
     sandAttackRunnable.register(this)
+    ghastBurnRunnable.register()
     listenerManager.pufferfishRainManager.register()
     listenerManager.angelManager.register()
     listenerManager.phantomManager.register()
@@ -89,6 +91,9 @@ class Main : JavaPlugin() {
     } catch (_: IllegalStateException) {}
     try {
       sandAttackRunnable.cancel()
+    } catch (_: IllegalStateException) {}
+    try {
+      ghastBurnRunnable.cancel()
     } catch (_: IllegalStateException) {}
     try {
       listenerManager.pufferfishRainManager.cancel()

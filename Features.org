@@ -37,6 +37,7 @@
      - The following passive mobs are always replaced with chickens:
        cows, pigs, llamas, donkeys, horses, sheep, mules, and parrots
    + ghasts :: Ghasts spawn in all dimensions
+   + ghastburn :: Ghasts instantly burn in daylight
    + ravagers :: Half of hoglins turn into ravagers
    + moss :: Moss generates in all overworld chunks and spreads
              rapidly
@@ -132,6 +133,7 @@
   + Illusioner?
   + Blindness
   + Crops turn into whole trees via **overgrowth** rather than single logs?
+  + Conditions before you can sleep a night away
 ** HATCRAFTER'S IDEAS
    + Llamas are hostile and have extra knockback on their spit
    + Cookies, when eaten, have a random effect (lower numbered effects
