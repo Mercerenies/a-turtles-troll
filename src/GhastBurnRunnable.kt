@@ -21,6 +21,15 @@ class GhastBurnRunnable(val plugin: Plugin) : RunnableFeature() {
     private fun getOverworld(): World? =
       Bukkit.getServer().getWorlds().find { it.environment == World.Environment.NORMAL }
 
+    fun getSystemTime(): Long {
+      for (world in Bukkit.getServer().getWorlds()) {
+        if (world.environment == World.Environment.NORMAL) {
+          return world.getTime()
+        }
+      }
+      return 0L // That's not good :(
+    }
+
   }
 
   override val name: String = "ghastburn"
@@ -35,8 +44,11 @@ class GhastBurnRunnable(val plugin: Plugin) : RunnableFeature() {
     if (overworld != null) {
       overworld.getEntitiesByClass(Ghast::class.java).forEach { ghast ->
         if (ghast.location.block.getLightFromSky() >= 15) {
-          // Can't set them on fire so we'll just insta-kill them
-          ghast.damage(9999.0, null)
+          val systemTime = getSystemTime()
+          if ((systemTime > 0) && (systemTime < 12000)) {
+            // Can't set them on fire so we'll just insta-kill them
+            ghast.damage(9999.0, null)
+          }
         }
       }
     }
