@@ -3,8 +3,8 @@ package com.mercerenies.turtletroll.mimic
 
 import com.mercerenies.turtletroll.feature.AbstractFeature
 import com.mercerenies.turtletroll.SpawnReason
-import com.mercerenies.turtletroll.BlockSelector
 import com.mercerenies.turtletroll.Constants
+import com.mercerenies.turtletroll.location.BlockSelector
 
 import org.bukkit.entity.Player
 import org.bukkit.entity.EntityType

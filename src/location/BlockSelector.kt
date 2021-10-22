@@ -1,5 +1,5 @@
 
-package com.mercerenies.turtletroll
+package com.mercerenies.turtletroll.location
 
 import com.mercerenies.turtletroll.mimic.MimicIdentifier
 import com.mercerenies.turtletroll.cake.CakeListener
@@ -9,7 +9,7 @@ import org.bukkit.block.Block
 
 import kotlin.random.Random
 
-// Various helper functions for getting locations
+// Various helper functions for getting locations relative to blocks
 object BlockSelector {
 
   val SEA_LEVEL = 64

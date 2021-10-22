@@ -11,7 +11,6 @@ import org.bukkit.event.block.BlockBreakEvent
 import org.bukkit.block.Block
 import org.bukkit.block.`data`.`type`.Bed
 
-
 // CancelDropAction is not powerful enough to block bed drops because
 // beds are multiple blocks, so we handle them specially here.
 class BedDropListener() : AbstractFeature(), Listener {

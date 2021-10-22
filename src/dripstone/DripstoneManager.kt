@@ -3,9 +3,9 @@ package com.mercerenies.turtletroll.dripstone
 
 import com.mercerenies.turtletroll.feature.RunnableFeature
 import com.mercerenies.turtletroll.CooldownMemory
-import com.mercerenies.turtletroll.BlockSelector
 import com.mercerenies.turtletroll.Constants
 import com.mercerenies.turtletroll.ext.*
+import com.mercerenies.turtletroll.location.BlockSelector
 
 import org.bukkit.entity.Player
 import org.bukkit.plugin.Plugin

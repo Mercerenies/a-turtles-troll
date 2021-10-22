@@ -3,6 +3,7 @@ package com.mercerenies.turtletroll
 
 import com.mercerenies.turtletroll.feature.RunnableFeature
 import com.mercerenies.turtletroll.ext.*
+import com.mercerenies.turtletroll.location.BlockSelector
 
 import org.bukkit.plugin.Plugin
 import org.bukkit.Bukkit
@@ -12,7 +13,6 @@ import org.bukkit.block.Block
 import org.bukkit.event.Listener
 import org.bukkit.event.EventHandler
 import org.bukkit.event.world.ChunkPopulateEvent
-
 
 class ContagiousMossManager(plugin: Plugin) : RunnableFeature(plugin), Listener {
 

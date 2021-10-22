@@ -6,9 +6,9 @@ import com.mercerenies.turtletroll.SpawnReason
 import com.mercerenies.turtletroll.ext.*
 import com.mercerenies.turtletroll.Weight
 import com.mercerenies.turtletroll.sample
-import com.mercerenies.turtletroll.BlockSelector
 import com.mercerenies.turtletroll.Constants
 import com.mercerenies.turtletroll.mimic.MimicListener
+import com.mercerenies.turtletroll.location.BlockSelector
 
 import org.bukkit.entity.Player
 import org.bukkit.entity.EntityType
