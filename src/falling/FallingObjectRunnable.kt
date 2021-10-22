@@ -9,7 +9,7 @@ import org.bukkit.Bukkit
 import org.bukkit.Material
 import org.bukkit.block.Block
 
-abstract class FallingObjectRunnable : RunnableFeature() {
+abstract class FallingObjectRunnable(val plugin: Plugin) : RunnableFeature() {
 
   companion object {
     val TICKS_PER_SECOND = 20
@@ -57,7 +57,7 @@ abstract class FallingObjectRunnable : RunnableFeature() {
     }
   }
 
-  fun register(plugin: Plugin) {
+  fun register() {
     this.runTaskTimer(plugin, 1L, delayTime)
   }
 

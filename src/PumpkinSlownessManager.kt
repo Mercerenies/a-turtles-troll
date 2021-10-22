@@ -12,7 +12,7 @@ import org.bukkit.event.inventory.InventoryCloseEvent
 import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
 
-class PumpkinSlownessManager : RunnableFeature(), Listener {
+class PumpkinSlownessManager(val plugin: Plugin) : RunnableFeature(), Listener {
 
   companion object {
     val TICKS_PER_SECOND = 20
@@ -43,7 +43,7 @@ class PumpkinSlownessManager : RunnableFeature(), Listener {
     performPumpkinCheck()
   }
 
-  fun register(plugin: Plugin) {
+  fun register() {
     this.runTaskTimer(plugin, 1L, TICKS_PER_SECOND * 5L)
   }
 

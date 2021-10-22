@@ -4,10 +4,11 @@ package com.mercerenies.turtletroll.falling
 import org.bukkit.entity.Player
 import org.bukkit.Location
 import org.bukkit.Material
+import org.bukkit.plugin.Plugin
 
 import kotlin.collections.HashMap
 
-class AnvilRunnable : FallingObjectRunnable() {
+class AnvilRunnable(plugin: Plugin) : FallingObjectRunnable(plugin) {
   private var memory = HashMap<Player, Location>()
 
   override val name = "anvil"

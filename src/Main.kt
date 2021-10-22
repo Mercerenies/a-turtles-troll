@@ -16,9 +16,9 @@ import org.bukkit.plugin.java.JavaPlugin
 
 class Main : JavaPlugin() {
   val recipeDeleter = StoneRecipeDeleter(Bukkit.getServer())
-  val anvilRunnable = AnvilRunnable()
+  val anvilRunnable = AnvilRunnable(this)
   val ghastBurnRunnable = GhastBurnRunnable(this)
-  val sandAttackRunnable = SandAttackRunnable(SAND_ATTACK_TRIGGERS)
+  val sandAttackRunnable = SandAttackRunnable(this, SAND_ATTACK_TRIGGERS)
 
   val anvilRecipeFeature = AnvilRecipeFeature(this)
   val angelRecipeFeature = AngelRecipeFeature(this)
@@ -57,28 +57,34 @@ class Main : JavaPlugin() {
   }
 
   override fun onEnable() {
+
+    // Initialize all listeners
     for (listener in mainContainer.listeners) {
       Bukkit.getPluginManager().registerEvents(listener, this)
     }
+
     recipeDeleter.removeRecipes()
     anvilRecipeFeature.addRecipes()
     angelRecipeFeature.addRecipes()
     dripstoneRecipeFeature.addRecipes()
     mainContainer.explosiveArrowManager.addRecipes()
-    anvilRunnable.register(this)
-    sandAttackRunnable.register(this)
+    anvilRunnable.register()
+    sandAttackRunnable.register()
     ghastBurnRunnable.register()
     mainContainer.pufferfishRainManager.register()
     mainContainer.angelManager.register()
     mainContainer.phantomManager.register()
-    mainContainer.pumpkinManager.register(this)
-    mainContainer.mossManager.register(this)
+    mainContainer.pumpkinManager.register()
+    mainContainer.mossManager.register()
     mainContainer.dripstoneManager.register()
     mainContainer.dragonBombManager.register()
     mainContainer.classicLavaManager.register()
     mainContainer.bedtimeManager.register()
+
+    // Setup command
     this.getCommand("turtle")!!.setExecutor(featureManager)
     this.getCommand("turtle")!!.setTabCompleter(featureManager)
+
   }
 
   override fun onDisable() {
@@ -123,8 +129,11 @@ class Main : JavaPlugin() {
     try {
       mainContainer.bedtimeManager.cancel()
     } catch (_: IllegalStateException) {}
+
+    // Remove command
     this.getCommand("turtle")?.setExecutor(null)
     this.getCommand("turtle")?.setTabCompleter(null)
+
   }
 
 }

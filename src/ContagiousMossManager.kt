@@ -14,7 +14,7 @@ import org.bukkit.event.EventHandler
 import org.bukkit.event.world.ChunkPopulateEvent
 
 
-class ContagiousMossManager : RunnableFeature(), Listener {
+class ContagiousMossManager(val plugin: Plugin) : RunnableFeature(), Listener {
 
   companion object {
     val TICKS_PER_SECOND = 20
@@ -66,7 +66,7 @@ class ContagiousMossManager : RunnableFeature(), Listener {
     }
   }
 
-  fun register(plugin: Plugin) {
+  fun register() {
     this.runTaskTimer(plugin, 1L, 4L)
   }
 

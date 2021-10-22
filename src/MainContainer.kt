@@ -25,10 +25,10 @@ import org.bukkit.event.Listener
 import kotlin.collections.Iterable
 
 class MainContainer(val plugin: Plugin) {
-  val pumpkinManager = PumpkinSlownessManager()
+  val pumpkinManager = PumpkinSlownessManager(plugin)
   val angelManager = WeepingAngelManager(plugin) // Not included in feature list (!!)
   val phantomManager = PetPhantomManager(plugin)
-  val mossManager = ContagiousMossManager()
+  val mossManager = ContagiousMossManager(plugin)
   val explosiveArrowManager = ExplosiveArrowManager(plugin)
   val dripstoneManager = DripstoneManager(plugin) // Not included in feature list (!!)
   val dragonBombManager = DragonBombManager(plugin)

@@ -4,8 +4,9 @@ package com.mercerenies.turtletroll.falling
 import org.bukkit.entity.Player
 import org.bukkit.Material
 import org.bukkit.block.Block
+import org.bukkit.plugin.Plugin
 
-class SandAttackRunnable(val targetBlocks: Set<Material>) : FallingObjectRunnable() {
+class SandAttackRunnable(plugin: Plugin, val targetBlocks: Set<Material>) : FallingObjectRunnable(plugin) {
 
   override val name = "sandattack"
 
