@@ -16,10 +16,10 @@ import kotlin.collections.HashMap
 import kotlin.random.Random
 
 class PetPhantomManager(
-  val plugin: Plugin,
+  plugin: Plugin,
   val spawnChance: Double = 0.33,
   val random: Random = Random.Default,
-) : RunnableFeature(), Listener {
+) : RunnableFeature(plugin), Listener {
 
   companion object {
     val TICKS_PER_SECOND = 20
@@ -46,9 +46,7 @@ class PetPhantomManager(
 
   override val description = "Everyone gets a pet phantom"
 
-  fun register() {
-    this.runTaskTimer(plugin, 1L, 3L * TICKS_PER_SECOND)
-  }
+  override val taskPeriod = 3L * TICKS_PER_SECOND
 
   override fun run() {
     if (!isEnabled()) {

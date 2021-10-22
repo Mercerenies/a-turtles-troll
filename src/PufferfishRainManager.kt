@@ -14,7 +14,7 @@ import org.bukkit.event.Listener
 
 import kotlin.random.Random
 
-class PufferfishRainManager(val plugin: Plugin) : RunnableFeature(), Listener {
+class PufferfishRainManager(plugin: Plugin) : RunnableFeature(plugin), Listener {
 
   companion object {
     val TICKS_PER_SECOND = 20L
@@ -51,6 +51,10 @@ class PufferfishRainManager(val plugin: Plugin) : RunnableFeature(), Listener {
 
   override val description: String = "Pufferfish rain on all players at noon"
 
+  override val taskPeriod = TICKS_PER_SECOND * 5L
+
+  override val taskDelay = TICKS_PER_SECOND * 5L
+
   private var state: State = State.Idle
 
   override fun run() {
@@ -82,10 +86,6 @@ class PufferfishRainManager(val plugin: Plugin) : RunnableFeature(), Listener {
 
     }
 
-  }
-
-  fun register() {
-    this.runTaskTimer(plugin, TICKS_PER_SECOND * 5L, TICKS_PER_SECOND * 5L)
   }
 
   @EventHandler

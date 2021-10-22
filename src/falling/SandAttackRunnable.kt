@@ -16,7 +16,7 @@ class SandAttackRunnable(plugin: Plugin, val targetBlocks: Set<Material>) : Fall
 
   override val blockToDrop = Material.SAND
 
-  override val delayTime = TICKS_PER_SECOND.toLong()
+  override val taskPeriod = TICKS_PER_SECOND.toLong()
 
   override fun shouldDropOn(player: Player): Boolean {
     val blockUnderneath = player.location.clone().add(0.0, -1.0, 0.0).block.type

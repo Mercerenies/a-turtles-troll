@@ -8,7 +8,7 @@ import org.bukkit.plugin.Plugin
 import org.bukkit.Bukkit
 import org.bukkit.World
 
-class GhastBurnRunnable(val plugin: Plugin) : RunnableFeature() {
+class GhastBurnRunnable(plugin: Plugin) : RunnableFeature(plugin) {
 
   companion object {
     val TICKS_PER_SECOND = 20L
@@ -31,6 +31,8 @@ class GhastBurnRunnable(val plugin: Plugin) : RunnableFeature() {
 
   override val description: String = "Ghasts burn in daylight"
 
+  override val taskPeriod = TICKS_PER_SECOND * 10L
+
   override fun run() {
     if (!isEnabled()) {
       return
@@ -47,10 +49,6 @@ class GhastBurnRunnable(val plugin: Plugin) : RunnableFeature() {
         }
       }
     }
-  }
-
-  fun register() {
-    this.runTaskTimer(plugin, 1L, TICKS_PER_SECOND * 10L)
   }
 
 }

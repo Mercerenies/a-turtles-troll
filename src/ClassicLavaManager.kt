@@ -15,7 +15,7 @@ import org.bukkit.block.`data`.Levelled
 
 import kotlin.random.Random
 
-class ClassicLavaManager(val plugin: Plugin) : RunnableFeature(), Listener {
+class ClassicLavaManager(plugin: Plugin) : RunnableFeature(plugin), Listener {
 
   companion object {
     val TICKS_PER_SECOND = 20L
@@ -25,6 +25,8 @@ class ClassicLavaManager(val plugin: Plugin) : RunnableFeature(), Listener {
   override val name: String = "classiclava"
 
   override val description: String = "Lava spreads much further than usual"
+
+  override val taskPeriod: Long = TICKS_PER_SECOND
 
   private var active: Boolean = false
   private var netherActive: Boolean = false
@@ -61,10 +63,6 @@ class ClassicLavaManager(val plugin: Plugin) : RunnableFeature(), Listener {
     } else {
       active
     }
-
-  fun register() {
-    this.runTaskTimer(plugin, 1L, TICKS_PER_SECOND)
-  }
 
   override fun run() {
     if (!isEnabled()) {

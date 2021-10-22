@@ -14,7 +14,7 @@ import org.bukkit.event.EventHandler
 import org.bukkit.event.world.ChunkPopulateEvent
 
 
-class ContagiousMossManager(val plugin: Plugin) : RunnableFeature(), Listener {
+class ContagiousMossManager(plugin: Plugin) : RunnableFeature(plugin), Listener {
 
   companion object {
     val TICKS_PER_SECOND = 20
@@ -33,6 +33,8 @@ class ContagiousMossManager(val plugin: Plugin) : RunnableFeature(), Listener {
   override val name = "moss"
 
   override val description = "Moss generates in new chunks and spreads everywhere"
+
+  override val taskPeriod = 4L
 
   override fun run() {
     if (!isEnabled()) {
@@ -64,10 +66,6 @@ class ContagiousMossManager(val plugin: Plugin) : RunnableFeature(), Listener {
       val block = BlockSelector.getRandomBlock(event.chunk, BlockSelector.SEA_LEVEL)
       block.type = Material.MOSS_BLOCK
     }
-  }
-
-  fun register() {
-    this.runTaskTimer(plugin, 1L, 4L)
   }
 
 }

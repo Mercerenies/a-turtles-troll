@@ -19,7 +19,7 @@ import org.bukkit.event.player.PlayerMoveEvent
 import org.bukkit.event.block.BlockPlaceEvent
 
 
-class DripstoneManager(val plugin: Plugin) : RunnableFeature(), Listener {
+class DripstoneManager(plugin: Plugin) : RunnableFeature(plugin), Listener {
 
   companion object {
     val TICKS_PER_SECOND = 20
@@ -64,6 +64,8 @@ class DripstoneManager(val plugin: Plugin) : RunnableFeature(), Listener {
   override val name = "dripstone"
 
   override val description = "Dripstone generates randomly and falls if you walk under it"
+
+  override val taskPeriod = 10L
 
   private fun tryGrowExisting(onlinePlayers: List<Player>) {
     repeat(100) {
@@ -145,10 +147,6 @@ class DripstoneManager(val plugin: Plugin) : RunnableFeature(), Listener {
       val stalactite = Stalactite.fromPart(block)
       _placedBlocks.add(stalactite, (TICKS_PER_SECOND * 2).toLong())
     }
-  }
-
-  fun register() {
-    this.runTaskTimer(plugin, 1L, 10L)
   }
 
 }

@@ -12,7 +12,7 @@ import org.bukkit.event.inventory.InventoryCloseEvent
 import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
 
-class PumpkinSlownessManager(val plugin: Plugin) : RunnableFeature(), Listener {
+class PumpkinSlownessManager(plugin: Plugin) : RunnableFeature(plugin), Listener {
 
   companion object {
     val TICKS_PER_SECOND = 20
@@ -21,6 +21,8 @@ class PumpkinSlownessManager(val plugin: Plugin) : RunnableFeature(), Listener {
   override val name = "pumpkins"
 
   override val description = "Pumpkins on your head cause negative status effects but let you swim"
+
+  override val taskPeriod = TICKS_PER_SECOND * 5L
 
   fun performPumpkinCheck() {
     if (!isEnabled()) {
@@ -41,10 +43,6 @@ class PumpkinSlownessManager(val plugin: Plugin) : RunnableFeature(), Listener {
   @EventHandler
   fun onInventoryClose(@Suppress("UNUSED_PARAMETER") event: InventoryCloseEvent) {
     performPumpkinCheck()
-  }
-
-  fun register() {
-    this.runTaskTimer(plugin, 1L, TICKS_PER_SECOND * 5L)
   }
 
 }

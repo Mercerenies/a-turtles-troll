@@ -9,7 +9,7 @@ import org.bukkit.Bukkit
 import org.bukkit.Material
 import org.bukkit.block.Block
 
-abstract class FallingObjectRunnable(val plugin: Plugin) : RunnableFeature() {
+abstract class FallingObjectRunnable(plugin: Plugin) : RunnableFeature(plugin) {
 
   companion object {
     val TICKS_PER_SECOND = 20
@@ -20,8 +20,6 @@ abstract class FallingObjectRunnable(val plugin: Plugin) : RunnableFeature() {
   abstract val maxDropHeight: Int
 
   abstract val blockToDrop: Material
-
-  abstract val delayTime: Long
 
   open fun shouldDropOn(player: Player): Boolean = true
 
@@ -55,10 +53,6 @@ abstract class FallingObjectRunnable(val plugin: Plugin) : RunnableFeature() {
       }
       updatePlayer(player)
     }
-  }
-
-  fun register() {
-    this.runTaskTimer(plugin, 1L, delayTime)
   }
 
 }

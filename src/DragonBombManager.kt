@@ -18,7 +18,7 @@ import org.bukkit.persistence.PersistentDataType
 import org.bukkit.attribute.Attribute
 
 
-class DragonBombManager(val plugin: Plugin) : RunnableFeature(), Listener {
+class DragonBombManager(plugin: Plugin) : RunnableFeature(plugin), Listener {
 
   companion object {
     val TICKS_PER_SECOND = 20L
@@ -42,6 +42,8 @@ class DragonBombManager(val plugin: Plugin) : RunnableFeature(), Listener {
   override val name = "dragonbomb"
 
   override val description = "The Ender Dragon drops TNT regularly"
+
+  override val taskPeriod = 5L
 
   val markerKey = NamespacedKey(plugin, BOMB_MARKER_KEY)
 
@@ -69,10 +71,6 @@ class DragonBombManager(val plugin: Plugin) : RunnableFeature(), Listener {
       }
     }
 
-  }
-
-  fun register() {
-    this.runTaskTimer(plugin, 1L, 5L)
   }
 
   private fun doDragonAttack() {

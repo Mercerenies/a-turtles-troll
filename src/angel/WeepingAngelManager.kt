@@ -27,9 +27,9 @@ import kotlin.collections.HashMap
 import kotlin.random.Random
 
 class WeepingAngelManager(
-  val plugin: Plugin,
+  plugin: Plugin,
   val movementSpeed: Double = 1.0, // Meters per tick
-) : RunnableFeature(), Listener {
+) : RunnableFeature(plugin), Listener {
   private var activeAngels = HashMap<ArmorStand, AngelInfo>()
 
   private data class AngelInfo(
@@ -98,6 +98,8 @@ class WeepingAngelManager(
 
   override val description = "Armor stands move when you're not looking"
 
+  override val taskPeriod = 5L
+
   override fun run() {
     if (!isEnabled()) {
       return
@@ -161,10 +163,6 @@ class WeepingAngelManager(
       assignAttackPose(angel)
     }
 
-  }
-
-  fun register() {
-    this.runTaskTimer(plugin, 1L, TICKS_PER_SECOND / 4L)
   }
 
   @EventHandler

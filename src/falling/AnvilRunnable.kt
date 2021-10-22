@@ -21,7 +21,7 @@ class AnvilRunnable(plugin: Plugin) : FallingObjectRunnable(plugin) {
 
   override val blockToDrop = Material.ANVIL
 
-  override val delayTime = 10L * TICKS_PER_SECOND.toLong()
+  override val taskPeriod = 10L * TICKS_PER_SECOND.toLong()
 
   override fun shouldDropOn(player: Player): Boolean {
     val loc = player.location
