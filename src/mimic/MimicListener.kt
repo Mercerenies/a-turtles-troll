@@ -4,6 +4,7 @@ package com.mercerenies.turtletroll.mimic
 import com.mercerenies.turtletroll.feature.AbstractFeature
 import com.mercerenies.turtletroll.SpawnReason
 import com.mercerenies.turtletroll.BlockSelector
+import com.mercerenies.turtletroll.Constants
 
 import org.bukkit.entity.Player
 import org.bukkit.entity.EntityType
@@ -24,8 +25,7 @@ class MimicListener(
 ) : AbstractFeature(), Listener {
 
   companion object {
-    val TICKS_PER_SECOND = 20
-    val KILL_DELAY = TICKS_PER_SECOND
+    val KILL_DELAY = Constants.TICKS_PER_SECOND
 
     val SAFETY_RADIUS = 8
 

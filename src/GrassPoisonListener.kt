@@ -17,7 +17,6 @@ class GrassPoisonListener(
   private val bootsDamager = BootsDamager(_bootsDamageChance)
 
   companion object {
-    val TICKS_PER_SECOND = 20
     val BLOCKS = setOf(
       Material.GRASS, Material.TALL_GRASS, Material.FERN,
       Material.LARGE_FERN, Material.DEAD_BUSH, Material.CRIMSON_ROOTS, Material.WARPED_ROOTS
@@ -37,8 +36,8 @@ class GrassPoisonListener(
     if ((block != null) && (BLOCKS.contains(block.type))) {
       val player = event.player
       if (!bootsDamager.tryWearDownBoots(player)) {
-        player.addPotionEffect(PotionEffect(PotionEffectType.POISON, TICKS_PER_SECOND * 5, 0))
-        player.addPotionEffect(PotionEffect(PotionEffectType.SLOW, TICKS_PER_SECOND * 10, 1))
+        player.addPotionEffect(PotionEffect(PotionEffectType.POISON, Constants.TICKS_PER_SECOND * 5, 0))
+        player.addPotionEffect(PotionEffect(PotionEffectType.SLOW, Constants.TICKS_PER_SECOND * 10, 1))
       }
     }
   }

@@ -11,10 +11,6 @@ import org.bukkit.inventory.ItemStack
 
 class DripstoneRecipeFeature(plugin: Plugin) : RecipeFeature(plugin) {
 
-  companion object {
-    val TICKS_PER_SECOND = 20
-  }
-
   override val name = "dripstonerecipe"
 
   override val description = "Dripstone can be used in place of flint when making arrows"

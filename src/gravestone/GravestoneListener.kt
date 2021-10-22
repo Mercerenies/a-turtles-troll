@@ -2,6 +2,7 @@
 package com.mercerenies.turtletroll.gravestone
 
 import com.mercerenies.turtletroll.feature.AbstractFeature
+import com.mercerenies.turtletroll.Constants
 
 import org.bukkit.World
 import org.bukkit.event.Listener
@@ -15,7 +16,6 @@ import org.bukkit.block.Block
 class GravestoneListener(val plugin: Plugin) : AbstractFeature(), Listener {
 
   companion object {
-    val TICKS_PER_SECOND = 20L
     val DELAY_SECONDS = 2L
   }
 
@@ -41,7 +41,7 @@ class GravestoneListener(val plugin: Plugin) : AbstractFeature(), Listener {
 
     val block = event.entity.location.block
     val cause = CauseOfDeath.inscription(event)
-    SpawnGravestone(block, cause).runTaskLater(plugin, TICKS_PER_SECOND * DELAY_SECONDS)
+    SpawnGravestone(block, cause).runTaskLater(plugin, Constants.TICKS_PER_SECOND * DELAY_SECONDS)
 
   }
 

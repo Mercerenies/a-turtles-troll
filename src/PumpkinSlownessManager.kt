@@ -14,15 +14,11 @@ import org.bukkit.potion.PotionEffectType
 
 class PumpkinSlownessManager(plugin: Plugin) : RunnableFeature(plugin), Listener {
 
-  companion object {
-    val TICKS_PER_SECOND = 20
-  }
-
   override val name = "pumpkins"
 
   override val description = "Pumpkins on your head cause negative status effects but let you swim"
 
-  override val taskPeriod = TICKS_PER_SECOND * 5L
+  override val taskPeriod = Constants.TICKS_PER_SECOND * 5L
 
   fun performPumpkinCheck() {
     if (!isEnabled()) {
@@ -30,8 +26,8 @@ class PumpkinSlownessManager(plugin: Plugin) : RunnableFeature(plugin), Listener
     }
     for (player in Bukkit.getOnlinePlayers()) {
       if (player.inventory.helmet?.getType() == Material.CARVED_PUMPKIN) {
-        player.addPotionEffect(PotionEffect(PotionEffectType.SLOW, TICKS_PER_SECOND * 10, 1))
-        player.addPotionEffect(PotionEffect(PotionEffectType.SLOW_DIGGING, TICKS_PER_SECOND * 10, 0))
+        player.addPotionEffect(PotionEffect(PotionEffectType.SLOW, Constants.TICKS_PER_SECOND * 10, 1))
+        player.addPotionEffect(PotionEffect(PotionEffectType.SLOW_DIGGING, Constants.TICKS_PER_SECOND * 10, 0))
       }
     }
   }

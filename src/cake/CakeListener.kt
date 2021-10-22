@@ -7,6 +7,7 @@ import com.mercerenies.turtletroll.ext.*
 import com.mercerenies.turtletroll.Weight
 import com.mercerenies.turtletroll.sample
 import com.mercerenies.turtletroll.BlockSelector
+import com.mercerenies.turtletroll.Constants
 import com.mercerenies.turtletroll.mimic.MimicListener
 
 import org.bukkit.entity.Player
@@ -31,8 +32,7 @@ class CakeListener(
 ) : AbstractFeature(), Listener {
 
   companion object {
-    val TICKS_PER_SECOND = 20
-    val FIVE_MINUTES = 300 * TICKS_PER_SECOND
+    val FIVE_MINUTES = 300 * Constants.TICKS_PER_SECOND
 
     val MOB_REPLACE_CHANCE = 0.05
     val MOBS_TO_REPLACE = setOf(

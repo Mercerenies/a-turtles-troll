@@ -15,7 +15,6 @@ import org.bukkit.potion.PotionEffectType
 class WitherRoseListener : AbstractFeature(), Listener {
 
   companion object {
-    val TICKS_PER_SECOND = 20
     val BLOCKS = setOf(
       Material.DANDELION, Material.POPPY, Material.BLUE_ORCHID,
       Material.ALLIUM, Material.AZURE_BLUET, Material.RED_TULIP, Material.OXEYE_DAISY,
@@ -63,7 +62,7 @@ class WitherRoseListener : AbstractFeature(), Listener {
   }
 
   private fun applyWither(player: Player) {
-    player.addPotionEffect(PotionEffect(PotionEffectType.WITHER, 2 * TICKS_PER_SECOND, 0))
+    player.addPotionEffect(PotionEffect(PotionEffectType.WITHER, 2 * Constants.TICKS_PER_SECOND, 0))
   }
 
 }

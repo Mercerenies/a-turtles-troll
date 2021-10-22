@@ -11,7 +11,6 @@ import org.bukkit.World
 class GhastBurnRunnable(plugin: Plugin) : RunnableFeature(plugin) {
 
   companion object {
-    val TICKS_PER_SECOND = 20L
 
     private fun getOverworld(): World? =
       Bukkit.getServer().getWorlds().find { it.environment == World.Environment.NORMAL }
@@ -31,7 +30,7 @@ class GhastBurnRunnable(plugin: Plugin) : RunnableFeature(plugin) {
 
   override val description: String = "Ghasts burn in daylight"
 
-  override val taskPeriod = TICKS_PER_SECOND * 10L
+  override val taskPeriod = Constants.TICKS_PER_SECOND * 10L
 
   override fun run() {
     if (!isEnabled()) {

@@ -12,10 +12,6 @@ import org.bukkit.potion.PotionEffectType
 
 class SnowListener : AbstractFeature(), Listener {
 
-  companion object {
-    val TICKS_PER_SECOND = 20
-  }
-
   override val name = "snowspeed"
 
   override val description = "Snow makes players move faster"
@@ -28,7 +24,7 @@ class SnowListener : AbstractFeature(), Listener {
     val block = event.getTo()?.getBlock()
     if (block?.type == Material.SNOW) {
       val player = event.player
-      player.addPotionEffect(PotionEffect(PotionEffectType.SPEED, TICKS_PER_SECOND * 6, 4))
+      player.addPotionEffect(PotionEffect(PotionEffectType.SPEED, Constants.TICKS_PER_SECOND * 6, 4))
     }
   }
 

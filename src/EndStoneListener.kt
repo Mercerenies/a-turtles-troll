@@ -13,7 +13,6 @@ import org.bukkit.potion.PotionEffectType
 class EndStoneListener : AbstractFeature(), Listener {
 
   companion object {
-    val TICKS_PER_SECOND = 20
   }
 
   override val name = "endspeed"
@@ -30,7 +29,7 @@ class EndStoneListener : AbstractFeature(), Listener {
       val block = loc.clone().add(0.0, -1.0, 0.0).getBlock()
       if (block.type == Material.END_STONE) {
         val player = event.player
-        player.addPotionEffect(PotionEffect(PotionEffectType.SPEED, TICKS_PER_SECOND * 6, 4))
+        player.addPotionEffect(PotionEffect(PotionEffectType.SPEED, Constants.TICKS_PER_SECOND * 6, 4))
       }
     }
   }

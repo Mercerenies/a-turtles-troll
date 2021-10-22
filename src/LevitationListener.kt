@@ -13,7 +13,6 @@ import org.bukkit.potion.PotionEffectType
 class LevitationListener : AbstractFeature(), Listener {
 
   companion object {
-    val TICKS_PER_SECOND = 20
     val BLOCKS = setOf(
       Material.COAL_ORE, Material.IRON_ORE, Material.LAPIS_ORE,
       Material.GOLD_ORE, Material.DIAMOND_ORE, Material.EMERALD_ORE,
@@ -38,7 +37,7 @@ class LevitationListener : AbstractFeature(), Listener {
       val block = loc.clone().add(0.0, -1.0, 0.0).getBlock()
       if (BLOCKS.contains(block.type)) {
         val player = event.player
-        player.addPotionEffect(PotionEffect(PotionEffectType.LEVITATION, TICKS_PER_SECOND * 5, 0))
+        player.addPotionEffect(PotionEffect(PotionEffectType.LEVITATION, Constants.TICKS_PER_SECOND * 5, 0))
       }
     }
   }

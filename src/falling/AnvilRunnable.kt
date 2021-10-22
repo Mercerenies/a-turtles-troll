@@ -1,6 +1,8 @@
 
 package com.mercerenies.turtletroll.falling
 
+import com.mercerenies.turtletroll.Constants
+
 import org.bukkit.entity.Player
 import org.bukkit.Location
 import org.bukkit.Material
@@ -21,7 +23,7 @@ class AnvilRunnable(plugin: Plugin) : FallingObjectRunnable(plugin) {
 
   override val blockToDrop = Material.ANVIL
 
-  override val taskPeriod = 10L * TICKS_PER_SECOND.toLong()
+  override val taskPeriod = 10L * Constants.TICKS_PER_SECOND.toLong()
 
   override fun shouldDropOn(player: Player): Boolean {
     val loc = player.location

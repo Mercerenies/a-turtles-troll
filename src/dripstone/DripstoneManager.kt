@@ -4,6 +4,7 @@ package com.mercerenies.turtletroll.dripstone
 import com.mercerenies.turtletroll.feature.RunnableFeature
 import com.mercerenies.turtletroll.CooldownMemory
 import com.mercerenies.turtletroll.BlockSelector
+import com.mercerenies.turtletroll.Constants
 import com.mercerenies.turtletroll.ext.*
 
 import org.bukkit.entity.Player
@@ -18,11 +19,9 @@ import org.bukkit.event.EventHandler
 import org.bukkit.event.player.PlayerMoveEvent
 import org.bukkit.event.block.BlockPlaceEvent
 
-
 class DripstoneManager(plugin: Plugin) : RunnableFeature(plugin), Listener {
 
   companion object {
-    val TICKS_PER_SECOND = 20
 
     // Find a stalactite directly above the block position. Returns
     // null if we hit another solid block first.
@@ -79,7 +78,7 @@ class DripstoneManager(plugin: Plugin) : RunnableFeature(plugin), Listener {
           val existingStalactite = findImmediatelyAboveStalactite(randBlock)
           if (existingStalactite != null) {
             existingStalactite.grow()
-            _placedBlocks.add(existingStalactite, (TICKS_PER_SECOND * 2).toLong())
+            _placedBlocks.add(existingStalactite, (Constants.TICKS_PER_SECOND * 2).toLong())
             return
           }
         }
@@ -101,7 +100,7 @@ class DripstoneManager(plugin: Plugin) : RunnableFeature(plugin), Listener {
             randBlock.type = Material.POINTED_DRIPSTONE
             val newStalactite = Stalactite.fromPart(randBlock)
             newStalactite.updateData()
-            _placedBlocks.add(newStalactite, (TICKS_PER_SECOND * 2).toLong())
+            _placedBlocks.add(newStalactite, (Constants.TICKS_PER_SECOND * 2).toLong())
             return
           }
         }
@@ -145,7 +144,7 @@ class DripstoneManager(plugin: Plugin) : RunnableFeature(plugin), Listener {
     val block = event.getBlockPlaced()
     if (block.type == Material.POINTED_DRIPSTONE) {
       val stalactite = Stalactite.fromPart(block)
-      _placedBlocks.add(stalactite, (TICKS_PER_SECOND * 2).toLong())
+      _placedBlocks.add(stalactite, (Constants.TICKS_PER_SECOND * 2).toLong())
     }
   }
 

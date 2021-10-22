@@ -14,8 +14,7 @@ import org.bukkit.plugin.Plugin
 class BlazeAttackListener(val plugin: Plugin) : AbstractFeature(), Listener {
 
   companion object {
-    val TICKS_PER_SECOND = 20
-    val COOLDOWN_TIME = TICKS_PER_SECOND * 10
+    val COOLDOWN_TIME = Constants.TICKS_PER_SECOND * 10
   }
 
   private val memory = CooldownMemory<Blaze>(plugin)

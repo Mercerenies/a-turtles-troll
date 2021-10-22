@@ -22,8 +22,7 @@ class ElectricWaterListener(
   private var memory = CooldownMemory<Player>(plugin)
 
   companion object {
-    val TICKS_PER_SECOND = 20
-    val COOLDOWN_TIME = TICKS_PER_SECOND / 3
+    val COOLDOWN_TIME = Constants.TICKS_PER_SECOND / 3
 
     fun isWet(block: Block): Boolean {
       if (block.type == Material.WATER) {

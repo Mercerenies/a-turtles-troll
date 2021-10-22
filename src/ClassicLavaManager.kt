@@ -18,15 +18,14 @@ import kotlin.random.Random
 class ClassicLavaManager(plugin: Plugin) : RunnableFeature(plugin), Listener {
 
   companion object {
-    val TICKS_PER_SECOND = 20L
-    val IGNORE_DELAY_TIME = TICKS_PER_SECOND * 60L
+    val IGNORE_DELAY_TIME = Constants.TICKS_PER_SECOND * 60L
   }
 
   override val name: String = "classiclava"
 
   override val description: String = "Lava spreads much further than usual"
 
-  override val taskPeriod: Long = TICKS_PER_SECOND
+  override val taskPeriod: Long = Constants.TICKS_PER_SECOND.toLong()
 
   private var active: Boolean = false
   private var netherActive: Boolean = false

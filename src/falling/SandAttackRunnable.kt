@@ -1,6 +1,8 @@
 
 package com.mercerenies.turtletroll.falling
 
+import com.mercerenies.turtletroll.Constants
+
 import org.bukkit.entity.Player
 import org.bukkit.Material
 import org.bukkit.block.Block
@@ -27,7 +29,7 @@ class SandAttackRunnable(
 
   override val blockToDrop = Material.SAND
 
-  override val taskPeriod = TICKS_PER_SECOND.toLong()
+  override val taskPeriod = Constants.TICKS_PER_SECOND.toLong()
 
   override fun shouldDropOn(player: Player): Boolean {
     val blockUnderneath = player.location.clone().add(0.0, -1.0, 0.0).block.type

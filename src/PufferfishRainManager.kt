@@ -17,7 +17,6 @@ import kotlin.random.Random
 class PufferfishRainManager(plugin: Plugin) : RunnableFeature(plugin), Listener {
 
   companion object {
-    val TICKS_PER_SECOND = 20L
     val WARNING_TIME = 5700L
     val DROP_TIME = 6000L
 
@@ -51,9 +50,9 @@ class PufferfishRainManager(plugin: Plugin) : RunnableFeature(plugin), Listener 
 
   override val description: String = "Pufferfish rain on all players at noon"
 
-  override val taskPeriod = TICKS_PER_SECOND * 5L
+  override val taskPeriod = Constants.TICKS_PER_SECOND * 5L
 
-  override val taskDelay = TICKS_PER_SECOND * 5L
+  override val taskDelay = Constants.TICKS_PER_SECOND * 5L
 
   private var state: State = State.Idle
 

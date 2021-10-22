@@ -4,6 +4,7 @@ package com.mercerenies.turtletroll.gravestone
 import com.mercerenies.turtletroll.feature.RunnableFeature
 import com.mercerenies.turtletroll.Weight
 import com.mercerenies.turtletroll.sample
+import com.mercerenies.turtletroll.Constants
 import com.mercerenies.turtletroll.ext.*
 
 import org.bukkit.plugin.Plugin
@@ -19,7 +20,6 @@ import org.bukkit.event.Listener
 class BedtimeManager(plugin: Plugin) : RunnableFeature(plugin), Listener {
 
   companion object {
-    val TICKS_PER_SECOND = 20L
     val DAWN_TIME = 0L
     val DUSK_TIME = 12000L
 
@@ -69,9 +69,9 @@ class BedtimeManager(plugin: Plugin) : RunnableFeature(plugin), Listener {
 
   override val description: String = "The gods must be appeased with a condition in order to allow players to sleep"
 
-  override val taskPeriod = TICKS_PER_SECOND * 5L
+  override val taskPeriod = Constants.TICKS_PER_SECOND * 5L
 
-  override val taskDelay = TICKS_PER_SECOND * 5L
+  override val taskDelay = Constants.TICKS_PER_SECOND * 5L
 
   private var state: State = State.Nighttime
 

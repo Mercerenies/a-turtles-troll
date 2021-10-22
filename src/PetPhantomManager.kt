@@ -22,7 +22,6 @@ class PetPhantomManager(
 ) : RunnableFeature(plugin), Listener {
 
   companion object {
-    val TICKS_PER_SECOND = 20
     val SECONDS_COOLDOWN_AFTER_KILL = 600
 
     val MIN_SPAWN_HEIGHT = 6
@@ -46,7 +45,7 @@ class PetPhantomManager(
 
   override val description = "Everyone gets a pet phantom"
 
-  override val taskPeriod = 3L * TICKS_PER_SECOND
+  override val taskPeriod = 3L * Constants.TICKS_PER_SECOND
 
   override fun run() {
     if (!isEnabled()) {
@@ -64,7 +63,7 @@ class PetPhantomManager(
         if (phantom.health <= 0) {
           knownPhantoms.remove(player)
           // The phantom died, so give the player a cooldown
-          safePlayers.add(player, (TICKS_PER_SECOND * SECONDS_COOLDOWN_AFTER_KILL).toLong())
+          safePlayers.add(player, (Constants.TICKS_PER_SECOND * SECONDS_COOLDOWN_AFTER_KILL).toLong())
         }
       }
     }

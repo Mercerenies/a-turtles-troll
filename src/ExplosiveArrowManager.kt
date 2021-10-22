@@ -4,7 +4,6 @@ package com.mercerenies.turtletroll
 import com.mercerenies.turtletroll.recipe.RecipeFeature
 
 import org.bukkit.plugin.Plugin
-import org.bukkit.Bukkit
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.entity.ProjectileHitEvent
@@ -24,7 +23,6 @@ class ExplosiveArrowManager(plugin: Plugin) : RecipeFeature(plugin), Listener {
 
   companion object {
     val ARROW_MARKER_KEY = "explosive_arrow_tag"
-    val TICKS_PER_SECOND = 20
 
     val ARROWS = setOf(
       Material.ARROW, Material.TIPPED_ARROW, Material.SPECTRAL_ARROW

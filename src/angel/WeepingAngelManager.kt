@@ -37,7 +37,6 @@ class WeepingAngelManager(
   )
 
   companion object {
-    val TICKS_PER_SECOND = 20
 
     val DISTANCE_SQUARED_THRESHOLD = 1.0
     val DEATH_SQUARED_THRESHOLD = 1.5

@@ -15,10 +15,6 @@ import org.bukkit.World
 
 class SkeletonWitherListener : AbstractFeature(), Listener {
 
-  companion object {
-    val TICKS_PER_SECOND = 20
-  }
-
   override val name = "witherarrow"
 
   override val description = "Skeleton arrows inflict the Wither effect in the Nether"
@@ -34,7 +30,7 @@ class SkeletonWitherListener : AbstractFeature(), Listener {
       if ((victim is Player) && (damager is Arrow)) {
         val shooter = damager.shooter
         if (shooter is Skeleton) {
-          victim.addPotionEffect(PotionEffect(PotionEffectType.WITHER, TICKS_PER_SECOND * 10, 0))
+          victim.addPotionEffect(PotionEffect(PotionEffectType.WITHER, Constants.TICKS_PER_SECOND * 10, 0))
         }
       }
     }

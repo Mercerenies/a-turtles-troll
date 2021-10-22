@@ -11,10 +11,6 @@ import org.bukkit.block.Block
 
 abstract class FallingObjectRunnable(plugin: Plugin) : RunnableFeature(plugin) {
 
-  companion object {
-    val TICKS_PER_SECOND = 20
-  }
-
   open val minDropHeight: Int = 1
 
   abstract val maxDropHeight: Int

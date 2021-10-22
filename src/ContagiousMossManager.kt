@@ -17,7 +17,6 @@ import org.bukkit.event.world.ChunkPopulateEvent
 class ContagiousMossManager(plugin: Plugin) : RunnableFeature(plugin), Listener {
 
   companion object {
-    val TICKS_PER_SECOND = 20
 
     fun isAdjacentToMoss(block: Block): Boolean {
       for (loc in block.location.nearby(1)) {

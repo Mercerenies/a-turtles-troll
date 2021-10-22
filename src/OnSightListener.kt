@@ -16,11 +16,10 @@ abstract class OnSightListener(val plugin: Plugin) : AbstractFeature(), Listener
   val memory = CooldownMemory<Location>(plugin)
 
   companion object {
-    val TICKS_PER_SECOND = 20
   }
 
   // How many ticks is a block safe after being placed?
-  open val safetyDelay: Int = TICKS_PER_SECOND * 3
+  open val safetyDelay: Int = Constants.TICKS_PER_SECOND * 3
 
   abstract fun shouldTrigger(player: Player, block: Block): Boolean
 

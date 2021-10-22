@@ -21,7 +21,6 @@ class OvergrowthListener(
 ): AbstractFeature(), Listener {
 
   companion object {
-    val TICKS_PER_SECOND = 20L
     val BLOCKS = setOf(
       Material.BEETROOTS, Material.CARROTS, Material.COCOA, Material.NETHER_WART,
       Material.POTATOES, Material.SWEET_BERRY_BUSH, Material.WHEAT,
@@ -65,7 +64,7 @@ class OvergrowthListener(
     val blockData = event.getNewState().getBlockData()
     if (blockData is Ageable) {
       if (blockData.getAge() == blockData.getMaximumAge()) {
-        TurnInto(block.location, block.type).runTaskLater(plugin, delay * TICKS_PER_SECOND)
+        TurnInto(block.location, block.type).runTaskLater(plugin, delay * Constants.TICKS_PER_SECOND)
       }
     }
   }

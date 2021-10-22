@@ -21,8 +21,7 @@ class ForestFireListener(val plugin: Plugin) : AbstractFeature(), Listener {
   override val description = "Leaves and ice catch fire when you walk on them"
 
   companion object {
-    val TICKS_PER_SECOND = 20
-    val DELAY = TICKS_PER_SECOND
+    val DELAY = Constants.TICKS_PER_SECOND
     val BLOCKS = setOf(
       Material.ACACIA_LEAVES, Material.AZALEA_LEAVES, Material.BIRCH_LEAVES, Material.DARK_OAK_LEAVES,
       Material.FLOWERING_AZALEA_LEAVES, Material.OAK_LEAVES, Material.JUNGLE_LEAVES, Material.SPRUCE_LEAVES,

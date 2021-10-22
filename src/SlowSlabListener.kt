@@ -13,7 +13,6 @@ import org.bukkit.potion.PotionEffectType
 class SlowSlabListener : AbstractFeature(), Listener {
 
   companion object {
-    val TICKS_PER_SECOND = 20
     val BLOCKS = setOf(
       Material.ACACIA_SLAB, Material.ANDESITE_SLAB, Material.BIRCH_SLAB, Material.BLACKSTONE_SLAB,
       Material.BRICK_SLAB, Material.COBBLESTONE_SLAB, Material.CRIMSON_SLAB,
@@ -73,7 +72,7 @@ class SlowSlabListener : AbstractFeature(), Listener {
     if ((block != null) && (BLOCKS.contains(block.type))) {
       val player = event.player
       if (!bootsDamager.tryWearDownBoots(player)) {
-        player.addPotionEffect(PotionEffect(PotionEffectType.SLOW, TICKS_PER_SECOND * 10, 3))
+        player.addPotionEffect(PotionEffect(PotionEffectType.SLOW, Constants.TICKS_PER_SECOND * 10, 3))
       }
     }
   }

@@ -14,7 +14,6 @@ import org.bukkit.potion.PotionEffectType
 class GlassLuckListener(): AbstractFeature(), Listener {
 
   companion object {
-    val TICKS_PER_SECOND = 20
     val SECONDS_PER_SEVEN_YEARS = 3679200
     val BLOCKS = setOf(
       Material.BLACK_STAINED_GLASS, Material.BLACK_STAINED_GLASS_PANE, Material.BLUE_STAINED_GLASS,
@@ -47,7 +46,7 @@ class GlassLuckListener(): AbstractFeature(), Listener {
     }
     val block = event.getBlock()
     if (BLOCKS.contains(block.type)) {
-        event.player.addPotionEffect(PotionEffect(PotionEffectType.UNLUCK, TICKS_PER_SECOND * SECONDS_PER_SEVEN_YEARS, 10))
+        event.player.addPotionEffect(PotionEffect(PotionEffectType.UNLUCK, Constants.TICKS_PER_SECOND * SECONDS_PER_SEVEN_YEARS, 10))
         event.player.sendMessage("The glass gods are furious! Seven years bad luck be upon ye!")
     }
   }

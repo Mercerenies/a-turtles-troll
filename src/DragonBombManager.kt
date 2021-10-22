@@ -21,7 +21,6 @@ import org.bukkit.attribute.Attribute
 class DragonBombManager(plugin: Plugin) : RunnableFeature(plugin), Listener {
 
   companion object {
-    val TICKS_PER_SECOND = 20L
     val MIN_TIMER_TRIGGERS_PER_ATTACK = 3L
     val MAX_TIMER_TRIGGERS_PER_ATTACK = 12L
     val BOMB_MARKER_KEY = "dragon_bomb_manager_tag"
@@ -79,7 +78,7 @@ class DragonBombManager(plugin: Plugin) : RunnableFeature(plugin), Listener {
       for (dragon in world.getEntitiesByClass(EnderDragon::class.java)) {
         if (timerTick % currentTriggersPerAttack(dragon) == 0L) {
           val tnt = world.spawn(dragon.getLocation(), TNTPrimed::class.java)
-          tnt.setFuseTicks((TICKS_PER_SECOND * 10).toInt())
+          tnt.setFuseTicks((Constants.TICKS_PER_SECOND * 10).toInt())
 
           val container = tnt.getPersistentDataContainer()
           container.set(markerKey, PersistentDataType.INTEGER, 1)

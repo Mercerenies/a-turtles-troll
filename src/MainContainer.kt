@@ -62,7 +62,6 @@ class MainContainer(val plugin: Plugin) {
   val levitationListener = LevitationListener()
   val plateListener = PressurePlateFireListener()
   val slabListener = SlowSlabListener()
-  //val lightListener = TransformTorchOnSightListener(plugin, pumpkinManager)
   val lightListener = BreakLightOnSightListener(plugin, pumpkinManager)
   val lavaListener = LavaLaunchListener()
   val mimicListener = MimicListener(plugin)
