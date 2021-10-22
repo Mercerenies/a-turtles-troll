@@ -1,7 +1,7 @@
 
 package com.mercerenies.turtletroll
 
-import com.mercerenies.turtletroll.feature.AbstractFeature
+import com.mercerenies.turtletroll.recipe.RecipeFeature
 
 import org.bukkit.plugin.Plugin
 import org.bukkit.Bukkit
@@ -11,6 +11,7 @@ import org.bukkit.event.entity.ProjectileHitEvent
 import org.bukkit.event.entity.ProjectileLaunchEvent
 import org.bukkit.NamespacedKey
 import org.bukkit.Material
+import org.bukkit.inventory.Recipe
 import org.bukkit.inventory.ShapelessRecipe
 import org.bukkit.inventory.ItemStack
 import org.bukkit.persistence.PersistentDataType
@@ -19,12 +20,9 @@ import org.bukkit.entity.Trident
 import org.bukkit.entity.Player
 import org.bukkit.inventory.PlayerInventory
 
-class ExplosiveArrowManager(val plugin: Plugin) : AbstractFeature(), Listener {
+class ExplosiveArrowManager(plugin: Plugin) : RecipeFeature(plugin), Listener {
 
   companion object {
-    val RECIPE_KEY1 = "explosive_arrow1_recipe"
-    val RECIPE_KEY2 = "explosive_arrow2_recipe"
-    val RECIPE_KEY3 = "explosive_arrow3_recipe"
     val ARROW_MARKER_KEY = "explosive_arrow_tag"
     val TICKS_PER_SECOND = 20
 
@@ -62,50 +60,23 @@ class ExplosiveArrowManager(val plugin: Plugin) : AbstractFeature(), Listener {
 
   override val description = "Explosive arrows can be crafted, and tridents explode"
 
-  val recipeKeys = listOf(
-    NamespacedKey(plugin, RECIPE_KEY1),
-    NamespacedKey(plugin, RECIPE_KEY2),
-    NamespacedKey(plugin, RECIPE_KEY3),
-  )
   val markerKey = NamespacedKey(plugin, ARROW_MARKER_KEY)
 
-  override fun enable() {
-    if (!isEnabled()) {
-      addRecipes()
+  private fun getRecipe(n: Int): UnkeyedRecipe<Recipe> =
+    UnkeyedRecipe<Recipe> { key: NamespacedKey ->
+      val result = ItemStack(Material.TIPPED_ARROW)
+      val meta = result.itemMeta!!
+      meta.setDisplayName("Explosive Arrow (${roman(n)})")
+      meta.persistentDataContainer.set(markerKey, PersistentDataType.INTEGER, n)
+      result.itemMeta = meta
+      val recipe = ShapelessRecipe(key, result)
+      recipe.addIngredient(1, Material.ARROW)
+      recipe.addIngredient(n, Material.GUNPOWDER)
+      recipe
     }
-    super.enable()
-  }
 
-  override fun disable() {
-    if (isEnabled()) {
-      removeRecipes()
-    }
-    super.disable()
-  }
-
-  private fun getRecipe(n: Int): ShapelessRecipe {
-    val result = ItemStack(Material.TIPPED_ARROW)
-    val meta = result.itemMeta!!
-    meta.setDisplayName("Explosive Arrow (${roman(n)})")
-    meta.persistentDataContainer.set(markerKey, PersistentDataType.INTEGER, n)
-    result.itemMeta = meta
-    val recipe = ShapelessRecipe(recipeKeys[n - 1], result)
-    recipe.addIngredient(1, Material.ARROW)
-    recipe.addIngredient(n, Material.GUNPOWDER)
-    return recipe
-  }
-
-  fun addRecipes() {
-    Bukkit.addRecipe(getRecipe(1))
-    Bukkit.addRecipe(getRecipe(2))
-    Bukkit.addRecipe(getRecipe(3))
-  }
-
-  fun removeRecipes() {
-    Bukkit.removeRecipe(recipeKeys[0])
-    Bukkit.removeRecipe(recipeKeys[1])
-    Bukkit.removeRecipe(recipeKeys[2])
-  }
+  override fun getRecipes(): List<UnkeyedRecipe<Recipe>> =
+    (1..3).map { this.getRecipe(it) }
 
   @EventHandler
   fun onProjectileHit(event: ProjectileHitEvent) {
