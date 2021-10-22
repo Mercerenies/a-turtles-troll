@@ -8,9 +8,7 @@ import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.entity.EntityDeathEvent
 import org.bukkit.entity.Axolotl
-import org.bukkit.entity.Player
 import org.bukkit.Bukkit
-import org.bukkit.Location
 
 class AxolotlListener() : AbstractFeature(), Listener {
 

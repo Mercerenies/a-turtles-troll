@@ -10,7 +10,6 @@ import org.bukkit.entity.Blaze
 import org.bukkit.entity.EntityType
 import org.bukkit.plugin.Plugin
 
-
 class BlazeAttackListener(val plugin: Plugin) : AbstractFeature(), Listener {
 
   companion object {
