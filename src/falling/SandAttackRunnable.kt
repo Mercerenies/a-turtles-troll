@@ -6,7 +6,18 @@ import org.bukkit.Material
 import org.bukkit.block.Block
 import org.bukkit.plugin.Plugin
 
-class SandAttackRunnable(plugin: Plugin, val targetBlocks: Set<Material>) : FallingObjectRunnable(plugin) {
+class SandAttackRunnable(
+  plugin: Plugin,
+  val targetBlocks: Set<Material> = DEFAULT_TRIGGERS,
+) : FallingObjectRunnable(plugin) {
+
+  companion object {
+
+    val DEFAULT_TRIGGERS = setOf(
+      Material.SAND, Material.GRAVEL, Material.END_STONE,
+    )
+
+  }
 
   override val name = "sandattack"
 
