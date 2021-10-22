@@ -49,23 +49,17 @@ class Main : JavaPlugin() {
       Bukkit.getPluginManager().registerEvents(listener, this)
     }
 
+    // Recipe modifications
     recipeDeleter.removeRecipes()
     anvilRecipeFeature.addRecipes()
     angelRecipeFeature.addRecipes()
     dripstoneRecipeFeature.addRecipes()
     mainContainer.explosiveArrowManager.addRecipes()
-    mainContainer.anvilRunnable.register()
-    mainContainer.sandAttackRunnable.register()
-    mainContainer.ghastBurnRunnable.register()
-    mainContainer.pufferfishRainManager.register()
-    mainContainer.angelManager.register()
-    mainContainer.phantomManager.register()
-    mainContainer.pumpkinManager.register()
-    mainContainer.mossManager.register()
-    mainContainer.dripstoneManager.register()
-    mainContainer.dragonBombManager.register()
-    mainContainer.classicLavaManager.register()
-    mainContainer.bedtimeManager.register()
+
+    // Runnables
+    for (runnable in mainContainer.runnables) {
+      runnable.register()
+    }
 
     // Setup command
     this.getCommand("turtle")!!.setExecutor(featureManager)
@@ -74,47 +68,20 @@ class Main : JavaPlugin() {
   }
 
   override fun onDisable() {
+
+    // Recipe modifications
     recipeDeleter.addRecipes()
     anvilRecipeFeature.removeRecipes()
     angelRecipeFeature.removeRecipes()
     dripstoneRecipeFeature.removeRecipes()
     mainContainer.explosiveArrowManager.removeRecipes()
-    try {
-      mainContainer.anvilRunnable.cancel()
-    } catch (_: IllegalStateException) {}
-    try {
-      mainContainer.sandAttackRunnable.cancel()
-    } catch (_: IllegalStateException) {}
-    try {
-      mainContainer.ghastBurnRunnable.cancel()
-    } catch (_: IllegalStateException) {}
-    try {
-      mainContainer.pufferfishRainManager.cancel()
-    } catch (_: IllegalStateException) {}
-    try {
-      mainContainer.angelManager.cancel()
-    } catch (_: IllegalStateException) {}
-    try {
-      mainContainer.phantomManager.cancel()
-    } catch (_: IllegalStateException) {}
-    try {
-      mainContainer.pumpkinManager.cancel()
-    } catch (_: IllegalStateException) {}
-    try {
-      mainContainer.mossManager.cancel()
-    } catch (_: IllegalStateException) {}
-    try {
-      mainContainer.dripstoneManager.cancel()
-    } catch (_: IllegalStateException) {}
-    try {
-      mainContainer.dragonBombManager.cancel()
-    } catch (_: IllegalStateException) {}
-    try {
-      mainContainer.classicLavaManager.cancel()
-    } catch (_: IllegalStateException) {}
-    try {
-      mainContainer.bedtimeManager.cancel()
-    } catch (_: IllegalStateException) {}
+
+    // Runnables
+    for (runnable in mainContainer.runnables) {
+      try {
+        runnable.cancel()
+      } catch (_: IllegalStateException) {}
+    }
 
     // Remove command
     this.getCommand("turtle")?.setExecutor(null)

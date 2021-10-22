@@ -19,6 +19,7 @@ import com.mercerenies.turtletroll.dripstone.DripstoneManager
 import com.mercerenies.turtletroll.gravestone.GravestoneListener
 import com.mercerenies.turtletroll.gravestone.BedtimeManager
 import com.mercerenies.turtletroll.feature.Feature
+import com.mercerenies.turtletroll.feature.RunnableFeature
 import com.mercerenies.turtletroll.feature.CompositeFeature
 
 import org.bukkit.plugin.Plugin
@@ -131,5 +132,12 @@ class MainContainer(val plugin: Plugin) {
       bedtimeManager, ghastLavaListener, sandAttackRunnable,
       ghastBurnRunnable,
     ) + (breakEvents.getFeatures() - breakEvents.cancelDropAction)
+
+  val runnables: List<RunnableFeature> =
+    listOf(
+      anvilRunnable, sandAttackRunnable, ghastBurnRunnable,
+      pufferfishRainManager, angelManager, phantomManager, pumpkinManager, mossManager,
+      dripstoneManager, dragonBombManager, classicLavaManager, bedtimeManager,
+    )
 
 }
