@@ -141,6 +141,9 @@
   + Blindness
   + More **bedtime** conditions
   + Netherite hoe insta-kills most mobs
+  + Some zombies spawn with nametags of players who are online
+  + Wither skeles drop skulls more often if you've killed the dragon
+  + Wither is a boss rush?
 ** HATCRAFTER'S IDEAS
    + Llamas are hostile and have extra knockback on their spit
    + Cookies, when eaten, have a random effect (lower numbered effects
