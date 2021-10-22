@@ -2,38 +2,15 @@
 package com.mercerenies.turtletroll
 
 import com.mercerenies.turtletroll.feature.FeatureManager
-import com.mercerenies.turtletroll.feature.CompositeFeature
-import com.mercerenies.turtletroll.recipe.StoneRecipeDeleter
 
-import org.bukkit.Bukkit
 import org.bukkit.plugin.java.JavaPlugin
+import org.bukkit.Bukkit
 
 class Main : JavaPlugin() {
-  val recipeDeleter = StoneRecipeDeleter(Bukkit.getServer())
 
   val mainContainer = MainContainer(this)
 
-  val anvilFeature = CompositeFeature(
-    mainContainer.anvilRunnable.name,
-    mainContainer.anvilRunnable.description,
-    listOf(mainContainer.anvilRunnable, mainContainer.anvilRecipeFeature),
-  )
-
-  val angelFeature = CompositeFeature(
-    mainContainer.angelManager.name,
-    mainContainer.angelManager.description,
-    listOf(mainContainer.angelManager, mainContainer.angelRecipeFeature),
-  )
-
-  val dripstoneFeature = CompositeFeature(
-    mainContainer.dripstoneManager.name,
-    mainContainer.dripstoneManager.description,
-    listOf(mainContainer.dripstoneManager, mainContainer.dripstoneRecipeFeature),
-  )
-
-  val featureManager = FeatureManager(
-    listOf(recipeDeleter, anvilFeature, angelFeature, dripstoneFeature) + mainContainer.features
-  )
+  val featureManager = FeatureManager(mainContainer.features)
 
   override fun onEnable() {
 
@@ -43,7 +20,7 @@ class Main : JavaPlugin() {
     }
 
     // Recipe modifications
-    recipeDeleter.removeRecipes()
+    mainContainer.recipeDeleter.removeRecipes()
     for (recipe in mainContainer.recipes) {
       recipe.addRecipes()
     }
@@ -62,7 +39,7 @@ class Main : JavaPlugin() {
   override fun onDisable() {
 
     // Recipe modifications
-    recipeDeleter.addRecipes()
+    mainContainer.recipeDeleter.addRecipes()
     for (recipe in mainContainer.recipes) {
       recipe.removeRecipes()
     }

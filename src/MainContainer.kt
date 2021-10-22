@@ -25,20 +25,20 @@ import com.mercerenies.turtletroll.recipe.RecipeFeature
 import com.mercerenies.turtletroll.recipe.AnvilRecipeFeature
 import com.mercerenies.turtletroll.recipe.AngelRecipeFeature
 import com.mercerenies.turtletroll.recipe.DripstoneRecipeFeature
+import com.mercerenies.turtletroll.recipe.StoneRecipeDeleter
 
 import org.bukkit.plugin.Plugin
 import org.bukkit.event.Listener
-
-import kotlin.collections.Iterable
+import org.bukkit.Bukkit
 
 class MainContainer(val plugin: Plugin) {
 
   val pumpkinManager = PumpkinSlownessManager(plugin)
-  val angelManager = WeepingAngelManager(plugin) // Not included in feature list (!!)
+  val angelManager = WeepingAngelManager(plugin)
   val phantomManager = PetPhantomManager(plugin)
   val mossManager = ContagiousMossManager(plugin)
   val explosiveArrowManager = ExplosiveArrowManager(plugin)
-  val dripstoneManager = DripstoneManager(plugin) // Not included in feature list (!!)
+  val dripstoneManager = DripstoneManager(plugin)
   val dragonBombManager = DragonBombManager(plugin)
   val pufferfishRainManager = PufferfishRainManager(plugin)
   val classicLavaManager = ClassicLavaManager(plugin)
@@ -84,13 +84,33 @@ class MainContainer(val plugin: Plugin) {
   val axolotlListener = AxolotlListener()
   val ghastLavaListener = GhastLavaListener(plugin, classicLavaManager.ignorer)
 
-  val anvilRunnable = AnvilRunnable(plugin) // Not included in feature list (!!)
+  val anvilRunnable = AnvilRunnable(plugin)
   val ghastBurnRunnable = GhastBurnRunnable(plugin)
   val sandAttackRunnable = SandAttackRunnable(plugin)
 
-  val anvilRecipeFeature = AnvilRecipeFeature(plugin) // Not included in feature list (!!)
-  val angelRecipeFeature = AngelRecipeFeature(plugin) // Not included in feature list (!!)
-  val dripstoneRecipeFeature = DripstoneRecipeFeature(plugin) // Not included in feature list (!!)
+  val anvilRecipeFeature = AnvilRecipeFeature(plugin)
+  val angelRecipeFeature = AngelRecipeFeature(plugin)
+  val dripstoneRecipeFeature = DripstoneRecipeFeature(plugin)
+
+  val recipeDeleter = StoneRecipeDeleter(Bukkit.getServer())
+
+  val anvilFeature = CompositeFeature(
+    anvilRunnable.name,
+    anvilRunnable.description,
+    listOf(anvilRunnable, anvilRecipeFeature),
+  )
+
+  val angelFeature = CompositeFeature(
+    angelManager.name,
+    angelManager.description,
+    listOf(angelManager, angelRecipeFeature),
+  )
+
+  val dripstoneFeature = CompositeFeature(
+    dripstoneManager.name,
+    dripstoneManager.description,
+    listOf(dripstoneManager, dripstoneRecipeFeature),
+  )
 
   // CancelDropAction is a BlockBreakAction and BedDropListener is a
   // Bukkit event listener, but conceptually they do the same thing,
@@ -138,7 +158,8 @@ class MainContainer(val plugin: Plugin) {
       fallDamageListener, chargedCreeperListener,
       drownedListener, gravestoneListener, axolotlListener,
       bedtimeManager, ghastLavaListener, sandAttackRunnable,
-      ghastBurnRunnable,
+      ghastBurnRunnable, anvilFeature, angelFeature, dripstoneFeature,
+      recipeDeleter,
     ) + (breakEvents.getFeatures() - breakEvents.cancelDropAction)
 
   val runnables: List<RunnableFeature> =
