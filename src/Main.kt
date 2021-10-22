@@ -4,9 +4,6 @@ package com.mercerenies.turtletroll
 import com.mercerenies.turtletroll.feature.FeatureManager
 import com.mercerenies.turtletroll.feature.CompositeFeature
 import com.mercerenies.turtletroll.recipe.StoneRecipeDeleter
-import com.mercerenies.turtletroll.recipe.AnvilRecipeFeature
-import com.mercerenies.turtletroll.recipe.AngelRecipeFeature
-import com.mercerenies.turtletroll.recipe.DripstoneRecipeFeature
 
 import org.bukkit.Bukkit
 import org.bukkit.plugin.java.JavaPlugin
@@ -14,28 +11,24 @@ import org.bukkit.plugin.java.JavaPlugin
 class Main : JavaPlugin() {
   val recipeDeleter = StoneRecipeDeleter(Bukkit.getServer())
 
-  val anvilRecipeFeature = AnvilRecipeFeature(this)
-  val angelRecipeFeature = AngelRecipeFeature(this)
-  val dripstoneRecipeFeature = DripstoneRecipeFeature(this)
-
   val mainContainer = MainContainer(this)
 
   val anvilFeature = CompositeFeature(
     mainContainer.anvilRunnable.name,
     mainContainer.anvilRunnable.description,
-    listOf(mainContainer.anvilRunnable, anvilRecipeFeature),
+    listOf(mainContainer.anvilRunnable, mainContainer.anvilRecipeFeature),
   )
 
   val angelFeature = CompositeFeature(
     mainContainer.angelManager.name,
     mainContainer.angelManager.description,
-    listOf(mainContainer.angelManager, angelRecipeFeature),
+    listOf(mainContainer.angelManager, mainContainer.angelRecipeFeature),
   )
 
   val dripstoneFeature = CompositeFeature(
     mainContainer.dripstoneManager.name,
     mainContainer.dripstoneManager.description,
-    listOf(mainContainer.dripstoneManager, dripstoneRecipeFeature),
+    listOf(mainContainer.dripstoneManager, mainContainer.dripstoneRecipeFeature),
   )
 
   val featureManager = FeatureManager(
@@ -51,10 +44,9 @@ class Main : JavaPlugin() {
 
     // Recipe modifications
     recipeDeleter.removeRecipes()
-    anvilRecipeFeature.addRecipes()
-    angelRecipeFeature.addRecipes()
-    dripstoneRecipeFeature.addRecipes()
-    mainContainer.explosiveArrowManager.addRecipes()
+    for (recipe in mainContainer.recipes) {
+      recipe.addRecipes()
+    }
 
     // Runnables
     for (runnable in mainContainer.runnables) {
@@ -71,10 +63,9 @@ class Main : JavaPlugin() {
 
     // Recipe modifications
     recipeDeleter.addRecipes()
-    anvilRecipeFeature.removeRecipes()
-    angelRecipeFeature.removeRecipes()
-    dripstoneRecipeFeature.removeRecipes()
-    mainContainer.explosiveArrowManager.removeRecipes()
+    for (recipe in mainContainer.recipes) {
+      recipe.removeRecipes()
+    }
 
     // Runnables
     for (runnable in mainContainer.runnables) {

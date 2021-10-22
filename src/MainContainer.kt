@@ -21,6 +21,10 @@ import com.mercerenies.turtletroll.gravestone.BedtimeManager
 import com.mercerenies.turtletroll.feature.Feature
 import com.mercerenies.turtletroll.feature.RunnableFeature
 import com.mercerenies.turtletroll.feature.CompositeFeature
+import com.mercerenies.turtletroll.recipe.RecipeFeature
+import com.mercerenies.turtletroll.recipe.AnvilRecipeFeature
+import com.mercerenies.turtletroll.recipe.AngelRecipeFeature
+import com.mercerenies.turtletroll.recipe.DripstoneRecipeFeature
 
 import org.bukkit.plugin.Plugin
 import org.bukkit.event.Listener
@@ -84,6 +88,10 @@ class MainContainer(val plugin: Plugin) {
   val ghastBurnRunnable = GhastBurnRunnable(plugin)
   val sandAttackRunnable = SandAttackRunnable(plugin)
 
+  val anvilRecipeFeature = AnvilRecipeFeature(plugin) // Not included in feature list (!!)
+  val angelRecipeFeature = AngelRecipeFeature(plugin) // Not included in feature list (!!)
+  val dripstoneRecipeFeature = DripstoneRecipeFeature(plugin) // Not included in feature list (!!)
+
   // CancelDropAction is a BlockBreakAction and BedDropListener is a
   // Bukkit event listener, but conceptually they do the same thing,
   // so we want to treat them as one feature.
@@ -138,6 +146,11 @@ class MainContainer(val plugin: Plugin) {
       anvilRunnable, sandAttackRunnable, ghastBurnRunnable,
       pufferfishRainManager, angelManager, phantomManager, pumpkinManager, mossManager,
       dripstoneManager, dragonBombManager, classicLavaManager, bedtimeManager,
+    )
+
+  val recipes: List<RecipeFeature> =
+    listOf(
+      anvilRecipeFeature, angelRecipeFeature, dripstoneRecipeFeature, explosiveArrowManager,
     )
 
 }
