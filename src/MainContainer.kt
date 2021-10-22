@@ -24,7 +24,7 @@ import org.bukkit.event.Listener
 
 import kotlin.collections.Iterable
 
-class AllPluginListeners(val plugin: Plugin) : Iterable<Listener> {
+class MainContainer(val plugin: Plugin) {
   val pumpkinManager = PumpkinSlownessManager()
   val angelManager = WeepingAngelManager(plugin) // Not included in feature list (!!)
   val phantomManager = PetPhantomManager(plugin)
@@ -86,7 +86,7 @@ class AllPluginListeners(val plugin: Plugin) : Iterable<Listener> {
       listOf(breakEvents.cancelDropAction, bedListener)
     )
 
-  fun getListeners(): List<Listener> =
+  val listeners: List<Listener> =
     listOf(
       breakEvents.listener, chickenListener, grassListener, snowListener,
       ghastListener, ravagerListener, skeleListener, electricListener,
@@ -103,7 +103,7 @@ class AllPluginListeners(val plugin: Plugin) : Iterable<Listener> {
       ghastLavaListener,
     )
 
-  fun getFeatures(): List<Feature> =
+  val features: List<Feature> =
     listOf(
       chickenListener, grassListener, snowListener,
       ghastListener, ravagerListener, skeleListener,
@@ -123,8 +123,5 @@ class AllPluginListeners(val plugin: Plugin) : Iterable<Listener> {
       drownedListener, gravestoneListener, axolotlListener,
       bedtimeManager, ghastLavaListener,
     ) + (breakEvents.getFeatures() - breakEvents.cancelDropAction)
-
-  override fun iterator(): Iterator<Listener> =
-    getListeners().iterator()
 
 }

@@ -24,7 +24,7 @@ class Main : JavaPlugin() {
   val angelRecipeFeature = AngelRecipeFeature(this)
   val dripstoneRecipeFeature = DripstoneRecipeFeature(this)
 
-  val listenerManager = AllPluginListeners(this)
+  val mainContainer = MainContainer(this)
 
   val anvilFeature = CompositeFeature(
     anvilRunnable.name,
@@ -33,19 +33,19 @@ class Main : JavaPlugin() {
   )
 
   val angelFeature = CompositeFeature(
-    listenerManager.angelManager.name,
-    listenerManager.angelManager.description,
-    listOf(listenerManager.angelManager, angelRecipeFeature),
+    mainContainer.angelManager.name,
+    mainContainer.angelManager.description,
+    listOf(mainContainer.angelManager, angelRecipeFeature),
   )
 
   val dripstoneFeature = CompositeFeature(
-    listenerManager.dripstoneManager.name,
-    listenerManager.dripstoneManager.description,
-    listOf(listenerManager.dripstoneManager, dripstoneRecipeFeature),
+    mainContainer.dripstoneManager.name,
+    mainContainer.dripstoneManager.description,
+    listOf(mainContainer.dripstoneManager, dripstoneRecipeFeature),
   )
 
   val featureManager = FeatureManager(
-    listOf(recipeDeleter, anvilFeature, angelFeature, dripstoneFeature, sandAttackRunnable, ghastBurnRunnable) + listenerManager.getFeatures()
+    listOf(recipeDeleter, anvilFeature, angelFeature, dripstoneFeature, sandAttackRunnable, ghastBurnRunnable) + mainContainer.features
   )
 
   companion object {
@@ -57,26 +57,26 @@ class Main : JavaPlugin() {
   }
 
   override fun onEnable() {
-    for (listener in listenerManager) {
+    for (listener in mainContainer.listeners) {
       Bukkit.getPluginManager().registerEvents(listener, this)
     }
     recipeDeleter.removeRecipes()
     anvilRecipeFeature.addRecipes()
     angelRecipeFeature.addRecipes()
     dripstoneRecipeFeature.addRecipes()
-    listenerManager.explosiveArrowManager.addRecipes()
+    mainContainer.explosiveArrowManager.addRecipes()
     anvilRunnable.register(this)
     sandAttackRunnable.register(this)
     ghastBurnRunnable.register()
-    listenerManager.pufferfishRainManager.register()
-    listenerManager.angelManager.register()
-    listenerManager.phantomManager.register()
-    listenerManager.pumpkinManager.register(this)
-    listenerManager.mossManager.register(this)
-    listenerManager.dripstoneManager.register()
-    listenerManager.dragonBombManager.register()
-    listenerManager.classicLavaManager.register()
-    listenerManager.bedtimeManager.register()
+    mainContainer.pufferfishRainManager.register()
+    mainContainer.angelManager.register()
+    mainContainer.phantomManager.register()
+    mainContainer.pumpkinManager.register(this)
+    mainContainer.mossManager.register(this)
+    mainContainer.dripstoneManager.register()
+    mainContainer.dragonBombManager.register()
+    mainContainer.classicLavaManager.register()
+    mainContainer.bedtimeManager.register()
     this.getCommand("turtle")!!.setExecutor(featureManager)
     this.getCommand("turtle")!!.setTabCompleter(featureManager)
   }
@@ -86,7 +86,7 @@ class Main : JavaPlugin() {
     anvilRecipeFeature.removeRecipes()
     angelRecipeFeature.removeRecipes()
     dripstoneRecipeFeature.removeRecipes()
-    listenerManager.explosiveArrowManager.removeRecipes()
+    mainContainer.explosiveArrowManager.removeRecipes()
     try {
       anvilRunnable.cancel()
     } catch (_: IllegalStateException) {}
@@ -97,31 +97,31 @@ class Main : JavaPlugin() {
       ghastBurnRunnable.cancel()
     } catch (_: IllegalStateException) {}
     try {
-      listenerManager.pufferfishRainManager.cancel()
+      mainContainer.pufferfishRainManager.cancel()
     } catch (_: IllegalStateException) {}
     try {
-      listenerManager.angelManager.cancel()
+      mainContainer.angelManager.cancel()
     } catch (_: IllegalStateException) {}
     try {
-      listenerManager.phantomManager.cancel()
+      mainContainer.phantomManager.cancel()
     } catch (_: IllegalStateException) {}
     try {
-      listenerManager.pumpkinManager.cancel()
+      mainContainer.pumpkinManager.cancel()
     } catch (_: IllegalStateException) {}
     try {
-      listenerManager.mossManager.cancel()
+      mainContainer.mossManager.cancel()
     } catch (_: IllegalStateException) {}
     try {
-      listenerManager.dripstoneManager.cancel()
+      mainContainer.dripstoneManager.cancel()
     } catch (_: IllegalStateException) {}
     try {
-      listenerManager.dragonBombManager.cancel()
+      mainContainer.dragonBombManager.cancel()
     } catch (_: IllegalStateException) {}
     try {
-      listenerManager.classicLavaManager.cancel()
+      mainContainer.classicLavaManager.cancel()
     } catch (_: IllegalStateException) {}
     try {
-      listenerManager.bedtimeManager.cancel()
+      mainContainer.bedtimeManager.cancel()
     } catch (_: IllegalStateException) {}
     this.getCommand("turtle")?.setExecutor(null)
     this.getCommand("turtle")?.setTabCompleter(null)
