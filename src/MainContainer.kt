@@ -1,6 +1,8 @@
 
 package com.mercerenies.turtletroll
 
+import com.mercerenies.turtletroll.falling.AnvilRunnable
+import com.mercerenies.turtletroll.falling.SandAttackRunnable
 import com.mercerenies.turtletroll.chicken.ChickenDamageListener
 import com.mercerenies.turtletroll.transformed.GhastSpawnerListener
 import com.mercerenies.turtletroll.transformed.RavagerSpawnerListener
@@ -21,10 +23,21 @@ import com.mercerenies.turtletroll.feature.CompositeFeature
 
 import org.bukkit.plugin.Plugin
 import org.bukkit.event.Listener
+import org.bukkit.Material
 
 import kotlin.collections.Iterable
 
 class MainContainer(val plugin: Plugin) {
+
+  // TODO Move this to SandAttackRunnable
+  companion object {
+
+    val SAND_ATTACK_TRIGGERS = setOf(
+      Material.SAND, Material.GRAVEL, Material.END_STONE,
+    )
+
+  }
+
   val pumpkinManager = PumpkinSlownessManager(plugin)
   val angelManager = WeepingAngelManager(plugin) // Not included in feature list (!!)
   val phantomManager = PetPhantomManager(plugin)
@@ -76,6 +89,10 @@ class MainContainer(val plugin: Plugin) {
   val axolotlListener = AxolotlListener()
   val ghastLavaListener = GhastLavaListener(plugin, classicLavaManager.ignorer)
 
+  val anvilRunnable = AnvilRunnable(plugin) // Not included in feature list (!!)
+  val ghastBurnRunnable = GhastBurnRunnable(plugin)
+  val sandAttackRunnable = SandAttackRunnable(plugin, SAND_ATTACK_TRIGGERS)
+
   // CancelDropAction is a BlockBreakAction and BedDropListener is a
   // Bukkit event listener, but conceptually they do the same thing,
   // so we want to treat them as one feature.
@@ -121,7 +138,8 @@ class MainContainer(val plugin: Plugin) {
       pillagerGunListener, classicLavaManager,
       fallDamageListener, chargedCreeperListener,
       drownedListener, gravestoneListener, axolotlListener,
-      bedtimeManager, ghastLavaListener,
+      bedtimeManager, ghastLavaListener, sandAttackRunnable,
+      ghastBurnRunnable,
     ) + (breakEvents.getFeatures() - breakEvents.cancelDropAction)
 
 }

@@ -1,8 +1,6 @@
 
 package com.mercerenies.turtletroll
 
-import com.mercerenies.turtletroll.falling.AnvilRunnable
-import com.mercerenies.turtletroll.falling.SandAttackRunnable
 import com.mercerenies.turtletroll.feature.FeatureManager
 import com.mercerenies.turtletroll.feature.CompositeFeature
 import com.mercerenies.turtletroll.recipe.StoneRecipeDeleter
@@ -11,14 +9,10 @@ import com.mercerenies.turtletroll.recipe.AngelRecipeFeature
 import com.mercerenies.turtletroll.recipe.DripstoneRecipeFeature
 
 import org.bukkit.Bukkit
-import org.bukkit.Material
 import org.bukkit.plugin.java.JavaPlugin
 
 class Main : JavaPlugin() {
   val recipeDeleter = StoneRecipeDeleter(Bukkit.getServer())
-  val anvilRunnable = AnvilRunnable(this)
-  val ghastBurnRunnable = GhastBurnRunnable(this)
-  val sandAttackRunnable = SandAttackRunnable(this, SAND_ATTACK_TRIGGERS)
 
   val anvilRecipeFeature = AnvilRecipeFeature(this)
   val angelRecipeFeature = AngelRecipeFeature(this)
@@ -27,9 +21,9 @@ class Main : JavaPlugin() {
   val mainContainer = MainContainer(this)
 
   val anvilFeature = CompositeFeature(
-    anvilRunnable.name,
-    anvilRunnable.description,
-    listOf(anvilRunnable, anvilRecipeFeature),
+    mainContainer.anvilRunnable.name,
+    mainContainer.anvilRunnable.description,
+    listOf(mainContainer.anvilRunnable, anvilRecipeFeature),
   )
 
   val angelFeature = CompositeFeature(
@@ -45,16 +39,8 @@ class Main : JavaPlugin() {
   )
 
   val featureManager = FeatureManager(
-    listOf(recipeDeleter, anvilFeature, angelFeature, dripstoneFeature, sandAttackRunnable, ghastBurnRunnable) + mainContainer.features
+    listOf(recipeDeleter, anvilFeature, angelFeature, dripstoneFeature) + mainContainer.features
   )
-
-  companion object {
-
-    val SAND_ATTACK_TRIGGERS = setOf(
-      Material.SAND, Material.GRAVEL, Material.END_STONE,
-    )
-
-  }
 
   override fun onEnable() {
 
@@ -68,9 +54,9 @@ class Main : JavaPlugin() {
     angelRecipeFeature.addRecipes()
     dripstoneRecipeFeature.addRecipes()
     mainContainer.explosiveArrowManager.addRecipes()
-    anvilRunnable.register()
-    sandAttackRunnable.register()
-    ghastBurnRunnable.register()
+    mainContainer.anvilRunnable.register()
+    mainContainer.sandAttackRunnable.register()
+    mainContainer.ghastBurnRunnable.register()
     mainContainer.pufferfishRainManager.register()
     mainContainer.angelManager.register()
     mainContainer.phantomManager.register()
@@ -94,13 +80,13 @@ class Main : JavaPlugin() {
     dripstoneRecipeFeature.removeRecipes()
     mainContainer.explosiveArrowManager.removeRecipes()
     try {
-      anvilRunnable.cancel()
+      mainContainer.anvilRunnable.cancel()
     } catch (_: IllegalStateException) {}
     try {
-      sandAttackRunnable.cancel()
+      mainContainer.sandAttackRunnable.cancel()
     } catch (_: IllegalStateException) {}
     try {
-      ghastBurnRunnable.cancel()
+      mainContainer.ghastBurnRunnable.cancel()
     } catch (_: IllegalStateException) {}
     try {
       mainContainer.pufferfishRainManager.cancel()
