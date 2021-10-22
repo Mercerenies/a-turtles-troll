@@ -3,6 +3,7 @@ package com.mercerenies.turtletroll
 
 import com.mercerenies.turtletroll.feature.AbstractFeature
 
+import org.bukkit.World
 import org.bukkit.Material
 import org.bukkit.Location
 import org.bukkit.event.EventHandler
@@ -32,6 +33,10 @@ class GhastLavaListener(
   @EventHandler
   fun onProjectileHit(event: ProjectileHitEvent) {
     if (!isEnabled()) {
+      return
+    }
+    if (event.entity.location.world?.environment == World.Environment.THE_END) {
+      // The End is crazy enough already
       return
     }
     val entity = event.getEntity()
