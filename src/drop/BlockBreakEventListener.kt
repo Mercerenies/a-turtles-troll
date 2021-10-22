@@ -9,28 +9,42 @@ import org.bukkit.event.Listener
 import org.bukkit.event.block.BlockBreakEvent
 
 class BlockBreakEventListener(
-  private val overrideRules: List<BlockBreakAction>,
+  private val preRules: List<BlockBreakAction>,
   private val actions: List<Weight<BlockBreakAction>>,
+  private val postRules: List<BlockBreakAction>,
 ) : Listener {
 
   @EventHandler
   fun onBlockBreak(event: BlockBreakEvent) {
-    for (action in overrideRules) {
+
+    for (action in preRules) {
       if (action.shouldTrigger(event)) {
         action.trigger(event)
         if (action.fullyOverridesOthers()) {
-          // If any single "full override" happens, then stop the
-          // function. Otherwise, keep running as normal.
           return
         }
       }
     }
+
     // Regular dice roll
     val validActions = actions.filter { it.value.shouldTrigger(event) }
     if (!validActions.isEmpty()) {
       val action = sample(validActions)
       action.trigger(event)
+      if (action.fullyOverridesOthers()) {
+        return
+      }
     }
+
+    for (action in postRules) {
+      if (action.shouldTrigger(event)) {
+        action.trigger(event)
+        if (action.fullyOverridesOthers()) {
+          return
+        }
+      }
+    }
+
   }
 
 }

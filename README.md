@@ -15,6 +15,7 @@ for the full feature list.
   specific way; if nobody dies that way on that day, then no one will
   be allowed to sleep that night
 * Ghast fireballs erupt into lava on contact
+* When logs/planks are broken, a random log/plank type is dropped
 * Ghasts instantly burn in daylight
 * Weeping Angel arm pose is fixed now
 * Armor stands can be crafted into jungle wood slabs now

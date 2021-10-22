@@ -82,5 +82,16 @@ object BlockTypes {
     Material.WAXED_OXIDIZED_CUT_COPPER_STAIRS, Material.WEATHERED_CUT_COPPER_STAIRS,
   )
 
+  val LOGS = setOf(
+    Material.ACACIA_LOG, Material.BIRCH_LOG, Material.DARK_OAK_LOG, Material.JUNGLE_LOG,
+    Material.OAK_LOG, Material.SPRUCE_LOG, Material.STRIPPED_ACACIA_LOG, Material.STRIPPED_BIRCH_LOG,
+    Material.STRIPPED_DARK_OAK_LOG, Material.STRIPPED_JUNGLE_LOG, Material.STRIPPED_OAK_LOG,
+    Material.STRIPPED_SPRUCE_LOG,
+  )
+
+  val PLANKS = setOf(
+    Material.ACACIA_PLANKS, Material.BIRCH_PLANKS, Material.DARK_OAK_PLANKS, Material.JUNGLE_PLANKS,
+    Material.OAK_PLANKS, Material.SPRUCE_PLANKS,
+  )
 
 }

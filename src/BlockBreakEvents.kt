@@ -2,6 +2,8 @@
 package com.mercerenies.turtletroll
 
 import com.mercerenies.turtletroll.drop.BlockBreakEventListener
+import com.mercerenies.turtletroll.drop.BlockBreakAction
+import com.mercerenies.turtletroll.drop.ShuffleDropsAction
 import com.mercerenies.turtletroll.drop.NullAction
 import com.mercerenies.turtletroll.drop.ReplaceDropsAction
 import com.mercerenies.turtletroll.drop.CancelDropAction
@@ -61,6 +63,16 @@ class BlockBreakEvents {
     "Several block types transform into bedrock when mined",
   )
 
+  // TODO ShuffleDropsAction for stairs/slabs made of wood as well
+  private val shuffleLogsAction = ShuffleDropsAction(BlockTypes.LOGS.toList()).asFeature("", "")
+  private val shufflePlanksAction = ShuffleDropsAction(BlockTypes.PLANKS.toList()).asFeature("", "")
+
+  private val shuffleFeature = CompositeFeature(
+    "shufflelogs",
+    "Wooden drops are shuffled",
+    listOf(shuffleLogsAction, shufflePlanksAction),
+  )
+
   private val breakOverrides = listOf(
     endermiteSpawnAction,
     netherrackBoomAction,
@@ -77,7 +89,22 @@ class BlockBreakEvents {
     Weight(beeAttackAction, 0.2),
   )
 
-  val listener = BlockBreakEventListener(overrideRules = breakOverrides, actions = breakEvents)
+  private val breakPost: List<BlockBreakAction> = listOf(
+    shuffleLogsAction,
+    shufflePlanksAction,
+  )
+
+  val listener = BlockBreakEventListener(
+    preRules = breakOverrides,
+    actions = breakEvents,
+    postRules = breakPost,
+  )
+
+  fun getFeatures(): List<Feature> = listOf(
+    dirtDropFeature, silverfishAttackAction, beeAttackAction,
+    endermiteSpawnAction, netherrackBoomAction, cancelDropAction,
+    strongholdAttackAction, bedrockAction, shuffleFeature,
+  )
 
   companion object {
 
@@ -106,11 +133,5 @@ class BlockBreakEvents {
       )
 
   }
-
-  fun getFeatures(): List<Feature> = listOf(
-    dirtDropFeature, silverfishAttackAction, beeAttackAction,
-    endermiteSpawnAction, netherrackBoomAction, cancelDropAction,
-    strongholdAttackAction, bedrockAction,
-  )
 
 }

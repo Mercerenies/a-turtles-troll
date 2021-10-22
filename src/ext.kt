@@ -2,6 +2,8 @@
 package com.mercerenies.turtletroll.ext
 
 import org.bukkit.Location
+import org.bukkit.event.block.BlockBreakEvent
+import org.bukkit.inventory.ItemStack
 
 import kotlin.random.Random
 
@@ -52,3 +54,6 @@ fun<T> List<T>.sample(): T? =
   } else {
     this[Random.nextInt(this.size)]
   }
+
+fun BlockBreakEvent.getDefaultDrops(): Collection<ItemStack> =
+  block.getDrops(player.inventory.itemInMainHand, player)

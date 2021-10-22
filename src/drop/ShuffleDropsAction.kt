@@ -9,21 +9,30 @@ import org.bukkit.inventory.ItemStack
 import org.bukkit.entity.Item
 import org.bukkit.entity.EntityType
 
-class ReplaceDropsAction(val itemStack: ItemStack) : BlockBreakAction {
+class ShuffleDropsAction(
+  val types: List<Material>,
+) : BlockBreakAction {
 
   override fun shouldTrigger(event: BlockBreakEvent): Boolean {
-    return !event.getDefaultDrops().isEmpty()
+    val defaultDrops = event.getDefaultDrops()
+    return !defaultDrops.isEmpty() && defaultDrops.all { types.contains(it.type) }
   }
 
   override fun trigger(event: BlockBreakEvent) {
     val w = event.block.world
     val loc = event.block.location.add(0.5, 0.5, 0.5)
 
+    val defaultDrops = event.getDefaultDrops()
+    val dropCount = defaultDrops.map { it.amount }.sum()
+
     event.block.type = Material.AIR
     event.setCancelled(true)
 
-    val item = w.spawnEntity(loc, EntityType.DROPPED_ITEM) as Item
-    item.itemStack = itemStack.clone()
+    repeat (dropCount) {
+      val itemType = types.sample()!!
+      val item = w.spawnEntity(loc, EntityType.DROPPED_ITEM) as Item
+      item.itemStack = ItemStack(itemType, 1)
+    }
 
   }
 

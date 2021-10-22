@@ -99,6 +99,8 @@
                    buttons and levers don't drop anything when broken
    + glass :: Breaking glass gives you the Unluck effect for seven
               years
+   + shufflelog :: When logs or planks are broken, a random log/plank
+                   type is dropped
 ** MISCELLANEOUS FEATURES
    + stonetools :: All recipes which produce stone tools are disabled
    + anvil :: If you stand still for more than ten seconds, an anvil
@@ -137,8 +139,8 @@
   + Giants?
   + Illusioner?
   + Blindness
-  + Crops turn into whole trees via **overgrowth** rather than single logs?
   + More **bedtime** conditions
+  + Netherite hoe insta-kills most mobs
 ** HATCRAFTER'S IDEAS
    + Llamas are hostile and have extra knockback on their spit
    + Cookies, when eaten, have a random effect (lower numbered effects
@@ -160,10 +162,6 @@
    + Grass spread is slower
    + Polar bears have Haste 3
    + Lava spreads faster, and even faster in the Nether
-   + When a wood block is mined, it drops a random wood block
-   + When a wood plank is mined, it drops a random wood plank
-   + Taking fall damage gives the player slowness and nausea for 5
-     seconds
    + Every 30 seconds, a phantom has a chance of becoming a witch
      (witches don't take fall damage)
    + Wandering traders now offer 3 emeralds in exchange for a random
