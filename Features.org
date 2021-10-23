@@ -66,6 +66,11 @@
    + drowned :: Whenever a fish spawns, a Drowned spawns alongside it;
                 Drowned zombies always spawn with leather helmets
    + namedzombie :: Some zombies spawn with custom names
+   + trader :: Wandering traders can trade basically any item in the game
+     - The following are the /only/ items blacklisted from
+       consideration: Command blocks (all three types + minecart),
+       "Thing" banner pattern, structure blocks/void, jigsaw blocks,
+       light blocks, mob spawners, barriers
 ** EGG FEATURES
    + eggs :: Almost any mob (or diamonds) can spawn from an egg
    + eggarrow :: Skeletons will fire eggs in addition to arrows

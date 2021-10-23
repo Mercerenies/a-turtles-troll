@@ -14,6 +14,7 @@ for the full feature list.
 * Each day at dawn, the gods will demand to see someone die in a
   specific way; if nobody dies that way on that day, then no one will
   be allowed to sleep that night
+* Wandering traders can trade basically any item in the game
 * Netherite hoes can one-shot any non-boss mob in the game
 * Ghast fireballs erupt into lava on contact
 * When logs/planks are broken, a random log/plank type is dropped
