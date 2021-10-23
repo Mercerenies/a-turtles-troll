@@ -8,4 +8,10 @@ commands:
   turtle:
     description: Enable or disable features of A Turtle's Troll
     usage: /turtle <on|off|list> [feature]
-    permission: com.mercerenies.turtletroll.turtle
+permissions:
+  com.mercerenies.turtletroll.command:
+    default: true
+  com.mercerenies.turtletroll.feature.list:
+    default: true
+  com.mercerenies.turtletroll.feature.toggle:
+    default: op
