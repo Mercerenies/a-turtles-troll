@@ -144,7 +144,6 @@
   + Illusioner?
   + Blindness
   + More **bedtime** conditions
-  + Some zombies spawn with nametags of players who are online
   + Wither skeles drop skulls more often if you've killed the dragon
   + Wither is a boss rush?
 ** HATCRAFTER'S IDEAS
