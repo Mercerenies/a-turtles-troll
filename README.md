@@ -18,6 +18,7 @@ for the full feature list.
 * Ghast fireballs erupt into lava on contact
 * When logs/planks are broken, a random log/plank type is dropped
 * Ghasts instantly burn in daylight
+* Some zombies spawn with custom names
 * Weeping Angel arm pose is fixed now
 * Armor stands can be crafted into jungle wood slabs now
 * Armor stands with custom name "chaosforge" are not Weeping Angels now

@@ -65,6 +65,7 @@
              Quick Charge V
    + drowned :: Whenever a fish spawns, a Drowned spawns alongside it;
                 Drowned zombies always spawn with leather helmets
+   + namedzombie :: Some zombies spawn with custom names
 ** EGG FEATURES
    + eggs :: Almost any mob (or diamonds) can spawn from an egg
    + eggarrow :: Skeletons will fire eggs in addition to arrows
