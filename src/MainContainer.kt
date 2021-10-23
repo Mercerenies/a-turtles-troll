@@ -82,6 +82,7 @@ class MainContainer(val plugin: Plugin) {
   val gravestoneListener = GravestoneListener(plugin)
   val axolotlListener = AxolotlListener()
   val ghastLavaListener = GhastLavaListener(plugin, classicLavaManager.ignorer)
+  val goddessHoeListener = GoddessHoeListener(plugin)
 
   val anvilRunnable = AnvilRunnable(plugin)
   val ghastBurnRunnable = GhastBurnRunnable(plugin)
@@ -135,7 +136,7 @@ class MainContainer(val plugin: Plugin) {
       overgrowthListener, endCrystalListener, dragonBombManager, pufferfishRainManager,
       pillagerGunListener, classicLavaManager, fallDamageListener, chargedCreeperListener,
       drownedListener, gravestoneListener, axolotlListener, bedtimeManager,
-      ghastLavaListener,
+      ghastLavaListener, goddessHoeListener,
     )
 
   val features: List<Feature> =
@@ -158,7 +159,7 @@ class MainContainer(val plugin: Plugin) {
       drownedListener, gravestoneListener, axolotlListener,
       bedtimeManager, ghastLavaListener, sandAttackRunnable,
       ghastBurnRunnable, anvilFeature, angelFeature, dripstoneFeature,
-      recipeDeleter,
+      recipeDeleter, goddessHoeListener,
     ) + (breakEvents.getFeatures() - breakEvents.cancelDropAction)
 
   val runnables: List<RunnableFeature> =

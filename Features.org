@@ -131,6 +131,8 @@
                    site of death
    + bedtime :: At dawn, a demand is made by the gods; if that demand
                 is not met, then players cannot sleep that night
+   + goddesshoe :: Netherite hoes can one-shot any enemy in the game
+                   except the Dragon and the Wither
 * IDEAS (UNIMPLEMENTED)
   + Wolves?
   + Fishing?
