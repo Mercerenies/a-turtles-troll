@@ -51,8 +51,11 @@ class WeepingAngelManager(
       EntityType.STRAY, EntityType.HUSK,
     )
 
+    fun isAngel(armorStand: ArmorStand): Boolean =
+      armorStand.getCustomName() != "chaosforge"
+
     fun getAllAngels(): List<ArmorStand> =
-      Bukkit.getWorlds().flatMap { it.getEntitiesByClass(ArmorStand::class.java) }
+      Bukkit.getWorlds().flatMap { it.getEntitiesByClass(ArmorStand::class.java) }.filter(this::isAngel)
 
     fun getNearbyAngels(baseLoc: Location): List<ArmorStand> =
       baseLoc.getWorld()!!.getEntitiesByClass(ArmorStand::class.java).filter { entity ->
