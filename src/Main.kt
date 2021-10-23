@@ -2,8 +2,9 @@
 package com.mercerenies.turtletroll
 
 import com.mercerenies.turtletroll.feature.FeatureManager
-import com.mercerenies.turtletroll.command.TurtleCommand
 import com.mercerenies.turtletroll.command.CommandDispatcher
+import com.mercerenies.turtletroll.command.Subcommand
+import com.mercerenies.turtletroll.command.withPermission
 
 import org.bukkit.plugin.java.JavaPlugin
 import org.bukkit.Bukkit
@@ -11,7 +12,13 @@ import org.bukkit.Bukkit
 class Main : JavaPlugin() {
   val mainContainer = MainContainer(this)
   val featureManager = FeatureManager(mainContainer.features)
-  val turtleCommand = TurtleCommand(featureManager)
+  val turtleCommand = Subcommand(
+    "turtle" to Subcommand(
+      "on" to featureManager.OnCommand.withPermission("com.mercerenies.turtletroll.feature.toggle"),
+      "off" to featureManager.OffCommand.withPermission("com.mercerenies.turtletroll.feature.toggle"),
+      "list" to featureManager.ListCommand.withPermission("com.mercerenies.turtletroll.feature.list"),
+    ).withPermission("com.mercerenies.turtletroll.command"),
+  )
   val commandDispatcher = CommandDispatcher(turtleCommand)
 
   override fun onEnable() {
