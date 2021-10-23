@@ -5,7 +5,6 @@ import com.mercerenies.turtletroll.ext.*
 
 import org.bukkit.command.CommandSender
 
-import kotlin.collections.Map
 
 abstract class UnaryCommand() : Command {
 

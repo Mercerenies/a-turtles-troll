@@ -7,9 +7,6 @@ import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerLevelChangeEvent
 import org.bukkit.event.entity.PlayerDeathEvent
-import org.bukkit.entity.Blaze
-import org.bukkit.entity.EntityType
-import org.bukkit.plugin.Plugin
 
 class OldAgeListener(val ageLimit: Int = 100) : AbstractFeature(), Listener {
 

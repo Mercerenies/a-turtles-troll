@@ -6,8 +6,6 @@ import org.bukkit.command.CommandSender
 import org.bukkit.command.Command as BCommand
 import org.bukkit.command.TabCompleter
 
-import kotlin.collections.HashMap
-
 class CommandDispatcher<T : Command>(
   val toplevel: T,
 ) : CommandExecutor, TabCompleter {

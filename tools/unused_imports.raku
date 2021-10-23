@@ -33,6 +33,6 @@ for (@*ARGS) -> $input-filename {
         $0.Str ∉ $unused-imports
     });
 
-    # spurt $input-filename, @contents.join("\n") ~ "\n";
+    spurt $input-filename, @contents.join("\n") ~ "\n";
 
 }
