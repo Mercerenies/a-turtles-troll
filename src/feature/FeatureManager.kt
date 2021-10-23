@@ -75,5 +75,3 @@ class FeatureManager(val features: List<Feature>) : CommandExecutor, TabComplete
     features.find { it.name.equals(name, ignoreCase = true) }
 
 }
-
-///// Features for the drop stuff

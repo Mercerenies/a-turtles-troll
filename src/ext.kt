@@ -57,3 +57,19 @@ fun<T> List<T>.sample(): T? =
 
 fun BlockBreakEvent.getDefaultDrops(): Collection<ItemStack> =
   block.getDrops(player.inventory.itemInMainHand, player)
+
+val<T> List<T>.tail: List<T>?
+  get() =
+    if (this.size == 0) {
+      null
+    } else {
+      this.subList(1, this.size)
+    }
+
+val<T> List<T>.head: T?
+  get() =
+    if (this.size == 0) {
+      null
+    } else {
+      this[0]
+    }
