@@ -77,8 +77,8 @@ val<T> List<T>.head: T?
     }
 
 // Left-biased union
-infix fun<T> Map<T>.union(that: Map<T>): Map<T> {
+infix fun<K, V> Map<K, V>.union(that: Map<K, V>): Map<K, V> {
   val merged = HashMap(that)
-  merged.update(this)
+  merged.putAll(this)
   return merged
 }

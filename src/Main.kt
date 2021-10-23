@@ -2,15 +2,17 @@
 package com.mercerenies.turtletroll
 
 import com.mercerenies.turtletroll.feature.FeatureManager
+import com.mercerenies.turtletroll.command.TurtleCommand
+import com.mercerenies.turtletroll.command.CommandDispatcher
 
 import org.bukkit.plugin.java.JavaPlugin
 import org.bukkit.Bukkit
 
 class Main : JavaPlugin() {
-
   val mainContainer = MainContainer(this)
-
   val featureManager = FeatureManager(mainContainer.features)
+  val turtleCommand = TurtleCommand(featureManager)
+  val commandDispatcher = CommandDispatcher(turtleCommand)
 
   override fun onEnable() {
 
@@ -31,8 +33,8 @@ class Main : JavaPlugin() {
     }
 
     // Setup command
-    this.getCommand("turtle")!!.setExecutor(featureManager)
-    this.getCommand("turtle")!!.setTabCompleter(featureManager)
+    this.getCommand("turtle")!!.setExecutor(commandDispatcher)
+    this.getCommand("turtle")!!.setTabCompleter(commandDispatcher)
 
   }
 

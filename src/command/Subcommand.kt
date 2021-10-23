@@ -18,6 +18,8 @@ class Subcommand<T: Command>(
 
   }
 
+  constructor(vararg commands: Pair<String, T>) : this(mapOf(*commands)) {}
+
   override fun onCommand(
     sender: CommandSender,
     args: List<String>,
