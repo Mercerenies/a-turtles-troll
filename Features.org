@@ -133,6 +133,7 @@
                 is not met, then players cannot sleep that night
    + goddesshoe :: Netherite hoes can one-shot any enemy in the game
                    except the Dragon and the Wither
+   + oldage :: A player who reaches level 100 dies of old age
 * IDEAS (UNIMPLEMENTED)
   + Wolves?
   + Fishing?
@@ -142,7 +143,6 @@
   + Illusioner?
   + Blindness
   + More **bedtime** conditions
-  + Netherite hoe insta-kills most mobs
   + Some zombies spawn with nametags of players who are online
   + Wither skeles drop skulls more often if you've killed the dragon
   + Wither is a boss rush?
@@ -204,3 +204,21 @@
    + mobGriefing is off
      - If a player dies, mobGriefing is enabled for 10 minutes
      - Bonus points if the game shames whoever activated it
+   + The world starts with an 80x80 world border. At noon, the world
+     extends by 16 in all directions
+   + Bedrock change
+     - **bedrock** only applies to leaves and glass
+     - All blocks have a chance to transform into leaves when mined
+     - Blocks which **bedrock** formerly applied to have a higher
+       chance of transforming into leaves
+     - Bedrock can now be mined... veeeeery slowly
+     - When bedrock is mined, the player is teleported 72 blocks down
+       (Tempting the Void)
+   + Leaf blocks have a small chance to drop emeralds
+   + Zombies sometimes spawn with a stick with one of the following enchantments
+     - Wand of Flame: Fire Aspect I
+     - Wand of Force: Knockback II
+     - Wand of Slicing: Sharpness III
+   + Items destroyed by Curse of Vanishing instead become a random item
+   + When consumed, bread may spawn a small slime near the player
+   + Slimes have increased loot pool

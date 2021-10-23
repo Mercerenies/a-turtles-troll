@@ -18,6 +18,7 @@ sealed interface CauseOfDeath {
 
     val BLINK_REGEX = Regex("""blinked\S*$""")
     val MIMIC_REGEX = Regex("""Mimic\S*$""")
+    val OLDAGE_REGEX = Regex("""old age\S*$""")
 
     fun identify(event: PlayerDeathEvent): CauseOfDeath {
       val cause = event.entity.getLastDamageCause()
@@ -28,6 +29,9 @@ sealed interface CauseOfDeath {
       }
       if (MIMIC_REGEX.find(event.getDeathMessage() ?: "") != null) {
         return Mimic
+      }
+      if (OLDAGE_REGEX.find(event.getDeathMessage() ?: "") != null) {
+        return OldAge
       }
 
       // Next, handle damage caused by an entity
@@ -85,6 +89,12 @@ object Angel : CauseOfDeath {
 object Mimic : CauseOfDeath {
   override fun toInscription(): String =
     "Ouchie chest"
+}
+
+
+object OldAge : CauseOfDeath {
+  override fun toInscription(): String =
+    "Got ooooold"
 }
 
 data class Vanilla(val cause: EntityDamageEvent.DamageCause) : CauseOfDeath {
