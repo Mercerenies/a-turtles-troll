@@ -6,6 +6,8 @@ import org.bukkit.event.block.BlockBreakEvent
 import org.bukkit.inventory.ItemStack
 
 import kotlin.random.Random
+import kotlin.collections.Map
+import kotlin.collections.HashMap
 
 fun Location.nearby(distance: Int): List<Location> {
   val result = ArrayList<Location>()
@@ -73,3 +75,10 @@ val<T> List<T>.head: T?
     } else {
       this[0]
     }
+
+// Left-biased union
+infix fun<T> Map<T>.union(that: Map<T>): Map<T> {
+  val merged = HashMap(that)
+  merged.update(this)
+  return merged
+}
