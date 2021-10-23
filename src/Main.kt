@@ -17,6 +17,7 @@ class Main : JavaPlugin() {
       "on" to featureManager.OnCommand.withPermission("com.mercerenies.turtletroll.feature.toggle"),
       "off" to featureManager.OffCommand.withPermission("com.mercerenies.turtletroll.feature.toggle"),
       "list" to featureManager.ListCommand.withPermission("com.mercerenies.turtletroll.feature.list"),
+      "bedtime" to mainContainer.bedtimeManager.BedtimeCommand.withPermission("com.mercerenies.turtletroll.command.bedtime"),
     ).withPermission("com.mercerenies.turtletroll.command"),
   )
   val commandDispatcher = CommandDispatcher(turtleCommand)

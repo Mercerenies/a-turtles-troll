@@ -2,6 +2,7 @@
 package com.mercerenies.turtletroll.gravestone
 
 import com.mercerenies.turtletroll.feature.RunnableFeature
+import com.mercerenies.turtletroll.command.TerminalCommand
 import com.mercerenies.turtletroll.Weight
 import com.mercerenies.turtletroll.sample
 import com.mercerenies.turtletroll.Constants
@@ -10,11 +11,13 @@ import com.mercerenies.turtletroll.ext.*
 import org.bukkit.plugin.Plugin
 import org.bukkit.Bukkit
 import org.bukkit.World
+import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
 import org.bukkit.event.entity.PlayerDeathEvent
 import org.bukkit.event.player.PlayerBedEnterEvent
 import org.bukkit.event.Listener
+import org.bukkit.command.CommandSender
 
 
 class BedtimeManager(plugin: Plugin) : RunnableFeature(plugin), Listener {
@@ -44,6 +47,18 @@ class BedtimeManager(plugin: Plugin) : RunnableFeature(plugin), Listener {
       Weight(MEDIUM, 3.0),
       Weight(HARD, 1.0),
     )
+
+    val ANGRY_MESSAGE = "The gods are angry; no one shall sleep tonight!"
+
+    val SATISFIED_MESSAGE = "The gods are appeased today; everyone is free to sleep."
+
+    val DISABLED_MESSAGE = "This feature is currently disabled; the gods are not interfering with your sleep."
+
+    fun requestMessage(condition: DeathCondition): String =
+      "Today, the gods would like to see someone die ${condition.description}"
+
+    fun appeasedMessage(player: Player): String =
+      "${player.displayName} has appeased the gods! You may sleep tonight."
 
     fun getSystemTime(): Long {
       for (world in Bukkit.getServer().getWorlds()) {
@@ -79,6 +94,32 @@ class BedtimeManager(plugin: Plugin) : RunnableFeature(plugin), Listener {
 
   private var condition: DeathCondition = DeathCondition.True
 
+  val BedtimeCommand = object : TerminalCommand() {
+
+    private fun getMessageToSend(): String =
+      if (!isEnabled()) {
+        DISABLED_MESSAGE
+      } else if (isAppeased) {
+        SATISFIED_MESSAGE
+      } else {
+        when (state) {
+          State.Daytime -> {
+            requestMessage(condition)
+          }
+          State.Nighttime -> {
+            ANGRY_MESSAGE
+          }
+        }
+      }
+
+    override fun onCommand(sender: CommandSender): Boolean {
+      val message = getMessageToSend()
+      sender.sendMessage(message)
+      return true
+    }
+
+  }
+
   override fun enable() {
     super.enable()
     isAppeased = true
@@ -99,7 +140,7 @@ class BedtimeManager(plugin: Plugin) : RunnableFeature(plugin), Listener {
           state = State.Daytime
           isAppeased = false
           condition = chooseCondition()
-          Bukkit.broadcastMessage("Today, the gods would like to see someone die ${condition.description}")
+          Bukkit.broadcastMessage(requestMessage(condition))
         }
       }
 
@@ -107,7 +148,7 @@ class BedtimeManager(plugin: Plugin) : RunnableFeature(plugin), Listener {
         if ((time < DAWN_TIME) || (time > DUSK_TIME)) {
           state = State.Nighttime
           if (!isAppeased) {
-            Bukkit.broadcastMessage("The gods are angry; no one shall sleep tonight!")
+            Bukkit.broadcastMessage(ANGRY_MESSAGE)
           }
         }
       }
@@ -125,7 +166,7 @@ class BedtimeManager(plugin: Plugin) : RunnableFeature(plugin), Listener {
     if ((state == State.Daytime) && (!isAppeased)) {
       val cause = CauseOfDeath.identify(event)
       if (condition.test(cause)) {
-        Bukkit.broadcastMessage("${event.entity.displayName} has appeased the gods! You may sleep tonight.")
+        Bukkit.broadcastMessage(appeasedMessage(event.entity))
         isAppeased = true
       }
     }
@@ -143,7 +184,7 @@ class BedtimeManager(plugin: Plugin) : RunnableFeature(plugin), Listener {
         // Check that the gods are happy
         if (!isAppeased) {
           event.setCancelled(true)
-          event.player.sendMessage("The gods are angry; no one shall sleep tonight!")
+          event.player.sendMessage(ANGRY_MESSAGE)
         }
       }
     }

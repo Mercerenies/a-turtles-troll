@@ -24,6 +24,9 @@ for the full feature list.
 * Lowered the rate of dripstone stalactites spawning
 * Pointed dripstone can be used in place of flint to craft arrows
 * A player who reaches Level 100 dies of old age
+* Cleaned up the command API quite a bit
+* Added `/turtle bedtime` command to see what the gods' current
+  request is
 
 ### Version 1.9
 
