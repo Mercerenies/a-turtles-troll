@@ -72,6 +72,8 @@
        "Thing" banner pattern, structure blocks/void, jigsaw blocks,
        light blocks, mob spawners, barriers
    + zombiespeed :: Zombies move slightly faster
+   + llamahunter :: Llamas are always angry at the nearest player, and
+                    llama spit has drastically increased knockback
 ** EGG FEATURES
    + eggs :: Almost any mob (or diamonds) can spawn from an egg
    + eggarrow :: Skeletons will fire eggs in addition to arrows
@@ -152,8 +154,8 @@
   + More **bedtime** conditions
   + Wither skeles drop skulls more often if you've killed the dragon
   + Wither is a boss rush?
+  + Shield surfing
 ** HATCRAFTER'S IDEAS
-   + Llamas are hostile and have extra knockback on their spit
    + Cookies, when eaten, have a random effect (lower numbered effects
      are more likely)
      - Player gets a random item (**any** item)

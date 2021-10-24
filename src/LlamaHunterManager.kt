@@ -82,6 +82,11 @@ class LlamaHunterManager(
       return
     }
 
+    if (event.entity.location.world?.environment != World.Environment.NORMAL) {
+      // Only replace mobs with llamas in the overworld
+      return
+    }
+
     val llamaCount = getAllLlamas().size
     if (llamaCount < minLlamas) {
       val entity = event.entity
