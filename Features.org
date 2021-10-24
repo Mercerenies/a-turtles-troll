@@ -158,7 +158,6 @@
   + More **bedtime** conditions
   + Wither skeles drop skulls more often if you've killed the dragon
   + Wither is a boss rush?
-  + Shield surfing
 ** HATCRAFTER'S IDEAS
    + Cookies, when eaten, have a random effect (lower numbered effects
      are more likely)
