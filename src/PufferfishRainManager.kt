@@ -14,7 +14,7 @@ import org.bukkit.event.Listener
 
 import kotlin.random.Random
 
-class PufferfishRainManager(plugin: Plugin) : RunnableFeature(plugin), Listener {
+class PufferfishRainManager(plugin: Plugin) : ScheduledEventRunnable<PufferfishRainManager.State>(plugin), Listener {
 
   companion object {
     val WARNING_TIME = 5700L
@@ -39,52 +39,42 @@ class PufferfishRainManager(plugin: Plugin) : RunnableFeature(plugin), Listener 
       }
     }
 
+    val STATES = listOf(
+      Event(State.Idle1, 0L),
+      Event(State.Warned, WARNING_TIME),
+      Event(State.Idle2, DROP_TIME),
+    )
+
   }
 
-  private enum class State {
-    Idle, // Waiting for 11:59
+  enum class State {
+    Idle1, // Waiting for 11:59
     Warned, // Between 11:59 and 12:00
+    Idle2, // Waiting for end of day
   }
 
   override val name: String = "pufferfish"
 
   override val description: String = "Pufferfish rain on all players at noon"
 
-  override val taskPeriod = Constants.TICKS_PER_SECOND * 5L
+  override fun getAllStates() = STATES
 
-  override val taskDelay = Constants.TICKS_PER_SECOND * 5L
-
-  private var state: State = State.Idle
-
-  override fun run() {
-    if (!isEnabled()) {
-      return
-    }
-
-    val time = getSystemTime()
-
-    when (state) {
-
-      State.Idle -> {
-        if ((time > WARNING_TIME) && (time < DROP_TIME)) {
-          state = State.Warned
-          Bukkit.broadcastMessage("It's raining... It's pouring...")
-          Bukkit.broadcastMessage("The pufferfish are touring...")
-        }
+  override fun onStateShift(newState: State) {
+    when (newState) {
+      State.Idle1 -> {
+        // No action
       }
-
       State.Warned -> {
-        if ((time < WARNING_TIME) || (time > DROP_TIME)) {
-          state = State.Idle;
-          val onlinePlayers = Bukkit.getOnlinePlayers();
-          for (player in onlinePlayers) {
-            spawnPufferfishOn(player);
-          }
+        Bukkit.broadcastMessage("It's raining... It's pouring...")
+        Bukkit.broadcastMessage("The pufferfish are touring...")
+      }
+      State.Idle2 -> {
+        val onlinePlayers = Bukkit.getOnlinePlayers();
+        for (player in onlinePlayers) {
+          spawnPufferfishOn(player);
         }
       }
-
     }
-
   }
 
   @EventHandler
