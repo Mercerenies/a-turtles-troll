@@ -7,7 +7,7 @@ description: Have fun :)
 commands:
   turtle:
     description: Enable or disable features of A Turtle's Troll
-    usage: /turtle <on|off|list> [feature]
+    usage: /turtle <on|off|list|bedtime> [feature]
 permissions:
   com.mercerenies.turtletroll.command:
     default: true
