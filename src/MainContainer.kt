@@ -43,6 +43,7 @@ class MainContainer(val plugin: Plugin) {
   val pufferfishRainManager = PufferfishRainManager(plugin)
   val classicLavaManager = ClassicLavaManager(plugin)
   val bedtimeManager = BedtimeManager(plugin)
+  val llamaHunterManager = LlamaHunterManager(plugin)
 
   val breakEvents = BlockBreakEvents()
   val chickenListener = ChickenDamageListener(plugin)
@@ -141,7 +142,7 @@ class MainContainer(val plugin: Plugin) {
       pillagerGunListener, classicLavaManager, fallDamageListener, chargedCreeperListener,
       drownedListener, gravestoneListener, axolotlListener, bedtimeManager,
       ghastLavaListener, goddessHoeListener, oldAgeListener, namedZombieListener,
-      wanderingTraderListener, zombieSpeedListener,
+      wanderingTraderListener, zombieSpeedListener, llamaHunterManager,
     )
 
   val features: List<Feature> =
@@ -165,14 +166,14 @@ class MainContainer(val plugin: Plugin) {
       bedtimeManager, ghastLavaListener, sandAttackRunnable,
       ghastBurnRunnable, anvilFeature, angelFeature, dripstoneFeature,
       recipeDeleter, goddessHoeListener, oldAgeListener, namedZombieListener,
-      wanderingTraderListener, zombieSpeedListener,
+      wanderingTraderListener, zombieSpeedListener, llamaHunterManager,
     ) + (breakEvents.getFeatures() - breakEvents.cancelDropAction)
 
   val runnables: List<RunnableFeature> =
     listOf(
       anvilRunnable, sandAttackRunnable, ghastBurnRunnable,
       pufferfishRainManager, angelManager, phantomManager, pumpkinManager, mossManager,
-      dripstoneManager, dragonBombManager, classicLavaManager, bedtimeManager,
+      dripstoneManager, dragonBombManager, classicLavaManager, bedtimeManager, llamaHunterManager,
     )
 
   val recipes: List<RecipeFeature> =

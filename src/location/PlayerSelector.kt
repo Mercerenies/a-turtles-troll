@@ -1,6 +1,8 @@
 
 package com.mercerenies.turtletroll.location
 
+import com.mercerenies.turtletroll.ext.*
+
 import org.bukkit.Location
 import org.bukkit.Bukkit
 import org.bukkit.entity.Player
@@ -24,5 +26,8 @@ object PlayerSelector {
     }
     return best
   }
+
+  fun chooseRandomPlayer(): Player? =
+    Bukkit.getOnlinePlayers().toList().sample()
 
 }
