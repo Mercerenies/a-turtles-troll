@@ -2,7 +2,6 @@
 package com.mercerenies.turtletroll
 
 import com.mercerenies.turtletroll.ext.*
-import com.mercerenies.turtletroll.dripstone.EqBlock
 import com.mercerenies.turtletroll.feature.RunnableFeature
 import com.mercerenies.turtletroll.location.PlayerSelector
 import com.mercerenies.turtletroll.location.BlockSelector
@@ -16,14 +15,12 @@ import org.bukkit.entity.TraderLlama
 import org.bukkit.entity.LlamaSpit
 import org.bukkit.entity.Entity
 import org.bukkit.entity.EntityType
-import org.bukkit.Material
 import org.bukkit.World
 import org.bukkit.Bukkit
 import org.bukkit.scheduler.BukkitRunnable
 import org.bukkit.plugin.Plugin
 import org.bukkit.block.`data`.Levelled
 
-import kotlin.random.Random
 
 class LlamaHunterManager(
   plugin: Plugin,

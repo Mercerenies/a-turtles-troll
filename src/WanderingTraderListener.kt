@@ -8,9 +8,6 @@ import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.entity.CreatureSpawnEvent
 import org.bukkit.entity.WanderingTrader
-import org.bukkit.entity.Entity
-import org.bukkit.entity.EntityType
-import org.bukkit.util.Vector
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 import org.bukkit.inventory.MerchantRecipe

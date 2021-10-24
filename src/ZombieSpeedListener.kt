@@ -8,12 +8,8 @@ import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.entity.CreatureSpawnEvent
 import org.bukkit.entity.Zombie
-import org.bukkit.entity.Entity
-import org.bukkit.entity.EntityType
-import org.bukkit.util.Vector
 import org.bukkit.attribute.Attribute
 
-import kotlin.random.Random
 
 class ZombieSpeedListener(
   val desiredSpeed: Double = DEFAULT_SPEED,
