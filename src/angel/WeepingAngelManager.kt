@@ -52,7 +52,7 @@ class WeepingAngelManager(
     )
 
     fun isAngel(armorStand: ArmorStand): Boolean =
-      armorStand.getCustomName() != "chaosforge"
+      armorStand.getCustomName() != "raccoon"
 
     fun getAllAngels(): List<ArmorStand> =
       Bukkit.getWorlds().flatMap { it.getEntitiesByClass(ArmorStand::class.java) }.filter(this::isAngel)

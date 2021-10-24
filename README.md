@@ -22,7 +22,7 @@ for the full feature list.
 * Some zombies spawn with custom names
 * Weeping Angel arm pose is fixed now
 * Armor stands can be crafted into jungle wood slabs now
-* Armor stands with custom name "chaosforge" are not Weeping Angels now
+* Armor stands with custom name "raccoon" are not Weeping Angels now
 * Lowered the rate of dripstone stalactites spawning
 * Pointed dripstone can be used in place of flint to craft arrows
 * A player who reaches Level 100 dies of old age
