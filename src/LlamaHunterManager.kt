@@ -12,6 +12,7 @@ import org.bukkit.event.Listener
 import org.bukkit.event.entity.ProjectileHitEvent
 import org.bukkit.event.entity.CreatureSpawnEvent
 import org.bukkit.entity.Llama
+import org.bukkit.entity.TraderLlama
 import org.bukkit.entity.LlamaSpit
 import org.bukkit.entity.Entity
 import org.bukkit.entity.EntityType
@@ -56,8 +57,11 @@ class LlamaHunterManager(
 
     val llamas = getAllLlamas()
     for (llama in llamas) {
-      if (llama.target == null) {
-        llama.target = PlayerSelector.findNearestPlayer(llama.location)
+      // Don't auto-anger trader llamas
+      if (llama !is TraderLlama) {
+        if (llama.target == null) {
+          llama.target = PlayerSelector.findNearestPlayer(llama.location)
+        }
       }
     }
 
