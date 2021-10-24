@@ -13,12 +13,9 @@ import org.bukkit.potion.PotionEffectType
 
 class FallDamageListener() : AbstractFeature(), Listener {
 
-  companion object {
-  }
-
   override val name = "fall"
 
-  override val description = "Touching lava launches you upward"
+  override val description = "When a player takes fall damage, they are confused and slow for a moment"
 
   @EventHandler
   fun onEntityDamage(event: EntityDamageEvent) {
@@ -26,10 +23,12 @@ class FallDamageListener() : AbstractFeature(), Listener {
       return
     }
     val victim = event.entity
-    if (victim is Player) {
-      if (event.cause == EntityDamageEvent.DamageCause.FALL) {
-        victim.addPotionEffect(PotionEffect(PotionEffectType.CONFUSION, Constants.TICKS_PER_SECOND * 10, 1))
-        victim.addPotionEffect(PotionEffect(PotionEffectType.SLOW, Constants.TICKS_PER_SECOND * 10, 0))
+    if (!event.isCancelled()) {
+      if (victim is Player) {
+        if (event.cause == EntityDamageEvent.DamageCause.FALL) {
+          victim.addPotionEffect(PotionEffect(PotionEffectType.CONFUSION, Constants.TICKS_PER_SECOND * 10, 1))
+          victim.addPotionEffect(PotionEffect(PotionEffectType.SLOW, Constants.TICKS_PER_SECOND * 10, 0))
+        }
       }
     }
   }
