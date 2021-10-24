@@ -26,6 +26,7 @@ import com.mercerenies.turtletroll.recipe.AnvilRecipeFeature
 import com.mercerenies.turtletroll.recipe.AngelRecipeFeature
 import com.mercerenies.turtletroll.recipe.DripstoneRecipeFeature
 import com.mercerenies.turtletroll.recipe.StoneRecipeDeleter
+import com.mercerenies.turtletroll.cookie.FreeCookieRunnable
 
 import org.bukkit.plugin.Plugin
 import org.bukkit.event.Listener
@@ -93,6 +94,7 @@ class MainContainer(val plugin: Plugin) {
   val anvilRunnable = AnvilRunnable(plugin)
   val ghastBurnRunnable = GhastBurnRunnable(plugin)
   val sandAttackRunnable = SandAttackRunnable(plugin)
+  val freeCookieRunnable = FreeCookieRunnable(plugin)
 
   val anvilRecipeFeature = AnvilRecipeFeature(plugin)
   val angelRecipeFeature = AngelRecipeFeature(plugin)
@@ -169,7 +171,7 @@ class MainContainer(val plugin: Plugin) {
       ghastBurnRunnable, anvilFeature, angelFeature, dripstoneFeature,
       recipeDeleter, goddessHoeListener, oldAgeListener, namedZombieListener,
       wanderingTraderListener, zombieSpeedListener, llamaHunterManager,
-      shieldSurfListener,
+      shieldSurfListener, freeCookieRunnable,
     ) + (breakEvents.getFeatures() - breakEvents.cancelDropAction)
 
   val runnables: List<RunnableFeature> =
@@ -177,6 +179,7 @@ class MainContainer(val plugin: Plugin) {
       anvilRunnable, sandAttackRunnable, ghastBurnRunnable,
       pufferfishRainManager, angelManager, phantomManager, pumpkinManager, mossManager,
       dripstoneManager, dragonBombManager, classicLavaManager, bedtimeManager, llamaHunterManager,
+      freeCookieRunnable,
     )
 
   val recipes: List<RecipeFeature> =

@@ -18,6 +18,7 @@ for the full feature list.
 * Llamas are now constantly angry, and their spit has increased knockback
 * Netherite hoes can one-shot any non-boss mob in the game
 * Pointing a shield at the ground can negate fall damage
+* Every player gets a free cookie at dawn and at dusk
 * When logs/planks are broken, a random log/plank type is dropped
 * Ghasts instantly burn in daylight
 * Some zombies spawn with custom names

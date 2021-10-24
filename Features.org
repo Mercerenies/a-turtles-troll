@@ -79,6 +79,8 @@
    + eggs :: Almost any mob (or diamonds) can spawn from an egg
    + eggarrow :: Skeletons will fire eggs in addition to arrows
    + eggdrop :: Several mobs will drop eggs when killed
+** COOKIE FEATURES
+   + freecookie :: Every player gets a free cookie at dawn and at dusk
 ** BLOCK DROP FEATURES
    + dirtstacks :: All blocks have a chance of dropping 64 dirt
                    instead of the intended drop
