@@ -10,7 +10,6 @@ import org.bukkit.entity.Player
 import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
 
-
 class FallDamageListener() : AbstractFeature(), Listener {
 
   override val name = "fall"

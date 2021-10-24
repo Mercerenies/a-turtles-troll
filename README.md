@@ -17,7 +17,7 @@ for the full feature list.
 * Wandering traders can trade basically any item in the game
 * Llamas are now constantly angry, and their spit has increased knockback
 * Netherite hoes can one-shot any non-boss mob in the game
-* ~~Ghast fireballs erupt into lava on contact~~
+* Pointing a shield at the ground can negate fall damage
 * When logs/planks are broken, a random log/plank type is dropped
 * Ghasts instantly burn in daylight
 * Some zombies spawn with custom names

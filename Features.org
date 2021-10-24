@@ -144,6 +144,9 @@
    + goddesshoe :: Netherite hoes can one-shot any enemy in the game
                    except the Dragon and the Wither
    + oldage :: A player who reaches level 100 dies of old age
+   + shieldsurf :: If you hold out your shield and point it down at
+                   the ground, you can absorb any amount of fall
+                   damage, at the cost of shield durability instead
 * IDEAS (UNIMPLEMENTED)
   + Wolves?
   + Fishing?
