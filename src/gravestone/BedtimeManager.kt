@@ -116,6 +116,8 @@ class BedtimeManager(plugin: Plugin) : ScheduledEventRunnable<BedtimeManager.Sta
 
   override fun getAllStates() = STATES
 
+  override fun getDefaultState() = State.Nighttime
+
   override fun onStateShift(newState: State) {
     when (newState) {
       State.Daytime -> {
