@@ -194,8 +194,6 @@
    + When a pumpkin is broken is drops melon slices and vice versa
    + When a zombie would transform into a Drowned, it instead turns
      into a giant
-   + At dusk they get a cookie named "Nighttime Cookie" and at dawn
-     they get one called "Daytime Cookie". These cookies don't stack
    + Every in-game day, all players will use the same skin as a random
      player
    + Cats spawn a bat on death

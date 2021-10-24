@@ -5,12 +5,10 @@ import com.mercerenies.turtletroll.ScheduledEventRunnable
 import com.mercerenies.turtletroll.command.TerminalCommand
 import com.mercerenies.turtletroll.Weight
 import com.mercerenies.turtletroll.sample
-import com.mercerenies.turtletroll.Constants
 import com.mercerenies.turtletroll.ext.*
 
 import org.bukkit.plugin.Plugin
 import org.bukkit.Bukkit
-import org.bukkit.World
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority

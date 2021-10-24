@@ -4,17 +4,9 @@ package com.mercerenies.turtletroll.cookie
 import com.mercerenies.turtletroll.ScheduledEventRunnable
 import com.mercerenies.turtletroll.AllItems
 
-import org.bukkit.entity.Player
 import org.bukkit.plugin.Plugin
 import org.bukkit.Bukkit
-import org.bukkit.World
-import org.bukkit.Material
-import org.bukkit.event.EventHandler
-import org.bukkit.event.entity.EntityDamageEvent
-import org.bukkit.event.Listener
-import org.bukkit.inventory.ItemStack
 
-import kotlin.random.Random
 
 class FreeCookieRunnable(plugin: Plugin) : ScheduledEventRunnable<FreeCookieRunnable.State>(plugin) {
 
