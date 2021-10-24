@@ -20,6 +20,7 @@ for the full feature list.
 * When logs/planks are broken, a random log/plank type is dropped
 * Ghasts instantly burn in daylight
 * Some zombies spawn with custom names
+* Zombies move slightly faster
 * Weeping Angel arm pose is fixed now
 * Armor stands can be crafted into jungle wood slabs now
 * Armor stands with custom name "raccoon" are not Weeping Angels now

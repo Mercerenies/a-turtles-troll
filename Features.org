@@ -71,6 +71,7 @@
        consideration: Command blocks (all three types + minecart),
        "Thing" banner pattern, structure blocks/void, jigsaw blocks,
        light blocks, mob spawners, barriers
+   + zombiespeed :: Zombies move slightly faster
 ** EGG FEATURES
    + eggs :: Almost any mob (or diamonds) can spawn from an egg
    + eggarrow :: Skeletons will fire eggs in addition to arrows

@@ -86,6 +86,7 @@ class MainContainer(val plugin: Plugin) {
   val oldAgeListener = OldAgeListener()
   val namedZombieListener = NamedZombieListener()
   val wanderingTraderListener = WanderingTraderListener()
+  val zombieSpeedListener = ZombieSpeedListener()
 
   val anvilRunnable = AnvilRunnable(plugin)
   val ghastBurnRunnable = GhastBurnRunnable(plugin)
@@ -140,7 +141,7 @@ class MainContainer(val plugin: Plugin) {
       pillagerGunListener, classicLavaManager, fallDamageListener, chargedCreeperListener,
       drownedListener, gravestoneListener, axolotlListener, bedtimeManager,
       ghastLavaListener, goddessHoeListener, oldAgeListener, namedZombieListener,
-      wanderingTraderListener,
+      wanderingTraderListener, zombieSpeedListener,
     )
 
   val features: List<Feature> =
@@ -164,7 +165,7 @@ class MainContainer(val plugin: Plugin) {
       bedtimeManager, ghastLavaListener, sandAttackRunnable,
       ghastBurnRunnable, anvilFeature, angelFeature, dripstoneFeature,
       recipeDeleter, goddessHoeListener, oldAgeListener, namedZombieListener,
-      wanderingTraderListener,
+      wanderingTraderListener, zombieSpeedListener,
     ) + (breakEvents.getFeatures() - breakEvents.cancelDropAction)
 
   val runnables: List<RunnableFeature> =
