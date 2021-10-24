@@ -4,6 +4,9 @@ package com.mercerenies.turtletroll
 import com.mercerenies.turtletroll.ext.*
 
 import org.bukkit.Material
+import org.bukkit.inventory.ItemStack
+import org.bukkit.entity.HumanEntity
+import org.bukkit.entity.Item
 
 object AllItems {
 
@@ -72,5 +75,14 @@ object AllItems {
       Material.REPEATING_COMMAND_BLOCK -> Rarity.EPIC
       else                             -> Rarity.COMMON
     }
+
+  fun give(entity: HumanEntity, vararg items: ItemStack) {
+    val remaining = entity.inventory.addItem(*items)
+    for (remainingItem in remaining.values) {
+      entity.world.spawn(entity.location, Item::class.java) { item ->
+        item.itemStack = remainingItem
+      }
+    }
+  }
 
 }
