@@ -82,7 +82,7 @@ class MainContainer(val plugin: Plugin) {
   val drownedListener = DrownedSpawnerListener(plugin)
   val gravestoneListener = GravestoneListener(plugin)
   val axolotlListener = AxolotlListener()
-  val ghastLavaListener = GhastLavaListener(plugin, classicLavaManager.ignorer)
+  //val ghastLavaListener = GhastLavaListener(plugin, classicLavaManager.ignorer)
   val goddessHoeListener = GoddessHoeListener(plugin)
   val oldAgeListener = OldAgeListener()
   val namedZombieListener = NamedZombieListener()
@@ -141,7 +141,7 @@ class MainContainer(val plugin: Plugin) {
       overgrowthListener, endCrystalListener, dragonBombManager, pufferfishRainManager,
       pillagerGunListener, classicLavaManager, fallDamageListener, chargedCreeperListener,
       drownedListener, gravestoneListener, axolotlListener, bedtimeManager,
-      ghastLavaListener, goddessHoeListener, oldAgeListener, namedZombieListener,
+      goddessHoeListener, oldAgeListener, namedZombieListener,
       wanderingTraderListener, zombieSpeedListener, llamaHunterManager,
     )
 
@@ -163,7 +163,7 @@ class MainContainer(val plugin: Plugin) {
       pillagerGunListener, classicLavaManager,
       fallDamageListener, chargedCreeperListener,
       drownedListener, gravestoneListener, axolotlListener,
-      bedtimeManager, ghastLavaListener, sandAttackRunnable,
+      bedtimeManager, sandAttackRunnable,
       ghastBurnRunnable, anvilFeature, angelFeature, dripstoneFeature,
       recipeDeleter, goddessHoeListener, oldAgeListener, namedZombieListener,
       wanderingTraderListener, zombieSpeedListener, llamaHunterManager,
