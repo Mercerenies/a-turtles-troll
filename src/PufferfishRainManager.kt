@@ -20,15 +20,6 @@ class PufferfishRainManager(plugin: Plugin) : ScheduledEventRunnable<PufferfishR
     val WARNING_TIME = 5700L
     val DROP_TIME = 6000L
 
-    fun getSystemTime(): Long {
-      for (world in Bukkit.getServer().getWorlds()) {
-        if (world.environment == World.Environment.NORMAL) {
-          return world.getTime()
-        }
-      }
-      return 0L // That's not good :(
-    }
-
     fun spawnPufferfishOn(player: Player) {
       val world = player.getWorld()
       val targetLocation = player.getLocation().add(0.0, 15.0, 0.0)
