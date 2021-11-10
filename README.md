@@ -7,6 +7,10 @@ for the full feature list.
 
 ## Changelog
 
+### Version 1.11
+
+* **gravestone** will not replace chests now.
+
 ### Version 1.10
 
 * Tenth version hype! I'd like to thank my friends for dealing with my

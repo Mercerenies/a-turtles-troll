@@ -12,7 +12,7 @@ object GravestoneSpawner {
 
   val BLACKLISTED_BLOCK_TYPES = setOf(
     Material.BEDROCK, Material.END_PORTAL, Material.END_PORTAL_FRAME,
-    Material.OBSIDIAN, Material.NETHER_PORTAL,
+    Material.OBSIDIAN, Material.NETHER_PORTAL, Material.CHEST,
   )
 
   fun isBlacklisted(block: Block): Boolean =
