@@ -5,11 +5,17 @@ This is a Minecraft plugin for Spigot which introduces several "troll"
 mechanics to the survival multiplayer experience. See `Features.org`
 for the full feature list.
 
+This is a companion project to [EvanSkiStudios'
+Raccoon-Mischief](https://github.com/EvanSkiStudios/Raccoon-Mischief).
+Neither directly depends on the other, but they are designed with each
+other in mind.
+
 ## Changelog
 
 ### Version 1.11
 
 * **gravestone** will not replace chests now.
+* Fixed Weeping Angel arm pose again (thanks, EvanSki)
 
 ### Version 1.10
 
