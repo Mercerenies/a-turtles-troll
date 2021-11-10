@@ -83,10 +83,17 @@ class WeepingAngelManager(
       getAngelInLineOfSight(getAllAngels(), entity)
 
     fun assignIdlePose(angel: ArmorStand) {
-      // left: -130, 50, 10
-      // right: -130, -50, -10
-      angel.setLeftArmPose(EulerAngle(2.269, -0.873, 0.175))
-      angel.setRightArmPose(EulerAngle(2.269, 0.873, -0.175))
+      /*
+      left: -130, 50, 10
+      right: -130, -50, -10
+      summon command uses degrees, Eulers use Radians, so we convert degrees to radians
+      -2.26893 0.872665 0.174533
+      -2.26893 -0.872665 -0.174533
+      Hey guess what? Turns out those - signs, THEY ARE IMPORTANT KEEP THEM
+      */
+      angel.setLeftArmPose(EulerAngle(-2.26893, 0.872665, 0.174533))
+      angel.setRightArmPose(EulerAngle(-2.26893, -0.872665, -0.174533))
+      //The above radians are correct DO NOT TOUCH THEM OR I SWEAR TO GOD
     }
 
     fun assignAttackPose(angel: ArmorStand) {
