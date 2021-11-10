@@ -18,7 +18,7 @@ class NamedZombieListener(
 
   companion object {
     val DEFAULT_NAME_SOURCE = NameSource.FromList(
-      "Mercerenies", "jbax1899", "EvanSki_", "RekNepZ_HBK", "HatCrafter",
+      "Mercerenies", "jbax1899", "Evanski_", "RekNepZ_HBK", "HatCrafter",
     )
   }
 
