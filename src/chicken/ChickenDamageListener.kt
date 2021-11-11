@@ -11,6 +11,7 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.bukkit.event.entity.CreatureSpawnEvent
 import org.bukkit.event.world.ChunkPopulateEvent
 import org.bukkit.entity.Chicken
+import org.bukkit.entity.PufferFish
 import org.bukkit.entity.Zombie
 import org.bukkit.entity.EntityType
 import org.bukkit.entity.Entity
@@ -55,8 +56,12 @@ class ChickenDamageListener(
     }
     val victim = event.entity
     if (victim is Chicken) {
-      victim.health = 0.0
-      victim.world.createExplosion(victim.location, 5.0F, true)
+      if (event.damager is PufferFish) {
+        event.setCancelled(true)
+      } else {
+        victim.health = 0.0
+        victim.world.createExplosion(victim.location, 5.0F, true)
+      }
     }
   }
 

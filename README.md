@@ -16,6 +16,7 @@ other in mind.
 
 * **gravestone** will not replace chests now.
 * Dirt and sticks can be crafted into each other now
+* Chickens are immune to Pufferfish damage
 * Fixed Weeping Angel arm pose again (thanks, EvanSki)
 
 ### Version 1.10
