@@ -25,6 +25,7 @@ import com.mercerenies.turtletroll.recipe.RecipeFeature
 import com.mercerenies.turtletroll.recipe.AnvilRecipeFeature
 import com.mercerenies.turtletroll.recipe.AngelRecipeFeature
 import com.mercerenies.turtletroll.recipe.DripstoneRecipeFeature
+import com.mercerenies.turtletroll.recipe.DirtRecipeFeature
 import com.mercerenies.turtletroll.recipe.StoneRecipeDeleter
 import com.mercerenies.turtletroll.cookie.FreeCookieRunnable
 
@@ -99,6 +100,7 @@ class MainContainer(val plugin: Plugin) {
   val anvilRecipeFeature = AnvilRecipeFeature(plugin)
   val angelRecipeFeature = AngelRecipeFeature(plugin)
   val dripstoneRecipeFeature = DripstoneRecipeFeature(plugin)
+  val dirtRecipeFeature = DirtRecipeFeature(plugin)
 
   val recipeDeleter = StoneRecipeDeleter(Bukkit.getServer())
 
@@ -185,6 +187,7 @@ class MainContainer(val plugin: Plugin) {
   val recipes: List<RecipeFeature> =
     listOf(
       anvilRecipeFeature, angelRecipeFeature, dripstoneRecipeFeature, explosiveArrowManager,
+      dirtRecipeFeature,
     )
 
 }

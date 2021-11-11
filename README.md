@@ -15,6 +15,7 @@ other in mind.
 ### Version 1.11
 
 * **gravestone** will not replace chests now.
+* Dirt and sticks can be crafted into each other now
 * Fixed Weeping Angel arm pose again (thanks, EvanSki)
 
 ### Version 1.10
