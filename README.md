@@ -20,6 +20,8 @@ other in mind.
   nether)
 * Dirt and sticks can be crafted into each other now
 * Chickens are immune to Pufferfish damage
+* Pointed dripstone arrows now have tags and a custom name marking
+  them as different (thanks, EvanSki)
 * Fixed Weeping Angel arm pose again (thanks, EvanSki)
 
 ### Version 1.10
