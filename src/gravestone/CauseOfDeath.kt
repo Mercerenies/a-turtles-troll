@@ -19,6 +19,7 @@ sealed interface CauseOfDeath {
     val BLINK_REGEX = Regex("""blinked\S*$""")
     val MIMIC_REGEX = Regex("""Mimic\S*$""")
     val OLDAGE_REGEX = Regex("""old age\S*$""")
+    val FROZE_REGEX = Regex("""froze to death\S*$""")
 
     fun identify(event: PlayerDeathEvent): CauseOfDeath {
       val cause = event.entity.getLastDamageCause()
@@ -32,6 +33,9 @@ sealed interface CauseOfDeath {
       }
       if (OLDAGE_REGEX.find(event.getDeathMessage() ?: "") != null) {
         return OldAge
+      }
+      if (FROZE_REGEX.find(event.getDeathMessage() ?: "") != null) {
+        return Vanilla(EntityDamageEvent.DamageCause.FREEZE)
       }
 
       // Next, handle damage caused by an entity

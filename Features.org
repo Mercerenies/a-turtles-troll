@@ -31,6 +31,9 @@
                   lava spawned by this is immune to **classiclava**
                   effects, for reasons of sanity) (this feature has
                   been removed due to excessive bugs; see issue #21)
+   + temperature :: A player with no armor will take damage in cold
+                    biomes, and a player with armor will take damage
+                    in hot biomes
 ** CUSTOM SPAWNING FEATURES
    + weepingangel :: Armor stands will chase you when you're not
                      looking at them, and armor stands will rarely

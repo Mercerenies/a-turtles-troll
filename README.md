@@ -15,6 +15,9 @@ other in mind.
 ### Version 1.11
 
 * **gravestone** will not replace chests now.
+* Players must wear armor in cold biomes and wear nothing in hot
+  biomes, or they will take climate damage (does not apply in the
+  nether)
 * Dirt and sticks can be crafted into each other now
 * Chickens are immune to Pufferfish damage
 * Fixed Weeping Angel arm pose again (thanks, EvanSki)
