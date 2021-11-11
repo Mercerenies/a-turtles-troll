@@ -59,7 +59,6 @@ class TemperatureManager(plugin: Plugin) : RunnableFeature(plugin), Listener {
         continue
       }
       val temp = player.location.block.getTemperature()
-      println(temp)
       val armorCount = getArmorCount(player)
       if (temp < COLD_TEMPERATURE) {
         if (armorCount <= 0) {
