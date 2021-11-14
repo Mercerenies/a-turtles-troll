@@ -65,8 +65,10 @@ interface DeathCondition {
     override val description: String = "to an explosion"
 
     override fun test(cause: CauseOfDeath): Boolean =
-      cause is Vanilla &&
-      conditions.contains(cause.cause)
+      (cause is Vanilla &&
+       conditions.contains(cause.cause)) ||
+      (cause is VanillaMob &&
+       cause.entityType == EntityType.CREEPER)
 
   }
 
@@ -92,7 +94,8 @@ interface DeathCondition {
 
   object MustBeZombie : DeathCondition {
     val conditions = listOf(
-      EntityType.ZOMBIE, EntityType.ZOMBIE_VILLAGER
+      EntityType.ZOMBIE, EntityType.ZOMBIE_VILLAGER, EntityType.DROWNED,
+      EntityType.ZOMBIFIED_PIGLIN, EntityType.HUSK,
     )
 
     override val description: String = "to a zombie"
@@ -124,12 +127,15 @@ interface DeathCondition {
   }
 
   object MustBeGhast : DeathCondition {
+    val conditions = listOf(
+      EntityType.GHAST, EntityType.FIREBALL,
+    )
 
     override val description: String = "to a Ghast"
 
     override fun test(cause: CauseOfDeath): Boolean =
       cause is VanillaMob &&
-      cause.entityType == EntityType.GHAST
+      conditions.contains(cause.entityType)
 
   }
 

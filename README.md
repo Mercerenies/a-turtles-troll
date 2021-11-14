@@ -23,6 +23,7 @@ other in mind.
 * Pointed dripstone arrows now have tags and a custom name marking
   them as different (thanks, EvanSki)
 * Fixed Weeping Angel arm pose again (thanks, EvanSki)
+* Fixed several of the death conditions for **bedtime**
 
 ### Version 1.10
 
