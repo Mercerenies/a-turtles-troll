@@ -127,9 +127,9 @@
    + witherarrow :: If the player is hit by a skeleton arrow in the
                     Nether, they get the Wither effect
    + blazepower :: Blazes will spawn evokers
-   + torches :: The following blocks turn into redstone torches if you
-                look at them: torches, redstone torches, soul torches,
-                lanterns, and soul lanterns
+   + torches :: The following blocks drop if you look at them:
+                torches, redstone torches, soul torches, lanterns, and
+                soul lanterns
    + pumpkins :: Wearing a pumpking on your head protects you from
                  **zapwater** and **torches** but gives you slowness
                  and mining fatigue
