@@ -26,15 +26,15 @@ class DripstoneRecipeFeature(plugin: Plugin) : RecipeFeature(plugin) {
       ud_meta.setDisplayName("Upside Down Arrow")
       ud_meta.setCustomModelData(8565)
       ud_arrow.setItemMeta(ud_meta)
-      //code continues as normal
+      //Thought it would be funnier if the recipe was made upside down aswell
 
       val recipe = ShapedRecipe(key, ud_arrow)
       recipe.shape("A",
                    "B",
                    "C")
-      recipe.setIngredient('A', Material.POINTED_DRIPSTONE)
+      recipe.setIngredient('A', Material.FEATHER)
       recipe.setIngredient('B', Material.STICK)
-      recipe.setIngredient('C', Material.FEATHER)
+      recipe.setIngredient('C', Material.POINTED_DRIPSTONE)
       recipe
     }
     return listOf(recipe)
