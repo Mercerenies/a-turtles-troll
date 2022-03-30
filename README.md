@@ -12,6 +12,10 @@ other in mind.
 
 ## Changelog
 
+### Version 1.12
+
+* Pointed dripstone arrow recipe is now upside-down (thanks, EvanSki)
+
 ### Version 1.11
 
 * **gravestone** will not replace chests now.
