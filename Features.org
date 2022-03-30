@@ -54,7 +54,7 @@
    + dripstone :: Dripstone stalactites randomly generate in the wild,
                   and dripstone will fall if the player walks below
                   it; dripstone can be used in place of flint to craft
-                  arrows
+                  arrows (the latter recipe is inverted)
    + phantoms :: Every player will always have a phantom pursuing
                  them, and phantoms are immune to fire damage
    + mimics :: Chests will spawn in the wild which, if opened, will
