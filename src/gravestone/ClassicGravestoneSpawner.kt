@@ -10,24 +10,24 @@ import org.bukkit.Material
 
 object ClassicGravestoneSpawner : GravestoneSpawner() {
 
-  override fun spawnGravestone(centerBlock: Block, inscriptions: Inscriptions) {
+  override fun spawnGravestone(centerBlock: Block, inscriptions: Inscriptions, rotation: Rotation) {
 
     // The stone itself
     replaceWith(centerBlock, Material.STONE)
-    replaceWith(centerBlock.location.clone().add(0.0, 1.0,  0.0).block, Material.STONE)
-    replaceWith(centerBlock.location.clone().add(0.0, 2.0,  0.0).block, Material.STONE)
-    replaceWith(centerBlock.location.clone().add(0.0, 0.0,  1.0).block, Material.STONE)
-    replaceWith(centerBlock.location.clone().add(0.0, 1.0,  1.0).block, Material.STONE)
-    replaceWith(centerBlock.location.clone().add(0.0, 0.0, -1.0).block, Material.STONE)
-    replaceWith(centerBlock.location.clone().add(0.0, 1.0, -1.0).block, Material.STONE)
+    replaceWith(centerBlock.location.clone().add(rotation.vector(0, 1,  0)).block, Material.STONE)
+    replaceWith(centerBlock.location.clone().add(rotation.vector(0, 2,  0)).block, Material.STONE)
+    replaceWith(centerBlock.location.clone().add(rotation.vector(0, 0,  1)).block, Material.STONE)
+    replaceWith(centerBlock.location.clone().add(rotation.vector(0, 1,  1)).block, Material.STONE)
+    replaceWith(centerBlock.location.clone().add(rotation.vector(0, 0, -1)).block, Material.STONE)
+    replaceWith(centerBlock.location.clone().add(rotation.vector(0, 1, -1)).block, Material.STONE)
 
     // Now the sign
-    val signBlock = centerBlock.location.clone().add(1.0, 1.0, 0.0).block
+    val signBlock = centerBlock.location.clone().add(rotation.vector(1, 1, 0)).block
     replaceWith(signBlock, Material.BIRCH_WALL_SIGN)
 
     val blockData = signBlock.blockData
     if (blockData is WallSign) {
-      blockData.setFacing(BlockFace.EAST)
+      blockData.setFacing(rotation.blockFace(BlockFace.EAST))
     }
     signBlock.blockData = blockData
 

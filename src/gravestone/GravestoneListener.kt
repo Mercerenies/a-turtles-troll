@@ -21,7 +21,8 @@ class GravestoneListener(val plugin: Plugin) : AbstractFeature(), Listener {
 
   private class SpawnGravestone(val block: Block, val cause: Inscriptions) : BukkitRunnable() {
     override fun run() {
-      ClassicGravestoneSpawner.spawnGravestone(block, cause)
+      val rotation = Rotation.NONE
+      ClassicGravestoneSpawner.spawnGravestone(block, cause, rotation)
     }
   }
 

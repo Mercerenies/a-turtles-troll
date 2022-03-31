@@ -23,6 +23,6 @@ abstract class GravestoneSpawner {
 
   }
 
-  abstract fun spawnGravestone(centerBlock: Block, inscriptions: Inscriptions)
+  abstract fun spawnGravestone(centerBlock: Block, inscriptions: Inscriptions, rotation: Rotation)
 
 }
