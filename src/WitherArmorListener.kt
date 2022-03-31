@@ -11,6 +11,7 @@ import org.bukkit.entity.WitherSkeleton
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 
+import kotlin.random.Random
 
 class WitherArmorListener(val chance: Double = 1.0) : AbstractFeature(), Listener {
 
@@ -24,6 +25,9 @@ class WitherArmorListener(val chance: Double = 1.0) : AbstractFeature(), Listene
       return
     }
     if (!SpawnReason.isNatural(event)) {
+      return
+    }
+    if (Random.nextDouble() >= chance) {
       return
     }
     val entity = event.entity
