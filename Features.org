@@ -241,4 +241,32 @@
      - Wand of Slicing: Sharpness III
    + Items destroyed by Curse of Vanishing instead become a random item
    + When consumed, bread may spawn a small slime near the player
-   + Slimes have increased loot pool
+   + Dimension Chain - Whenever a player dies, a random player in a
+     different dimension has a 35% chance to die as well
+   + The Doctor Dances
+     - If not a single player dies for a full Minecraft day length of
+       time, then every player will receive one of the following:
+       1. A stone pickaxe with 1 durability
+       2. A stone pickaxe with silk touch and 2 durability
+       3. A stone shovel
+       4. A stone axe
+       5. A diamond hoe
+       6. A bucket of water
+       7. Three random spawn eggs
+       8. 63 dirt
+   + Stardew Slime Loot - Slimes have an increased loot pool. They may
+     drop the following (see chat)
+   + Minecraft Trivia: Every 30 mins a random trivia question is asked
+     in chat. Any player who answers correctly gets an appropriate
+     item. Any player who fails to answer is struck by lightning.
+     Players who answer wrongly are not rewarded or punished.
+   + Moss Revenge: When a moss block is broken, small chance of small
+     slime to spawn
+   + When a player has 4 status effects, they gain levitation for 3
+     secs
+   + Mundane potions can be crafted into gold nuggets
+   + Gold nuggets can be eaten for nutrition. They act like sweet
+     berries
+   + Saying certain pirate themed words changes the game's language to
+     pirate english for all players for 5 mins.
+   + When a player dies, their game is set to a random language
