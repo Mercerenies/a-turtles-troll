@@ -3,6 +3,7 @@ package com.mercerenies.turtletroll.gravestone
 
 import com.mercerenies.turtletroll.feature.AbstractFeature
 import com.mercerenies.turtletroll.Constants
+import com.mercerenies.turtletroll.ext.*
 
 import org.bukkit.World
 import org.bukkit.event.Listener
@@ -17,12 +18,17 @@ class GravestoneListener(val plugin: Plugin) : AbstractFeature(), Listener {
 
   companion object {
     val DELAY_SECONDS = 2L
+
+    fun chooseGravestoneSpawner(): GravestoneSpawner =
+      listOf(ClassicGravestoneSpawner, BeaconGravestoneSpawner).sample()!!
+
   }
 
   private class SpawnGravestone(val block: Block, val cause: Inscriptions) : BukkitRunnable() {
     override fun run() {
       val rotation = Rotation.NONE
-      ClassicGravestoneSpawner.spawnGravestone(block, cause, rotation)
+      val spawner = chooseGravestoneSpawner()
+      spawner.spawnGravestone(block, cause, rotation)
     }
   }
 
