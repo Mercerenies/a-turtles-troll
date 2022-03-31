@@ -16,8 +16,10 @@ other in mind.
 
 * A Turtle's Troll is now built for Minecraft 1.18.2 against the
   latest Spigot API
-* Pointed dripstone arrow recipe is now upside-down (thanks, EvanSki)
+* Wither skeletons have a 50% chance of spawning with bows rather than
+  swords now
 * Gravestones do not replace any blocks other than air now
+* Pointed dripstone arrow recipe is now upside-down (thanks, EvanSki)
 
 ### Version 1.11
 

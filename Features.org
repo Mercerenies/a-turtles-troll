@@ -78,6 +78,8 @@
    + zombiespeed :: Zombies move slightly faster
    + llamahunter :: Llamas are always angry at the nearest player, and
                     llama spit has drastically increased knockback
+   + witherbow :: Wither skeletons have a 50% chance of spawning with
+                  a bow rather than a sword
 ** EGG FEATURES
    + eggs :: Almost any mob (or diamonds) can spawn from an egg
    + eggarrow :: Skeletons will fire eggs in addition to arrows
