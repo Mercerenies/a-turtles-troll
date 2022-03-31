@@ -8,7 +8,7 @@ import org.bukkit.event.Listener
 import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.bukkit.entity.Player
 import org.bukkit.entity.Arrow
-import org.bukkit.entity.Skeleton
+import org.bukkit.entity.AbstractSkeleton
 import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
 import org.bukkit.World
@@ -29,7 +29,7 @@ class SkeletonWitherListener : AbstractFeature(), Listener {
     if (victim.location.world!!.environment == World.Environment.NETHER) {
       if ((victim is Player) && (damager is Arrow)) {
         val shooter = damager.shooter
-        if (shooter is Skeleton) {
+        if (shooter is AbstractSkeleton) {
           victim.addPotionEffect(PotionEffect(PotionEffectType.WITHER, Constants.TICKS_PER_SECOND * 10, 0))
         }
       }
