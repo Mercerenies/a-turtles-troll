@@ -17,6 +17,7 @@ other in mind.
 * A Turtle's Troll is now built for Minecraft 1.18.2 against the
   latest Spigot API
 * Pointed dripstone arrow recipe is now upside-down (thanks, EvanSki)
+* Gravestones do not replace any blocks other than air now
 
 ### Version 1.11
 
