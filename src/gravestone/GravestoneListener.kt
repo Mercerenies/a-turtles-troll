@@ -20,7 +20,10 @@ class GravestoneListener(val plugin: Plugin) : AbstractFeature(), Listener {
     val DELAY_SECONDS = 2L
 
     fun chooseGravestoneSpawner(): GravestoneSpawner =
-      listOf(ClassicGravestoneSpawner, BeaconGravestoneSpawner, CoreGravestoneSpawner).sample()!!
+      listOf(ClassicGravestoneSpawner, BeaconGravestoneSpawner, CoreGravestoneSpawner,
+             JavaGravestoneSpawner, HeartGravestoneSpawner, StrongmanGravestoneSpawner,
+             ChaliceGravestoneSpawner, EggGravestoneSpawner, SlantGravestoneSpawner,
+             CrossGravestoneSpawner).sample()!!
 
   }
 

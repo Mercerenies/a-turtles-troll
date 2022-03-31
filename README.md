@@ -18,6 +18,8 @@ other in mind.
   latest Spigot API
 * Wither skeletons have a 50% chance of spawning with bows rather than
   swords now
+* Gravestones appear in ten different unique shapes now at random
+  (thanks, HatCrafter)
 * Gravestones do not replace any blocks other than air now
 * Pointed dripstone arrow recipe is now upside-down (thanks, EvanSki)
 
