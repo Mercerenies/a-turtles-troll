@@ -14,6 +14,8 @@ other in mind.
 
 ### Version 1.12
 
+* A Turtle's Troll is now built for Minecraft 1.18.2 against the
+  latest Spigot API
 * Pointed dripstone arrow recipe is now upside-down (thanks, EvanSki)
 
 ### Version 1.11
