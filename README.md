@@ -23,6 +23,8 @@ other in mind.
 * Gravestones do not replace any blocks other than air now
 * Moss blocks are included in the **netherrack** effect now
 * Cats turn into bats when killed, and bats turn into cats when killed
+* When amethyst blocks are broken, they have a small chance of
+  dropping golden apples
 * The contagious moss effect now extends down to the new bedrock layer
   of Y=-64
 * Pointed dripstone arrow recipe is now upside-down (thanks, EvanSki)

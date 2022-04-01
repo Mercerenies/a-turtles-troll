@@ -121,6 +121,8 @@
               years
    + shufflelog :: When logs or planks are broken, a random log/plank
                    type is dropped
+   + amethyst :: When amethyst blocks are broken, they have a small
+                 chance of dropping golden apples
 ** CUSTOM RECIPE FEATURES
    + stonetools :: All recipes which produce stone tools are disabled
    + dirtrecipe :: Nine dirt can be crafted into a stick; nine sticks
@@ -172,7 +174,6 @@
   + More **bedtime** conditions
   + Wither skeles drop skulls more often if you've killed the dragon
   + Wither is a boss rush?
-  + Amethyst
   + Bamboo
 ** HATCRAFTER'S IDEAS
    + Cookies, when eaten, have a random effect (lower numbered effects

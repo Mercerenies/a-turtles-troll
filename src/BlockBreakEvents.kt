@@ -50,6 +50,12 @@ class BlockBreakEvents {
     "netherrack",
     "Common nether materials cause a cascading effect, breaking nearby blocks when broken",
   )
+  private val amethystBlockDrop = ReplaceDropsAction(ItemStack(Material.GOLDEN_APPLE, 1)).filter {
+    it.block.type == Material.AMETHYST_BLOCK
+  }.asFeature(
+    "amethyst",
+    "Amethyst blocks have a small chance of dropping golden apples when mined",
+  )
   val cancelDropAction = CancelDropAction.filter { // Public because we're going to compose it in AllPluginListeners
     NO_DROP_ON.contains(it.block.type)
   }.asFeature(
@@ -87,6 +93,7 @@ class BlockBreakEvents {
     Weight(frequentDirtDrop, 1.0),
     Weight(silverfishAttackAction, 0.2),
     Weight(beeAttackAction, 0.2),
+    Weight(amethystBlockDrop, 0.1),
   )
 
   private val breakPost: List<BlockBreakAction> = listOf(
@@ -103,7 +110,7 @@ class BlockBreakEvents {
   fun getFeatures(): List<Feature> = listOf(
     dirtDropFeature, silverfishAttackAction, beeAttackAction,
     endermiteSpawnAction, netherrackBoomAction, cancelDropAction,
-    strongholdAttackAction, bedrockAction, shuffleFeature,
+    strongholdAttackAction, bedrockAction, shuffleFeature, amethystBlockDrop,
   )
 
   companion object {
