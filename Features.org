@@ -165,6 +165,8 @@
    + shieldsurf :: If you hold out your shield and point it down at
                    the ground, you can absorb any amount of fall
                    damage, at the cost of shield durability instead
+   + bamboo :: When bamboo grows, it has a chance to spread in a
+               random place in a 32x32x32 box of the original bamboo
 * IDEAS (UNIMPLEMENTED)
   + Wolves?
   + Fishing?
@@ -176,7 +178,7 @@
   + More **bedtime** conditions
   + Wither skeles drop skulls more often if you've killed the dragon
   + Wither is a boss rush?
-  + Bamboo
+  + Bone blocks?
   + Nether blocks turn to lava sometimes at random if covered?
 ** HATCRAFTER'S IDEAS
    + Cookies, when eaten, have a random effect (lower numbered effects

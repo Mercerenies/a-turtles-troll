@@ -29,6 +29,13 @@ object BlockSelector {
     return block.location.world!!.getBlockAt(x, y, z)
   }
 
+  fun getRandomBlockNearDims(block: Block): Block {
+    val x = block.getX() + Random.nextInt(-15, 16)
+    val y = block.getY() + Random.nextInt(-15, 16)
+    val z = block.getZ() + Random.nextInt(-15, 16)
+    return block.location.world!!.getBlockAt(x, y, z)
+  }
+
   fun countNearbyMatching(block: Block, distance: Int, condition: (Block) -> Boolean): Int {
     var count = 0
     for (dx in -distance..distance) {

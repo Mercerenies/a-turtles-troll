@@ -16,6 +16,7 @@ other in mind.
 
 * A Turtle's Troll is now built for Minecraft 1.18.2 against the
   latest Spigot API
+* Bamboo spreads like crazy now
 * Phantoms can randomly turn into witches now; witches do not take
   fall damage
 * Wither skeletons have a 50% chance of spawning with bows rather than
