@@ -26,7 +26,10 @@ import com.mercerenies.turtletroll.recipe.AnvilRecipeFeature
 import com.mercerenies.turtletroll.recipe.AngelRecipeFeature
 import com.mercerenies.turtletroll.recipe.DripstoneRecipeFeature
 import com.mercerenies.turtletroll.recipe.DirtRecipeFeature
+import com.mercerenies.turtletroll.recipe.RecipeDeleter
 import com.mercerenies.turtletroll.recipe.StoneRecipeDeleter
+import com.mercerenies.turtletroll.recipe.MelonRecipeDeleter
+import com.mercerenies.turtletroll.recipe.MelonRecipeFeature
 import com.mercerenies.turtletroll.cookie.FreeCookieRunnable
 
 import org.bukkit.plugin.Plugin
@@ -97,6 +100,7 @@ class MainContainer(val plugin: Plugin) {
   val catBatListener = CatBatListener(plugin)
   val bambooSpreadListener = BambooSpreadListener(plugin)
   val zombieDrowningListener = ZombieDrowningListener()
+  val carvePumpkinListener = CarvePumpkinListener()
 
   val anvilRunnable = AnvilRunnable(plugin)
   val ghastBurnRunnable = GhastBurnRunnable(plugin)
@@ -107,8 +111,10 @@ class MainContainer(val plugin: Plugin) {
   val angelRecipeFeature = AngelRecipeFeature(plugin)
   val dripstoneRecipeFeature = DripstoneRecipeFeature(plugin)
   val dirtRecipeFeature = DirtRecipeFeature(plugin)
+  val melonRecipeFeature = MelonRecipeFeature(plugin)
 
-  val recipeDeleter = StoneRecipeDeleter(Bukkit.getServer())
+  val stoneRecipeDeleter = StoneRecipeDeleter(Bukkit.getServer())
+  val melonRecipeDeleter = MelonRecipeDeleter(Bukkit.getServer())
 
   val anvilFeature = CompositeFeature(
     anvilRunnable.name,
@@ -126,6 +132,12 @@ class MainContainer(val plugin: Plugin) {
     dripstoneManager.name,
     dripstoneManager.description,
     listOf(dripstoneManager, dripstoneRecipeFeature),
+  )
+
+  val melompkinFeature = CompositeFeature(
+    "melompkin",
+    "Several features of melons and pumpkins are interchanged",
+    listOf(melonRecipeFeature, melonRecipeDeleter, carvePumpkinListener, breakEvents.melonPumpkinsFeature),
   )
 
   // CancelDropAction is a BlockBreakAction and BedDropListener is a
@@ -155,7 +167,7 @@ class MainContainer(val plugin: Plugin) {
       goddessHoeListener, oldAgeListener, namedZombieListener,
       wanderingTraderListener, zombieSpeedListener, llamaHunterManager,
       shieldSurfListener, temperatureManager, witherBowListener, catBatListener,
-      witchSummonManager, bambooSpreadListener, zombieDrowningListener,
+      witchSummonManager, bambooSpreadListener, zombieDrowningListener, carvePumpkinListener,
     )
 
   val features: List<Feature> =
@@ -178,10 +190,11 @@ class MainContainer(val plugin: Plugin) {
       drownedListener, gravestoneListener, axolotlListener,
       bedtimeManager, sandAttackRunnable,
       ghastBurnRunnable, anvilFeature, angelFeature, dripstoneFeature,
-      recipeDeleter, goddessHoeListener, oldAgeListener, namedZombieListener,
+      stoneRecipeDeleter, goddessHoeListener, oldAgeListener, namedZombieListener,
       wanderingTraderListener, zombieSpeedListener, llamaHunterManager,
       shieldSurfListener, freeCookieRunnable, dirtRecipeFeature, temperatureManager,
       witherBowListener, catBatListener, bambooSpreadListener, zombieDrowningListener,
+      melompkinFeature,
     ) + (breakEvents.getFeatures() - breakEvents.cancelDropAction)
 
   val runnables: List<RunnableFeature> =
@@ -195,7 +208,12 @@ class MainContainer(val plugin: Plugin) {
   val recipes: List<RecipeFeature> =
     listOf(
       anvilRecipeFeature, angelRecipeFeature, dripstoneRecipeFeature, explosiveArrowManager,
-      dirtRecipeFeature,
+      dirtRecipeFeature, melonRecipeFeature,
+    )
+
+  val recipeDeleters: List<RecipeDeleter> =
+    listOf(
+      stoneRecipeDeleter, melonRecipeDeleter,
     )
 
 }

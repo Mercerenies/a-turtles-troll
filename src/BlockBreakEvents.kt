@@ -73,6 +73,20 @@ class BlockBreakEvents {
   private val shuffleLogsAction = ShuffleDropsAction(BlockTypes.LOGS.toList()).asFeature("", "")
   private val shufflePlanksAction = ShuffleDropsAction(BlockTypes.PLANKS.toList()).asFeature("", "")
 
+  private val replaceMelonsAction = ReplaceDropsAction(ItemStack(Material.PUMPKIN)).filter {
+    it.block.type == Material.MELON
+  }.asFeature("replacemelons", "...")
+  private val replacePumpkinsAction = ReplaceDropsAction(ItemStack(Material.MELON_SLICE, 4)).filter {
+    it.block.type == Material.PUMPKIN
+  }.asFeature("replacepumpkins", "...")
+
+  // Public so we can compose it with the recipes
+  val melonPumpkinsFeature = CompositeFeature(
+    "melompkinsdrops",
+    "Melons and pumpkins swap drops",
+    listOf(replaceMelonsAction, replacePumpkinsAction),
+  )
+
   private val shuffleFeature = CompositeFeature(
     "shufflelogs",
     "Wooden drops are shuffled",
@@ -85,6 +99,8 @@ class BlockBreakEvents {
     cancelDropAction,
     bedrockAction,
     strongholdAttackAction,
+    replaceMelonsAction,
+    replacePumpkinsAction,
   )
 
   private val breakEvents = listOf(

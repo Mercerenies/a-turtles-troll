@@ -127,6 +127,11 @@
                    type is dropped
    + amethyst :: When amethyst blocks are broken, they have a small
                  chance of dropping golden apples
+   + melompkin :: Melons and pumpkins have several facets interchanged
+     - Carving a pumpkin gives melon seeds, not pumpkin seeds
+     - Crafting a melon slice gives pumpkin seeds, not melon seeds
+     - When a melon block is broken, it drops a pumpkin block
+     - When a pumpkin block is broken, it drops melon slices
 ** CUSTOM RECIPE FEATURES
    + stonetools :: All recipes which produce stone tools are disabled
    + dirtrecipe :: Nine dirt can be crafted into a stick; nine sticks
@@ -202,18 +207,12 @@
    + Grass spread is slower
    + Polar bears have Haste 3
    + Lava spreads faster, and even faster in the Nether
-   + Wandering traders now offer 3 emeralds in exchange for a random
-     item
    + Every hostile mob has a very small chance of dropping a random item
    + Shearing a sheep gives you 2x the wool
    + Shearing a sheep creates an explosion that only damages the
      player and knocks them back
    + Eating food has a slim chance to give the player another random
      food item
-   + Carving a pumpkin gives melon seeds; melon slices are craftable into pumpkin seeds
-   + When a pumpkin is broken is drops melon slices and vice versa
-   + When a zombie would transform into a Drowned, it instead turns
-     into a giant
    + Every in-game day, all players will use the same skin as a random
      player
    + Slimes come in even bigger sizes

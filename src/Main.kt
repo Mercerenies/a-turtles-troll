@@ -30,7 +30,9 @@ class Main : JavaPlugin() {
     }
 
     // Recipe modifications
-    mainContainer.recipeDeleter.removeRecipes()
+    for (deleter in mainContainer.recipeDeleters) {
+      deleter.removeRecipes()
+    }
     for (recipe in mainContainer.recipes) {
       recipe.addRecipes()
     }
@@ -49,7 +51,9 @@ class Main : JavaPlugin() {
   override fun onDisable() {
 
     // Recipe modifications
-    mainContainer.recipeDeleter.addRecipes()
+    for (deleter in mainContainer.recipeDeleters) {
+      deleter.addRecipes()
+    }
     for (recipe in mainContainer.recipes) {
       recipe.removeRecipes()
     }
