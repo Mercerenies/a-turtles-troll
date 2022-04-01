@@ -93,6 +93,7 @@ class MainContainer(val plugin: Plugin) {
   val zombieSpeedListener = ZombieSpeedListener()
   val shieldSurfListener = ShieldSurfListener()
   val witherBowListener = WitherBowListener()
+  val catBatListener = CatBatListener(plugin)
 
   val anvilRunnable = AnvilRunnable(plugin)
   val ghastBurnRunnable = GhastBurnRunnable(plugin)
@@ -150,7 +151,7 @@ class MainContainer(val plugin: Plugin) {
       drownedListener, gravestoneListener, axolotlListener, bedtimeManager,
       goddessHoeListener, oldAgeListener, namedZombieListener,
       wanderingTraderListener, zombieSpeedListener, llamaHunterManager,
-      shieldSurfListener, temperatureManager, witherBowListener,
+      shieldSurfListener, temperatureManager, witherBowListener, catBatListener,
     )
 
   val features: List<Feature> =

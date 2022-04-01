@@ -22,6 +22,7 @@ other in mind.
   (thanks, HatCrafter)
 * Gravestones do not replace any blocks other than air now
 * Moss blocks are included in the **netherrack** effect now
+* Cats turn into bats when killed, and bats turn into cats when killed
 * The contagious moss effect now extends down to the new bedrock layer
   of Y=-64
 * Pointed dripstone arrow recipe is now upside-down (thanks, EvanSki)
