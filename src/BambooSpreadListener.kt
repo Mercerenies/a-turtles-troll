@@ -58,6 +58,20 @@ class BambooSpreadListener(
       block.setBlockData(dat)
     }
 
+    // As there is more bamboo in the immediate area, we want to
+    // reduce the odds of spreading further. So check at random for a
+    // bunch of locations. If any of them have bamboo already then
+    // don't spread.
+    fun shouldSpreadBamboo(block: Block): Boolean {
+      for (_i in 1..ATTEMPTS) {
+        val attempt = BlockSelector.getRandomBlockNearDims(block)
+        if (attempt.type == Material.BAMBOO) {
+          return false
+        }
+      }
+      return true
+    }
+
   }
 
   override val name = "bamboo"
@@ -71,11 +85,13 @@ class BambooSpreadListener(
     }
     if (event.source.type == Material.BAMBOO) {
       val base = findBaseBamboo(event.source)
-      for (_i in 1..ATTEMPTS) {
-        val attempt = BlockSelector.getRandomBlockNearDims(base)
-        if (isValidSpreadBlock(attempt)) {
-          turnToBamboo(attempt)
-          break
+      if (shouldSpreadBamboo(base)) {
+        for (_i in 1..ATTEMPTS) {
+          val attempt = BlockSelector.getRandomBlockNearDims(base)
+          if (isValidSpreadBlock(attempt)) {
+            turnToBamboo(attempt)
+            break
+          }
         }
       }
     }
