@@ -21,8 +21,9 @@ other in mind.
 * Gravestones appear in ten different unique shapes now at random
   (thanks, HatCrafter)
 * Gravestones do not replace any blocks other than air now
-* The contagious moss stone effect now extends down to the new bedrock
-  layer of Y=-64
+* Moss blocks are included in the **netherrack** effect now
+* The contagious moss effect now extends down to the new bedrock layer
+  of Y=-64
 * Pointed dripstone arrow recipe is now upside-down (thanks, EvanSki)
 
 ### Version 1.11

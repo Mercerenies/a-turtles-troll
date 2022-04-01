@@ -103,10 +103,11 @@
                 crafting table, furnace, blast furnace, smoker, bed
    + endermites :: End stone will always spawn an endermite when
                    broken and will not drop itself as a block
-   + netherrack :: If you destroy any common nether blocks, all nearby
-                   common nether blocks will be destroyed; these
-                   include: netherrack, nylium (both kinds), soul
-                   sand, and soul soil, nether bricks
+   + netherrack :: If you destroy any common nether blocks or moss
+                   blocks, all nearby common nether blocks (or moss
+                   blocks) will be destroyed; these include:
+                   netherrack, nylium (both kinds), soul sand, and
+                   soul soil, nether bricks, moss blocks
    + bedrock :: The following blocks transform into bedrock when
                 mined: leaves, ice blocks, wart blocks, warped wart
                 blocks, diorite, andesite, granite, basalt, blackstone
