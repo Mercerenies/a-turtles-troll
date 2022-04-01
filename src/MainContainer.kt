@@ -47,6 +47,7 @@ class MainContainer(val plugin: Plugin) {
   val bedtimeManager = BedtimeManager(plugin)
   val llamaHunterManager = LlamaHunterManager(plugin)
   val temperatureManager = TemperatureManager(plugin)
+  val witchSummonManager = WitchSummonManager(plugin)
 
   val breakEvents = BlockBreakEvents()
   val chickenListener = ChickenDamageListener(plugin)
@@ -152,6 +153,7 @@ class MainContainer(val plugin: Plugin) {
       goddessHoeListener, oldAgeListener, namedZombieListener,
       wanderingTraderListener, zombieSpeedListener, llamaHunterManager,
       shieldSurfListener, temperatureManager, witherBowListener, catBatListener,
+      witchSummonManager,
     )
 
   val features: List<Feature> =
@@ -177,6 +179,7 @@ class MainContainer(val plugin: Plugin) {
       recipeDeleter, goddessHoeListener, oldAgeListener, namedZombieListener,
       wanderingTraderListener, zombieSpeedListener, llamaHunterManager,
       shieldSurfListener, freeCookieRunnable, dirtRecipeFeature, temperatureManager,
+      witherBowListener, catBatListener,
     ) + (breakEvents.getFeatures() - breakEvents.cancelDropAction)
 
   val runnables: List<RunnableFeature> =
@@ -184,7 +187,7 @@ class MainContainer(val plugin: Plugin) {
       anvilRunnable, sandAttackRunnable, ghastBurnRunnable,
       pufferfishRainManager, angelManager, phantomManager, pumpkinManager, mossManager,
       dripstoneManager, dragonBombManager, classicLavaManager, bedtimeManager, llamaHunterManager,
-      freeCookieRunnable, temperatureManager,
+      freeCookieRunnable, temperatureManager, witchSummonManager,
     )
 
   val recipes: List<RecipeFeature> =

@@ -82,6 +82,8 @@
                   a bow rather than a sword
    + catbat :: Cats turn into bats when killed, and bats turn into
                cats when killed
+   + witches :: Phantoms have a small chance of turning into witches;
+                witches do not take fall damage
 ** EGG FEATURES
    + eggs :: Almost any mob (or diamonds) can spawn from an egg
    + eggarrow :: Skeletons will fire eggs in addition to arrows
@@ -175,6 +177,7 @@
   + Wither skeles drop skulls more often if you've killed the dragon
   + Wither is a boss rush?
   + Bamboo
+  + Nether blocks turn to lava sometimes at random if covered?
 ** HATCRAFTER'S IDEAS
    + Cookies, when eaten, have a random effect (lower numbered effects
      are more likely)
@@ -195,8 +198,6 @@
    + Grass spread is slower
    + Polar bears have Haste 3
    + Lava spreads faster, and even faster in the Nether
-   + Every 30 seconds, a phantom has a chance of becoming a witch
-     (witches don't take fall damage)
    + Wandering traders now offer 3 emeralds in exchange for a random
      item
    + Every hostile mob has a very small chance of dropping a random item
