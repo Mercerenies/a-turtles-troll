@@ -7,7 +7,9 @@ import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.entity.EntityDeathEvent
 import org.bukkit.event.entity.EntityDamageEvent
+import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.bukkit.entity.EntityType
+import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
 import org.bukkit.Material
 import org.bukkit.scheduler.BukkitRunnable
@@ -40,7 +42,7 @@ class CatBatListener(
 
   override val name = "catbat"
 
-  override val description = "Cats transform into bats when killed and vice versa"
+  override val description = "Cats transform into bats when killed by the player and vice versa"
 
   @EventHandler
   fun onEntityDeath(event: EntityDeathEvent) {
@@ -49,10 +51,9 @@ class CatBatListener(
     }
     val entity = event.getEntity()
     val replacementType = getReplacementType(entity.getType())
-    val damageCause = entity.getLastDamageCause()?.getCause() ?: EntityDamageEvent.DamageCause.VOID
+    val damageCause = entity.getLastDamageCause()
     if ((Random.nextDouble() < chance) && (replacementType != null)) {
-      // Safeguard so we can still 'kill @a' and not flood the server
-      if (damageCause != EntityDamageEvent.DamageCause.VOID) {
+      if ((damageCause is EntityDamageByEntityEvent) && (damageCause.damager is Player)) {
         SummonEntityRunnable(replacementType, entity.location).runTaskLater(plugin, Constants.TICKS_PER_SECOND.toLong())
       }
     }

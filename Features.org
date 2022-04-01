@@ -80,8 +80,8 @@
                     llama spit has drastically increased knockback
    + witherbow :: Wither skeletons have a 50% chance of spawning with
                   a bow rather than a sword
-   + catbat :: Cats turn into bats when killed, and bats turn into
-               cats when killed
+   + catbat :: Cats turn into bats when killed by the player, and bats
+               turn into cats when killed by the player
    + witches :: Phantoms have a small chance of turning into witches;
                 witches do not take fall damage
 ** EGG FEATURES
