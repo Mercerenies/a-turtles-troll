@@ -31,7 +31,7 @@ class BambooSpreadListener(
       Material.SAND, Material.RED_SAND, Material.BAMBOO
     )
 
-    val ATTEMPTS = 100
+    val ATTEMPTS = 50
 
     fun findBaseBamboo(block: Block): Block {
       var curr = block
@@ -71,10 +71,11 @@ class BambooSpreadListener(
     }
     if (event.source.type == Material.BAMBOO) {
       val base = findBaseBamboo(event.source)
-      repeat(ATTEMPTS) {
+      for (_i in 1..ATTEMPTS) {
         val attempt = BlockSelector.getRandomBlockNearDims(base)
         if (isValidSpreadBlock(attempt)) {
           turnToBamboo(attempt)
+          break
         }
       }
     }
