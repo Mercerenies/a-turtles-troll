@@ -84,6 +84,8 @@
                turn into cats when killed by the player
    + witches :: Phantoms have a small chance of turning into witches;
                 witches do not take fall damage
+   + zombiedrowning :: When a zombie drowns, it turns into a Giant,
+                       not a Drowned
 ** EGG FEATURES
    + eggs :: Almost any mob (or diamonds) can spawn from an egg
    + eggarrow :: Skeletons will fire eggs in addition to arrows
