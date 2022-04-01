@@ -62,7 +62,7 @@ class ContagiousMossManager(plugin: Plugin) : RunnableFeature(plugin), Listener 
     }
     if (event.chunk.world.environment == World.Environment.NORMAL) {
       // Unconditionally get a block and convert it to moss block
-      val block = BlockSelector.getRandomBlock(event.chunk, BlockSelector.SEA_LEVEL)
+      val block = BlockSelector.getRandomBlock(event.chunk, BlockSelector.BEDROCK, BlockSelector.SEA_LEVEL)
       block.type = Material.MOSS_BLOCK
     }
   }
