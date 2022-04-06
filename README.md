@@ -16,6 +16,8 @@ other in mind.
 
 * The **bedtime** event now shows a boss bar to indicate the current
   bedtime condition.
+* If a player has four distinct potion effects, they begin to levitate
+  in the air.
 
 ### Version 1.12
 
