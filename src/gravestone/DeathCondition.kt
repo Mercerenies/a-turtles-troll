@@ -9,10 +9,14 @@ interface DeathCondition {
   // Should be a prepositional phrase
   val description: String
 
+  // Should be a simple noun or verb phrase summarizing the condition
+  val summary: String
+
   fun test(cause: CauseOfDeath): Boolean
 
   object True : DeathCondition {
     override val description: String = "for any reason"
+    override val summary: String = "Die"
 
     override fun test(cause: CauseOfDeath): Boolean = true
 
@@ -20,6 +24,7 @@ interface DeathCondition {
 
   object MustBeAngel : DeathCondition {
     override val description: String = "to a Weeping Angel"
+    override val summary: String = "Die to Weeping Angel"
 
     override fun test(cause: CauseOfDeath): Boolean =
       cause is Angel
@@ -28,6 +33,7 @@ interface DeathCondition {
 
   object MustBeMimic : DeathCondition {
     override val description: String = "to a Mimic"
+    override val summary: String = "Die to Mimic"
 
     override fun test(cause: CauseOfDeath): Boolean =
       cause is Mimic
@@ -36,6 +42,7 @@ interface DeathCondition {
 
   object MustBeVector : DeathCondition {
     override val description: String = "to Vector"
+    override val summary: String = "Die to Vector"
 
     override fun test(cause: CauseOfDeath): Boolean =
       cause is VanillaMob &&
@@ -50,6 +57,7 @@ interface DeathCondition {
     )
 
     override val description: String = "to fire damage"
+    override val summary: String = "Die to Fire"
 
     override fun test(cause: CauseOfDeath): Boolean =
       cause is Vanilla &&
@@ -63,6 +71,7 @@ interface DeathCondition {
     )
 
     override val description: String = "to an explosion"
+    override val summary: String = "Die to Explosion"
 
     override fun test(cause: CauseOfDeath): Boolean =
       (cause is Vanilla &&
@@ -75,6 +84,7 @@ interface DeathCondition {
   object Drowning : DeathCondition {
 
     override val description: String = "by drowning"
+    override val summary: String = "Die by Drowning"
 
     override fun test(cause: CauseOfDeath): Boolean =
       cause is Vanilla &&
@@ -85,6 +95,7 @@ interface DeathCondition {
   object Falling : DeathCondition {
 
     override val description: String = "by falling"
+    override val summary: String = "Die by Falling"
 
     override fun test(cause: CauseOfDeath): Boolean =
       cause is Vanilla &&
@@ -99,6 +110,7 @@ interface DeathCondition {
     )
 
     override val description: String = "to a zombie"
+    override val summary: String = "Die to Zombie"
 
     override fun test(cause: CauseOfDeath): Boolean =
       cause is VanillaMob &&
@@ -109,6 +121,7 @@ interface DeathCondition {
   object MustBeBee : DeathCondition {
 
     override val description: String = "to a bee"
+    override val summary: String = "Die to Bee"
 
     override fun test(cause: CauseOfDeath): Boolean =
       cause is VanillaMob &&
@@ -119,6 +132,7 @@ interface DeathCondition {
   object MustBeEnderman : DeathCondition {
 
     override val description: String = "to an Enderman"
+    override val summary: String = "Die to Enderman"
 
     override fun test(cause: CauseOfDeath): Boolean =
       cause is VanillaMob &&
@@ -132,6 +146,7 @@ interface DeathCondition {
     )
 
     override val description: String = "to a Ghast"
+    override val summary: String = "Die to Ghast"
 
     override fun test(cause: CauseOfDeath): Boolean =
       cause is VanillaMob &&
@@ -142,6 +157,7 @@ interface DeathCondition {
   object MustBeRavager : DeathCondition {
 
     override val description: String = "to a Ravager"
+    override val summary: String = "Die to Ravager"
 
     override fun test(cause: CauseOfDeath): Boolean =
       cause is VanillaMob &&
@@ -152,6 +168,7 @@ interface DeathCondition {
   object MustBeIronGolem : DeathCondition {
 
     override val description: String = "to an Iron Golem"
+    override val summary: String = "Die to Iron Golem"
 
     override fun test(cause: CauseOfDeath): Boolean =
       cause is VanillaMob &&
@@ -162,6 +179,7 @@ interface DeathCondition {
   object MustBeSilverfish : DeathCondition {
 
     override val description: String = "to Silverfish"
+    override val summary: String = "Die to Silverfish"
 
     override fun test(cause: CauseOfDeath): Boolean =
       cause is VanillaMob &&
@@ -172,6 +190,7 @@ interface DeathCondition {
   object MustBeBlaze : DeathCondition {
 
     override val description: String = "to a Blaze"
+    override val summary: String = "Die to Blaze"
 
     override fun test(cause: CauseOfDeath): Boolean =
       cause is VanillaMob &&

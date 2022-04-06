@@ -12,6 +12,11 @@ other in mind.
 
 ## Changelog
 
+### Version 1.13
+
+* The **bedtime** event now shows a boss bar to indicate the current
+  bedtime condition.
+
 ### Version 1.12
 
 * A Turtle's Troll is now built for Minecraft 1.18.2 against the

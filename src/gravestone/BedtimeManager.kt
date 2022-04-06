@@ -9,11 +9,14 @@ import com.mercerenies.turtletroll.ext.*
 
 import org.bukkit.plugin.Plugin
 import org.bukkit.Bukkit
+import org.bukkit.NamespacedKey
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
 import org.bukkit.event.entity.PlayerDeathEvent
 import org.bukkit.event.player.PlayerBedEnterEvent
+import org.bukkit.event.player.PlayerJoinEvent
+import org.bukkit.event.player.PlayerQuitEvent
 import org.bukkit.event.Listener
 import org.bukkit.command.CommandSender
 
@@ -81,6 +84,9 @@ class BedtimeManager(plugin: Plugin) : ScheduledEventRunnable<BedtimeManager.Sta
 
   private var condition: DeathCondition = DeathCondition.True
 
+  private val bossBarKey: NamespacedKey = NamespacedKey(plugin, "com.mercerenies.turtletroll.bedtime.BedtimeManager.bossBarKey")
+  private val bossBar: BedtimeBossBarUpdater = BedtimeBossBarUpdater(bossBarKey)
+
   val BedtimeCommand = object : TerminalCommand() {
 
     private fun getMessageToSend(): String =
@@ -110,6 +116,13 @@ class BedtimeManager(plugin: Plugin) : ScheduledEventRunnable<BedtimeManager.Sta
   override fun enable() {
     super.enable()
     isAppeased = true
+    bossBar.setVisible(true)
+    bossBar.updatePlayerList()
+  }
+
+  override fun disable() {
+    super.disable()
+    bossBar.setVisible(false)
   }
 
   override fun getAllStates() = STATES
@@ -121,10 +134,12 @@ class BedtimeManager(plugin: Plugin) : ScheduledEventRunnable<BedtimeManager.Sta
       State.Daytime -> {
         isAppeased = false
         condition = chooseCondition()
+        bossBar.updateCondition(BedtimeBossBarUpdater.Status.WAITING, condition)
         Bukkit.broadcastMessage(requestMessage(condition))
       }
       State.Nighttime -> {
         if (!isAppeased) {
+          bossBar.updateCondition(BedtimeBossBarUpdater.Status.ANGRY)
           Bukkit.broadcastMessage(ANGRY_MESSAGE)
         }
       }
@@ -141,6 +156,7 @@ class BedtimeManager(plugin: Plugin) : ScheduledEventRunnable<BedtimeManager.Sta
       val cause = CauseOfDeath.identify(event)
       if (condition.test(cause)) {
         Bukkit.broadcastMessage(appeasedMessage(event.entity))
+        bossBar.updateCondition(BedtimeBossBarUpdater.Status.APPEASED)
         isAppeased = true
       }
     }
@@ -163,6 +179,22 @@ class BedtimeManager(plugin: Plugin) : ScheduledEventRunnable<BedtimeManager.Sta
       }
     }
 
+  }
+
+  @EventHandler
+  fun onPlayerJoin(event: PlayerJoinEvent) {
+    if (!isEnabled()) {
+      return
+    }
+    bossBar.addPlayer(event.player)
+  }
+
+  @EventHandler
+  fun onPlayerQuit(event: PlayerQuitEvent) {
+    if (!isEnabled()) {
+      return
+    }
+    bossBar.removePlayer(event.player)
   }
 
 }
