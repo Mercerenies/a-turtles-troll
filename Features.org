@@ -278,3 +278,20 @@
    + Saying certain pirate themed words changes the game's language to
      pirate english for all players for 5 mins.
    + When a player dies, their game is set to a random language
+   + When a phantom dies, there's a small chance a random boat will
+     spawn
+   + All gold tools and armor are significantly buffed and better than
+     netherite.
+     - Whenever you take damage, all gold items you are carrying have
+       a small chance of breaking
+       * This effect can also destroy gold ingots, nuggets, blocks,
+         and apples
+     - Whenever a gold item loses durability, that specific item has a
+       small chance of breaking
+   + Pufferfish have reduced health
+     - When a pufferfish dies, it will explode, damaging entities but
+       not blocks. This explosion is stronger if the pufferfish dies
+       while in water
+   + After using a bed to pass time, the player will gain either
+     slowness, nausea, or blindness for a short time
+   + When a player harvests beetroot, small chance a rabbit will spawn
