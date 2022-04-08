@@ -34,6 +34,8 @@
    + temperature :: A player with no armor will take damage in cold
                     biomes, and a player with armor will take damage
                     in hot biomes
+   + spillage :: When a bucket item is dropped for any reason, its
+                 contents will spill on the ground
 ** CUSTOM SPAWNING FEATURES
    + weepingangel :: Armor stands will chase you when you're not
                      looking at them, and armor stands will rarely

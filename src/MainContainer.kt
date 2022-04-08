@@ -104,7 +104,7 @@ class MainContainer(val plugin: Plugin) {
   val carvePumpkinListener = CarvePumpkinListener()
   val escalationListener = EscalationListener()
   val butterfingersListener = ButterfingersListener()
-  val spillageListener = SpillageListener()
+  val spillageListener = SpillageListener(plugin)
 
   val anvilRunnable = AnvilRunnable(plugin)
   val ghastBurnRunnable = GhastBurnRunnable(plugin)

@@ -16,6 +16,8 @@ other in mind.
 
 * When a player opens an inventory other than their own, the current
   item they're holding is dropped
+* When a bucket item is dropped for any reason, its contents will
+  spill on the ground
 * The **bedtime** event now shows a boss bar to indicate the current
   bedtime condition
 * If a player has four distinct potion effects, they begin to levitate

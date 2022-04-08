@@ -23,7 +23,9 @@ open class SpillLiquidAndEntity(
     item.itemStack.type == itemType
 
   open fun revertItem(item: Item) {
-    item.itemStack.type = Material.BUCKET
+    val itemStack = item.itemStack
+    itemStack.type = Material.BUCKET
+    item.itemStack = itemStack
   }
 
   open fun onSpawnedEntity(entity: Entity) {}
