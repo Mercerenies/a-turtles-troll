@@ -176,6 +176,9 @@
                random place in a 32x32x32 box of the original bamboo
    + escalation :: If a player has four distinct potion effects, they
                    begin to levitate in the air
+   + butterfingers :: If you open an inventory (excluding your own
+                      inventory), the item you're holding in your main
+                      hand will be dropped.
 * IDEAS (UNIMPLEMENTED)
   + Wolves?
   + Fishing?
@@ -189,6 +192,9 @@
   + Wither is a boss rush?
   + Bone blocks?
   + Nether blocks turn to lava sometimes at random if covered?
+  + Two blocks below you turns to lava if concealed
+  + If you drop a bucket, it spills
+  + Opening a menu causes your main hand to drop whatever's in it
 ** HATCRAFTER'S IDEAS
    + Cookies, when eaten, have a random effect (lower numbered effects
      are more likely)
@@ -227,8 +233,6 @@
    + Upon picking up redstone, the player takes damage
    + Every mob has a small chance of dropping redstone
    + Redstone torches drop redstone
-   + Pausing the game causes the player to throw the item they
-     currently have selected in their hotbar
    + Breeding animals sometimes spawns a Vindicator named "Johnny"
    + Creepers spawn with 2 minutes of a random status effect
    + mobGriefing is off

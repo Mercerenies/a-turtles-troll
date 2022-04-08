@@ -14,10 +14,12 @@ other in mind.
 
 ### Version 1.13
 
+* When a player opens an inventory other than their own, the current
+  item they're holding is dropped
 * The **bedtime** event now shows a boss bar to indicate the current
-  bedtime condition.
+  bedtime condition
 * If a player has four distinct potion effects, they begin to levitate
-  in the air.
+  in the air
 
 ### Version 1.12
 
