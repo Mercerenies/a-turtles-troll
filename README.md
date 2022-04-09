@@ -14,6 +14,8 @@ other in mind.
 
 ### Version 1.13
 
+* The block two cubes below the player is constantly being turned to
+  lava
 * When a player opens an inventory other than their own, the current
   item they're holding is dropped
 * When a bucket item is dropped for any reason, its contents will
