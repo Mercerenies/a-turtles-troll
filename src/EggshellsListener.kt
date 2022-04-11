@@ -44,6 +44,10 @@ class EggshellsListener(): AbstractFeature(), Listener {
           return false
         }
       }
+      // If the block above it has gravity, don't transform
+      if (block.location.add(0.0, 1.0, 0.0).block.type.hasGravity()) {
+        return false
+      }
       return true
     }
 
@@ -68,7 +72,7 @@ class EggshellsListener(): AbstractFeature(), Listener {
     val underBlock = playerBlock?.location?.add(0.0, -2.0, 0.0)?.block
     // I might turn this on the Nether later if I change my mind.
     // Definitely don't want it in the End though.
-    if ((underBlock != null) && (player.location.world?.environment == World.Environment.NORMAL)) {
+    if ((underBlock != null) && (event.player.location.world?.environment == World.Environment.NORMAL)) {
       tryTurnToLava(underBlock)
     }
   }

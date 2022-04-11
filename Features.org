@@ -37,7 +37,8 @@
    + spillage :: When a bucket item is dropped for any reason, its
                  contents will spill on the ground
    + eggshells :: The block two cubes below the player is constantly
-                  being turned to lava
+                  being turned to lava (unless the player is standing
+                  on sand or gravel)
 ** CUSTOM SPAWNING FEATURES
    + weepingangel :: Armor stands will chase you when you're not
                      looking at them, and armor stands will rarely
