@@ -44,10 +44,11 @@ class ClassicLavaManager(plugin: Plugin) : RunnableFeature(plugin), Listener {
 
   override val taskPeriod: Long = Constants.TICKS_PER_SECOND.toLong()
 
-  private var memory: CooldownMemory<EqBlock> = CooldownMemory(plugin)
-
-  val ignorer: BlockIgnorer =
-    BlockIgnorer.MemoryIgnorer(memory, IGNORE_DELAY_TIME)
+  val ignorer: BlockIgnorer = object : BlockIgnorer {
+    override fun ignore(block: Block) {
+      setBlockSpread(block, 0)
+    }
+  }
 
   private fun removeBlockSpread(block: Block) {
     block.removeMetadata(metadataTag, plugin)
@@ -86,23 +87,18 @@ class ClassicLavaManager(plugin: Plugin) : RunnableFeature(plugin), Listener {
     val from = event.getBlock()
     val to = event.getToBlock()
     if (from.type == Material.LAVA) {
-      if (memory.contains(EqBlock(from))) {
-        // If we've been instructed to ignore it, then ignore it.
-        ignorer.ignore(to)
-      } else {
-        val spread = getBlockSpread(from)
-        setBlockSpread(to, spread - 1)
-        if (spread <= 0) {
-          // Done spreading; ignore
-          return
-        }
-        to.type = Material.LAVA
-        val blockData = to.getBlockData()
-        if (blockData is Levelled) {
-          blockData.setLevel(0) // Make it a source block
-          to.setBlockData(blockData)
-          event.setCancelled(true)
-        }
+      val spread = getBlockSpread(from)
+      setBlockSpread(to, spread - 1)
+      if (spread <= 0) {
+        // Done spreading; ignore
+        return
+      }
+      to.type = Material.LAVA
+      val blockData = to.getBlockData()
+      if (blockData is Levelled) {
+        blockData.setLevel(0) // Make it a source block
+        to.setBlockData(blockData)
+        event.setCancelled(true)
       }
     }
   }
