@@ -12,6 +12,11 @@ other in mind.
 
 ## Changelog
 
+### Version 1.14
+
+* **classiclava** has been revamped to be much more controlled.
+* **classiclava** works in the Nether now.
+
 ### Version 1.13
 
 * The block two cubes below the player is constantly being turned to

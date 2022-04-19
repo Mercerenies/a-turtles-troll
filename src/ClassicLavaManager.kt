@@ -7,18 +7,35 @@ import com.mercerenies.turtletroll.feature.RunnableFeature
 
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
+import org.bukkit.event.EventPriority
+import org.bukkit.event.block.BlockPlaceEvent
 import org.bukkit.event.block.BlockFromToEvent
 import org.bukkit.Material
 import org.bukkit.World
 import org.bukkit.plugin.Plugin
+import org.bukkit.block.Block
 import org.bukkit.block.`data`.Levelled
+import org.bukkit.metadata.FixedMetadataValue
 
 import kotlin.random.Random
+import kotlin.math.min
 
 class ClassicLavaManager(plugin: Plugin) : RunnableFeature(plugin), Listener {
 
   companion object {
+
     val IGNORE_DELAY_TIME = Constants.TICKS_PER_SECOND * 60L
+
+    private val metadataTag = "com.mercerenies.turtletroll.ClassicLavaManager.metadataTag"
+
+    fun getDefaultSpreadForWorld(env: World.Environment): Int =
+      when (env) {
+        World.Environment.CUSTOM -> 0 // *shrug* idk what this world is
+        World.Environment.NETHER -> 8
+        World.Environment.NORMAL -> 4
+        World.Environment.THE_END -> 0 // The End is chaotic enough already
+      }
+
   }
 
   override val name: String = "classiclava"
@@ -27,12 +44,39 @@ class ClassicLavaManager(plugin: Plugin) : RunnableFeature(plugin), Listener {
 
   override val taskPeriod: Long = Constants.TICKS_PER_SECOND.toLong()
 
-  private var active: Boolean = false
-  private var netherActive: Boolean = false
   private var memory: CooldownMemory<EqBlock> = CooldownMemory(plugin)
 
   val ignorer: BlockIgnorer =
     BlockIgnorer.MemoryIgnorer(memory, IGNORE_DELAY_TIME)
+
+  private fun removeBlockSpread(block: Block) {
+    block.removeMetadata(metadataTag, plugin)
+  }
+
+  private fun setBlockSpread(block: Block, spread: Int) {
+    block.removeMetadata(metadataTag, plugin)
+    block.setMetadata(metadataTag, FixedMetadataValue(plugin, spread))
+  }
+
+  private fun getBlockSpread(block: Block): Int {
+    val meta = block.getMetadata(metadataTag)
+    if (meta.size > 0) {
+      return meta[0].asInt()
+    } else {
+      val env = block.world.environment
+      return getDefaultSpreadForWorld(env)
+    }
+  }
+
+  @EventHandler(priority=EventPriority.LOW)
+  fun onBlockPlace(event: BlockPlaceEvent) {
+    if (!isEnabled()) {
+      return
+    }
+    if (event.block.type != Material.LAVA) {
+      removeBlockSpread(event.block)
+    }
+  }
 
   @EventHandler
   fun onBlockFromTo(event: BlockFromToEvent) {
@@ -43,8 +87,15 @@ class ClassicLavaManager(plugin: Plugin) : RunnableFeature(plugin), Listener {
     val to = event.getToBlock()
     if (from.type == Material.LAVA) {
       if (memory.contains(EqBlock(from))) {
+        // If we've been instructed to ignore it, then ignore it.
         ignorer.ignore(to)
-      } else if (isActiveFor(from.world.environment)) {
+      } else {
+        val spread = getBlockSpread(from)
+        setBlockSpread(to, spread - 1)
+        if (spread <= 0) {
+          // Done spreading; ignore
+          return
+        }
         to.type = Material.LAVA
         val blockData = to.getBlockData()
         if (blockData is Levelled) {
@@ -56,26 +107,11 @@ class ClassicLavaManager(plugin: Plugin) : RunnableFeature(plugin), Listener {
     }
   }
 
-  fun isActiveFor(env: World.Environment): Boolean =
-    if (env == World.Environment.NETHER) {
-      netherActive
-    } else {
-      active
-    }
-
   override fun run() {
     if (!isEnabled()) {
       return
     }
-
-    // Overworld
-    if (Random.nextDouble() < 0.4) {
-      active = !active
-    }
-
-    // Nether
-    netherActive = false
-
+    // Unused; exists for legacy reasons
   }
 
 }
