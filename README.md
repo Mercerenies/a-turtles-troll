@@ -14,8 +14,9 @@ other in mind.
 
 ### Version 1.14
 
-* **classiclava** has been revamped to be much more controlled.
-* **classiclava** works in the Nether now.
+* **classiclava** has been revamped to be much more controlled
+* **classiclava** works in the Nether now
+* **ghastlava** has been nerfed and re-enabled
 
 ### Version 1.13
 

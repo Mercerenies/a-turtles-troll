@@ -27,10 +27,9 @@
              Confusion effects for a bit
    + axolotl :: When an axolotl dies, the nearest player (within 32
                 blocks) also dies
-   + ghastlava :: +Ghast fireballs erupt into lava on contact+ (the
-                  lava spawned by this is immune to **classiclava**
-                  effects, for reasons of sanity) (this feature has
-                  been removed due to excessive bugs; see issue #21)
+   + ghastlava :: Ghast fireballs erupt into lava on contact (the lava
+                  spawned by this is immune to **classiclava**
+                  effects, for reasons of sanity)
    + temperature :: A player with no armor will take damage in cold
                     biomes, and a player with armor will take damage
                     in hot biomes

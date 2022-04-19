@@ -19,6 +19,24 @@ class GhastLavaListener(
   val ignorer: BlockIgnorer = BlockIgnorer.Null,
 ) : AbstractFeature(), Listener {
 
+  companion object {
+
+    private fun findGround(initialLocation: Location): Location? {
+      var loc = initialLocation
+      var i = 0 // Just to prevent infinite loops
+      while ((loc.block.type == Material.AIR) && (i < 10)) {
+        i += 1
+        loc = loc.clone().add(0.0, -1.0, 0.0)
+      }
+      if (loc.block.type == Material.AIR) {
+        return null
+      } else {
+        return loc
+      }
+    }
+
+  }
+
   override val name = "ghastlava"
 
   override val description = "Ghast fireballs spawn lava when they hit"
@@ -42,7 +60,11 @@ class GhastLavaListener(
     val entity = event.getEntity()
     val source = entity.getShooter()
     if (source is Ghast) {
-      DelayedLava(entity.location).runTaskLater(plugin, 1L)
+      // Find the ground
+      val loc = findGround(entity.location)
+      if (loc != null) {
+        DelayedLava(loc).runTaskLater(plugin, 1L)
+      }
     }
   }
 

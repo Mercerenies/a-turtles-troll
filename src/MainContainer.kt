@@ -90,7 +90,7 @@ class MainContainer(val plugin: Plugin) {
   val drownedListener = DrownedSpawnerListener(plugin)
   val gravestoneListener = GravestoneListener(plugin)
   val axolotlListener = AxolotlListener()
-  //val ghastLavaListener = GhastLavaListener(plugin, classicLavaManager.ignorer)
+  val ghastLavaListener = GhastLavaListener(plugin, classicLavaManager.ignorer)
   val goddessHoeListener = GoddessHoeListener(plugin)
   val oldAgeListener = OldAgeListener()
   val namedZombieListener = NamedZombieListener()
@@ -174,6 +174,7 @@ class MainContainer(val plugin: Plugin) {
       shieldSurfListener, temperatureManager, witherBowListener, catBatListener,
       witchSummonManager, bambooSpreadListener, zombieDrowningListener, carvePumpkinListener,
       escalationListener, butterfingersListener, spillageListener, eggshellsListener,
+      ghastLavaListener,
     )
 
   val features: List<Feature> =
@@ -201,7 +202,7 @@ class MainContainer(val plugin: Plugin) {
       shieldSurfListener, freeCookieRunnable, dirtRecipeFeature, temperatureManager,
       witherBowListener, catBatListener, bambooSpreadListener, zombieDrowningListener,
       melompkinFeature, escalationListener, butterfingersListener, spillageListener,
-      eggshellsListener,
+      eggshellsListener, ghastLavaListener,
     ) + (breakEvents.getFeatures() - breakEvents.cancelDropAction)
 
   val runnables: List<RunnableFeature> =
