@@ -197,9 +197,9 @@
   + Wither is a boss rush?
   + Bone blocks?
   + Nether blocks turn to lava sometimes at random if covered?
-  + Two blocks below you turns to lava if concealed
   + Nearby chests might get opened instead of the one you intended
     (excludes mimics)
+  + Pokeball
 ** HATCRAFTER'S IDEAS
    + Cookies, when eaten, have a random effect (lower numbered effects
      are more likely)
