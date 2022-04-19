@@ -20,6 +20,9 @@ A Turtle's Troll also depends on the following two libraries.
 * A recent version of the [Spigot
   API](https://www.spigotmc.org/wiki/spigot-installation/) (Not
   included)
+* [org.json](https://github.com/stleary/JSON-java) (Included under the
+  JSON License)
+
 ## Changelog
 
 ### Version 1.14
