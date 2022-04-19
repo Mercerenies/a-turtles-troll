@@ -10,10 +10,21 @@ Raccoon-Mischief](https://github.com/EvanSkiStudios/Raccoon-Mischief).
 Neither directly depends on the other, but they are designed with each
 other in mind.
 
+## Acknowledgments
+
+A Turtle's Troll is written and maintained by Mercerenies. It is
+released under the [MIT License](LICENSE.txt).
+
+A Turtle's Troll also depends on the following two libraries.
+
+* A recent version of the [Spigot
+  API](https://www.spigotmc.org/wiki/spigot-installation/) (Not
+  included)
 ## Changelog
 
 ### Version 1.14
 
+* A Turtle's Troll is now [open source](LICENSE.txt)!
 * **classiclava** has been revamped to be much more controlled
 * **classiclava** works in the Nether now
 * **ghastlava** has been nerfed and re-enabled
