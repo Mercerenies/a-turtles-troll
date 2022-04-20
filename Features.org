@@ -175,7 +175,8 @@
    + oldage :: A player who reaches level 100 dies of old age
    + shieldsurf :: If you hold out your shield and point it down at
                    the ground, you can absorb any amount of fall
-                   damage, at the cost of shield durability instead
+                   damage or lava damage, at the cost of shield
+                   durability instead
    + bamboo :: When bamboo grows, it has a chance to spread in a
                random place in a 32x32x32 box of the original bamboo
    + escalation :: If a player has four distinct potion effects, they

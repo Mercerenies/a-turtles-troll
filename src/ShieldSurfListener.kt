@@ -8,12 +8,17 @@ import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
 import org.bukkit.event.Listener
 import org.bukkit.event.entity.EntityDamageEvent
+import org.bukkit.event.entity.EntityCombustByBlockEvent
 import org.bukkit.entity.Player
+import org.bukkit.Material
 
 class ShieldSurfListener() : AbstractFeature(), Listener {
 
   companion object {
     val MIN_PITCH = 45
+
+    fun isShieldingDownward(player: Player): Boolean =
+      player.isBlocking() && player.location.pitch >= MIN_PITCH
 
     fun damageShield(player: Player, amount: Double) {
       val shield = player.inventory.getItemInOffHand()
@@ -34,7 +39,7 @@ class ShieldSurfListener() : AbstractFeature(), Listener {
 
   override val name = "shieldsurf"
 
-  override val description = "If you look at the ground and hold a shield, you can block fall damage"
+  override val description = "If you look at the ground and hold a shield, you can block fall damage and lava damage"
 
   @EventHandler(priority=EventPriority.LOW)
   fun onEntityDamage(event: EntityDamageEvent) {
@@ -44,10 +49,28 @@ class ShieldSurfListener() : AbstractFeature(), Listener {
     val victim = event.entity
     if (!event.isCancelled()) {
       if (victim is Player) {
-        if (event.cause == EntityDamageEvent.DamageCause.FALL) {
-          if ((victim.isBlocking()) && (victim.location.pitch >= MIN_PITCH)) {
+        if ((event.cause == EntityDamageEvent.DamageCause.FALL) || (event.cause == EntityDamageEvent.DamageCause.LAVA)) {
+          if (isShieldingDownward(victim)) {
             event.setCancelled(true)
             damageShield(victim, event.getDamage())
+          }
+        }
+      }
+    }
+  }
+
+  @EventHandler(priority=EventPriority.LOW)
+  fun onEntityCombustByBlock(event: EntityCombustByBlockEvent) {
+    if (!isEnabled()) {
+      return
+    }
+    val victim = event.entity
+    if (!event.isCancelled()) {
+      if (victim is Player) {
+        if (event.combuster?.type == Material.LAVA) {
+          if (isShieldingDownward(victim)) {
+            event.setCancelled(true)
+            damageShield(victim, 1.0)
           }
         }
       }
