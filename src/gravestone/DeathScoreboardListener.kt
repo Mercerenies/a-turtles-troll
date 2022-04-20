@@ -1,6 +1,7 @@
 
 package com.mercerenies.turtletroll.gravestone
 
+import com.mercerenies.turtletroll.ObjectiveContainer
 import com.mercerenies.turtletroll.feature.AbstractFeature
 import com.mercerenies.turtletroll.storage.GlobalDataHolder
 import com.mercerenies.turtletroll.Constants
@@ -36,19 +37,10 @@ class DeathScoreboardListener(
     private val DATA_KEY = "com.mercerenies.turtletroll.gravestone.DeathScoreboardFeature.DATA_KEY"
   }
 
-  // I'm putting scoreboard and deathObjective in here to be
-  // initialized later (specifically, when a ServerLoadEvent is
-  // fired), so that we only have one potentially-null value floating
-  // around rather than several. There's only one late-initialization
-  // happening.
-  private inner class ObjectiveContainer() {
+  private class DeathObjectiveContainer() : ObjectiveContainer(SCOREBOARD_NAME, "Deaths") {
 
-    val scoreboard =
-      Bukkit.getScoreboardManager()!!.getMainScoreboard()
-
-    val deathObjective =
-      scoreboard.getObjective(SCOREBOARD_NAME) ?:
-      scoreboard.registerNewObjective(SCOREBOARD_NAME, "deathCount", "Deaths", RenderType.INTEGER)
+    override val criteria: String
+      get() = "deathCount"
 
   }
 
@@ -62,12 +54,12 @@ class DeathScoreboardListener(
 
   override val description = "A scoreboard shows how many times each player has died"
 
-  private var container: ObjectiveContainer? = null
+  private var container: DeathObjectiveContainer? = null
 
   private fun loadData() {
-    val container = ObjectiveContainer()
+    val container = DeathObjectiveContainer()
     this.container = container
-    val objective = container.deathObjective
+    val objective = container.objective
     objective.displaySlot = DisplaySlot.SIDEBAR
     val loadedData = try {
       JSONObject(pluginData.getData(DATA_KEY) ?: "{}")
@@ -87,12 +79,12 @@ class DeathScoreboardListener(
 
   override fun enable() {
     super.enable()
-    container?.deathObjective?.displaySlot = DisplaySlot.SIDEBAR
+    container?.objective?.displaySlot = DisplaySlot.SIDEBAR
   }
 
   override fun disable() {
     super.disable()
-    container?.deathObjective?.displaySlot = null
+    container?.objective?.displaySlot = null
   }
 
   private fun getScoreboardAsJSON(): JSONObject {
@@ -101,7 +93,7 @@ class DeathScoreboardListener(
     if (container != null) {
       val scoreboard = container.scoreboard
       for (key in scoreboard.getEntries()) {
-        val value = container.deathObjective.getScore(key).getScore()
+        val value = container.objective.getScore(key).getScore()
         jsonObject.put(key, value)
       }
     }
