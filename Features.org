@@ -202,6 +202,7 @@
     (excludes mimics)
   + Pokeball
   + Rush after lava jump
+  + Ender chest of last dead player
 ** HATCRAFTER'S IDEAS
    + Cookies, when eaten, have a random effect (lower numbered effects
      are more likely)

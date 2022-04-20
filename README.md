@@ -32,6 +32,7 @@ A Turtle's Troll also depends on the following two libraries.
 * A Turtle's Troll is now [open source](LICENSE.txt)!
 * A scoreboard showing player death counts is automatically created
   and displayed on the right side of the screen
+* A (hidden) scoreboard keeps track of all player temperatures
 * **classiclava** has been revamped to be much more controlled
 * **classiclava** works in the Nether now
 * **ghastlava** has been nerfed and re-enabled

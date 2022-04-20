@@ -2,11 +2,13 @@
 package com.mercerenies.turtletroll
 
 import com.mercerenies.turtletroll.feature.RunnableFeature
+import com.mercerenies.turtletroll.util.linearRescale
 
 import org.bukkit.entity.Player
 import org.bukkit.event.Listener
 import org.bukkit.event.EventHandler
 import org.bukkit.event.entity.PlayerDeathEvent
+import org.bukkit.event.server.ServerLoadEvent
 import org.bukkit.plugin.Plugin
 import org.bukkit.Bukkit
 import org.bukkit.World
@@ -16,6 +18,8 @@ import kotlin.math.max
 class TemperatureManager(plugin: Plugin) : RunnableFeature(plugin), Listener {
 
   companion object {
+
+    val SCOREBOARD_NAME = "com.mercerenies.turtletroll.TemperatureManager.SCOREBOARD_NAME"
 
     val COLD_TEMPERATURE = 0.2
     val HOT_TEMPERATURE = 0.8
@@ -42,7 +46,24 @@ class TemperatureManager(plugin: Plugin) : RunnableFeature(plugin), Listener {
 
   }
 
+  private class TemperatureObjectiveContainer() : ObjectiveContainer(SCOREBOARD_NAME, "Temperature") {
+
+    fun update() {
+      for (player in Bukkit.getOnlinePlayers()) {
+        val temp = player.location.block.getTemperature()
+        // We define COLD_TEMPERATURE to be 0C and HOT_TEMPERATURE to
+        // be 100C, just so we have some point of reference for the
+        // scale.
+        val scaledTemp = linearRescale(COLD_TEMPERATURE, HOT_TEMPERATURE, 0.0, 100.0, temp)
+        this.objective.getScore(player.name).score = scaledTemp.toInt()
+      }
+    }
+
+  }
+
   private var deathTick: Boolean = false // For getting a custom death message
+
+  private var container: TemperatureObjectiveContainer? = null
 
   override val name: String = "temperature"
 
@@ -50,10 +71,17 @@ class TemperatureManager(plugin: Plugin) : RunnableFeature(plugin), Listener {
 
   override val taskPeriod = Constants.TICKS_PER_SECOND * 4L
 
+  private fun loadScoreboard() {
+    val container = TemperatureObjectiveContainer()
+    this.container = container
+    container.update()
+  }
+
   override fun run() {
     if (!isEnabled()) {
       return
     }
+    this.container?.update()
     for (player in Bukkit.getOnlinePlayers()) {
       if (player.location.world!!.environment != World.Environment.NORMAL) {
         continue
@@ -86,6 +114,12 @@ class TemperatureManager(plugin: Plugin) : RunnableFeature(plugin), Listener {
     if (deathTick) {
       event.setDeathMessage("${event.entity.getDisplayName()} froze to death.")
     }
+  }
+
+  @EventHandler
+  @Suppress("UNUSED_PARAMETER")
+  fun onServerLoad(_event: ServerLoadEvent) {
+    loadScoreboard()
   }
 
 }
