@@ -183,6 +183,8 @@
    + butterfingers :: If you open an inventory (excluding your own
                       inventory), the item you're holding in your main
                       hand will be dropped.
+   + deathscoreboard :: A scoreboard on the right side of the screen
+        shows the number of times each player has died.
 * IDEAS (UNIMPLEMENTED)
   + Wolves?
   + Fishing?
@@ -199,6 +201,7 @@
   + Nearby chests might get opened instead of the one you intended
     (excludes mimics)
   + Pokeball
+  + Rush after lava jump
 ** HATCRAFTER'S IDEAS
    + Cookies, when eaten, have a random effect (lower numbered effects
      are more likely)
