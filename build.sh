@@ -23,4 +23,5 @@ JSON_PATH="lib/json-20220320.jar"
 kotlinc -cp "$SPIGOT_PATH:$JSON_PATH" src/ -include-runtime -d ATurtlesTroll.jar &&
     jar uf ATurtlesTroll.jar plugin.yml README.md LICENSE.txt &&
     jar ufm ATurtlesTroll.jar Manifest.txt
-    merge_json
+    merge_json &&
+    echo "Done."
