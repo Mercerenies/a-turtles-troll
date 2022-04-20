@@ -5,11 +5,21 @@ import com.mercerenies.turtletroll.feature.FeatureManager
 import com.mercerenies.turtletroll.command.CommandDispatcher
 import com.mercerenies.turtletroll.command.Subcommand
 import com.mercerenies.turtletroll.command.withPermission
+import com.mercerenies.turtletroll.storage.GlobalDataHolder
+import com.mercerenies.turtletroll.storage.GlobalFileDataHolder
 
 import org.bukkit.plugin.java.JavaPlugin
 import org.bukkit.Bukkit
 
 class Main : JavaPlugin() {
+
+  private var dataHolder = GlobalFileDataHolder(this)
+
+  // Expose dataHolder but only as a GlobalDataHolder. The
+  // implementation is private.
+  val pluginData: GlobalDataHolder
+    get() = dataHolder
+
   val mainContainer = MainContainer(this)
   val featureManager = FeatureManager(mainContainer.features)
   val turtleCommand = Subcommand(
@@ -22,7 +32,11 @@ class Main : JavaPlugin() {
   )
   val commandDispatcher = CommandDispatcher(turtleCommand)
 
+
   override fun onEnable() {
+
+    // Reload the data file
+    dataHolder = GlobalFileDataHolder(this)
 
     // Initialize all listeners
     for (listener in mainContainer.listeners) {
@@ -68,6 +82,9 @@ class Main : JavaPlugin() {
     // Remove command
     this.getCommand("turtle")?.setExecutor(null)
     this.getCommand("turtle")?.setTabCompleter(null)
+
+    // Save the data file
+    dataHolder.save()
 
   }
 
