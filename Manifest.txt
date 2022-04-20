@@ -1,0 +1,3 @@
+Name: com/mercerenies/turtletroll/
+Specification-Title: A Turtle's Troll
+Implementation-Title: com.mercerenies.turtletroll

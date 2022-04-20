@@ -17,6 +17,8 @@ released under the [MIT License](LICENSE.txt).
 
 A Turtle's Troll also depends on the following two libraries.
 
+* The Kotlin runtime (Included and automatically bundled in the
+  produced JAR File)
 * A recent version of the [Spigot
   API](https://www.spigotmc.org/wiki/spigot-installation/) (Not
   included)
