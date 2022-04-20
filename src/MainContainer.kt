@@ -17,6 +17,7 @@ import com.mercerenies.turtletroll.egg.EggListener
 import com.mercerenies.turtletroll.egg.EggHatch
 import com.mercerenies.turtletroll.dripstone.DripstoneManager
 import com.mercerenies.turtletroll.gravestone.GravestoneListener
+import com.mercerenies.turtletroll.gravestone.DeathScoreboardListener
 import com.mercerenies.turtletroll.gravestone.BedtimeManager
 import com.mercerenies.turtletroll.feature.Feature
 import com.mercerenies.turtletroll.feature.RunnableFeature
@@ -37,7 +38,7 @@ import org.bukkit.plugin.Plugin
 import org.bukkit.event.Listener
 import org.bukkit.Bukkit
 
-class MainContainer(val plugin: Plugin) {
+class MainContainer(val plugin: Main) {
 
   val pumpkinManager = PumpkinSlownessManager(plugin)
   val angelManager = WeepingAngelManager(plugin)
@@ -106,6 +107,7 @@ class MainContainer(val plugin: Plugin) {
   val butterfingersListener = ButterfingersListener()
   val spillageListener = SpillageListener(plugin)
   val eggshellsListener = EggshellsListener()
+  val deathScoreboardListener = DeathScoreboardListener(plugin, plugin.pluginData)
 
   val anvilRunnable = AnvilRunnable(plugin)
   val ghastBurnRunnable = GhastBurnRunnable(plugin)
@@ -174,7 +176,7 @@ class MainContainer(val plugin: Plugin) {
       shieldSurfListener, temperatureManager, witherBowListener, catBatListener,
       witchSummonManager, bambooSpreadListener, zombieDrowningListener, carvePumpkinListener,
       escalationListener, butterfingersListener, spillageListener, eggshellsListener,
-      ghastLavaListener,
+      ghastLavaListener, deathScoreboardListener,
     )
 
   val features: List<Feature> =
@@ -202,7 +204,7 @@ class MainContainer(val plugin: Plugin) {
       shieldSurfListener, freeCookieRunnable, dirtRecipeFeature, temperatureManager,
       witherBowListener, catBatListener, bambooSpreadListener, zombieDrowningListener,
       melompkinFeature, escalationListener, butterfingersListener, spillageListener,
-      eggshellsListener, ghastLavaListener,
+      eggshellsListener, ghastLavaListener, deathScoreboardListener,
     ) + (breakEvents.getFeatures() - breakEvents.cancelDropAction)
 
   val runnables: List<RunnableFeature> =
