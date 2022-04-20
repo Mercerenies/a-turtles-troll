@@ -44,7 +44,7 @@ class DeathScoreboardListener(
   private inner class ObjectiveContainer() {
 
     val scoreboard =
-      Bukkit.getScoreboardManager()!!.getNewScoreboard()
+      Bukkit.getScoreboardManager()!!.getMainScoreboard()
 
     val deathObjective =
       scoreboard.registerNewObjective(SCOREBOARD_NAME, "deathCount", "Deaths", RenderType.INTEGER)
