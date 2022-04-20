@@ -47,8 +47,15 @@ class DeathScoreboardListener(
       Bukkit.getScoreboardManager()!!.getMainScoreboard()
 
     val deathObjective =
+      scoreboard.getObjective(SCOREBOARD_NAME) ?:
       scoreboard.registerNewObjective(SCOREBOARD_NAME, "deathCount", "Deaths", RenderType.INTEGER)
 
+  }
+
+  private inner class DeathDataSaver() : BukkitRunnable() {
+    override fun run() {
+      pluginData.putData(DATA_KEY, getScoreboardAsJSON().toString())
+    }
   }
 
   override val name = "deathscoreboard"
@@ -109,7 +116,7 @@ class DeathScoreboardListener(
     }
 
     // Update file data
-    pluginData.putData(DATA_KEY, getScoreboardAsJSON().toString())
+    DeathDataSaver().runTaskLater(plugin, 2L)
 
   }
 
