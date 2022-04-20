@@ -13,7 +13,7 @@ import org.bukkit.Bukkit
 
 class Main : JavaPlugin() {
 
-  private var dataHolder = GlobalFileDataHolder(this)
+  private val dataHolder = GlobalFileDataHolder(this)
 
   // Expose dataHolder but only as a GlobalDataHolder. The
   // implementation is private.
@@ -36,7 +36,7 @@ class Main : JavaPlugin() {
   override fun onEnable() {
 
     // Reload the data file
-    dataHolder = GlobalFileDataHolder(this)
+    dataHolder.reload()
 
     // Initialize all listeners
     for (listener in mainContainer.listeners) {

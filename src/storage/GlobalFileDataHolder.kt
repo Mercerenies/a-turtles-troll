@@ -22,13 +22,16 @@ class GlobalFileDataHolder(
 
   private val dataFile = File(plugin.getDataFolder(), DATA_FILENAME)
 
-  private val map: JSONObject = try {
-    plugin.getDataFolder().mkdir()
-    val contents = dataFile.readText(Charsets.UTF_8)
-    JSONObject(contents)
-  } catch (_exc: Exception) {
-    JSONObject("{}") // Assume empty or nonexistent file.
-  }
+  private var map: JSONObject = loadMap()
+
+  private fun loadMap(): JSONObject =
+    try {
+      plugin.getDataFolder().mkdir()
+      val contents = dataFile.readText(Charsets.UTF_8)
+      JSONObject(contents)
+    } catch (_exc: Exception) {
+      JSONObject("{}") // Assume empty or nonexistent file.
+    }
 
   override fun getData(key: String): String? =
     try {
@@ -39,6 +42,10 @@ class GlobalFileDataHolder(
 
   override fun putData(key: String, value: String) {
     map.put(key, value)
+  }
+
+  fun reload() {
+    map = loadMap()
   }
 
   fun save() {
