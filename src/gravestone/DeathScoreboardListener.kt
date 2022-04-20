@@ -116,7 +116,7 @@ class DeathScoreboardListener(
   @EventHandler
   @Suppress("UNUSED_PARAMETER")
   fun onServerLoad(_event: ServerLoadEvent) {
-    loadData() ///// DeathScoreboardListener not working
+    loadData()
   }
 
 }
