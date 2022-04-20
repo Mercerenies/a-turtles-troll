@@ -113,6 +113,7 @@ class MainContainer(val plugin: Main) {
   val ghastBurnRunnable = GhastBurnRunnable(plugin)
   val sandAttackRunnable = SandAttackRunnable(plugin)
   val freeCookieRunnable = FreeCookieRunnable(plugin)
+  val silverfishBurnRunnable = SilverfishBurnRunnable(plugin)
 
   val anvilRecipeFeature = AnvilRecipeFeature(plugin)
   val angelRecipeFeature = AngelRecipeFeature(plugin)
@@ -204,7 +205,7 @@ class MainContainer(val plugin: Main) {
       shieldSurfListener, freeCookieRunnable, dirtRecipeFeature, temperatureManager,
       witherBowListener, catBatListener, bambooSpreadListener, zombieDrowningListener,
       melompkinFeature, escalationListener, butterfingersListener, spillageListener,
-      eggshellsListener, ghastLavaListener, deathScoreboardListener,
+      eggshellsListener, ghastLavaListener, deathScoreboardListener, silverfishBurnRunnable,
     ) + (breakEvents.getFeatures() - breakEvents.cancelDropAction)
 
   val runnables: List<RunnableFeature> =
@@ -212,7 +213,7 @@ class MainContainer(val plugin: Main) {
       anvilRunnable, sandAttackRunnable, ghastBurnRunnable,
       pufferfishRainManager, angelManager, phantomManager, pumpkinManager, mossManager,
       dripstoneManager, dragonBombManager, classicLavaManager, bedtimeManager, llamaHunterManager,
-      freeCookieRunnable, temperatureManager, witchSummonManager,
+      freeCookieRunnable, temperatureManager, witchSummonManager, silverfishBurnRunnable,
     )
 
   val recipes: List<RecipeFeature> =

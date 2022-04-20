@@ -36,6 +36,7 @@ A Turtle's Troll also depends on the following two libraries.
 * A scoreboard showing player death counts is automatically created
   and displayed on the right side of the screen
 * A (hidden) scoreboard keeps track of all player temperatures
+* Silverfish burn in daylight
 * **classiclava** has been revamped to be much more controlled
 * **lavalaunch** also grants Haste now
 * **classiclava** works in the Nether now

@@ -185,6 +185,7 @@
                       hand will be dropped.
    + deathscoreboard :: A scoreboard on the right side of the screen
         shows the number of times each player has died.
+   + silverfishburn :: Silverfish burn in daylight.
 * IDEAS (UNIMPLEMENTED)
   + Wolves?
   + Fishing?
