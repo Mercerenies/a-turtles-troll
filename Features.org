@@ -17,7 +17,7 @@
    + tallgrass :: Tall grass, ferns, and dead bushes give you poison
                   and slowness on contact
    + lavalaunch :: Touching lava causes you to launch a short distance
-                   into the air
+                   into the air and gives Haste
    + sandattack :: While standing on the following blocks, sand will
                    constantly fall from above: sand, gravel, end stone
    + witherrose :: All flowers (and berry bushes) give the Wither
@@ -201,7 +201,6 @@
   + Nearby chests might get opened instead of the one you intended
     (excludes mimics)
   + Pokeball
-  + Rush after lava jump
   + Ender chest of last dead player
 ** HATCRAFTER'S IDEAS
    + Cookies, when eaten, have a random effect (lower numbered effects

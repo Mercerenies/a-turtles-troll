@@ -7,13 +7,14 @@ import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.entity.EntityDamageEvent
 import org.bukkit.entity.Player
-
+import org.bukkit.potion.PotionEffect
+import org.bukkit.potion.PotionEffectType
 
 class LavaLaunchListener() : AbstractFeature(), Listener {
 
   override val name = "lavalaunch"
 
-  override val description = "Touching lava launches you upward"
+  override val description = "Touching lava launches you upward and speeds you up"
 
   @EventHandler
   fun onEntityDamage(event: EntityDamageEvent) {
@@ -26,6 +27,7 @@ class LavaLaunchListener() : AbstractFeature(), Listener {
         val velocity = victim.getVelocity().clone()
         velocity.setY(1.3)
         victim.setVelocity(velocity)
+        victim.addPotionEffect(PotionEffect(PotionEffectType.SPEED, Constants.TICKS_PER_SECOND * 10, 4))
       }
     }
   }

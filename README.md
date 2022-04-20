@@ -37,6 +37,7 @@ A Turtle's Troll also depends on the following two libraries.
   and displayed on the right side of the screen
 * A (hidden) scoreboard keeps track of all player temperatures
 * **classiclava** has been revamped to be much more controlled
+* **lavalaunch** also grants Haste now
 * **classiclava** works in the Nether now
 * **ghastlava** has been nerfed and re-enabled
 
