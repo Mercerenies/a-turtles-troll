@@ -30,6 +30,9 @@ A Turtle's Troll also depends on the following two libraries.
 ### Version 1.14
 
 * A Turtle's Troll is now [open source](LICENSE.txt)!
+* Holding a hot item (like a lava bucket) protects from cold biomes,
+  and holding a cold item (like a block of ice) protects from hot
+  biomes
 * A scoreboard showing player death counts is automatically created
   and displayed on the right side of the screen
 * A (hidden) scoreboard keeps track of all player temperatures

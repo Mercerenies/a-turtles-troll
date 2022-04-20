@@ -12,6 +12,7 @@ import org.bukkit.event.server.ServerLoadEvent
 import org.bukkit.plugin.Plugin
 import org.bukkit.Bukkit
 import org.bukkit.World
+import org.bukkit.Material
 
 import kotlin.math.max
 
@@ -25,6 +26,17 @@ class TemperatureManager(plugin: Plugin) : RunnableFeature(plugin), Listener {
     val HOT_TEMPERATURE = 0.8
 
     val DAMAGE_TIME = Constants.TICKS_PER_SECOND * 4L
+
+    val COLD_ITEMS = setOf(
+      Material.BLUE_ICE, Material.FROSTED_ICE, Material.ICE, Material.PACKED_ICE,
+      Material.POWDER_SNOW, Material.POWDER_SNOW_BUCKET, Material.POWDER_SNOW_CAULDRON,
+      Material.SNOW, Material.SNOW_BLOCK, Material.SNOWBALL,
+    )
+
+    val HOT_ITEMS = setOf(
+      Material.CAMPFIRE, Material.FIRE, Material.SOUL_CAMPFIRE, Material.SOUL_FIRE,
+      Material.LAVA, Material.LAVA_BUCKET, Material.LAVA_CAULDRON,
+    )
 
     fun getArmorCount(player: Player): Int {
       val inv = player.inventory
@@ -43,6 +55,14 @@ class TemperatureManager(plugin: Plugin) : RunnableFeature(plugin), Listener {
       }
       return count
     }
+
+    fun isPlayerSafeFromHot(player: Player): Boolean =
+      COLD_ITEMS.contains(player.inventory.itemInMainHand.type) ||
+        COLD_ITEMS.contains(player.inventory.itemInOffHand.type)
+
+    fun isPlayerSafeFromCold(player: Player): Boolean =
+      HOT_ITEMS.contains(player.inventory.itemInMainHand.type) ||
+        HOT_ITEMS.contains(player.inventory.itemInOffHand.type)
 
   }
 
@@ -89,7 +109,7 @@ class TemperatureManager(plugin: Plugin) : RunnableFeature(plugin), Listener {
       val temp = player.location.block.getTemperature()
       val armorCount = getArmorCount(player)
       if (temp < COLD_TEMPERATURE) {
-        if (armorCount <= 0) {
+        if ((armorCount <= 0) && (!isPlayerSafeFromCold(player))) {
           player.freezeTicks = player.maxFreezeTicks
           deathTick = true
           try {
@@ -99,7 +119,7 @@ class TemperatureManager(plugin: Plugin) : RunnableFeature(plugin), Listener {
           }
         }
       } else if (temp > HOT_TEMPERATURE) {
-        if (armorCount > 0) {
+        if ((armorCount > 0) && (!isPlayerSafeFromHot(player))) {
           player.fireTicks = max(player.fireTicks, DAMAGE_TIME.toInt())
         }
       }
