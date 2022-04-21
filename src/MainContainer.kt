@@ -19,6 +19,7 @@ import com.mercerenies.turtletroll.dripstone.DripstoneManager
 import com.mercerenies.turtletroll.gravestone.GravestoneListener
 import com.mercerenies.turtletroll.gravestone.DeathScoreboardListener
 import com.mercerenies.turtletroll.gravestone.BedtimeManager
+import com.mercerenies.turtletroll.feature.FeatureContainer
 import com.mercerenies.turtletroll.feature.Feature
 import com.mercerenies.turtletroll.feature.RunnableFeature
 import com.mercerenies.turtletroll.feature.CompositeFeature
@@ -33,12 +34,15 @@ import com.mercerenies.turtletroll.recipe.MelonRecipeDeleter
 import com.mercerenies.turtletroll.recipe.MelonRecipeFeature
 import com.mercerenies.turtletroll.cookie.FreeCookieRunnable
 import com.mercerenies.turtletroll.spillage.SpillageListener
+import com.mercerenies.turtletroll.command.Command
+import com.mercerenies.turtletroll.command.PermittedCommand
+import com.mercerenies.turtletroll.command.withPermission
 
 import org.bukkit.plugin.Plugin
 import org.bukkit.event.Listener
 import org.bukkit.Bukkit
 
-class MainContainer(val plugin: Main) {
+class MainContainer(val plugin: Main) : FeatureContainer {
 
   val pumpkinManager = PumpkinSlownessManager(plugin)
   val angelManager = WeepingAngelManager(plugin)
@@ -158,7 +162,7 @@ class MainContainer(val plugin: Main) {
       listOf(breakEvents.cancelDropAction, bedListener)
     )
 
-  val listeners: List<Listener> =
+  override val listeners: List<Listener> =
     listOf(
       breakEvents.listener, chickenListener, grassListener, snowListener,
       ghastListener, ravagerListener, skeleListener, electricListener,
@@ -180,7 +184,7 @@ class MainContainer(val plugin: Main) {
       ghastLavaListener, deathScoreboardListener,
     )
 
-  val features: List<Feature> =
+  override val features: List<Feature> =
     listOf(
       chickenListener, grassListener, snowListener,
       ghastListener, ravagerListener, skeleListener,
@@ -208,7 +212,7 @@ class MainContainer(val plugin: Main) {
       eggshellsListener, ghastLavaListener, deathScoreboardListener, silverfishBurnRunnable,
     ) + (breakEvents.getFeatures() - breakEvents.cancelDropAction)
 
-  val runnables: List<RunnableFeature> =
+  override val runnables: List<RunnableFeature> =
     listOf(
       anvilRunnable, sandAttackRunnable, ghastBurnRunnable,
       pufferfishRainManager, angelManager, phantomManager, pumpkinManager, mossManager,
@@ -216,15 +220,20 @@ class MainContainer(val plugin: Main) {
       freeCookieRunnable, temperatureManager, witchSummonManager, silverfishBurnRunnable,
     )
 
-  val recipes: List<RecipeFeature> =
+  override val recipes: List<RecipeFeature> =
     listOf(
       anvilRecipeFeature, angelRecipeFeature, dripstoneRecipeFeature, explosiveArrowManager,
       dirtRecipeFeature, melonRecipeFeature,
     )
 
-  val recipeDeleters: List<RecipeDeleter> =
+  override val recipeDeleters: List<RecipeDeleter> =
     listOf(
       stoneRecipeDeleter, melonRecipeDeleter,
+    )
+
+  override val commands: List<Pair<String, PermittedCommand<Command>>> =
+    listOf(
+      "bedtime" to bedtimeManager.BedtimeCommand.withPermission("com.mercerenies.turtletroll.command.bedtime"),
     )
 
 }

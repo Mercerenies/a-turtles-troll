@@ -11,6 +11,9 @@ import kotlin.collections.joinToString
 
 class FeatureManager(val features: List<Feature>) {
 
+  constructor(_features: Iterable<Feature>) :
+    this(_features.toList()) {}
+
   fun findFeature(name: String): Feature? =
     features.find { it.name.equals(name, ignoreCase = true) }
 
