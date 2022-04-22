@@ -2,6 +2,7 @@
 package com.mercerenies.turtletroll
 
 import com.mercerenies.turtletroll.feature.FeatureManager
+import com.mercerenies.turtletroll.feature.container.CompositeFeatureContainer
 import com.mercerenies.turtletroll.feature.container.FeatureContainer
 import com.mercerenies.turtletroll.feature.builder.SimpleBuilderState
 import com.mercerenies.turtletroll.feature.builder.BuilderState
@@ -23,7 +24,11 @@ class Main : JavaPlugin() {
   val pluginData: GlobalDataHolder
     get() = dataHolder
 
-  val mainContainer: FeatureContainer = MainContainer(this)
+  val mainContainer: FeatureContainer =
+    CompositeFeatureContainer(listOf(
+      MainContainer(this),
+      AllFeatureFactories.createComposite(this.createBuilderState()),
+    ))
   val featureManager = FeatureManager(mainContainer.features)
   val turtleCommand = Subcommand(
     "turtle" to Subcommand(

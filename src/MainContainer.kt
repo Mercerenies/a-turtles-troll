@@ -42,6 +42,8 @@ import org.bukkit.plugin.Plugin
 import org.bukkit.event.Listener
 import org.bukkit.Bukkit
 
+// My hope is to deprecate and remove this class, replacing it with
+// more focused FeatureContainer instances.
 class MainContainer(val plugin: Main) : FeatureContainer {
 
   val pumpkinManager = PumpkinSlownessManager(plugin)
