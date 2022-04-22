@@ -204,6 +204,9 @@
     (excludes mimics)
   + Pokeball
   + Ender chest of last dead player
+  + Pigs
+  + Rabbits
+  + Killing one vector saves everyone
 ** HATCRAFTER'S IDEAS
    + Cookies, when eaten, have a random effect (lower numbered effects
      are more likely)
