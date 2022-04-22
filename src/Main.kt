@@ -3,6 +3,8 @@ package com.mercerenies.turtletroll
 
 import com.mercerenies.turtletroll.feature.FeatureManager
 import com.mercerenies.turtletroll.feature.container.FeatureContainer
+import com.mercerenies.turtletroll.feature.builder.SimpleBuilderState
+import com.mercerenies.turtletroll.feature.builder.BuilderState
 import com.mercerenies.turtletroll.command.CommandDispatcher
 import com.mercerenies.turtletroll.command.Subcommand
 import com.mercerenies.turtletroll.command.withPermission
@@ -88,5 +90,8 @@ class Main : JavaPlugin() {
     dataHolder.save()
 
   }
+
+  fun createBuilderState(): BuilderState =
+    SimpleBuilderState(this, this.pluginData)
 
 }
