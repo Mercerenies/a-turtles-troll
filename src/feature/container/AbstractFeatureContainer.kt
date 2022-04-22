@@ -10,9 +10,9 @@ import com.mercerenies.turtletroll.command.PermittedCommand
 
 import org.bukkit.event.Listener
 
-// Abstract class version of FeatureContainer which has trivially
+// Abstract parent version of FeatureContainer which has trivially
 // empty implementations for all methods
-abstract class AbstractFeatureContainer : FeatureContainer {
+open class AbstractFeatureContainer() : FeatureContainer {
 
   open override val listeners: Iterable<Listener>
     get() = listOf()
