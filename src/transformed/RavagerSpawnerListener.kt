@@ -4,6 +4,10 @@ package com.mercerenies.turtletroll.transformed
 import com.mercerenies.turtletroll.ext.*
 import com.mercerenies.turtletroll.SpawnReason
 import com.mercerenies.turtletroll.ReplaceMobsRunnable
+import com.mercerenies.turtletroll.feature.container.FeatureContainer
+import com.mercerenies.turtletroll.feature.container.ListenerContainer
+import com.mercerenies.turtletroll.feature.builder.BuilderState
+import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 
 import org.bukkit.event.EventHandler
 import org.bukkit.event.entity.CreatureSpawnEvent
@@ -19,6 +23,13 @@ class RavagerSpawnerListener(
   val plugin: Plugin,
   override val chance: Double = 0.5,
 ) : TransformedSpawnerListener() {
+
+  companion object : FeatureContainerFactory<FeatureContainer> {
+
+    override fun create(state: BuilderState): FeatureContainer =
+      ListenerContainer(RavagerSpawnerListener(state.plugin))
+
+  }
 
   override val name = "ravagers"
 

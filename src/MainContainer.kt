@@ -46,14 +46,14 @@ import org.bukkit.Bukkit
 // more focused FeatureContainer instances.
 class MainContainer(val plugin: Main) : FeatureContainer {
 
-  val pumpkinManager = PumpkinSlownessManager(plugin)
-  val angelManager = WeepingAngelManager(plugin)
-  val explosiveArrowManager = ExplosiveArrowManager(plugin)
-  val dripstoneManager = DripstoneManager(plugin)
-  val classicLavaManager = ClassicLavaManager(plugin)
-  val bedtimeManager = BedtimeManager(plugin)
+  val pumpkinManager = PumpkinSlownessManager(plugin) // <- things depend on it
+  val angelManager = WeepingAngelManager(plugin) // <- also bundled with a recipe
+  val explosiveArrowManager = ExplosiveArrowManager(plugin) // <- also a recipe
+  val dripstoneManager = DripstoneManager(plugin) // <- also a recipe
+  val classicLavaManager = ClassicLavaManager(plugin) // <- things depend on it
+  val bedtimeManager = BedtimeManager(plugin) // <- contains a command
 
-  val breakEvents = BlockBreakEvents()
+  val breakEvents = BlockBreakEvents() // <- oh god
   val chickenListener = ChickenDamageListener(plugin)
   val grassListener = GrassPoisonListener()
   val snowListener = SnowListener()
@@ -61,7 +61,7 @@ class MainContainer(val plugin: Main) : FeatureContainer {
   val ghastListener = GhastSpawnerListener(plugin)
   val ravagerListener = RavagerSpawnerListener(plugin)
   val skeleListener = SkeletonWitherListener()
-  val electricListener = ElectricWaterListener(plugin, pumpkinManager)
+  val electricListener = ElectricWaterListener(plugin, pumpkinManager) // <- depends on pumpkin mgr
   val blazeListener = BlazeAttackListener(plugin)
   val zombifyListener = ZombifyTradeListener()
   val forestFireListener = ForestFireListener(plugin)
@@ -71,18 +71,19 @@ class MainContainer(val plugin: Main) : FeatureContainer {
   val levitationListener = LevitationListener()
   val plateListener = PressurePlateFireListener()
   val slabListener = SlowSlabListener()
-  val lightListener = BreakLightOnSightListener(plugin, pumpkinManager)
+////
+  val lightListener = BreakLightOnSightListener(plugin, pumpkinManager) // <- depends on pumpkin
   val lavaListener = LavaLaunchListener()
   val mimicListener = MimicListener(plugin)
-  val cakeListener = CakeListener(plugin, CakeEat.defaultEffects(plugin))
-  val bedListener = BedDropListener()
-  val eggListener = EggListener(EggHatch.defaultEffects(plugin))
+  val cakeListener = CakeListener(plugin, CakeEat.defaultEffects(plugin)) // <- takes args
+  val bedListener = BedDropListener() // <- composite feature part with block break
+  val eggListener = EggListener(EggHatch.defaultEffects(plugin)) // <- takes args
   val eggArrowListener = EggArrowListener()
   val eggDropListener = EggDropListener()
   val witherArmorListener = WitherArmorListener()
   val glassLuckListener = GlassLuckListener()
   val endDirtListener = EndDirtListener()
-  val overgrowthListener = OvergrowthListener(plugin, OvergrowthListener::randomWood)
+  val overgrowthListener = OvergrowthListener(plugin, OvergrowthListener::randomWood) // <- takes args
   val endCrystalListener = EndCrystalListener(plugin)
   val pillagerGunListener = PillagerGunListener()
   val fallDamageListener = FallDamageListener()
@@ -90,7 +91,7 @@ class MainContainer(val plugin: Main) : FeatureContainer {
   val drownedListener = DrownedSpawnerListener(plugin)
   val gravestoneListener = GravestoneListener(plugin)
   val axolotlListener = AxolotlListener()
-  val ghastLavaListener = GhastLavaListener(plugin, classicLavaManager.ignorer)
+  val ghastLavaListener = GhastLavaListener(plugin, classicLavaManager.ignorer) // <- depends on classic lava
   val goddessHoeListener = GoddessHoeListener(plugin)
   val oldAgeListener = OldAgeListener()
   val namedZombieListener = NamedZombieListener()
@@ -101,7 +102,7 @@ class MainContainer(val plugin: Main) : FeatureContainer {
   val catBatListener = CatBatListener(plugin)
   val bambooSpreadListener = BambooSpreadListener(plugin)
   val zombieDrowningListener = ZombieDrowningListener()
-  val carvePumpkinListener = CarvePumpkinListener()
+  val carvePumpkinListener = CarvePumpkinListener() // <- composite
   val escalationListener = EscalationListener()
   val butterfingersListener = ButterfingersListener()
   val spillageListener = SpillageListener(plugin)

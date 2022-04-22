@@ -2,6 +2,10 @@
 package com.mercerenies.turtletroll
 
 import com.mercerenies.turtletroll.feature.AbstractFeature
+import com.mercerenies.turtletroll.feature.container.FeatureContainer
+import com.mercerenies.turtletroll.feature.container.ListenerContainer
+import com.mercerenies.turtletroll.feature.builder.BuilderState
+import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
@@ -15,8 +19,11 @@ import kotlin.random.Random
 
 class EggArrowListener(val chance: Double = 1.0) : AbstractFeature(), Listener {
 
-  companion object {
+  companion object : FeatureContainerFactory<FeatureContainer> {
     val SKELETONS = setOf(EntityType.SKELETON, EntityType.STRAY)
+    override fun create(state: BuilderState): FeatureContainer = 
+      ListenerContainer(EggArrowListener())
+
   }
 
   override val name = "eggarrow"

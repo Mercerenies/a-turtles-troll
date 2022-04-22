@@ -2,6 +2,10 @@
 package com.mercerenies.turtletroll.chicken
 
 import com.mercerenies.turtletroll.feature.AbstractFeature
+import com.mercerenies.turtletroll.feature.container.FeatureContainer
+import com.mercerenies.turtletroll.feature.container.ListenerContainer
+import com.mercerenies.turtletroll.feature.builder.BuilderState
+import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 import com.mercerenies.turtletroll.SpawnReason
 import com.mercerenies.turtletroll.ReplaceMobsRunnable
 
@@ -26,13 +30,17 @@ class ChickenDamageListener(
   val bannedMobs: Set<EntityType> = DEFAULT_BANNED_MOBS,
   val zombieRiderChance: Double = 0.1,
 ) : AbstractFeature(), Listener {
-  companion object {
+
+  companion object : FeatureContainerFactory<FeatureContainer> {
 
     val DEFAULT_BANNED_MOBS = setOf(
       EntityType.COW, EntityType.PIG,
       EntityType.DONKEY, EntityType.HORSE,
       EntityType.MULE, EntityType.PARROT, EntityType.SHEEP,
     )
+
+    override fun create(state: BuilderState): FeatureContainer =
+      ListenerContainer(ChickenDamageListener(state.plugin))
 
   }
 

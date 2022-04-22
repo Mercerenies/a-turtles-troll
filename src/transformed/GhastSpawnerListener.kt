@@ -4,6 +4,10 @@ package com.mercerenies.turtletroll.transformed
 import com.mercerenies.turtletroll.ext.*
 import com.mercerenies.turtletroll.SpawnReason
 import com.mercerenies.turtletroll.ReplaceMobsRunnable
+import com.mercerenies.turtletroll.feature.container.FeatureContainer
+import com.mercerenies.turtletroll.feature.container.ListenerContainer
+import com.mercerenies.turtletroll.feature.builder.BuilderState
+import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 
 import org.bukkit.event.EventHandler
 import org.bukkit.event.entity.CreatureSpawnEvent
@@ -20,6 +24,22 @@ class GhastSpawnerListener(
   val plugin: Plugin,
   override val chance: Double = 0.2,
 ) : TransformedSpawnerListener() {
+
+  companion object : FeatureContainerFactory<FeatureContainer> {
+
+    val HOSTILES = setOf(
+      EntityType.ZOMBIE, EntityType.CREEPER, EntityType.SKELETON, EntityType.SPIDER,
+      EntityType.ENDERMAN, EntityType.WITCH,
+    )
+
+    val WORLDS = setOf(
+      World.Environment.NORMAL, World.Environment.THE_END,
+    )
+
+    override fun create(state: BuilderState): FeatureContainer =
+      ListenerContainer(GhastSpawnerListener(state.plugin))
+
+  }
 
   override val name = "ghasts"
 
@@ -60,19 +80,6 @@ class GhastSpawnerListener(
     }
     val chunk = event.getChunk()
     EndermenToGhasts(chunk).schedule(plugin)
-  }
-
-  companion object {
-
-    val HOSTILES = setOf(
-      EntityType.ZOMBIE, EntityType.CREEPER, EntityType.SKELETON, EntityType.SPIDER,
-      EntityType.ENDERMAN, EntityType.WITCH,
-    )
-
-    val WORLDS = setOf(
-      World.Environment.NORMAL, World.Environment.THE_END,
-    )
-
   }
 
 }

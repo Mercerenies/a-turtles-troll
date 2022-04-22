@@ -2,6 +2,10 @@
 package com.mercerenies.turtletroll
 
 import com.mercerenies.turtletroll.feature.AbstractFeature
+import com.mercerenies.turtletroll.feature.container.FeatureContainer
+import com.mercerenies.turtletroll.feature.container.ListenerContainer
+import com.mercerenies.turtletroll.feature.builder.BuilderState
+import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 
 import org.bukkit.Material
 import org.bukkit.event.EventHandler
@@ -20,13 +24,17 @@ class ForestFireListener(val plugin: Plugin) : AbstractFeature(), Listener {
 
   override val description = "Leaves and ice catch fire when you walk on them"
 
-  companion object {
+  companion object : FeatureContainerFactory<FeatureContainer> {
     val DELAY = Constants.TICKS_PER_SECOND
     val BLOCKS = setOf(
       Material.ACACIA_LEAVES, Material.AZALEA_LEAVES, Material.BIRCH_LEAVES, Material.DARK_OAK_LEAVES,
       Material.FLOWERING_AZALEA_LEAVES, Material.OAK_LEAVES, Material.JUNGLE_LEAVES, Material.SPRUCE_LEAVES,
       Material.BLUE_ICE, Material.FROSTED_ICE, Material.ICE, Material.PACKED_ICE,
     )
+
+    override fun create(state: BuilderState): FeatureContainer =
+      ListenerContainer(ForestFireListener(state.plugin))
+
   }
 
   private inner class DelayedFire(val location: Location) : BukkitRunnable() {

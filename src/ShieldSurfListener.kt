@@ -2,6 +2,10 @@
 package com.mercerenies.turtletroll
 
 import com.mercerenies.turtletroll.feature.AbstractFeature
+import com.mercerenies.turtletroll.feature.container.FeatureContainer
+import com.mercerenies.turtletroll.feature.container.ListenerContainer
+import com.mercerenies.turtletroll.feature.builder.BuilderState
+import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 
 import org.bukkit.inventory.meta.Damageable
 import org.bukkit.event.EventHandler
@@ -14,7 +18,7 @@ import org.bukkit.Material
 
 class ShieldSurfListener() : AbstractFeature(), Listener {
 
-  companion object {
+  companion object : FeatureContainerFactory<FeatureContainer> {
     val MIN_PITCH = 45
 
     fun isShieldingDownward(player: Player): Boolean =
@@ -34,6 +38,9 @@ class ShieldSurfListener() : AbstractFeature(), Listener {
         player.inventory.setItemInOffHand(shield)
       }
     }
+
+    override fun create(state: BuilderState): FeatureContainer = 
+      ListenerContainer(ShieldSurfListener())
 
   }
 

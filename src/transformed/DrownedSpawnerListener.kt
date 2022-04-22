@@ -4,6 +4,10 @@ package com.mercerenies.turtletroll.transformed
 import com.mercerenies.turtletroll.ext.*
 import com.mercerenies.turtletroll.SpawnReason
 import com.mercerenies.turtletroll.ReplaceMobsRunnable
+import com.mercerenies.turtletroll.feature.container.FeatureContainer
+import com.mercerenies.turtletroll.feature.container.ListenerContainer
+import com.mercerenies.turtletroll.feature.builder.BuilderState
+import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 
 import org.bukkit.event.EventHandler
 import org.bukkit.event.entity.CreatureSpawnEvent
@@ -24,11 +28,14 @@ class DrownedSpawnerListener(
   override val chance: Double = 1.0,
 ) : TransformedSpawnerListener() {
 
-  companion object {
+  companion object : FeatureContainerFactory<FeatureContainer> {
 
     fun addHelmet(entity: LivingEntity) {
       entity.equipment?.helmet = ItemStack(Material.LEATHER_HELMET)
     }
+
+    override fun create(state: BuilderState): FeatureContainer =
+      ListenerContainer(DrownedSpawnerListener(state.plugin))
 
   }
 

@@ -3,6 +3,10 @@ package com.mercerenies.turtletroll
 
 import com.mercerenies.turtletroll.ext.*
 import com.mercerenies.turtletroll.feature.AbstractFeature
+import com.mercerenies.turtletroll.feature.container.FeatureContainer
+import com.mercerenies.turtletroll.feature.container.ListenerContainer
+import com.mercerenies.turtletroll.feature.builder.BuilderState
+import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
@@ -18,7 +22,7 @@ class WanderingTraderListener(
   val chaosChance: Double = 0.05,
 ) : AbstractFeature(), Listener {
 
-  companion object {
+  companion object : FeatureContainerFactory<FeatureContainer> {
 
     val TRADE_COUNT = 8
     val CHAOS_TRADE_COUNT = 32
@@ -72,6 +76,9 @@ class WanderingTraderListener(
         return recipe
       }
     }
+
+    override fun create(state: BuilderState): FeatureContainer = 
+      ListenerContainer(WanderingTraderListener())
 
   }
 

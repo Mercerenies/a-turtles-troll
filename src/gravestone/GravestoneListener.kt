@@ -2,6 +2,10 @@
 package com.mercerenies.turtletroll.gravestone
 
 import com.mercerenies.turtletroll.feature.AbstractFeature
+import com.mercerenies.turtletroll.feature.container.FeatureContainer
+import com.mercerenies.turtletroll.feature.container.ListenerContainer
+import com.mercerenies.turtletroll.feature.builder.BuilderState
+import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 import com.mercerenies.turtletroll.Constants
 import com.mercerenies.turtletroll.ext.*
 
@@ -16,7 +20,7 @@ import org.bukkit.block.Block
 
 class GravestoneListener(val plugin: Plugin) : AbstractFeature(), Listener {
 
-  companion object {
+  companion object : FeatureContainerFactory<FeatureContainer> {
     val DELAY_SECONDS = 2L
 
     fun chooseGravestoneSpawner(): GravestoneSpawner =
@@ -24,6 +28,9 @@ class GravestoneListener(val plugin: Plugin) : AbstractFeature(), Listener {
              JavaGravestoneSpawner, HeartGravestoneSpawner, StrongmanGravestoneSpawner,
              ChaliceGravestoneSpawner, EggGravestoneSpawner, SlantGravestoneSpawner,
              CrossGravestoneSpawner).sample()!!
+
+    override fun create(state: BuilderState): FeatureContainer =
+      ListenerContainer(GravestoneListener(state.plugin))
 
   }
 

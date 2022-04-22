@@ -2,6 +2,10 @@
 package com.mercerenies.turtletroll
 
 import com.mercerenies.turtletroll.feature.AbstractFeature
+import com.mercerenies.turtletroll.feature.container.FeatureContainer
+import com.mercerenies.turtletroll.feature.container.ListenerContainer
+import com.mercerenies.turtletroll.feature.builder.BuilderState
+import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 
 import org.bukkit.World
 import org.bukkit.Material
@@ -16,7 +20,7 @@ import org.bukkit.potion.PotionEffectType
 
 class EggshellsListener(): AbstractFeature(), Listener {
 
-  companion object {
+  companion object : FeatureContainerFactory<FeatureContainer> {
 
     fun isSolidOrLava(block: Block): Boolean {
       if (block.type == Material.LAVA) {
@@ -56,6 +60,9 @@ class EggshellsListener(): AbstractFeature(), Listener {
         block.type = Material.LAVA
       }
     }
+
+    override fun create(state: BuilderState): FeatureContainer = 
+      ListenerContainer(EggshellsListener())
 
   }
 

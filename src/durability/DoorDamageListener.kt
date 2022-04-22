@@ -1,17 +1,21 @@
 
 package com.mercerenies.turtletroll.durability
 
+import com.mercerenies.turtletroll.feature.container.FeatureContainer
+import com.mercerenies.turtletroll.feature.container.ListenerContainer
+import com.mercerenies.turtletroll.feature.builder.BuilderState
+import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
+
 import org.bukkit.Material
 import org.bukkit.Location
 import org.bukkit.block.Block
 import org.bukkit.block.`data`.Bisected
 
-
 class DoorDamageListener(
   override val maxUses: Int = 16,
 ) : DurabilityListener() {
 
-  companion object {
+  companion object : FeatureContainerFactory<FeatureContainer> {
 
     val DOUBLE_DOORS = setOf(
       Material.ACACIA_DOOR, Material.BIRCH_DOOR, Material.CRIMSON_DOOR,
@@ -27,6 +31,9 @@ class DoorDamageListener(
       Material.OAK_DOOR, Material.OAK_TRAPDOOR, Material.SPRUCE_DOOR,
       Material.SPRUCE_TRAPDOOR, Material.WARPED_DOOR, Material.WARPED_TRAPDOOR,
     )
+
+    override fun create(state: BuilderState): FeatureContainer =
+      ListenerContainer(DoorDamageListener())
 
   }
 

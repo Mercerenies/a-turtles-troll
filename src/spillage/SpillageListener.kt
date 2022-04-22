@@ -3,6 +3,10 @@ package com.mercerenies.turtletroll.spillage
 
 import com.mercerenies.turtletroll.feature.AbstractFeature
 import com.mercerenies.turtletroll.Constants
+import com.mercerenies.turtletroll.feature.container.FeatureContainer
+import com.mercerenies.turtletroll.feature.container.ListenerContainer
+import com.mercerenies.turtletroll.feature.builder.BuilderState
+import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 
 import org.bukkit.entity.Item
 import org.bukkit.event.EventHandler
@@ -18,8 +22,11 @@ class SpillageListener(
   val handlers: List<SpillageHandler> = Spillage.defaultHandlers,
 ): AbstractFeature(), Listener {
 
-  companion object {
+  companion object : FeatureContainerFactory<FeatureContainer> {
     val DELAY: Int = Constants.TICKS_PER_SECOND / 2
+    override fun create(state: BuilderState): FeatureContainer = 
+      ListenerContainer(SpillageListener(state.plugin))
+
   }
 
   override val name = "spillage"

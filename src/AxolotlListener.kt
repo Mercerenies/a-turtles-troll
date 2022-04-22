@@ -2,6 +2,10 @@
 package com.mercerenies.turtletroll
 
 import com.mercerenies.turtletroll.feature.AbstractFeature
+import com.mercerenies.turtletroll.feature.container.FeatureContainer
+import com.mercerenies.turtletroll.feature.container.ListenerContainer
+import com.mercerenies.turtletroll.feature.builder.BuilderState
+import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 import com.mercerenies.turtletroll.location.PlayerSelector
 
 import org.bukkit.event.EventHandler
@@ -12,8 +16,11 @@ import org.bukkit.Bukkit
 
 class AxolotlListener() : AbstractFeature(), Listener {
 
-  companion object {
+  companion object : FeatureContainerFactory<FeatureContainer> {
     val DISTANCE_SQUARED_LIMIT = 1024.0 // 32 blocks (squared)
+    override fun create(state: BuilderState): FeatureContainer = 
+      ListenerContainer(AxolotlListener())
+
   }
 
   override val name = "axolotl"

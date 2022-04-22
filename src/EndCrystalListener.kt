@@ -2,6 +2,10 @@
 package com.mercerenies.turtletroll
 
 import com.mercerenies.turtletroll.feature.AbstractFeature
+import com.mercerenies.turtletroll.feature.container.FeatureContainer
+import com.mercerenies.turtletroll.feature.container.ListenerContainer
+import com.mercerenies.turtletroll.feature.builder.BuilderState
+import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
@@ -21,7 +25,8 @@ class EndCrystalListener(
   val plugin: Plugin,
 ) : AbstractFeature(), Listener {
 
-  companion object {
+  companion object : FeatureContainerFactory<FeatureContainer> {
+
     private fun putSpawner(entity: EnderCrystal) {
       val block = entity.getLocation().add(0.0, -1.0, 0.0).block
       block.type = Material.SPAWNER
@@ -30,6 +35,10 @@ class EndCrystalListener(
       state.spawnedType = EntityType.BLAZE
       state.update()
     }
+
+    override fun create(state: BuilderState): FeatureContainer = 
+      ListenerContainer(EndCrystalListener(state.plugin))
+
   }
 
   private class SetupCrystalRunnable(val chunk: Chunk) : BukkitRunnable() {

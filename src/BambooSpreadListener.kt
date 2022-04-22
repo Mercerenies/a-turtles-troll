@@ -2,6 +2,10 @@
 package com.mercerenies.turtletroll
 
 import com.mercerenies.turtletroll.feature.AbstractFeature
+import com.mercerenies.turtletroll.feature.container.FeatureContainer
+import com.mercerenies.turtletroll.feature.container.ListenerContainer
+import com.mercerenies.turtletroll.feature.builder.BuilderState
+import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 import com.mercerenies.turtletroll.location.BlockSelector
 import com.mercerenies.turtletroll.ext.*
 
@@ -23,7 +27,7 @@ class BambooSpreadListener(
   val plugin: Plugin,
 ) : AbstractFeature(), Listener {
 
-  companion object {
+  companion object : FeatureContainerFactory<FeatureContainer> {
 
     val VALID_TARGET_BLOCKS = setOf(
       Material.DIRT, Material.MOSS_BLOCK, Material.GRASS_BLOCK, Material.COARSE_DIRT,
@@ -71,6 +75,9 @@ class BambooSpreadListener(
       }
       return true
     }
+
+    override fun create(state: BuilderState): FeatureContainer = 
+      ListenerContainer(BambooSpreadListener(state.plugin))
 
   }
 

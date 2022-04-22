@@ -15,14 +15,17 @@ class TransformTorchOnSightListener(
 ) : OnSightListener(_plugin) {
 
   companion object {
+
     val BLOCKS = setOf(
       Material.REDSTONE_TORCH, Material.REDSTONE_WALL_TORCH, Material.SOUL_TORCH,
       Material.SOUL_WALL_TORCH, Material.TORCH, Material.WALL_TORCH, Material.LANTERN,
       Material.SOUL_LANTERN,
     )
+
     val WALL_BLOCKS = setOf(
       Material.WALL_TORCH, Material.SOUL_WALL_TORCH, Material.REDSTONE_WALL_TORCH,
     )
+
   }
 
   override val name: String = "torches"

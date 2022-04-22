@@ -2,6 +2,10 @@
 package com.mercerenies.turtletroll.mimic
 
 import com.mercerenies.turtletroll.feature.AbstractFeature
+import com.mercerenies.turtletroll.feature.container.FeatureContainer
+import com.mercerenies.turtletroll.feature.container.ListenerContainer
+import com.mercerenies.turtletroll.feature.builder.BuilderState
+import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 import com.mercerenies.turtletroll.SpawnReason
 import com.mercerenies.turtletroll.Constants
 import com.mercerenies.turtletroll.location.BlockSelector
@@ -24,7 +28,7 @@ class MimicListener(
   val plugin: Plugin,
 ) : AbstractFeature(), Listener {
 
-  companion object {
+  companion object : FeatureContainerFactory<FeatureContainer> {
     val KILL_DELAY = Constants.TICKS_PER_SECOND
 
     val SAFETY_RADIUS = 8
@@ -34,6 +38,9 @@ class MimicListener(
       EntityType.ZOMBIE, EntityType.SKELETON, EntityType.SPIDER, EntityType.ZOMBIFIED_PIGLIN,
       EntityType.STRAY, EntityType.HUSK,
     )
+
+    override fun create(state: BuilderState): FeatureContainer = 
+      ListenerContainer(MimicListener(state.plugin))
 
   }
 

@@ -2,6 +2,10 @@
 package com.mercerenies.turtletroll
 
 import com.mercerenies.turtletroll.feature.AbstractFeature
+import com.mercerenies.turtletroll.feature.container.FeatureContainer
+import com.mercerenies.turtletroll.feature.container.ListenerContainer
+import com.mercerenies.turtletroll.feature.builder.BuilderState
+import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 
 import org.bukkit.Material
 import org.bukkit.event.EventHandler
@@ -14,7 +18,7 @@ import org.bukkit.potion.PotionEffectType
 
 class WitherRoseListener : AbstractFeature(), Listener {
 
-  companion object {
+  companion object : FeatureContainerFactory<FeatureContainer> {
     val BLOCKS = setOf(
       Material.DANDELION, Material.POPPY, Material.BLUE_ORCHID,
       Material.ALLIUM, Material.AZURE_BLUET, Material.RED_TULIP, Material.OXEYE_DAISY,
@@ -23,6 +27,10 @@ class WitherRoseListener : AbstractFeature(), Listener {
       Material.PINK_TULIP, Material.WHITE_TULIP, Material.ORANGE_TULIP,
       Material.SWEET_BERRY_BUSH,
     )
+
+    override fun create(state: BuilderState): FeatureContainer =
+      ListenerContainer(WitherRoseListener())
+
   }
 
   private val bootsDamager = BootsDamager()
