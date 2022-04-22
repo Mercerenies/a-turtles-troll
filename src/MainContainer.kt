@@ -19,7 +19,7 @@ import com.mercerenies.turtletroll.dripstone.DripstoneManager
 import com.mercerenies.turtletroll.gravestone.GravestoneListener
 import com.mercerenies.turtletroll.gravestone.DeathScoreboardListener
 import com.mercerenies.turtletroll.gravestone.BedtimeManager
-import com.mercerenies.turtletroll.feature.FeatureContainer
+import com.mercerenies.turtletroll.feature.container.FeatureContainer
 import com.mercerenies.turtletroll.feature.Feature
 import com.mercerenies.turtletroll.feature.RunnableFeature
 import com.mercerenies.turtletroll.feature.CompositeFeature

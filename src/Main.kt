@@ -2,7 +2,7 @@
 package com.mercerenies.turtletroll
 
 import com.mercerenies.turtletroll.feature.FeatureManager
-import com.mercerenies.turtletroll.feature.FeatureContainer
+import com.mercerenies.turtletroll.feature.container.FeatureContainer
 import com.mercerenies.turtletroll.command.CommandDispatcher
 import com.mercerenies.turtletroll.command.Subcommand
 import com.mercerenies.turtletroll.command.withPermission
