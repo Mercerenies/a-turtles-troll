@@ -2,6 +2,10 @@
 package com.mercerenies.turtletroll
 
 import com.mercerenies.turtletroll.feature.RunnableFeature
+import com.mercerenies.turtletroll.feature.container.FeatureContainer
+import com.mercerenies.turtletroll.feature.container.ManagerContainer
+import com.mercerenies.turtletroll.feature.builder.BuilderState
+import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 
 import org.bukkit.entity.Player
 import org.bukkit.plugin.Plugin
@@ -21,8 +25,12 @@ class WitchSummonManager(
   val transformChance: Double = 0.05,
 ) : RunnableFeature(plugin), Listener {
 
-  companion object {
+  companion object : FeatureContainerFactory<FeatureContainer> {
     val CHANCE_INTERVAL = Constants.TICKS_PER_SECOND * 30L
+
+    override fun create(state: BuilderState): FeatureContainer =
+      ManagerContainer(WitchSummonManager(state.plugin))
+
   }
 
   override val name = "witches"

@@ -2,6 +2,10 @@
 package com.mercerenies.turtletroll
 
 import com.mercerenies.turtletroll.feature.RunnableFeature
+import com.mercerenies.turtletroll.feature.container.FeatureContainer
+import com.mercerenies.turtletroll.feature.container.ManagerContainer
+import com.mercerenies.turtletroll.feature.builder.BuilderState
+import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 
 import org.bukkit.entity.Player
 import org.bukkit.plugin.Plugin
@@ -21,13 +25,16 @@ class PetPhantomManager(
   val random: Random = Random.Default,
 ) : RunnableFeature(plugin), Listener {
 
-  companion object {
+  companion object : FeatureContainerFactory<FeatureContainer> {
     val SECONDS_COOLDOWN_AFTER_KILL = 600
 
     val MIN_SPAWN_HEIGHT = 6
     val MAX_SPAWN_HEIGHT = 20
 
     val MAX_DISTANCE_SQUARED = 4096.0
+
+    override fun create(state: BuilderState): FeatureContainer =
+      ManagerContainer(PetPhantomManager(state.plugin))
 
     private fun shouldRespawn(player: Player, phantom: Phantom): Boolean {
       val dz = player.location.z - phantom.location.z

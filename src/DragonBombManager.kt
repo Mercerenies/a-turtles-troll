@@ -2,6 +2,10 @@
 package com.mercerenies.turtletroll
 
 import com.mercerenies.turtletroll.feature.RunnableFeature
+import com.mercerenies.turtletroll.feature.container.FeatureContainer
+import com.mercerenies.turtletroll.feature.container.ManagerContainer
+import com.mercerenies.turtletroll.feature.builder.BuilderState
+import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 import com.mercerenies.turtletroll.CooldownMemory
 import com.mercerenies.turtletroll.ext.*
 
@@ -20,11 +24,14 @@ import org.bukkit.attribute.Attribute
 
 class DragonBombManager(plugin: Plugin) : RunnableFeature(plugin), Listener {
 
-  companion object {
+  companion object : FeatureContainerFactory<FeatureContainer> {
     val MIN_TIMER_TRIGGERS_PER_ATTACK = 3L
     val MAX_TIMER_TRIGGERS_PER_ATTACK = 12L
     val BOMB_MARKER_KEY = "dragon_bomb_manager_tag"
     val VELOCITY_EPSILON = 0.0001
+
+    override fun create(state: BuilderState): FeatureContainer =
+      ManagerContainer(DragonBombManager(state.plugin))
 
     fun currentTriggersPerAttack(dragon: EnderDragon): Long {
       val maxHealth = dragon.getAttribute(Attribute.GENERIC_MAX_HEALTH)!!.getValue()

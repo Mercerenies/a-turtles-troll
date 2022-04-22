@@ -8,14 +8,21 @@ import org.bukkit.Bukkit
 import org.bukkit.event.EventHandler
 import org.bukkit.event.entity.EntityDamageEvent
 import org.bukkit.event.Listener
+import com.mercerenies.turtletroll.feature.container.FeatureContainer
+import com.mercerenies.turtletroll.feature.container.ManagerContainer
+import com.mercerenies.turtletroll.feature.builder.BuilderState
+import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 
 import kotlin.random.Random
 
 class PufferfishRainManager(plugin: Plugin) : ScheduledEventRunnable<PufferfishRainManager.State>(plugin), Listener {
 
-  companion object {
+  companion object : FeatureContainerFactory<FeatureContainer> {
     val WARNING_TIME = 5700L
     val DROP_TIME = 6000L
+
+    override fun create(state: BuilderState): FeatureContainer =
+      ManagerContainer(PufferfishRainManager(state.plugin))
 
     fun spawnPufferfishOn(player: Player) {
       val world = player.getWorld()

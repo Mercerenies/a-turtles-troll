@@ -2,6 +2,10 @@
 package com.mercerenies.turtletroll
 
 import com.mercerenies.turtletroll.feature.RunnableFeature
+import com.mercerenies.turtletroll.feature.container.FeatureContainer
+import com.mercerenies.turtletroll.feature.container.ManagerContainer
+import com.mercerenies.turtletroll.feature.builder.BuilderState
+import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 import com.mercerenies.turtletroll.ext.*
 import com.mercerenies.turtletroll.location.BlockSelector
 
@@ -16,7 +20,10 @@ import org.bukkit.event.world.ChunkPopulateEvent
 
 class ContagiousMossManager(plugin: Plugin) : RunnableFeature(plugin), Listener {
 
-  companion object {
+  companion object : FeatureContainerFactory<FeatureContainer> {
+
+    override fun create(state: BuilderState): FeatureContainer =
+      ManagerContainer(ContagiousMossManager(state.plugin))
 
     fun isAdjacentToMoss(block: Block): Boolean {
       for (loc in block.location.nearby(1)) {

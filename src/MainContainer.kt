@@ -48,17 +48,10 @@ class MainContainer(val plugin: Main) : FeatureContainer {
 
   val pumpkinManager = PumpkinSlownessManager(plugin)
   val angelManager = WeepingAngelManager(plugin)
-  val phantomManager = PetPhantomManager(plugin)
-  val mossManager = ContagiousMossManager(plugin)
   val explosiveArrowManager = ExplosiveArrowManager(plugin)
   val dripstoneManager = DripstoneManager(plugin)
-  val dragonBombManager = DragonBombManager(plugin)
-  val pufferfishRainManager = PufferfishRainManager(plugin)
   val classicLavaManager = ClassicLavaManager(plugin)
   val bedtimeManager = BedtimeManager(plugin)
-  val llamaHunterManager = LlamaHunterManager(plugin)
-  val temperatureManager = TemperatureManager(plugin)
-  val witchSummonManager = WitchSummonManager(plugin)
 
   val breakEvents = BlockBreakEvents()
   val chickenListener = ChickenDamageListener(plugin)
@@ -171,17 +164,17 @@ class MainContainer(val plugin: Main) : FeatureContainer {
       blazeListener, zombifyListener, forestFireListener, roseListener,
       endStoneListener, doorListener, angelManager, levitationListener,
       buttonListener, plateListener, slabListener, lightListener,
-      phantomManager, lavaListener, pumpkinManager, mimicListener,
+      lavaListener, pumpkinManager, mimicListener,
       bedListener, eggListener, eggArrowListener, eggDropListener,
-      witherArmorListener, mossManager, explosiveArrowManager,
+      witherArmorListener, explosiveArrowManager,
       cakeListener, dripstoneManager, glassLuckListener, endDirtListener,
-      overgrowthListener, endCrystalListener, dragonBombManager, pufferfishRainManager,
+      overgrowthListener, endCrystalListener,
       pillagerGunListener, classicLavaManager, fallDamageListener, chargedCreeperListener,
       drownedListener, gravestoneListener, axolotlListener, bedtimeManager,
       goddessHoeListener, oldAgeListener, namedZombieListener,
-      wanderingTraderListener, zombieSpeedListener, llamaHunterManager,
-      shieldSurfListener, temperatureManager, witherBowListener, catBatListener,
-      witchSummonManager, bambooSpreadListener, zombieDrowningListener, carvePumpkinListener,
+      wanderingTraderListener, zombieSpeedListener,
+      shieldSurfListener, witherBowListener, catBatListener,
+      bambooSpreadListener, zombieDrowningListener, carvePumpkinListener,
       escalationListener, butterfingersListener, spillageListener, eggshellsListener,
       ghastLavaListener, deathScoreboardListener,
     )
@@ -194,21 +187,20 @@ class MainContainer(val plugin: Main) : FeatureContainer {
       roseListener, endStoneListener, doorListener,
       levitationListener, buttonListener,
       plateListener, slabListener, lightListener,
-      phantomManager, lavaListener, pumpkinManager,
+      lavaListener, pumpkinManager,
       mimicListener, dropCompositeFeature, eggListener,
       eggArrowListener, eggDropListener, witherArmorListener,
-      mossManager, explosiveArrowManager, cakeListener,
+      explosiveArrowManager, cakeListener,
       glassLuckListener, endDirtListener,
       overgrowthListener, endCrystalListener,
-      dragonBombManager, pufferfishRainManager,
       pillagerGunListener, classicLavaManager,
       fallDamageListener, chargedCreeperListener,
       drownedListener, gravestoneListener, axolotlListener,
       bedtimeManager, sandAttackRunnable,
       ghastBurnRunnable, anvilFeature, angelFeature, dripstoneFeature,
       stoneRecipeDeleter, goddessHoeListener, oldAgeListener, namedZombieListener,
-      wanderingTraderListener, zombieSpeedListener, llamaHunterManager,
-      shieldSurfListener, freeCookieRunnable, dirtRecipeFeature, temperatureManager,
+      wanderingTraderListener, zombieSpeedListener,
+      shieldSurfListener, freeCookieRunnable, dirtRecipeFeature,
       witherBowListener, catBatListener, bambooSpreadListener, zombieDrowningListener,
       melompkinFeature, escalationListener, butterfingersListener, spillageListener,
       eggshellsListener, ghastLavaListener, deathScoreboardListener, silverfishBurnRunnable,
@@ -217,9 +209,9 @@ class MainContainer(val plugin: Main) : FeatureContainer {
   override val runnables: List<RunnableFeature> =
     listOf(
       anvilRunnable, sandAttackRunnable, ghastBurnRunnable,
-      pufferfishRainManager, angelManager, phantomManager, pumpkinManager, mossManager,
-      dripstoneManager, dragonBombManager, classicLavaManager, bedtimeManager, llamaHunterManager,
-      freeCookieRunnable, temperatureManager, witchSummonManager, silverfishBurnRunnable,
+      angelManager, pumpkinManager,
+      dripstoneManager, classicLavaManager, bedtimeManager,
+      freeCookieRunnable, silverfishBurnRunnable,
     )
 
   override val recipes: List<RecipeFeature> =

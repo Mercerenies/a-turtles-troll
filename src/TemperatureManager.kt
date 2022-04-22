@@ -2,6 +2,10 @@
 package com.mercerenies.turtletroll
 
 import com.mercerenies.turtletroll.feature.RunnableFeature
+import com.mercerenies.turtletroll.feature.container.FeatureContainer
+import com.mercerenies.turtletroll.feature.container.ManagerContainer
+import com.mercerenies.turtletroll.feature.builder.BuilderState
+import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 import com.mercerenies.turtletroll.util.linearRescale
 
 import org.bukkit.entity.Player
@@ -18,7 +22,7 @@ import kotlin.math.max
 
 class TemperatureManager(plugin: Plugin) : RunnableFeature(plugin), Listener {
 
-  companion object {
+  companion object : FeatureContainerFactory<FeatureContainer> {
 
     val SCOREBOARD_NAME = "com.mercerenies.turtletroll.TemperatureManager.SCOREBOARD_NAME"
 
@@ -37,6 +41,9 @@ class TemperatureManager(plugin: Plugin) : RunnableFeature(plugin), Listener {
       Material.CAMPFIRE, Material.FIRE, Material.SOUL_CAMPFIRE, Material.SOUL_FIRE,
       Material.LAVA, Material.LAVA_BUCKET, Material.LAVA_CAULDRON,
     )
+
+    override fun create(state: BuilderState): FeatureContainer =
+      ManagerContainer(TemperatureManager(state.plugin))
 
     fun getArmorCount(player: Player): Int {
       val inv = player.inventory
