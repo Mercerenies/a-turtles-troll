@@ -2,7 +2,6 @@
 package com.mercerenies.turtletroll
 
 import com.mercerenies.turtletroll.falling.AnvilRunnable
-import com.mercerenies.turtletroll.angel.WeepingAngelManager
 import com.mercerenies.turtletroll.cake.CakeListener
 import com.mercerenies.turtletroll.cake.CakeEat
 import com.mercerenies.turtletroll.egg.EggListener
@@ -15,11 +14,8 @@ import com.mercerenies.turtletroll.feature.RunnableFeature
 import com.mercerenies.turtletroll.feature.CompositeFeature
 import com.mercerenies.turtletroll.recipe.RecipeFeature
 import com.mercerenies.turtletroll.recipe.AnvilRecipeFeature
-import com.mercerenies.turtletroll.recipe.AngelRecipeFeature
 import com.mercerenies.turtletroll.recipe.DripstoneRecipeFeature
-import com.mercerenies.turtletroll.recipe.DirtRecipeFeature
 import com.mercerenies.turtletroll.recipe.RecipeDeleter
-import com.mercerenies.turtletroll.recipe.StoneRecipeDeleter
 import com.mercerenies.turtletroll.recipe.MelonRecipeDeleter
 import com.mercerenies.turtletroll.recipe.MelonRecipeFeature
 import com.mercerenies.turtletroll.command.Command
@@ -35,7 +31,6 @@ import org.bukkit.Bukkit
 class MainContainer(val plugin: Main) : FeatureContainer {
 
   val pumpkinManager = PumpkinSlownessManager(plugin) // <- things depend on it
-  val angelManager = WeepingAngelManager(plugin) // <- also bundled with a recipe
   val explosiveArrowManager = ExplosiveArrowManager(plugin) // <- also a recipe
   val dripstoneManager = DripstoneManager(plugin) // <- also a recipe
   val classicLavaManager = ClassicLavaManager(plugin) // <- things depend on it
@@ -54,24 +49,15 @@ class MainContainer(val plugin: Main) : FeatureContainer {
   val anvilRunnable = AnvilRunnable(plugin) // <- composite
 
   val anvilRecipeFeature = AnvilRecipeFeature(plugin) // <- composite
-  val angelRecipeFeature = AngelRecipeFeature(plugin) // <- composite
   val dripstoneRecipeFeature = DripstoneRecipeFeature(plugin) // <- composite
-  val dirtRecipeFeature = DirtRecipeFeature(plugin) // <- is recipe
   val melonRecipeFeature = MelonRecipeFeature(plugin) // <- composite
 
-  val stoneRecipeDeleter = StoneRecipeDeleter(Bukkit.getServer()) // <- is recipe
   val melonRecipeDeleter = MelonRecipeDeleter(Bukkit.getServer()) // <- composite
 
   val anvilFeature = CompositeFeature(
     anvilRunnable.name,
     anvilRunnable.description,
     listOf(anvilRunnable, anvilRecipeFeature),
-  )
-
-  val angelFeature = CompositeFeature(
-    angelManager.name,
-    angelManager.description,
-    listOf(angelManager, angelRecipeFeature),
   )
 
   val dripstoneFeature = CompositeFeature(
@@ -98,7 +84,7 @@ class MainContainer(val plugin: Main) : FeatureContainer {
 
   override val listeners: List<Listener> =
     listOf(
-      breakEvents.listener, electricListener, angelManager, pumpkinManager,
+      breakEvents.listener, electricListener, pumpkinManager,
       bedListener, eggListener, explosiveArrowManager,
       cakeListener, dripstoneManager, overgrowthListener, classicLavaManager,
       bedtimeManager, carvePumpkinListener, ghastLavaListener,
@@ -108,25 +94,24 @@ class MainContainer(val plugin: Main) : FeatureContainer {
     listOf(
       lightListener, pumpkinManager, dropCompositeFeature, eggListener,
       explosiveArrowManager, cakeListener, overgrowthListener, classicLavaManager,
-      bedtimeManager, anvilFeature, angelFeature, dripstoneFeature, stoneRecipeDeleter,
-      dirtRecipeFeature, melompkinFeature, ghastLavaListener,
+      bedtimeManager, anvilFeature, dripstoneFeature,
+      melompkinFeature, ghastLavaListener,
     ) + (breakEvents.getFeatures() - breakEvents.cancelDropAction)
 
   override val runnables: List<RunnableFeature> =
     listOf(
-      anvilRunnable, angelManager, pumpkinManager,
+      anvilRunnable, pumpkinManager,
       dripstoneManager, classicLavaManager, bedtimeManager,
     )
 
   override val recipes: List<RecipeFeature> =
     listOf(
-      anvilRecipeFeature, angelRecipeFeature, dripstoneRecipeFeature, explosiveArrowManager,
-      dirtRecipeFeature, melonRecipeFeature,
+      anvilRecipeFeature, dripstoneRecipeFeature, explosiveArrowManager, melonRecipeFeature,
     )
 
   override val recipeDeleters: List<RecipeDeleter> =
     listOf(
-      stoneRecipeDeleter, melonRecipeDeleter,
+      melonRecipeDeleter,
     )
 
   override val commands: List<Pair<String, PermittedCommand<Command>>> =
