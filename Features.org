@@ -207,6 +207,7 @@
   + Pigs
   + Rabbits
   + Killing one vector saves everyone
+  + Can we make the lava haste force you to move forward?
 ** HATCRAFTER'S IDEAS
    + Cookies, when eaten, have a random effect (lower numbered effects
      are more likely)
