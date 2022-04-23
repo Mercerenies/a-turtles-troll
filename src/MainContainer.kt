@@ -1,20 +1,16 @@
 
 package com.mercerenies.turtletroll
 
-import com.mercerenies.turtletroll.falling.AnvilRunnable
 import com.mercerenies.turtletroll.cake.CakeListener
 import com.mercerenies.turtletroll.cake.CakeEat
 import com.mercerenies.turtletroll.egg.EggListener
 import com.mercerenies.turtletroll.egg.EggHatch
-import com.mercerenies.turtletroll.dripstone.DripstoneManager
 import com.mercerenies.turtletroll.gravestone.BedtimeManager
 import com.mercerenies.turtletroll.feature.container.FeatureContainer
 import com.mercerenies.turtletroll.feature.Feature
 import com.mercerenies.turtletroll.feature.RunnableFeature
 import com.mercerenies.turtletroll.feature.CompositeFeature
 import com.mercerenies.turtletroll.recipe.RecipeFeature
-import com.mercerenies.turtletroll.recipe.AnvilRecipeFeature
-import com.mercerenies.turtletroll.recipe.DripstoneRecipeFeature
 import com.mercerenies.turtletroll.recipe.RecipeDeleter
 import com.mercerenies.turtletroll.recipe.MelonRecipeDeleter
 import com.mercerenies.turtletroll.recipe.MelonRecipeFeature
@@ -32,7 +28,6 @@ class MainContainer(val plugin: Main) : FeatureContainer {
 
   val pumpkinManager = PumpkinSlownessManager(plugin) // <- things depend on it
   val explosiveArrowManager = ExplosiveArrowManager(plugin) // <- also a recipe
-  val dripstoneManager = DripstoneManager(plugin) // <- also a recipe
   val classicLavaManager = ClassicLavaManager(plugin) // <- things depend on it
   val bedtimeManager = BedtimeManager(plugin) // <- contains a command
 
@@ -46,25 +41,9 @@ class MainContainer(val plugin: Main) : FeatureContainer {
   val ghastLavaListener = GhastLavaListener(plugin, classicLavaManager.ignorer) // <- depends on classic lava
   val carvePumpkinListener = CarvePumpkinListener() // <- composite
 
-  val anvilRunnable = AnvilRunnable(plugin) // <- composite
-
-  val anvilRecipeFeature = AnvilRecipeFeature(plugin) // <- composite
-  val dripstoneRecipeFeature = DripstoneRecipeFeature(plugin) // <- composite
   val melonRecipeFeature = MelonRecipeFeature(plugin) // <- composite
 
   val melonRecipeDeleter = MelonRecipeDeleter(Bukkit.getServer()) // <- composite
-
-  val anvilFeature = CompositeFeature(
-    anvilRunnable.name,
-    anvilRunnable.description,
-    listOf(anvilRunnable, anvilRecipeFeature),
-  )
-
-  val dripstoneFeature = CompositeFeature(
-    dripstoneManager.name,
-    dripstoneManager.description,
-    listOf(dripstoneManager, dripstoneRecipeFeature),
-  )
 
   val melompkinFeature = CompositeFeature(
     "melompkin",
@@ -86,7 +65,7 @@ class MainContainer(val plugin: Main) : FeatureContainer {
     listOf(
       breakEvents.listener, electricListener, pumpkinManager,
       bedListener, eggListener, explosiveArrowManager,
-      cakeListener, dripstoneManager, overgrowthListener, classicLavaManager,
+      cakeListener, overgrowthListener, classicLavaManager,
       bedtimeManager, carvePumpkinListener, ghastLavaListener,
     )
 
@@ -94,19 +73,18 @@ class MainContainer(val plugin: Main) : FeatureContainer {
     listOf(
       lightListener, pumpkinManager, dropCompositeFeature, eggListener,
       explosiveArrowManager, cakeListener, overgrowthListener, classicLavaManager,
-      bedtimeManager, anvilFeature, dripstoneFeature,
+      bedtimeManager,
       melompkinFeature, ghastLavaListener,
     ) + (breakEvents.getFeatures() - breakEvents.cancelDropAction)
 
   override val runnables: List<RunnableFeature> =
     listOf(
-      anvilRunnable, pumpkinManager,
-      dripstoneManager, classicLavaManager, bedtimeManager,
+      pumpkinManager, classicLavaManager, bedtimeManager,
     )
 
   override val recipes: List<RecipeFeature> =
     listOf(
-      anvilRecipeFeature, dripstoneRecipeFeature, explosiveArrowManager, melonRecipeFeature,
+      explosiveArrowManager, melonRecipeFeature,
     )
 
   override val recipeDeleters: List<RecipeDeleter> =

@@ -19,6 +19,8 @@ import com.mercerenies.turtletroll.cookie.FreeCookieRunnable
 import com.mercerenies.turtletroll.recipe.DirtRecipeFeature
 import com.mercerenies.turtletroll.recipe.StoneRecipeDeleter
 import com.mercerenies.turtletroll.angel.WeepingAngelManagerFactory
+import com.mercerenies.turtletroll.falling.AnvilRunnableFactory
+import com.mercerenies.turtletroll.dripstone.DripstoneManagerFactory
 
 object AllFeatureFactories {
 
@@ -39,7 +41,8 @@ object AllFeatureFactories {
       ZombieDrowningListener, EscalationListener, ButterfingersListener,
       SpillageListener, EggshellsListener, DeathScoreboardListener,
       GhastBurnRunnable, SandAttackRunnable, FreeCookieRunnable, SilverfishBurnRunnable,
-      DirtRecipeFeature, StoneRecipeDeleter, WeepingAngelManagerFactory,
+      DirtRecipeFeature, StoneRecipeDeleter, WeepingAngelManagerFactory, AnvilRunnableFactory,
+      DripstoneManagerFactory,
     )
 
   fun createComposite(builderState: BuilderState): FeatureContainer =
