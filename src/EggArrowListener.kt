@@ -21,7 +21,7 @@ class EggArrowListener(val chance: Double = 1.0) : AbstractFeature(), Listener {
 
   companion object : FeatureContainerFactory<FeatureContainer> {
     val SKELETONS = setOf(EntityType.SKELETON, EntityType.STRAY)
-    override fun create(state: BuilderState): FeatureContainer = 
+    override fun create(state: BuilderState): FeatureContainer =
       ListenerContainer(EggArrowListener())
 
   }

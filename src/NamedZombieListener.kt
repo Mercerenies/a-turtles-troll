@@ -24,7 +24,7 @@ class NamedZombieListener(
     val DEFAULT_NAME_SOURCE = NameSource.FromList(
       "Mercerenies", "jbax1899", "Evanski_", "RekNepZ_HBK", "HatCrafter",
     )
-    override fun create(state: BuilderState): FeatureContainer = 
+    override fun create(state: BuilderState): FeatureContainer =
       ListenerContainer(NamedZombieListener())
 
   }

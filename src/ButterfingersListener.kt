@@ -26,7 +26,7 @@ class ButterfingersListener(): AbstractFeature(), Listener {
 
   companion object : FeatureContainerFactory<FeatureContainer> {
 
-    override fun create(state: BuilderState): FeatureContainer = 
+    override fun create(state: BuilderState): FeatureContainer =
       ListenerContainer(ButterfingersListener())
 
   }

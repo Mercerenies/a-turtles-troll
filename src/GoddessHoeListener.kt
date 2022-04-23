@@ -21,7 +21,7 @@ class GoddessHoeListener(
 
   companion object : FeatureContainerFactory<FeatureContainer> {
     val MAX_DURABILITY = 2031 // Max durability for netherite hoe
-    override fun create(state: BuilderState): FeatureContainer = 
+    override fun create(state: BuilderState): FeatureContainer =
       ListenerContainer(GoddessHoeListener(state.plugin))
 
   }

@@ -29,7 +29,7 @@ class EggDropListener(
       EntityType.HUSK, EntityType.STRAY, EntityType.ZOMBIFIED_PIGLIN,
       EntityType.PIGLIN,
     )
-    override fun create(state: BuilderState): FeatureContainer = 
+    override fun create(state: BuilderState): FeatureContainer =
       ListenerContainer(EggDropListener())
 
   }

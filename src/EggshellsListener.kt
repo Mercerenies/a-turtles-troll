@@ -61,7 +61,7 @@ class EggshellsListener(): AbstractFeature(), Listener {
       }
     }
 
-    override fun create(state: BuilderState): FeatureContainer = 
+    override fun create(state: BuilderState): FeatureContainer =
       ListenerContainer(EggshellsListener())
 
   }

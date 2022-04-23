@@ -24,7 +24,7 @@ class SpillageListener(
 
   companion object : FeatureContainerFactory<FeatureContainer> {
     val DELAY: Int = Constants.TICKS_PER_SECOND / 2
-    override fun create(state: BuilderState): FeatureContainer = 
+    override fun create(state: BuilderState): FeatureContainer =
       ListenerContainer(SpillageListener(state.plugin))
 
   }

@@ -18,7 +18,7 @@ class AxolotlListener() : AbstractFeature(), Listener {
 
   companion object : FeatureContainerFactory<FeatureContainer> {
     val DISTANCE_SQUARED_LIMIT = 1024.0 // 32 blocks (squared)
-    override fun create(state: BuilderState): FeatureContainer = 
+    override fun create(state: BuilderState): FeatureContainer =
       ListenerContainer(AxolotlListener())
 
   }

@@ -16,7 +16,7 @@ class OldAgeListener(val ageLimit: Int = 100) : AbstractFeature(), Listener {
 
   companion object : FeatureContainerFactory<FeatureContainer> {
 
-    override fun create(state: BuilderState): FeatureContainer = 
+    override fun create(state: BuilderState): FeatureContainer =
       ListenerContainer(OldAgeListener())
 
   }

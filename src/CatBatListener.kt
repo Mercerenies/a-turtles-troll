@@ -36,7 +36,7 @@ class CatBatListener(
         else -> null
       }
 
-    override fun create(state: BuilderState): FeatureContainer = 
+    override fun create(state: BuilderState): FeatureContainer =
       ListenerContainer(CatBatListener(state.plugin))
 
   }

@@ -17,7 +17,7 @@ class GlassLuckListener(): AbstractFeature(), Listener {
 
   companion object : FeatureContainerFactory<FeatureContainer> {
     val SECONDS_PER_SEVEN_YEARS = 3679200
-    override fun create(state: BuilderState): FeatureContainer = 
+    override fun create(state: BuilderState): FeatureContainer =
       ListenerContainer(GlassLuckListener())
 
   }

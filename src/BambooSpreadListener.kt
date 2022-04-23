@@ -76,7 +76,7 @@ class BambooSpreadListener(
       return true
     }
 
-    override fun create(state: BuilderState): FeatureContainer = 
+    override fun create(state: BuilderState): FeatureContainer =
       ListenerContainer(BambooSpreadListener(state.plugin))
 
   }

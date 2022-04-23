@@ -36,7 +36,7 @@ class EndCrystalListener(
       state.update()
     }
 
-    override fun create(state: BuilderState): FeatureContainer = 
+    override fun create(state: BuilderState): FeatureContainer =
       ListenerContainer(EndCrystalListener(state.plugin))
 
   }

@@ -21,7 +21,7 @@ class WitherBowListener(val chance: Double = 0.5) : AbstractFeature(), Listener 
 
   companion object : FeatureContainerFactory<FeatureContainer> {
 
-    override fun create(state: BuilderState): FeatureContainer = 
+    override fun create(state: BuilderState): FeatureContainer =
       ListenerContainer(WitherBowListener())
 
   }
