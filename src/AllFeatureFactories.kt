@@ -14,6 +14,8 @@ import com.mercerenies.turtletroll.mimic.MimicListener
 import com.mercerenies.turtletroll.gravestone.GravestoneListener
 import com.mercerenies.turtletroll.gravestone.DeathScoreboardListener
 import com.mercerenies.turtletroll.spillage.SpillageListener
+import com.mercerenies.turtletroll.falling.SandAttackRunnable
+import com.mercerenies.turtletroll.cookie.FreeCookieRunnable
 
 object AllFeatureFactories {
 
@@ -33,6 +35,7 @@ object AllFeatureFactories {
       ShieldSurfListener, WitherBowListener, CatBatListener, BambooSpreadListener,
       ZombieDrowningListener, EscalationListener, ButterfingersListener,
       SpillageListener, EggshellsListener, DeathScoreboardListener,
+      GhastBurnRunnable, SandAttackRunnable, FreeCookieRunnable, SilverfishBurnRunnable,
     )
 
   fun createComposite(builderState: BuilderState): FeatureContainer =

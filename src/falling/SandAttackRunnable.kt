@@ -2,6 +2,10 @@
 package com.mercerenies.turtletroll.falling
 
 import com.mercerenies.turtletroll.Constants
+import com.mercerenies.turtletroll.feature.container.FeatureContainer
+import com.mercerenies.turtletroll.feature.container.RunnableContainer
+import com.mercerenies.turtletroll.feature.builder.BuilderState
+import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 
 import org.bukkit.entity.Player
 import org.bukkit.Material
@@ -13,11 +17,14 @@ class SandAttackRunnable(
   val targetBlocks: Set<Material> = DEFAULT_TRIGGERS,
 ) : FallingObjectRunnable(plugin) {
 
-  companion object {
+  companion object : FeatureContainerFactory<FeatureContainer> {
 
     val DEFAULT_TRIGGERS = setOf(
       Material.SAND, Material.GRAVEL, Material.END_STONE,
     )
+
+    override fun create(state: BuilderState): FeatureContainer =
+      RunnableContainer(SandAttackRunnable(state.plugin))
 
   }
 

@@ -3,6 +3,10 @@ package com.mercerenies.turtletroll.cookie
 
 import com.mercerenies.turtletroll.ScheduledEventRunnable
 import com.mercerenies.turtletroll.AllItems
+import com.mercerenies.turtletroll.feature.container.FeatureContainer
+import com.mercerenies.turtletroll.feature.container.RunnableContainer
+import com.mercerenies.turtletroll.feature.builder.BuilderState
+import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 
 import org.bukkit.plugin.Plugin
 import org.bukkit.Bukkit
@@ -10,7 +14,7 @@ import org.bukkit.Bukkit
 
 class FreeCookieRunnable(plugin: Plugin) : ScheduledEventRunnable<FreeCookieRunnable.State>(plugin) {
 
-  companion object {
+  companion object : FeatureContainerFactory<FeatureContainer> {
     val DAWN_TIME = 0L
     val DUSK_TIME = 12000L
 
@@ -18,6 +22,9 @@ class FreeCookieRunnable(plugin: Plugin) : ScheduledEventRunnable<FreeCookieRunn
       Event(State.Daytime, DAWN_TIME),
       Event(State.Nighttime, DUSK_TIME),
     )
+
+    override fun create(state: BuilderState): FeatureContainer =
+      RunnableContainer(FreeCookieRunnable(state.plugin))
 
   }
 

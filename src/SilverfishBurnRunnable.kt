@@ -2,6 +2,10 @@
 package com.mercerenies.turtletroll
 
 import com.mercerenies.turtletroll.feature.RunnableFeature
+import com.mercerenies.turtletroll.feature.container.FeatureContainer
+import com.mercerenies.turtletroll.feature.container.RunnableContainer
+import com.mercerenies.turtletroll.feature.builder.BuilderState
+import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 
 import org.bukkit.entity.Player
 import org.bukkit.entity.Silverfish
@@ -28,6 +32,13 @@ import kotlin.random.Random
 class SilverfishBurnRunnable(
   plugin: Plugin,
 ) : RunnableFeature(plugin) {
+
+  companion object : FeatureContainerFactory<FeatureContainer> {
+
+    override fun create(state: BuilderState): FeatureContainer =
+      RunnableContainer(SilverfishBurnRunnable(state.plugin))
+
+  }
 
   override val name = "silverfishburn"
 

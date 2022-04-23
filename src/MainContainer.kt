@@ -2,7 +2,6 @@
 package com.mercerenies.turtletroll
 
 import com.mercerenies.turtletroll.falling.AnvilRunnable
-import com.mercerenies.turtletroll.falling.SandAttackRunnable
 import com.mercerenies.turtletroll.angel.WeepingAngelManager
 import com.mercerenies.turtletroll.cake.CakeListener
 import com.mercerenies.turtletroll.cake.CakeEat
@@ -23,7 +22,6 @@ import com.mercerenies.turtletroll.recipe.RecipeDeleter
 import com.mercerenies.turtletroll.recipe.StoneRecipeDeleter
 import com.mercerenies.turtletroll.recipe.MelonRecipeDeleter
 import com.mercerenies.turtletroll.recipe.MelonRecipeFeature
-import com.mercerenies.turtletroll.cookie.FreeCookieRunnable
 import com.mercerenies.turtletroll.command.Command
 import com.mercerenies.turtletroll.command.PermittedCommand
 import com.mercerenies.turtletroll.command.withPermission
@@ -53,20 +51,16 @@ class MainContainer(val plugin: Main) : FeatureContainer {
   val ghastLavaListener = GhastLavaListener(plugin, classicLavaManager.ignorer) // <- depends on classic lava
   val carvePumpkinListener = CarvePumpkinListener() // <- composite
 
-  val anvilRunnable = AnvilRunnable(plugin)
-  val ghastBurnRunnable = GhastBurnRunnable(plugin)
-  val sandAttackRunnable = SandAttackRunnable(plugin)
-  val freeCookieRunnable = FreeCookieRunnable(plugin)
-  val silverfishBurnRunnable = SilverfishBurnRunnable(plugin)
+  val anvilRunnable = AnvilRunnable(plugin) // <- composite
 
-  val anvilRecipeFeature = AnvilRecipeFeature(plugin)
-  val angelRecipeFeature = AngelRecipeFeature(plugin)
-  val dripstoneRecipeFeature = DripstoneRecipeFeature(plugin)
-  val dirtRecipeFeature = DirtRecipeFeature(plugin)
-  val melonRecipeFeature = MelonRecipeFeature(plugin)
+  val anvilRecipeFeature = AnvilRecipeFeature(plugin) // <- composite
+  val angelRecipeFeature = AngelRecipeFeature(plugin) // <- composite
+  val dripstoneRecipeFeature = DripstoneRecipeFeature(plugin) // <- composite
+  val dirtRecipeFeature = DirtRecipeFeature(plugin) // <- is recipe
+  val melonRecipeFeature = MelonRecipeFeature(plugin) // <- composite
 
-  val stoneRecipeDeleter = StoneRecipeDeleter(Bukkit.getServer())
-  val melonRecipeDeleter = MelonRecipeDeleter(Bukkit.getServer())
+  val stoneRecipeDeleter = StoneRecipeDeleter(Bukkit.getServer()) // <- is recipe
+  val melonRecipeDeleter = MelonRecipeDeleter(Bukkit.getServer()) // <- composite
 
   val anvilFeature = CompositeFeature(
     anvilRunnable.name,
@@ -114,17 +108,14 @@ class MainContainer(val plugin: Main) : FeatureContainer {
     listOf(
       lightListener, pumpkinManager, dropCompositeFeature, eggListener,
       explosiveArrowManager, cakeListener, overgrowthListener, classicLavaManager,
-      bedtimeManager, sandAttackRunnable, ghastBurnRunnable, anvilFeature,
-      angelFeature, dripstoneFeature, stoneRecipeDeleter, freeCookieRunnable, dirtRecipeFeature,
-      melompkinFeature, ghastLavaListener, silverfishBurnRunnable,
+      bedtimeManager, anvilFeature, angelFeature, dripstoneFeature, stoneRecipeDeleter,
+      dirtRecipeFeature, melompkinFeature, ghastLavaListener,
     ) + (breakEvents.getFeatures() - breakEvents.cancelDropAction)
 
   override val runnables: List<RunnableFeature> =
     listOf(
-      anvilRunnable, sandAttackRunnable, ghastBurnRunnable,
-      angelManager, pumpkinManager,
+      anvilRunnable, angelManager, pumpkinManager,
       dripstoneManager, classicLavaManager, bedtimeManager,
-      freeCookieRunnable, silverfishBurnRunnable,
     )
 
   override val recipes: List<RecipeFeature> =
