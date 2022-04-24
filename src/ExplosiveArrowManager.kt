@@ -2,6 +2,10 @@
 package com.mercerenies.turtletroll
 
 import com.mercerenies.turtletroll.recipe.RecipeFeature
+import com.mercerenies.turtletroll.feature.container.FeatureContainer
+import com.mercerenies.turtletroll.feature.container.AbstractFeatureContainer
+import com.mercerenies.turtletroll.feature.builder.BuilderState
+import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 
 import org.bukkit.plugin.Plugin
 import org.bukkit.event.EventHandler
@@ -19,9 +23,12 @@ import org.bukkit.entity.Trident
 import org.bukkit.entity.Player
 import org.bukkit.inventory.PlayerInventory
 
+// TODO The name "manager" implies "listener" and "runnable" in every
+// other case, where this is really "listener" and "recipe". Should we
+// rename this?
 class ExplosiveArrowManager(plugin: Plugin) : RecipeFeature(plugin), Listener {
 
-  companion object {
+  companion object : FeatureContainerFactory<FeatureContainer> {
     val ARROW_MARKER_KEY = "explosive_arrow_tag"
 
     val ARROWS = setOf(
@@ -51,6 +58,24 @@ class ExplosiveArrowManager(plugin: Plugin) : RecipeFeature(plugin), Listener {
         3 -> "III"
         else -> ""
       }
+
+    override fun create(state: BuilderState): FeatureContainer =
+      Container(ExplosiveArrowManager(state.plugin))
+
+  }
+
+  private class Container(
+    private val manager: ExplosiveArrowManager,
+  ) : AbstractFeatureContainer() {
+
+    override val listeners =
+      listOf(manager)
+
+    override val features =
+      listOf(manager)
+
+    override val recipes =
+      listOf(manager)
 
   }
 

@@ -13,6 +13,7 @@ import com.mercerenies.turtletroll.durability.ButtonDamageListener
 import com.mercerenies.turtletroll.mimic.MimicListener
 import com.mercerenies.turtletroll.gravestone.GravestoneListener
 import com.mercerenies.turtletroll.gravestone.DeathScoreboardListener
+import com.mercerenies.turtletroll.gravestone.BedtimeManager
 import com.mercerenies.turtletroll.spillage.SpillageListener
 import com.mercerenies.turtletroll.falling.SandAttackRunnable
 import com.mercerenies.turtletroll.cookie.FreeCookieRunnable
@@ -21,6 +22,14 @@ import com.mercerenies.turtletroll.recipe.StoneRecipeDeleter
 import com.mercerenies.turtletroll.angel.WeepingAngelManagerFactory
 import com.mercerenies.turtletroll.falling.AnvilRunnableFactory
 import com.mercerenies.turtletroll.dripstone.DripstoneManagerFactory
+import com.mercerenies.turtletroll.cake.CakeListenerFactory
+
+/*
+///// test the following:
+explosive arrow + command
+bedtime + command
+cake listener
+*/
 
 object AllFeatureFactories {
 
@@ -42,7 +51,7 @@ object AllFeatureFactories {
       SpillageListener, EggshellsListener, DeathScoreboardListener,
       GhastBurnRunnable, SandAttackRunnable, FreeCookieRunnable, SilverfishBurnRunnable,
       DirtRecipeFeature, StoneRecipeDeleter, WeepingAngelManagerFactory, AnvilRunnableFactory,
-      DripstoneManagerFactory,
+      DripstoneManagerFactory, ExplosiveArrowManager, BedtimeManager, CakeListenerFactory,
     )
 
   fun createComposite(builderState: BuilderState): FeatureContainer =

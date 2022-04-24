@@ -2,10 +2,17 @@
 package com.mercerenies.turtletroll.gravestone
 
 import com.mercerenies.turtletroll.ScheduledEventRunnable
+import com.mercerenies.turtletroll.command.PermittedCommand
+import com.mercerenies.turtletroll.command.Command
 import com.mercerenies.turtletroll.command.TerminalCommand
+import com.mercerenies.turtletroll.command.withPermission
 import com.mercerenies.turtletroll.Weight
 import com.mercerenies.turtletroll.sample
 import com.mercerenies.turtletroll.ext.*
+import com.mercerenies.turtletroll.feature.container.FeatureContainer
+import com.mercerenies.turtletroll.feature.container.AbstractFeatureContainer
+import com.mercerenies.turtletroll.feature.builder.BuilderState
+import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 
 import org.bukkit.plugin.Plugin
 import org.bukkit.Bukkit
@@ -22,7 +29,7 @@ import org.bukkit.command.CommandSender
 
 class BedtimeManager(plugin: Plugin) : ScheduledEventRunnable<BedtimeManager.State>(plugin), Listener {
 
-  companion object {
+  companion object : FeatureContainerFactory<FeatureContainer> {
     val DAWN_TIME = 0L
     val DUSK_TIME = 12000L
 
@@ -54,6 +61,11 @@ class BedtimeManager(plugin: Plugin) : ScheduledEventRunnable<BedtimeManager.Sta
 
     val DISABLED_MESSAGE = "This feature is currently disabled; the gods are not interfering with your sleep."
 
+    val COMMAND_PERMISSION = "com.mercerenies.turtletroll.command.bedtime"
+
+    override fun create(state: BuilderState): FeatureContainer =
+      Container(BedtimeManager(state.plugin))
+
     fun requestMessage(condition: DeathCondition): String =
       "Today, the gods would like to see someone die ${condition.description}"
 
@@ -68,6 +80,24 @@ class BedtimeManager(plugin: Plugin) : ScheduledEventRunnable<BedtimeManager.Sta
       Event(State.Daytime, DAWN_TIME),
       Event(State.Nighttime, DUSK_TIME),
     )
+
+  }
+
+  private class Container(
+    private val manager: BedtimeManager,
+  ) : AbstractFeatureContainer() {
+
+    override val listeners =
+      listOf(manager)
+
+    override val features =
+      listOf(manager)
+
+    override val runnables =
+      listOf(manager)
+
+    override val commands =
+      listOf(manager.command)
 
   }
 
@@ -112,6 +142,9 @@ class BedtimeManager(plugin: Plugin) : ScheduledEventRunnable<BedtimeManager.Sta
     }
 
   }
+
+  val command: Pair<String, PermittedCommand<Command>>
+    get() = "bedtime" to BedtimeCommand.withPermission(COMMAND_PERMISSION)
 
   override fun enable() {
     super.enable()
