@@ -52,12 +52,6 @@ class DeathScoreboardListener(
 
   }
 
-  private inner class DeathDataSaver() : BukkitRunnable() {
-    override fun run() {
-      pluginData.putData(DATA_KEY, getScoreboardAsJSON().toString())
-    }
-  }
-
   override val name = "deathscoreboard"
 
   override val description = "A scoreboard shows how many times each player has died"
@@ -69,20 +63,6 @@ class DeathScoreboardListener(
     this.container = container
     val objective = container.objective
     objective.displaySlot = DisplaySlot.SIDEBAR
-    val loadedData = try {
-      JSONObject(pluginData.getData(DATA_KEY) ?: "{}")
-    } catch (exc: Exception) {
-      JSONObject("{}")
-    }
-    for (key in loadedData.keys()) {
-      val value = loadedData.get(key)
-      val score = objective.getScore(key)
-      if (value is Number) {
-        score.setScore(value.toInt())
-      } else {
-        score.setScore(0)
-      }
-    }
   }
 
   override fun enable() {
@@ -106,18 +86,6 @@ class DeathScoreboardListener(
       }
     }
     return jsonObject
-  }
-
-  @EventHandler
-  @Suppress("UNUSED_PARAMETER")
-  fun onPlayerDeath(_event: PlayerDeathEvent) {
-    if (!isEnabled()) {
-      return
-    }
-
-    // Update file data
-    DeathDataSaver().runTaskLater(plugin, 2L)
-
   }
 
   @EventHandler
