@@ -29,8 +29,9 @@ A Turtle's Troll also depends on the following two libraries.
 
 ### Version 1.15
 
-### Version 1.14
 * Fixed death scoreboards persisting across worlds
+
+### Version 1.14
 
 * A Turtle's Troll is now [open source](LICENSE.txt)!
 * Holding a hot item (like a lava bucket) protects from cold biomes,

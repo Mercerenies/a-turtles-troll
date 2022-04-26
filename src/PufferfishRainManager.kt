@@ -61,7 +61,7 @@ class PufferfishRainManager(plugin: Plugin) : ScheduledEventRunnable<PufferfishR
       }
       State.Warned -> {
         Bukkit.broadcastMessage("It's raining... It's pouring...")
-        Bukkit.broadcastMessage("The pufferfish are touring...")
+        Bukkit.broadcastMessage("The pufferfish are soaring...")
       }
       State.Idle2 -> {
         val onlinePlayers = Bukkit.getOnlinePlayers();
