@@ -24,13 +24,6 @@ import com.mercerenies.turtletroll.falling.AnvilRunnableFactory
 import com.mercerenies.turtletroll.dripstone.DripstoneManagerFactory
 import com.mercerenies.turtletroll.cake.CakeListenerFactory
 
-/*
-///// test the following:
-explosive arrow + command
-bedtime + command
-cake listener
-*/
-
 object AllFeatureFactories {
 
   val allFactories: List<FeatureContainerFactory<FeatureContainer>> =
