@@ -21,15 +21,9 @@ import com.mercerenies.turtletroll.feature.CompositeFeature
 import org.bukkit.inventory.ItemStack
 import org.bukkit.Material
 
+// We're also going to get rid of this class entirely
 class BlockBreakEvents {
 
-  private val regularDirtDrop = REGULAR_DIRT_DROP.asFeature("dirt1", "")
-  private val frequentDirtDrop = FREQUENT_DIRT_DROP.asFeature("dirt2", "")
-  private val dirtDropFeature = CompositeFeature(
-    "dirtstacks",
-    "Replaces drops with dirt stacks at random",
-    listOf(regularDirtDrop, frequentDirtDrop),
-  )
   private val silverfishAttackAction = SilverfishAttackAction().asFeature(
     "silverfish",
     "Breaking stone blocks will sometimes result in a silverfish attack",
@@ -105,8 +99,6 @@ class BlockBreakEvents {
 
   private val breakEvents = listOf(
     Weight(NullAction, 1.0),
-    Weight(regularDirtDrop, 0.3),
-    Weight(frequentDirtDrop, 1.0),
     Weight(silverfishAttackAction, 0.2),
     Weight(beeAttackAction, 0.2),
     Weight(amethystBlockDrop, 0.1),
@@ -124,7 +116,7 @@ class BlockBreakEvents {
   )
 
   fun getFeatures(): List<Feature> = listOf(
-    dirtDropFeature, silverfishAttackAction, beeAttackAction,
+    silverfishAttackAction, beeAttackAction,
     endermiteSpawnAction, netherrackBoomAction, cancelDropAction,
     strongholdAttackAction, bedrockAction, shuffleFeature, amethystBlockDrop,
   )
@@ -135,18 +127,6 @@ class BlockBreakEvents {
       Material.CRAFTING_TABLE, Material.FURNACE,
       Material.SMOKER, Material.BLAST_FURNACE,
     )
-
-    val FREQUENT_DIRT_DROP_TRIGGERS = setOf(
-      Material.COAL_ORE, Material.IRON_ORE, Material.LAPIS_ORE,
-      Material.GOLD_ORE, Material.DIAMOND_ORE, Material.EMERALD_ORE,
-      Material.NETHER_QUARTZ_ORE, Material.NETHER_GOLD_ORE, Material.ANCIENT_DEBRIS,
-      Material.COPPER_ORE, Material.DEEPSLATE_COAL_ORE, Material.DEEPSLATE_COPPER_ORE,
-      Material.DEEPSLATE_DIAMOND_ORE, Material.DEEPSLATE_EMERALD_ORE, Material.DEEPSLATE_GOLD_ORE,
-      Material.DEEPSLATE_IRON_ORE, Material.DEEPSLATE_LAPIS_ORE, Material.DEEPSLATE_REDSTONE_ORE,
-    )
-
-    val REGULAR_DIRT_DROP = ReplaceDropsAction(ItemStack(Material.DIRT, 64))
-    val FREQUENT_DIRT_DROP = REGULAR_DIRT_DROP.filter { FREQUENT_DIRT_DROP_TRIGGERS.contains(it.block.type) }
 
     val BEDROCK_BLOCKS =
       ForestFireListener.BLOCKS + setOf(

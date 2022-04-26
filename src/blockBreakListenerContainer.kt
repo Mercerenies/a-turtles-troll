@@ -13,15 +13,14 @@ import com.mercerenies.turtletroll.drop.BlockBreakEventListener
 // Wraps up several DropFeatureContainers into a composite
 // FeatureContainer which consists of the drop listener and any other
 // provided features.
-fun blockBreakListenerContainer(dropFeatures: Iterable<DropFeatureContainer>): FeatureContainer {
+fun blockBreakListenerContainer(dropFeature: DropFeatureContainer): FeatureContainer {
 
   // Build a listener to handle the drop rules
-  val compositeDropFeature = CompositeDropFeatureContainer(dropFeatures)
-  val eventListener = BlockBreakEventListener(compositeDropFeature)
+  val eventListener = BlockBreakEventListener(dropFeature)
 
   // Now combine that with anything else provided by the drop feature
   // containers.
-  val existingFeatures = dropFeatures.map { DropFeatureContainerAdaptor(it) }
+  val existingFeatures = DropFeatureContainerAdaptor(dropFeature)
   val listenerFeature = object : AbstractFeatureContainer() {
     override val listeners = listOf(eventListener)
   }

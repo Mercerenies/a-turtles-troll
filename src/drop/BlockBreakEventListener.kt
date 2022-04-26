@@ -15,10 +15,12 @@ class BlockBreakEventListener(
   private val postRules: List<BlockBreakAction>,
 ) : Listener {
 
+  // Note: We add in a unit weight NullAction here, since that won't
+  // be provided as a "feature" in any sense.
   constructor(dropFeature: DropFeatureContainer)
     : this(
         dropFeature.preRules.toList(),
-        dropFeature.actions.toList(),
+        listOf(Weight(NullAction, 1.0)) + dropFeature.actions.toList(),
         dropFeature.postRules.toList(),
       ) {}
 

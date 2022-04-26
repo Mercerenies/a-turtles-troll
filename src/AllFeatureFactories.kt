@@ -1,7 +1,10 @@
 
 package com.mercerenies.turtletroll
 
+import com.mercerenies.turtletroll.feature.container.DropFeatureContainer
 import com.mercerenies.turtletroll.feature.container.FeatureContainer
+import com.mercerenies.turtletroll.feature.container.CompositeFeatureContainer
+import com.mercerenies.turtletroll.feature.container.CompositeDropFeatureContainer
 import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 import com.mercerenies.turtletroll.feature.builder.BuilderState
 import com.mercerenies.turtletroll.chicken.ChickenDamageListener
@@ -27,10 +30,17 @@ import com.mercerenies.turtletroll.egg.EggListenerFactory
 import com.mercerenies.turtletroll.overgrowth.OvergrowthListenerFactory
 import com.mercerenies.turtletroll.overgrowth.OvergrowthListener
 import com.mercerenies.turtletroll.ghastlava.GhastLavaListenerFactory
+import com.mercerenies.turtletroll.drop.DirtDropFeatureFactory
 
 object AllFeatureFactories {
 
-  val allFactories: List<FeatureContainerFactory<FeatureContainer>> =
+  private val allDropFactories: List<FeatureContainerFactory<DropFeatureContainer>> =
+    listOf(
+      // Drop features
+      DirtDropFeatureFactory,
+    )
+
+  private val allFactories: List<FeatureContainerFactory<FeatureContainer>> =
     listOf(
       // Independent features
       AnvilRunnableFactory,
@@ -108,7 +118,12 @@ object AllFeatureFactories {
       ElectricWaterListenerFactory(PumpkinSlownessManager.PUMPKIN_FEATURE_KEY),
     )
 
-  fun createComposite(builderState: BuilderState): FeatureContainer =
-    FeatureContainerFactory.createComposite(this.allFactories, builderState)
+  fun createComposite(builderState: BuilderState): FeatureContainer {
+    val dropFeatures = FeatureContainerFactory.createComposite(this.allDropFactories, builderState, { CompositeDropFeatureContainer(it) })
+    val regularFeatures = FeatureContainerFactory.createComposite(this.allFactories, builderState, { CompositeFeatureContainer(it) })
+    return CompositeFeatureContainer(
+      listOf(blockBreakListenerContainer(dropFeatures), regularFeatures),
+    )
+  }
 
 }
