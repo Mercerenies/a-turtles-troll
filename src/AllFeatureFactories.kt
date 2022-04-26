@@ -31,13 +31,33 @@ import com.mercerenies.turtletroll.overgrowth.OvergrowthListenerFactory
 import com.mercerenies.turtletroll.overgrowth.OvergrowthListener
 import com.mercerenies.turtletroll.ghastlava.GhastLavaListenerFactory
 import com.mercerenies.turtletroll.drop.DirtDropFeatureFactory
+import com.mercerenies.turtletroll.drop.SilverfishAttackFeatureFactory
+import com.mercerenies.turtletroll.drop.BeeAttackFeatureFactory
+import com.mercerenies.turtletroll.drop.AmethystBlockDropFactory
+import com.mercerenies.turtletroll.drop.BedrockFeatureFactory
+import com.mercerenies.turtletroll.drop.CancelDropFeatureFactory
+import com.mercerenies.turtletroll.drop.EndermiteSpawnFeatureFactory
+import com.mercerenies.turtletroll.drop.NetherrackBoomFeatureFactory
+import com.mercerenies.turtletroll.drop.ShuffleLogsFeatureFactory
+import com.mercerenies.turtletroll.drop.StrongholdAttackFeatureFactory
 
 object AllFeatureFactories {
 
   private val allDropFactories: List<FeatureContainerFactory<DropFeatureContainer>> =
     listOf(
       // Drop features
+      AmethystBlockDropFactory,
+      BedrockFeatureFactory,
+      BeeAttackFeatureFactory,
+      BeeAttackFeatureFactory,
+      CancelDropFeatureFactory,
       DirtDropFeatureFactory,
+      EndermiteSpawnFeatureFactory,
+      MelompkinFeatureFactory,
+      NetherrackBoomFeatureFactory,
+      ShuffleLogsFeatureFactory,
+      SilverfishAttackFeatureFactory,
+      StrongholdAttackFeatureFactory,
     )
 
   private val allFactories: List<FeatureContainerFactory<FeatureContainer>> =

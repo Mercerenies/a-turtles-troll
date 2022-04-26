@@ -25,10 +25,7 @@ class Main : JavaPlugin() {
     get() = dataHolder
 
   val mainContainer: FeatureContainer =
-    CompositeFeatureContainer(listOf(
-      MainContainer(this),
-      AllFeatureFactories.createComposite(this.createBuilderState()),
-    ))
+    AllFeatureFactories.createComposite(this.createBuilderState())
   val featureManager = FeatureManager(mainContainer.features)
   val turtleCommand = Subcommand(
     "turtle" to Subcommand(
