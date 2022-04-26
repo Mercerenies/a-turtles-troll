@@ -23,6 +23,7 @@ class NamedZombieListener(
   companion object : FeatureContainerFactory<FeatureContainer> {
     val DEFAULT_NAME_SOURCE = NameSource.FromList(
       "Mercerenies", "jbax1899", "Evanski_", "RekNepZ_HBK", "HatCrafter",
+      "Lukasmah", "waddles",
     )
     override fun create(state: BuilderState): FeatureContainer =
       ListenerContainer(NamedZombieListener())
