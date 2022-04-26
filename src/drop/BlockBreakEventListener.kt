@@ -3,6 +3,7 @@ package com.mercerenies.turtletroll.drop
 
 import com.mercerenies.turtletroll.Weight
 import com.mercerenies.turtletroll.sample
+import com.mercerenies.turtletroll.feature.container.DropFeatureContainer
 
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
@@ -13,6 +14,13 @@ class BlockBreakEventListener(
   private val actions: List<Weight<BlockBreakAction>>,
   private val postRules: List<BlockBreakAction>,
 ) : Listener {
+
+  constructor(dropFeature: DropFeatureContainer)
+    : this(
+        dropFeature.preRules.toList(),
+        dropFeature.actions.toList(),
+        dropFeature.postRules.toList(),
+      ) {}
 
   @EventHandler
   fun onBlockBreak(event: BlockBreakEvent) {
