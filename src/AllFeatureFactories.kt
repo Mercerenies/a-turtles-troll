@@ -23,6 +23,9 @@ import com.mercerenies.turtletroll.angel.WeepingAngelManagerFactory
 import com.mercerenies.turtletroll.falling.AnvilRunnableFactory
 import com.mercerenies.turtletroll.dripstone.DripstoneManagerFactory
 import com.mercerenies.turtletroll.cake.CakeListenerFactory
+import com.mercerenies.turtletroll.egg.EggListenerFactory
+import com.mercerenies.turtletroll.overgrowth.OvergrowthListenerFactory
+import com.mercerenies.turtletroll.overgrowth.OvergrowthListener
 
 object AllFeatureFactories {
 
@@ -45,6 +48,7 @@ object AllFeatureFactories {
       GhastBurnRunnable, SandAttackRunnable, FreeCookieRunnable, SilverfishBurnRunnable,
       DirtRecipeFeature, StoneRecipeDeleter, WeepingAngelManagerFactory, AnvilRunnableFactory,
       DripstoneManagerFactory, ExplosiveArrowManager, BedtimeManager, CakeListenerFactory,
+      EggListenerFactory, OvergrowthListenerFactory(OvergrowthListener::randomWood),
     )
 
   fun createComposite(builderState: BuilderState): FeatureContainer =

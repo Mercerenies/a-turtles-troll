@@ -1,8 +1,6 @@
 
 package com.mercerenies.turtletroll
 
-import com.mercerenies.turtletroll.egg.EggListener
-import com.mercerenies.turtletroll.egg.EggHatch
 import com.mercerenies.turtletroll.feature.container.FeatureContainer
 import com.mercerenies.turtletroll.feature.Feature
 import com.mercerenies.turtletroll.feature.RunnableFeature
@@ -29,8 +27,6 @@ class MainContainer(val plugin: Main) : FeatureContainer {
   val electricListener = ElectricWaterListener(plugin, pumpkinManager) // <- depends on pumpkin mgr
   val lightListener = BreakLightOnSightListener(plugin, pumpkinManager) // <- depends on pumpkin
   val bedListener = BedDropListener() // <- composite feature part with block break
-  val eggListener = EggListener(EggHatch.defaultEffects(plugin)) // <- takes args
-  val overgrowthListener = OvergrowthListener(plugin, OvergrowthListener::randomWood) // <- takes args
   val ghastLavaListener = GhastLavaListener(plugin, classicLavaManager.ignorer) // <- depends on classic lava
   val carvePumpkinListener = CarvePumpkinListener() // <- composite
 
@@ -57,16 +53,13 @@ class MainContainer(val plugin: Main) : FeatureContainer {
   override val listeners: List<Listener> =
     listOf(
       breakEvents.listener, electricListener, pumpkinManager,
-      bedListener, eggListener,
-      overgrowthListener, classicLavaManager,
-      carvePumpkinListener, ghastLavaListener,
+      bedListener, classicLavaManager, carvePumpkinListener, ghastLavaListener,
     )
 
   override val features: List<Feature> =
     listOf(
-      lightListener, pumpkinManager, dropCompositeFeature, eggListener,
-      overgrowthListener, classicLavaManager,
-      melompkinFeature, ghastLavaListener,
+      lightListener, pumpkinManager, dropCompositeFeature,
+      classicLavaManager, melompkinFeature, ghastLavaListener,
     ) + (breakEvents.getFeatures() - breakEvents.cancelDropAction)
 
   override val runnables: List<RunnableFeature> =
