@@ -26,6 +26,7 @@ import com.mercerenies.turtletroll.cake.CakeListenerFactory
 import com.mercerenies.turtletroll.egg.EggListenerFactory
 import com.mercerenies.turtletroll.overgrowth.OvergrowthListenerFactory
 import com.mercerenies.turtletroll.overgrowth.OvergrowthListener
+import com.mercerenies.turtletroll.ghastlava.GhastLavaListenerFactory
 
 object AllFeatureFactories {
 
@@ -49,6 +50,7 @@ object AllFeatureFactories {
       DirtRecipeFeature, StoneRecipeDeleter, WeepingAngelManagerFactory, AnvilRunnableFactory,
       DripstoneManagerFactory, ExplosiveArrowManager, BedtimeManager, CakeListenerFactory,
       EggListenerFactory, OvergrowthListenerFactory(OvergrowthListener::randomWood),
+      ClassicLavaManager, GhastLavaListenerFactory(ClassicLavaManager.STORAGE_IGNORER_KEY)
     )
 
   fun createComposite(builderState: BuilderState): FeatureContainer =

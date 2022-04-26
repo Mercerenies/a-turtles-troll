@@ -4,6 +4,10 @@ package com.mercerenies.turtletroll
 import com.mercerenies.turtletroll.ext.*
 import com.mercerenies.turtletroll.dripstone.EqBlock
 import com.mercerenies.turtletroll.feature.RunnableFeature
+import com.mercerenies.turtletroll.feature.container.FeatureContainer
+import com.mercerenies.turtletroll.feature.container.ManagerContainer
+import com.mercerenies.turtletroll.feature.builder.BuilderState
+import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
@@ -22,9 +26,11 @@ import kotlin.math.min
 
 class ClassicLavaManager(plugin: Plugin) : RunnableFeature(plugin), Listener {
 
-  companion object {
+  companion object : FeatureContainerFactory<FeatureContainer> {
 
     val IGNORE_DELAY_TIME = Constants.TICKS_PER_SECOND * 60L
+
+    val STORAGE_IGNORER_KEY = "com.mercerenies.turtletroll.ClassicLavaManager.STORAGE_IGNORER_KEY"
 
     private val metadataTag = "com.mercerenies.turtletroll.ClassicLavaManager.metadataTag"
 
@@ -35,6 +41,12 @@ class ClassicLavaManager(plugin: Plugin) : RunnableFeature(plugin), Listener {
         World.Environment.NORMAL -> 4
         World.Environment.THE_END -> 0 // The End is chaotic enough already
       }
+
+    override fun create(state: BuilderState): FeatureContainer {
+      val manager = ClassicLavaManager(state.plugin)
+      state.registerSharedData(STORAGE_IGNORER_KEY, manager.ignorer)
+      return ManagerContainer(manager)
+    }
 
   }
 

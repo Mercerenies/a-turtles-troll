@@ -1,11 +1,8 @@
 
-package com.mercerenies.turtletroll
+package com.mercerenies.turtletroll.ghastlava
 
 import com.mercerenies.turtletroll.feature.AbstractFeature
-import com.mercerenies.turtletroll.feature.container.FeatureContainer
-import com.mercerenies.turtletroll.feature.container.ListenerContainer
-import com.mercerenies.turtletroll.feature.builder.BuilderState
-import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
+import com.mercerenies.turtletroll.BlockIgnorer
 
 import org.bukkit.World
 import org.bukkit.Material

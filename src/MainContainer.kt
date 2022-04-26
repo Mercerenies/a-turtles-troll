@@ -21,13 +21,11 @@ import org.bukkit.Bukkit
 class MainContainer(val plugin: Main) : FeatureContainer {
 
   val pumpkinManager = PumpkinSlownessManager(plugin) // <- things depend on it
-  val classicLavaManager = ClassicLavaManager(plugin) // <- things depend on it
 
   val breakEvents = BlockBreakEvents() // <- oh god
   val electricListener = ElectricWaterListener(plugin, pumpkinManager) // <- depends on pumpkin mgr
   val lightListener = BreakLightOnSightListener(plugin, pumpkinManager) // <- depends on pumpkin
   val bedListener = BedDropListener() // <- composite feature part with block break
-  val ghastLavaListener = GhastLavaListener(plugin, classicLavaManager.ignorer) // <- depends on classic lava
   val carvePumpkinListener = CarvePumpkinListener() // <- composite
 
   val melonRecipeFeature = MelonRecipeFeature(plugin) // <- composite
@@ -53,18 +51,17 @@ class MainContainer(val plugin: Main) : FeatureContainer {
   override val listeners: List<Listener> =
     listOf(
       breakEvents.listener, electricListener, pumpkinManager,
-      bedListener, classicLavaManager, carvePumpkinListener, ghastLavaListener,
+      bedListener, carvePumpkinListener,
     )
 
   override val features: List<Feature> =
     listOf(
-      lightListener, pumpkinManager, dropCompositeFeature,
-      classicLavaManager, melompkinFeature, ghastLavaListener,
+      lightListener, pumpkinManager, dropCompositeFeature, melompkinFeature,
     ) + (breakEvents.getFeatures() - breakEvents.cancelDropAction)
 
   override val runnables: List<RunnableFeature> =
     listOf(
-      pumpkinManager, classicLavaManager,
+      pumpkinManager,
     )
 
   override val recipes: List<RecipeFeature> =
