@@ -2,6 +2,10 @@
 package com.mercerenies.turtletroll
 
 import com.mercerenies.turtletroll.feature.RunnableFeature
+import com.mercerenies.turtletroll.feature.container.FeatureContainer
+import com.mercerenies.turtletroll.feature.container.ManagerContainer
+import com.mercerenies.turtletroll.feature.builder.BuilderState
+import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 
 import org.bukkit.plugin.Plugin
 import org.bukkit.Bukkit
@@ -13,6 +17,18 @@ import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
 
 class PumpkinSlownessManager(plugin: Plugin) : RunnableFeature(plugin), Listener {
+
+  companion object : FeatureContainerFactory<FeatureContainer> {
+
+    val PUMPKIN_FEATURE_KEY = "com.mercerenies.turtletroll.PumpkinSlownessManager.PUMPKIN_FEATURE_KEY"
+
+    override fun create(state: BuilderState): FeatureContainer {
+      val manager = PumpkinSlownessManager(state.plugin)
+      state.registerSharedData(PUMPKIN_FEATURE_KEY, manager)
+      return ManagerContainer(manager)
+    }
+
+  }
 
   override val name = "pumpkins"
 
