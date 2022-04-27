@@ -29,6 +29,8 @@ A Turtle's Troll also depends on the following two libraries.
 
 ### Version 1.15
 
+* All pigs and striders spawn with saddles and have adjusted speed
+  when riding
 * Fixed death scoreboards persisting across worlds
 
 ### Version 1.14

@@ -34,7 +34,7 @@ class ChickenDamageListener(
   companion object : FeatureContainerFactory<FeatureContainer> {
 
     val DEFAULT_BANNED_MOBS = setOf(
-      EntityType.COW, EntityType.PIG,
+      EntityType.COW,
       EntityType.DONKEY, EntityType.HORSE,
       EntityType.MULE, EntityType.PARROT, EntityType.SHEEP,
     )

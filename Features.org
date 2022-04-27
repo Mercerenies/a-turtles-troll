@@ -90,6 +90,9 @@
                 witches do not take fall damage
    + zombiedrowning :: When a zombie drowns, it turns into a Giant,
                        not a Drowned
+   + pigs :: Pigs and striders always spawn with saddles; when a pig
+             is ridden, it gets Speed 100, and when a strider is
+             ridden, it gets Slow 2
 ** EGG FEATURES
    + eggs :: Almost any mob (or diamonds) can spawn from an egg
    + eggarrow :: Skeletons will fire eggs in addition to arrows

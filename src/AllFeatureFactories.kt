@@ -111,6 +111,7 @@ object AllFeatureFactories {
       PressurePlateFireListener,
       PufferfishRainManager,
       RavagerSpawnerListener,
+      SaddleListener,
       SandAttackRunnable,
       ShieldSurfListener,
       SilverfishBurnRunnable,

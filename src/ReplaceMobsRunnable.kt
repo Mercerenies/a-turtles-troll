@@ -20,11 +20,11 @@ abstract class ReplaceMobsRunnable(val chunk: Chunk) : BukkitRunnable() {
   override fun run() {
     val entities = chunk.entities
     for (entity in entities) {
-      val replacement_type = replaceWith(entity)
-      if (replacement_type != null) {
-        val new_entity = entity.location.world!!.spawnEntity(entity.location, replacement_type)
+      val replacementType = replaceWith(entity)
+      if (replacementType != null) {
+        val newEntity = entity.location.world!!.spawnEntity(entity.location, replacementType)
         entity.remove()
-        onReplacementMob(new_entity)
+        onReplacementMob(newEntity)
       }
     }
   }
