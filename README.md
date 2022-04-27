@@ -31,6 +31,7 @@ A Turtle's Troll also depends on the following two libraries.
 
 * All pigs and striders spawn with saddles and have adjusted speed
   when riding
+* Fixed **spillage** producing water in the Nether
 * Fixed death scoreboards persisting across worlds
 
 ### Version 1.14
