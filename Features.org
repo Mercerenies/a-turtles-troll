@@ -93,6 +93,9 @@
    + pigs :: Pigs and striders always spawn with saddles; when a pig
              is ridden, it gets Speed 100, and when a strider is
              ridden, it gets Slow 2
+   + parrots :: Parrots automatically tame themselves to belong to the
+                nearest player, a parrot on a player's shoulder
+                launches that player into the air
 ** EGG FEATURES
    + eggs :: Almost any mob (or diamonds) can spawn from an egg
    + eggarrow :: Skeletons will fire eggs in addition to arrows
@@ -190,6 +193,8 @@
    + deathscoreboard :: A scoreboard on the right side of the screen
         shows the number of times each player has died.
    + silverfishburn :: Silverfish burn in daylight.
+   + witchattack :: Witches will sometimes throw parrots at you
+                    instead of splash potions
 * IDEAS (UNIMPLEMENTED)
   + Wolves?
   + Fishing?
