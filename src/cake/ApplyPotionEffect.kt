@@ -55,8 +55,8 @@ class ApplyPotionEffect(
 
   override fun cancelsDefault(): Boolean = false
 
-  override fun onCakeEat(loc: Location, player: Player) {
-    player.sendMessage("The cake tastes like ${effectName}!")
+  override fun onEat(loc: Location, mealType: MealType, player: Player) {
+    player.sendMessage("The ${mealType.mealName} tastes like ${effectName}!")
     player.addPotionEffect(potionEffect)
   }
 

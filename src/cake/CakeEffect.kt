@@ -12,6 +12,6 @@ interface CakeEffect {
 
   fun cancelsDefault(): Boolean
 
-  fun onCakeEat(loc: Location, player: Player)
+  fun onEat(loc: Location, mealType: MealType, player: Player)
 
 }
