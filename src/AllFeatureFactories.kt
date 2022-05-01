@@ -124,6 +124,7 @@ object AllFeatureFactories {
       TemperatureManager,
       WanderingTraderListener,
       WeepingAngelManagerFactory,
+      WitchAttackListener,
       WitchSummonManager,
       WitherArmorListener,
       WitherBowListener,
