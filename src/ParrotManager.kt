@@ -53,7 +53,7 @@ class ParrotManager(_plugin: Plugin): RunnableFeature(_plugin), Listener {
 
   override val description = "Parrots are automatically tamed and will try to fly off with their owner"
 
-  override val taskPeriod = 3L * Constants.TICKS_PER_SECOND + 1L
+  override val taskPeriod = 2L * Constants.TICKS_PER_SECOND + 1L
 
   private val safePlayers = CooldownMemory<Player>(plugin)
 
@@ -63,6 +63,7 @@ class ParrotManager(_plugin: Plugin): RunnableFeature(_plugin), Listener {
   private fun manageParrot(parrot: Parrot) {
     parrot.addPotionEffect(PotionEffect(PotionEffectType.SPEED, Constants.TICKS_PER_SECOND * 999, 1))
     parrot.addPotionEffect(PotionEffect(PotionEffectType.HEALTH_BOOST, Constants.TICKS_PER_SECOND * 999, 2))
+    parrot.setSitting(false)
     if (parrot.owner == null) {
       parrot.owner = nearestPlayer(parrot)
       if (parrot.customName == null) {
@@ -75,6 +76,20 @@ class ParrotManager(_plugin: Plugin): RunnableFeature(_plugin), Listener {
     }
   }
 
+  private fun checkPlayer(player: Player) {
+    val info = NMS.getPlayerParrotInfo(player)
+    val hasPerchedParrot = info.hasAnyShoulderPerch()
+    if (hasPerchedParrot) {
+      if (!safePlayers.contains(player)) {
+        if (!player.hasPotionEffect(targetEffectType)) {
+          player.sendMessage("SQUAAAAAAWK! Yer comin' with me!") // TODO Get the parrot's name (from NMS) for this message
+          player.addPotionEffect(PotionEffect(PotionEffectType.LEVITATION, Constants.TICKS_PER_SECOND * 3, 100))
+          safePlayers.add(player, Constants.TICKS_PER_SECOND * 10L)
+        }
+      }
+    }
+  }
+
   override fun run() {
     if (!isEnabled()) {
       return
@@ -83,7 +98,11 @@ class ParrotManager(_plugin: Plugin): RunnableFeature(_plugin), Listener {
     for (parrot in getAllParrots()) {
       // Parrots do not sit. Parrots fly away into the night gallantly
       // with their owner in tow.
-      parrot.setSitting(false)
+      manageParrot(parrot)
+    }
+
+    for (player in Bukkit.getOnlinePlayers()) {
+      checkPlayer(player)
     }
 
   }
@@ -107,17 +126,7 @@ class ParrotManager(_plugin: Plugin): RunnableFeature(_plugin), Listener {
       return
     }
     val player = event.player
-    val info = NMS.getPlayerParrotInfo(player)
-    val hasPerchedParrot = info.hasAnyShoulderPerch()
-    if (hasPerchedParrot) {
-      if (!safePlayers.contains(player)) {
-        if (!player.hasPotionEffect(targetEffectType)) {
-          player.sendMessage("SQUAAAAAAWK! Yer comin' with me!") // TODO Get the parrot's name for this message
-          player.addPotionEffect(PotionEffect(PotionEffectType.LEVITATION, Constants.TICKS_PER_SECOND * 3, 100))
-          safePlayers.add(player, Constants.TICKS_PER_SECOND * 10L)
-        }
-      }
-    }
+    checkPlayer(player)
   }
 
 }
