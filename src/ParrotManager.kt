@@ -51,7 +51,7 @@ class ParrotManager(_plugin: Plugin): RunnableFeature(_plugin), Listener {
 
   override val name = "parrots"
 
-  override val description = "TBA"
+  override val description = "Parrots are automatically tamed and will try to fly off with their owner"
 
   override val taskPeriod = 3L * Constants.TICKS_PER_SECOND + 1L
 
