@@ -29,6 +29,9 @@ A Turtle's Troll also depends on the following two libraries.
 
 ### Version 1.16
 
+* A parrot on your shoulder will launch you into the air
+* Parrots will become attached to the nearest player automatically
+* Witches will sometimes attack by throwing parrots at you
 * Fixed a bug with **zombietrade**.
 
 ### Version 1.15
