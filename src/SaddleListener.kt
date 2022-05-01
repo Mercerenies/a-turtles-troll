@@ -55,20 +55,13 @@ class SaddleListener(
 
   private inner class SaddlePigsAndStriders(_chunk: Chunk) : ReplaceMobsRunnable(_chunk) {
 
-    override fun replaceWith(entity: Entity): EntityType? {
-      if ((entity.type == EntityType.PIG) || (entity.type == EntityType.STRIDER)) {
-        return entity.type
-      } else {
-        return null
-      }
-    }
+    override fun replaceWith(entity: Entity): EntityType? =
+      null
 
-    override fun onReplacementMob(entity: Entity) {
-      super.onReplacementMob(entity)
+    override fun onUnreplacedMob(entity: Entity) {
+      super.onUnreplacedMob(entity)
       if (entity is Steerable) {
         entity.setSaddle(true)
-      } else {
-        Bukkit.getLogger().warning("Non-steerable mob ${entity.type.name} encountered in SaddleListener")
       }
     }
 

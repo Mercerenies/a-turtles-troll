@@ -21,7 +21,9 @@ abstract class ReplaceMobsRunnable(val chunk: Chunk) : BukkitRunnable() {
     val entities = chunk.entities
     for (entity in entities) {
       val replacementType = replaceWith(entity)
-      if (replacementType != null) {
+      if (replacementType == null) {
+        onUnreplacedMob(entity)
+      } else {
         val newEntity = entity.location.world!!.spawnEntity(entity.location, replacementType)
         entity.remove()
         onReplacementMob(newEntity)
@@ -31,6 +33,8 @@ abstract class ReplaceMobsRunnable(val chunk: Chunk) : BukkitRunnable() {
 
   // Return null if the mob shouldn't be replaced
   abstract fun replaceWith(entity: Entity): EntityType?
+
+  open fun onUnreplacedMob(entity: Entity) {}
 
   open fun onReplacementMob(entity: Entity) {}
 
