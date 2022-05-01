@@ -1,12 +1,13 @@
 
 package com.mercerenies.turtletroll
 
-import com.mercerenies.turtletroll.feature.AbstractFeature
+import com.mercerenies.turtletroll.feature.RunnableFeature
 import com.mercerenies.turtletroll.feature.container.FeatureContainer
-import com.mercerenies.turtletroll.feature.container.ListenerContainer
+import com.mercerenies.turtletroll.feature.container.ManagerContainer
 import com.mercerenies.turtletroll.feature.builder.BuilderState
 import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 import com.mercerenies.turtletroll.nms.NMS
+import com.mercerenies.turtletroll.location.PlayerSelector
 
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
@@ -15,19 +16,30 @@ import org.bukkit.event.entity.EntityDeathEvent
 import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
 import org.bukkit.entity.EntityType
+import org.bukkit.entity.Entity
 import org.bukkit.entity.Parrot
 import org.bukkit.entity.Player
 import org.bukkit.plugin.Plugin
-import org.spigotmc.event.entity.EntityMountEvent
+import org.bukkit.Bukkit
 
-class ParrotListener(val plugin: Plugin): AbstractFeature(), Listener {
+class ParrotManager(_plugin: Plugin): RunnableFeature(_plugin), Listener {
 
   companion object : FeatureContainerFactory<FeatureContainer> {
 
+    val DISTANCE_SQUARED_LIMIT = 16384.0 // 128 blocks (squared)
+
     override fun create(state: BuilderState): FeatureContainer =
-      ListenerContainer(ParrotListener(state.plugin))
+      ManagerContainer(ParrotManager(state.plugin))
 
     private val targetEffectType: PotionEffectType = PotionEffectType.LEVITATION
+
+    fun getAllParrots(): List<Parrot> =
+      Bukkit.getWorlds().flatMap {
+        it.getEntitiesByClass(Parrot::class.java)
+      }
+
+    fun nearestPlayer(entity: Entity): Player? =
+      PlayerSelector.findNearestPlayer(entity.location, DISTANCE_SQUARED_LIMIT)
 
   }
 
@@ -35,7 +47,25 @@ class ParrotListener(val plugin: Plugin): AbstractFeature(), Listener {
 
   override val description = "TBA"
 
-  private val safePlayers = CooldownMemory<Player>(plugin);
+  override val taskPeriod = 3L * Constants.TICKS_PER_SECOND + 1L
+
+  private val safePlayers = CooldownMemory<Player>(plugin)
+
+  override fun run() {
+    if (!isEnabled()) {
+      return
+    }
+
+    for (parrot in getAllParrots()) {
+      if (parrot.owner == null) {
+        parrot.owner = nearestPlayer(parrot)
+      }
+      // Parrots do not sit. Parrots fly away into the night gallantly
+      // with their owner in tow.
+      parrot.setSitting(false)
+    }
+
+  }
 
   @EventHandler
   fun onPlayerMove(event: PlayerMoveEvent) {
