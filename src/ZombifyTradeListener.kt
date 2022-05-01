@@ -14,17 +14,43 @@ import org.bukkit.event.player.PlayerInteractEntityEvent
 import org.bukkit.inventory.MerchantInventory
 import org.bukkit.entity.Villager
 import org.bukkit.entity.Player
+import org.bukkit.entity.HumanEntity
 import org.bukkit.entity.ZombieVillager
+import org.bukkit.plugin.Plugin
+import org.bukkit.scheduler.BukkitRunnable
 
 import kotlin.collections.HashMap
 
-class ZombifyTradeListener() : AbstractFeature(), Listener {
+class ZombifyTradeListener(val plugin: Plugin) : AbstractFeature(), Listener {
 
   companion object : FeatureContainerFactory<FeatureContainer> {
 
-    override fun create(state: BuilderState): FeatureContainer =
-      ListenerContainer(ZombifyTradeListener())
+    val DELAY = 2L
 
+    override fun create(state: BuilderState): FeatureContainer =
+      ListenerContainer(ZombifyTradeListener(state.plugin))
+
+  }
+
+  private inner class DelayedZombify(
+    val player: HumanEntity,
+    val villager: Villager,
+  ) : BukkitRunnable() {
+    override fun run() {
+      if (playerUI[player] != null) {
+        // On the offchance that something else canceled the
+        // InventoryCloseEvent, we don't want to accidentally kill the
+        // villager and cause a stack overflow. So if we're still
+        // looking at a merchant inventory, don't do anything.
+        if (player.getOpenInventory().getTopInventory() !is MerchantInventory) {
+          val zombie = villager.world.spawn(villager.location, ZombieVillager::class.java)
+          zombie.villagerType = villager.villagerType
+          zombie.villagerProfession = villager.profession
+          villager.remove()
+          playerUI.remove(player)
+        }
+      }
+    }
   }
 
   private val playerUI = HashMap<Player, Villager>()
@@ -53,11 +79,12 @@ class ZombifyTradeListener() : AbstractFeature(), Listener {
     if (inv is MerchantInventory) {
       val target = playerUI[event.player]
       if (target != null) {
-        val zombie = target.world.spawn(target.location, ZombieVillager::class.java)
-        zombie.villagerType = target.villagerType
-        zombie.villagerProfession = target.profession
-        target.remove()
-        playerUI.remove(event.player)
+        // It looks like, at some point, the order of events changed
+        // so that, when this event is fired, the inventory is *still*
+        // up. So if we kill the villager right at this instant, it'll
+        // try to close the inventory and cause an infinite loop. So
+        // put a 2-frame delay on it and it should all be good.
+        DelayedZombify(event.player, target).runTaskLater(plugin, DELAY)
       }
     }
   }

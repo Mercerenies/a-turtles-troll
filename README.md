@@ -27,6 +27,10 @@ A Turtle's Troll also depends on the following two libraries.
 
 ## Changelog
 
+### Version 1.16
+
+* Fixed a bug with **zombietrade**.
+
 ### Version 1.15
 
 * All pigs and striders spawn with saddles and have adjusted speed
