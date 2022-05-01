@@ -28,7 +28,7 @@ class EggArrowListener(val chance: Double = 1.0) : AbstractFeature(), Listener {
 
   override val name = "eggarrow"
 
-  override val description = "Skeletons will sometimes throw eggs"
+  override val description = "Skeletons will always throw eggs"
 
   @EventHandler
   fun onProjectileLaunch(event: ProjectileLaunchEvent) {
