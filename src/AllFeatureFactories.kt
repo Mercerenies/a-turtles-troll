@@ -106,6 +106,7 @@ object AllFeatureFactories {
       NamedZombieListener,
       OldAgeListener,
       OvergrowthListenerFactory(OvergrowthListener::randomWood),
+      ParrotListener,
       PetPhantomManager,
       PillagerGunListener,
       PressurePlateFireListener,
