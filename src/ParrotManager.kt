@@ -12,6 +12,7 @@ import com.mercerenies.turtletroll.location.PlayerSelector
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerMoveEvent
+import org.bukkit.event.entity.EntitySpawnEvent
 import org.bukkit.event.entity.EntityDeathEvent
 import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
@@ -20,6 +21,7 @@ import org.bukkit.entity.Entity
 import org.bukkit.entity.Parrot
 import org.bukkit.entity.Player
 import org.bukkit.plugin.Plugin
+import org.bukkit.attribute.Attribute
 import org.bukkit.Bukkit
 
 class ParrotManager(_plugin: Plugin): RunnableFeature(_plugin), Listener {
@@ -41,6 +43,10 @@ class ParrotManager(_plugin: Plugin): RunnableFeature(_plugin), Listener {
     fun nearestPlayer(entity: Entity): Player? =
       PlayerSelector.findNearestPlayer(entity.location, DISTANCE_SQUARED_LIMIT)
 
+    val DEFAULT_NAME_SOURCE = NameSource.FromList(listOf(
+      "Iago", "Polly", "Captain Flint", "Blu",
+    ))
+
   }
 
   override val name = "parrots"
@@ -51,18 +57,46 @@ class ParrotManager(_plugin: Plugin): RunnableFeature(_plugin), Listener {
 
   private val safePlayers = CooldownMemory<Player>(plugin)
 
+  // Might turn this into a constructor arg later
+  private val nameSource = DEFAULT_NAME_SOURCE
+
+  private fun manageParrot(parrot: Parrot) {
+    parrot.addPotionEffect(PotionEffect(PotionEffectType.SPEED, Constants.TICKS_PER_SECOND * 999, 1))
+    parrot.addPotionEffect(PotionEffect(PotionEffectType.HEALTH_BOOST, Constants.TICKS_PER_SECOND * 999, 2))
+    if (parrot.owner == null) {
+      parrot.owner = nearestPlayer(parrot)
+      if (parrot.customName == null) {
+        parrot.customName = nameSource.sampleName()
+      }
+      val maxHealth = parrot.getAttribute(Attribute.GENERIC_MAX_HEALTH)?.getValue()
+      if (maxHealth != null) {
+        parrot.setHealth(maxHealth)
+      }
+    }
+  }
+
   override fun run() {
     if (!isEnabled()) {
       return
     }
 
     for (parrot in getAllParrots()) {
-      if (parrot.owner == null) {
-        parrot.owner = nearestPlayer(parrot)
-      }
       // Parrots do not sit. Parrots fly away into the night gallantly
       // with their owner in tow.
       parrot.setSitting(false)
+    }
+
+  }
+
+  @EventHandler
+  fun onEntitySpawn(event: EntitySpawnEvent) {
+    if (!isEnabled()) {
+      return
+    }
+
+    val entity = event.entity
+    if (entity is Parrot) {
+      manageParrot(entity)
     }
 
   }
@@ -78,7 +112,7 @@ class ParrotManager(_plugin: Plugin): RunnableFeature(_plugin), Listener {
     if (hasPerchedParrot) {
       if (!safePlayers.contains(player)) {
         if (!player.hasPotionEffect(targetEffectType)) {
-          player.sendMessage("SQUAAAAAAWK! Yer comin' with me!")
+          player.sendMessage("SQUAAAAAAWK! Yer comin' with me!") // TODO Get the parrot's name for this message
           player.addPotionEffect(PotionEffect(PotionEffectType.LEVITATION, Constants.TICKS_PER_SECOND * 3, 100))
           safePlayers.add(player, Constants.TICKS_PER_SECOND * 10L)
         }
