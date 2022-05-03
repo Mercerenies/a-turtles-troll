@@ -33,6 +33,10 @@ A Turtle's Troll also depends on the following two libraries.
 * Parrots will become attached to the nearest player automatically
 * Witches will sometimes attack by throwing parrots at you
 * Fixed a bug with **zombietrade**.
+* Updated the temperature scaling for easier use as a scoreboard.
+* Fixed temperature scoreboard to take into consideration held items.
+* Fixed temperature scoreboard to take into consideration the Nether
+  and End.
 
 ### Version 1.15
 
