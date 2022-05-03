@@ -7,6 +7,7 @@ import com.mercerenies.turtletroll.feature.container.ManagerContainer
 import com.mercerenies.turtletroll.feature.builder.BuilderState
 import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 import com.mercerenies.turtletroll.util.linearRescale
+import com.mercerenies.turtletroll.util.lerp
 
 import org.bukkit.entity.Player
 import org.bukkit.event.Listener
@@ -18,6 +19,7 @@ import org.bukkit.Bukkit
 import org.bukkit.World
 import org.bukkit.Material
 
+import kotlin.math.min
 import kotlin.math.max
 
 class TemperatureManager(plugin: Plugin) : RunnableFeature(plugin), Listener {
@@ -71,17 +73,34 @@ class TemperatureManager(plugin: Plugin) : RunnableFeature(plugin), Listener {
       HOT_ITEMS.contains(player.inventory.itemInMainHand.type) ||
         HOT_ITEMS.contains(player.inventory.itemInOffHand.type)
 
+    private fun getAdjustedTempForWorld(env: World.Environment): Double? =
+      when (env) {
+        World.Environment.NETHER -> lerp(COLD_TEMPERATURE, HOT_TEMPERATURE, 0.8)
+        World.Environment.THE_END -> lerp(COLD_TEMPERATURE, HOT_TEMPERATURE, 0.3)
+        else -> null
+      }
+
   }
 
   private class TemperatureObjectiveContainer() : ObjectiveContainer(SCOREBOARD_NAME, "Temperature") {
 
     fun update() {
       for (player in Bukkit.getOnlinePlayers()) {
-        val temp = player.location.block.getTemperature()
-        // We define COLD_TEMPERATURE to be 0C and HOT_TEMPERATURE to
-        // be 100C, just so we have some point of reference for the
+        var temp = player.location.block.getTemperature()
+        val adjustedTemp = getAdjustedTempForWorld(player.location.world?.environment ?: World.Environment.NORMAL)
+        if (adjustedTemp != null) {
+          temp = adjustedTemp
+        }
+        // We define COLD_TEMPERATURE to be -10 and HOT_TEMPERATURE to
+        // be 10, just so we have some point of reference for the
         // scale.
-        val scaledTemp = linearRescale(COLD_TEMPERATURE, HOT_TEMPERATURE, 0.0, 100.0, temp)
+        var scaledTemp = linearRescale(COLD_TEMPERATURE, HOT_TEMPERATURE, -10.0, 10.0, temp)
+        if (isPlayerSafeFromCold(player)) {
+          scaledTemp = max(scaledTemp, -9.0)
+        }
+        if (isPlayerSafeFromHot(player)) {
+          scaledTemp = min(scaledTemp, 9.0)
+        }
         this.objective.getScore(player.name).score = scaledTemp.toInt()
       }
     }

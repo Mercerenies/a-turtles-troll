@@ -27,7 +27,7 @@ A Turtle's Troll also depends on the following two libraries.
 
 ## Changelog
 
-### Version 1.16
+### Version 1.15.1
 
 * A parrot on your shoulder will launch you into the air
 * Parrots will become attached to the nearest player automatically
