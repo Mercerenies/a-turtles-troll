@@ -10,20 +10,18 @@ import org.bukkit.entity.Item
 
 object AllItems {
 
-  private val allMaterials = Material.values().toList()
+  // Note: I make no guarantees on the *order* of this list.
+  val allMaterials: List<Material> = Material.values().toList()
+
+  @Suppress("DEPRECATION")
+  val allItems: List<Material> =
+    allMaterials.filter { it.isItem() && !it.isLegacy() }
 
   private fun sampleUnchecked(): Material =
     allMaterials.sample()!!
 
-  fun sample(): Material {
-    while (true) {
-      val test = sampleUnchecked()
-      @Suppress("DEPRECATION")
-      if ((test.isItem()) && (!test.isLegacy())) {
-        return test
-      }
-    }
-  }
+  fun sample(): Material =
+    allItems.sample()!!
 
   fun getRarity(item: Material): Rarity =
     when (item) {
