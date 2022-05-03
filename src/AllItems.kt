@@ -74,6 +74,23 @@ object AllItems {
       else                             -> Rarity.COMMON
     }
 
+  // This is a very crude way to generate a name for a material. As we
+  // find materials whose Bukkit name is not intuitive, we can
+  // override them here on a case-by-case basis.
+  fun getName(material: Material): String =
+    material.toString().lowercase().replace(Regex("""(^|_)\w""")) {
+      " " + it.value.substring(it.value.length - 1).uppercase()
+    }.trim()
+
+  fun getName(itemStack: ItemStack): String {
+    val itemMeta = itemStack.itemMeta
+    if ((itemMeta != null) && (itemMeta.hasDisplayName())) {
+      return itemMeta.getDisplayName()
+    } else {
+      return this.getName(itemStack.type)
+    }
+  }
+
   fun give(entity: HumanEntity, vararg items: ItemStack) {
     val remaining = entity.inventory.addItem(*items)
     for (remainingItem in remaining.values) {
