@@ -20,6 +20,7 @@ import com.mercerenies.turtletroll.gravestone.BedtimeManager
 import com.mercerenies.turtletroll.spillage.SpillageListener
 import com.mercerenies.turtletroll.falling.SandAttackRunnable
 import com.mercerenies.turtletroll.cookie.FreeCookieRunnable
+import com.mercerenies.turtletroll.cookie.CookieListenerFactory
 import com.mercerenies.turtletroll.recipe.DirtRecipeFeature
 import com.mercerenies.turtletroll.recipe.StoneRecipeDeleter
 import com.mercerenies.turtletroll.angel.WeepingAngelManagerFactory
@@ -75,6 +76,7 @@ object AllFeatureFactories {
       ChargedCreeperListener,
       ChickenDamageListener,
       ContagiousMossManager,
+      CookieListenerFactory,
       DeathScoreboardListener,
       DirtRecipeFeature,
       DoorDamageListener,
