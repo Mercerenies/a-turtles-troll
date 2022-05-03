@@ -142,7 +142,7 @@ class CakeListener(
       val material = block.type
       if ((isCake(material)) && (event.getAction() == Action.RIGHT_CLICK_BLOCK)) {
         val effect = chooseEffect(event.player)
-        effect.onEat(block.location, MealType.Cake, event.player)
+        effect.onEat(block.location, event.player)
         cakesEatenCounter.eat(event.player)
         if (effect.cancelsDefault()) {
           event.setCancelled(true)

@@ -10,8 +10,8 @@ object NoEffect : CakeEffect {
 
   override fun cancelsDefault(): Boolean = false
 
-  override fun onEat(loc: Location, mealType: MealType, player: Player) {
-    player.sendMessage("That ${mealType.mealName} tastes pretty good.")
+  override fun onEat(loc: Location, player: Player) {
+    player.sendMessage("That cake tastes pretty good.")
   }
 
 }

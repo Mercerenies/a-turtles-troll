@@ -6,7 +6,6 @@ import com.mercerenies.turtletroll.Weight
 import org.bukkit.entity.*
 import org.bukkit.plugin.Plugin
 
-
 // Helper for common cake-eating effects
 object CakeEat {
 
