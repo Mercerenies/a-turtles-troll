@@ -27,6 +27,10 @@ A Turtle's Troll also depends on the following two libraries.
 
 ## Changelog
 
+### Version 1.16
+
+* Fixed a bug with wandering trader item generation
+
 ### Version 1.15.1
 
 * A parrot on your shoulder will launch you into the air
