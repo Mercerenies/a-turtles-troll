@@ -46,6 +46,6 @@ class FortunesFile(dataPath: String) : NameSource {
   private val impl: NameSource = NameSource.FromList(dataSource)
 
   override fun sampleName(): String =
-    impl.sampleName()
+    impl.sampleName().trim()
 
 }
