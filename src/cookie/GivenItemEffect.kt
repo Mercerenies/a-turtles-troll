@@ -60,6 +60,16 @@ abstract class GivenItemEffect(private val plugin: Plugin) : CookieEffect {
 
   }
 
+  class TenMoreCookies(_plugin: Plugin) : GivenItemEffect(_plugin) {
+
+    override fun itemName(item: ItemStack): String =
+      "ten more cookies"
+
+    override fun chooseItem(): ItemStack =
+      ItemStack(Material.COOKIE, 10)
+
+  }
+
   private class GiveToPlayer(val player: Player, val itemStack: ItemStack) : BukkitRunnable() {
     override fun run() {
       AllItems.give(player, itemStack)
