@@ -5,6 +5,7 @@ import com.mercerenies.turtletroll.ext.*
 import com.mercerenies.turtletroll.AllItems
 import com.mercerenies.turtletroll.Rarity
 import com.mercerenies.turtletroll.BookBuilder
+import com.mercerenies.turtletroll.NameSource
 
 import org.bukkit.Location
 import org.bukkit.Material
@@ -12,8 +13,8 @@ import org.bukkit.inventory.ItemStack
 import org.bukkit.entity.Player
 
 class FortuneEffect(
-  private val authors: List<String>,
-  private val fortunes: List<String>,
+  private val authors: NameSource,
+  private val fortunes: NameSource,
 ) : CookieEffect {
 
   companion object {
@@ -25,24 +26,21 @@ class FortuneEffect(
     )
 
     val DEFAULT_FORTUNES = listOf(
-      "Example Fortune :)",
+      "Example Fortune :) lorem ipsum dolor sit amet test test test abc def hi there long line of text :)",
     )
 
-    val Default = FortuneEffect(DEFAULT_AUTHORS, DEFAULT_FORTUNES)
+    val Default = FortuneEffect(
+      NameSource.FromList(DEFAULT_AUTHORS),
+      NameSource.FromList(DEFAULT_FORTUNES),
+    )
 
-  }
-
-  init {
-    if ((authors.size == 0) || (fortunes.size == 0)) {
-      throw IllegalArgumentException("Empty list given to FortuneEffect")
-    }
   }
 
   private fun chooseAuthor(): String =
-    authors.sample()!!
+    authors.sampleName()
 
   private fun chooseFortune(): String =
-    fortunes.sample()!!
+    fortunes.sampleName()
 
   private fun makeBook(fortune: String): ItemStack {
     val title = "Your Fortune"
