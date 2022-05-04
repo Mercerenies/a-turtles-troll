@@ -21,8 +21,10 @@ object CookieEat {
     Weight(GivenItemEffect.AnyNonEpicItem(plugin), 2.0),
     Weight(GivenItemEffect.AnotherCookie(plugin), 1.0),
     Weight(GivenItemEffect.TwoMoreCookies(plugin), 1.0),
-    Weight(TwoSilverfishSpawnMobsEffect, 100.0),
-    Weight(OneCreeperSpawnMobsEffect, 100.0),
+    Weight(TwoSilverfishSpawnMobsEffect, 1.0),
+    Weight(OneCreeperSpawnMobsEffect, 1.0),
+    Weight(TeleportToEffect.ToWorldSpawn(plugin), 100.0),
+    Weight(TeleportToEffect.ToPlayerSpawn(plugin), 100.0),
     Weight(defaultFortuneEffect(), 2.0),
     // Status Effects (sum = 1.0)
     Weight(ApplyPotionEffect("Absorption", PotionEffectType.ABSORPTION), 0.031),
