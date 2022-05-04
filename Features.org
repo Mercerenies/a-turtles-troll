@@ -102,6 +102,8 @@
    + eggdrop :: Several mobs will drop eggs when killed
 ** COOKIE FEATURES
    + freecookie :: Every player gets a free cookie at dawn and at dusk
+   + cookies :: Eating a cookie gives the player one of several
+                effects at random
 ** BLOCK DROP FEATURES
    + dirtstacks :: All blocks have a chance of dropping 64 dirt
                    instead of the intended drop
@@ -216,21 +218,6 @@
   + Killing one vector saves everyone
   + Can we make the lava haste force you to move forward?
 ** HATCRAFTER'S IDEAS
-   + Cookies, when eaten, have a random effect (lower numbered effects
-     are more likely)
-     - Player gets a random item (**any** item)
-     - A piece of paper is given to the player with a fortune on it
-     - A cookie is given to the player
-     - The player gets a random first-level potion effect applied to
-       them
-     - The player gets the effect of some other food item at random
-     - Two silverfish spawn by the player
-     - The player is teleported to their spawn point
-     - The player is teleported to the world spawn point
-     - A creeper is spawned on the player
-     - All the player's empty inventory slots are filled with dirt
-     - The player dies
-     - All the player's inventory slots are filled with dirt
    + Snowballs have reverse knockback
    + Grass spread is slower
    + Polar bears have Haste 3
