@@ -1,6 +1,9 @@
 
 package com.mercerenies.turtletroll.mimic
 
+import com.mercerenies.turtletroll.gravestone.CustomDeathMessageRegistry
+import com.mercerenies.turtletroll.gravestone.CustomDeathMessage
+import com.mercerenies.turtletroll.gravestone.Mimic
 import com.mercerenies.turtletroll.feature.AbstractFeature
 import com.mercerenies.turtletroll.feature.container.FeatureContainer
 import com.mercerenies.turtletroll.feature.container.ListenerContainer
@@ -26,9 +29,10 @@ import kotlin.random.Random
 
 class MimicListener(
   val plugin: Plugin,
+  private val deathRegistry: CustomDeathMessageRegistry,
 ) : AbstractFeature(), Listener {
 
-  companion object : FeatureContainerFactory<FeatureContainer> {
+  companion object {
     val KILL_DELAY = Constants.TICKS_PER_SECOND
 
     val SAFETY_RADIUS = 8
@@ -39,23 +43,22 @@ class MimicListener(
       EntityType.STRAY, EntityType.HUSK,
     )
 
-    override fun create(state: BuilderState): FeatureContainer =
-      ListenerContainer(MimicListener(state.plugin))
-
   }
 
   private inner class KillPlayerRunnable(val player: Player) : BukkitRunnable() {
+
+    val message = CustomDeathMessage(
+      Mimic,
+      "${player.getDisplayName()} was eaten by a Mimic.",
+    )
+
     override fun run() {
-      deathTick = true
-      try {
+      deathRegistry.withCustomDeathMessage(message) {
         player.damage(9999.0, null)
-      } finally {
-        deathTick = false
       }
     }
-  }
 
-  private var deathTick: Boolean = false // For getting a custom death message
+  }
 
   override val name = "mimics"
 
@@ -93,16 +96,6 @@ class MimicListener(
       KillPlayerRunnable(event.player).runTaskLater(plugin, KILL_DELAY.toLong())
     }
 
-  }
-
-  @EventHandler
-  fun onPlayerDeath(event: PlayerDeathEvent) {
-    if (!isEnabled()) {
-      return
-    }
-    if (deathTick) {
-      event.setDeathMessage("${event.entity.getDisplayName()} was eaten by a Mimic.")
-    }
   }
 
 }

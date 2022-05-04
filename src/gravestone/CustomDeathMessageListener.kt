@@ -43,7 +43,7 @@ class CustomDeathMessageListener(
     val DEATH_MESSAGE_KEY = "com.mercerenies.turtletroll.gravestone.CustomDeathMessageListener.DEATH_MESSAGE_KEY"
 
     override fun create(state: BuilderState): FeatureContainer {
-      val listener = DeathScoreboardListener(state.plugin, state.dataStore)
+      val listener = CustomDeathMessageListener(state.plugin)
       state.registerSharedData(DEATH_MESSAGE_KEY, listener)
       return object : AbstractFeatureContainer() {
         // Note: *Not* a feature. Just a listener. ListenerContainer

@@ -13,7 +13,7 @@ import com.mercerenies.turtletroll.transformed.RavagerSpawnerListener
 import com.mercerenies.turtletroll.transformed.DrownedSpawnerListener
 import com.mercerenies.turtletroll.durability.DoorDamageListener
 import com.mercerenies.turtletroll.durability.ButtonDamageListener
-import com.mercerenies.turtletroll.mimic.MimicListener
+import com.mercerenies.turtletroll.mimic.MimicListenerFactory
 import com.mercerenies.turtletroll.gravestone.CustomDeathMessageListener
 import com.mercerenies.turtletroll.gravestone.GravestoneListener
 import com.mercerenies.turtletroll.gravestone.DeathScoreboardListener
@@ -105,7 +105,6 @@ object AllFeatureFactories {
       LavaLaunchListener,
       LevitationListener,
       LlamaHunterManager,
-      MimicListener,
       NamedZombieListener,
       OldAgeListener,
       OvergrowthListenerFactory(OvergrowthListener::randomWood),
@@ -144,6 +143,7 @@ object AllFeatureFactories {
       ElectricWaterListenerFactory(PumpkinSlownessManager.PUMPKIN_FEATURE_KEY),
       // Custom death message and the things that depend on it
       CustomDeathMessageListener,
+      MimicListenerFactory(CustomDeathMessageListener.DEATH_MESSAGE_KEY),
     )
 
   fun createComposite(builderState: BuilderState): FeatureContainer {
