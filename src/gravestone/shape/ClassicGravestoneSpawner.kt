@@ -1,5 +1,7 @@
 
-package com.mercerenies.turtletroll.gravestone
+package com.mercerenies.turtletroll.gravestone.shape
+
+import com.mercerenies.turtletroll.gravestone.*
 
 import org.bukkit.block.Block
 import org.bukkit.block.BlockFace

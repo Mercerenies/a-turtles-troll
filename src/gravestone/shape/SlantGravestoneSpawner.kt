@@ -1,5 +1,7 @@
 
-package com.mercerenies.turtletroll.gravestone
+package com.mercerenies.turtletroll.gravestone.shape
+
+import com.mercerenies.turtletroll.gravestone.*
 
 import org.bukkit.block.Block
 import org.bukkit.block.BlockFace
@@ -10,19 +12,18 @@ import org.bukkit.block.`data`.`type`.Slab
 import org.bukkit.block.`data`.Bisected
 import org.bukkit.Material
 
-object CoreGravestoneSpawner : GravestoneSpawner() {
+object SlantGravestoneSpawner : GravestoneSpawner() {
 
   override fun spawnGravestone(centerBlock: Block, inscriptions: Inscriptions, rotation: Rotation) {
 
     // The stone itself
-    //replaceWithStone(centerBlock)
-    replaceWithStone(centerBlock.location.clone().add(rotation.vector(0, 1, 0)).block)
-    //replaceWithStone(centerBlock.location.clone().add(rotation.vector(0, 2, 0)).block)
-    replaceWithSlab(centerBlock.location.clone().add(rotation.vector(0, 0, 1)).block, Bisected.Half.TOP)
-    replaceWithSlab(centerBlock.location.clone().add(rotation.vector(0, 1, 1)).block, Bisected.Half.BOTTOM)
-    replaceWithStair(centerBlock.location.clone().add(rotation.vector(0, 2, 1)).block, Bisected.Half.TOP, BlockFace.SOUTH)
-    replaceWithStair(centerBlock.location.clone().add(rotation.vector(0, 0, -1)).block, Bisected.Half.BOTTOM, BlockFace.NORTH)
-    replaceWithSlab(centerBlock.location.clone().add(rotation.vector(0, 1, -1)).block, Bisected.Half.TOP)
+    replaceWithStone(centerBlock)
+    replaceWithStone(centerBlock.location.clone().add(rotation.vector(0, 1,  0)).block)
+    //replaceWithStone(centerBlock.location.clone().add(rotation.vector(0, 2,  0)).block)
+    replaceWithStone(centerBlock.location.clone().add(rotation.vector(0, 0,  1)).block)
+    replaceWithStair(centerBlock.location.clone().add(rotation.vector(0, 1,  1)).block, Bisected.Half.BOTTOM, BlockFace.NORTH)
+    replaceWithStone(centerBlock.location.clone().add(rotation.vector(0, 0, -1)).block)
+    replaceWithStone(centerBlock.location.clone().add(rotation.vector(0, 1, -1)).block)
     replaceWithSlab(centerBlock.location.clone().add(rotation.vector(0, 2, -1)).block, Bisected.Half.BOTTOM)
 
     // Now the sign
