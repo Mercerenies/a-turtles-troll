@@ -5,6 +5,7 @@ import com.mercerenies.turtletroll.Constants
 import com.mercerenies.turtletroll.Worlds
 
 import org.bukkit.Location
+import org.bukkit.Sound
 import org.bukkit.plugin.Plugin
 import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
@@ -50,11 +51,18 @@ abstract class TeleportToEffect(private val plugin: Plugin) : CookieEffect {
 
   private inner class TeleportPlayer(val player: Player, val loc: Location) : BukkitRunnable() {
     override fun run() {
+      val sound = this@TeleportToEffect.sound
       player.teleport(loc, cause)
+      if (sound != null) {
+        loc.world!!.playSound(loc, sound, 1.0f, 0.0f)
+      }
     }
   }
 
   abstract val message: String
+
+  open val sound: Sound?
+    get() = null
 
   open val cause: PlayerTeleportEvent.TeleportCause
     get() = PlayerTeleportEvent.TeleportCause.PLUGIN
@@ -65,7 +73,11 @@ abstract class TeleportToEffect(private val plugin: Plugin) : CookieEffect {
 
   override fun onEat(stack: ItemStack, player: Player) {
     val target = getTarget(player)
+    val sound = this.sound
     player.sendMessage(message)
+    if (sound != null) {
+      player.world.playSound(player.location, sound, 1.0f, 0.0f)
+    }
     TeleportPlayer(player, target).runTaskLater(plugin, DELAY)
   }
 
