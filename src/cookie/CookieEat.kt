@@ -7,6 +7,8 @@ import com.mercerenies.turtletroll.storage.FortunesFile
 
 import org.bukkit.Bukkit
 import org.bukkit.entity.*
+import org.bukkit.Material
+import org.bukkit.inventory.ItemStack
 import org.bukkit.plugin.Plugin
 import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
@@ -23,8 +25,10 @@ object CookieEat {
     Weight(GivenItemEffect.TwoMoreCookies(plugin), 1.0),
     Weight(TwoSilverfishSpawnMobsEffect, 1.0),
     Weight(OneCreeperSpawnMobsEffect, 1.0),
-    Weight(TeleportToEffect.ToWorldSpawn(plugin), 100.0),
-    Weight(TeleportToEffect.ToPlayerSpawn(plugin), 100.0),
+    Weight(TeleportToEffect.ToWorldSpawn(plugin), 1.0),
+    Weight(TeleportToEffect.ToPlayerSpawn(plugin), 1.0),
+    Weight(fillWithDirtEffect(plugin), 100.0),
+    Weight(fillAllWithDirtEffect(plugin), 100.0),
     Weight(defaultFortuneEffect(), 2.0),
     // Status Effects (sum = 1.0)
     Weight(ApplyPotionEffect("Absorption", PotionEffectType.ABSORPTION), 0.031),
@@ -71,5 +75,21 @@ object CookieEat {
     }
     return FortuneEffect(authors, fortunes)
   }
+
+  private fun fillWithDirtEffect(plugin: Plugin): FillInventorySlotsEffect =
+    FillInventorySlotsEffect.Constant(
+      plugin,
+      "That cookie was filled with dirt!",
+      ItemStack(Material.DIRT, 64),
+      replacesAll = false,
+    )
+
+  private fun fillAllWithDirtEffect(plugin: Plugin): FillInventorySlotsEffect =
+    FillInventorySlotsEffect.Constant(
+      plugin,
+      "That cookie was filled with far too much dirt!",
+      ItemStack(Material.DIRT, 64),
+      replacesAll = true,
+    )
 
 }
