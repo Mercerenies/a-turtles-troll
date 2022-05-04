@@ -18,7 +18,9 @@ object CookieEat {
   fun defaultEffects(plugin: Plugin) = listOf(
     Weight(NoEffect, 3.0),
     Weight(GivenItemEffect.AnyNonEpicItem, 2.0),
-    Weight(defaultFortuneEffect(), 10.0),
+    Weight(GivenItemEffect.AnotherCookie, 100.0),
+    Weight(GivenItemEffect.TwoMoreCookies, 100.0),
+    Weight(defaultFortuneEffect(), 2.0),
     // Status Effects (sum = 1.0)
     Weight(ApplyPotionEffect("Absorption", PotionEffectType.ABSORPTION), 0.031),
     Weight(ApplyPotionEffect("Damage Resistance", PotionEffectType.DAMAGE_RESISTANCE), 0.031),

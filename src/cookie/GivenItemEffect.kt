@@ -36,10 +36,36 @@ abstract class GivenItemEffect : CookieEffect {
 
   }
 
+  object AnotherCookie : GivenItemEffect() {
+
+    override fun itemName(item: ItemStack): String =
+      "another cookie"
+
+    override fun chooseItem(): ItemStack =
+      ItemStack(Material.COOKIE, 1)
+
+  }
+
+  object TwoMoreCookies : GivenItemEffect() {
+
+    override fun itemName(item: ItemStack): String =
+      "two more cookies"
+
+    override fun chooseItem(): ItemStack =
+      ItemStack(Material.COOKIE, 2)
+
+  }
+
   abstract fun chooseItem(): ItemStack?
 
   open val fallback: CookieEffect
     get() = NoEffect
+
+  open fun itemName(item: ItemStack): String {
+    val itemName = AllItems.getName(item)
+    val article = if (startsWithVowel(itemName)) "an" else "a"
+    return "${article} ${itemName}"
+  }
 
   open override fun cancelsDefault(): Boolean = false
 
@@ -48,9 +74,8 @@ abstract class GivenItemEffect : CookieEffect {
     if (replacementItem == null) {
       fallback.onEat(stack, player)
     } else {
-      val itemName = AllItems.getName(replacementItem)
-      val article = if (startsWithVowel(itemName)) "an" else "a"
-      player.sendMessage("That cookie had ${article} ${itemName} inside it!")
+      val itemName = this.itemName(replacementItem)
+      player.sendMessage("That cookie had ${itemName} inside it!")
       AllItems.give(player, replacementItem)
     }
   }
