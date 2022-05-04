@@ -13,6 +13,8 @@ import com.mercerenies.turtletroll.sample
 import com.mercerenies.turtletroll.Constants
 import com.mercerenies.turtletroll.mimic.MimicListener
 import com.mercerenies.turtletroll.location.BlockSelector
+import com.mercerenies.turtletroll.gravestone.CustomDeathMessageRegistry
+import com.mercerenies.turtletroll.gravestone.Cookie
 
 import org.bukkit.entity.Player
 import org.bukkit.entity.EntityType
@@ -33,6 +35,7 @@ import kotlin.math.pow
 class CookieListener(
   val plugin: Plugin,
   val effects: List<Weight<CookieEffect>>,
+  private val deathRegistry: CustomDeathMessageRegistry,
 ) : AbstractFeature(), Listener {
 
   companion object {

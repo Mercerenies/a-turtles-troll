@@ -77,7 +77,6 @@ object AllFeatureFactories {
       ChargedCreeperListener,
       ChickenDamageListener,
       ContagiousMossManager,
-      CookieListenerFactory,
       DeathScoreboardListener,
       DirtRecipeFeature,
       DoorDamageListener,
@@ -140,6 +139,7 @@ object AllFeatureFactories {
       ElectricWaterListenerFactory(PumpkinSlownessManager.PUMPKIN_FEATURE_KEY),
       // Custom death message and the things that depend on it
       CustomDeathMessageListener,
+      CookieListenerFactory.Default(CustomDeathMessageListener.DEATH_MESSAGE_KEY),
       MimicListenerFactory(CustomDeathMessageListener.DEATH_MESSAGE_KEY),
       OldAgeListenerFactory(CustomDeathMessageListener.DEATH_MESSAGE_KEY),
       TemperatureManagerFactory(CustomDeathMessageListener.DEATH_MESSAGE_KEY),

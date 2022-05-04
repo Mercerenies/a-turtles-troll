@@ -106,6 +106,11 @@ object OldAge : CauseOfDeath {
     "Got ooooold"
 }
 
+object Cookie : CauseOfDeath {
+  override fun toInscription(): String =
+    "Death cookie"
+}
+
 data class Vanilla(val cause: EntityDamageEvent.DamageCause) : CauseOfDeath {
 
   override fun toInscription(): String =
