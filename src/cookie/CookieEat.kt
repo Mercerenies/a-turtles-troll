@@ -14,11 +14,15 @@ import org.bukkit.potion.PotionEffectType
 // Helper for common cookie-eating effects
 object CookieEat {
 
+  // TODO Effect for "The player gets the effect of some other food item at random"
+
   fun defaultEffects(plugin: Plugin) = listOf(
     Weight(NoEffect, 3.0),
     Weight(GivenItemEffect.AnyNonEpicItem(plugin), 2.0),
-    Weight(GivenItemEffect.AnotherCookie(plugin), 100.0),
-    Weight(GivenItemEffect.TwoMoreCookies(plugin), 100.0),
+    Weight(GivenItemEffect.AnotherCookie(plugin), 1.0),
+    Weight(GivenItemEffect.TwoMoreCookies(plugin), 1.0),
+    Weight(TwoSilverfishSpawnMobsEffect, 100.0),
+    Weight(OneCreeperSpawnMobsEffect, 100.0),
     Weight(defaultFortuneEffect(), 2.0),
     // Status Effects (sum = 1.0)
     Weight(ApplyPotionEffect("Absorption", PotionEffectType.ABSORPTION), 0.031),
