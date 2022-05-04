@@ -14,6 +14,7 @@ import com.mercerenies.turtletroll.transformed.DrownedSpawnerListener
 import com.mercerenies.turtletroll.durability.DoorDamageListener
 import com.mercerenies.turtletroll.durability.ButtonDamageListener
 import com.mercerenies.turtletroll.mimic.MimicListener
+import com.mercerenies.turtletroll.gravestone.CustomDeathMessageListener
 import com.mercerenies.turtletroll.gravestone.GravestoneListener
 import com.mercerenies.turtletroll.gravestone.DeathScoreboardListener
 import com.mercerenies.turtletroll.gravestone.BedtimeManager
@@ -141,6 +142,8 @@ object AllFeatureFactories {
       PumpkinSlownessManager,
       BreakLightOnSightListenerFactory(PumpkinSlownessManager.PUMPKIN_FEATURE_KEY),
       ElectricWaterListenerFactory(PumpkinSlownessManager.PUMPKIN_FEATURE_KEY),
+      // Custom death message and the things that depend on it
+      CustomDeathMessageListener,
     )
 
   fun createComposite(builderState: BuilderState): FeatureContainer {
