@@ -22,7 +22,8 @@ class ApplyPotionEffect(
 
   override fun cancelsDefault(): Boolean = false
 
-  override fun onEat(stack: ItemStack, player: Player) {
+  override fun onEat(action: CookieEatenAction) {
+    val player = action.player
     player.sendMessage("The cookie tastes like ${effectName}!")
     player.addPotionEffect(potionEffect)
   }

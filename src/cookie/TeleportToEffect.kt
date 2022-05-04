@@ -71,7 +71,8 @@ abstract class TeleportToEffect(private val plugin: Plugin) : CookieEffect {
 
   open override fun cancelsDefault(): Boolean = false
 
-  override fun onEat(stack: ItemStack, player: Player) {
+  override fun onEat(action: CookieEatenAction) {
+    val player = action.player
     val target = getTarget(player)
     val sound = this.sound
     player.sendMessage(message)

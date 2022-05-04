@@ -79,14 +79,14 @@ abstract class GivenItemEffect(private val plugin: Plugin) : CookieEffect {
 
   open override fun cancelsDefault(): Boolean = false
 
-  override fun onEat(stack: ItemStack, player: Player) {
+  override fun onEat(action: CookieEatenAction) {
     val replacementItem = chooseItem()
     if (replacementItem == null) {
-      fallback.onEat(stack, player)
+      fallback.onEat(action)
     } else {
       val itemName = this.itemName(replacementItem)
-      player.sendMessage("That cookie had ${itemName} inside it!")
-      GiveToPlayer(player, replacementItem).runTaskLater(plugin, DELAY.toLong())
+      action.player.sendMessage("That cookie had ${itemName} inside it!")
+      GiveToPlayer(action.player, replacementItem).runTaskLater(plugin, DELAY.toLong())
     }
   }
 

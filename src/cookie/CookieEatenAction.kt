@@ -5,10 +5,8 @@ import org.bukkit.Location
 import org.bukkit.inventory.ItemStack
 import org.bukkit.entity.Player
 
-interface CookieEffect {
-
-  fun cancelsDefault(): Boolean
-
-  fun onEat(action: CookieEatenAction)
-
-}
+// The arguments passed to CookieEffect.onEat
+data class CookieEatenAction(
+  val stack: ItemStack,
+  val player: Player,
+)

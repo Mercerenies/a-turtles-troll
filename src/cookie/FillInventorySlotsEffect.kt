@@ -56,7 +56,8 @@ abstract class FillInventorySlotsEffect(private val plugin: Plugin) : CookieEffe
 
   open override fun cancelsDefault(): Boolean = false
 
-  override fun onEat(stack: ItemStack, player: Player) {
+  override fun onEat(action: CookieEatenAction) {
+    val player = action.player
     player.sendMessage(message)
     FillRunnable(player).runTaskLater(plugin, DELAY.toLong())
   }

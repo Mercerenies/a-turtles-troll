@@ -33,7 +33,8 @@ class DeathEffect(private val plugin: Plugin) : CookieEffect {
 
   override fun cancelsDefault(): Boolean = false
 
-  override fun onEat(stack: ItemStack, player: Player) {
+  override fun onEat(action: CookieEatenAction) {
+    val player = action.player
     player.sendMessage(message)
     KillPlayer(player).runTaskLater(plugin, DELAY)
   }

@@ -9,8 +9,8 @@ object NoEffect : CookieEffect {
 
   override fun cancelsDefault(): Boolean = false
 
-  override fun onEat(stack: ItemStack, player: Player) {
-    player.sendMessage("That cookie tastes pretty good.")
+  override fun onEat(action: CookieEatenAction) {
+    action.player.sendMessage("That cookie tastes pretty good.")
   }
 
 }

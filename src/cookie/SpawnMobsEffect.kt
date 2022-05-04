@@ -19,7 +19,8 @@ abstract class SpawnMobsEffect : CookieEffect {
 
   open override fun cancelsDefault(): Boolean = false
 
-  override fun onEat(stack: ItemStack, player: Player) {
+  override fun onEat(action: CookieEatenAction) {
+    val player = action.player
     val world = player.world
     val mobTypes = getMobTypes()
     val message = getMessageFor(mobTypes)

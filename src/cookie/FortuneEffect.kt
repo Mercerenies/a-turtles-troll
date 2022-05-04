@@ -41,7 +41,8 @@ class FortuneEffect(
 
   override fun cancelsDefault(): Boolean = false
 
-  override fun onEat(stack: ItemStack, player: Player) {
+  override fun onEat(action: CookieEatenAction) {
+    val player = action.player
     val fortune = chooseFortune()
     val book = makeBook(fortune)
     player.sendMessage("That cookie had a fortune inside it: \"${fortune}\"!")

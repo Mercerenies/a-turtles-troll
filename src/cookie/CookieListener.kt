@@ -58,7 +58,8 @@ class CookieListener(
     val material = event.item.type
     if (isCookie(material)) {
       val effect = chooseEffect()
-      effect.onEat(event.item, event.player)
+      val action = CookieEatenAction(event.item, event.player)
+      effect.onEat(action)
       if (effect.cancelsDefault()) {
         event.setCancelled(true)
       }
