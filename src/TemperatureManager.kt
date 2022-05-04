@@ -1,6 +1,9 @@
 
 package com.mercerenies.turtletroll
 
+import com.mercerenies.turtletroll.gravestone.CustomDeathMessageRegistry
+import com.mercerenies.turtletroll.gravestone.CustomDeathMessage
+import com.mercerenies.turtletroll.gravestone.Vanilla
 import com.mercerenies.turtletroll.feature.RunnableFeature
 import com.mercerenies.turtletroll.feature.container.FeatureContainer
 import com.mercerenies.turtletroll.feature.container.ManagerContainer
@@ -13,6 +16,7 @@ import org.bukkit.entity.Player
 import org.bukkit.event.Listener
 import org.bukkit.event.EventHandler
 import org.bukkit.event.entity.PlayerDeathEvent
+import org.bukkit.event.entity.EntityDamageEvent
 import org.bukkit.event.server.ServerLoadEvent
 import org.bukkit.plugin.Plugin
 import org.bukkit.Bukkit
@@ -22,9 +26,12 @@ import org.bukkit.Material
 import kotlin.math.min
 import kotlin.math.max
 
-class TemperatureManager(plugin: Plugin) : RunnableFeature(plugin), Listener {
+class TemperatureManager(
+  plugin: Plugin,
+  private val deathRegistry: CustomDeathMessageRegistry,
+) : RunnableFeature(plugin), Listener {
 
-  companion object : FeatureContainerFactory<FeatureContainer> {
+  companion object {
 
     val SCOREBOARD_NAME = "com.mercerenies.turtletroll.TemperatureManager.SCOREBOARD_NAME"
 
@@ -43,9 +50,6 @@ class TemperatureManager(plugin: Plugin) : RunnableFeature(plugin), Listener {
       Material.CAMPFIRE, Material.FIRE, Material.SOUL_CAMPFIRE, Material.SOUL_FIRE,
       Material.LAVA, Material.LAVA_BUCKET, Material.LAVA_CAULDRON,
     )
-
-    override fun create(state: BuilderState): FeatureContainer =
-      ManagerContainer(TemperatureManager(state.plugin))
 
     fun getArmorCount(player: Player): Int {
       val inv = player.inventory
@@ -123,6 +127,12 @@ class TemperatureManager(plugin: Plugin) : RunnableFeature(plugin), Listener {
     container.update()
   }
 
+  private fun getCustomDeathMessage(player: Player): CustomDeathMessage =
+    CustomDeathMessage(
+      Vanilla(EntityDamageEvent.DamageCause.FREEZE),
+      "${player.getDisplayName()} froze to death.",
+    )
+
   override fun run() {
     if (!isEnabled()) {
       return
@@ -137,11 +147,8 @@ class TemperatureManager(plugin: Plugin) : RunnableFeature(plugin), Listener {
       if (temp < COLD_TEMPERATURE) {
         if ((armorCount <= 0) && (!isPlayerSafeFromCold(player))) {
           player.freezeTicks = player.maxFreezeTicks
-          deathTick = true
-          try {
+          deathRegistry.withCustomDeathMessage(getCustomDeathMessage(player)) {
             player.damage(4.0, null)
-          } finally {
-            deathTick = false
           }
         }
       } else if (temp > HOT_TEMPERATURE) {
@@ -149,16 +156,6 @@ class TemperatureManager(plugin: Plugin) : RunnableFeature(plugin), Listener {
           player.fireTicks = max(player.fireTicks, DAMAGE_TIME.toInt())
         }
       }
-    }
-  }
-
-  @EventHandler
-  fun onPlayerDeath(event: PlayerDeathEvent) {
-    if (!isEnabled()) {
-      return
-    }
-    if (deathTick) {
-      event.setDeathMessage("${event.entity.getDisplayName()} froze to death.")
     }
   }
 

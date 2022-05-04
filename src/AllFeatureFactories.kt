@@ -106,7 +106,6 @@ object AllFeatureFactories {
       LevitationListener,
       LlamaHunterManager,
       NamedZombieListener,
-      OldAgeListener,
       OvergrowthListenerFactory(OvergrowthListener::randomWood),
       ParrotManager,
       PetPhantomManager,
@@ -123,7 +122,6 @@ object AllFeatureFactories {
       SnowListener,
       SpillageListener,
       StoneRecipeDeleter,
-      TemperatureManager,
       WanderingTraderListener,
       WitchAttackListener,
       WitchSummonManager,
@@ -143,6 +141,8 @@ object AllFeatureFactories {
       // Custom death message and the things that depend on it
       CustomDeathMessageListener,
       MimicListenerFactory(CustomDeathMessageListener.DEATH_MESSAGE_KEY),
+      OldAgeListenerFactory(CustomDeathMessageListener.DEATH_MESSAGE_KEY),
+      TemperatureManagerFactory(CustomDeathMessageListener.DEATH_MESSAGE_KEY),
       WeepingAngelManagerFactory(CustomDeathMessageListener.DEATH_MESSAGE_KEY),
     )
 
