@@ -25,15 +25,6 @@ class FortuneEffect(
       "Barack Obama", "Thomas Jefferson", "Peter Capaldi", "Benedict Cumberbatch",
     )
 
-    val DEFAULT_FORTUNES = listOf(
-      "Example Fortune :) lorem ipsum dolor sit amet test test test abc def hi there long line of text :)",
-    )
-
-    val Default = FortuneEffect(
-      NameSource.FromList(DEFAULT_AUTHORS),
-      NameSource.FromList(DEFAULT_FORTUNES),
-    )
-
   }
 
   private fun chooseAuthor(): String =

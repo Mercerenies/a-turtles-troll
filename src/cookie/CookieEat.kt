@@ -2,7 +2,10 @@
 package com.mercerenies.turtletroll.cookie
 
 import com.mercerenies.turtletroll.Weight
+import com.mercerenies.turtletroll.NameSource
+import com.mercerenies.turtletroll.storage.FortunesFile
 
+import org.bukkit.Bukkit
 import org.bukkit.entity.*
 import org.bukkit.plugin.Plugin
 import org.bukkit.potion.PotionEffect
@@ -15,7 +18,7 @@ object CookieEat {
   fun defaultEffects(plugin: Plugin) = listOf(
     Weight(NoEffect, 3.0),
     Weight(GivenItemEffect.AnyNonEpicItem, 2.0),
-    Weight(FortuneEffect.Default, 1.0),
+    Weight(defaultFortuneEffect(), 10.0),
     // Status Effects (sum = 1.0)
     Weight(ApplyPotionEffect("Absorption", PotionEffectType.ABSORPTION), 0.031),
     Weight(ApplyPotionEffect("Damage Resistance", PotionEffectType.DAMAGE_RESISTANCE), 0.031),
@@ -50,5 +53,16 @@ object CookieEat {
     Weight(ApplyPotionEffect("Weakness", PotionEffectType.WEAKNESS), 0.031),
     Weight(ApplyPotionEffect("Wither", PotionEffectType.WITHER), 0.031),
   )
+
+  private fun defaultFortuneEffect(): FortuneEffect {
+    val authors = NameSource.FromList(FortuneEffect.DEFAULT_AUTHORS)
+    val fortunes = try {
+      FortunesFile("/data/fortunes.txt")
+    } catch (e: IllegalArgumentException) {
+      Bukkit.getLogger().severe("Failed to load fortunes.txt file! ${e}")
+      NameSource.FromList(listOf(""))
+    }
+    return FortuneEffect(authors, fortunes)
+  }
 
 }
