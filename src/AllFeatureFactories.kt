@@ -125,7 +125,6 @@ object AllFeatureFactories {
       StoneRecipeDeleter,
       TemperatureManager,
       WanderingTraderListener,
-      WeepingAngelManagerFactory,
       WitchAttackListener,
       WitchSummonManager,
       WitherArmorListener,
@@ -144,6 +143,7 @@ object AllFeatureFactories {
       // Custom death message and the things that depend on it
       CustomDeathMessageListener,
       MimicListenerFactory(CustomDeathMessageListener.DEATH_MESSAGE_KEY),
+      WeepingAngelManagerFactory(CustomDeathMessageListener.DEATH_MESSAGE_KEY),
     )
 
   fun createComposite(builderState: BuilderState): FeatureContainer {

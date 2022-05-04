@@ -24,6 +24,9 @@ sealed interface CauseOfDeath {
     fun identify(event: PlayerDeathEvent): CauseOfDeath {
       val cause = event.entity.getLastDamageCause()
 
+      // TODO Use the custom death message listener for this rather
+      // than a bunch of hacked together regexes.
+
       // First, check for our custom stuff
       if (BLINK_REGEX.find(event.getDeathMessage() ?: "") != null) {
         return Angel
@@ -84,6 +87,8 @@ sealed interface CauseOfDeath {
   }
 
 }
+
+// TODO These should be nested inside CauseOfDeath.
 
 object Angel : CauseOfDeath {
   override fun toInscription(): String =

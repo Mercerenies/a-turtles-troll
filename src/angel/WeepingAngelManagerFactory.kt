@@ -9,11 +9,16 @@ import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 import com.mercerenies.turtletroll.feature.CompositeFeature
 import com.mercerenies.turtletroll.recipe.AngelRecipeFeature
 import com.mercerenies.turtletroll.SpawnReason
+import com.mercerenies.turtletroll.gravestone.CustomDeathMessageRegistry
+
+import org.bukkit.Bukkit
 
 import kotlin.collections.HashMap
 import kotlin.random.Random
 
-object WeepingAngelManagerFactory : FeatureContainerFactory<FeatureContainer> {
+class WeepingAngelManagerFactory(
+  private val deathFeatureId: String,
+) : FeatureContainerFactory<FeatureContainer> {
 
   private class WeepingAngelContainer(
     private val angelManager: WeepingAngelManager,
@@ -41,10 +46,17 @@ object WeepingAngelManagerFactory : FeatureContainerFactory<FeatureContainer> {
 
   }
 
-  override fun create(state: BuilderState): FeatureContainer =
-    WeepingAngelContainer(
-      angelManager = WeepingAngelManager(state.plugin),
+  override fun create(state: BuilderState): FeatureContainer {
+    var deathRegistry = state.getSharedData(deathFeatureId, CustomDeathMessageRegistry::class)
+    if (deathRegistry == null) {
+      // Log a warning and use a default value
+      Bukkit.getLogger().warning("Could not find death registry, got null")
+      deathRegistry = CustomDeathMessageRegistry.Unit
+    }
+    return WeepingAngelContainer(
+      angelManager = WeepingAngelManager(state.plugin, deathRegistry),
       angelRecipe = AngelRecipeFeature(state.plugin),
     )
+  }
 
 }

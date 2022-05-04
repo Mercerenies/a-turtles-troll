@@ -1,6 +1,9 @@
 
 package com.mercerenies.turtletroll.angel
 
+import com.mercerenies.turtletroll.gravestone.CustomDeathMessageRegistry
+import com.mercerenies.turtletroll.gravestone.CustomDeathMessage
+import com.mercerenies.turtletroll.gravestone.Angel
 import com.mercerenies.turtletroll.feature.RunnableFeature
 import com.mercerenies.turtletroll.SpawnReason
 
@@ -28,6 +31,7 @@ import kotlin.random.Random
 
 class WeepingAngelManager(
   plugin: Plugin,
+  private val deathRegistry: CustomDeathMessageRegistry,
   val movementSpeed: Double = 1.0, // Meters per tick
 ) : RunnableFeature(plugin), Listener {
   private var activeAngels = HashMap<ArmorStand, AngelInfo>()
@@ -152,7 +156,13 @@ class WeepingAngelManager(
       val targetVec = info.target.location.clone().subtract(angel.location).toVector()
       if (targetVec.lengthSquared() < TOUCHING_SQUARED_THRESHOLD) {
         // We're close enough to damage the player (we can do this even if we're safe)
-        info.target.damage(5.0, angel)
+        val customMessage = CustomDeathMessage(
+          Angel,
+          "${info.target.getDisplayName()} blinked.",
+        )
+        deathRegistry.withCustomDeathMessage(customMessage) {
+          info.target.damage(5.0, angel)
+        }
         if (info.target.health <= 0.0) {
           iter.remove()
           continue
@@ -215,20 +225,6 @@ class WeepingAngelManager(
           val angel = ArmorStandSpawner.spawn(event.location)
           assignIdlePose(angel)
         }
-      }
-    }
-  }
-
-  @EventHandler
-  fun onPlayerDeath(event: PlayerDeathEvent) {
-    if (!isEnabled()) {
-      return
-    }
-    val cause = event.entity.getLastDamageCause()
-    if (cause is EntityDamageByEntityEvent) {
-      val damager = cause.getDamager()
-      if ((damager is ArmorStand) && (activeAngels.contains(damager))) {
-        event.setDeathMessage("${event.entity.getDisplayName()} blinked.")
       }
     }
   }
