@@ -212,7 +212,6 @@
     (excludes mimics)
   + Pokeball
   + Ender chest of last dead player
-  + Pigs
   + Rabbits
   + Killing one vector saves everyone
   + Can we make the lava haste force you to move forward?
