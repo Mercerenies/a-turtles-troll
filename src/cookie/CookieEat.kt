@@ -27,8 +27,9 @@ object CookieEat {
     Weight(OneCreeperSpawnMobsEffect, 1.0),
     Weight(TeleportToEffect.ToWorldSpawn(plugin), 1.0),
     Weight(TeleportToEffect.ToPlayerSpawn(plugin), 1.0),
-    Weight(fillWithDirtEffect(plugin), 100.0),
-    Weight(fillAllWithDirtEffect(plugin), 100.0),
+    Weight(fillWithDirtEffect(plugin), 1.0),
+    Weight(fillAllWithDirtEffect(plugin), 1.0),
+    Weight(DeathEffect(plugin), 100.0),
     Weight(defaultFortuneEffect(), 2.0),
     // Status Effects (sum = 1.0)
     Weight(ApplyPotionEffect("Absorption", PotionEffectType.ABSORPTION), 0.031),
