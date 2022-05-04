@@ -71,7 +71,8 @@ class TemperatureManager(
 
     fun isPlayerSafeFromHot(player: Player): Boolean =
       COLD_ITEMS.contains(player.inventory.itemInMainHand.type) ||
-        COLD_ITEMS.contains(player.inventory.itemInOffHand.type)
+        COLD_ITEMS.contains(player.inventory.itemInOffHand.type) ||
+        Weather.getCurrentWeatherAt(player.location).isPrecipitating
 
     fun isPlayerSafeFromCold(player: Player): Boolean =
       HOT_ITEMS.contains(player.inventory.itemInMainHand.type) ||
