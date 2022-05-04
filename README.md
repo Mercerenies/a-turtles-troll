@@ -29,6 +29,7 @@ A Turtle's Troll also depends on the following two libraries.
 
 ### Version 1.16
 
+* Eating cookies grants one of several random effects
 * Fixed a bug with wandering trader item generation
 
 ### Version 1.15.1
