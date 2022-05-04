@@ -3,6 +3,9 @@ package com.mercerenies.turtletroll.cookie
 
 import com.mercerenies.turtletroll.Constants
 import com.mercerenies.turtletroll.Worlds
+import com.mercerenies.turtletroll.gravestone.CustomDeathMessageRegistry
+import com.mercerenies.turtletroll.gravestone.CustomDeathMessage
+import com.mercerenies.turtletroll.gravestone.Cookie
 
 import org.bukkit.Location
 import org.bukkit.Sound
@@ -22,11 +25,23 @@ class DeathEffect(private val plugin: Plugin) : CookieEffect {
 
   }
 
-  private inner class KillPlayer(val player: Player) : BukkitRunnable() {
+  private inner class KillPlayer(
+    val player: Player,
+    val deathRegistry: CustomDeathMessageRegistry,
+  ) : BukkitRunnable() {
+
+    val deathMessage = CustomDeathMessage(
+      Cookie,
+      // Eat your heart out, Hemingway
+      "${player.getDisplayName()} ate a cookie and died.",
+    )
+
     override fun run() {
-      // TODO Death reason
-      player.damage(99999.0)
+      deathRegistry.withCustomDeathMessage(deathMessage) {
+        player.damage(99999.0)
+      }
     }
+
   }
 
   private val message: String = "That cookie tastes like death!"
@@ -36,7 +51,7 @@ class DeathEffect(private val plugin: Plugin) : CookieEffect {
   override fun onEat(action: CookieEatenAction) {
     val player = action.player
     player.sendMessage(message)
-    KillPlayer(player).runTaskLater(plugin, DELAY)
+    KillPlayer(player, action.deathRegistry).runTaskLater(plugin, DELAY)
   }
 
 }
