@@ -12,6 +12,10 @@ merge_json() {
     rm -r tmp
 }
 
+merge_data() {
+    jar uf ./ATurtlesTroll.jar data/*.txt
+}
+
 if [ -n "$1" ]; then
     SPIGOT_PATH=$1
 else
@@ -24,4 +28,5 @@ kotlinc -cp "$SPIGOT_PATH:$JSON_PATH" src/ -include-runtime -d ATurtlesTroll.jar
     jar uf ATurtlesTroll.jar plugin.yml README.md LICENSE.txt &&
     jar ufm ATurtlesTroll.jar Manifest.txt
     merge_json &&
+    merge_data &&
     echo "Done."
