@@ -14,12 +14,11 @@ import org.bukkit.potion.PotionEffectType
 // Helper for common cookie-eating effects
 object CookieEat {
 
-  @Suppress("UNUSED_PARAMETER")
   fun defaultEffects(plugin: Plugin) = listOf(
     Weight(NoEffect, 3.0),
-    Weight(GivenItemEffect.AnyNonEpicItem, 2.0),
-    Weight(GivenItemEffect.AnotherCookie, 100.0),
-    Weight(GivenItemEffect.TwoMoreCookies, 100.0),
+    Weight(GivenItemEffect.AnyNonEpicItem(plugin), 2.0),
+    Weight(GivenItemEffect.AnotherCookie(plugin), 100.0),
+    Weight(GivenItemEffect.TwoMoreCookies(plugin), 100.0),
     Weight(defaultFortuneEffect(), 2.0),
     // Status Effects (sum = 1.0)
     Weight(ApplyPotionEffect("Absorption", PotionEffectType.ABSORPTION), 0.031),

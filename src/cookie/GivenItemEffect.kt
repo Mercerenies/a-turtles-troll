@@ -9,10 +9,14 @@ import org.bukkit.Location
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 import org.bukkit.entity.Player
+import org.bukkit.plugin.Plugin
+import org.bukkit.scheduler.BukkitRunnable
 
-abstract class GivenItemEffect : CookieEffect {
+abstract class GivenItemEffect(private val plugin: Plugin) : CookieEffect {
 
   companion object {
+
+    private val DELAY = 2
 
     private val VOWELS = setOf('A', 'E', 'I', 'O', 'U', 'a', 'e', 'i', 'o', 'u')
 
@@ -24,7 +28,7 @@ abstract class GivenItemEffect : CookieEffect {
 
   }
 
-  object AnyNonEpicItem : GivenItemEffect() {
+  class AnyNonEpicItem(_plugin: Plugin) : GivenItemEffect(_plugin) {
 
     private val candidates: List<Material> =
       AllItems.allItems.filter { AllItems.getRarity(it) != Rarity.EPIC }
@@ -36,7 +40,7 @@ abstract class GivenItemEffect : CookieEffect {
 
   }
 
-  object AnotherCookie : GivenItemEffect() {
+  class AnotherCookie(_plugin: Plugin) : GivenItemEffect(_plugin) {
 
     override fun itemName(item: ItemStack): String =
       "another cookie"
@@ -46,7 +50,7 @@ abstract class GivenItemEffect : CookieEffect {
 
   }
 
-  object TwoMoreCookies : GivenItemEffect() {
+  class TwoMoreCookies(_plugin: Plugin) : GivenItemEffect(_plugin) {
 
     override fun itemName(item: ItemStack): String =
       "two more cookies"
@@ -54,6 +58,12 @@ abstract class GivenItemEffect : CookieEffect {
     override fun chooseItem(): ItemStack =
       ItemStack(Material.COOKIE, 2)
 
+  }
+
+  private class GiveToPlayer(val player: Player, val itemStack: ItemStack) : BukkitRunnable() {
+    override fun run() {
+      AllItems.give(player, itemStack)
+    }
   }
 
   abstract fun chooseItem(): ItemStack?
@@ -76,7 +86,7 @@ abstract class GivenItemEffect : CookieEffect {
     } else {
       val itemName = this.itemName(replacementItem)
       player.sendMessage("That cookie had ${itemName} inside it!")
-      AllItems.give(player, replacementItem)
+      GiveToPlayer(player, replacementItem).runTaskLater(plugin, DELAY.toLong())
     }
   }
 
