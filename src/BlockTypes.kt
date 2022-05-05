@@ -94,4 +94,29 @@ object BlockTypes {
     Material.OAK_PLANKS, Material.SPRUCE_PLANKS,
   )
 
+  // Takes an ore block and turns it into the non-ore block type it's
+  // most similar to. Returns the block itself if given a non-ore.
+  fun removeOreFrom(material: Material): Material =
+    when (material) {
+      Material.COAL_ORE -> Material.STONE
+      Material.IRON_ORE -> Material.STONE
+      Material.LAPIS_ORE -> Material.STONE
+      Material.GOLD_ORE -> Material.STONE
+      Material.DIAMOND_ORE -> Material.STONE
+      Material.EMERALD_ORE -> Material.STONE
+      Material.NETHER_QUARTZ_ORE -> Material.NETHERRACK
+      Material.NETHER_GOLD_ORE -> Material.NETHERRACK
+      Material.ANCIENT_DEBRIS -> Material.NETHERRACK
+      Material.COPPER_ORE -> Material.STONE
+      Material.DEEPSLATE_COAL_ORE -> Material.DEEPSLATE
+      Material.DEEPSLATE_COPPER_ORE -> Material.DEEPSLATE
+      Material.DEEPSLATE_DIAMOND_ORE -> Material.DEEPSLATE
+      Material.DEEPSLATE_EMERALD_ORE -> Material.DEEPSLATE
+      Material.DEEPSLATE_GOLD_ORE -> Material.DEEPSLATE
+      Material.DEEPSLATE_IRON_ORE -> Material.DEEPSLATE
+      Material.DEEPSLATE_LAPIS_ORE -> Material.DEEPSLATE
+      Material.DEEPSLATE_REDSTONE_ORE -> Material.DEEPSLATE
+      else -> material // Default value
+    }
+
 }
