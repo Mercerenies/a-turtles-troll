@@ -197,6 +197,8 @@
    + silverfishburn :: Silverfish burn in daylight.
    + witchattack :: Witches will sometimes throw parrots at you
                     instead of splash potions
+   + unfinished :: If you start mining an ore and then stop, it gets
+                   mad and turns to cobweb
 * IDEAS (UNIMPLEMENTED)
   + Wolves?
   + Fishing?

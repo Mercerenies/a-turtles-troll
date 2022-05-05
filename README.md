@@ -30,6 +30,7 @@ A Turtle's Troll also depends on the following two libraries.
 ### Version 1.16
 
 * Eating cookies grants one of several random effects
+* If you start mining an ore and then stop, it gets mad and runs away
 * Rain now protects the player from hot weather as well
 * Fixed a bug with wandering trader item generation
 

@@ -121,6 +121,7 @@ object AllFeatureFactories {
       SnowListener,
       SpillageListener,
       StoneRecipeDeleter,
+      UnfinishedBusinessListener,
       WanderingTraderListener,
       WitchAttackListener,
       WitchSummonManager,
