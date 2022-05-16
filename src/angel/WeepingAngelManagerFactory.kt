@@ -7,6 +7,9 @@ import com.mercerenies.turtletroll.feature.container.AbstractFeatureContainer
 import com.mercerenies.turtletroll.feature.builder.BuilderState
 import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 import com.mercerenies.turtletroll.feature.CompositeFeature
+import com.mercerenies.turtletroll.command.withPermission
+import com.mercerenies.turtletroll.command.Command
+import com.mercerenies.turtletroll.command.PermittedCommand
 import com.mercerenies.turtletroll.recipe.AngelRecipeFeature
 import com.mercerenies.turtletroll.SpawnReason
 import com.mercerenies.turtletroll.gravestone.CustomDeathMessageRegistry
@@ -20,10 +23,17 @@ class WeepingAngelManagerFactory(
   private val deathFeatureId: String,
 ) : FeatureContainerFactory<FeatureContainer> {
 
+  companion object {
+    val COMMAND_PERMISSION = "com.mercerenies.turtletroll.debug"
+  }
+
   private class WeepingAngelContainer(
     private val angelManager: WeepingAngelManager,
     private val angelRecipe: AngelRecipeFeature,
   ) : AbstractFeatureContainer() {
+
+    private val commandConfig = WeepingAngelCommand.FromManager(angelManager)
+    private val angelCommand = WeepingAngelCommand(commandConfig)
 
     private val compositeFeature =
       CompositeFeature(
@@ -43,6 +53,11 @@ class WeepingAngelManagerFactory(
 
     override val recipes =
       listOf(angelRecipe)
+
+    override val commands =
+      listOf(
+        "angel" to angelCommand.withPermission(COMMAND_PERMISSION),
+      )
 
   }
 
