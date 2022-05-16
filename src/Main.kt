@@ -32,6 +32,7 @@ class Main : JavaPlugin() {
       "on" to featureManager.OnCommand.withPermission("com.mercerenies.turtletroll.feature.toggle"),
       "off" to featureManager.OffCommand.withPermission("com.mercerenies.turtletroll.feature.toggle"),
       "list" to featureManager.ListCommand.withPermission("com.mercerenies.turtletroll.feature.list"),
+      "describe" to featureManager.DescribeCommand.withPermission("com.mercerenies.turtletroll.feature.describe"),
       *mainContainer.commands.toList().toTypedArray(),
     ).withPermission("com.mercerenies.turtletroll.command"),
   )

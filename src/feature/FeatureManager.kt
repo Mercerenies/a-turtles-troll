@@ -75,6 +75,29 @@ class FeatureManager(val features: List<Feature>) {
 
   }
 
+  val DescribeCommand = object : UnaryCommand() {
+
+    override fun onCommand(
+      sender: CommandSender,
+      arg: String,
+    ): Boolean {
+      val feature = findFeature(arg)
+      if (feature == null) {
+        return false
+      }
+      val featureName = "${feature.coloredName}§r"
+      sender.sendMessage("[Turtle] ${featureName} - ${feature.description}")
+      return true
+    }
+
+    override fun onTabComplete(
+      sender: CommandSender,
+      arg: String,
+    ): List<String>? =
+      features.map { it.name }.filter { it.startsWith(arg) }
+
+  }
+
   val commandMap = mapOf(
     "on" to OnCommand,
     "off" to OffCommand,
