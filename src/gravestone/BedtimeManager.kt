@@ -55,11 +55,11 @@ class BedtimeManager(plugin: Plugin) : ScheduledEventRunnable<BedtimeManager.Sta
       Weight(HARD, 1.0),
     )
 
-    val ANGRY_MESSAGE = "The gods are angry; no one shall sleep tonight!"
+    val ANGRY_MESSAGE = "[Turtle] The gods are angry; no one shall sleep tonight!"
 
-    val SATISFIED_MESSAGE = "The gods are appeased today; everyone is free to sleep."
+    val SATISFIED_MESSAGE = "[Turtle] The gods are appeased today; everyone is free to sleep."
 
-    val DISABLED_MESSAGE = "This feature is currently disabled; the gods are not interfering with your sleep."
+    val DISABLED_MESSAGE = "[Turtle] This feature is currently disabled; the gods are not interfering with your sleep."
 
     val COMMAND_PERMISSION = "com.mercerenies.turtletroll.command.bedtime"
 
