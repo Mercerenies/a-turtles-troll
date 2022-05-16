@@ -3,6 +3,7 @@ package com.mercerenies.turtletroll.angel
 
 import com.mercerenies.turtletroll.Weight
 import com.mercerenies.turtletroll.sample
+import com.mercerenies.turtletroll.color.UniformColorGenerator
 
 import org.bukkit.Location
 import org.bukkit.Material
@@ -10,8 +11,13 @@ import org.bukkit.entity.ArmorStand
 import org.bukkit.entity.EntityType
 import org.bukkit.inventory.ItemStack
 import org.bukkit.inventory.meta.Damageable
+import org.bukkit.inventory.meta.LeatherArmorMeta
+
+import kotlin.random.Random
 
 object ArmorStandSpawner {
+
+  private val colorGenerator = UniformColorGenerator
 
   enum class RawMaterial {
     LEATHER, GOLD, IRON,
@@ -78,6 +84,9 @@ object ArmorStandSpawner {
                                        Weight(0.50, 0.5), Weight(1.00, 0.1)))
     val meta = stack.getItemMeta()!!
     (meta as Damageable).setDamage(((1.0 - durabilityFrac) * maxDurability).toInt())
+    if (meta is LeatherArmorMeta) {
+      meta.setColor(colorGenerator.generate(Random))
+    }
     stack.setItemMeta(meta)
     return stack
   }

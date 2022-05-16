@@ -31,6 +31,8 @@ A Turtle's Troll also depends on the following two libraries.
 
 * Eating cookies grants one of several random effects
 * If you start mining an ore and then stop, it gets mad and runs away
+* Armor stands generated to be weeping angels can have random-colored
+  armor
 * Rain now protects the player from hot weather as well
 * Fixed a bug with wandering trader item generation
 
