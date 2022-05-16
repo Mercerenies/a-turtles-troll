@@ -34,8 +34,10 @@ class WeepingAngelManager(
   private val deathRegistry: CustomDeathMessageRegistry,
   val movementSpeed: Double = 1.0, // Meters per tick
 ) : RunnableFeature(plugin), Listener {
-  private var activeAngels = HashMap<ArmorStand, AngelInfo>()
+  private val activeAngels = HashMap<ArmorStand, AngelInfo>()
 
+  // We may add more information to this later, but for now, it's just
+  // the target player.
   private data class AngelInfo(
     val target: Player,
   )
