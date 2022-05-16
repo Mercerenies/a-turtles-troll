@@ -6,6 +6,7 @@ import com.mercerenies.turtletroll.gravestone.CustomDeathMessage
 import com.mercerenies.turtletroll.gravestone.Angel
 import com.mercerenies.turtletroll.feature.RunnableFeature
 import com.mercerenies.turtletroll.SpawnReason
+import com.mercerenies.turtletroll.CooldownMemory
 
 import org.bukkit.entity.Player
 import org.bukkit.entity.ArmorStand
@@ -35,6 +36,11 @@ class WeepingAngelManager(
   val movementSpeed: Double = 1.0, // Meters per tick
 ) : RunnableFeature(plugin), Listener {
   private val activeAngels = HashMap<ArmorStand, AngelInfo>()
+
+  // Not used directly by this manager, but commands which spawn
+  // angels may use this to prevent their AI from triggering for a
+  // short time.
+  private val cooldownMemory = CooldownMemory<ArmorStand>(plugin)
 
   // We may add more information to this later, but for now, it's just
   // the target player.
@@ -115,6 +121,12 @@ class WeepingAngelManager(
 
   override val taskPeriod = 5L
 
+  fun addGracePeriodFor(angel: ArmorStand, time: Long) {
+    if (!cooldownMemory.contains(angel)) {
+      cooldownMemory.add(angel, time)
+    }
+  }
+
   override fun run() {
     if (!isEnabled()) {
       return
@@ -169,6 +181,11 @@ class WeepingAngelManager(
           iter.remove()
           continue
         }
+      }
+
+      // If the angel is currently in a grace period, then don't initiate an attack
+      if (cooldownMemory.contains(angel)) {
+        return
       }
 
       if (safeAngels.contains(angel)) {
