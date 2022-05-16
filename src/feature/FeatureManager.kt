@@ -85,7 +85,7 @@ class FeatureManager(val features: List<Feature>) {
       if (feature == null) {
         return false
       }
-      val featureName = "${feature.coloredName}§r"
+      val featureName = "${feature.coloredName}§r" // TODO Constants for the § things
       sender.sendMessage("[Turtle] ${featureName} - ${feature.description}")
       return true
     }
