@@ -1,6 +1,8 @@
 
 package com.mercerenies.turtletroll.feature
 
+import com.mercerenies.turtletroll.color.ColorCode
+
 // Features should initialize in the "enabled" state and may assume
 // they are enabled until told otherwise.
 interface Feature : HasEnabledStatus {
@@ -14,11 +16,10 @@ interface Feature : HasEnabledStatus {
   fun disable()
 
   val coloredName: String
-    get() =
-      if (isEnabled()) {
-        "§2${name}"
-      } else {
-        "§4${name}"
-      }
+    get() {
+      val color =
+        if (isEnabled()) { ColorCode.DARK_GREEN } else { ColorCode.DARK_RED }
+      return color.of(name)
+    }
 
 }

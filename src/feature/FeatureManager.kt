@@ -28,7 +28,7 @@ class FeatureManager(val features: List<Feature>) {
         return false
       }
       feature.enable()
-      Bukkit.broadcastMessage("[Turtle] §2${feature.name}§r is now enabled.")
+      Bukkit.broadcastMessage("[Turtle] ${feature.coloredName} is now enabled.")
       return true
     }
 
@@ -50,8 +50,8 @@ class FeatureManager(val features: List<Feature>) {
       if (feature == null) {
         return false
       }
+      Bukkit.broadcastMessage("[Turtle] ${feature.coloredName} is now disabled.")
       feature.disable()
-      Bukkit.broadcastMessage("[Turtle] §2${feature.name}§r is now disabled.")
       return true
     }
 
@@ -68,7 +68,7 @@ class FeatureManager(val features: List<Feature>) {
     override fun onCommand(
       sender: CommandSender,
     ): Boolean {
-      val msg = features.sortedBy { it.name }.map { it.coloredName }.joinToString("§r, ")
+      val msg = features.sortedBy { it.name }.map { it.coloredName }.joinToString(", ")
       sender.sendMessage("[Turtle] ${msg}")
       return true
     }
@@ -85,8 +85,7 @@ class FeatureManager(val features: List<Feature>) {
       if (feature == null) {
         return false
       }
-      val featureName = "${feature.coloredName}§r" // TODO Constants for the § things
-      sender.sendMessage("[Turtle] ${featureName} - ${feature.description}")
+      sender.sendMessage("[Turtle] ${feature.coloredName} - ${feature.description}")
       return true
     }
 
