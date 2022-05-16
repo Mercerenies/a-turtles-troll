@@ -35,6 +35,7 @@ A Turtle's Troll also depends on the following two libraries.
   armor
 * Description of features can be gotten with `/turtle describe
   <feature>`
+* Added a feature to spawn a Weeping Angel for debugging purposes
 * Rain now protects the player from hot weather as well
 * Fixed a bug with wandering trader item generation
 
@@ -43,11 +44,11 @@ A Turtle's Troll also depends on the following two libraries.
 * A parrot on your shoulder will launch you into the air
 * Parrots will become attached to the nearest player automatically
 * Witches will sometimes attack by throwing parrots at you
-* Fixed a bug with **zombietrade**.
-* Updated the temperature scaling for easier use as a scoreboard.
-* Fixed temperature scoreboard to take into consideration held items.
+* Fixed a bug with **zombietrade**
+* Updated the temperature scaling for easier use as a scoreboard
+* Fixed temperature scoreboard to take into consideration held items
 * Fixed temperature scoreboard to take into consideration the Nether
-  and End.
+  and End
 
 ### Version 1.15
 
