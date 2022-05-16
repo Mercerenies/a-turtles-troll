@@ -19,3 +19,5 @@ permissions:
     default: true
   com.mercerenies.turtletroll.feature.toggle:
     default: op
+  com.mercerenies.turtletroll.feature.debug:
+    default: op
