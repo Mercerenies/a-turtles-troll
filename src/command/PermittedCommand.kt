@@ -1,7 +1,7 @@
 
 package com.mercerenies.turtletroll.command
 
-data class PermittedCommand<T: Command>(
+data class PermittedCommand<out T: Command>(
   val command: T,
   val permission: String,
 )
