@@ -1,6 +1,8 @@
 
 package com.mercerenies.turtletroll
 
+import com.mercerenies.turtletroll.ext.*
+
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 import org.bukkit.entity.Player
@@ -37,6 +39,17 @@ object Hats {
     }
     // Otherwise, check if it's a custom hat
     return !isCustomHat(helmet)
+  }
+
+  fun sampleRandomHat(): ItemStack {
+    val stack = ItemStack(Material.CARVED_PUMPKIN)
+    val name = customHatNames.toList().sample()
+    val meta = stack.itemMeta
+    if (meta != null) {
+      meta.setDisplayName(name)
+      stack.itemMeta = meta
+    }
+    return stack
   }
 
 }

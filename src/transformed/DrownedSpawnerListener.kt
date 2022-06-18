@@ -40,7 +40,7 @@ class DrownedSpawnerListener(
 
   override val name = "drowned"
 
-  override val description = "Fish are replaced with Drowned"
+  override val description = "Fish are spawned alongside Drowned"
 
   override val targetEntity: EntityType = EntityType.DROWNED
 

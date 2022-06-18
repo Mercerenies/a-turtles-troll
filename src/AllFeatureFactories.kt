@@ -95,6 +95,7 @@ object AllFeatureFactories {
       FallDamageListener,
       ForestFireListener,
       FreeCookieRunnable,
+      FunHatListener,
       GhastBurnRunnable,
       GhastSpawnerListener,
       GlassLuckListener,
