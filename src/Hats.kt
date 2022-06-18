@@ -11,8 +11,15 @@ object Hats {
 
   private val customHatNames: Set<String> =
     setOf(
-      "arrow hat", "cauldron hat", "chest hat", "dripstone hat", "hat hat",
-      "minecart hat", "shulker hat", "witch hat",
+      //Evanski hats
+      "arrow hat",
+      "cauldron hat",
+      "chest hat",
+      "dripstone hat",
+      "hat hat",
+      "minecart hat",
+      "shulker hat",
+      "witch hat"
     )
 
   fun isCustomHat(hatName: String): Boolean =
