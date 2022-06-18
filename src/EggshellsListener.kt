@@ -18,7 +18,7 @@ import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
 
 
-class EggshellsListener(): AbstractFeature(), Listener {
+class EggshellsListener() : AbstractFeature(), Listener {
 
   companion object : FeatureContainerFactory<FeatureContainer> {
 

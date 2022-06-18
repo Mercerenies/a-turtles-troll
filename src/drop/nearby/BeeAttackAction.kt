@@ -9,7 +9,6 @@ import org.bukkit.event.block.BlockBreakEvent
 import org.bukkit.entity.EntityType
 import org.bukkit.entity.Bee
 
-
 class BeeAttackAction(
   private val radius: Int = 5
 ) : NearbyAction {

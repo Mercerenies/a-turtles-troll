@@ -7,6 +7,7 @@ data class ColorCode(val prefix: String) {
 
     val SIGIL = "§"
 
+    /* ktlint-disable no-multi-spaces */
     val BLACK        = ColorCode("§0")
     val DARK_BLUE    = ColorCode("§1")
     val DARK_GREEN   = ColorCode("§2")
@@ -29,6 +30,7 @@ data class ColorCode(val prefix: String) {
     val UNDERLINE    = ColorCode("§n")
     val ITALIC       = ColorCode("§o")
     val RESET        = ColorCode("§r")
+    /* ktlint-enable no-multi-spaces */
 
   }
 

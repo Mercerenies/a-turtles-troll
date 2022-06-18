@@ -24,7 +24,7 @@ import org.bukkit.plugin.Plugin
 import org.bukkit.attribute.Attribute
 import org.bukkit.Bukkit
 
-class ParrotManager(_plugin: Plugin): RunnableFeature(_plugin), Listener {
+class ParrotManager(_plugin: Plugin) : RunnableFeature(_plugin), Listener {
 
   companion object : FeatureContainerFactory<FeatureContainer> {
 
@@ -43,9 +43,11 @@ class ParrotManager(_plugin: Plugin): RunnableFeature(_plugin), Listener {
     fun nearestPlayer(entity: Entity): Player? =
       PlayerSelector.findNearestPlayer(entity.location, DISTANCE_SQUARED_LIMIT)
 
-    val DEFAULT_NAME_SOURCE = NameSource.FromList(listOf(
-      "Iago", "Polly", "Captain Flint", "Blu",
-    ))
+    val DEFAULT_NAME_SOURCE = NameSource.FromList(
+      listOf(
+        "Iago", "Polly", "Captain Flint", "Blu",
+      )
+    )
 
   }
 

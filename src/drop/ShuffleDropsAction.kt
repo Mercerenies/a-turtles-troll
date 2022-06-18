@@ -28,7 +28,7 @@ class ShuffleDropsAction(
     event.block.type = Material.AIR
     event.setCancelled(true)
 
-    repeat (dropCount) {
+    repeat(dropCount) {
       val itemType = types.sample()!!
       val item = w.spawnEntity(loc, EntityType.DROPPED_ITEM) as Item
       item.itemStack = ItemStack(itemType, 1)

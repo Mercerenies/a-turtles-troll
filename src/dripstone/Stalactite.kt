@@ -41,13 +41,12 @@ data class Stalactite(val blocks: Set<EqBlock>) {
         loc.setY(loc.getY() - 1)
       }
 
-
       return Stalactite(arr)
     }
 
     // From bottom to top
     fun thicknessForLength(length: Int): List<PointedDripstone.Thickness> {
-      when(length) {
+      when (length) {
         0 -> return listOf()
         1 -> return listOf(PointedDripstone.Thickness.TIP)
         2 -> return listOf(PointedDripstone.Thickness.TIP, PointedDripstone.Thickness.FRUSTUM)
@@ -55,7 +54,7 @@ data class Stalactite(val blocks: Set<EqBlock>) {
           val result = ArrayList<PointedDripstone.Thickness>()
           result.add(PointedDripstone.Thickness.TIP)
           result.add(PointedDripstone.Thickness.FRUSTUM)
-          repeat(length-3) {
+          repeat(length - 3) {
             result.add(PointedDripstone.Thickness.MIDDLE)
           }
           result.add(PointedDripstone.Thickness.BASE)

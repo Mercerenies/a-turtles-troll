@@ -47,7 +47,7 @@ class PressurePlateFireListener(
     if (event.getAction() != Action.PHYSICAL) {
       return
     }
-    val block = event.getClickedBlock();
+    val block = event.getClickedBlock()
     if ((block != null) && (PLATES.contains(block.type))) {
       if (random.nextDouble(1.0) < chance) {
         event.setCancelled(true)

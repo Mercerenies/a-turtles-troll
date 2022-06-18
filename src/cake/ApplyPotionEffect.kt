@@ -14,6 +14,7 @@ class ApplyPotionEffect(
   val potionEffect: PotionEffect,
 ) : CakeEffect {
 
+  /* ktlint-disable no-multi-spaces comma-spacing paren-spacing */
   companion object {
 
     val Absorption       = ApplyPotionEffect( 0.85, "Absorption"         , PotionEffect(PotionEffectType.ABSORPTION         , Constants.TICKS_PER_SECOND * 60, 1));
@@ -52,6 +53,7 @@ class ApplyPotionEffect(
     val Wither           = ApplyPotionEffect(-0.90, "Wither"             , PotionEffect(PotionEffectType.WITHER             , Constants.TICKS_PER_SECOND * 60, 1));
 
   }
+  /* ktlint-enable no-multi-spaces comma-spacing paren-spacing */
 
   override fun cancelsDefault(): Boolean = false
 

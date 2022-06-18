@@ -14,11 +14,11 @@ class ApplyPotionEffect(
   val potionEffect: PotionEffect,
 ) : CookieEffect {
 
-  constructor(effectName: String, effectType: PotionEffectType, ticks: Int, level: Int)
-    : this(effectName, PotionEffect(effectType, ticks, level))
+  constructor(effectName: String, effectType: PotionEffectType, ticks: Int, level: Int) :
+    this(effectName, PotionEffect(effectType, ticks, level))
 
-  constructor(effectName: String, effectType: PotionEffectType)
-    : this(effectName, effectType, Constants.TICKS_PER_SECOND * 60, 1)
+  constructor(effectName: String, effectType: PotionEffectType) :
+    this(effectName, effectType, Constants.TICKS_PER_SECOND * 60, 1)
 
   override fun cancelsDefault(): Boolean = false
 

@@ -22,10 +22,10 @@ object StrongmanGravestoneSpawner : GravestoneSpawner() {
     replaceWithStair(centerBlock.location.clone().add(rotation.vector(0, 2, 0)).block, Bisected.Half.TOP, BlockFace.WEST)
     replaceWithSlab(centerBlock.location.clone().add(rotation.vector(0, 0, 1)).block, Bisected.Half.BOTTOM)
     replaceWithStair(centerBlock.location.clone().add(rotation.vector(0, 1, 1)).block, Bisected.Half.BOTTOM, BlockFace.SOUTH)
-    //replaceWithStair(centerBlock.location.clone().add(rotation.vector(0, 2, 1)).block, Bisected.Half.BOTTOM, BlockFace.NORTH)
+    // replaceWithStair(centerBlock.location.clone().add(rotation.vector(0, 2, 1)).block, Bisected.Half.BOTTOM, BlockFace.NORTH)
     replaceWithSlab(centerBlock.location.clone().add(rotation.vector(0, 0, -1)).block, Bisected.Half.BOTTOM)
     replaceWithStair(centerBlock.location.clone().add(rotation.vector(0, 1, -1)).block, Bisected.Half.BOTTOM, BlockFace.NORTH)
-    //replaceWithStair(centerBlock.location.clone().add(rotation.vector(0, 2, -1)).block, Bisected.Half.BOTTOM, BlockFace.SOUTH)
+    // replaceWithStair(centerBlock.location.clone().add(rotation.vector(0, 2, -1)).block, Bisected.Half.BOTTOM, BlockFace.SOUTH)
 
     // Now the sign
     val signBlock = centerBlock.location.clone().add(rotation.vector(1, 1, 0)).block

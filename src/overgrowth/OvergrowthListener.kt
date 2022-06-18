@@ -23,7 +23,7 @@ class OvergrowthListener(
   val plugin: Plugin,
   val overgrowthBlock: () -> Material,
   val delay: Long = 600, // Seconds
-): AbstractFeature(), Listener {
+) : AbstractFeature(), Listener {
 
   companion object {
     val BLOCKS = setOf(
@@ -41,7 +41,7 @@ class OvergrowthListener(
 
   }
 
-  private inner class TurnInto(val location: Location, val blockType: Material): BukkitRunnable() {
+  private inner class TurnInto(val location: Location, val blockType: Material) : BukkitRunnable() {
     override fun run() {
       val block = location.block
       if (block.type == blockType) {

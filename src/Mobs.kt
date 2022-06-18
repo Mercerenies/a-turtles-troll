@@ -8,7 +8,6 @@ import org.bukkit.entity.Boss
 object Mobs {
 
   fun isNonBossMob(entity: Entity): Boolean =
-    entity is LivingEntity &&
-    entity !is Boss
+    entity is LivingEntity && entity !is Boss
 
 }

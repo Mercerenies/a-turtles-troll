@@ -11,7 +11,6 @@ import org.bukkit.event.entity.ProjectileHitEvent
 import org.bukkit.event.entity.CreatureSpawnEvent
 import org.bukkit.entity.EntityType
 
-
 class EggListener(val effects: List<Weight<EggHatchEffect>>) : AbstractFeature(), Listener {
 
   override val name = "eggs"

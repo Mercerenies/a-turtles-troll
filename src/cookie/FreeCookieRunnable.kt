@@ -11,7 +11,6 @@ import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 import org.bukkit.plugin.Plugin
 import org.bukkit.Bukkit
 
-
 class FreeCookieRunnable(plugin: Plugin) : ScheduledEventRunnable<FreeCookieRunnable.State>(plugin) {
 
   companion object : FeatureContainerFactory<FeatureContainer> {

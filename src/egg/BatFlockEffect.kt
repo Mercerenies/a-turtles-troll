@@ -4,7 +4,6 @@ package com.mercerenies.turtletroll.egg
 import org.bukkit.Location
 import org.bukkit.entity.Bat
 
-
 open class BatFlockEffect(
   val count: Int,
 ) : EggHatchEffect {

@@ -13,11 +13,11 @@ class GhastLavaListenerFactory(
   private val blockIgnorerSupplier: (BuilderState) -> BlockIgnorer?,
 ) : FeatureContainerFactory<FeatureContainer> {
 
-  constructor(blockIgnorer: BlockIgnorer)
-    : this({ _ -> blockIgnorer })
+  constructor(blockIgnorer: BlockIgnorer) :
+    this({ _ -> blockIgnorer })
 
-  constructor(blockIgnorerId: String)
-    : this({ state -> state.getSharedData(blockIgnorerId, BlockIgnorer::class) })
+  constructor(blockIgnorerId: String) :
+    this({ state -> state.getSharedData(blockIgnorerId, BlockIgnorer::class) })
 
   override fun create(state: BuilderState): FeatureContainer {
     var ignorer = blockIgnorerSupplier(state)

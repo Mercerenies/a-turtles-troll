@@ -15,11 +15,11 @@ class ElectricWaterListenerFactory(
   private val pumpkinFeatureSupplier: (BuilderState) -> HasEnabledStatus?,
 ) : FeatureContainerFactory<FeatureContainer> {
 
-  constructor(feature: HasEnabledStatus)
-    : this({ _ -> feature })
+  constructor(feature: HasEnabledStatus) :
+    this({ _ -> feature })
 
-  constructor(featureId: String)
-    : this({ state -> state.getSharedData(featureId, HasEnabledStatus::class) })
+  constructor(featureId: String) :
+    this({ state -> state.getSharedData(featureId, HasEnabledStatus::class) })
 
   override fun create(state: BuilderState): FeatureContainer {
     var pumpkinFeature = pumpkinFeatureSupplier(state)

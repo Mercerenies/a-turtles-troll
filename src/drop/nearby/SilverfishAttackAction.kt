@@ -15,7 +15,7 @@ open class SilverfishAttackAction(
   val bombData: SilverfishAttackBomb = SilverfishAttackBomb.DEFAULT
 ) : NearbyAction {
 
-  override open fun shouldTrigger(event: BlockBreakEvent): Boolean =
+  open override fun shouldTrigger(event: BlockBreakEvent): Boolean =
     Infestation.canInfest(event.block.type)
 
   override fun onActivate(event: BlockBreakEvent) {

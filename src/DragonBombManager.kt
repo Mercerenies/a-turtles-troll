@@ -21,7 +21,6 @@ import org.bukkit.event.entity.EntityDamageEvent
 import org.bukkit.persistence.PersistentDataType
 import org.bukkit.attribute.Attribute
 
-
 class DragonBombManager(plugin: Plugin) : RunnableFeature(plugin), Listener {
 
   companion object : FeatureContainerFactory<FeatureContainer> {

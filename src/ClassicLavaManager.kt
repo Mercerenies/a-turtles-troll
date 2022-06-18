@@ -81,7 +81,7 @@ class ClassicLavaManager(plugin: Plugin) : RunnableFeature(plugin), Listener {
     }
   }
 
-  @EventHandler(priority=EventPriority.LOW)
+  @EventHandler(priority = EventPriority.LOW)
   fun onBlockPlace(event: BlockPlaceEvent) {
     if (!isEnabled()) {
       return

@@ -7,16 +7,16 @@ import org.bukkit.command.CommandSender
 
 import kotlin.collections.Map
 
-class Subcommand<T: Command>(
+class Subcommand<T : Command>(
   val map: Map<String, PermittedCommand<T>>,
 ) : Command {
 
   companion object {
 
-    fun<T: Command> Single(label: String, subcommand: PermittedCommand<T>): Subcommand<T> =
+    fun<T : Command> Single(label: String, subcommand: PermittedCommand<T>): Subcommand<T> =
       Subcommand(mapOf(label to subcommand))
 
-    fun<T: Command> Single(label: String, subcommand: T, permission: String): Subcommand<T> =
+    fun<T : Command> Single(label: String, subcommand: T, permission: String): Subcommand<T> =
       Single(label, PermittedCommand(subcommand, permission))
 
   }

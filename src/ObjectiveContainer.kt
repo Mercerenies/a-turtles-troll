@@ -24,6 +24,6 @@ open class ObjectiveContainer(
 
   val objective: Objective =
     scoreboard.getObjective(name) ?:
-    scoreboard.registerNewObjective(name, criteria, displayName, RenderType.INTEGER)
+      scoreboard.registerNewObjective(name, criteria, displayName, RenderType.INTEGER)
 
 }

@@ -14,7 +14,6 @@ import org.bukkit.event.entity.CreatureSpawnEvent
 import org.bukkit.entity.Zombie
 import org.bukkit.attribute.Attribute
 
-
 class ZombieSpeedListener(
   val desiredSpeed: Double = DEFAULT_SPEED,
 ) : AbstractFeature(), Listener {

@@ -17,12 +17,11 @@ class BlockBreakEventListener(
 
   // Note: We add in a unit weight NullAction here, since that won't
   // be provided as a "feature" in any sense.
-  constructor(dropFeature: DropFeatureContainer)
-    : this(
-        dropFeature.preRules.toList(),
-        listOf(Weight(NullAction, 1.0)) + dropFeature.actions.toList(),
-        dropFeature.postRules.toList(),
-      ) {}
+  constructor(dropFeature: DropFeatureContainer) : this(
+    dropFeature.preRules.toList(),
+    listOf(Weight(NullAction, 1.0)) + dropFeature.actions.toList(),
+    dropFeature.postRules.toList(),
+  ) {}
 
   @EventHandler
   fun onBlockBreak(event: BlockBreakEvent) {

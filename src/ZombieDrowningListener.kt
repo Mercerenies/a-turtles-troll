@@ -15,7 +15,6 @@ import org.bukkit.entity.Zombie
 import org.bukkit.entity.EntityType
 import org.bukkit.attribute.Attribute
 
-
 class ZombieDrowningListener() : AbstractFeature(), Listener {
 
   companion object : FeatureContainerFactory<FeatureContainer> {

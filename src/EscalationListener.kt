@@ -18,7 +18,7 @@ import org.bukkit.entity.Entity
 class EscalationListener(
   val featureCount: Int = 4,
   val targetEffectType: PotionEffectType = PotionEffectType.LEVITATION
-): AbstractFeature(), Listener {
+) : AbstractFeature(), Listener {
 
   companion object : FeatureContainerFactory<FeatureContainer> {
 

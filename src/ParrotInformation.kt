@@ -6,7 +6,7 @@ import org.bukkit.entity.Parrot
 
 // Right now, we just use Booleans to indicate "yes" or "no". We might
 // try to extract more info later, but for now that's good enough.
-interface  ParrotInformation {
+interface ParrotInformation {
 
   fun hasLeftShoulderPerch(): Boolean
 

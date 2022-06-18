@@ -20,7 +20,7 @@ import org.bukkit.plugin.Plugin
 class SpillageListener(
   val plugin: Plugin,
   val handlers: List<SpillageHandler> = Spillage.defaultHandlers,
-): AbstractFeature(), Listener {
+) : AbstractFeature(), Listener {
 
   companion object : FeatureContainerFactory<FeatureContainer> {
     val DELAY: Int = Constants.TICKS_PER_SECOND / 2

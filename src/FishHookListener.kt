@@ -13,7 +13,7 @@ import org.bukkit.event.player.PlayerFishEvent
 
 class FishHookListener(
   val speed: Double = 20.0
-): AbstractFeature(), Listener {
+) : AbstractFeature(), Listener {
 
   companion object {
     val RELEVANT_STATES = setOf(

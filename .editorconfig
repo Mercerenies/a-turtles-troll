@@ -1,4 +1,4 @@
 
 [*.{kt,kts}]
 indent_size = 2
-disabled_rules = import-ordering,no-blank-line-before-rbrace,no-wildcard-imports,string-template
+disabled_rules = import-ordering,no-blank-line-before-rbrace,no-wildcard-imports,string-template,chain-wrapping

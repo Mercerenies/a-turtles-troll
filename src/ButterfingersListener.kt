@@ -22,7 +22,7 @@ import kotlin.math.PI
 // Note: Doesn't work on the player's own inventory right now. It
 // looks like that's a client-side thing that I can't control,
 // sadly...
-class ButterfingersListener(): AbstractFeature(), Listener {
+class ButterfingersListener() : AbstractFeature(), Listener {
 
   companion object : FeatureContainerFactory<FeatureContainer> {
 

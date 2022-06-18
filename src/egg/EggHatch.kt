@@ -10,7 +10,6 @@ import org.bukkit.Material
 import org.bukkit.plugin.Plugin
 import org.bukkit.inventory.ItemStack
 
-
 // Helper for common egg hatch effects
 object EggHatch {
 

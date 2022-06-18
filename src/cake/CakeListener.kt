@@ -91,8 +91,8 @@ class CakeListener(
     }
 
     fun eat(player: Player) {
-        recentCakes[player] = (recentCakes[player] ?: 0) + 1
-        CakesEatenRunnable(player).runTaskLater(plugin, FIVE_MINUTES.toLong())
+      recentCakes[player] = (recentCakes[player] ?: 0) + 1
+      CakesEatenRunnable(player).runTaskLater(plugin, FIVE_MINUTES.toLong())
     }
 
     fun get(player: Player): Int =

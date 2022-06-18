@@ -28,7 +28,7 @@ class PufferfishRainManager(plugin: Plugin) : ScheduledEventRunnable<PufferfishR
       val world = player.getWorld()
       val targetLocation = player.getLocation().add(0.0, 15.0, 0.0)
       repeat(5) {
-        val thisLocation = targetLocation.clone().add(Random.nextDouble(-1.0, 1.0), 0.0, Random.nextDouble(-1.0, 1.0));
+        val thisLocation = targetLocation.clone().add(Random.nextDouble(-1.0, 1.0), 0.0, Random.nextDouble(-1.0, 1.0))
         val pufferfish = world.spawn(thisLocation, PufferFish::class.java)
         pufferfish.setPuffState(2)
       }
@@ -64,9 +64,9 @@ class PufferfishRainManager(plugin: Plugin) : ScheduledEventRunnable<PufferfishR
         Bukkit.broadcastMessage("The pufferfish are soaring...")
       }
       State.Idle2 -> {
-        val onlinePlayers = Bukkit.getOnlinePlayers();
+        val onlinePlayers = Bukkit.getOnlinePlayers()
         for (player in onlinePlayers) {
-          spawnPufferfishOn(player);
+          spawnPufferfishOn(player)
         }
       }
     }

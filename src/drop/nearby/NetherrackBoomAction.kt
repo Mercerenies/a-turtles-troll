@@ -7,16 +7,17 @@ import org.bukkit.Material
 import org.bukkit.Location
 import org.bukkit.event.block.BlockBreakEvent
 
-
 class NetherrackBoomAction(
   private val radius: Int = 5
 ) : NearbyAction {
 
   companion object {
-    val BLOCK_TYPES = setOf(Material.NETHERRACK, Material.CRIMSON_NYLIUM, Material.WARPED_NYLIUM,
-                            Material.SOUL_SAND, Material.SOUL_SOIL, Material.NETHER_BRICKS,
-                            Material.CRACKED_NETHER_BRICKS, Material.CHISELED_NETHER_BRICKS,
-                            Material.MOSS_BLOCK)
+    val BLOCK_TYPES = setOf(
+      Material.NETHERRACK, Material.CRIMSON_NYLIUM, Material.WARPED_NYLIUM,
+      Material.SOUL_SAND, Material.SOUL_SOIL, Material.NETHER_BRICKS,
+      Material.CRACKED_NETHER_BRICKS, Material.CHISELED_NETHER_BRICKS,
+      Material.MOSS_BLOCK,
+    )
   }
 
   override fun shouldTrigger(event: BlockBreakEvent): Boolean =

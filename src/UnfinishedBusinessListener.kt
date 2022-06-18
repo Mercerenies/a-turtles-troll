@@ -15,7 +15,7 @@ import org.bukkit.event.block.BlockDamageAbortEvent
 import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
 
-class UnfinishedBusinessListener(): AbstractFeature(), Listener {
+class UnfinishedBusinessListener() : AbstractFeature(), Listener {
 
   companion object : FeatureContainerFactory<FeatureContainer> {
 

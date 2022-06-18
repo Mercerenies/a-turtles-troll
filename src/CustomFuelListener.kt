@@ -8,7 +8,6 @@ import org.bukkit.event.Listener
 import org.bukkit.event.inventory.FurnaceBurnEvent
 import org.bukkit.Material
 
-
 // Not working yet :(
 class CustomFuelListener() : AbstractFeature(), Listener {
 
