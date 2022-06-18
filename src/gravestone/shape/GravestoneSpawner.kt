@@ -5,10 +5,7 @@ import com.mercerenies.turtletroll.gravestone.*
 
 import org.bukkit.block.Block
 import org.bukkit.block.BlockFace
-import org.bukkit.block.Sign
 import org.bukkit.block.`data`.`type`.Stairs
-import org.bukkit.block.`data`.`type`.Bed
-import org.bukkit.block.`data`.`type`.WallSign
 import org.bukkit.block.`data`.`type`.Slab
 import org.bukkit.block.`data`.Bisected
 import org.bukkit.Material

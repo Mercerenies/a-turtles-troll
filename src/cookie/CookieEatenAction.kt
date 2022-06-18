@@ -3,7 +3,6 @@ package com.mercerenies.turtletroll.cookie
 
 import com.mercerenies.turtletroll.gravestone.CustomDeathMessageRegistry
 
-import org.bukkit.Location
 import org.bukkit.inventory.ItemStack
 import org.bukkit.entity.Player
 

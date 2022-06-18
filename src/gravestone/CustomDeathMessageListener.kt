@@ -1,35 +1,16 @@
 
 package com.mercerenies.turtletroll.gravestone
 
-import com.mercerenies.turtletroll.ObjectiveContainer
-import com.mercerenies.turtletroll.feature.AbstractFeature
 import com.mercerenies.turtletroll.feature.container.FeatureContainer
 import com.mercerenies.turtletroll.feature.container.AbstractFeatureContainer
 import com.mercerenies.turtletroll.feature.builder.BuilderState
 import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
-import com.mercerenies.turtletroll.storage.GlobalDataHolder
-import com.mercerenies.turtletroll.Constants
 import com.mercerenies.turtletroll.ext.*
 
-import org.bukkit.Bukkit
-import org.bukkit.World
 import org.bukkit.event.Listener
 import org.bukkit.event.EventHandler
-import org.bukkit.event.EventPriority
-import org.bukkit.event.server.PluginEnableEvent
-import org.bukkit.event.server.PluginDisableEvent
-import org.bukkit.event.server.ServerLoadEvent
 import org.bukkit.event.entity.PlayerDeathEvent
-import org.bukkit.scoreboard.ScoreboardManager
-import org.bukkit.scoreboard.Scoreboard
-import org.bukkit.scoreboard.RenderType
-import org.bukkit.scoreboard.DisplaySlot
-import org.bukkit.scoreboard.Objective
-import org.bukkit.scheduler.BukkitRunnable
 import org.bukkit.plugin.Plugin
-import org.bukkit.block.Block
-
-import org.json.JSONObject
 
 // This one is *not* a feature; it's always enabled. It's a central
 // piece of infrastructure provided to several plugin features which

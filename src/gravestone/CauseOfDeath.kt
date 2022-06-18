@@ -106,7 +106,6 @@ object Mimic : CauseOfDeath {
     "Ouchie chest"
 }
 
-
 object OldAge : CauseOfDeath {
   override fun toInscription(): String =
     "Got ooooold"

@@ -6,14 +6,14 @@ import com.mercerenies.turtletroll.ext.*
 import org.bukkit.Bukkit
 
 fun interface NameSource {
-  fun sampleName(): String;
+  fun sampleName(): String
 
   object OnlinePlayers : NameSource {
     override fun sampleName(): String {
       val player = Bukkit.getOnlinePlayers().toList().sample()
       if (player == null) {
         // No one is online :(
-        return "";
+        return ""
       } else {
         return player.getName()
       }

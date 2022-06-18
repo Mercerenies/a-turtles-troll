@@ -14,7 +14,6 @@ import org.bukkit.entity.Creeper
 import org.bukkit.inventory.ItemStack
 import org.bukkit.Material
 
-
 class ChargedCreeperListener() : AbstractFeature(), Listener {
 
   companion object : FeatureContainerFactory<FeatureContainer> {

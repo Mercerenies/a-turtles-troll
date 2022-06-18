@@ -22,7 +22,6 @@ import org.bukkit.Material
 import org.bukkit.plugin.Plugin
 import org.bukkit.inventory.ItemStack
 
-
 class DrownedSpawnerListener(
   val plugin: Plugin,
   override val chance: Double = 1.0,

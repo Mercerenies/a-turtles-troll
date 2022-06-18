@@ -2,10 +2,7 @@
 package com.mercerenies.turtletroll.angel
 
 import com.mercerenies.turtletroll.feature.HasEnabledStatus
-import com.mercerenies.turtletroll.command.PermittedCommand
-import com.mercerenies.turtletroll.command.Command
 import com.mercerenies.turtletroll.command.TerminalCommand
-import com.mercerenies.turtletroll.command.withPermission
 import com.mercerenies.turtletroll.Constants
 
 import org.bukkit.entity.ArmorStand

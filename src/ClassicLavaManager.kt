@@ -2,7 +2,6 @@
 package com.mercerenies.turtletroll
 
 import com.mercerenies.turtletroll.ext.*
-import com.mercerenies.turtletroll.dripstone.EqBlock
 import com.mercerenies.turtletroll.feature.RunnableFeature
 import com.mercerenies.turtletroll.feature.container.FeatureContainer
 import com.mercerenies.turtletroll.feature.container.ManagerContainer
@@ -20,9 +19,6 @@ import org.bukkit.plugin.Plugin
 import org.bukkit.block.Block
 import org.bukkit.block.`data`.Levelled
 import org.bukkit.metadata.FixedMetadataValue
-
-import kotlin.random.Random
-import kotlin.math.min
 
 class ClassicLavaManager(plugin: Plugin) : RunnableFeature(plugin), Listener {
 

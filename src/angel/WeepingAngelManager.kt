@@ -20,10 +20,8 @@ import org.bukkit.Particle
 import org.bukkit.event.Listener
 import org.bukkit.event.EventHandler
 import org.bukkit.event.player.PlayerMoveEvent
-import org.bukkit.event.entity.PlayerDeathEvent
 import org.bukkit.event.entity.EntityDeathEvent
 import org.bukkit.event.entity.CreatureSpawnEvent
-import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.bukkit.Sound
 import org.bukkit.util.EulerAngle
 

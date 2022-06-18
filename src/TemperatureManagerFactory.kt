@@ -1,13 +1,11 @@
 
 package com.mercerenies.turtletroll
 
-import com.mercerenies.turtletroll.BlockIgnorer
 import com.mercerenies.turtletroll.gravestone.CustomDeathMessageRegistry
 import com.mercerenies.turtletroll.feature.container.FeatureContainer
 import com.mercerenies.turtletroll.feature.container.ManagerContainer
 import com.mercerenies.turtletroll.feature.builder.BuilderState
 import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
-import com.mercerenies.turtletroll.feature.HasEnabledStatus
 
 import org.bukkit.Bukkit
 

@@ -7,7 +7,6 @@ import kotlin.io.forEachLine
 
 import java.io.Reader
 import java.io.InputStreamReader
-import java.nio.charset.Charset
 
 // Precondition: The file at the specified path must be nonempty.
 class FortunesFile(dataPath: String) : NameSource {

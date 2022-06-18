@@ -1,25 +1,13 @@
 
 package com.mercerenies.turtletroll.gravestone
 
-import com.mercerenies.turtletroll.ScheduledEventRunnable
-import com.mercerenies.turtletroll.command.TerminalCommand
-import com.mercerenies.turtletroll.Weight
-import com.mercerenies.turtletroll.sample
 import com.mercerenies.turtletroll.ext.*
 
-import org.bukkit.plugin.Plugin
 import org.bukkit.Bukkit
 import org.bukkit.NamespacedKey
 import org.bukkit.boss.BarColor
 import org.bukkit.boss.BarStyle
-import org.bukkit.boss.BarFlag
 import org.bukkit.entity.Player
-import org.bukkit.event.EventHandler
-import org.bukkit.event.EventPriority
-import org.bukkit.event.entity.PlayerDeathEvent
-import org.bukkit.event.player.PlayerBedEnterEvent
-import org.bukkit.event.Listener
-import org.bukkit.command.CommandSender
 
 class BedtimeBossBarUpdater(
   val namespacedKey: NamespacedKey,

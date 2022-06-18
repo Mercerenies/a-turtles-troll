@@ -8,7 +8,6 @@ import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 
 import org.bukkit.Material
 import org.bukkit.block.Block
-import org.bukkit.block.`data`.Bisected
 
 class ButtonDamageListener(
   override val maxUses: Int = 4,

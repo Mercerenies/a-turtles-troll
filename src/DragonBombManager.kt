@@ -6,7 +6,6 @@ import com.mercerenies.turtletroll.feature.container.FeatureContainer
 import com.mercerenies.turtletroll.feature.container.ManagerContainer
 import com.mercerenies.turtletroll.feature.builder.BuilderState
 import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
-import com.mercerenies.turtletroll.CooldownMemory
 import com.mercerenies.turtletroll.ext.*
 
 import org.bukkit.plugin.Plugin

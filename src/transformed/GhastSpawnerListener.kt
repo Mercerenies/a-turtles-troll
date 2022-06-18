@@ -19,7 +19,6 @@ import org.bukkit.Chunk
 import org.bukkit.util.Vector
 import org.bukkit.plugin.Plugin
 
-
 class GhastSpawnerListener(
   val plugin: Plugin,
   override val chance: Double = 0.2,

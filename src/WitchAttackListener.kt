@@ -13,7 +13,6 @@ import org.bukkit.event.Listener
 import org.bukkit.event.entity.ProjectileLaunchEvent
 import org.bukkit.entity.Witch
 import org.bukkit.entity.Parrot
-import org.bukkit.entity.EntityType
 import org.bukkit.plugin.Plugin
 
 import kotlin.random.Random

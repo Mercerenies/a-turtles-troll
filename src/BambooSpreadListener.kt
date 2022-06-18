@@ -12,16 +12,10 @@ import com.mercerenies.turtletroll.ext.*
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.block.BlockSpreadEvent
-import org.bukkit.entity.EntityType
-import org.bukkit.inventory.ItemStack
 import org.bukkit.Material
-import org.bukkit.scheduler.BukkitRunnable
 import org.bukkit.plugin.Plugin
-import org.bukkit.Location
 import org.bukkit.block.Block
 import org.bukkit.block.`data`.`type`.Bamboo
-
-import kotlin.random.Random
 
 class BambooSpreadListener(
   val plugin: Plugin,

@@ -44,9 +44,9 @@ class PetPhantomManager(
 
   }
 
-  private val safePlayers = CooldownMemory<Player>(plugin);
+  private val safePlayers = CooldownMemory<Player>(plugin)
 
-  private val knownPhantoms = HashMap<Player, Phantom>();
+  private val knownPhantoms = HashMap<Player, Phantom>()
 
   override val name = "phantoms"
 
@@ -101,8 +101,8 @@ class PetPhantomManager(
     loc.y += MIN_SPAWN_HEIGHT
     var maxDistLeft = (MAX_SPAWN_HEIGHT - MIN_SPAWN_HEIGHT)
     while ((maxDistLeft > 0) && (!loc.block.isEmpty())) {
-      maxDistLeft -= 1;
-      loc.y += 1;
+      maxDistLeft -= 1
+      loc.y += 1
     }
     return if (loc.block.isEmpty()) {
       val newPhantom = player.world.spawnEntity(loc, EntityType.PHANTOM) as Phantom

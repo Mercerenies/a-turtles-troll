@@ -10,7 +10,6 @@ import org.bukkit.entity.*
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 import org.bukkit.plugin.Plugin
-import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
 
 // Helper for common cookie-eating effects

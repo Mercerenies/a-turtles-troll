@@ -7,7 +7,6 @@ import com.mercerenies.turtletroll.feature.container.ManagerContainer
 import com.mercerenies.turtletroll.feature.builder.BuilderState
 import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 
-import org.bukkit.entity.Player
 import org.bukkit.plugin.Plugin
 import org.bukkit.Bukkit
 import org.bukkit.entity.Phantom
@@ -17,7 +16,6 @@ import org.bukkit.event.Listener
 import org.bukkit.event.EventHandler
 import org.bukkit.event.entity.EntityDamageEvent
 
-import kotlin.collections.HashMap
 import kotlin.random.Random
 
 class WitchSummonManager(

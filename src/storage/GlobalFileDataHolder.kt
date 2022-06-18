@@ -6,8 +6,6 @@ import org.bukkit.plugin.Plugin
 import org.json.JSONObject
 
 import java.io.File
-import java.io.InputStream
-import kotlin.collections.HashMap
 import kotlin.text.Charsets
 
 class GlobalFileDataHolder(

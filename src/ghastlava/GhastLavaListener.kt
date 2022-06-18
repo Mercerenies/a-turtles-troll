@@ -14,7 +14,6 @@ import org.bukkit.entity.Ghast
 import org.bukkit.plugin.Plugin
 import org.bukkit.scheduler.BukkitRunnable
 
-
 class GhastLavaListener(
   val plugin: Plugin,
   val ignorer: BlockIgnorer = BlockIgnorer.Null,

@@ -1,8 +1,6 @@
 
 package com.mercerenies.turtletroll.feature.builder
 
-import com.mercerenies.turtletroll.storage.GlobalDataHolder
-import com.mercerenies.turtletroll.feature.container.CompositeFeatureContainer
 import com.mercerenies.turtletroll.feature.container.BaseFeatureContainer
 
 fun interface FeatureContainerFactory<out T : BaseFeatureContainer> {

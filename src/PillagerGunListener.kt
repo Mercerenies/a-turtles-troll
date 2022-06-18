@@ -14,7 +14,6 @@ import org.bukkit.event.entity.EntitySpawnEvent
 import org.bukkit.entity.Pillager
 import org.bukkit.enchantments.Enchantment
 
-
 class PillagerGunListener() : AbstractFeature(), Listener {
 
   companion object : FeatureContainerFactory<FeatureContainer> {

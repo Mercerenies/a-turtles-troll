@@ -23,8 +23,6 @@ import org.bukkit.World
 import org.bukkit.Bukkit
 import org.bukkit.scheduler.BukkitRunnable
 import org.bukkit.plugin.Plugin
-import org.bukkit.block.`data`.Levelled
-
 
 class LlamaHunterManager(
   plugin: Plugin,

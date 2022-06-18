@@ -13,7 +13,6 @@ import org.bukkit.event.entity.EntityPotionEffectEvent
 import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
 import org.bukkit.entity.Player
-import org.bukkit.entity.Entity
 
 class EscalationListener(
   val featureCount: Int = 4,

@@ -3,14 +3,10 @@ package com.mercerenies.turtletroll.cookie
 
 import com.mercerenies.turtletroll.ext.*
 import com.mercerenies.turtletroll.AllItems
-import com.mercerenies.turtletroll.Rarity
 import com.mercerenies.turtletroll.BookBuilder
 import com.mercerenies.turtletroll.NameSource
 
-import org.bukkit.Location
-import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
-import org.bukkit.entity.Player
 
 class FortuneEffect(
   private val authors: NameSource,

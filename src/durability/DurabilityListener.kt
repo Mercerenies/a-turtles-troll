@@ -10,7 +10,6 @@ import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.event.block.BlockBreakEvent
 import org.bukkit.block.Block
-import org.bukkit.block.`data`.Bisected
 import org.bukkit.Sound
 
 import kotlin.collections.HashMap

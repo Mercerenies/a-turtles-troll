@@ -2,19 +2,12 @@
 package com.mercerenies.turtletroll.cookie
 
 import com.mercerenies.turtletroll.Constants
-import com.mercerenies.turtletroll.Worlds
 import com.mercerenies.turtletroll.gravestone.CustomDeathMessageRegistry
 import com.mercerenies.turtletroll.gravestone.CustomDeathMessage
 import com.mercerenies.turtletroll.gravestone.Cookie
 
-import org.bukkit.Location
-import org.bukkit.Sound
 import org.bukkit.plugin.Plugin
 import org.bukkit.entity.Player
-import org.bukkit.inventory.ItemStack
-import org.bukkit.potion.PotionEffect
-import org.bukkit.potion.PotionEffectType
-import org.bukkit.event.player.PlayerTeleportEvent
 import org.bukkit.scheduler.BukkitRunnable
 
 class DeathEffect(private val plugin: Plugin) : CookieEffect {

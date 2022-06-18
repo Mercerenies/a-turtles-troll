@@ -3,9 +3,6 @@ package com.mercerenies.turtletroll.cookie
 
 import com.mercerenies.turtletroll.Constants
 
-import org.bukkit.Location
-import org.bukkit.entity.Player
-import org.bukkit.inventory.ItemStack
 import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
 

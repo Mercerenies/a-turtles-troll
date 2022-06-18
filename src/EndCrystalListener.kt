@@ -20,7 +20,6 @@ import org.bukkit.plugin.Plugin
 import org.bukkit.scheduler.BukkitRunnable
 import org.bukkit.block.CreatureSpawner
 
-
 class EndCrystalListener(
   val plugin: Plugin,
 ) : AbstractFeature(), Listener {

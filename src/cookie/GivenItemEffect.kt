@@ -5,7 +5,6 @@ import com.mercerenies.turtletroll.ext.*
 import com.mercerenies.turtletroll.AllItems
 import com.mercerenies.turtletroll.Rarity
 
-import org.bukkit.Location
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 import org.bukkit.entity.Player

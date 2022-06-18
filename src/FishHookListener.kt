@@ -7,7 +7,6 @@ import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerFishEvent
 
-
 // This is really janky, even by my standards, so it's not currently
 // used :)
 

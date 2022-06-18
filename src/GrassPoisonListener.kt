@@ -13,7 +13,6 @@ import org.bukkit.event.player.PlayerMoveEvent
 import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
 
-
 class GrassPoisonListener(
   _bootsDamageChance: Double = 1.00
 ) : AbstractFeature(), Listener {

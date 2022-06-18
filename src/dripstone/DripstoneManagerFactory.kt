@@ -1,17 +1,12 @@
 
 package com.mercerenies.turtletroll.dripstone
 
-import com.mercerenies.turtletroll.feature.RunnableFeature
 import com.mercerenies.turtletroll.feature.container.FeatureContainer
 import com.mercerenies.turtletroll.feature.container.AbstractFeatureContainer
 import com.mercerenies.turtletroll.feature.builder.BuilderState
 import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 import com.mercerenies.turtletroll.feature.CompositeFeature
 import com.mercerenies.turtletroll.recipe.DripstoneRecipeFeature
-import com.mercerenies.turtletroll.SpawnReason
-
-import kotlin.collections.HashMap
-import kotlin.random.Random
 
 object DripstoneManagerFactory : FeatureContainerFactory<FeatureContainer> {
 

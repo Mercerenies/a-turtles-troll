@@ -5,7 +5,6 @@ import com.mercerenies.turtletroll.ext.*
 
 import org.bukkit.command.CommandSender
 
-
 abstract class UnaryCommand() : Command {
 
   abstract fun onCommand(

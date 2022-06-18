@@ -13,7 +13,6 @@ import org.bukkit.event.Listener
 import org.bukkit.event.entity.EntityTransformEvent
 import org.bukkit.entity.Zombie
 import org.bukkit.entity.EntityType
-import org.bukkit.attribute.Attribute
 
 class ZombieDrowningListener() : AbstractFeature(), Listener {
 

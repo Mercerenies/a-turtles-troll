@@ -9,8 +9,6 @@ import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 
 import org.bukkit.entity.Ghast
 import org.bukkit.plugin.Plugin
-import org.bukkit.Bukkit
-import org.bukkit.World
 
 // TODO This and SilverfishBurnRunnable are very similar...
 class GhastBurnRunnable(plugin: Plugin) : RunnableFeature(plugin) {

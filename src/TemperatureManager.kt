@@ -5,17 +5,12 @@ import com.mercerenies.turtletroll.gravestone.CustomDeathMessageRegistry
 import com.mercerenies.turtletroll.gravestone.CustomDeathMessage
 import com.mercerenies.turtletroll.gravestone.Vanilla
 import com.mercerenies.turtletroll.feature.RunnableFeature
-import com.mercerenies.turtletroll.feature.container.FeatureContainer
-import com.mercerenies.turtletroll.feature.container.ManagerContainer
-import com.mercerenies.turtletroll.feature.builder.BuilderState
-import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 import com.mercerenies.turtletroll.util.linearRescale
 import com.mercerenies.turtletroll.util.lerp
 
 import org.bukkit.entity.Player
 import org.bukkit.event.Listener
 import org.bukkit.event.EventHandler
-import org.bukkit.event.entity.PlayerDeathEvent
 import org.bukkit.event.entity.EntityDamageEvent
 import org.bukkit.event.server.ServerLoadEvent
 import org.bukkit.plugin.Plugin

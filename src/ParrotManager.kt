@@ -13,10 +13,8 @@ import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerMoveEvent
 import org.bukkit.event.entity.EntitySpawnEvent
-import org.bukkit.event.entity.EntityDeathEvent
 import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
-import org.bukkit.entity.EntityType
 import org.bukkit.entity.Entity
 import org.bukkit.entity.Parrot
 import org.bukkit.entity.Player

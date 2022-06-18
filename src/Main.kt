@@ -2,7 +2,6 @@
 package com.mercerenies.turtletroll
 
 import com.mercerenies.turtletroll.feature.FeatureManager
-import com.mercerenies.turtletroll.feature.container.CompositeFeatureContainer
 import com.mercerenies.turtletroll.feature.container.FeatureContainer
 import com.mercerenies.turtletroll.feature.builder.SimpleBuilderState
 import com.mercerenies.turtletroll.feature.builder.BuilderState
@@ -37,7 +36,6 @@ class Main : JavaPlugin() {
     ).withPermission("com.mercerenies.turtletroll.command"),
   )
   val commandDispatcher = CommandDispatcher(turtleCommand)
-
 
   override fun onEnable() {
 

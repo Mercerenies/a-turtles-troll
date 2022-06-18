@@ -2,10 +2,8 @@
 package com.mercerenies.turtletroll
 
 import org.bukkit.Bukkit
-import org.bukkit.scoreboard.ScoreboardManager
 import org.bukkit.scoreboard.Scoreboard
 import org.bukkit.scoreboard.RenderType
-import org.bukkit.scoreboard.DisplaySlot
 import org.bukkit.scoreboard.Objective
 
 open class ObjectiveContainer(

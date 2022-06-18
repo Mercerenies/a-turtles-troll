@@ -1,23 +1,16 @@
 
 package com.mercerenies.turtletroll.angel
 
-import com.mercerenies.turtletroll.feature.RunnableFeature
 import com.mercerenies.turtletroll.feature.container.FeatureContainer
 import com.mercerenies.turtletroll.feature.container.AbstractFeatureContainer
 import com.mercerenies.turtletroll.feature.builder.BuilderState
 import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 import com.mercerenies.turtletroll.feature.CompositeFeature
 import com.mercerenies.turtletroll.command.withPermission
-import com.mercerenies.turtletroll.command.Command
-import com.mercerenies.turtletroll.command.PermittedCommand
 import com.mercerenies.turtletroll.recipe.AngelRecipeFeature
-import com.mercerenies.turtletroll.SpawnReason
 import com.mercerenies.turtletroll.gravestone.CustomDeathMessageRegistry
 
 import org.bukkit.Bukkit
-
-import kotlin.collections.HashMap
-import kotlin.random.Random
 
 class WeepingAngelManagerFactory(
   private val deathFeatureId: String,
