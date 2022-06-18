@@ -104,6 +104,8 @@
    + freecookie :: Every player gets a free cookie at dawn and at dusk
    + cookies :: Eating a cookie gives the player one of several
                 effects at random
+   + parrotcookie :: Feeding cookies to parrots causes them to
+                     duplicate
 ** BLOCK DROP FEATURES
    + dirtstacks :: All blocks have a chance of dropping 64 dirt
                    instead of the intended drop
