@@ -27,6 +27,10 @@ A Turtle's Troll also depends on the following two libraries.
 
 ## Changelog
 
+### Version 1.17
+
+* Pumpkin helmets no longer count as armor for temperature purposes
+
 ### Version 1.16
 
 * Eating cookies grants one of several random effects
