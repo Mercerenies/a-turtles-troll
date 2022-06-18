@@ -21,7 +21,7 @@ class AnvilRunnable(plugin: Plugin) : FallingObjectRunnable(plugin) {
 
   override val maxDropHeight = 15
 
-  override val blockToDrop = Material.ANVIL
+  override fun getBlockToDrop() = Material.ANVIL
 
   override val taskPeriod = 10L * Constants.TICKS_PER_SECOND.toLong()
 

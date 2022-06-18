@@ -15,7 +15,7 @@ abstract class FallingObjectRunnable(plugin: Plugin) : RunnableFeature(plugin) {
 
   abstract val maxDropHeight: Int
 
-  abstract val blockToDrop: Material
+  abstract fun getBlockToDrop(): Material
 
   open fun shouldDropOn(player: Player): Boolean = true
 
@@ -34,7 +34,7 @@ abstract class FallingObjectRunnable(plugin: Plugin) : RunnableFeature(plugin) {
     }
     loc.y -= 1
     if (loc.getBlock().type == Material.AIR) {
-      loc.getBlock().type = blockToDrop
+      loc.getBlock().type = getBlockToDrop()
     }
   }
 

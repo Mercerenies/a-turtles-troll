@@ -19,7 +19,8 @@
    + lavalaunch :: Touching lava causes you to launch a short distance
                    into the air and gives Haste
    + sandattack :: While standing on the following blocks, sand will
-                   constantly fall from above: sand, gravel, end stone
+                   constantly fall from above: sand, red sand,
+                   sandstone, red sandstone, gravel, end stone
    + witherrose :: All flowers (and berry bushes) give the Wither
                    effect on contact now, or when picked up
    + classiclava :: Lava spreads further in the overworld and the End

@@ -12,15 +12,26 @@ import org.bukkit.Material
 import org.bukkit.block.Block
 import org.bukkit.plugin.Plugin
 
+import kotlin.random.Random
+
 class SandAttackRunnable(
   plugin: Plugin,
+  val redSandChance: Double = 0.1,
   val targetBlocks: Set<Material> = DEFAULT_TRIGGERS,
 ) : FallingObjectRunnable(plugin) {
 
   companion object : FeatureContainerFactory<FeatureContainer> {
 
     val DEFAULT_TRIGGERS = setOf(
-      Material.SAND, Material.GRAVEL, Material.END_STONE,
+      Material.SAND, Material.CHISELED_RED_SANDSTONE, Material.CHISELED_SANDSTONE,
+      Material.CUT_RED_SANDSTONE, Material.CUT_RED_SANDSTONE_SLAB, Material.CUT_SANDSTONE,
+      Material.CUT_SANDSTONE_SLAB, Material.RED_SAND, Material.RED_SANDSTONE,
+      Material.RED_SANDSTONE_SLAB, Material.RED_SANDSTONE_STAIRS, Material.RED_SANDSTONE_WALL,
+      Material.SANDSTONE, Material.SANDSTONE_SLAB, Material.SANDSTONE_STAIRS,
+      Material.SANDSTONE_WALL, Material.SMOOTH_RED_SANDSTONE, Material.SMOOTH_RED_SANDSTONE_SLAB,
+      Material.SMOOTH_RED_SANDSTONE_STAIRS, Material.SMOOTH_SANDSTONE,
+      Material.SMOOTH_SANDSTONE_SLAB, Material.SMOOTH_SANDSTONE_STAIRS,
+      Material.GRAVEL, Material.END_STONE,
     )
 
     override fun create(state: BuilderState): FeatureContainer =
@@ -34,7 +45,12 @@ class SandAttackRunnable(
 
   override val maxDropHeight = 15
 
-  override val blockToDrop = Material.SAND
+  override fun getBlockToDrop() =
+    if (Random.nextDouble() < redSandChance) {
+      Material.RED_SAND
+    } else {
+      Material.SAND
+    }
 
   override val taskPeriod = Constants.TICKS_PER_SECOND.toLong()
 
