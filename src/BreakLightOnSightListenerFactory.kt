@@ -1,7 +1,6 @@
 
 package com.mercerenies.turtletroll
 
-import com.mercerenies.turtletroll.BlockIgnorer
 import com.mercerenies.turtletroll.feature.HasEnabledStatus
 import com.mercerenies.turtletroll.feature.container.FeatureContainer
 import com.mercerenies.turtletroll.feature.container.ListenerContainer
@@ -15,11 +14,11 @@ class BreakLightOnSightListenerFactory(
   private val pumpkinFeatureSupplier: (BuilderState) -> HasEnabledStatus?,
 ) : FeatureContainerFactory<FeatureContainer> {
 
-  constructor(feature: HasEnabledStatus)
-    : this({ _ -> feature })
+  constructor(feature: HasEnabledStatus) :
+    this({ _ -> feature })
 
-  constructor(featureId: String)
-    : this({ state -> state.getSharedData(featureId, HasEnabledStatus::class) })
+  constructor(featureId: String) :
+    this({ state -> state.getSharedData(featureId, HasEnabledStatus::class) })
 
   override fun create(state: BuilderState): FeatureContainer {
     var pumpkinFeature = pumpkinFeatureSupplier(state)

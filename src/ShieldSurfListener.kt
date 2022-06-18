@@ -48,7 +48,7 @@ class ShieldSurfListener() : AbstractFeature(), Listener {
 
   override val description = "If you look at the ground and hold a shield, you can block fall damage and lava damage"
 
-  @EventHandler(priority=EventPriority.LOW)
+  @EventHandler(priority = EventPriority.LOW)
   fun onEntityDamage(event: EntityDamageEvent) {
     if (!isEnabled()) {
       return
@@ -66,7 +66,7 @@ class ShieldSurfListener() : AbstractFeature(), Listener {
     }
   }
 
-  @EventHandler(priority=EventPriority.LOW)
+  @EventHandler(priority = EventPriority.LOW)
   fun onEntityCombustByBlock(event: EntityCombustByBlockEvent) {
     if (!isEnabled()) {
       return

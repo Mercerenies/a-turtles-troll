@@ -29,17 +29,21 @@ class DirtRecipeFeature(plugin: Plugin) : RecipeFeature(plugin) {
   override fun getRecipes(): List<UnkeyedRecipe<Recipe>> {
     val recipe1 = UnkeyedRecipe<Recipe> { key: NamespacedKey ->
       val recipe = ShapedRecipe(key, ItemStack(Material.STICK, 1))
-      recipe.shape("AAA",
-                   "AAA",
-                   "AAA")
+      recipe.shape(
+        "AAA",
+        "AAA",
+        "AAA",
+      )
       recipe.setIngredient('A', Material.DIRT)
       recipe
     }
     val recipe2 = UnkeyedRecipe<Recipe> { key: NamespacedKey ->
       val recipe = ShapedRecipe(key, ItemStack(Material.DIRT, 1))
-      recipe.shape("AAA",
-                   "AAA",
-                   "AAA")
+      recipe.shape(
+        "AAA",
+        "AAA",
+        "AAA",
+      )
       recipe.setIngredient('A', Material.STICK)
       recipe
     }

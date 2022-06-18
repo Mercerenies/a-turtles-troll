@@ -7,27 +7,8 @@ import com.mercerenies.turtletroll.feature.container.RunnableContainer
 import com.mercerenies.turtletroll.feature.builder.BuilderState
 import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 
-import org.bukkit.entity.Player
 import org.bukkit.entity.Silverfish
-import org.bukkit.entity.LivingEntity
-import org.bukkit.entity.EntityType
 import org.bukkit.plugin.Plugin
-import org.bukkit.Location
-import org.bukkit.Color
-import org.bukkit.Bukkit
-import org.bukkit.Particle
-import org.bukkit.event.Listener
-import org.bukkit.event.EventHandler
-import org.bukkit.event.player.PlayerMoveEvent
-import org.bukkit.event.entity.PlayerDeathEvent
-import org.bukkit.event.entity.EntityDeathEvent
-import org.bukkit.event.entity.CreatureSpawnEvent
-import org.bukkit.event.entity.EntityDamageByEntityEvent
-import org.bukkit.Sound
-import org.bukkit.util.EulerAngle
-
-import kotlin.collections.HashMap
-import kotlin.random.Random
 
 class SilverfishBurnRunnable(
   plugin: Plugin,

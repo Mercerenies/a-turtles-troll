@@ -1,14 +1,12 @@
 
 package com.mercerenies.turtletroll.recipe
 
-
 import org.bukkit.plugin.Plugin
 import org.bukkit.NamespacedKey
 import org.bukkit.Material
 import org.bukkit.inventory.Recipe
 import org.bukkit.inventory.ShapedRecipe
 import org.bukkit.inventory.ItemStack
-import org.bukkit.persistence.PersistentDataType
 
 class DripstoneRecipeFeature(plugin: Plugin) : RecipeFeature(plugin) {
 
@@ -19,19 +17,21 @@ class DripstoneRecipeFeature(plugin: Plugin) : RecipeFeature(plugin) {
   override fun getRecipes(): List<UnkeyedRecipe<Recipe>> {
     val recipe = UnkeyedRecipe<Recipe> { key: NamespacedKey ->
 
-      //Evanski's horrible code here that gives the arrows custom names he can get in the datapack
+      // Evanski's horrible code here that gives the arrows custom names he can get in the datapack
       val ud_arrow = ItemStack(Material.ARROW, 4)
       val ud_meta = ud_arrow.getItemMeta()!!
 
       ud_meta.setDisplayName("Upside Down Arrow")
       ud_meta.setCustomModelData(8565)
       ud_arrow.setItemMeta(ud_meta)
-      //Thought it would be funnier if the recipe was made upside down aswell
+      // Thought it would be funnier if the recipe was made upside down aswell
 
       val recipe = ShapedRecipe(key, ud_arrow)
-      recipe.shape("A",
-                   "B",
-                   "C")
+      recipe.shape(
+        "A",
+        "B",
+        "C",
+      )
       recipe.setIngredient('A', Material.FEATHER)
       recipe.setIngredient('B', Material.STICK)
       recipe.setIngredient('C', Material.POINTED_DRIPSTONE)

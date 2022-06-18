@@ -1,20 +1,13 @@
 
 package com.mercerenies.turtletroll.egg
 
-import com.mercerenies.turtletroll.feature.RunnableFeature
 import com.mercerenies.turtletroll.feature.container.FeatureContainer
 import com.mercerenies.turtletroll.feature.container.ListenerContainer
 import com.mercerenies.turtletroll.feature.builder.BuilderState
 import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
-import com.mercerenies.turtletroll.feature.CompositeFeature
-import com.mercerenies.turtletroll.recipe.AngelRecipeFeature
-import com.mercerenies.turtletroll.SpawnReason
 import com.mercerenies.turtletroll.Weight
 
 import org.bukkit.plugin.Plugin
-
-import kotlin.collections.HashMap
-import kotlin.random.Random
 
 abstract class EggListenerFactory() : FeatureContainerFactory<FeatureContainer> {
 

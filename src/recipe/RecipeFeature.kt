@@ -55,7 +55,7 @@ abstract class RecipeFeature(val plugin: Plugin) : AbstractFeature() {
   }
 
   fun removeRecipes() {
-    (0..recipeCount-1).forEach {
+    (0..(recipeCount - 1)).forEach {
       Bukkit.removeRecipe(namespacedKey(it))
     }
     recipeCount = 0

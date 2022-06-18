@@ -7,27 +7,20 @@ import com.mercerenies.turtletroll.feature.container.ListenerContainer
 import com.mercerenies.turtletroll.feature.builder.BuilderState
 import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 
-import org.bukkit.scheduler.BukkitRunnable
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.entity.CreatureSpawnEvent
 import org.bukkit.event.world.ChunkPopulateEvent
-import org.bukkit.entity.Pig
-import org.bukkit.entity.Strider
 import org.bukkit.entity.Steerable
 import org.bukkit.entity.EntityType
 import org.bukkit.entity.Entity
 import org.bukkit.entity.LivingEntity
-import org.bukkit.Location
 import org.bukkit.Chunk
-import org.bukkit.Bukkit
 import org.bukkit.plugin.Plugin
 import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
 import org.spigotmc.event.entity.EntityMountEvent
 import org.spigotmc.event.entity.EntityDismountEvent
-
-import kotlin.random.Random
 
 class SaddleListener(
   val plugin: Plugin,
