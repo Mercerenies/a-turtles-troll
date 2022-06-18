@@ -9,16 +9,12 @@ import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 import com.mercerenies.turtletroll.ext.*
 
 import org.bukkit.Material
-import org.bukkit.Location
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
-import org.bukkit.event.block.BlockBreakEvent
 import org.bukkit.event.entity.EntityDeathEvent
 import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.bukkit.entity.Parrot
 import org.bukkit.entity.HumanEntity
-import org.bukkit.block.Block
-import org.bukkit.block.`data`.`type`.Bed
 
 class ParrotCookieListener() : AbstractFeature(), Listener {
 
