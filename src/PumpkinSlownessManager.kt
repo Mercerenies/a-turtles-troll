@@ -9,7 +9,6 @@ import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 
 import org.bukkit.plugin.Plugin
 import org.bukkit.Bukkit
-import org.bukkit.Material
 import org.bukkit.event.Listener
 import org.bukkit.event.EventHandler
 import org.bukkit.event.inventory.InventoryCloseEvent

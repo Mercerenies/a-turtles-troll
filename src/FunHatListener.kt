@@ -13,8 +13,6 @@ import org.bukkit.event.Listener
 import org.bukkit.event.entity.CreatureSpawnEvent
 import org.bukkit.event.entity.EntityDeathEvent
 import org.bukkit.entity.EntityType
-import org.bukkit.entity.LivingEntity
-import org.bukkit.attribute.Attribute
 
 import kotlin.random.Random
 
