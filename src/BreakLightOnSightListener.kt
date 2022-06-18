@@ -27,7 +27,7 @@ class BreakLightOnSightListener(
   override val description: String = "Torches and similar light sources break when you look at them"
 
   override fun shouldTrigger(player: Player, block: Block): Boolean {
-    if ((player.inventory.helmet?.getType() == Material.CARVED_PUMPKIN) && (pumpkinFeature.isEnabled())) {
+    if ((Hats.isWearingOrdinaryHat(player)) && (pumpkinFeature.isEnabled())) {
       return false
     }
     return BLOCKS.contains(block.type)

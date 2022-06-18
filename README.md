@@ -31,6 +31,8 @@ A Turtle's Troll also depends on the following two libraries.
 
 * Feeding cookies to parrots causes them to duplicate now
 * Pumpkin helmets no longer count as armor for temperature purposes
+* Custom hats (per Raccoon Mischief) no longer provide the protection
+  or downsides of ordinary carved pumpkin hats
 * Red sand and sandstone now apply the **sandattack** effect as well
 * Red sand will sometimes fall during **sandattack**
 

@@ -36,7 +36,7 @@ class TransformTorchOnSightListener(
     BLOCKS.contains(block.type)
 
   override fun performEffect(player: Player, block: Block) {
-    if ((player.inventory.helmet?.getType() == Material.CARVED_PUMPKIN) && (pumpkinFeature.isEnabled())) {
+    if ((Hats.isWearingOrdinaryHat(player)) && (pumpkinFeature.isEnabled())) {
       return
     }
 

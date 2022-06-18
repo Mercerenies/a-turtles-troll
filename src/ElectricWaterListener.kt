@@ -64,7 +64,7 @@ class ElectricWaterListener(
       return false
     }
     // Pumpkins provide immunity against the electricity effect
-    if ((player.inventory.helmet?.getType() == Material.CARVED_PUMPKIN) && (pumpkinFeature.isEnabled())) {
+    if ((Hats.isWearingOrdinaryHat(player)) && (pumpkinFeature.isEnabled())) {
       return false
     }
     // Dolphin's Grace provides immunity against the electricity effect

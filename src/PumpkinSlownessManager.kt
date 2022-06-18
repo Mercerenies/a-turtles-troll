@@ -41,7 +41,7 @@ class PumpkinSlownessManager(plugin: Plugin) : RunnableFeature(plugin), Listener
       return
     }
     for (player in Bukkit.getOnlinePlayers()) {
-      if (player.inventory.helmet?.getType() == Material.CARVED_PUMPKIN) {
+      if (Hats.isWearingOrdinaryHat(player)) {
         player.addPotionEffect(PotionEffect(PotionEffectType.SLOW, Constants.TICKS_PER_SECOND * 10, 1))
         player.addPotionEffect(PotionEffect(PotionEffectType.SLOW_DIGGING, Constants.TICKS_PER_SECOND * 10, 0))
       }
