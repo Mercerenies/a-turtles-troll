@@ -17,9 +17,9 @@ object BeaconGravestoneSpawner : GravestoneSpawner() {
   override fun spawnGravestone(centerBlock: Block, inscriptions: Inscriptions, rotation: Rotation) {
 
     // The stone itself
-    //replaceWithStone(centerBlock)
+    // replaceWithStone(centerBlock)
     replaceWithStone(centerBlock.location.clone().add(rotation.vector(0, 1, 0)).block)
-    //replaceWithStone(centerBlock.location.clone().add(rotation.vector(0, 2, 0)).block)
+    // replaceWithStone(centerBlock.location.clone().add(rotation.vector(0, 2, 0)).block)
     replaceWithStair(centerBlock.location.clone().add(rotation.vector(0, 0, 1)).block, Bisected.Half.BOTTOM, BlockFace.SOUTH)
     replaceWithStair(centerBlock.location.clone().add(rotation.vector(0, 1, 1)).block, Bisected.Half.TOP, BlockFace.SOUTH)
     replaceWithStair(centerBlock.location.clone().add(rotation.vector(0, 2, 1)).block, Bisected.Half.BOTTOM, BlockFace.SOUTH)

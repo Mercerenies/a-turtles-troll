@@ -61,14 +61,16 @@ sealed interface CauseOfDeath {
 
     }
 
-    fun inscription(event: PlayerDeathEvent, timestamp: LocalDateTime) : Inscriptions =
+    fun inscription(event: PlayerDeathEvent, timestamp: LocalDateTime): Inscriptions =
       CauseInscriptions(event, timestamp)
 
-    fun inscription(event: PlayerDeathEvent) : Inscriptions =
+    fun inscription(event: PlayerDeathEvent): Inscriptions =
       inscription(event, LocalDateTime.now())
 
-    private class CauseInscriptions(val event: PlayerDeathEvent,
-                                    val timestamp: LocalDateTime) : Inscriptions {
+    private class CauseInscriptions(
+      val event: PlayerDeathEvent,
+      val timestamp: LocalDateTime,
+    ) : Inscriptions {
       val cause: CauseOfDeath = identify(event)
       override fun getLine(index: Int): String =
         when (index) {

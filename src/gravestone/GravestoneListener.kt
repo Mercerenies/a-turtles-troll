@@ -25,10 +25,12 @@ class GravestoneListener(val plugin: Plugin) : AbstractFeature(), Listener {
     val DELAY_SECONDS = 2L
 
     fun chooseGravestoneSpawner(): GravestoneSpawner =
-      listOf(ClassicGravestoneSpawner, BeaconGravestoneSpawner, CoreGravestoneSpawner,
-             JavaGravestoneSpawner, HeartGravestoneSpawner, StrongmanGravestoneSpawner,
-             ChaliceGravestoneSpawner, EggGravestoneSpawner, SlantGravestoneSpawner,
-             CrossGravestoneSpawner).sample()!!
+      listOf(
+        ClassicGravestoneSpawner, BeaconGravestoneSpawner, CoreGravestoneSpawner,
+        JavaGravestoneSpawner, HeartGravestoneSpawner, StrongmanGravestoneSpawner,
+        ChaliceGravestoneSpawner, EggGravestoneSpawner, SlantGravestoneSpawner,
+        CrossGravestoneSpawner,
+      ).sample()!!
 
     override fun create(state: BuilderState): FeatureContainer =
       ListenerContainer(GravestoneListener(state.plugin))
@@ -47,7 +49,7 @@ class GravestoneListener(val plugin: Plugin) : AbstractFeature(), Listener {
 
   override val description = "Gravestones appear when a player dies"
 
-  @EventHandler(priority=EventPriority.HIGH)
+  @EventHandler(priority = EventPriority.HIGH)
   fun onPlayerDeath(event: PlayerDeathEvent) {
     if (!isEnabled()) {
       return

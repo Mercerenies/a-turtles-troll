@@ -179,7 +179,7 @@ class BedtimeManager(plugin: Plugin) : ScheduledEventRunnable<BedtimeManager.Sta
     }
   }
 
-  @EventHandler(priority=EventPriority.HIGH)
+  @EventHandler(priority = EventPriority.HIGH)
   fun onPlayerDeath(event: PlayerDeathEvent) {
     if (!isEnabled()) {
       return
@@ -196,7 +196,7 @@ class BedtimeManager(plugin: Plugin) : ScheduledEventRunnable<BedtimeManager.Sta
 
   }
 
-  @EventHandler(priority=EventPriority.HIGH)
+  @EventHandler(priority = EventPriority.HIGH)
   fun onPlayerBedEnter(event: PlayerBedEnterEvent) {
     if (!isEnabled()) {
       return

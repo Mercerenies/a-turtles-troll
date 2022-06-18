@@ -66,10 +66,14 @@ object ArmorStandSpawner {
     }
 
   fun chooseRawMaterial(): RawMaterial? =
-    sample(listOf(Weight(null, 20.0),
-                  Weight(RawMaterial.LEATHER, 100.0),
-                  Weight(RawMaterial.GOLD, 10.0),
-                  Weight(RawMaterial.IRON, 1.0)))
+    sample(
+      listOf(
+        Weight(null, 20.0),
+        Weight(RawMaterial.LEATHER, 100.0),
+        Weight(RawMaterial.GOLD, 10.0),
+        Weight(RawMaterial.IRON, 1.0),
+      )
+    )
 
   fun generateArmorPiece(slot: ArmorSlot): ItemStack? {
     val raw = chooseRawMaterial()
@@ -79,9 +83,17 @@ object ArmorStandSpawner {
     val material = makeMaterial(raw, slot)
     val stack = ItemStack(material)
     val maxDurability = material.getMaxDurability()
-    val durabilityFrac = sample(listOf(Weight(0.05, 10.0), Weight(0.10, 20.0),
-                                       Weight(0.15, 10.0), Weight(0.30, 1.0),
-                                       Weight(0.50, 0.5), Weight(1.00, 0.1)))
+    val durabilityFrac =
+      sample(
+        listOf(
+          Weight(0.05, 10.0),
+          Weight(0.10, 20.0),
+          Weight(0.15, 10.0),
+          Weight(0.30, 1.0),
+          Weight(0.50, 0.5),
+          Weight(1.00, 0.1)
+        )
+      )
     val meta = stack.getItemMeta()!!
     (meta as Damageable).setDamage(((1.0 - durabilityFrac) * maxDurability).toInt())
     if (meta is LeatherArmorMeta) {

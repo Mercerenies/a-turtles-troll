@@ -16,7 +16,7 @@ import org.bukkit.potion.PotionEffectType
 
 class GrassPoisonListener(
   _bootsDamageChance: Double = 1.00
-): AbstractFeature(), Listener {
+) : AbstractFeature(), Listener {
 
   companion object : FeatureContainerFactory<FeatureContainer> {
 

@@ -46,7 +46,7 @@ interface DeathCondition {
 
     override fun test(cause: CauseOfDeath): Boolean =
       cause is VanillaMob &&
-      cause.entityType == EntityType.PHANTOM
+        cause.entityType == EntityType.PHANTOM
 
   }
 
@@ -61,7 +61,7 @@ interface DeathCondition {
 
     override fun test(cause: CauseOfDeath): Boolean =
       cause is Vanilla &&
-      conditions.contains(cause.cause)
+        conditions.contains(cause.cause)
 
   }
 
@@ -74,10 +74,8 @@ interface DeathCondition {
     override val summary: String = "Die to Explosion"
 
     override fun test(cause: CauseOfDeath): Boolean =
-      (cause is Vanilla &&
-       conditions.contains(cause.cause)) ||
-      (cause is VanillaMob &&
-       cause.entityType == EntityType.CREEPER)
+      (cause is Vanilla && conditions.contains(cause.cause)) ||
+        (cause is VanillaMob && cause.entityType == EntityType.CREEPER)
 
   }
 
@@ -88,7 +86,7 @@ interface DeathCondition {
 
     override fun test(cause: CauseOfDeath): Boolean =
       cause is Vanilla &&
-      cause.cause == EntityDamageEvent.DamageCause.DROWNING
+        cause.cause == EntityDamageEvent.DamageCause.DROWNING
 
   }
 
@@ -99,7 +97,7 @@ interface DeathCondition {
 
     override fun test(cause: CauseOfDeath): Boolean =
       cause is Vanilla &&
-      cause.cause == EntityDamageEvent.DamageCause.FALL
+        cause.cause == EntityDamageEvent.DamageCause.FALL
 
   }
 
@@ -114,7 +112,7 @@ interface DeathCondition {
 
     override fun test(cause: CauseOfDeath): Boolean =
       cause is VanillaMob &&
-      conditions.contains(cause.entityType)
+        conditions.contains(cause.entityType)
 
   }
 
@@ -125,7 +123,7 @@ interface DeathCondition {
 
     override fun test(cause: CauseOfDeath): Boolean =
       cause is VanillaMob &&
-      cause.entityType == EntityType.BEE
+        cause.entityType == EntityType.BEE
 
   }
 
@@ -136,7 +134,7 @@ interface DeathCondition {
 
     override fun test(cause: CauseOfDeath): Boolean =
       cause is VanillaMob &&
-      cause.entityType == EntityType.ENDERMAN
+        cause.entityType == EntityType.ENDERMAN
 
   }
 
@@ -150,7 +148,7 @@ interface DeathCondition {
 
     override fun test(cause: CauseOfDeath): Boolean =
       cause is VanillaMob &&
-      conditions.contains(cause.entityType)
+        conditions.contains(cause.entityType)
 
   }
 
@@ -161,7 +159,7 @@ interface DeathCondition {
 
     override fun test(cause: CauseOfDeath): Boolean =
       cause is VanillaMob &&
-      cause.entityType == EntityType.RAVAGER
+        cause.entityType == EntityType.RAVAGER
 
   }
 
@@ -172,7 +170,7 @@ interface DeathCondition {
 
     override fun test(cause: CauseOfDeath): Boolean =
       cause is VanillaMob &&
-      cause.entityType == EntityType.IRON_GOLEM
+        cause.entityType == EntityType.IRON_GOLEM
 
   }
 
@@ -183,7 +181,7 @@ interface DeathCondition {
 
     override fun test(cause: CauseOfDeath): Boolean =
       cause is VanillaMob &&
-      cause.entityType == EntityType.SILVERFISH
+        cause.entityType == EntityType.SILVERFISH
 
   }
 
@@ -194,7 +192,7 @@ interface DeathCondition {
 
     override fun test(cause: CauseOfDeath): Boolean =
       cause is VanillaMob &&
-      cause.entityType == EntityType.BLAZE
+        cause.entityType == EntityType.BLAZE
 
   }
 

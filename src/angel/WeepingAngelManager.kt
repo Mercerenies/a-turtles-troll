@@ -105,7 +105,7 @@ class WeepingAngelManager(
       */
       angel.setLeftArmPose(EulerAngle(-2.26893, 0.872665, 0.174533))
       angel.setRightArmPose(EulerAngle(-2.26893, -0.872665, -0.174533))
-      //The above radians are correct DO NOT TOUCH THEM OR I SWEAR TO GOD
+      // The above radians are correct DO NOT TOUCH THEM OR I SWEAR TO GOD
     }
 
     fun assignAttackPose(angel: ArmorStand) {

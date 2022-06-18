@@ -21,10 +21,10 @@ object ChaliceGravestoneSpawner : GravestoneSpawner() {
     replaceWithStone(centerBlock.location.clone().add(rotation.vector(0, 1, 0)).block)
     replaceWithStone(centerBlock.location.clone().add(rotation.vector(0, 2, 0)).block)
     replaceWithSlab(centerBlock.location.clone().add(rotation.vector(0, 0, 1)).block, Bisected.Half.BOTTOM)
-    //replaceWithStair(centerBlock.location.clone().add(rotation.vector(0, 1, 1)).block, Bisected.Half.TOP, BlockFace.SOUTH)
+    // replaceWithStair(centerBlock.location.clone().add(rotation.vector(0, 1, 1)).block, Bisected.Half.TOP, BlockFace.SOUTH)
     replaceWithStair(centerBlock.location.clone().add(rotation.vector(0, 2, 1)).block, Bisected.Half.TOP, BlockFace.NORTH)
     replaceWithSlab(centerBlock.location.clone().add(rotation.vector(0, 0, -1)).block, Bisected.Half.BOTTOM)
-    //replaceWithStair(centerBlock.location.clone().add(rotation.vector(0, 1, -1)).block, Bisected.Half.TOP, BlockFace.NORTH)
+    // replaceWithStair(centerBlock.location.clone().add(rotation.vector(0, 1, -1)).block, Bisected.Half.TOP, BlockFace.NORTH)
     replaceWithStair(centerBlock.location.clone().add(rotation.vector(0, 2, -1)).block, Bisected.Half.TOP, BlockFace.SOUTH)
 
     // Now the sign

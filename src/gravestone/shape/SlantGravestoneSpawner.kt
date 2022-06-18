@@ -18,10 +18,10 @@ object SlantGravestoneSpawner : GravestoneSpawner() {
 
     // The stone itself
     replaceWithStone(centerBlock)
-    replaceWithStone(centerBlock.location.clone().add(rotation.vector(0, 1,  0)).block)
-    // replaceWithStone(centerBlock.location.clone().add(rotation.vector(0, 2,  0)).block)
-    replaceWithStone(centerBlock.location.clone().add(rotation.vector(0, 0,  1)).block)
-    replaceWithStair(centerBlock.location.clone().add(rotation.vector(0, 1,  1)).block, Bisected.Half.BOTTOM, BlockFace.NORTH)
+    replaceWithStone(centerBlock.location.clone().add(rotation.vector(0, 1, 0)).block)
+    // replaceWithStone(centerBlock.location.clone().add(rotation.vector(0, 2, 0)).block)
+    replaceWithStone(centerBlock.location.clone().add(rotation.vector(0, 0, 1)).block)
+    replaceWithStair(centerBlock.location.clone().add(rotation.vector(0, 1, 1)).block, Bisected.Half.BOTTOM, BlockFace.NORTH)
     replaceWithStone(centerBlock.location.clone().add(rotation.vector(0, 0, -1)).block)
     replaceWithStone(centerBlock.location.clone().add(rotation.vector(0, 1, -1)).block)
     replaceWithSlab(centerBlock.location.clone().add(rotation.vector(0, 2, -1)).block, Bisected.Half.BOTTOM)

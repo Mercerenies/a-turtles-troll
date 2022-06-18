@@ -23,6 +23,7 @@ object AllItems {
   fun sample(): Material =
     allItems.sample()!!
 
+  /* ktlint-disable no-multi-spaces */
   fun getRarity(item: Material): Rarity =
     when (item) {
       Material.CREEPER_BANNER_PATTERN  -> Rarity.UNCOMMON
@@ -73,6 +74,7 @@ object AllItems {
       Material.REPEATING_COMMAND_BLOCK -> Rarity.EPIC
       else                             -> Rarity.COMMON
     }
+  /* ktlint-enable no-multi-spaces */
 
   // This is a very crude way to generate a name for a material. As we
   // find materials whose Bukkit name is not intuitive, we can
