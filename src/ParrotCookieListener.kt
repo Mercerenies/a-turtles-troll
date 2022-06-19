@@ -23,7 +23,7 @@ class ParrotCookieListener() : AbstractFeature(), Listener {
     private fun isCookie(material: Material): Boolean =
       material == Material.COOKIE
 
-    private fun wasDamagedByCookie(parrot: Parrot): Boolean {
+    fun wasDamagedByCookie(parrot: Parrot): Boolean {
       // So feeding a cookie to a parrot counts as attacking the
       // parrot with the cookie, apparently, as though you just poked
       // them with a sword or something.

@@ -205,6 +205,7 @@
                     instead of splash potions
    + unfinished :: If you start mining an ore and then stop, it gets
                    mad and turns to cobweb
+   + parrotdeath :: Parrots get tiny gravestones when they die
 * IDEAS (UNIMPLEMENTED)
   + Wolves?
   + Fishing?
