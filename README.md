@@ -31,6 +31,7 @@ A Turtle's Troll also depends on the following two libraries.
 
 * Zombies and skeletons sometimes spawn with special hats which drop
   when they're killed.
+* All rabbits are killer rabbits now
 * Feeding cookies to parrots causes them to duplicate now
 * Pumpkin helmets no longer count as armor for temperature purposes
 * Custom hats (per Raccoon Mischief) no longer provide the protection
