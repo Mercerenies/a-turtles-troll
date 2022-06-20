@@ -13,12 +13,17 @@ object Hats {
     setOf(
       //Evanski hats
       "arrow hat",
+      "barrel hat"
       "cauldron hat",
       "chest hat",
       "dripstone hat",
+      "gangster had"
       "hat hat",
       "minecart hat",
       "shulker hat",
+      "sign hat",
+      "slime hat",
+      "squid hat",
       "witch hat"
     )
 
