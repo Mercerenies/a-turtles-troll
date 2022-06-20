@@ -99,6 +99,7 @@
                 launches that player into the air
    + funhat :: Zombies and skeletons sometimes spawn with custom hats,
                which drop when they're killed
+   + killerrabbit :: All rabbits spawn as The Killer Rabbit.
 ** EGG FEATURES
    + eggs :: Almost any mob (or diamonds) can spawn from an egg
    + eggarrow :: Skeletons will fire eggs in addition to arrows
@@ -204,11 +205,11 @@
                     instead of splash potions
    + unfinished :: If you start mining an ore and then stop, it gets
                    mad and turns to cobweb
+   + parrotdeath :: Parrots get tiny gravestones when they die
 * IDEAS (UNIMPLEMENTED)
   + Wolves?
   + Fishing?
   + Polar bears?
-  + Killer rabbits?
   + Giants?
   + Illusioner?
   + Blindness
@@ -216,12 +217,10 @@
   + Wither skeles drop skulls more often if you've killed the dragon
   + Wither is a boss rush?
   + Bone blocks?
-  + Nether blocks turn to lava sometimes at random if covered?
   + Nearby chests might get opened instead of the one you intended
     (excludes mimics)
   + Pokeball
   + Ender chest of last dead player
-  + Rabbits
   + Killing one vector saves everyone
   + Can we make the lava haste force you to move forward?
 ** HATCRAFTER'S IDEAS
