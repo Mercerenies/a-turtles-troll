@@ -206,6 +206,8 @@
    + unfinished :: If you start mining an ore and then stop, it gets
                    mad and turns to cobweb
    + parrotdeath :: Parrots get tiny gravestones when they die
+   + chestshuffle :: When you attempt to open a chest, a different
+     nearby chest might accidentally be opened instead
 * IDEAS (UNIMPLEMENTED)
   + Wolves?
   + Fishing?

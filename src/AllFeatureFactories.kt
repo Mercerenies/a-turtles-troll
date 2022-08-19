@@ -75,6 +75,7 @@ object AllFeatureFactories {
       CakeListenerFactory,
       CatBatListener,
       ChargedCreeperListener,
+      ChestShuffleListener,
       ChickenDamageListener,
       ContagiousMossManager,
       DeathScoreboardListener,

@@ -27,6 +27,11 @@ A Turtle's Troll also depends on the following two libraries.
 
 ## Changelog
 
+### Version 1.18
+
+* When you attempt to open a chest, a different, nearby chest might
+  accidentally be opened instead.
+
 ### Version 1.17
 
 * Zombies and skeletons sometimes spawn with special hats which drop
