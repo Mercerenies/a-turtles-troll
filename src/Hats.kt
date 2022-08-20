@@ -13,18 +13,18 @@ object Hats {
     setOf(
       //Evanski hats
       "arrow hat",
-      "barrel hat"
+      "barrel hat",
       "cauldron hat",
       "chest hat",
       "dripstone hat",
-      "gangster had"
+      "gangster hat",
       "hat hat",
       "minecart hat",
       "shulker hat",
       "sign hat",
       "slime hat",
       "squid hat",
-      "witch hat"
+      "witch hat",
     )
 
   fun isCustomHat(hatName: String): Boolean =
