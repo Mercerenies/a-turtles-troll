@@ -8,6 +8,7 @@ import org.bukkit.Chunk
 import org.bukkit.block.Block
 
 import kotlin.random.Random
+import kotlin.collections.ArrayList
 
 // Various helper functions for getting locations relative to blocks
 object BlockSelector {
@@ -36,19 +37,26 @@ object BlockSelector {
     return block.location.world!!.getBlockAt(x, y, z)
   }
 
-  fun countNearbyMatching(block: Block, distance: Int, condition: (Block) -> Boolean): Int {
-    var count = 0
+  fun<T> selectNearbyMatching(block: Block, distance: Int, matcher: (Block) -> T?): List<T> {
+    val matches = ArrayList<T>()
     for (dx in -distance..distance) {
       for (dy in -distance..distance) {
         for (dz in -distance..distance) {
           val testBlock = block.location.clone().add(dx.toDouble(), dy.toDouble(), dz.toDouble()).block
-          if (condition(testBlock)) {
-            count += 1
+          val match = matcher(testBlock)
+          if (match != null) {
+            matches.add(match)
           }
         }
       }
     }
-    return count
+    return matches
+  }
+
+  fun countNearbyMatching(block: Block, distance: Int, condition: (Block) -> Boolean): Int {
+    fun matcher(block: Block): Unit? =
+      if (condition(block)) Unit else null
+    return selectNearbyMatching(block, distance, ::matcher).size
   }
 
   // Used to detect mimics and cakes for spawn limits
