@@ -124,6 +124,7 @@ object AllFeatureFactories {
       ShieldSurfListener,
       SilverfishBurnRunnable,
       SkeletonWitherListener,
+      SlimeSplitListener,
       SlowSlabListener,
       SnowListener,
       SpillageListener,

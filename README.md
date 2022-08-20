@@ -32,6 +32,7 @@ A Turtle's Troll also depends on the following two libraries.
 * Iron golems are always angry at the nearest player, have Speed 1 and
   Regeneration 1, and ride spiders (does not apply to player-crafted
   golems)
+* When slimes die, they split into larger slimes
 * When you attempt to open a chest, a different, nearby chest might
   accidentally be opened instead.
 * When a player opens an ender chest, they see the ender chest

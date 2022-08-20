@@ -103,6 +103,8 @@
    + angrygolem :: Iron golems are always angry at the nearest player,
      have Speed 1 and Regeneration 1, and ride spiders (does not apply
      to player-crafted golems)
+   + slimesplit :: When slimes die, they split into larger slimes; if
+     a sufficiently large slime dies, it does not split into anything
 ** EGG FEATURES
    + eggs :: Almost any mob (or diamonds) can spawn from an egg
    + eggarrow :: Skeletons will fire eggs in addition to arrows
