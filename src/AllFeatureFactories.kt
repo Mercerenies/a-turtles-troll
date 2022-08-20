@@ -90,6 +90,7 @@ object AllFeatureFactories {
       EggshellsListener,
       EndCrystalListener,
       EndDirtListener,
+      EnderChestListener,
       EndStoneListener,
       EscalationListener,
       ExplosiveArrowManager,

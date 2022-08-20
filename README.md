@@ -31,6 +31,8 @@ A Turtle's Troll also depends on the following two libraries.
 
 * When you attempt to open a chest, a different, nearby chest might
   accidentally be opened instead.
+* When a player opens an ender chest, they see the ender chest
+  inventory of whoever died most recently.
 
 ### Version 1.17
 

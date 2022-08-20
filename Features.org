@@ -208,6 +208,8 @@
    + parrotdeath :: Parrots get tiny gravestones when they die
    + chestshuffle :: When you attempt to open a chest, a different
      nearby chest might accidentally be opened instead
+   + enderchest :: When a player opens an ender chest, they see the
+     ender chest inventory of whoever died most recently
 * IDEAS (UNIMPLEMENTED)
   + Wolves?
   + Fishing?
@@ -219,10 +221,7 @@
   + Wither skeles drop skulls more often if you've killed the dragon
   + Wither is a boss rush?
   + Bone blocks?
-  + Nearby chests might get opened instead of the one you intended
-    (excludes mimics)
   + Pokeball
-  + Ender chest of last dead player
   + Killing one vector saves everyone
   + Can we make the lava haste force you to move forward?
 ** HATCRAFTER'S IDEAS
