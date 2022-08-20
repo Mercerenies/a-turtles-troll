@@ -33,10 +33,12 @@ A Turtle's Troll also depends on the following two libraries.
   Regeneration 1, and ride spiders (does not apply to player-crafted
   golems)
 * When slimes die, they split into larger slimes
+* When a player eats bread, there's a 10% chance that a small slime
+  spawns near them
 * When you attempt to open a chest, a different, nearby chest might
-  accidentally be opened instead.
+  accidentally be opened instead
 * When a player opens an ender chest, they see the ender chest
-  inventory of whoever died most recently.
+  inventory of whoever died most recently
 
 ### Version 1.17
 

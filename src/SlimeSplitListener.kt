@@ -54,7 +54,7 @@ class SlimeSplitListener() : AbstractFeature(), Listener {
         // size of the largest parent that could have spawned this
         // slime. We make the child one size larger than that, unless
         // the child would be larger than the maximum (0-indexed)
-        val parentSize = (entity.size + 1) * 2
+        val parentSize = entity.size * 2 + 1
         val childSize = parentSize + 1
         if (childSize > MAX_SLIME_SIZE) {
           event.setCancelled(true)
@@ -63,9 +63,9 @@ class SlimeSplitListener() : AbstractFeature(), Listener {
         }
       } else {
         // Slimes spawned for other reasons should have a minimum size
-        // of 1.
-        if (entity.size < 1) {
-          entity.size = 1
+        // of 2.
+        if (entity.size < 2) {
+          entity.size = 2
         }
       }
 

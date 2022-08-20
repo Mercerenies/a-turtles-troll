@@ -94,6 +94,7 @@ object AllFeatureFactories {
       EnderChestListener,
       EndStoneListener,
       EscalationListener,
+      ExpirationDateListener,
       ExplosiveArrowManager,
       FallDamageListener,
       ForestFireListener,
