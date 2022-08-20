@@ -65,6 +65,7 @@ object AllFeatureFactories {
   private val allFactories: List<FeatureContainerFactory<FeatureContainer>> =
     listOf(
       // Independent features
+      AngryGolemManager,
       AnvilRunnableFactory,
       AxolotlListener,
       BambooSpreadListener,

@@ -99,7 +99,10 @@
                 launches that player into the air
    + funhat :: Zombies and skeletons sometimes spawn with custom hats,
                which drop when they're killed
-   + killerrabbit :: All rabbits spawn as The Killer Rabbit.
+   + killerrabbit :: All rabbits spawn as The Killer Rabbit
+   + angrygolem :: Iron golems are always angry at the nearest player,
+     have Speed 1 and Regeneration 1, and ride spiders (does not apply
+     to player-crafted golems)
 ** EGG FEATURES
    + eggs :: Almost any mob (or diamonds) can spawn from an egg
    + eggarrow :: Skeletons will fire eggs in addition to arrows
