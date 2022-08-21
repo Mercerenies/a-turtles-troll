@@ -29,6 +29,7 @@ A Turtle's Troll also depends on the following two libraries.
 
 ### Version 1.18
 
+* Poké Balls can be crafted and thrown to capture mobs
 * Iron golems are always angry at the nearest player, have Speed 1 and
   Regeneration 1, and ride spiders (does not apply to player-crafted
   golems)

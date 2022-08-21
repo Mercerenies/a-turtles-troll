@@ -111,6 +111,29 @@
    + eggs :: Almost any mob (or diamonds) can spawn from an egg
    + eggarrow :: Skeletons will fire eggs in addition to arrows
    + eggdrop :: Several mobs will drop eggs when killed
+** POKEBALL FEATURES
+   + pokeball :: Poké Balls of different types can be crafted and
+     thrown to capture mobs
+     - Poké Balls can be crafted with redstone in the center, a brick
+       above it, and iron nuggets on the other three sides of it.
+     - Great Balls can be crafted like Poké Balls but with an iron
+       block in place of the brick. They have 1.5 times the success
+       rate.
+     - Ultra Balls can be crafted like Poké Balls but with a netherite
+       ingot in place of the brick. They have 2 times the success
+       rate.
+     - Master Balls can be crafted with redstone in the center and
+       netherite ingots in /all eight/ other positions. Master Balls
+       never fail (note that boss mobs cannot be captured, even by
+       Master Balls).
+     - Net Balls are crafted like Poké Balls but with string in the
+       top two corners. Net Balls work better on aquatic and insect
+       mobs.
+     - Dive Balls are crafted like Poké Balls but with kelp in the top
+       two corners. Dive Balls work better when the targeted mob is
+       physically under water.
+     - Dusk Balls are crafted like Poké Balls but with coal in the top
+       two corners. Dusk Balls work better at night in the overworld.
 ** COOKIE FEATURES
    + freecookie :: Every player gets a free cookie at dawn and at dusk
    + cookies :: Eating a cookie gives the player one of several
