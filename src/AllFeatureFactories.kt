@@ -42,6 +42,7 @@ import com.mercerenies.turtletroll.drop.EndermiteSpawnFeatureFactory
 import com.mercerenies.turtletroll.drop.NetherrackBoomFeatureFactory
 import com.mercerenies.turtletroll.drop.ShuffleLogsFeatureFactory
 import com.mercerenies.turtletroll.drop.StrongholdAttackFeatureFactory
+import com.mercerenies.turtletroll.pokeball.PokeballManager
 
 object AllFeatureFactories {
 
@@ -117,6 +118,7 @@ object AllFeatureFactories {
       ParrotManager,
       PetPhantomManager,
       PillagerGunListener,
+      PokeballManager,
       PressurePlateFireListener,
       PufferfishRainManager,
       RavagerSpawnerListener,

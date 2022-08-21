@@ -6,6 +6,7 @@ import com.mercerenies.turtletroll.sample
 import com.mercerenies.turtletroll.feature.AbstractFeature
 
 import org.bukkit.event.EventHandler
+import org.bukkit.event.EventPriority
 import org.bukkit.event.Listener
 import org.bukkit.event.entity.ProjectileHitEvent
 import org.bukkit.event.entity.CreatureSpawnEvent
@@ -27,9 +28,14 @@ class EggListener(val effects: List<Weight<EggHatchEffect>>) : AbstractFeature()
     }
   }
 
-  @EventHandler
+  // High priority, run only after other events (like PokeballManager)
+  // have their say.
+  @EventHandler(priority = EventPriority.HIGH)
   fun onProjectileHit(event: ProjectileHitEvent) {
     if (!isEnabled()) {
+      return
+    }
+    if (event.isCancelled()) {
       return
     }
     if (event.entity.type == EntityType.EGG) {
