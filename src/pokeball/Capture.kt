@@ -46,7 +46,13 @@ object Capture {
       return false
     }
 
+    if (ball == MasterBall) {
+      // Master ball always succeeds.
+      return true
+    }
+
     val x = captureRate(ball, mob)
+    println("${x} (${ball} ${mob})")
     if (x >= 255) {
       // Automatic success.
       return true

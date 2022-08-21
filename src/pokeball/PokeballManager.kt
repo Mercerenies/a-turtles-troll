@@ -107,7 +107,7 @@ class PokeballManager(plugin: Plugin) : RecipeFeature(plugin), Listener {
 
   val markerKey = NamespacedKey(plugin, POKEBALL_MARKER_KEY)
 
-  private fun getRecipe(): UnkeyedRecipe<Recipe> =
+  private fun getPokeballRecipe(): UnkeyedRecipe<Recipe> =
     UnkeyedRecipe<Recipe> { key: NamespacedKey ->
       val result = ItemStack(Material.EGG)
       val meta = result.itemMeta!!
@@ -126,8 +126,128 @@ class PokeballManager(plugin: Plugin) : RecipeFeature(plugin), Listener {
       recipe
     }
 
+  private fun getGreatBallRecipe(): UnkeyedRecipe<Recipe> =
+    UnkeyedRecipe<Recipe> { key: NamespacedKey ->
+      val result = ItemStack(Material.EGG)
+      val meta = result.itemMeta!!
+      meta.setDisplayName("Great Ball")
+      meta.persistentDataContainer.set(markerKey, PersistentDataType.INTEGER, GreatBall.toInt())
+      result.itemMeta = meta
+      val recipe = ShapedRecipe(key, result)
+      recipe.shape(
+        " B ",
+        "IRI",
+        " I ",
+      )
+      recipe.setIngredient('B', Material.IRON_BLOCK)
+      recipe.setIngredient('R', Material.REDSTONE)
+      recipe.setIngredient('I', Material.IRON_NUGGET)
+      recipe
+    }
+
+  private fun getUltraBallRecipe(): UnkeyedRecipe<Recipe> =
+    UnkeyedRecipe<Recipe> { key: NamespacedKey ->
+      val result = ItemStack(Material.EGG)
+      val meta = result.itemMeta!!
+      meta.setDisplayName("Ultra Ball")
+      meta.persistentDataContainer.set(markerKey, PersistentDataType.INTEGER, UltraBall.toInt())
+      result.itemMeta = meta
+      val recipe = ShapedRecipe(key, result)
+      recipe.shape(
+        " B ",
+        "IRI",
+        " I ",
+      )
+      recipe.setIngredient('B', Material.NETHERITE_INGOT)
+      recipe.setIngredient('R', Material.REDSTONE)
+      recipe.setIngredient('I', Material.IRON_NUGGET)
+      recipe
+    }
+
+  private fun getMasterBallRecipe(): UnkeyedRecipe<Recipe> =
+    UnkeyedRecipe<Recipe> { key: NamespacedKey ->
+      val result = ItemStack(Material.EGG)
+      val meta = result.itemMeta!!
+      meta.setDisplayName("Master Ball")
+      meta.persistentDataContainer.set(markerKey, PersistentDataType.INTEGER, MasterBall.toInt())
+      result.itemMeta = meta
+      val recipe = ShapedRecipe(key, result)
+      recipe.shape(
+        "XXX",
+        "XBX",
+        "XXX",
+      )
+      recipe.setIngredient('X', Material.NETHERITE_INGOT)
+      recipe.setIngredient('B', Material.REDSTONE)
+      recipe
+    }
+
+  private fun getNetBallRecipe(): UnkeyedRecipe<Recipe> =
+    UnkeyedRecipe<Recipe> { key: NamespacedKey ->
+      val result = ItemStack(Material.EGG)
+      val meta = result.itemMeta!!
+      meta.setDisplayName("Net Ball")
+      meta.persistentDataContainer.set(markerKey, PersistentDataType.INTEGER, NetBall.toInt())
+      result.itemMeta = meta
+      val recipe = ShapedRecipe(key, result)
+      recipe.shape(
+        "CBC",
+        "IRI",
+        " I ",
+      )
+      recipe.setIngredient('C', Material.STRING)
+      recipe.setIngredient('B', Material.BRICK)
+      recipe.setIngredient('R', Material.REDSTONE)
+      recipe.setIngredient('I', Material.IRON_NUGGET)
+      recipe
+    }
+
+  private fun getDiveBallRecipe(): UnkeyedRecipe<Recipe> =
+    UnkeyedRecipe<Recipe> { key: NamespacedKey ->
+      val result = ItemStack(Material.EGG)
+      val meta = result.itemMeta!!
+      meta.setDisplayName("Dive Ball")
+      meta.persistentDataContainer.set(markerKey, PersistentDataType.INTEGER, DiveBall.toInt())
+      result.itemMeta = meta
+      val recipe = ShapedRecipe(key, result)
+      recipe.shape(
+        "KBK",
+        "IRI",
+        " I ",
+      )
+      recipe.setIngredient('K', Material.KELP)
+      recipe.setIngredient('B', Material.BRICK)
+      recipe.setIngredient('R', Material.REDSTONE)
+      recipe.setIngredient('I', Material.IRON_NUGGET)
+      recipe
+    }
+
+  private fun getDuskBallRecipe(): UnkeyedRecipe<Recipe> =
+    UnkeyedRecipe<Recipe> { key: NamespacedKey ->
+      val result = ItemStack(Material.EGG)
+      val meta = result.itemMeta!!
+      meta.setDisplayName("Dusk Ball")
+      meta.persistentDataContainer.set(markerKey, PersistentDataType.INTEGER, DuskBall.toInt())
+      result.itemMeta = meta
+      val recipe = ShapedRecipe(key, result)
+      recipe.shape(
+        "CBC",
+        "IRI",
+        " I ",
+      )
+      recipe.setIngredient('C', Material.COAL)
+      recipe.setIngredient('B', Material.BRICK)
+      recipe.setIngredient('R', Material.REDSTONE)
+      recipe.setIngredient('I', Material.IRON_NUGGET)
+      recipe
+    }
+
   override fun getRecipes(): List<UnkeyedRecipe<Recipe>> =
-    listOf(getRecipe())
+    listOf(
+      getPokeballRecipe(), getGreatBallRecipe(), getUltraBallRecipe(),
+      getMasterBallRecipe(), getNetBallRecipe(), getDiveBallRecipe(),
+      getDuskBallRecipe(),
+    )
 
   @EventHandler
   fun onProjectileHit(event: ProjectileHitEvent) {
