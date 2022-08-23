@@ -37,16 +37,17 @@ class BedtimeManager(plugin: Plugin) : ScheduledEventRunnable<BedtimeManager.Sta
       DeathCondition.True, DeathCondition.MustBeMimic, DeathCondition.MustBeVector,
       DeathCondition.MustBeAngel, DeathCondition.FireDamage, DeathCondition.Falling,
       DeathCondition.MustBeBee, DeathCondition.MustBeSilverfish,
+      DeathCondition.MustBeRedstone, DeathCondition.Lightning,
     )
 
     val MEDIUM = listOf(
       DeathCondition.Explosion, DeathCondition.MustBeZombie, DeathCondition.MustBeGhast,
-      DeathCondition.MustBeRavager,
+      DeathCondition.MustBeRavager, DeathCondition.Hunger, DeathCondition.MustBeSpider,
     )
 
     val HARD = listOf(
       DeathCondition.Drowning, DeathCondition.MustBeEnderman, DeathCondition.MustBeIronGolem,
-      DeathCondition.MustBeBlaze,
+      DeathCondition.MustBeBlaze, DeathCondition.MustBeLlama,
     )
 
     val CONDITION_LIST = listOf(

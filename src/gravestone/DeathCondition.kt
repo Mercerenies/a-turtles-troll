@@ -50,6 +50,15 @@ interface DeathCondition {
 
   }
 
+  object MustBeRedstone : DeathCondition {
+    override val description: String = "to redstone dust"
+    override val summary: String = "Die to Redstone"
+
+    override fun test(cause: CauseOfDeath): Boolean =
+      cause is Redstone
+
+  }
+
   object FireDamage : DeathCondition {
     val conditions = listOf(
       EntityDamageEvent.DamageCause.FIRE, EntityDamageEvent.DamageCause.FIRE_TICK,
@@ -62,6 +71,32 @@ interface DeathCondition {
     override fun test(cause: CauseOfDeath): Boolean =
       cause is Vanilla &&
         conditions.contains(cause.cause)
+
+  }
+
+  object Lightning : DeathCondition {
+    val conditions = listOf(
+      EntityDamageEvent.DamageCause.LIGHTNING,
+    )
+
+    override val description: String = "to lightning"
+    override val summary: String = "Die to Lightning"
+
+    override fun test(cause: CauseOfDeath): Boolean =
+      (cause is Vanilla && conditions.contains(cause.cause))
+
+  }
+
+  object Hunger : DeathCondition {
+    val conditions = listOf(
+      EntityDamageEvent.DamageCause.STARVATION,
+    )
+
+    override val description: String = "to starvation"
+    override val summary: String = "Die to Starvation"
+
+    override fun test(cause: CauseOfDeath): Boolean =
+      (cause is Vanilla && conditions.contains(cause.cause))
 
   }
 
@@ -116,6 +151,20 @@ interface DeathCondition {
 
   }
 
+  object MustBeLlama : DeathCondition {
+    val conditions = listOf(
+      EntityType.LLAMA, EntityType.LLAMA_SPIT, EntityType.TRADER_LLAMA,
+    )
+
+    override val description: String = "to a llama"
+    override val summary: String = "Die to Llama"
+
+    override fun test(cause: CauseOfDeath): Boolean =
+      cause is VanillaMob &&
+        conditions.contains(cause.entityType)
+
+  }
+
   object MustBeBee : DeathCondition {
 
     override val description: String = "to a bee"
@@ -124,6 +173,17 @@ interface DeathCondition {
     override fun test(cause: CauseOfDeath): Boolean =
       cause is VanillaMob &&
         cause.entityType == EntityType.BEE
+
+  }
+
+  object MustBeSpider : DeathCondition {
+
+    override val description: String = "to a spider"
+    override val summary: String = "Die to Spider"
+
+    override fun test(cause: CauseOfDeath): Boolean =
+      cause is VanillaMob &&
+        (cause.entityType == EntityType.SPIDER || cause.entityType == EntityType.CAVE_SPIDER)
 
   }
 
