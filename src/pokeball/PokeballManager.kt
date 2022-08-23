@@ -113,6 +113,7 @@ class PokeballManager(plugin: Plugin) : RecipeFeature(plugin), Listener {
       val meta = result.itemMeta!!
       meta.setDisplayName("Poké Ball")
       meta.persistentDataContainer.set(markerKey, PersistentDataType.INTEGER, NormalPokeball.toInt())
+      meta.setCustomModelData(NormalPokeball.customModelId)
       result.itemMeta = meta
       val recipe = ShapedRecipe(key, result)
       recipe.shape(
@@ -132,6 +133,7 @@ class PokeballManager(plugin: Plugin) : RecipeFeature(plugin), Listener {
       val meta = result.itemMeta!!
       meta.setDisplayName("Great Ball")
       meta.persistentDataContainer.set(markerKey, PersistentDataType.INTEGER, GreatBall.toInt())
+      meta.setCustomModelData(GreatBall.customModelId)
       result.itemMeta = meta
       val recipe = ShapedRecipe(key, result)
       recipe.shape(
@@ -151,6 +153,7 @@ class PokeballManager(plugin: Plugin) : RecipeFeature(plugin), Listener {
       val meta = result.itemMeta!!
       meta.setDisplayName("Ultra Ball")
       meta.persistentDataContainer.set(markerKey, PersistentDataType.INTEGER, UltraBall.toInt())
+      meta.setCustomModelData(UltraBall.customModelId)
       result.itemMeta = meta
       val recipe = ShapedRecipe(key, result)
       recipe.shape(
@@ -170,6 +173,7 @@ class PokeballManager(plugin: Plugin) : RecipeFeature(plugin), Listener {
       val meta = result.itemMeta!!
       meta.setDisplayName("Master Ball")
       meta.persistentDataContainer.set(markerKey, PersistentDataType.INTEGER, MasterBall.toInt())
+      meta.setCustomModelData(MasterBall.customModelId)
       result.itemMeta = meta
       val recipe = ShapedRecipe(key, result)
       recipe.shape(
@@ -188,6 +192,7 @@ class PokeballManager(plugin: Plugin) : RecipeFeature(plugin), Listener {
       val meta = result.itemMeta!!
       meta.setDisplayName("Net Ball")
       meta.persistentDataContainer.set(markerKey, PersistentDataType.INTEGER, NetBall.toInt())
+      meta.setCustomModelData(NetBall.customModelId)
       result.itemMeta = meta
       val recipe = ShapedRecipe(key, result)
       recipe.shape(
@@ -208,6 +213,7 @@ class PokeballManager(plugin: Plugin) : RecipeFeature(plugin), Listener {
       val meta = result.itemMeta!!
       meta.setDisplayName("Dive Ball")
       meta.persistentDataContainer.set(markerKey, PersistentDataType.INTEGER, DiveBall.toInt())
+      meta.setCustomModelData(DiveBall.customModelId)
       result.itemMeta = meta
       val recipe = ShapedRecipe(key, result)
       recipe.shape(
@@ -228,6 +234,7 @@ class PokeballManager(plugin: Plugin) : RecipeFeature(plugin), Listener {
       val meta = result.itemMeta!!
       meta.setDisplayName("Dusk Ball")
       meta.persistentDataContainer.set(markerKey, PersistentDataType.INTEGER, DuskBall.toInt())
+      meta.setCustomModelData(DuskBall.customModelId)
       result.itemMeta = meta
       val recipe = ShapedRecipe(key, result)
       recipe.shape(

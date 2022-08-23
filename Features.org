@@ -251,7 +251,6 @@
   + Wither skeles drop skulls more often if you've killed the dragon
   + Wither is a boss rush?
   + Bone blocks?
-  + Pokeball
   + Killing one vector saves everyone
   + Can we make the lava haste force you to move forward?
 ** HATCRAFTER'S IDEAS

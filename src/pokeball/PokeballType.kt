@@ -30,12 +30,16 @@ interface PokeballType {
 
   fun ballBonus(target: Mob): Double
 
+  val customModelId: Int
+
 }
 
 object NormalPokeball : PokeballType {
 
   override fun ballBonus(target: Mob): Double =
     1.0
+
+  override val customModelId: Int = 1
 
 }
 
@@ -44,6 +48,8 @@ object GreatBall : PokeballType {
   override fun ballBonus(target: Mob): Double =
     1.5
 
+  override val customModelId: Int = 2
+
 }
 
 object UltraBall : PokeballType {
@@ -51,12 +57,16 @@ object UltraBall : PokeballType {
   override fun ballBonus(target: Mob): Double =
     2.0
 
+  override val customModelId: Int = 3
+
 }
 
 object MasterBall : PokeballType {
 
   override fun ballBonus(target: Mob): Double =
     99999.0
+
+  override val customModelId: Int = 4
 
 }
 
@@ -84,6 +94,8 @@ object NetBall : PokeballType {
       1.0
     }
 
+  override val customModelId: Int = 5
+
 }
 
 object DiveBall : PokeballType {
@@ -94,6 +106,8 @@ object DiveBall : PokeballType {
     } else {
       1.0
     }
+
+  override val customModelId: Int = 6
 
 }
 
@@ -109,6 +123,8 @@ object DuskBall : PokeballType {
     } else {
       1.0
     }
+
+  override val customModelId: Int = 7
 
 }
 
