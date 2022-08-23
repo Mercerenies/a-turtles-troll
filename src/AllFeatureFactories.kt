@@ -108,7 +108,7 @@ object AllFeatureFactories {
       GrassPoisonListener,
       GravestoneListener,
       KillerRabbitListener,
-      LavaLaunchManager,
+      LavaLaunchListener,
       LevitationListener,
       LlamaHunterManager,
       NamedZombieListener,
