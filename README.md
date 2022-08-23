@@ -33,6 +33,8 @@ A Turtle's Troll also depends on the following two libraries.
 * Iron golems are always angry at the nearest player, have Speed 1 and
   Regeneration 1, and ride spiders (does not apply to player-crafted
   golems)
+* Mobs drop redstone dust, picking up redstone dust deals a small
+  amount of damage
 * When slimes die, they split into larger slimes
 * When a player eats bread, there's a 10% chance that a small slime
   spawns near them

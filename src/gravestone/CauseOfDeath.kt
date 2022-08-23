@@ -21,6 +21,7 @@ sealed interface CauseOfDeath {
     val OLDAGE_REGEX = Regex("""old age\S*$""")
     val FROZE_REGEX = Regex("""froze to death\S*$""")
     val COOKIE_REGEX = Regex("""ate a cookie""")
+    val REDSTONE_REGEX = Regex("""strange dust""")
 
     fun identify(event: PlayerDeathEvent): CauseOfDeath {
       val cause = event.entity.getLastDamageCause()
@@ -43,6 +44,9 @@ sealed interface CauseOfDeath {
       }
       if (COOKIE_REGEX.find(event.getDeathMessage() ?: "") != null) {
         return Cookie
+      }
+      if (REDSTONE_REGEX.find(event.getDeathMessage() ?: "") != null) {
+        return Redstone
       }
 
       // Next, handle damage caused by an entity
@@ -114,6 +118,11 @@ object OldAge : CauseOfDeath {
 object Cookie : CauseOfDeath {
   override fun toInscription(): String =
     "Death cookie"
+}
+
+object Redstone : CauseOfDeath {
+  override fun toInscription(): String =
+    "Sussy dust"
 }
 
 data class Vanilla(val cause: EntityDamageEvent.DamageCause) : CauseOfDeath {

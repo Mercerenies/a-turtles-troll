@@ -1,6 +1,9 @@
 
 package com.mercerenies.turtletroll
 
+import com.mercerenies.turtletroll.gravestone.CustomDeathMessageRegistry
+import com.mercerenies.turtletroll.gravestone.CustomDeathMessage
+import com.mercerenies.turtletroll.gravestone.Redstone
 import com.mercerenies.turtletroll.feature.AbstractFeature
 import com.mercerenies.turtletroll.feature.container.FeatureContainer
 import com.mercerenies.turtletroll.feature.container.ListenerContainer
@@ -25,23 +28,11 @@ import kotlin.math.min
 import kotlin.math.max
 
 class RedstoneWorldListener(
+  private val deathRegistry: CustomDeathMessageRegistry,
   val dropChance: Double = 0.5,
   val minItems: Int = 1,
   val maxItems: Int = 64,
 ) : AbstractFeature(), Listener {
-
-  companion object : FeatureContainerFactory<FeatureContainer> {
-
-    private fun dealDamage(player: Player, damager: Entity?, redstoneAmount: Int) {
-      val lerpAmount = clamp(redstoneAmount / 64.0, 0.0, 1.0)
-      val damageAmount = max(lerp(0.0, 20.0, lerpAmount), 1.0)
-      player.damage(damageAmount, damager)
-    }
-
-    override fun create(state: BuilderState): FeatureContainer =
-      ListenerContainer(RedstoneWorldListener())
-
-  }
 
   override val name = "redstoneworld"
 
@@ -80,6 +71,18 @@ class RedstoneWorldListener(
       dealDamage(entity, event.item, itemStack.amount)
     }
 
+  }
+
+  private fun dealDamage(player: Player, damager: Entity?, redstoneAmount: Int) {
+    val lerpAmount = clamp(redstoneAmount / 64.0, 0.0, 1.0)
+    val damageAmount = max(lerp(0.0, 20.0, lerpAmount), 1.0)
+    val customMessage = CustomDeathMessage(
+      Redstone,
+      "${player.getDisplayName()} picked up some strange dust.",
+    )
+    deathRegistry.withCustomDeathMessage(customMessage) {
+      player.damage(damageAmount, damager)
+    }
   }
 
 }

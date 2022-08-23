@@ -122,7 +122,6 @@ object AllFeatureFactories {
       PressurePlateFireListener,
       PufferfishRainManager,
       RavagerSpawnerListener,
-      RedstoneWorldListener,
       SaddleListener,
       SandAttackRunnable,
       ShieldSurfListener,
@@ -155,6 +154,7 @@ object AllFeatureFactories {
       CookieListenerFactory.Default(CustomDeathMessageListener.DEATH_MESSAGE_KEY),
       MimicListenerFactory(CustomDeathMessageListener.DEATH_MESSAGE_KEY),
       OldAgeListenerFactory(CustomDeathMessageListener.DEATH_MESSAGE_KEY),
+      RedstoneWorldListenerFactory(CustomDeathMessageListener.DEATH_MESSAGE_KEY),
       TemperatureManagerFactory(CustomDeathMessageListener.DEATH_MESSAGE_KEY),
       WeepingAngelManagerFactory(CustomDeathMessageListener.DEATH_MESSAGE_KEY),
     )

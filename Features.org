@@ -39,6 +39,8 @@
    + eggshells :: The block two cubes below the player is constantly
                   being turned to lava (unless the player is standing
                   on sand or gravel)
+   + redstoneworld :: Mobs drop redstone dust, picking up redstone
+     dust deals a small amount of damage
 ** CUSTOM SPAWNING FEATURES
    + weepingangel :: Armor stands will chase you when you're not
                      looking at them, and armor stands will rarely
@@ -273,8 +275,6 @@
    + Chainmail armor is craftable from buckets of lava
    + When the player takes damage, they might drop redstone
      - Excludes damage from fire, lava, poison, and wither
-   + Upon picking up redstone, the player takes damage
-   + Every mob has a small chance of dropping redstone
    + Redstone torches drop redstone
    + Breeding animals sometimes spawns a Vindicator named "Johnny"
    + Creepers spawn with 2 minutes of a random status effect
