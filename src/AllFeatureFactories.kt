@@ -122,6 +122,7 @@ object AllFeatureFactories {
       PressurePlateFireListener,
       PufferfishRainManager,
       RavagerSpawnerListener,
+      RedstoneWorldListener,
       SaddleListener,
       SandAttackRunnable,
       ShieldSurfListener,
