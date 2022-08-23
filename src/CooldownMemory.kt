@@ -8,7 +8,7 @@ import kotlin.collections.HashSet
 
 class CooldownMemory<T>(
   val plugin: Plugin,
-) {
+) : Iterable<T> {
   private val memory = HashSet<T>()
 
   private inner class CooldownRunnable(val value: T) : BukkitRunnable() {
@@ -24,5 +24,7 @@ class CooldownMemory<T>(
     memory.add(value)
     CooldownRunnable(value).runTaskLater(plugin, time)
   }
+
+  override fun iterator() = memory.iterator()
 
 }
