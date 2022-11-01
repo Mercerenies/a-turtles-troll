@@ -42,6 +42,7 @@ A Turtle's Troll also depends on the following two libraries.
   accidentally be opened instead
 * When a player opens an ender chest, they see the ender chest
   inventory of whoever died most recently
+* When a player dies, all other players gain a level
 * Added more death conditions to appease the gods
 
 ### Version 1.17

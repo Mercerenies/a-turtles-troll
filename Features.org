@@ -242,6 +242,7 @@
      nearby chest might accidentally be opened instead
    + enderchest :: When a player opens an ender chest, they see the
      ender chest inventory of whoever died most recently
+   + learning :: When a player dies, all other players gain a level
 * IDEAS (UNIMPLEMENTED)
   + Wolves?
   + Fishing?
@@ -341,3 +342,28 @@
    + After using a bed to pass time, the player will gain either
      slowness, nausea, or blindness for a short time
    + When a player harvests beetroot, small chance a rabbit will spawn
+   + When a player damages a zombie pigman, there's a small chance of
+     another zombie pigman spawning
+   + Pigs sometimes drop brown mushrooms
+   + When the gods are pleased and once per night, if all online
+     players type a special phrase, then all non-boss mobs will be
+     killed. (Purging ritual)
+   + Naming a rabbit causes them to stop being a killer rabbit.
+     - Named chickens and pufferfish won't explode
+     - Named axolotls don't take anyone with them
+   + Sometimes Bowser will issue a challenge to the players, rather
+     than the gods. Bowser's challenge is much harder than god
+     challenges, and Bowser will not punish you for failing. But he
+     will reward you for success. Purging ritual cannot be done on
+     Bowser nights.
+   + If the gods are pleased multiple nights in a row, some effects
+     are disabled.
+   + If a player is sprinting, there is a small chance an egg is
+     thrown at the player's crosshair
+   + If a player is wearing iron, gold, diamond, or netherite armor in
+     every slot, they gain 1 slowness. This applies even if the player
+     is mixing their gear.
+   + Players may be forced to ride nearby saddled pigs
+   + When a skeleton shoots an egg, there's an increased chance that
+     the mob spawned will be a saddled pig named dinnerbone
+   + All mobs named Dinnerbone gain levitation
