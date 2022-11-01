@@ -186,6 +186,8 @@
    + stonetools :: All recipes which produce stone tools are disabled
    + dirtrecipe :: Nine dirt can be crafted into a stick; nine sticks
                    can be crafted into dirt
+   + chainmailrecipe :: Lava buckets can be crafted into chainmail
+     armor
 ** MISCELLANEOUS FEATURES
    + anvil :: If you stand still for more than ten seconds, an anvil
               will drop on your head; anvils can be smelted into iron

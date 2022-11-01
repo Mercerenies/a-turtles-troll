@@ -24,6 +24,7 @@ import com.mercerenies.turtletroll.cookie.FreeCookieRunnable
 import com.mercerenies.turtletroll.cookie.CookieListenerFactory
 import com.mercerenies.turtletroll.recipe.DirtRecipeFeature
 import com.mercerenies.turtletroll.recipe.StoneRecipeDeleter
+import com.mercerenies.turtletroll.recipe.ChainmailRecipeFeature
 import com.mercerenies.turtletroll.angel.WeepingAngelManagerFactory
 import com.mercerenies.turtletroll.falling.AnvilRunnableFactory
 import com.mercerenies.turtletroll.dripstone.DripstoneManagerFactory
@@ -76,6 +77,7 @@ object AllFeatureFactories {
       ButtonDamageListener,
       CakeListenerFactory,
       CatBatListener,
+      ChainmailRecipeFeature,
       ChargedCreeperListener,
       ChestShuffleListener,
       ChickenDamageListener,

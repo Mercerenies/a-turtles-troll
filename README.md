@@ -43,6 +43,7 @@ A Turtle's Troll also depends on the following two libraries.
 * When a player opens an ender chest, they see the ender chest
   inventory of whoever died most recently
 * When a player dies, all other players gain a level
+* Lava buckets can be crafted into chainmail armor
 * Added more death conditions to appease the gods
 
 ### Version 1.17
