@@ -316,8 +316,6 @@
    + Mundane potions can be crafted into gold nuggets
    + Gold nuggets can be eaten for nutrition. They act like sweet
      berries
-   + Saying certain pirate themed words changes the game's language to
-     pirate english for all players for 5 mins.
    + When a player dies, their game is set to a random language
    + When a phantom dies, there's a small chance a random boat will
      spawn
