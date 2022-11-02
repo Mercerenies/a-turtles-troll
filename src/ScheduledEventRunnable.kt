@@ -20,6 +20,15 @@ abstract class ScheduledEventRunnable<S>(plugin: Plugin) : RunnableFeature(plugi
       return 0L // That's not good :(
     }
 
+    fun getAbsoluteSystemTime(): Long {
+      for (world in Bukkit.getServer().getWorlds()) {
+        if (world.environment == World.Environment.NORMAL) {
+          return world.getFullTime()
+        }
+      }
+      return 0L // That's not good :(
+    }
+
   }
 
   data class Event<S>(

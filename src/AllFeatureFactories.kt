@@ -84,6 +84,7 @@ object AllFeatureFactories {
       ContagiousMossManager,
       DeathScoreboardListener,
       DirtRecipeFeature,
+      DoctorDancesManager,
       DoorDamageListener,
       DragonBombManager,
       DripstoneManagerFactory,

@@ -233,8 +233,8 @@
                       inventory), the item you're holding in your main
                       hand will be dropped.
    + deathscoreboard :: A scoreboard on the right side of the screen
-        shows the number of times each player has died.
-   + silverfishburn :: Silverfish burn in daylight.
+        shows the number of times each player has died
+   + silverfishburn :: Silverfish burn in daylight
    + witchattack :: Witches will sometimes throw parrots at you
                     instead of splash potions
    + unfinished :: If you start mining an ore and then stop, it gets
@@ -245,6 +245,9 @@
    + enderchest :: When a player opens an ender chest, they see the
      ender chest inventory of whoever died most recently
    + learning :: When a player dies, all other players gain a level
+   + doctordances :: If a full Minecraft day goes by with no one
+     dying, every player receives a small reward taken from a random
+     pool
 * IDEAS (UNIMPLEMENTED)
   + Wolves?
   + Fishing?
@@ -258,6 +261,7 @@
   + Bone blocks?
   + Killing one vector saves everyone
   + Can we make the lava haste force you to move forward?
+  + Lore on items when things happen?
 ** HATCRAFTER'S IDEAS
    + Snowballs have reverse knockback
    + Grass spread is slower
@@ -275,7 +279,6 @@
    + When a pillager dies, it splits into small or medium slimes
    + Vex will occasionally transform into strays
    + Turtle shell and chainmail are the only craftable helmets
-   + Chainmail armor is craftable from buckets of lava
    + When the player takes damage, they might drop redstone
      - Excludes damage from fire, lava, poison, and wither
    + Redstone torches drop redstone
@@ -302,17 +305,6 @@
    + Items destroyed by Curse of Vanishing instead become a random item
    + Dimension Chain - Whenever a player dies, a random player in a
      different dimension has a 35% chance to die as well
-   + The Doctor Dances
-     - If not a single player dies for a full Minecraft day length of
-       time, then every player will receive one of the following:
-       1. A stone pickaxe with 1 durability
-       2. A stone pickaxe with silk touch and 2 durability
-       3. A stone shovel
-       4. A stone axe
-       5. A diamond hoe
-       6. A bucket of water
-       7. Three random spawn eggs
-       8. 63 dirt
    + Stardew Slime Loot - Slimes have an increased loot pool. They may
      drop the following (see chat)
    + Minecraft Trivia: Every 30 mins a random trivia question is asked

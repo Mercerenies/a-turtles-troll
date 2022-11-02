@@ -42,6 +42,8 @@ A Turtle's Troll also depends on the following two libraries.
   accidentally be opened instead
 * When a player opens an ender chest, they see the ender chest
   inventory of whoever died most recently
+* If a full Minecraft day goes by with no one dying, every player
+  receives a small reward taken from a random pool
 * When a player dies, all other players gain a level
 * Lava buckets can be crafted into chainmail armor
 * Added more death conditions to appease the gods
