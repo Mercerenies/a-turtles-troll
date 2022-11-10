@@ -42,6 +42,7 @@
    + redstoneworld :: Mobs drop redstone dust, picking up redstone
      dust deals a small amount of damage
    + snowball :: Snowballs have reverse knockback
+   + boatbomb :: If a boat hits the ground hard enough, it explodes
 ** CUSTOM SPAWNING FEATURES
    + weepingangel :: Armor stands will chase you when you're not
                      looking at them, and armor stands will rarely

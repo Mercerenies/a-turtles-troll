@@ -42,6 +42,7 @@ A Turtle's Troll also depends on the following two libraries.
   accidentally be opened instead
 * When a player opens an ender chest, they see the ender chest
   inventory of whoever died most recently
+* If a boat hits the ground hard enough, it explodes
 * If a full Minecraft day goes by with no one dying, every player
   receives a small reward taken from a random pool
 * `mobGriefing` is off by default; if a player dies for any reason, it

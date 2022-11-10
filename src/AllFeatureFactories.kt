@@ -73,6 +73,7 @@ object AllFeatureFactories {
       BambooSpreadListener,
       BedtimeManager,
       BlazeAttackListener,
+      BoatBombListener,
       ButterfingersListener,
       ButtonDamageListener,
       CakeListenerFactory,
