@@ -44,6 +44,8 @@ A Turtle's Troll also depends on the following two libraries.
   inventory of whoever died most recently
 * If a full Minecraft day goes by with no one dying, every player
   receives a small reward taken from a random pool
+* `mobGriefing` is off by default; if a player dies for any reason, it
+  turns on for ten minutes
 * When a player dies, all other players gain a level
 * Lava buckets can be crafted into chainmail armor
 * Snowballs have reverse knockback

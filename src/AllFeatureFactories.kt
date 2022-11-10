@@ -110,6 +110,7 @@ object AllFeatureFactories {
       GoddessHoeListener,
       GrassPoisonListener,
       GravestoneListener,
+      GrievingWidowListener,
       KillerRabbitListener,
       LavaLaunchListener,
       LearningFromFailureListener,

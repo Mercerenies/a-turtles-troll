@@ -249,6 +249,8 @@
    + doctordances :: If a full Minecraft day goes by with no one
      dying, every player receives a small reward taken from a random
      pool
+   + grievingwidow :: ~mobGriefing~ is off by default; if a player
+                      dies for any reason, it turns on for ten minutes
 * IDEAS (UNIMPLEMENTED)
   + Wolves?
   + Fishing?
@@ -282,9 +284,6 @@
    + Redstone torches drop redstone
    + Breeding animals sometimes spawns a Vindicator named "Johnny"
    + Creepers spawn with 2 minutes of a random status effect
-   + mobGriefing is off
-     - If a player dies, mobGriefing is enabled for 10 minutes
-     - Bonus points if the game shames whoever activated it
    + The world starts with an 80x80 world border. At noon, the world
      extends by 16 in all directions
    + Bedrock change
