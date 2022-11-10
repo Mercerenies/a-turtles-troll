@@ -15,7 +15,7 @@ other in mind.
 A Turtle's Troll is written and maintained by Mercerenies. It is
 released under the [MIT License](LICENSE.txt).
 
-A Turtle's Troll also depends on the following two libraries.
+A Turtle's Troll also depends on the following libraries.
 
 * The Kotlin runtime (Included and automatically bundled in the
   produced JAR File)
