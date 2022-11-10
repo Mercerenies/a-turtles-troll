@@ -134,6 +134,7 @@ object AllFeatureFactories {
       SlimeSplitListener,
       SlowSlabListener,
       SnowListener,
+      SnowballListener,
       SpillageListener,
       StoneRecipeDeleter,
       UnfinishedBusinessListener,

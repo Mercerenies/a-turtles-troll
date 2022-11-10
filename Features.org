@@ -41,6 +41,7 @@
                   on sand or gravel)
    + redstoneworld :: Mobs drop redstone dust, picking up redstone
      dust deals a small amount of damage
+   + snowball :: Snowballs have reverse knockback
 ** CUSTOM SPAWNING FEATURES
    + weepingangel :: Armor stands will chase you when you're not
                      looking at them, and armor stands will rarely
@@ -263,7 +264,6 @@
   + Can we make the lava haste force you to move forward?
   + Lore on items when things happen?
 ** HATCRAFTER'S IDEAS
-   + Snowballs have reverse knockback
    + Grass spread is slower
    + Polar bears have Haste 3
    + Lava spreads faster, and even faster in the Nether

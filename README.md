@@ -46,6 +46,7 @@ A Turtle's Troll also depends on the following two libraries.
   receives a small reward taken from a random pool
 * When a player dies, all other players gain a level
 * Lava buckets can be crafted into chainmail armor
+* Snowballs have reverse knockback
 * Added more death conditions to appease the gods
 
 ### Version 1.17
