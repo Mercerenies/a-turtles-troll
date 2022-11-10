@@ -48,6 +48,7 @@ A Turtle's Troll also depends on the following two libraries.
 * Lava buckets can be crafted into chainmail armor
 * Snowballs have reverse knockback
 * Added more death conditions to appease the gods
+* Chicken explosions respect `mobGriefing` now
 
 ### Version 1.17
 

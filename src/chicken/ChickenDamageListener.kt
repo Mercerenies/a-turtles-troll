@@ -21,6 +21,7 @@ import org.bukkit.entity.EntityType
 import org.bukkit.entity.Entity
 import org.bukkit.Location
 import org.bukkit.Chunk
+import org.bukkit.GameRule
 import org.bukkit.plugin.Plugin
 
 import kotlin.random.Random
@@ -67,8 +68,13 @@ class ChickenDamageListener(
       if (event.damager is PufferFish) {
         event.setCancelled(true)
       } else {
+        val world = victim.world
         victim.health = 0.0
-        victim.world.createExplosion(victim.location, 5.0F, true)
+        if (world.getGameRuleValue(GameRule.MOB_GRIEFING) ?: true) {
+          world.createExplosion(victim.location, 5.0F, true, true)
+        } else {
+          world.createExplosion(victim.location, 5.0F, true, false)
+        }
       }
     }
   }

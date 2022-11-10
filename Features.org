@@ -253,7 +253,6 @@
   + Wolves?
   + Fishing?
   + Polar bears?
-  + Giants?
   + Illusioner?
   + Blindness
   + More **bedtime** conditions
@@ -275,7 +274,6 @@
      food item
    + Every in-game day, all players will use the same skin as a random
      player
-   + Slimes come in even bigger sizes
    + When a pillager dies, it splits into small or medium slimes
    + Vex will occasionally transform into strays
    + Turtle shell and chainmail are the only craftable helmets
