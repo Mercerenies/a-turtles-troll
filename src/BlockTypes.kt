@@ -58,6 +58,7 @@ object BlockTypes {
     Material.OXIDIZED_CUT_COPPER_SLAB, Material.POLISHED_DEEPSLATE_SLAB,
     Material.WAXED_CUT_COPPER_SLAB, Material.WAXED_EXPOSED_CUT_COPPER_SLAB,
     Material.WAXED_OXIDIZED_CUT_COPPER_SLAB, Material.WEATHERED_CUT_COPPER_SLAB,
+    Material.MANGROVE_SLAB,
   )
 
   val STAIRS = setOf(
@@ -80,18 +81,22 @@ object BlockTypes {
     Material.OXIDIZED_CUT_COPPER_STAIRS, Material.POLISHED_DEEPSLATE_STAIRS,
     Material.WAXED_CUT_COPPER_STAIRS, Material.WAXED_EXPOSED_CUT_COPPER_STAIRS,
     Material.WAXED_OXIDIZED_CUT_COPPER_STAIRS, Material.WEATHERED_CUT_COPPER_STAIRS,
+    Material.MANGROVE_STAIRS,
   )
 
   val LOGS = setOf(
     Material.ACACIA_LOG, Material.BIRCH_LOG, Material.DARK_OAK_LOG, Material.JUNGLE_LOG,
     Material.OAK_LOG, Material.SPRUCE_LOG, Material.STRIPPED_ACACIA_LOG, Material.STRIPPED_BIRCH_LOG,
     Material.STRIPPED_DARK_OAK_LOG, Material.STRIPPED_JUNGLE_LOG, Material.STRIPPED_OAK_LOG,
-    Material.STRIPPED_SPRUCE_LOG,
+    Material.STRIPPED_SPRUCE_LOG, Material.MANGROVE_LOG, Material.STRIPPED_MANGROVE_LOG,
   )
 
   val PLANKS = setOf(
     Material.ACACIA_PLANKS, Material.BIRCH_PLANKS, Material.DARK_OAK_PLANKS, Material.JUNGLE_PLANKS,
-    Material.OAK_PLANKS, Material.SPRUCE_PLANKS,
+    Material.OAK_PLANKS, Material.SPRUCE_PLANKS, Material.MANGROVE_PLANKS,
+    Material.STRIPPED_ACACIA_WOOD, Material.STRIPPED_BIRCH_WOOD, Material.STRIPPED_DARK_OAK_WOOD,
+    Material.STRIPPED_JUNGLE_WOOD, Material.STRIPPED_OAK_WOOD, Material.STRIPPED_SPRUCE_WOOD,
+    Material.STRIPPED_MANGROVE_WOOD,
   )
 
   // Takes an ore block and turns it into the non-ore block type it's

@@ -30,6 +30,7 @@ A Turtle's Troll also depends on the following libraries.
 ### Version 1.19
 
 * A Turtle's Troll has been updated to run in Minecraft 1.19.2.
+* Added mangroves to leaf/log/plank effects.
 
 ### Version 1.18
 
