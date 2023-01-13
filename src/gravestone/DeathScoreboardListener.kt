@@ -14,6 +14,7 @@ import org.bukkit.event.Listener
 import org.bukkit.event.EventHandler
 import org.bukkit.event.server.ServerLoadEvent
 import org.bukkit.scoreboard.DisplaySlot
+import org.bukkit.scoreboard.Criteria
 import org.bukkit.plugin.Plugin
 
 import org.json.JSONObject
@@ -34,8 +35,8 @@ class DeathScoreboardListener(
 
   private class DeathObjectiveContainer() : ObjectiveContainer(SCOREBOARD_NAME, "Deaths") {
 
-    override val criteria: String
-      get() = "deathCount"
+    override val criteria: Criteria
+      get() = Criteria.DEATH_COUNT
 
   }
 

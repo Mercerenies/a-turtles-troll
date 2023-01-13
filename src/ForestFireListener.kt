@@ -26,11 +26,7 @@ class ForestFireListener(val plugin: Plugin) : AbstractFeature(), Listener {
 
   companion object : FeatureContainerFactory<FeatureContainer> {
     val DELAY = Constants.TICKS_PER_SECOND
-    val BLOCKS = setOf(
-      Material.ACACIA_LEAVES, Material.AZALEA_LEAVES, Material.BIRCH_LEAVES, Material.DARK_OAK_LEAVES,
-      Material.FLOWERING_AZALEA_LEAVES, Material.OAK_LEAVES, Material.JUNGLE_LEAVES, Material.SPRUCE_LEAVES,
-      Material.BLUE_ICE, Material.FROSTED_ICE, Material.ICE, Material.PACKED_ICE,
-    )
+    val BLOCKS = BlockTypes.LEAVES union setOf(Material.BLUE_ICE, Material.FROSTED_ICE, Material.ICE, Material.PACKED_ICE)
 
     override fun create(state: BuilderState): FeatureContainer =
       ListenerContainer(ForestFireListener(state.plugin))

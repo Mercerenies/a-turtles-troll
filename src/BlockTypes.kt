@@ -99,6 +99,12 @@ object BlockTypes {
     Material.STRIPPED_MANGROVE_WOOD,
   )
 
+  val LEAVES = setOf(
+    Material.ACACIA_LEAVES, Material.AZALEA_LEAVES, Material.BIRCH_LEAVES, Material.DARK_OAK_LEAVES,
+    Material.FLOWERING_AZALEA_LEAVES, Material.OAK_LEAVES, Material.JUNGLE_LEAVES, Material.SPRUCE_LEAVES,
+    Material.MANGROVE_LEAVES,
+  )
+
   // Takes an ore block and turns it into the non-ore block type it's
   // most similar to. Returns the block itself if given a non-ore.
   fun removeOreFrom(material: Material): Material =
