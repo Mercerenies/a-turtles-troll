@@ -141,6 +141,7 @@ object AllFeatureFactories {
       StoneRecipeDeleter,
       UnfinishedBusinessListener,
       WanderingTraderListener,
+      WardenSummonRunnable,
       WitchAttackListener,
       WitchSummonManager,
       WitherArmorListener,

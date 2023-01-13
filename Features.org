@@ -111,6 +111,8 @@
      a sufficiently large slime dies, it does not split into anything
    + expirationdate :: When a player eats bread, there's a 10% chance
      that a small slime spawns near them
+   + wardensummon :: If you spend more than five seconds in total
+                     darkness, a Warden will appear near you
 ** EGG FEATURES
    + eggs :: Almost any mob (or diamonds) can spawn from an egg
    + eggarrow :: Skeletons will fire eggs in addition to arrows

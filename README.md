@@ -30,6 +30,8 @@ A Turtle's Troll also depends on the following libraries.
 ### Version 1.19
 
 * A Turtle's Troll has been updated to run in Minecraft 1.19.2.
+* A Warden appears near any player who spends more than five seconds
+  in total darkness.
 * Added mangroves to leaf/log/plank effects.
 
 ### Version 1.18
