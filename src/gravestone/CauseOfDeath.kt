@@ -152,6 +152,7 @@ data class Vanilla(val cause: EntityDamageEvent.DamageCause) : CauseOfDeath {
       EntityDamageEvent.DamageCause.THORNS -> "Prickly bad guy"
       EntityDamageEvent.DamageCause.VOID -> "Oops! Negative Y"
       EntityDamageEvent.DamageCause.WITHER -> "Powerful drugs"
+      EntityDamageEvent.DamageCause.SONIC_BOOM -> "BOOOOOOOOOOOM"
     }
 
 }

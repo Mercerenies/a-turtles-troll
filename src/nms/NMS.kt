@@ -11,7 +11,7 @@ import org.bukkit.entity.Player
 //
 // I'm trying to leave detailed instructions on how to piece this
 // together. When we inevitably have to update this for the next MC
-// version (1.18), then it's going to be a pain. Hopefully I can
+// version (1.19), then it's going to be a pain. Hopefully I can
 // alleviate that as much as possible.
 object NMS {
 
@@ -33,16 +33,17 @@ object NMS {
 
   // Go to org.bukkit.craftbukkit.*.entity.CraftFallingBlock and look
   // at the implementation of canHurtEntities(). It returns a Boolean.
-  // Remember the name of that Boolean (in 1.17, it's 'ap'; in 1.18,
-  // it's 'aq'). Now go to
+  // Remember the name of that Boolean (in 1.17, it's 'ap'; in 1.18
+  // and 1.19.2, it's 'aq'). Now go to
   // net.minecraft.world.entity.item.EntityFallingBlock. There should
   // be a method with signature
   //
   // public void ???(float, int)
   //
-  // Which sets that variable (again, `ap` in 1.17; 'aq' in 1.18) to
-  // true and sets two other variables to the arguments. We want to
-  // call that function (`b` in 1.17 and 1.18) with 1.0f and 40.
+  // Which sets that variable (again, `ap` in 1.17; 'aq' in
+  // 1.18/1.19.2) to true and sets two other variables to the
+  // arguments. We want to call that function (`b` in 1.17, 1.18,
+  // 1.19.2) with 1.0f and 40.
   fun makeFallingBlockHurt(block: FallingBlock) {
     val cls = getClass("entity.CraftFallingBlock")
     val mcBlock = cls.getMethod("getHandle").invoke(block)
@@ -58,9 +59,9 @@ object NMS {
   //
   // There should only be one, and its body should be a large
   // try-catch block which loads a bunch of fields into the NBT
-  // argument and then returns it. (In 1.18, this method is called
-  // `f`). That method needs to be called below when we reassign to
-  // mcNbt.
+  // argument and then returns it. (In 1.18 and 1.19.2, this method is
+  // called `f`). That method needs to be called below when we
+  // reassign to mcNbt.
   //
   // Now go to net.minecraft.nbt.NBTTagCompound and find the method
   // with signature
@@ -69,8 +70,8 @@ object NMS {
   //
   // Again, it should be unique. The body is a one-liner and calls
   // .get on an instance variable of type Map<String, NBTBase>. (This
-  // method is called `c` in 1.18). That method needs to be accessed
-  // as mcNbtGetter below.
+  // method is called `c` in 1.18/1.19.2). That method needs to be
+  // accessed as mcNbtGetter below.
   fun getPlayerParrotInfo(player: Player): ParrotInformation {
     val cls = getClass("entity.CraftPlayer")
     val mcEntity = cls.getMethod("getHandle").invoke(player)

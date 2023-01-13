@@ -27,6 +27,10 @@ A Turtle's Troll also depends on the following libraries.
 
 ## Changelog
 
+### Version 1.19
+
+* A Turtle's Troll has been updated to run in Minecraft 1.19.2.
+
 ### Version 1.18
 
 * Poké Balls can be crafted and thrown to capture mobs
