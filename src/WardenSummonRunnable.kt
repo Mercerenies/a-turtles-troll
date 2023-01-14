@@ -14,6 +14,7 @@ import org.bukkit.plugin.Plugin
 import org.bukkit.scheduler.BukkitRunnable
 import org.bukkit.block.Block
 import org.bukkit.Bukkit
+import org.bukkit.World
 
 import kotlin.collections.HashSet
 
@@ -50,6 +51,11 @@ class WardenSummonRunnable(plugin: Plugin) : RunnableFeature(plugin) {
     // If someone is in the dark, add them to the dark players list.
     // If they were already in this list from last time,
     for (player in Bukkit.getOnlinePlayers()) {
+      if (player.location.world?.environment != World.Environment.NORMAL) {
+        // Do NOT try this in the nether or the end. It's basically
+        // always dark in both of those.
+        continue
+      }
       val block = player.location.block
       if (block.lightLevel == 0.toByte()) {
         if (darkPlayers.contains(player)) {
