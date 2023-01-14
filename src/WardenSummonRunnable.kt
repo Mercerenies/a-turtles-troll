@@ -17,6 +17,7 @@ import org.bukkit.Bukkit
 import org.bukkit.World
 
 import kotlin.collections.HashSet
+import kotlin.math.max
 
 class WardenSummonRunnable(plugin: Plugin) : RunnableFeature(plugin) {
 
@@ -57,7 +58,8 @@ class WardenSummonRunnable(plugin: Plugin) : RunnableFeature(plugin) {
         continue
       }
       val block = player.location.block
-      if (block.lightLevel == 0.toByte()) {
+      val lightLevel = max(block.lightFromBlocks.toInt(), block.lightFromSky.toInt())
+      if (lightLevel == 0) {
         if (darkPlayers.contains(player)) {
           summonWarden(player)
           darkPlayers.remove(player)
