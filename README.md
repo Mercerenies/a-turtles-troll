@@ -32,6 +32,9 @@ A Turtle's Troll also depends on the following libraries.
 * A Turtle's Troll has been updated to run in Minecraft 1.19.2.
 * A Warden appears near any player who spends more than five seconds
   in total darkness.
+* Allays automatically bond to the nearest player and have an infinite
+  supply of flowers.
+* Killing (or exploding) non-charged creepers summons allays.
 * Added mangroves to leaf/log/plank effects.
 
 ### Version 1.18

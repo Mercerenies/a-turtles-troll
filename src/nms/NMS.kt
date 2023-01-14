@@ -6,6 +6,7 @@ import com.mercerenies.turtletroll.ParrotInformation
 import org.bukkit.Bukkit
 import org.bukkit.entity.FallingBlock
 import org.bukkit.entity.Player
+import org.bukkit.entity.Allay
 
 // https://riptutorial.com/bukkit/example/29589/accessing-the-current-minecraft-version :)
 //
@@ -87,6 +88,47 @@ object NMS {
     val leftShoulder = mcNbtGetter.invoke(mcNbt, "ShoulderEntityLeft")
     val rightShoulder = mcNbtGetter.invoke(mcNbt, "ShoulderEntityRight")
     return ParrotInfo(leftShoulder != null, rightShoulder != null)
+  }
+
+  // Go to net.minecraft.world.entity.animal.allay.Allay. Find the
+  // method with signature
+  //
+  // protected EnumInteractionResult ???(EntityHuman, EnumHand)
+  //
+  // It is called b on 1.19.2. In this method there should be a few if
+  // statements. We'll use some lines in the second if statement as a
+  // guide. Specifically, the line that uses a MemoryModuleType.
+  //
+  // Now, go to net.minecraft.world.entity.ai.memory.MemoryModuleType
+  // and find the static final field with value "liked_player". This
+  // is aK on 1.19.2.
+  //
+  // Go to net.minecraft.world.entity.animal.allay.Allay. Find the
+  // method that takes no arguments and returns
+  // BehaviorController<Allay>. It's called dy on 1.19.2.
+  //
+  // Now go to net.minecraft.world.entity.Entity and find the
+  // zero-argument method that returns a java.util.UUID. It's called
+  // co on 1.19.2.
+  //
+  // Finally, go to net.minecraft.world.entity.ai.BehaviorController
+  // and find the non-static method that takes a MemoryModuleType<U>
+  // and a (nullable) U. It's called a on 1.19.2 (and is one of
+  // several overloads).
+  fun setAllayFriend(allay: Allay, player: Player): Unit {
+    val playerCls = getClass("entity.CraftPlayer")
+    val allayCls = getClass("entity.CraftAllay")
+    val memoryModuleTypeCls = Class.forName("net.minecraft.world.entity.ai.memory.MemoryModuleType")
+    val mcAllayCls = Class.forName("net.minecraft.world.entity.animal.allay.Allay")
+    val behaviorControllerCls = Class.forName("net.minecraft.world.entity.ai.BehaviorController")
+    val entityCls = Class.forName("net.minecraft.world.entity.player.EntityHuman")
+
+    val mcPlayerEntity = playerCls.getMethod("getHandle").invoke(player)
+    val mcAllayEntity = allayCls.getMethod("getHandle").invoke(allay)
+    val memoryModuleType = memoryModuleTypeCls.getField("aK").get(null)
+    val controller = mcAllayCls.getMethod("dy").invoke(mcAllayEntity)
+    val playerUuid = entityCls.getMethod("co").invoke(mcPlayerEntity)
+    behaviorControllerCls.getMethod("a", memoryModuleTypeCls, Object::class.java).invoke(controller, memoryModuleType, playerUuid)
   }
 
 }
