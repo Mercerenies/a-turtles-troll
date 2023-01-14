@@ -35,6 +35,7 @@ A Turtle's Troll also depends on the following libraries.
 * Allays automatically bond to the nearest player and have an infinite
   supply of flowers.
 * Killing (or exploding) non-charged creepers summons allays.
+* Villagers, zombie villagers, and wandering traders drop leather.
 * Added mangroves to leaf/log/plank effects.
 
 ### Version 1.18

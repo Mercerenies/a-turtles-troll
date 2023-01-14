@@ -142,6 +142,7 @@ object AllFeatureFactories {
       SpillageListener,
       StoneRecipeDeleter,
       UnfinishedBusinessListener,
+      VillagerDeathListener,
       WanderingTraderListener,
       WardenSummonRunnable,
       WitchAttackListener,

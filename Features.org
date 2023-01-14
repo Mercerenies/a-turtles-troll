@@ -258,6 +258,7 @@
      pool
    + grievingwidow :: ~mobGriefing~ is off by default; if a player
                       dies for any reason, it turns on for ten minutes
+   + villagerdeath :: Villagers drop leather
 * IDEAS (UNIMPLEMENTED)
   + Wolves?
   + Fishing?
