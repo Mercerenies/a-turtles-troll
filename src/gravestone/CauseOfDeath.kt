@@ -194,6 +194,7 @@ data class VanillaMob(val entityType: EntityType) : CauseOfDeath {
       EntityType.PHANTOM -> "Direction&magnitude"
       EntityType.PUFFERFISH -> "Tears of the sky"
       EntityType.VINDICATOR, EntityType.PILLAGER -> "Raid shadow legends"
+      EntityType.WARDEN -> "Daredevil"
       EntityType.WITCH -> "Bippity boppity boo"
       EntityType.WITHER, EntityType.WITHER_SKULL -> "Oof good luck with that"
       EntityType.WOLF -> "Man's best friend"
