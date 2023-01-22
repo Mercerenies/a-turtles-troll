@@ -78,23 +78,21 @@ class PetPhantomManager(
   }
 
   @EventHandler
-  fun onEntityDamage(event: EntityDamageEvent) {
-    if (!isEnabled()) {
-      return
-    }
+  fun onEntityDamage(event: EntityCombustEvent) {
+    if (event.isCancelled()) return
 
     val entity = event.getEntity()
 
     // Protect phantoms from fire
     if (entity is Phantom) {
       if (knownPhantoms.containsValue(entity)) {
-        if ((event.getCause() == EntityDamageEvent.DamageCause.FIRE) || (event.getCause() == EntityDamageEvent.DamageCause.FIRE_TICK)) {
           event.setCancelled(true)
-        }
+          entity.setFireTicks(0)
       }
     }
 
   }
+
 
   private fun spawnPhantom(player: Player): Phantom? {
     val loc = player.location.clone()
