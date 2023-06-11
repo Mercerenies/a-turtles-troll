@@ -10,6 +10,11 @@ Raccoon-Mischief](https://github.com/EvanSkiStudios/Raccoon-Mischief).
 Neither directly depends on the other, but they are designed with each
 other in mind.
 
+## Building
+
+To build this project, get a compatible version of the Spigot API JAR
+and place it in the `lib` directory. Then run `gradle build`.
+
 ## Acknowledgments
 
 A Turtle's Troll is written and maintained by Mercerenies. It is
@@ -26,6 +31,10 @@ A Turtle's Troll also depends on the following libraries.
   JSON License)
 
 ## Changelog
+
+### Version 1.20
+
+* Switched to Gradle build system, massively improving build times.
 
 ### Version 1.19
 
