@@ -6,6 +6,26 @@ import org.bukkit.event.entity.EntityDamageEvent
 
 interface DeathCondition {
 
+  companion object {
+
+    val EASY = listOf(
+      True, MustBeMimic, MustBeVector, MustBeAngel, FireDamage,
+      Falling, MustBeBee, MustBeSilverfish, MustBeRedstone,
+      Lightning,
+    )
+
+    val MEDIUM = listOf(
+      Explosion, MustBeZombie, MustBeGhast, MustBeRavager,
+      Hunger, MustBeSpider,
+    )
+
+    val HARD = listOf(
+      Drowning, MustBeEnderman, MustBeIronGolem, MustBeBlaze,
+      MustBeLlama,
+    )
+
+  }
+
   // Should be a prepositional phrase
   val description: String
 

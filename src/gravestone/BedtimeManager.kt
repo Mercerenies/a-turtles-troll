@@ -34,27 +34,10 @@ class BedtimeManager(plugin: Plugin) : ScheduledEventRunnable<BedtimeManager.Sta
     val DAWN_TIME = 0L
     val DUSK_TIME = 12000L
 
-    val EASY = listOf(
-      DeathCondition.True, DeathCondition.MustBeMimic, DeathCondition.MustBeVector,
-      DeathCondition.MustBeAngel, DeathCondition.FireDamage, DeathCondition.Falling,
-      DeathCondition.MustBeBee, DeathCondition.MustBeSilverfish,
-      DeathCondition.MustBeRedstone, DeathCondition.Lightning,
-    )
-
-    val MEDIUM = listOf(
-      DeathCondition.Explosion, DeathCondition.MustBeZombie, DeathCondition.MustBeGhast,
-      DeathCondition.MustBeRavager, DeathCondition.Hunger, DeathCondition.MustBeSpider,
-    )
-
-    val HARD = listOf(
-      DeathCondition.Drowning, DeathCondition.MustBeEnderman, DeathCondition.MustBeIronGolem,
-      DeathCondition.MustBeBlaze, DeathCondition.MustBeLlama,
-    )
-
     val CONDITION_LIST = listOf(
-      Weight(EASY, 5.0),
-      Weight(MEDIUM, 3.0),
-      Weight(HARD, 1.0),
+      Weight(DeathCondition.EASY, 5.0),
+      Weight(DeathCondition.MEDIUM, 3.0),
+      Weight(DeathCondition.HARD, 1.0),
     )
 
     val ANGRY_MESSAGE = "The gods are angry; no one shall sleep tonight!"
