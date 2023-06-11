@@ -34,7 +34,9 @@ A Turtle's Troll also depends on the following libraries.
 
 ### Version 1.20
 
-* Eating the last bite of a cake causes it to explode
+* Eating the last bite of a cake causes it to explode.
+* Any bucket without a custom name will randomly change its contents
+  every eight seconds.
 * The Warden summon condition has been increased to seven seconds.
 * Added a warning message if the player has been in darkness for more
   than 3.5 seconds.

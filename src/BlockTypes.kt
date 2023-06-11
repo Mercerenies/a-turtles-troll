@@ -105,6 +105,13 @@ object BlockTypes {
     Material.MANGROVE_LEAVES,
   )
 
+  val BUCKETS = setOf(
+    Material.AXOLOTL_BUCKET, Material.BUCKET, Material.COD_BUCKET, Material.LAVA_BUCKET,
+    Material.MILK_BUCKET, Material.POWDER_SNOW_BUCKET, Material.PUFFERFISH_BUCKET,
+    Material.SALMON_BUCKET, Material.TADPOLE_BUCKET, Material.TROPICAL_FISH_BUCKET,
+    Material.WATER_BUCKET,
+  )
+
   // Takes an ore block and turns it into the non-ore block type it's
   // most similar to. Returns the block itself if given a non-ore.
   fun removeOreFrom(material: Material): Material =

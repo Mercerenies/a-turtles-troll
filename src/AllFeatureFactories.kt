@@ -75,6 +75,7 @@ object AllFeatureFactories {
       BedtimeManager,
       BlazeAttackListener,
       BoatBombListener,
+      BucketRouletteRunnable,
       ButterfingersListener,
       ButtonDamageListener,
       CakeListenerFactory,

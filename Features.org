@@ -262,6 +262,8 @@
    + grievingwidow :: ~mobGriefing~ is off by default; if a player
                       dies for any reason, it turns on for ten minutes
    + villagerdeath :: Villagers drop leather
+   + bucketroulette :: Any bucket without a custom name will randomly
+     change its contents every eight seconds
 * IDEAS (UNIMPLEMENTED)
   + Wolves?
   + Fishing?
