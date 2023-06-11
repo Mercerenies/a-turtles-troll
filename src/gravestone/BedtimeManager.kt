@@ -9,12 +9,8 @@ import com.mercerenies.turtletroll.command.withPermission
 import com.mercerenies.turtletroll.Weight
 import com.mercerenies.turtletroll.sample
 import com.mercerenies.turtletroll.ext.*
-import com.mercerenies.turtletroll.feature.container.FeatureContainer
-import com.mercerenies.turtletroll.feature.container.AbstractFeatureContainer
-import com.mercerenies.turtletroll.feature.builder.BuilderState
-import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 import com.mercerenies.turtletroll.Messages
-import com.mercerenies.turtletroll.gravestone.condition.DifficultyClass
+import com.mercerenies.turtletroll.gravestone.condition.BedtimeConditionSelector
 
 import org.bukkit.plugin.Plugin
 import org.bukkit.Bukkit
@@ -29,17 +25,14 @@ import org.bukkit.event.player.PlayerQuitEvent
 import org.bukkit.event.Listener
 import org.bukkit.command.CommandSender
 
-class BedtimeManager(plugin: Plugin) : ScheduledEventRunnable<BedtimeManager.State>(plugin), Listener {
+class BedtimeManager(
+  plugin: Plugin,
+  private val conditionSelector: BedtimeConditionSelector,
+) : ScheduledEventRunnable<BedtimeManager.State>(plugin), Listener {
 
-  companion object : FeatureContainerFactory<FeatureContainer> {
+  companion object {
     val DAWN_TIME = 0L
     val DUSK_TIME = 12000L
-
-    val CONDITION_LIST: List<Weight<DifficultyClass>> = listOf(
-      Weight(DifficultyClass.EASY, 5.0),
-      Weight(DifficultyClass.MEDIUM, 3.0),
-      Weight(DifficultyClass.HARD, 1.0),
-    )
 
     val ANGRY_MESSAGE = "The gods are angry; no one shall sleep tonight!"
 
@@ -49,41 +42,16 @@ class BedtimeManager(plugin: Plugin) : ScheduledEventRunnable<BedtimeManager.Sta
 
     val COMMAND_PERMISSION = "com.mercerenies.turtletroll.command.bedtime"
 
-    override fun create(state: BuilderState): FeatureContainer =
-      Container(BedtimeManager(state.plugin))
-
     fun requestMessage(condition: DeathCondition): String =
       "Today, the gods would like to see someone die ${condition.description}"
 
     fun appeasedMessage(player: Player): String =
       "${player.displayName} has appeased the gods! You may sleep tonight."
 
-    private fun chooseCondition(): DeathCondition =
-      // Choose difficulty first, then choose a death condition in that difficulty tier
-      sample(CONDITION_LIST).conditions.sample()!!
-
     val STATES = listOf(
       Event(State.Daytime, DAWN_TIME),
       Event(State.Nighttime, DUSK_TIME),
     )
-
-  }
-
-  private class Container(
-    private val manager: BedtimeManager,
-  ) : AbstractFeatureContainer() {
-
-    override val listeners =
-      listOf(manager)
-
-    override val features =
-      listOf(manager)
-
-    override val runnables =
-      listOf(manager)
-
-    override val commands =
-      listOf(manager.command)
 
   }
 
@@ -152,7 +120,7 @@ class BedtimeManager(plugin: Plugin) : ScheduledEventRunnable<BedtimeManager.Sta
     when (newState) {
       State.Daytime -> {
         isAppeased = false
-        condition = chooseCondition()
+        condition = conditionSelector.chooseCondition()
         bossBar.updateCondition(BedtimeBossBarUpdater.Status.WAITING, condition)
         Messages.broadcastMessage(requestMessage(condition))
       }

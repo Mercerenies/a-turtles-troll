@@ -17,7 +17,7 @@ import com.mercerenies.turtletroll.mimic.MimicListenerFactory
 import com.mercerenies.turtletroll.gravestone.CustomDeathMessageListener
 import com.mercerenies.turtletroll.gravestone.GravestoneListener
 import com.mercerenies.turtletroll.gravestone.DeathScoreboardListener
-import com.mercerenies.turtletroll.gravestone.BedtimeManager
+import com.mercerenies.turtletroll.gravestone.BedtimeManagerFactory
 import com.mercerenies.turtletroll.spillage.SpillageListener
 import com.mercerenies.turtletroll.falling.SandAttackRunnable
 import com.mercerenies.turtletroll.cookie.FreeCookieRunnable
@@ -72,7 +72,7 @@ object AllFeatureFactories {
       AnvilRunnableFactory,
       AxolotlListener,
       BambooSpreadListener,
-      BedtimeManager,
+      BedtimeManagerFactory(BedtimeManagerFactory::basicDifficultySelector),
       BlazeAttackListener,
       BoatBombListener,
       BucketRouletteRunnable,
