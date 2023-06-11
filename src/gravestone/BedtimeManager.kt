@@ -14,6 +14,7 @@ import com.mercerenies.turtletroll.feature.container.AbstractFeatureContainer
 import com.mercerenies.turtletroll.feature.builder.BuilderState
 import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 import com.mercerenies.turtletroll.Messages
+import com.mercerenies.turtletroll.gravestone.condition.DifficultyClass
 
 import org.bukkit.plugin.Plugin
 import org.bukkit.Bukkit
@@ -34,10 +35,10 @@ class BedtimeManager(plugin: Plugin) : ScheduledEventRunnable<BedtimeManager.Sta
     val DAWN_TIME = 0L
     val DUSK_TIME = 12000L
 
-    val CONDITION_LIST = listOf(
-      Weight(DeathCondition.EASY, 5.0),
-      Weight(DeathCondition.MEDIUM, 3.0),
-      Weight(DeathCondition.HARD, 1.0),
+    val CONDITION_LIST: List<Weight<DifficultyClass>> = listOf(
+      Weight(DifficultyClass.EASY, 5.0),
+      Weight(DifficultyClass.MEDIUM, 3.0),
+      Weight(DifficultyClass.HARD, 1.0),
     )
 
     val ANGRY_MESSAGE = "The gods are angry; no one shall sleep tonight!"
@@ -59,7 +60,7 @@ class BedtimeManager(plugin: Plugin) : ScheduledEventRunnable<BedtimeManager.Sta
 
     private fun chooseCondition(): DeathCondition =
       // Choose difficulty first, then choose a death condition in that difficulty tier
-      sample(CONDITION_LIST).sample()!!
+      sample(CONDITION_LIST).conditions.sample()!!
 
     val STATES = listOf(
       Event(State.Daytime, DAWN_TIME),
