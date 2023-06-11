@@ -43,6 +43,8 @@
      dust deals a small amount of damage
    + snowball :: Snowballs have reverse knockback
    + boatbomb :: If a boat hits the ground hard enough, it explodes
+   + escalation :: If a player has four distinct potion effects, they
+                   begin to levitate in the air
 ** CUSTOM SPAWNING FEATURES
    + weepingangel :: Armor stands will chase you when you're not
                      looking at them, and armor stands will rarely
@@ -196,6 +198,15 @@
                    can be crafted into dirt
    + chainmailrecipe :: Lava buckets can be crafted into chainmail
      armor
+** BLOCK GROWTH FEATURES
+   + enddirt :: Dirt placed in the End turns into a Shulker
+   + overgrowth :: Several crops turn to a random log if not harvested
+                   within ten minutes of maturing
+     - The following crops are affected: beetroots, carrots, cocoa,
+       nether warts, potatoes, sweet berry bushes, and wheat
+   + bamboo :: When bamboo grows, it has a chance to spread in a
+               random place in a 32x32x32 box of the original bamboo
+   + grassspread :: Grass spreads slower than normal
 ** MISCELLANEOUS FEATURES
    + anvil :: If you stand still for more than ten seconds, an anvil
               will drop on your head; anvils can be smelted into iron
@@ -213,11 +224,6 @@
    + explosivearrow :: Explosive arrows can be crafted from arrows and
                        gunpowder, and player-thrown tridents explode
                        on contact
-   + enddirt :: Dirt placed in the End turns into a Shulker
-   + overgrowth :: Several crops turn to a random log if not harvested
-                   within ten minutes of maturing
-     - The following crops are affected: beetroots, carrots, cocoa,
-       nether warts, potatoes, sweet berry bushes, and wheat
    + dragonbomb :: The Ender Dragon drops TNT at regular intervals;
                    the Ender Dragon is immune to explosion damage
    + chargedcreeper :: Killing a charged creeper always drops a
@@ -233,10 +239,6 @@
                    the ground, you can absorb any amount of fall
                    damage or lava damage, at the cost of shield
                    durability instead
-   + bamboo :: When bamboo grows, it has a chance to spread in a
-               random place in a 32x32x32 box of the original bamboo
-   + escalation :: If a player has four distinct potion effects, they
-                   begin to levitate in the air
    + butterfingers :: If you open an inventory (excluding your own
                       inventory), the item you're holding in your main
                       hand will be dropped.

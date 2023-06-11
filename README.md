@@ -37,6 +37,7 @@ A Turtle's Troll also depends on the following libraries.
 * The Warden summon condition has been increased to seven seconds.
 * Added a warning message if the player has been in darkness for more
   than 3.5 seconds.
+* Grass spreads slower than in vanilla.
 * All messages originating from the plugin have a common prefix now.
 * Switched to Gradle build system, massively improving build times.
 

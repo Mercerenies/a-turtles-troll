@@ -112,6 +112,7 @@ object AllFeatureFactories {
       GlassLuckListener,
       GoddessHoeListener,
       GrassPoisonListener,
+      GrassSpreadListener,
       GravestoneListener,
       GrievingWidowListener,
       KillerRabbitListener,
