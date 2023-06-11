@@ -37,10 +37,13 @@ A Turtle's Troll also depends on the following libraries.
 * Eating the last bite of a cake causes it to explode.
 * Any bucket without a custom name will randomly change its contents
   every eight seconds.
+* The gods' death conditions are now tiered; harder conditions only
+  appear if you've satisfied them a lot recently
 * The Warden summon condition has been increased to seven seconds.
 * Added a warning message if the player has been in darkness for more
   than 3.5 seconds.
 * Grass spreads slower than in vanilla.
+* Fixed a bug with the "Lightning" death condition.
 * All messages originating from the plugin have a common prefix now.
 * Switched to Gradle build system, massively improving build times.
 
