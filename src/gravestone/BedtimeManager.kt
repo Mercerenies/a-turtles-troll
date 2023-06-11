@@ -127,6 +127,7 @@ class BedtimeManager(
       State.Nighttime -> {
         if (!isAppeased) {
           bossBar.updateCondition(BedtimeBossBarUpdater.Status.ANGRY)
+          conditionSelector.onGodsAngered()
           Messages.broadcastMessage(ANGRY_MESSAGE)
         }
       }
@@ -143,6 +144,7 @@ class BedtimeManager(
       val cause = CauseOfDeath.identify(event)
       if (condition.test(cause)) {
         Messages.broadcastMessage(appeasedMessage(event.entity))
+        conditionSelector.onGodsAppeased()
         bossBar.updateCondition(BedtimeBossBarUpdater.Status.APPEASED)
         isAppeased = true
       }

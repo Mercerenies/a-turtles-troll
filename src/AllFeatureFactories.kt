@@ -72,7 +72,7 @@ object AllFeatureFactories {
       AnvilRunnableFactory,
       AxolotlListener,
       BambooSpreadListener,
-      BedtimeManagerFactory(BedtimeManagerFactory::basicDifficultySelector),
+      BedtimeManagerFactory(BedtimeManagerFactory::tieredDifficultySelector),
       BlazeAttackListener,
       BoatBombListener,
       BucketRouletteRunnable,

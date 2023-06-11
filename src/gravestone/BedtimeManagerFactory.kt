@@ -3,6 +3,7 @@ package com.mercerenies.turtletroll.gravestone
 
 import com.mercerenies.turtletroll.Weight
 import com.mercerenies.turtletroll.gravestone.condition.BedtimeConditionSelector
+import com.mercerenies.turtletroll.gravestone.condition.DifficultyTierConditionSelector
 import com.mercerenies.turtletroll.gravestone.condition.DifficultyClass
 import com.mercerenies.turtletroll.gravestone.condition.WeightedDifficultyConditionSelector
 import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
@@ -22,6 +23,17 @@ class BedtimeManagerFactory(
           Weight(DifficultyClass.EASY, 5.0),
           Weight(DifficultyClass.MEDIUM, 3.0),
           Weight(DifficultyClass.HARD, 1.0),
+        )
+      )
+
+    fun tieredDifficultySelector(): BedtimeConditionSelector =
+      DifficultyTierConditionSelector(
+        listOf(
+          DifficultyClass.EASY,
+          DifficultyClass.EASY,
+          DifficultyClass.MEDIUM,
+          DifficultyClass.MEDIUM,
+          DifficultyClass.HARD,
         )
       )
 

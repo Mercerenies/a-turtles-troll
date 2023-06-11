@@ -23,6 +23,9 @@ fun linearRescale(a0: Double, b0: Double, a1: Double, b1: Double, value: Double)
 fun clamp(amount: Double, a: Double, b: Double): Double =
   min(max(amount, a), b)
 
+fun clamp(amount: Int, a: Int, b: Int): Int =
+  min(max(amount, a), b)
+
 fun pluralize(items: List<String>, conjunction: String = "and"): String =
   when (items.size) {
     0 -> ""

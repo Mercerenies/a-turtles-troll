@@ -3,6 +3,8 @@ package com.mercerenies.turtletroll.gravestone.condition
 
 import com.mercerenies.turtletroll.gravestone.DeathCondition
 
+// TODO Validate precondition (conditions is not empty) here, and
+// provide a function to sample (with the non-null assertion)
 data class DifficultyClass(
   val conditions: List<DeathCondition>,
 ) {
