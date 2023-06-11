@@ -14,7 +14,7 @@ import org.bukkit.entity.Phantom
 import org.bukkit.entity.EntityType
 import org.bukkit.event.Listener
 import org.bukkit.event.EventHandler
-import org.bukkit.event.entity.EntityDamageEvent
+import org.bukkit.event.entity.EntityCombustEvent
 
 import kotlin.collections.HashMap
 import kotlin.random.Random
@@ -78,8 +78,13 @@ class PetPhantomManager(
   }
 
   @EventHandler
-  fun onEntityDamage(event: EntityCombustEvent) {
-    if (event.isCancelled()) return
+  fun onEntityCombust(event: EntityCombustEvent) {
+    if (!isEnabled()) {
+      return
+    }
+    if (event.isCancelled()) {
+      return
+    }
 
     val entity = event.getEntity()
 
