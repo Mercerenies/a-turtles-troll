@@ -39,6 +39,7 @@ A Turtle's Troll also depends on the following libraries.
   every eight seconds.
 * The gods' death conditions are now tiered; harder conditions only
   appear if you've satisfied them a lot recently.
+* Breeding animals sometimes spawns a Vindicator named "Johnny".
 * Killing a pillager summons slimes.
 * The Warden summon condition has been increased to seven seconds.
 * Added a warning message if the player has been in darkness for more

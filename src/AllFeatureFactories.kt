@@ -116,6 +116,7 @@ object AllFeatureFactories {
       GrassSpreadListener,
       GravestoneListener,
       GrievingWidowListener,
+      JohnnyListener,
       KillerRabbitListener,
       LavaLaunchListener,
       LearningFromFailureListener,

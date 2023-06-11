@@ -120,6 +120,8 @@
                      exploding creepers also summon allays
    + allays :: Allays automatically bond to the nearest player and
                have an infinite supply of flowers
+   + johnny :: Breeding animals sometimes spawns a Vindicator named
+     "Johnny"
 ** EGG FEATURES
    + eggs :: Almost any mob (or diamonds) can spawn from an egg
    + eggarrow :: Skeletons will fire eggs in addition to arrows
@@ -293,7 +295,6 @@
    + When the player takes damage, they might drop redstone
      - Excludes damage from fire, lava, poison, and wither
    + Redstone torches drop redstone
-   + Breeding animals sometimes spawns a Vindicator named "Johnny"
    + Creepers spawn with 2 minutes of a random status effect
    + The world starts with an 80x80 world border. At noon, the world
      extends by 16 in all directions
