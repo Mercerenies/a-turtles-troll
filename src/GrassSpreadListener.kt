@@ -36,9 +36,7 @@ class GrassSpreadListener() : AbstractFeature(), Listener {
     }
     if (event.newState.blockData.material == Material.GRASS_BLOCK) {
       // 50% chance of canceling
-      println("Bar")
       if (Random.nextDouble() < 0.5) {
-        println("Foo")
         event.setCancelled(true)
       }
     }
