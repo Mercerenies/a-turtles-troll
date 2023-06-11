@@ -83,7 +83,8 @@ interface DeathCondition {
     override val summary: String = "Die to Lightning"
 
     override fun test(cause: CauseOfDeath): Boolean =
-      (cause is Vanilla && conditions.contains(cause.cause))
+      (cause is Vanilla && conditions.contains(cause.cause)) ||
+        (cause is VanillaMob && cause.entityType == EntityType.LIGHTNING)
 
   }
 
