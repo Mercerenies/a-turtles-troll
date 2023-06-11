@@ -63,9 +63,9 @@ class WardenSummonRunnable(plugin: Plugin) : RunnableFeature(plugin) {
         if (darkPlayers.contains(player)) {
           summonWarden(player)
           darkPlayers.remove(player)
-          /////
         } else {
           darkPlayers.add(player)
+          Messages.sendMessage(player, "Afraid of the dark?!")
         }
       } else {
         darkPlayers.remove(player)
