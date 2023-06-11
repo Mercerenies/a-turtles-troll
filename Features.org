@@ -62,6 +62,7 @@
    + cakes :: Cakes spawn in the wild and, when eaten, grant one of
               several random effects; the more cakes you eat in a
               short period of time, the worse the effect will be
+     - Eating the last bite of a cake causes it to explode
    + dripstone :: Dripstone stalactites randomly generate in the wild,
                   and dripstone will fall if the player walks below
                   it; dripstone can be used in place of flint to craft
@@ -275,9 +276,7 @@
   + Can we make the lava haste force you to move forward?
   + Lore on items when things happen?
 ** HATCRAFTER'S IDEAS
-   + Grass spread is slower
    + Polar bears have Haste 3
-   + Lava spreads faster, and even faster in the Nether
    + Every hostile mob has a very small chance of dropping a random item
    + Shearing a sheep gives you 2x the wool
    + Shearing a sheep creates an explosion that only damages the

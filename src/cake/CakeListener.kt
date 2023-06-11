@@ -10,10 +10,13 @@ import com.mercerenies.turtletroll.Constants
 import com.mercerenies.turtletroll.mimic.MimicListener
 import com.mercerenies.turtletroll.location.BlockSelector
 
+import org.bukkit.GameRule
 import org.bukkit.entity.Player
 import org.bukkit.entity.EntityType
 import org.bukkit.plugin.Plugin
 import org.bukkit.Material
+import org.bukkit.Location
+import org.bukkit.block.Block
 import org.bukkit.event.Listener
 import org.bukkit.event.EventHandler
 import org.bukkit.event.block.Action
@@ -21,6 +24,7 @@ import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.event.entity.CreatureSpawnEvent
 import org.bukkit.scheduler.BukkitRunnable
 import org.bukkit.block.`data`.Lightable
+import org.bukkit.block.`data`.`type`.Cake
 
 import kotlin.collections.HashMap
 import kotlin.random.Random
@@ -53,6 +57,25 @@ class CakeListener(
 
     fun isCake(material: Material): Boolean =
       CAKE_TYPES.contains(material)
+
+    private fun isLastBite(block: Block): Boolean {
+      val blockData = block.blockData
+      if (blockData is Cake) {
+        return blockData.bites == blockData.maximumBites
+      } else {
+        return false
+      }
+    }
+
+    private fun explodeBlock(block: Block) {
+      val world = block.location.world!!
+      block.setType(Material.AIR)
+      if (world.getGameRuleValue(GameRule.MOB_GRIEFING) ?: true) {
+        world.createExplosion(block.location, 5.0F, true, true)
+      } else {
+        world.createExplosion(block.location, 5.0F, true, false)
+      }
+    }
 
     // Desired properties of this function
     //
@@ -137,14 +160,24 @@ class CakeListener(
     if (block != null) {
       val material = block.type
       if ((isCake(material)) && (event.getAction() == Action.RIGHT_CLICK_BLOCK)) {
-        val effect = chooseEffect(event.player)
-        effect.onEat(block.location, event.player)
-        cakesEatenCounter.eat(event.player)
-        if (effect.cancelsDefault()) {
+        if (isLastBite(block)) {
+          explodeBlock(block)
           event.setCancelled(true)
+        } else {
+          val cancelsDefault = applyEffect(block.location, event.player)
+          if (cancelsDefault) {
+            event.setCancelled(true)
+          }
         }
       }
     }
+  }
+
+  private fun applyEffect(location: Location, player: Player): Boolean {
+    val effect = chooseEffect(player)
+    effect.onEat(location, player)
+    cakesEatenCounter.eat(player)
+    return effect.cancelsDefault()
   }
 
   private fun chooseEffect(player: Player): CakeEffect {
