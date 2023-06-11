@@ -1,6 +1,8 @@
 
 package com.mercerenies.turtletroll.cookie
 
+import com.mercerenies.turtletroll.Messages
+
 import org.bukkit.entity.Entity
 import org.bukkit.entity.EntityType
 
@@ -27,7 +29,7 @@ abstract class SpawnMobsEffect : CookieEffect {
       val entity = world.spawnEntity(thisLocation, mobType)
       this.onSpawnedMob(entity)
     }
-    player.sendMessage(message)
+    Messages.sendMessage(player, message)
   }
 
 }

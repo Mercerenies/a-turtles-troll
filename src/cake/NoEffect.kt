@@ -1,6 +1,8 @@
 
 package com.mercerenies.turtletroll.cake
 
+import com.mercerenies.turtletroll.Messages
+
 import org.bukkit.Location
 import org.bukkit.entity.Player
 
@@ -11,7 +13,7 @@ object NoEffect : CakeEffect {
   override fun cancelsDefault(): Boolean = false
 
   override fun onEat(loc: Location, player: Player) {
-    player.sendMessage("That cake tastes pretty good.")
+    Messages.sendMessage(player, "That cake tastes pretty good.")
   }
 
 }

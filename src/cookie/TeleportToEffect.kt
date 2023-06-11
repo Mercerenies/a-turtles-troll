@@ -3,6 +3,7 @@ package com.mercerenies.turtletroll.cookie
 
 import com.mercerenies.turtletroll.Constants
 import com.mercerenies.turtletroll.Worlds
+import com.mercerenies.turtletroll.Messages
 
 import org.bukkit.Location
 import org.bukkit.Sound
@@ -72,7 +73,7 @@ abstract class TeleportToEffect(private val plugin: Plugin) : CookieEffect {
     val player = action.player
     val target = getTarget(player)
     val sound = this.sound
-    player.sendMessage(message)
+    Messages.sendMessage(player, message)
     if (sound != null) {
       player.world.playSound(player.location, sound, 1.0f, 0.0f)
     }

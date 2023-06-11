@@ -2,6 +2,7 @@
 package com.mercerenies.turtletroll.cookie
 
 import com.mercerenies.turtletroll.Constants
+import com.mercerenies.turtletroll.Messages
 
 import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
@@ -21,7 +22,7 @@ class ApplyPotionEffect(
 
   override fun onEat(action: CookieEatenAction) {
     val player = action.player
-    player.sendMessage("The cookie tastes like ${effectName}!")
+    Messages.sendMessage(player, "The cookie tastes like ${effectName}!")
     player.addPotionEffect(potionEffect)
   }
 

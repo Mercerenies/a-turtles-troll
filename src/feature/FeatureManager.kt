@@ -3,6 +3,7 @@ package com.mercerenies.turtletroll.feature
 
 import com.mercerenies.turtletroll.command.TerminalCommand
 import com.mercerenies.turtletroll.command.UnaryCommand
+import com.mercerenies.turtletroll.Messages
 
 import org.bukkit.Bukkit
 import org.bukkit.command.CommandSender
@@ -28,7 +29,7 @@ class FeatureManager(val features: List<Feature>) {
         return false
       }
       feature.enable()
-      Bukkit.broadcastMessage("[Turtle] ${feature.coloredName} is now enabled.")
+      Messages.broadcastMessage("${feature.coloredName} is now enabled.")
       return true
     }
 
@@ -50,7 +51,7 @@ class FeatureManager(val features: List<Feature>) {
       if (feature == null) {
         return false
       }
-      Bukkit.broadcastMessage("[Turtle] ${feature.coloredName} is now disabled.")
+      Messages.broadcastMessage("${feature.coloredName} is now disabled.")
       feature.disable()
       return true
     }

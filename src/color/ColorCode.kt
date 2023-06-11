@@ -34,6 +34,9 @@ data class ColorCode(val prefix: String) {
 
   }
 
+  override fun toString(): String =
+    prefix
+
   fun of(text: String) =
     "${prefix}${text}${RESET.prefix}"
 

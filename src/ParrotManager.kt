@@ -82,7 +82,7 @@ class ParrotManager(_plugin: Plugin) : RunnableFeature(_plugin), Listener {
     if (hasPerchedParrot) {
       if (!safePlayers.contains(player)) {
         if (!player.hasPotionEffect(targetEffectType)) {
-          player.sendMessage("SQUAAAAAAWK! Yer comin' with me!") // TODO Get the parrot's name (from NMS) for this message
+          Messages.sendMessage(player, "SQUAAAAAAWK! Yer comin' with me!") // TODO Get the parrot's name (from NMS) for this message
           player.addPotionEffect(PotionEffect(PotionEffectType.LEVITATION, Constants.TICKS_PER_SECOND * 3, 100))
           safePlayers.add(player, Constants.TICKS_PER_SECOND * 10L)
         }

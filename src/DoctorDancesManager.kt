@@ -99,7 +99,7 @@ class DoctorDancesManager(
   }
 
   private fun rewardPlayer(player: Player, reward: Reward) {
-    player.sendMessage("The Doctor dances, and you're rewarded with ${reward}")
+    Messages.sendMessage(player, "The Doctor dances, and you're rewarded with ${reward}")
     reward.giveToPlayer(player)
   }
 

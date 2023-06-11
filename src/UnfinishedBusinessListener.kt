@@ -45,7 +45,7 @@ class UnfinishedBusinessListener() : AbstractFeature(), Listener {
     if (BlockTypes.ORES.contains(blockType)) {
       val blockName = AllItems.getName(blockType)
       val message = chooseMessage()
-      event.player.sendMessage("<${blockName}> ${message}")
+      Messages.sendMessage(event.player, "<${blockName}> ${message}")
       event.block.type = Material.COBWEB
     }
   }

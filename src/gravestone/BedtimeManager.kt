@@ -13,6 +13,7 @@ import com.mercerenies.turtletroll.feature.container.FeatureContainer
 import com.mercerenies.turtletroll.feature.container.AbstractFeatureContainer
 import com.mercerenies.turtletroll.feature.builder.BuilderState
 import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
+import com.mercerenies.turtletroll.Messages
 
 import org.bukkit.plugin.Plugin
 import org.bukkit.Bukkit
@@ -56,11 +57,11 @@ class BedtimeManager(plugin: Plugin) : ScheduledEventRunnable<BedtimeManager.Sta
       Weight(HARD, 1.0),
     )
 
-    val ANGRY_MESSAGE = "[Turtle] The gods are angry; no one shall sleep tonight!"
+    val ANGRY_MESSAGE = "The gods are angry; no one shall sleep tonight!"
 
-    val SATISFIED_MESSAGE = "[Turtle] The gods are appeased today; everyone is free to sleep."
+    val SATISFIED_MESSAGE = "The gods are appeased today; everyone is free to sleep."
 
-    val DISABLED_MESSAGE = "[Turtle] This feature is currently disabled; the gods are not interfering with your sleep."
+    val DISABLED_MESSAGE = "This feature is currently disabled; the gods are not interfering with your sleep."
 
     val COMMAND_PERMISSION = "com.mercerenies.turtletroll.command.bedtime"
 
@@ -138,7 +139,7 @@ class BedtimeManager(plugin: Plugin) : ScheduledEventRunnable<BedtimeManager.Sta
 
     override fun onCommand(sender: CommandSender): Boolean {
       val message = getMessageToSend()
-      sender.sendMessage(message)
+      Messages.sendMessage(sender, message)
       return true
     }
 
@@ -169,12 +170,12 @@ class BedtimeManager(plugin: Plugin) : ScheduledEventRunnable<BedtimeManager.Sta
         isAppeased = false
         condition = chooseCondition()
         bossBar.updateCondition(BedtimeBossBarUpdater.Status.WAITING, condition)
-        Bukkit.broadcastMessage(requestMessage(condition))
+        Messages.broadcastMessage(requestMessage(condition))
       }
       State.Nighttime -> {
         if (!isAppeased) {
           bossBar.updateCondition(BedtimeBossBarUpdater.Status.ANGRY)
-          Bukkit.broadcastMessage(ANGRY_MESSAGE)
+          Messages.broadcastMessage(ANGRY_MESSAGE)
         }
       }
     }
@@ -189,7 +190,7 @@ class BedtimeManager(plugin: Plugin) : ScheduledEventRunnable<BedtimeManager.Sta
     if ((currentState == State.Daytime) && (!isAppeased)) {
       val cause = CauseOfDeath.identify(event)
       if (condition.test(cause)) {
-        Bukkit.broadcastMessage(appeasedMessage(event.entity))
+        Messages.broadcastMessage(appeasedMessage(event.entity))
         bossBar.updateCondition(BedtimeBossBarUpdater.Status.APPEASED)
         isAppeased = true
       }
@@ -208,7 +209,7 @@ class BedtimeManager(plugin: Plugin) : ScheduledEventRunnable<BedtimeManager.Sta
         // Check that the gods are happy
         if (!isAppeased) {
           event.setCancelled(true)
-          event.player.sendMessage(ANGRY_MESSAGE)
+          Messages.sendMessage(event.player, ANGRY_MESSAGE)
         }
       }
     }

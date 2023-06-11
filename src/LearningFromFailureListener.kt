@@ -44,7 +44,7 @@ class LearningFromFailureListener(
         continue
       }
 
-      player.sendMessage("You learned an important lesson from ${dyingPlayer.displayName}'s death; +1 level")
+      Messages.sendMessage(player, "You learned an important lesson from ${dyingPlayer.displayName}'s death; +1 level")
       player.level += 1
     }
   }
