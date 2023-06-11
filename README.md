@@ -38,7 +38,8 @@ A Turtle's Troll also depends on the following libraries.
 * Any bucket without a custom name will randomly change its contents
   every eight seconds.
 * The gods' death conditions are now tiered; harder conditions only
-  appear if you've satisfied them a lot recently
+  appear if you've satisfied them a lot recently.
+* Killing a pillager summons slimes.
 * The Warden summon condition has been increased to seven seconds.
 * Added a warning message if the player has been in darkness for more
   than 3.5 seconds.

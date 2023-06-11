@@ -127,6 +127,7 @@ object AllFeatureFactories {
       ParrotDeathListener,
       ParrotManager,
       PetPhantomManager,
+      PillagerDeathListener,
       PillagerGunListener,
       PokeballManager,
       PressurePlateFireListener,

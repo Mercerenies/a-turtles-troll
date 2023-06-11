@@ -264,6 +264,7 @@
    + villagerdeath :: Villagers drop leather
    + bucketroulette :: Any bucket without a custom name will randomly
      change its contents every eight seconds
+   + pillagerdeath :: Killing a pillager summons slimes
 * IDEAS (UNIMPLEMENTED)
   + Wolves?
   + Fishing?
@@ -287,7 +288,6 @@
      food item
    + Every in-game day, all players will use the same skin as a random
      player
-   + When a pillager dies, it splits into small or medium slimes
    + Vex will occasionally transform into strays
    + Turtle shell and chainmail are the only craftable helmets
    + When the player takes damage, they might drop redstone
