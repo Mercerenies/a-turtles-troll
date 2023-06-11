@@ -34,6 +34,7 @@ A Turtle's Troll also depends on the following libraries.
 
 ### Version 1.20
 
+* All messages originating from the plugin have a common prefix now.
 * Switched to Gradle build system, massively improving build times.
 
 ### Version 1.19

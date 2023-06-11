@@ -1,6 +1,7 @@
 
 package com.mercerenies.turtletroll.cookie
 
+import com.mercerenies.turtletroll.Messages
 import com.mercerenies.turtletroll.Constants
 import com.mercerenies.turtletroll.gravestone.CustomDeathMessageRegistry
 import com.mercerenies.turtletroll.gravestone.CustomDeathMessage
@@ -43,7 +44,7 @@ class DeathEffect(private val plugin: Plugin) : CookieEffect {
 
   override fun onEat(action: CookieEatenAction) {
     val player = action.player
-    player.sendMessage(message)
+    Messages.sendMessage(player, message)
     KillPlayer(player, action.deathRegistry).runTaskLater(plugin, DELAY)
   }
 

@@ -46,7 +46,7 @@ class EscalationListener(
     if (entity is Player) {
       if (!entity.hasPotionEffect(targetEffectType)) {
         if (entity.getActivePotionEffects().size >= featureCount - 1 && event.action == EntityPotionEffectEvent.Action.ADDED) {
-          entity.sendMessage("That escalated quickly...")
+          Messages.sendMessage(entity, "That escalated quickly...")
           entity.addPotionEffect(PotionEffect(PotionEffectType.LEVITATION, Constants.TICKS_PER_SECOND * 10, 0))
         }
       }

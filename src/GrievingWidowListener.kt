@@ -38,7 +38,7 @@ class GrievingWidowListener(
   private inner class DeactivateMobGriefingRunnable() : BukkitRunnable() {
     override fun run() {
       setMobGriefingRule(false)
-      Bukkit.broadcastMessage(DEACTIVATED_MESSAGE)
+      Messages.broadcastMessage(DEACTIVATED_MESSAGE)
     }
   }
 
@@ -74,7 +74,7 @@ class GrievingWidowListener(
   override fun enable() {
     super.enable()
     setMobGriefingRule(false)
-    Bukkit.broadcastMessage(DEACTIVATED_MESSAGE)
+    Messages.broadcastMessage(DEACTIVATED_MESSAGE)
   }
 
   @EventHandler
@@ -84,7 +84,7 @@ class GrievingWidowListener(
     }
     val player = event.entity
     if (!isMobGriefingOn) {
-      Bukkit.broadcastMessage("Due to the sheer incompetence of ${player.getDisplayName()}, mobGriefing is now on.")
+      Messages.broadcastMessage("Due to the sheer incompetence of ${player.getDisplayName()}, mobGriefing is now on.")
     }
     setMobGriefingRule(true)
     resetTimer()

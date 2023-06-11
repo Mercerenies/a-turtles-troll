@@ -37,9 +37,9 @@ class AxolotlListener() : AbstractFeature(), Listener {
       val nearestPlayer = PlayerSelector.findNearestPlayer(entity.location, DISTANCE_SQUARED_LIMIT)
 
       if (nearestPlayer == null) {
-        Bukkit.broadcastMessage("RIP an axolotl, who died in peace")
+        Messages.broadcastMessage("RIP an axolotl, who died in peace")
       } else {
-        Bukkit.broadcastMessage("RIP an axolotl, who took ${nearestPlayer.getDisplayName()} with them")
+        Messages.broadcastMessage("RIP an axolotl, who took ${nearestPlayer.getDisplayName()} with them")
         nearestPlayer.damage(9999.0, entity)
       }
 

@@ -2,6 +2,7 @@
 package com.mercerenies.turtletroll.cake
 
 import com.mercerenies.turtletroll.Constants
+import com.mercerenies.turtletroll.Messages
 
 import org.bukkit.Location
 import org.bukkit.entity.Player
@@ -58,7 +59,7 @@ class ApplyPotionEffect(
   override fun cancelsDefault(): Boolean = false
 
   override fun onEat(loc: Location, player: Player) {
-    player.sendMessage("The cake tastes like ${effectName}!")
+    Messages.sendMessage(player, "The cake tastes like ${effectName}!")
     player.addPotionEffect(potionEffect)
   }
 

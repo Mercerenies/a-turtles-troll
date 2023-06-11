@@ -39,7 +39,7 @@ class WardenSummonRunnable(plugin: Plugin) : RunnableFeature(plugin) {
 
   override val description: String = "A Warden appears if you spend too much time in 0 light"
 
-  override val taskPeriod = (Constants.TICKS_PER_SECOND * 2.5).toLong()
+  override val taskPeriod = (Constants.TICKS_PER_SECOND * 3.5).toLong()
 
   private val darkPlayers = HashSet<Player>()
   private val recentSummons = CooldownMemory<Player>(plugin)
@@ -63,6 +63,7 @@ class WardenSummonRunnable(plugin: Plugin) : RunnableFeature(plugin) {
         if (darkPlayers.contains(player)) {
           summonWarden(player)
           darkPlayers.remove(player)
+          /////
         } else {
           darkPlayers.add(player)
         }

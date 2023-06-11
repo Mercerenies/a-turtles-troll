@@ -1,6 +1,7 @@
 
 package com.mercerenies.turtletroll.cookie
 
+import com.mercerenies.turtletroll.Messages
 import com.mercerenies.turtletroll.ext.*
 import com.mercerenies.turtletroll.AllItems
 import com.mercerenies.turtletroll.Rarity
@@ -94,7 +95,7 @@ abstract class GivenItemEffect(private val plugin: Plugin) : CookieEffect {
       fallback.onEat(action)
     } else {
       val itemName = this.itemName(replacementItem)
-      action.player.sendMessage("That cookie had ${itemName} inside it!")
+      Messages.sendMessage(action.player, "That cookie had ${itemName} inside it!")
       GiveToPlayer(action.player, replacementItem).runTaskLater(plugin, DELAY.toLong())
     }
   }

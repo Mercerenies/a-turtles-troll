@@ -1,6 +1,7 @@
 
 package com.mercerenies.turtletroll.cookie
 
+import com.mercerenies.turtletroll.Messages
 import com.mercerenies.turtletroll.ext.*
 import com.mercerenies.turtletroll.AllItems
 import com.mercerenies.turtletroll.BookBuilder
@@ -41,7 +42,7 @@ class FortuneEffect(
     val player = action.player
     val fortune = chooseFortune()
     val book = makeBook(fortune)
-    player.sendMessage("That cookie had a fortune inside it: \"${fortune}\"!")
+    Messages.sendMessage(player, "That cookie had a fortune inside it: \"${fortune}\"!")
     AllItems.give(player, book)
   }
 

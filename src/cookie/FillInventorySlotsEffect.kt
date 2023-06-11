@@ -2,6 +2,7 @@
 package com.mercerenies.turtletroll.cookie
 
 import com.mercerenies.turtletroll.ext.*
+import com.mercerenies.turtletroll.Messages
 
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
@@ -54,7 +55,7 @@ abstract class FillInventorySlotsEffect(private val plugin: Plugin) : CookieEffe
 
   override fun onEat(action: CookieEatenAction) {
     val player = action.player
-    player.sendMessage(message)
+    Messages.sendMessage(player, message)
     FillRunnable(player).runTaskLater(plugin, DELAY.toLong())
   }
 

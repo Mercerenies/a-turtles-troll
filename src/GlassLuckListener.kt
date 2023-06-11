@@ -34,7 +34,7 @@ class GlassLuckListener() : AbstractFeature(), Listener {
     val block = event.getBlock()
     if (BlockTypes.GLASS.contains(block.type)) {
       event.player.addPotionEffect(PotionEffect(PotionEffectType.UNLUCK, Constants.TICKS_PER_SECOND * SECONDS_PER_SEVEN_YEARS, 10))
-      event.player.sendMessage("The glass gods are furious! Seven years bad luck be upon ye!")
+      Messages.sendMessage(event.player, "The glass gods are furious! Seven years bad luck be upon ye!")
     }
   }
 
