@@ -46,6 +46,7 @@ A Turtle's Troll also depends on the following libraries.
 * Grass spreads slower than in vanilla.
 * Fixed a bug with the "Lightning" death condition.
 * All messages originating from the plugin have a common prefix now.
+* A Turtle's Troll now depends on Paper, not just Spigot.
 * Switched to Gradle build system, massively improving build times.
 
 ### Version 1.19
