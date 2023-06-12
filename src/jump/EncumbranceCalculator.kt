@@ -7,12 +7,13 @@ import com.mercerenies.turtletroll.Messages
 import org.bukkit.entity.Player
 
 import net.kyori.adventure.text.Component
+import net.kyori.adventure.text.format.NamedTextColor
 
 interface EncumbranceCalculator {
 
   companion object {
-    fun formatPercent(value: Double): String =
-      String.format("%2.2f%%", value)
+    fun formatPercent(value: Double): Component =
+      Component.text(String.format("%2.2f%%", value), NamedTextColor.GOLD)
   }
 
   class Sum(val elements: List<EncumbranceStat>) : EncumbranceCalculator {

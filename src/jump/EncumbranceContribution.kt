@@ -1,6 +1,8 @@
 
 package com.mercerenies.turtletroll.jump
 
+import com.mercerenies.turtletroll.ext.*
+
 import org.bukkit.entity.Player
 
 import net.kyori.adventure.text.Component
@@ -25,7 +27,7 @@ interface EncumbranceContribution {
     override val explanation: Component
       get() {
         val percent = EncumbranceCalculator.formatPercent(amount)
-        return Component.text("* ${percent} ").append(reason)
+        return Component.text("* ").append(percent).append(" ").append(reason)
       }
 
   }
