@@ -1,6 +1,7 @@
 
 package com.mercerenies.turtletroll.mimic
 
+import com.mercerenies.turtletroll.ext.*
 import com.mercerenies.turtletroll.gravestone.CustomDeathMessageRegistry
 import com.mercerenies.turtletroll.gravestone.CustomDeathMessage
 import com.mercerenies.turtletroll.gravestone.Mimic
@@ -19,6 +20,8 @@ import org.bukkit.event.block.Action
 import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.event.entity.CreatureSpawnEvent
 import org.bukkit.scheduler.BukkitRunnable
+
+import net.kyori.adventure.text.Component
 
 import kotlin.random.Random
 
@@ -44,7 +47,7 @@ class MimicListener(
 
     val message = CustomDeathMessage(
       Mimic,
-      "${player.getDisplayName()} was eaten by a Mimic.",
+      Component.text("").append(player.displayName()).append(" was eaten by a Mimic."),
     )
 
     override fun run() {

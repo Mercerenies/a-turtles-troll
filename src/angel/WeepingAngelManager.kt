@@ -1,6 +1,8 @@
 
 package com.mercerenies.turtletroll.angel
 
+import com.mercerenies.turtletroll.ext.*
+import com.mercerenies.turtletroll.util.*
 import com.mercerenies.turtletroll.gravestone.CustomDeathMessageRegistry
 import com.mercerenies.turtletroll.gravestone.CustomDeathMessage
 import com.mercerenies.turtletroll.gravestone.Angel
@@ -25,6 +27,8 @@ import org.bukkit.event.entity.EntityDeathEvent
 import org.bukkit.event.entity.CreatureSpawnEvent
 import org.bukkit.Sound
 import org.bukkit.util.EulerAngle
+
+import net.kyori.adventure.text.Component
 
 import kotlin.collections.HashMap
 import kotlin.random.Random
@@ -63,7 +67,7 @@ class WeepingAngelManager(
     )
 
     fun isAngel(armorStand: ArmorStand): Boolean =
-      armorStand.getCustomName() != "raccoon"
+      armorStand.customName()?.asPlainText() != "raccoon"
 
     fun getAllAngels(): List<ArmorStand> =
       Bukkit.getWorlds().flatMap { it.getEntitiesByClass(ArmorStand::class.java) }.filter(this::isAngel)
@@ -171,7 +175,7 @@ class WeepingAngelManager(
         // We're close enough to damage the player (we can do this even if we're safe)
         val customMessage = CustomDeathMessage(
           Angel,
-          "${info.target.getDisplayName()} blinked.",
+          Component.text("").append(info.target.displayName()).append(" blinked."),
         )
         deathRegistry.withCustomDeathMessage(customMessage) {
           info.target.damage(5.0, angel)

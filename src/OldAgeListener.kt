@@ -1,6 +1,7 @@
 
 package com.mercerenies.turtletroll
 
+import com.mercerenies.turtletroll.ext.*
 import com.mercerenies.turtletroll.gravestone.CustomDeathMessageRegistry
 import com.mercerenies.turtletroll.gravestone.CustomDeathMessage
 import com.mercerenies.turtletroll.gravestone.OldAge
@@ -9,6 +10,8 @@ import com.mercerenies.turtletroll.feature.AbstractFeature
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerLevelChangeEvent
+
+import net.kyori.adventure.text.Component
 
 class OldAgeListener(
   private val deathRegistry: CustomDeathMessageRegistry,
@@ -27,7 +30,7 @@ class OldAgeListener(
     if (event.newLevel >= ageLimit) {
       val message = CustomDeathMessage(
         OldAge,
-        "${event.player.getDisplayName()} died of old age.",
+        Component.text("").append(event.player.displayName()).append(" died of old age."),
       )
       deathRegistry.withCustomDeathMessage(message) {
         event.player.damage(9999.0, null)

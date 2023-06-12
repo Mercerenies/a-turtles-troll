@@ -1,6 +1,7 @@
 
 package com.mercerenies.turtletroll
 
+import com.mercerenies.turtletroll.ext.*
 import com.mercerenies.turtletroll.gravestone.CustomDeathMessageRegistry
 import com.mercerenies.turtletroll.gravestone.CustomDeathMessage
 import com.mercerenies.turtletroll.gravestone.Redstone
@@ -21,6 +22,8 @@ import org.bukkit.entity.EntityType
 import org.bukkit.inventory.ItemStack
 import org.bukkit.Material
 import org.bukkit.entity.Player
+
+import net.kyori.adventure.text.Component
 
 import kotlin.random.Random
 import kotlin.math.ln
@@ -78,7 +81,7 @@ class RedstoneWorldListener(
     val damageAmount = max(lerp(0.0, 20.0, lerpAmount), 1.0)
     val customMessage = CustomDeathMessage(
       Redstone,
-      "${player.getDisplayName()} picked up some strange dust.",
+      Component.text("").append(player.displayName()).append(" picked up some strange dust."),
     )
     deathRegistry.withCustomDeathMessage(customMessage) {
       player.damage(damageAmount, damager)

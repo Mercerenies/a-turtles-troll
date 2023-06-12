@@ -7,9 +7,11 @@ import org.bukkit.scoreboard.RenderType
 import org.bukkit.scoreboard.Objective
 import org.bukkit.scoreboard.Criteria
 
+import net.kyori.adventure.text.Component
+
 open class ObjectiveContainer(
   val name: String,
-  val displayName: String,
+  val displayName: Component,
 ) {
 
   companion object {
@@ -17,11 +19,13 @@ open class ObjectiveContainer(
       Criteria.create("com.mercerenies.turtletroll.ObjectiveContainer.DEFAULT_CRITERIA")
   }
 
+  constructor(name: String, displayName: String) : this(name, Component.text(displayName))
+
   open val criteria: Criteria
     get() = DEFAULT_CRITERIA
 
   open fun createScoreboard(): Scoreboard =
-    Bukkit.getScoreboardManager()!!.getMainScoreboard()
+    Bukkit.getScoreboardManager().getMainScoreboard()
 
   val scoreboard: Scoreboard =
     createScoreboard()

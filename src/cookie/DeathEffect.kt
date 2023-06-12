@@ -1,6 +1,7 @@
 
 package com.mercerenies.turtletroll.cookie
 
+import com.mercerenies.turtletroll.ext.*
 import com.mercerenies.turtletroll.Messages
 import com.mercerenies.turtletroll.Constants
 import com.mercerenies.turtletroll.gravestone.CustomDeathMessageRegistry
@@ -10,6 +11,8 @@ import com.mercerenies.turtletroll.gravestone.Cookie
 import org.bukkit.plugin.Plugin
 import org.bukkit.entity.Player
 import org.bukkit.scheduler.BukkitRunnable
+
+import net.kyori.adventure.text.Component
 
 class DeathEffect(private val plugin: Plugin) : CookieEffect {
 
@@ -27,7 +30,7 @@ class DeathEffect(private val plugin: Plugin) : CookieEffect {
     val deathMessage = CustomDeathMessage(
       Cookie,
       // Eat your heart out, Hemingway
-      "${player.getDisplayName()} ate a cookie and died.",
+      Component.text("").append(player.displayName()).append(" ate a cookie and died."),
     )
 
     override fun run() {

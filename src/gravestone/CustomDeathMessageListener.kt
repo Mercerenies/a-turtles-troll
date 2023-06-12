@@ -52,7 +52,7 @@ class CustomDeathMessageListener(
   fun onPlayerDeath(event: PlayerDeathEvent) {
     val custom = customDeathMessage
     if (custom != null) {
-      event.setDeathMessage(custom.message)
+      event.deathMessage(custom.message)
     }
   }
 

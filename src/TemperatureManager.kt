@@ -1,6 +1,7 @@
 
 package com.mercerenies.turtletroll
 
+import com.mercerenies.turtletroll.ext.*
 import com.mercerenies.turtletroll.gravestone.CustomDeathMessageRegistry
 import com.mercerenies.turtletroll.gravestone.CustomDeathMessage
 import com.mercerenies.turtletroll.gravestone.Vanilla
@@ -17,6 +18,8 @@ import org.bukkit.plugin.Plugin
 import org.bukkit.Bukkit
 import org.bukkit.World
 import org.bukkit.Material
+
+import net.kyori.adventure.text.Component
 
 import kotlin.math.min
 import kotlin.math.max
@@ -127,7 +130,7 @@ class TemperatureManager(
   private fun getCustomDeathMessage(player: Player): CustomDeathMessage =
     CustomDeathMessage(
       Vanilla(EntityDamageEvent.DamageCause.FREEZE),
-      "${player.getDisplayName()} froze to death.",
+      Component.text("").append(player.displayName()).append(" froze to death."),
     )
 
   override fun run() {
