@@ -1,10 +1,14 @@
 
 package com.mercerenies.turtletroll.gravestone
 
+import com.mercerenies.turtletroll.util.*
+
 import org.bukkit.event.entity.PlayerDeathEvent
 import org.bukkit.event.entity.EntityDamageEvent
 import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.bukkit.entity.EntityType
+
+import net.kyori.adventure.text.Component
 
 import kotlin.text.Regex
 import java.time.LocalDateTime
@@ -12,7 +16,7 @@ import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
 
 sealed interface CauseOfDeath {
-  abstract fun toInscription(): String
+  abstract fun toInscription(): Component
 
   companion object {
 
@@ -23,6 +27,9 @@ sealed interface CauseOfDeath {
     val COOKIE_REGEX = Regex("""ate a cookie""")
     val REDSTONE_REGEX = Regex("""strange dust""")
 
+    private fun getDeathMessage(event: PlayerDeathEvent): String =
+      event.deathMessage()?.asPlainText() ?: ""
+
     fun identify(event: PlayerDeathEvent): CauseOfDeath {
       val cause = event.entity.getLastDamageCause()
 
@@ -30,22 +37,22 @@ sealed interface CauseOfDeath {
       // than a bunch of hacked together regexes.
 
       // First, check for our custom stuff
-      if (BLINK_REGEX.find(event.getDeathMessage() ?: "") != null) {
+      if (BLINK_REGEX.find(getDeathMessage(event)) != null) {
         return Angel
       }
-      if (MIMIC_REGEX.find(event.getDeathMessage() ?: "") != null) {
+      if (MIMIC_REGEX.find(getDeathMessage(event)) != null) {
         return Mimic
       }
-      if (OLDAGE_REGEX.find(event.getDeathMessage() ?: "") != null) {
+      if (OLDAGE_REGEX.find(getDeathMessage(event)) != null) {
         return OldAge
       }
-      if (FROZE_REGEX.find(event.getDeathMessage() ?: "") != null) {
+      if (FROZE_REGEX.find(getDeathMessage(event)) != null) {
         return Vanilla(EntityDamageEvent.DamageCause.FREEZE)
       }
-      if (COOKIE_REGEX.find(event.getDeathMessage() ?: "") != null) {
+      if (COOKIE_REGEX.find(getDeathMessage(event)) != null) {
         return Cookie
       }
-      if (REDSTONE_REGEX.find(event.getDeathMessage() ?: "") != null) {
+      if (REDSTONE_REGEX.find(getDeathMessage(event)) != null) {
         return Redstone
       }
 
@@ -76,20 +83,20 @@ sealed interface CauseOfDeath {
       val timestamp: LocalDateTime,
     ) : Inscriptions {
       val cause: CauseOfDeath = identify(event)
-      override fun getLine(index: Int): String =
+      override fun getLine(index: Int): Component =
         when (index) {
           0 -> {
             // Player name
-            event.entity.getDisplayName()
+            event.entity.displayName()
           }
           1 -> {
             cause.toInscription()
           }
           2 -> {
-            timestamp.format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT))
+            Component.text(timestamp.format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT)))
           }
           else -> {
-            ""
+            Component.text("")
           }
         }
     }
@@ -101,33 +108,36 @@ sealed interface CauseOfDeath {
 // TODO These should be nested inside CauseOfDeath.
 
 object Angel : CauseOfDeath {
-  override fun toInscription(): String =
-    "Blinked"
+  override fun toInscription(): Component =
+    Component.text("Blinked")
 }
 
 object Mimic : CauseOfDeath {
-  override fun toInscription(): String =
-    "Ouchie chest"
+  override fun toInscription(): Component =
+    Component.text("Ouchie chest")
 }
 
 object OldAge : CauseOfDeath {
-  override fun toInscription(): String =
-    "Got ooooold"
+  override fun toInscription(): Component =
+    Component.text("Got ooooold")
 }
 
 object Cookie : CauseOfDeath {
-  override fun toInscription(): String =
-    "Death cookie"
+  override fun toInscription(): Component =
+    Component.text("Death cookie")
 }
 
 object Redstone : CauseOfDeath {
-  override fun toInscription(): String =
-    "Sussy dust"
+  override fun toInscription(): Component =
+    Component.text("Sussy dust")
 }
 
 data class Vanilla(val cause: EntityDamageEvent.DamageCause) : CauseOfDeath {
 
-  override fun toInscription(): String =
+  override fun toInscription(): Component =
+    Component.text(inscriptionText())
+
+  private fun inscriptionText(): String =
     when (cause) {
       EntityDamageEvent.DamageCause.BLOCK_EXPLOSION -> "TNT go boom"
       EntityDamageEvent.DamageCause.CONTACT -> "Prickly tree"
@@ -161,10 +171,13 @@ data class VanillaMob(val entityType: EntityType) : CauseOfDeath {
 
   companion object {
     fun handles(entityType: EntityType): Boolean =
-      VanillaMob(entityType).toInscription() != "Poked to death"
+      VanillaMob(entityType).inscriptionText() != null
   }
 
-  override fun toInscription(): String =
+  override fun toInscription(): Component =
+    Component.text(inscriptionText() ?: "Poked to death")
+
+  private fun inscriptionText(): String? =
     when (entityType) {
       EntityType.AXOLOTL -> "Salamander"
       EntityType.ARROW, EntityType.TRIDENT -> "Sharp rock"
@@ -198,7 +211,7 @@ data class VanillaMob(val entityType: EntityType) : CauseOfDeath {
       EntityType.WITCH -> "Bippity boppity boo"
       EntityType.WITHER, EntityType.WITHER_SKULL -> "Oof good luck with that"
       EntityType.WOLF -> "Man's best friend"
-      else -> "Poked to death"
+      else -> null
     }
 
 }

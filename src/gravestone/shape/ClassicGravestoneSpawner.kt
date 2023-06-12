@@ -35,7 +35,7 @@ object ClassicGravestoneSpawner : GravestoneSpawner() {
     val blockState = signBlock.state
     if (blockState is Sign) {
       for (index in 0..3) {
-        blockState.setLine(index, inscriptions.getLine(index))
+        blockState.line(index, inscriptions.getLine(index))
       }
     }
     blockState.update()

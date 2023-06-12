@@ -25,6 +25,8 @@ import org.bukkit.block.`data`.`type`.WallSign
 import org.bukkit.block.Sign
 import org.bukkit.plugin.Plugin
 
+import net.kyori.adventure.text.Component
+
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle
@@ -59,7 +61,7 @@ class ParrotDeathListener(val plugin: Plugin) : AbstractFeature(), Listener {
       val blockState = signBlock.state
       if (blockState is Sign) {
         for (index in 0..3) {
-          blockState.setLine(index, inscriptions.getLine(index))
+          blockState.line(index, inscriptions.getLine(index))
         }
       }
       blockState.update()
@@ -73,20 +75,21 @@ class ParrotDeathListener(val plugin: Plugin) : AbstractFeature(), Listener {
     val timestamp: LocalDateTime,
   ) : Inscriptions {
 
-    override fun getLine(index: Int): String =
+    override fun getLine(index: Int): Component =
       when (index) {
         0 -> {
           // Parrot
-          parrot.getCustomName() ?: "Parrot"
+          parrot.customName() ?: Component.text("Parrot")
         }
         1 -> {
-          parrot.owner?.getName() ?: "Died alone :("
+          // TODO Get display name (if player)?
+          Component.text(parrot.owner?.getName() ?: "Died alone :(")
         }
         2 -> {
-          timestamp.format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT))
+          Component.text(timestamp.format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT)))
         }
         else -> {
-          ""
+          Component.text("")
         }
       }
 
