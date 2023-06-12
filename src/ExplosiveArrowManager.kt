@@ -43,7 +43,9 @@ class ExplosiveArrowManager(plugin: Plugin) : RecipeFeature(plugin), Listener {
       if (ARROWS.contains(inv.getItemInOffHand().type)) {
         return inv.getItemInOffHand()
       }
-      for (item in inv.getStorageContents()) {
+      // TODO (HACK) Kotlin can't parse the more complex nullability
+      // annotation on getContents(), so it gets the wrong idea.
+      for (item in inv.getStorageContents()!!) {
         if ((item != null) && ARROWS.contains(item.type)) {
           return item
         }

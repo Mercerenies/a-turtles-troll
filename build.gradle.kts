@@ -29,12 +29,12 @@ tasks {
     kotlinOptions {
       apiVersion = "1.5"
       languageVersion = "1.5"
-      jvmTarget = "1.8"
+      jvmTarget = "17"
     }
   }
   withType<JavaCompile> {
-    sourceCompatibility = "1.8"
-    targetCompatibility = "1.8"
+    sourceCompatibility = "17"
+    targetCompatibility = "17"
   }
   jar {
     val dependencies = configurations
@@ -56,7 +56,7 @@ tasks {
 
 plugins {
   // Apply the org.jetbrains.kotlin.jvm Plugin to add support for Kotlin.
-  id("org.jetbrains.kotlin.jvm") version "1.5.31"
+  id("org.jetbrains.kotlin.jvm") version "1.8.22"
 
   // Apply the java-library plugin for API and implementation separation.
   `java-library`

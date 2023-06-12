@@ -55,7 +55,9 @@ class BucketRouletteRunnable(plugin: Plugin) : RunnableFeature(plugin) {
     }
     val onlinePlayers = Bukkit.getOnlinePlayers().toSet()
     for (player in onlinePlayers) {
-      for (itemStack in player.inventory.contents) {
+      // TODO (HACK) Kotlin can't parse the more complex nullability
+      // annotation on getContents(), so it gets the wrong idea.
+      for (itemStack in player.inventory.contents!!) {
         if ((itemStack != null) && (shouldCycle(itemStack))) {
           cycleBucketType(itemStack)
         }
