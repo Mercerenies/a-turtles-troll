@@ -3,6 +3,9 @@ package com.mercerenies.turtletroll.feature
 
 import com.mercerenies.turtletroll.color.ColorCode
 
+import net.kyori.adventure.text.Component
+import net.kyori.adventure.text.format.NamedTextColor
+
 // Features should initialize in the "enabled" state and may assume
 // they are enabled until told otherwise.
 interface Feature : HasEnabledStatus {
@@ -15,11 +18,11 @@ interface Feature : HasEnabledStatus {
 
   fun disable()
 
-  val coloredName: String
+  val coloredName: Component
     get() {
       val color =
-        if (isEnabled()) { ColorCode.DARK_GREEN } else { ColorCode.DARK_RED }
-      return color.of(name)
+        if (isEnabled()) { NamedTextColor.DARK_GREEN } else { NamedTextColor.DARK_RED }
+      return Component.text(name, color)
     }
 
 }

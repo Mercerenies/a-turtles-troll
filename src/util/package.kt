@@ -84,3 +84,17 @@ fun ItemStack.withItemMeta(f: (ItemMeta?) -> Unit): ItemStack {
 
 fun Component.asPlainText(): String =
   PlainTextComponentSerializer.plainText().serialize(this)
+
+fun joinWithCommas(components: List<Component>): Component {
+  var first = true
+  val builder = Component.text()
+  for (component in components) {
+    if (first) {
+      first = false;
+    } else {
+      builder.append(", ")
+    }
+    builder.append(component)
+  }
+  return builder.build()
+}

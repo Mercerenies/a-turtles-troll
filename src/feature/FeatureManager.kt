@@ -1,12 +1,16 @@
 
 package com.mercerenies.turtletroll.feature
 
+import com.mercerenies.turtletroll.ext.*
+import com.mercerenies.turtletroll.util.*
 import com.mercerenies.turtletroll.command.TerminalCommand
 import com.mercerenies.turtletroll.command.UnaryCommand
 import com.mercerenies.turtletroll.Messages
 
 import org.bukkit.Bukkit
 import org.bukkit.command.CommandSender
+
+import net.kyori.adventure.text.Component
 
 import kotlin.collections.joinToString
 
@@ -29,7 +33,7 @@ class FeatureManager(val features: List<Feature>) {
         return false
       }
       feature.enable()
-      Messages.broadcastMessage("${feature.coloredName} is now enabled.")
+      Messages.broadcastMessage(Component.text("").append(feature.coloredName).append(" is now enabled."))
       return true
     }
 
@@ -51,8 +55,8 @@ class FeatureManager(val features: List<Feature>) {
       if (feature == null) {
         return false
       }
-      Messages.broadcastMessage("${feature.coloredName} is now disabled.")
       feature.disable()
+      Messages.broadcastMessage(Component.text("").append(feature.coloredName).append(" is now disabled."))
       return true
     }
 
@@ -69,8 +73,8 @@ class FeatureManager(val features: List<Feature>) {
     override fun onCommand(
       sender: CommandSender,
     ): Boolean {
-      val msg = features.sortedBy { it.name }.map { it.coloredName }.joinToString(", ")
-      sender.sendMessage("[Turtle] ${msg}")
+      val allFeatureNames = features.sortedBy { it.name }.map { it.coloredName }
+      Messages.sendMessage(sender, joinWithCommas(allFeatureNames))
       return true
     }
 
@@ -86,7 +90,7 @@ class FeatureManager(val features: List<Feature>) {
       if (feature == null) {
         return false
       }
-      sender.sendMessage("[Turtle] ${feature.coloredName} - ${feature.description}")
+      Messages.sendMessage(sender, Component.text("").append(feature.coloredName).append(" - ").append(feature.description))
       return true
     }
 
