@@ -21,7 +21,7 @@ class SkeletonTrapEffect(
       repeat(count) {
         val horse = loc.world!!.spawn(loc, SkeletonHorse::class.java)
         val skeleton = loc.world!!.spawn(loc, Skeleton::class.java)
-        skeleton.equipment?.helmet = ItemStack(Material.IRON_HELMET)
+        skeleton.equipment.helmet = ItemStack(Material.IRON_HELMET)
         horse.addPassenger(skeleton)
       }
     }

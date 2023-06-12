@@ -27,9 +27,8 @@ import org.bukkit.entity.Item
 import org.bukkit.entity.EntityType
 import org.bukkit.inventory.PlayerInventory
 
-// TODO The name "manager" implies "listener" and "runnable" in every
-// other case, where this is really "listener" and "recipe". Should we
-// rename this?
+import net.kyori.adventure.text.Component
+
 class PokeballManager(plugin: Plugin) : RecipeFeature(plugin), Listener {
 
   companion object : FeatureContainerFactory<FeatureContainer> {
@@ -111,7 +110,7 @@ class PokeballManager(plugin: Plugin) : RecipeFeature(plugin), Listener {
     UnkeyedRecipe<Recipe> { key: NamespacedKey ->
       val result = ItemStack(Material.EGG)
       val meta = result.itemMeta!!
-      meta.setDisplayName("Poké Ball")
+      meta.displayName(Component.text("Poké Ball"))
       meta.persistentDataContainer.set(markerKey, PersistentDataType.INTEGER, NormalPokeball.toInt())
       meta.setCustomModelData(NormalPokeball.customModelId)
       result.itemMeta = meta
@@ -131,7 +130,7 @@ class PokeballManager(plugin: Plugin) : RecipeFeature(plugin), Listener {
     UnkeyedRecipe<Recipe> { key: NamespacedKey ->
       val result = ItemStack(Material.EGG)
       val meta = result.itemMeta!!
-      meta.setDisplayName("Great Ball")
+      meta.displayName(Component.text("Great Ball"))
       meta.persistentDataContainer.set(markerKey, PersistentDataType.INTEGER, GreatBall.toInt())
       meta.setCustomModelData(GreatBall.customModelId)
       result.itemMeta = meta
@@ -151,7 +150,7 @@ class PokeballManager(plugin: Plugin) : RecipeFeature(plugin), Listener {
     UnkeyedRecipe<Recipe> { key: NamespacedKey ->
       val result = ItemStack(Material.EGG)
       val meta = result.itemMeta!!
-      meta.setDisplayName("Ultra Ball")
+      meta.displayName(Component.text("Ultra Ball"))
       meta.persistentDataContainer.set(markerKey, PersistentDataType.INTEGER, UltraBall.toInt())
       meta.setCustomModelData(UltraBall.customModelId)
       result.itemMeta = meta
@@ -171,7 +170,7 @@ class PokeballManager(plugin: Plugin) : RecipeFeature(plugin), Listener {
     UnkeyedRecipe<Recipe> { key: NamespacedKey ->
       val result = ItemStack(Material.EGG)
       val meta = result.itemMeta!!
-      meta.setDisplayName("Master Ball")
+      meta.displayName(Component.text("Master Ball"))
       meta.persistentDataContainer.set(markerKey, PersistentDataType.INTEGER, MasterBall.toInt())
       meta.setCustomModelData(MasterBall.customModelId)
       result.itemMeta = meta
@@ -190,7 +189,7 @@ class PokeballManager(plugin: Plugin) : RecipeFeature(plugin), Listener {
     UnkeyedRecipe<Recipe> { key: NamespacedKey ->
       val result = ItemStack(Material.EGG)
       val meta = result.itemMeta!!
-      meta.setDisplayName("Net Ball")
+      meta.displayName(Component.text("Net Ball"))
       meta.persistentDataContainer.set(markerKey, PersistentDataType.INTEGER, NetBall.toInt())
       meta.setCustomModelData(NetBall.customModelId)
       result.itemMeta = meta
@@ -211,7 +210,7 @@ class PokeballManager(plugin: Plugin) : RecipeFeature(plugin), Listener {
     UnkeyedRecipe<Recipe> { key: NamespacedKey ->
       val result = ItemStack(Material.EGG)
       val meta = result.itemMeta!!
-      meta.setDisplayName("Dive Ball")
+      meta.displayName(Component.text("Dive Ball"))
       meta.persistentDataContainer.set(markerKey, PersistentDataType.INTEGER, DiveBall.toInt())
       meta.setCustomModelData(DiveBall.customModelId)
       result.itemMeta = meta
@@ -232,7 +231,7 @@ class PokeballManager(plugin: Plugin) : RecipeFeature(plugin), Listener {
     UnkeyedRecipe<Recipe> { key: NamespacedKey ->
       val result = ItemStack(Material.EGG)
       val meta = result.itemMeta!!
-      meta.setDisplayName("Dusk Ball")
+      meta.displayName(Component.text("Dusk Ball"))
       meta.persistentDataContainer.set(markerKey, PersistentDataType.INTEGER, DuskBall.toInt())
       meta.setCustomModelData(DuskBall.customModelId)
       result.itemMeta = meta

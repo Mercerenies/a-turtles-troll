@@ -122,15 +122,13 @@ class DripstoneManager(plugin: Plugin) : RunnableFeature(plugin), Listener {
     if (!isEnabled()) {
       return
     }
-    val location = event.getTo()?.block?.location
+    val location = event.getTo().block.location
 
-    if (location != null) {
-      for (local in location.nearbyXZ(2)) {
-        // Look for a stalactite
-        val stalactite = findStalactite(local.block)
-        if ((stalactite != null) && (!_placedBlocks.contains(stalactite))) {
-          stalactite.drop()
-        }
+    for (local in location.nearbyXZ(2)) {
+      // Look for a stalactite
+      val stalactite = findStalactite(local.block)
+      if ((stalactite != null) && (!_placedBlocks.contains(stalactite))) {
+        stalactite.drop()
       }
     }
 

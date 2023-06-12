@@ -8,6 +8,8 @@ import org.bukkit.inventory.Recipe
 import org.bukkit.inventory.ShapedRecipe
 import org.bukkit.inventory.ItemStack
 
+import net.kyori.adventure.text.Component
+
 class DripstoneRecipeFeature(plugin: Plugin) : RecipeFeature(plugin) {
 
   override val name = "dripstonerecipe"
@@ -21,7 +23,7 @@ class DripstoneRecipeFeature(plugin: Plugin) : RecipeFeature(plugin) {
       val ud_arrow = ItemStack(Material.ARROW, 4)
       val ud_meta = ud_arrow.getItemMeta()!!
 
-      ud_meta.setDisplayName("Upside Down Arrow")
+      ud_meta.displayName(Component.text("Upside Down Arrow"))
       ud_meta.setCustomModelData(8565)
       ud_arrow.setItemMeta(ud_meta)
       // Thought it would be funnier if the recipe was made upside down aswell

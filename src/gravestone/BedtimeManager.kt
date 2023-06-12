@@ -25,6 +25,8 @@ import org.bukkit.event.player.PlayerQuitEvent
 import org.bukkit.event.Listener
 import org.bukkit.command.CommandSender
 
+import net.kyori.adventure.text.Component
+
 class BedtimeManager(
   plugin: Plugin,
   private val conditionSelector: BedtimeConditionSelector,
@@ -34,19 +36,19 @@ class BedtimeManager(
     val DAWN_TIME = 0L
     val DUSK_TIME = 12000L
 
-    val ANGRY_MESSAGE = "The gods are angry; no one shall sleep tonight!"
+    val ANGRY_MESSAGE = Component.text("The gods are angry; no one shall sleep tonight!")
 
-    val SATISFIED_MESSAGE = "The gods are appeased today; everyone is free to sleep."
+    val SATISFIED_MESSAGE = Component.text("The gods are appeased today; everyone is free to sleep.")
 
-    val DISABLED_MESSAGE = "This feature is currently disabled; the gods are not interfering with your sleep."
+    val DISABLED_MESSAGE = Component.text("This feature is currently disabled; the gods are not interfering with your sleep.")
 
     val COMMAND_PERMISSION = "com.mercerenies.turtletroll.command.bedtime"
 
-    fun requestMessage(condition: DeathCondition): String =
-      "Today, the gods would like to see someone die ${condition.description}"
+    fun requestMessage(condition: DeathCondition): Component =
+      Component.text("Today, the gods would like to see someone die ${condition.description}")
 
-    fun appeasedMessage(player: Player): String =
-      "${player.displayName} has appeased the gods! You may sleep tonight."
+    fun appeasedMessage(player: Player): Component =
+      Component.text("").append(player.displayName()).append(" has appeased the gods! You may sleep tonight.")
 
     val STATES = listOf(
       Event(State.Daytime, DAWN_TIME),
@@ -73,7 +75,7 @@ class BedtimeManager(
 
   val BedtimeCommand = object : TerminalCommand() {
 
-    private fun getMessageToSend(): String =
+    private fun getMessageToSend(): Component =
       if (!isEnabled()) {
         DISABLED_MESSAGE
       } else if (isAppeased) {
