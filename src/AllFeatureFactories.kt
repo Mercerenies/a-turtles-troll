@@ -143,6 +143,7 @@ object AllFeatureFactories {
       SlowSlabListener,
       SnowListener,
       SnowballListener,
+      SolidSwapListener,
       SpillageListener,
       StoneRecipeDeleter,
       UnfinishedBusinessListener,
