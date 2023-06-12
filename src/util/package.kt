@@ -73,6 +73,13 @@ fun pluralize(items: List<Component>, conjunction: String = "and"): Component =
     }
   }
 
+fun amounts(n: Int, unit: String, suffix: String = "s") =
+  if (n == 1) {
+    unit
+  } else {
+    unit + suffix
+  }
+
 fun ItemStack.withItemMeta(f: (ItemMeta?) -> Unit): ItemStack {
   // The ItemMeta is always copied when we get it from ItemStack, so
   // we have to take a copy, modify the copy, and then put it back.

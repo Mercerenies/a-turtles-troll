@@ -44,6 +44,7 @@ import com.mercerenies.turtletroll.drop.NetherrackBoomFeatureFactory
 import com.mercerenies.turtletroll.drop.ShuffleLogsFeatureFactory
 import com.mercerenies.turtletroll.drop.StrongholdAttackFeatureFactory
 import com.mercerenies.turtletroll.pokeball.PokeballManager
+import com.mercerenies.turtletroll.jump.EncumbranceManagerFactory
 
 object AllFeatureFactories {
 
@@ -97,6 +98,7 @@ object AllFeatureFactories {
       EggDropListener,
       EggListenerFactory,
       EggshellsListener,
+      EncumbranceManagerFactory,
       EndCrystalListener,
       EndDirtListener,
       EnderChestListener,
