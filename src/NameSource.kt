@@ -5,17 +5,19 @@ import com.mercerenies.turtletroll.ext.*
 
 import org.bukkit.Bukkit
 
+import net.kyori.adventure.text.Component
+
 fun interface NameSource {
-  fun sampleName(): String
+  fun sampleName(): Component
 
   object OnlinePlayers : NameSource {
-    override fun sampleName(): String {
+    override fun sampleName(): Component {
       val player = Bukkit.getOnlinePlayers().toList().sample()
       if (player == null) {
         // No one is online :(
-        return ""
+        return Component.text("")
       } else {
-        return player.getName()
+        return player.displayName()
       }
     }
   }
@@ -30,8 +32,8 @@ fun interface NameSource {
 
     constructor(vararg args: String) : this(args.toList()) {}
 
-    override fun sampleName(): String =
-      list.sample()!!
+    override fun sampleName(): Component =
+      Component.text(list.sample()!!)
 
   }
 

@@ -26,15 +26,15 @@ class FortuneEffect(
 
   }
 
-  private fun chooseAuthor(): String =
+  private fun chooseAuthor(): Component =
     authors.sampleName()
 
-  private fun chooseFortune(): String =
+  private fun chooseFortune(): Component =
     fortunes.sampleName()
 
   private fun makeBook(fortune: Component): ItemStack {
     val title = Component.text("Your Fortune")
-    val author = Component.text(chooseAuthor())
+    val author = chooseAuthor()
     return BookBuilder.makeBook(title, author, listOf(fortune))
   }
 
@@ -43,8 +43,11 @@ class FortuneEffect(
   override fun onEat(action: CookieEatenAction) {
     val player = action.player
     val fortune = chooseFortune()
-    val book = makeBook(Component.text(fortune))
-    Messages.sendMessage(player, "That cookie had a fortune inside it: \"${fortune}\"!")
+    val book = makeBook(fortune)
+    Messages.sendMessage(player,
+                         Component.text("That cookie had a fortune inside it: \"")
+                         .append(fortune)
+                         .append("\"!"))
     AllItems.give(player, book)
   }
 

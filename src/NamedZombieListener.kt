@@ -42,7 +42,7 @@ class NamedZombieListener(
     val entity = event.entity
     if (entity is Zombie) {
       if (Random.nextDouble() < chance) {
-        entity.setCustomName(nameSource.sampleName())
+        entity.customName(nameSource.sampleName())
         entity.setCustomNameVisible(true)
       }
     }

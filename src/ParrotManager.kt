@@ -66,8 +66,8 @@ class ParrotManager(_plugin: Plugin) : RunnableFeature(_plugin), Listener {
     parrot.setSitting(false)
     if (parrot.owner == null) {
       parrot.owner = nearestPlayer(parrot)
-      if (parrot.customName == null) {
-        parrot.customName = nameSource.sampleName()
+      if (parrot.customName() == null) {
+        parrot.customName(nameSource.sampleName())
       }
       val maxHealth = parrot.getAttribute(Attribute.GENERIC_MAX_HEALTH)?.getValue()
       if (maxHealth != null) {

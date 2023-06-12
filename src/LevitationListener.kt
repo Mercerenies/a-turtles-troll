@@ -32,12 +32,10 @@ class LevitationListener : AbstractFeature(), Listener {
       return
     }
     val loc = event.getTo()
-    if (loc != null) {
-      val block = loc.clone().add(0.0, -1.0, 0.0).getBlock()
-      if (BlockTypes.ORES.contains(block.type)) {
-        val player = event.player
-        player.addPotionEffect(PotionEffect(PotionEffectType.LEVITATION, Constants.TICKS_PER_SECOND * 5, 0))
-      }
+    val block = loc.clone().add(0.0, -1.0, 0.0).getBlock()
+    if (BlockTypes.ORES.contains(block.type)) {
+      val player = event.player
+      player.addPotionEffect(PotionEffect(PotionEffectType.LEVITATION, Constants.TICKS_PER_SECOND * 5, 0))
     }
   }
 

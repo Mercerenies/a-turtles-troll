@@ -2,6 +2,9 @@
 package com.mercerenies.turtletroll.storage
 
 import com.mercerenies.turtletroll.NameSource
+import com.mercerenies.turtletroll.ext.*
+
+import net.kyori.adventure.text.Component
 
 import kotlin.io.forEachLine
 
@@ -42,9 +45,7 @@ class FortunesFile(dataPath: String) : NameSource {
 
   private val dataSource: List<String> = loadResource(dataPath)
 
-  private val impl: NameSource = NameSource.FromList(dataSource)
-
-  override fun sampleName(): String =
-    impl.sampleName().trim()
+  override fun sampleName(): Component =
+    Component.text(dataSource.sample()!!.trim())
 
 }

@@ -19,6 +19,8 @@ import org.bukkit.plugin.Plugin
 import org.bukkit.scheduler.BukkitRunnable
 import org.bukkit.Location
 
+import net.kyori.adventure.text.Component
+
 import kotlin.random.Random
 
 class JohnnyListener(
@@ -36,7 +38,7 @@ class JohnnyListener(
   private class SummonJohnnyRunnable(val location: Location) : BukkitRunnable() {
     override fun run() {
       val entity = location.world!!.spawnEntity(location, EntityType.VINDICATOR)
-      entity.setCustomName("Johnny")
+      entity.customName(Component.text("Johnny"))
       Messages.broadcastMessage("Heeeeeeeeere's Johnny!")
     }
   }
