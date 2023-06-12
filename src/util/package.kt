@@ -4,6 +4,9 @@ package com.mercerenies.turtletroll.util
 import org.bukkit.inventory.ItemStack
 import org.bukkit.inventory.meta.ItemMeta
 
+import net.kyori.adventure.text.Component
+import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer
+
 import kotlin.math.min
 import kotlin.math.max
 
@@ -47,6 +50,27 @@ fun pluralize(items: List<String>, conjunction: String = "and"): String =
     }
   }
 
+fun pluralize(items: List<Component>, conjunction: String = "and"): Component =
+  when (items.size) {
+    0 -> Component.text("")
+    1 -> items[0]
+    2 -> items[0].append(Component.text(" ${conjunction} ")).append(items[1])
+    else -> {
+      val itemCount = items.size
+      val result = Component.text()
+      for ((i, s) in items.withIndex()) {
+        if (i == 0) {
+          result.append(s)
+        } else if (i == itemCount - 1) {
+          result.append(Component.text(", ${conjunction} ")).append(s)
+        } else {
+          result.append(Component.text(", ")).append(s)
+        }
+      }
+      result.build()
+    }
+  }
+
 fun ItemStack.withItemMeta(f: (ItemMeta?) -> Unit): ItemStack {
   // The ItemMeta is always copied when we get it from ItemStack, so
   // we have to take a copy, modify the copy, and then put it back.
@@ -55,3 +79,6 @@ fun ItemStack.withItemMeta(f: (ItemMeta?) -> Unit): ItemStack {
   this.itemMeta = meta
   return this
 }
+
+fun Component.asPlainText(): String =
+  PlainTextComponentSerializer.plainText().serialize(this)

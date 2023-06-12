@@ -75,6 +75,7 @@ dependencies {
   implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
   compileOnly("io.papermc.paper:paper-api:1.19.2-R0.1-SNAPSHOT")
+  compileOnly("net.kyori:adventure-text-serializer-plain:4.14.0")
 
   implementation(
     fileTree("lib/") {

@@ -8,6 +8,8 @@ import org.bukkit.inventory.ItemStack
 import org.bukkit.entity.HumanEntity
 import org.bukkit.entity.Item
 
+import net.kyori.adventure.text.Component
+
 object AllItems {
 
   // Note: I make no guarantees on the *order* of this list.
@@ -84,12 +86,12 @@ object AllItems {
       " " + it.value.substring(it.value.length - 1).uppercase()
     }.trim()
 
-  fun getName(itemStack: ItemStack): String {
+  fun getName(itemStack: ItemStack): Component {
     val itemMeta = itemStack.itemMeta
     if ((itemMeta != null) && (itemMeta.hasDisplayName())) {
-      return itemMeta.getDisplayName()
+      return itemMeta.displayName()!!
     } else {
-      return this.getName(itemStack.type)
+      return Component.text(this.getName(itemStack.type))
     }
   }
 

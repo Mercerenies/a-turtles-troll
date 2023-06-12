@@ -3,6 +3,7 @@ package com.mercerenies.turtletroll.cookie
 
 import com.mercerenies.turtletroll.Messages
 import com.mercerenies.turtletroll.ext.*
+import com.mercerenies.turtletroll.util.*
 import com.mercerenies.turtletroll.AllItems
 import com.mercerenies.turtletroll.Rarity
 
@@ -11,6 +12,8 @@ import org.bukkit.inventory.ItemStack
 import org.bukkit.entity.Player
 import org.bukkit.plugin.Plugin
 import org.bukkit.scheduler.BukkitRunnable
+
+import net.kyori.adventure.text.Component
 
 abstract class GivenItemEffect(private val plugin: Plugin) : CookieEffect {
 
@@ -42,8 +45,8 @@ abstract class GivenItemEffect(private val plugin: Plugin) : CookieEffect {
 
   class AnotherCookie(_plugin: Plugin) : GivenItemEffect(_plugin) {
 
-    override fun itemName(item: ItemStack): String =
-      "another cookie"
+    override fun itemName(item: ItemStack): Component =
+      Component.text("another cookie")
 
     override fun chooseItem(): ItemStack =
       ItemStack(Material.COOKIE, 1)
@@ -52,8 +55,8 @@ abstract class GivenItemEffect(private val plugin: Plugin) : CookieEffect {
 
   class TwoMoreCookies(_plugin: Plugin) : GivenItemEffect(_plugin) {
 
-    override fun itemName(item: ItemStack): String =
-      "two more cookies"
+    override fun itemName(item: ItemStack): Component =
+      Component.text("two more cookies")
 
     override fun chooseItem(): ItemStack =
       ItemStack(Material.COOKIE, 2)
@@ -62,8 +65,8 @@ abstract class GivenItemEffect(private val plugin: Plugin) : CookieEffect {
 
   class TenMoreCookies(_plugin: Plugin) : GivenItemEffect(_plugin) {
 
-    override fun itemName(item: ItemStack): String =
-      "ten more cookies"
+    override fun itemName(item: ItemStack): Component =
+      Component.text("ten more cookies")
 
     override fun chooseItem(): ItemStack =
       ItemStack(Material.COOKIE, 10)
@@ -81,10 +84,11 @@ abstract class GivenItemEffect(private val plugin: Plugin) : CookieEffect {
   open val fallback: CookieEffect
     get() = NoEffect
 
-  open fun itemName(item: ItemStack): String {
+  open fun itemName(item: ItemStack): Component {
     val itemName = AllItems.getName(item)
-    val article = if (startsWithVowel(itemName)) "an" else "a"
-    return "${article} ${itemName}"
+    val itemNameStr = itemName.asPlainText()
+    val article = if (startsWithVowel(itemNameStr)) "an" else "a"
+    return Component.text(article + " ").append(itemName)
   }
 
   open override fun cancelsDefault(): Boolean = false
@@ -95,7 +99,10 @@ abstract class GivenItemEffect(private val plugin: Plugin) : CookieEffect {
       fallback.onEat(action)
     } else {
       val itemName = this.itemName(replacementItem)
-      Messages.sendMessage(action.player, "That cookie had ${itemName} inside it!")
+      Messages.sendMessage(
+        action.player,
+        Component.text("That cookie had ").append(itemName).append(Component.text(" inside it!")),
+      )
       GiveToPlayer(action.player, replacementItem).runTaskLater(plugin, DELAY.toLong())
     }
   }

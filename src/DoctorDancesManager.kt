@@ -28,6 +28,8 @@ import org.bukkit.inventory.ItemStack
 import org.bukkit.inventory.meta.Damageable
 import org.bukkit.enchantments.Enchantment
 
+import net.kyori.adventure.text.Component
+
 class DoctorDancesManager(
   plugin: Plugin,
   private val rewards: List<Weight<Reward>> = DEFAULT_REWARDS,
@@ -73,7 +75,7 @@ class DoctorDancesManager(
 
     constructor(vararg items: ItemStack) : this(items.toList())
 
-    override fun toString(): String =
+    fun toComponent(): Component =
       pluralize(items.map(AllItems::getName))
 
     fun giveToPlayer(player: Player) {
@@ -99,7 +101,9 @@ class DoctorDancesManager(
   }
 
   private fun rewardPlayer(player: Player, reward: Reward) {
-    Messages.sendMessage(player, "The Doctor dances, and you're rewarded with ${reward}")
+    val message = Component.text("The Doctor dances, and you're rewarded with ")
+                    .append(reward.toComponent())
+    Messages.sendMessage(player, message)
     reward.giveToPlayer(player)
   }
 
