@@ -23,7 +23,6 @@ sourceSets {
   }
 }
 
-
 tasks {
   withType<KotlinCompile> {
     kotlinOptions {
@@ -65,6 +64,7 @@ plugins {
 repositories {
   // Use Maven Central for resolving dependencies.
   mavenCentral()
+  maven("https://repo.papermc.io/repository/maven-public/")
 }
 
 dependencies {
@@ -73,6 +73,8 @@ dependencies {
 
   // Use the Kotlin JDK 8 standard library.
   implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+
+  compileOnly("io.papermc.paper:paper-api:1.19.2-R0.1-SNAPSHOT")
 
   implementation(
     fileTree("lib/") {
