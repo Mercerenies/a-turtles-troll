@@ -23,6 +23,8 @@ import org.bukkit.entity.Trident
 import org.bukkit.entity.Player
 import org.bukkit.inventory.PlayerInventory
 
+import net.kyori.adventure.text.Component
+
 // TODO The name "manager" implies "listener" and "runnable" in every
 // other case, where this is really "listener" and "recipe". Should we
 // rename this?
@@ -91,7 +93,7 @@ class ExplosiveArrowManager(plugin: Plugin) : RecipeFeature(plugin), Listener {
     UnkeyedRecipe<Recipe> { key: NamespacedKey ->
       val result = ItemStack(Material.TIPPED_ARROW)
       val meta = result.itemMeta!!
-      meta.setDisplayName("Explosive Arrow (${roman(n)})")
+      meta.displayName(Component.text("Explosive Arrow (${roman(n)})"))
       meta.persistentDataContainer.set(markerKey, PersistentDataType.INTEGER, n)
       result.itemMeta = meta
       val recipe = ShapelessRecipe(key, result)

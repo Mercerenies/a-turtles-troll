@@ -1,6 +1,7 @@
 
 package com.mercerenies.turtletroll
 
+import com.mercerenies.turtletroll.ext.*
 import com.mercerenies.turtletroll.feature.AbstractFeature
 import com.mercerenies.turtletroll.feature.container.FeatureContainer
 import com.mercerenies.turtletroll.feature.container.ListenerContainer
@@ -19,6 +20,8 @@ import org.bukkit.Location
 import org.bukkit.Bukkit
 import org.bukkit.GameRule
 
+import net.kyori.adventure.text.Component
+
 import kotlin.random.Random
 
 class GrievingWidowListener(
@@ -28,6 +31,11 @@ class GrievingWidowListener(
   companion object : FeatureContainerFactory<FeatureContainer> {
 
     private val DEACTIVATED_MESSAGE = "mobGriefing has been deactivated."
+
+    private fun reactivatedMessage(player: Player): Component =
+      Component.text("Due to the sheer incompetence of ")
+        .append(player.displayName())
+        .append(", mobGriefing is now on.")
 
     override fun create(state: BuilderState): FeatureContainer =
       ListenerContainer(GrievingWidowListener(state.plugin))
@@ -83,7 +91,7 @@ class GrievingWidowListener(
     }
     val player = event.entity
     if (!isMobGriefingOn) {
-      Messages.broadcastMessage("Due to the sheer incompetence of ${player.getDisplayName()}, mobGriefing is now on.")
+      Messages.broadcastMessage(reactivatedMessage(player))
     }
     setMobGriefingRule(true)
     resetTimer()

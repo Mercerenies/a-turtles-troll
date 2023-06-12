@@ -32,13 +32,10 @@ class EndStoneListener : AbstractFeature(), Listener {
     if (!isEnabled()) {
       return
     }
-    val loc = event.getTo()
-    if (loc != null) {
-      val block = loc.clone().add(0.0, -1.0, 0.0).getBlock()
-      if (block.type == Material.END_STONE) {
-        val player = event.player
-        player.addPotionEffect(PotionEffect(PotionEffectType.SPEED, Constants.TICKS_PER_SECOND * 6, 4))
-      }
+    val block = event.getTo().clone().add(0.0, -1.0, 0.0).getBlock()
+    if (block.type == Material.END_STONE) {
+      val player = event.player
+      player.addPotionEffect(PotionEffect(PotionEffectType.SPEED, Constants.TICKS_PER_SECOND * 6, 4))
     }
   }
 

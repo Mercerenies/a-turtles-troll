@@ -72,11 +72,11 @@ class EggshellsListener() : AbstractFeature(), Listener {
     if (!isEnabled()) {
       return
     }
-    val playerBlock = event.getTo()?.getBlock()
-    val underBlock = playerBlock?.location?.add(0.0, -2.0, 0.0)?.block
+    val playerBlock = event.getTo().getBlock()
+    val underBlock = playerBlock.location.add(0.0, -2.0, 0.0).block
     // I might turn this on the Nether later if I change my mind.
     // Definitely don't want it in the End though.
-    if ((underBlock != null) && (event.player.location.world?.environment == World.Environment.NORMAL)) {
+    if ((event.player.location.world?.environment == World.Environment.NORMAL)) {
       tryTurnToLava(underBlock)
     }
   }

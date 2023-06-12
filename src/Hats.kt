@@ -2,10 +2,13 @@
 package com.mercerenies.turtletroll
 
 import com.mercerenies.turtletroll.ext.*
+import com.mercerenies.turtletroll.util.*
 
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 import org.bukkit.entity.Player
+
+import net.kyori.adventure.text.Component
 
 object Hats {
 
@@ -27,6 +30,8 @@ object Hats {
       "witch hat",
     )
 
+  private val customHatNamesList = customHatNames.toList()
+
   fun isCustomHat(hatName: String): Boolean =
     customHatNames.contains(hatName)
 
@@ -40,7 +45,7 @@ object Hats {
     if (meta == null) {
       return false
     }
-    return (meta.hasDisplayName()) && (isCustomHat(meta.getDisplayName()))
+    return (meta.hasDisplayName()) && (isCustomHat(meta.displayName()!!.asPlainText()))
   }
 
   fun isWearingOrdinaryHat(player: Player): Boolean {
@@ -55,10 +60,10 @@ object Hats {
 
   fun sampleRandomHat(): ItemStack {
     val stack = ItemStack(Material.CARVED_PUMPKIN)
-    val name = customHatNames.toList().sample()
+    val name = customHatNamesList.sample()!!
     val meta = stack.itemMeta
     if (meta != null) {
-      meta.setDisplayName(name)
+      meta.displayName(Component.text(name))
       stack.itemMeta = meta
     }
     return stack

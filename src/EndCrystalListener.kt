@@ -80,7 +80,7 @@ class EndCrystalListener(
     if (!isEnabled()) {
       return
     }
-    val world = event.getTo()!!.world!!
+    val world = event.getTo().world!!
     RenewCrystalRunnable(world).runTaskLater(plugin, 30L)
   }
 

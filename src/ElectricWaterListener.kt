@@ -45,17 +45,14 @@ class ElectricWaterListener(
     if (!isEnabled()) {
       return
     }
-    val block = event.getTo()?.getBlock()
+    val block = event.getTo().getBlock()
     val player = event.player
     if (shouldStrike(player, block)) {
       strike(player)
     }
   }
 
-  private fun shouldStrike(player: Player, block: Block?): Boolean {
-    if (block == null) {
-      return false
-    }
+  private fun shouldStrike(player: Player, block: Block): Boolean {
     if (!isWet(block)) {
       return false
     }

@@ -9,18 +9,28 @@ import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 import com.mercerenies.turtletroll.ext.*
 
 import org.bukkit.Bukkit
+import org.bukkit.entity.Player
 import org.bukkit.event.Listener
 import org.bukkit.event.EventHandler
 import org.bukkit.event.entity.PlayerDeathEvent
 import org.bukkit.plugin.Plugin
+
+import net.kyori.adventure.text.Component
 
 class LearningFromFailureListener(
   val ageLimit: Int? = 100,
 ) : AbstractFeature(), Listener {
 
   companion object : FeatureContainerFactory<FeatureContainer> {
+
     override fun create(state: BuilderState): FeatureContainer =
       ListenerContainer(LearningFromFailureListener())
+
+    private fun lessonMessage(player: Player): Component =
+      Component.text("You learned an important lesson from ")
+        .append(player.displayName())
+        .append("'s death; +1 level")
+
   }
 
   override val name = "learning"
@@ -44,7 +54,7 @@ class LearningFromFailureListener(
         continue
       }
 
-      Messages.sendMessage(player, "You learned an important lesson from ${dyingPlayer.displayName}'s death; +1 level")
+      Messages.sendMessage(player, lessonMessage(dyingPlayer))
       player.level += 1
     }
   }

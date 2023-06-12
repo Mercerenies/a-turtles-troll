@@ -46,13 +46,11 @@ class ForestFireListener(val plugin: Plugin) : AbstractFeature(), Listener {
       return
     }
     val loc = event.getTo()
-    if (loc != null) {
-      val block = loc.clone().add(0.0, -1.0, 0.0).getBlock()
-      if (BLOCKS.contains(block.type)) {
-        if (!memory.contains(loc)) {
-          memory.add(loc)
-          DelayedFire(loc).runTaskLater(plugin, DELAY.toLong())
-        }
+    val block = loc.clone().add(0.0, -1.0, 0.0).getBlock()
+    if (BLOCKS.contains(block.type)) {
+      if (!memory.contains(loc)) {
+        memory.add(loc)
+        DelayedFire(loc).runTaskLater(plugin, DELAY.toLong())
       }
     }
   }

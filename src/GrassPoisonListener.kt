@@ -35,8 +35,8 @@ class GrassPoisonListener(
     if (!isEnabled()) {
       return
     }
-    val block = event.getTo()?.getBlock()
-    if ((block != null) && (BlockTypes.TALL_GRASS.contains(block.type))) {
+    val block = event.getTo().getBlock()
+    if (BlockTypes.TALL_GRASS.contains(block.type)) {
       val player = event.player
       if (!bootsDamager.tryWearDownBoots(player)) {
         player.addPotionEffect(PotionEffect(PotionEffectType.POISON, Constants.TICKS_PER_SECOND * 5, 0))
