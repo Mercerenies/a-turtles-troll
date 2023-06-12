@@ -52,6 +52,12 @@ class WardenSummonRunnable(plugin: Plugin) : RunnableFeature(plugin) {
     // If someone is in the dark, add them to the dark players list.
     // If they were already in this list from last time,
     for (player in Bukkit.getOnlinePlayers()) {
+      if (player.isDead()) {
+        // If the player is showing the "Respawn" screen, they
+        // register as having 0 light level for some reason. Do not
+        // spawn a warden at their gravesite.
+        continue
+      }
       if (player.location.world?.environment != World.Environment.NORMAL) {
         // Do NOT try this in the nether or the end. It's basically
         // always dark in both of those.
