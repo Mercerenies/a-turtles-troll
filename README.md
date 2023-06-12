@@ -1,7 +1,7 @@
 
 # A Turtle's Troll
 
-This is a Minecraft plugin for Spigot which introduces several "troll"
+This is a Minecraft plugin for Paper which introduces several "troll"
 mechanics to the survival multiplayer experience. See `Features.org`
 for the full feature list.
 
@@ -10,10 +10,12 @@ Raccoon-Mischief](https://github.com/EvanSkiStudios/Raccoon-Mischief).
 Neither directly depends on the other, but they are designed with each
 other in mind.
 
+**NOTE:** This plugin is only compatible with Paper. It uses
+Paper-specific features not available in Spigot.
+
 ## Building
 
-To build this project, get a compatible version of the Spigot API JAR
-and place it in the `lib` directory. Then run `gradle build`.
+    gradle build
 
 ## Acknowledgments
 
@@ -24,9 +26,6 @@ A Turtle's Troll also depends on the following libraries.
 
 * The Kotlin runtime (Included and automatically bundled in the
   produced JAR File)
-* A recent version of the [Spigot
-  API](https://www.spigotmc.org/wiki/spigot-installation/) (Not
-  included)
 * [org.json](https://github.com/stleary/JSON-java) (Included under the
   JSON License)
 
