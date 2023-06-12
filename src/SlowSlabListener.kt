@@ -34,8 +34,8 @@ class SlowSlabListener : AbstractFeature(), Listener {
     if (!isEnabled()) {
       return
     }
-    val block = event.getTo()?.getBlock()
-    if ((block != null) && (BLOCKS.contains(block.type))) {
+    val block = event.getTo().getBlock()
+    if (BLOCKS.contains(block.type)) {
       val player = event.player
       if (!bootsDamager.tryWearDownBoots(player)) {
         player.addPotionEffect(PotionEffect(PotionEffectType.SLOW, Constants.TICKS_PER_SECOND * 10, 3))

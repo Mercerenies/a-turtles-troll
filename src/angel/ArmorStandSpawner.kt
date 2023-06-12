@@ -31,12 +31,10 @@ object ArmorStandSpawner {
     val stand = location.world!!.spawnEntity(location, EntityType.ARMOR_STAND) as ArmorStand
     stand.setArms(true)
     val equipment = stand.getEquipment()
-    if (equipment != null) {
-      equipment.helmet = generateArmorPiece(ArmorSlot.HELMET)
-      equipment.chestplate = generateArmorPiece(ArmorSlot.CHESTPLATE)
-      equipment.leggings = generateArmorPiece(ArmorSlot.LEGGINGS)
-      equipment.boots = generateArmorPiece(ArmorSlot.BOOTS)
-    }
+    equipment.helmet = generateArmorPiece(ArmorSlot.HELMET)
+    equipment.chestplate = generateArmorPiece(ArmorSlot.CHESTPLATE)
+    equipment.leggings = generateArmorPiece(ArmorSlot.LEGGINGS)
+    equipment.boots = generateArmorPiece(ArmorSlot.BOOTS)
     return stand
   }
 

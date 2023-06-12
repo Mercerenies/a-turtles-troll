@@ -44,9 +44,7 @@ class WitherBowListener(val chance: Double = 0.5) : AbstractFeature(), Listener 
     val entity = event.entity
     if (entity is WitherSkeleton) {
       val equipment = entity.equipment
-      if (equipment != null) {
-        equipment.setItemInMainHand(ItemStack(Material.BOW))
-      }
+      equipment.setItemInMainHand(ItemStack(Material.BOW))
     }
   }
 

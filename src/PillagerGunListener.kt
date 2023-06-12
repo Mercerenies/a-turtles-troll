@@ -14,6 +14,8 @@ import org.bukkit.event.entity.EntitySpawnEvent
 import org.bukkit.entity.Pillager
 import org.bukkit.enchantments.Enchantment
 
+import net.kyori.adventure.text.Component
+
 class PillagerGunListener() : AbstractFeature(), Listener {
 
   companion object : FeatureContainerFactory<FeatureContainer> {
@@ -31,10 +33,10 @@ class PillagerGunListener() : AbstractFeature(), Listener {
   fun onEntitySpawn(event: EntitySpawnEvent) {
     val entity = event.entity
     if (entity is Pillager) {
-      val equipment = entity.getEquipment()!!
+      val equipment = entity.getEquipment()
       val mainHand = equipment.getItemInMainHand()
       val meta = mainHand.getItemMeta()!!
-      meta.setDisplayName("AK47")
+      meta.displayName(Component.text("AK47"))
       meta.addEnchant(Enchantment.QUICK_CHARGE, 5, true)
       mainHand.setItemMeta(meta)
       equipment.setItemInMainHand(mainHand)

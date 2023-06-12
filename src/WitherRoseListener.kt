@@ -44,8 +44,8 @@ class WitherRoseListener : AbstractFeature(), Listener {
     if (!isEnabled()) {
       return
     }
-    val block = event.getTo()?.getBlock()
-    if ((block != null) && (BLOCKS.contains(block.type))) {
+    val block = event.getTo().getBlock()
+    if (BLOCKS.contains(block.type)) {
       if (!bootsDamager.tryWearDownBoots(event.player)) {
         applyWither(event.player)
       }

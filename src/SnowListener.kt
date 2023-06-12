@@ -32,8 +32,8 @@ class SnowListener : AbstractFeature(), Listener {
     if (!isEnabled()) {
       return
     }
-    val block = event.getTo()?.getBlock()
-    if (block?.type == Material.SNOW) {
+    val block = event.getTo().getBlock()
+    if (block.type == Material.SNOW) {
       val player = event.player
       player.addPotionEffect(PotionEffect(PotionEffectType.SPEED, Constants.TICKS_PER_SECOND * 6, 4))
     }

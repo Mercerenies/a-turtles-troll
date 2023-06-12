@@ -44,12 +44,10 @@ class WitherArmorListener(val chance: Double = 1.0) : AbstractFeature(), Listene
     val entity = event.entity
     if (entity is WitherSkeleton) {
       val equipment = entity.equipment
-      if (equipment != null) {
-        equipment.helmet = ItemStack(Material.DIAMOND_HELMET)
-        equipment.chestplate = ItemStack(Material.DIAMOND_CHESTPLATE)
-        equipment.leggings = ItemStack(Material.DIAMOND_LEGGINGS)
-        equipment.boots = ItemStack(Material.DIAMOND_BOOTS)
-      }
+      equipment.helmet = ItemStack(Material.DIAMOND_HELMET)
+      equipment.chestplate = ItemStack(Material.DIAMOND_CHESTPLATE)
+      equipment.leggings = ItemStack(Material.DIAMOND_LEGGINGS)
+      equipment.boots = ItemStack(Material.DIAMOND_BOOTS)
     }
   }
 
