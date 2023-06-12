@@ -101,7 +101,7 @@ abstract class GivenItemEffect(private val plugin: Plugin) : CookieEffect {
       val itemName = this.itemName(replacementItem)
       Messages.sendMessage(
         action.player,
-        Component.text("That cookie had ").append(itemName).append(Component.text(" inside it!")),
+        Component.text("That cookie had ").append(itemName).append(" inside it!"),
       )
       GiveToPlayer(action.player, replacementItem).runTaskLater(plugin, DELAY.toLong())
     }

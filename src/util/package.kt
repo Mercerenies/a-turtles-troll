@@ -1,6 +1,8 @@
 
 package com.mercerenies.turtletroll.util
 
+import com.mercerenies.turtletroll.ext.*
+
 import org.bukkit.inventory.ItemStack
 import org.bukkit.inventory.meta.ItemMeta
 
@@ -54,7 +56,7 @@ fun pluralize(items: List<Component>, conjunction: String = "and"): Component =
   when (items.size) {
     0 -> Component.text("")
     1 -> items[0]
-    2 -> items[0].append(Component.text(" ${conjunction} ")).append(items[1])
+    2 -> items[0].append(" ${conjunction} ").append(items[1])
     else -> {
       val itemCount = items.size
       val result = Component.text()
@@ -62,9 +64,9 @@ fun pluralize(items: List<Component>, conjunction: String = "and"): Component =
         if (i == 0) {
           result.append(s)
         } else if (i == itemCount - 1) {
-          result.append(Component.text(", ${conjunction} ")).append(s)
+          result.append(", ${conjunction} ").append(s)
         } else {
-          result.append(Component.text(", ")).append(s)
+          result.append(", ").append(s)
         }
       }
       result.build()

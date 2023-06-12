@@ -5,6 +5,10 @@ import org.bukkit.Location
 import org.bukkit.event.block.BlockBreakEvent
 import org.bukkit.inventory.ItemStack
 
+import net.kyori.adventure.text.Component
+import net.kyori.adventure.text.ComponentBuilder
+import net.kyori.adventure.text.BuildableComponent
+
 import kotlin.random.Random
 import kotlin.collections.Map
 import kotlin.collections.HashMap
@@ -82,3 +86,9 @@ infix fun<K, V> Map<K, V>.union(that: Map<K, V>): Map<K, V> {
   merged.putAll(this)
   return merged
 }
+
+fun Component.append(text: String): Component =
+  this.append(Component.text(text))
+
+fun<C: BuildableComponent<C, B>, B: ComponentBuilder<C, B>> ComponentBuilder<C, B>.append(text: String): B =
+  this.append(Component.text(text))

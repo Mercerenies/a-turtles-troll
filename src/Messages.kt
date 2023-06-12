@@ -2,6 +2,7 @@
 package com.mercerenies.turtletroll
 
 import com.mercerenies.turtletroll.color.ColorCode
+import com.mercerenies.turtletroll.ext.*
 
 import org.bukkit.Bukkit
 import org.bukkit.command.CommandSender
@@ -13,9 +14,9 @@ object Messages {
 
   private val prefix: Component =
     Component.text()
-      .append(Component.text("["))
+      .append("[")
       .append(Component.text("Turtle", NamedTextColor.YELLOW))
-      .append(Component.text("] "))
+      .append("] ")
       .build()
 
   fun broadcastMessage(message: Component) {
