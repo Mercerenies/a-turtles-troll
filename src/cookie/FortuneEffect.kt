@@ -9,6 +9,8 @@ import com.mercerenies.turtletroll.NameSource
 
 import org.bukkit.inventory.ItemStack
 
+import net.kyori.adventure.text.Component
+
 class FortuneEffect(
   private val authors: NameSource,
   private val fortunes: NameSource,
@@ -30,9 +32,9 @@ class FortuneEffect(
   private fun chooseFortune(): String =
     fortunes.sampleName()
 
-  private fun makeBook(fortune: String): ItemStack {
-    val title = "Your Fortune"
-    val author = chooseAuthor()
+  private fun makeBook(fortune: Component): ItemStack {
+    val title = Component.text("Your Fortune")
+    val author = Component.text(chooseAuthor())
     return BookBuilder.makeBook(title, author, listOf(fortune))
   }
 
@@ -41,7 +43,7 @@ class FortuneEffect(
   override fun onEat(action: CookieEatenAction) {
     val player = action.player
     val fortune = chooseFortune()
-    val book = makeBook(fortune)
+    val book = makeBook(Component.text(fortune))
     Messages.sendMessage(player, "That cookie had a fortune inside it: \"${fortune}\"!")
     AllItems.give(player, book)
   }
