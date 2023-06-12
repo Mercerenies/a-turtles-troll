@@ -1,7 +1,6 @@
 
 package com.mercerenies.turtletroll
 
-import com.mercerenies.turtletroll.color.ColorCode
 import com.mercerenies.turtletroll.ext.*
 
 import org.bukkit.Bukkit

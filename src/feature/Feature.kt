@@ -1,8 +1,6 @@
 
 package com.mercerenies.turtletroll.feature
 
-import com.mercerenies.turtletroll.color.ColorCode
-
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.format.NamedTextColor
 
