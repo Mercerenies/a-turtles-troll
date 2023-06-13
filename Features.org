@@ -45,6 +45,14 @@
    + boatbomb :: If a boat hits the ground hard enough, it explodes
    + escalation :: If a player has four distinct potion effects, they
                    begin to levitate in the air
+   + encumbrance :: Jumps may fail if you're overencumbered; the
+     chance of a jump failing starts at 0% and is cumulative, based on the following penalties
+     - +0.03% for each nonempty inventory slot, excluding armor and shield slots
+     - +0.1% for each leather armor item being worn
+     - +0.25% for each armor item that is /not/ leather currently being worn
+     - +10% if the player is Slowed
+     - +5% if the player is Confused
+     - +1% if the gods are currently angry
 ** CUSTOM SPAWNING FEATURES
    + weepingangel :: Armor stands will chase you when you're not
                      looking at them, and armor stands will rarely
