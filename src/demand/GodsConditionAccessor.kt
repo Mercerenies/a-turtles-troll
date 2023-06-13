@@ -23,6 +23,9 @@ interface GodsConditionAccessor {
   fun isAngry(): Boolean =
     getGodsStatus() == GodsStatus.ANGRY
 
+  fun isAppeased(): Boolean =
+    getGodsStatus() == GodsStatus.APPEASED
+
 }
 
 enum class GodsStatus {

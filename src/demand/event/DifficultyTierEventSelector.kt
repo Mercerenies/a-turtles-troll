@@ -1,7 +1,7 @@
 
 package com.mercerenies.turtletroll.demand.event
 
-import com.mercerenies.turtletroll.demand.DeathCondition
+import com.mercerenies.turtletroll.demand.DailyDemandEvent
 import com.mercerenies.turtletroll.Weight
 import com.mercerenies.turtletroll.sample
 import com.mercerenies.turtletroll.ext.*
@@ -28,8 +28,8 @@ open class DifficultyTierEventSelector(
   open val difficultyChangeOnAppease: Int = 1
   open val difficultyChangeOnAnger: Int = -9999 // Default = go back to the lowest difficulty
 
-  override fun chooseCondition(): DeathCondition {
-    return difficultyClasses[currentDifficulty].conditions.sample()!!
+  override fun chooseCondition(): DailyDemandEvent {
+    return difficultyClasses[currentDifficulty].events.sample()!!
   }
 
   open override fun onGodsAppeased() {

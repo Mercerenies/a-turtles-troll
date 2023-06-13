@@ -31,7 +31,7 @@ class DailyDemandBossBarUpdater(
     BarColor.GREEN,
     BarStyle.SOLID,
   )
-  private var deathCondition: DeathCondition = DeathCondition.True
+  private var summary: String = "Die"
   private var status: GodsStatus = GodsStatus.APPEASED
 
   init {
@@ -42,7 +42,7 @@ class DailyDemandBossBarUpdater(
 
   val barMessage: String
     get() = when (status) {
-      GodsStatus.IDLE -> deathCondition.summary
+      GodsStatus.IDLE -> summary
       GodsStatus.APPEASED -> "Appeased"
       GodsStatus.ANGRY -> "The gods are angry!"
     }
@@ -58,9 +58,9 @@ class DailyDemandBossBarUpdater(
     updateStats()
   }
 
-  fun updateCondition(state: GodsStatus, condition: DeathCondition? = null) {
-    if (condition != null) {
-      deathCondition = condition
+  fun updateCondition(state: GodsStatus, event: DailyDemandEvent? = null) {
+    if (event != null) {
+      summary = event.summary
     }
     status = state
     updateStats()

@@ -1,12 +1,12 @@
 
 package com.mercerenies.turtletroll.demand.event
 
-import com.mercerenies.turtletroll.demand.DeathCondition
+import com.mercerenies.turtletroll.demand.DailyDemandEvent
 import com.mercerenies.turtletroll.Weight
 import com.mercerenies.turtletroll.sample
 
 class WeightedListEventSelector(
-  val conditionList: List<Weight<DeathCondition>>,
+  val conditionList: List<Weight<DailyDemandEvent>>,
 ) : EventSelector {
 
   init {
@@ -15,7 +15,7 @@ class WeightedListEventSelector(
     }
   }
 
-  override fun chooseCondition(): DeathCondition =
+  override fun chooseCondition(): DailyDemandEvent =
     sample(conditionList)
 
 }

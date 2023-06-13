@@ -1,6 +1,8 @@
 
 package com.mercerenies.turtletroll.demand
 
+import com.mercerenies.turtletroll.Messages
+import com.mercerenies.turtletroll.ext.*
 import com.mercerenies.turtletroll.gravestone.CauseOfDeath
 import com.mercerenies.turtletroll.gravestone.Vanilla
 import com.mercerenies.turtletroll.gravestone.VanillaMob
@@ -9,19 +11,42 @@ import com.mercerenies.turtletroll.gravestone.Mimic
 import com.mercerenies.turtletroll.gravestone.Redstone
 
 import org.bukkit.entity.EntityType
+import org.bukkit.entity.Player
 import org.bukkit.event.entity.EntityDamageEvent
+import org.bukkit.event.entity.PlayerDeathEvent
 
-interface DeathCondition {
+import net.kyori.adventure.text.Component
+
+abstract class DeathCondition : DailyDemandEvent {
+
+  open override fun getRequestMessage(): Component =
+    Component.text("Today, the gods would like to see someone die ${description}")
+
+  open fun appeasedMessage(player: Player): Component =
+    Component.text("").append(player.displayName()).append(" has appeased the gods! You may sleep tonight.")
+
+  open override fun onDayStart(godsState: GodsState): Unit {
+    Messages.broadcastMessage(getRequestMessage())
+  }
+
+  open override fun onDayEnd(godsState: GodsState): Unit {}
+
+  override fun onDaytimePlayerDeath(event: PlayerDeathEvent, godsState: GodsState): Unit {
+    if (!godsState.isAppeased()) {
+      val cause = CauseOfDeath.identify(event)
+      if (this.test(cause)) {
+        Messages.broadcastMessage(appeasedMessage(event.player))
+        godsState.setGodsAppeased(true)
+      }
+    }
+  }
 
   // Should be a prepositional phrase
-  val description: String
+  abstract val description: String
 
-  // Should be a simple noun or verb phrase summarizing the condition
-  val summary: String
+  abstract fun test(cause: CauseOfDeath): Boolean
 
-  fun test(cause: CauseOfDeath): Boolean
-
-  object True : DeathCondition {
+  object True : DeathCondition() {
     override val description: String = "for any reason"
     override val summary: String = "Die"
 
@@ -29,7 +54,7 @@ interface DeathCondition {
 
   }
 
-  object MustBeAngel : DeathCondition {
+  object MustBeAngel : DeathCondition() {
     override val description: String = "to a Weeping Angel"
     override val summary: String = "Die to Weeping Angel"
 
@@ -38,7 +63,7 @@ interface DeathCondition {
 
   }
 
-  object MustBeMimic : DeathCondition {
+  object MustBeMimic : DeathCondition() {
     override val description: String = "to a Mimic"
     override val summary: String = "Die to Mimic"
 
@@ -47,7 +72,7 @@ interface DeathCondition {
 
   }
 
-  object MustBeVector : DeathCondition {
+  object MustBeVector : DeathCondition() {
     override val description: String = "to Vector"
     override val summary: String = "Die to Vector"
 
@@ -57,7 +82,7 @@ interface DeathCondition {
 
   }
 
-  object MustBeRedstone : DeathCondition {
+  object MustBeRedstone : DeathCondition() {
     override val description: String = "to redstone dust"
     override val summary: String = "Die to Redstone"
 
@@ -66,7 +91,7 @@ interface DeathCondition {
 
   }
 
-  object FireDamage : DeathCondition {
+  object FireDamage : DeathCondition() {
     val conditions = listOf(
       EntityDamageEvent.DamageCause.FIRE, EntityDamageEvent.DamageCause.FIRE_TICK,
       EntityDamageEvent.DamageCause.HOT_FLOOR, EntityDamageEvent.DamageCause.LAVA,
@@ -81,7 +106,7 @@ interface DeathCondition {
 
   }
 
-  object Lightning : DeathCondition {
+  object Lightning : DeathCondition() {
     val conditions = listOf(
       EntityDamageEvent.DamageCause.LIGHTNING,
     )
@@ -95,7 +120,7 @@ interface DeathCondition {
 
   }
 
-  object Hunger : DeathCondition {
+  object Hunger : DeathCondition() {
     val conditions = listOf(
       EntityDamageEvent.DamageCause.STARVATION,
     )
@@ -108,7 +133,7 @@ interface DeathCondition {
 
   }
 
-  object Explosion : DeathCondition {
+  object Explosion : DeathCondition() {
     val conditions = listOf(
       EntityDamageEvent.DamageCause.ENTITY_EXPLOSION, EntityDamageEvent.DamageCause.BLOCK_EXPLOSION,
     )
@@ -122,7 +147,7 @@ interface DeathCondition {
 
   }
 
-  object Drowning : DeathCondition {
+  object Drowning : DeathCondition() {
 
     override val description: String = "by drowning"
     override val summary: String = "Die by Drowning"
@@ -133,7 +158,7 @@ interface DeathCondition {
 
   }
 
-  object Falling : DeathCondition {
+  object Falling : DeathCondition() {
 
     override val description: String = "by falling"
     override val summary: String = "Die by Falling"
@@ -144,7 +169,7 @@ interface DeathCondition {
 
   }
 
-  object MustBeZombie : DeathCondition {
+  object MustBeZombie : DeathCondition() {
     val conditions = listOf(
       EntityType.ZOMBIE, EntityType.ZOMBIE_VILLAGER, EntityType.DROWNED,
       EntityType.ZOMBIFIED_PIGLIN, EntityType.HUSK,
@@ -159,7 +184,7 @@ interface DeathCondition {
 
   }
 
-  object MustBeLlama : DeathCondition {
+  object MustBeLlama : DeathCondition() {
     val conditions = listOf(
       EntityType.LLAMA, EntityType.LLAMA_SPIT, EntityType.TRADER_LLAMA,
     )
@@ -173,7 +198,7 @@ interface DeathCondition {
 
   }
 
-  object MustBeBee : DeathCondition {
+  object MustBeBee : DeathCondition() {
 
     override val description: String = "to a bee"
     override val summary: String = "Die to Bee"
@@ -184,7 +209,7 @@ interface DeathCondition {
 
   }
 
-  object MustBeSpider : DeathCondition {
+  object MustBeSpider : DeathCondition() {
 
     override val description: String = "to a spider"
     override val summary: String = "Die to Spider"
@@ -195,7 +220,7 @@ interface DeathCondition {
 
   }
 
-  object MustBeEnderman : DeathCondition {
+  object MustBeEnderman : DeathCondition() {
 
     override val description: String = "to an Enderman"
     override val summary: String = "Die to Enderman"
@@ -206,7 +231,7 @@ interface DeathCondition {
 
   }
 
-  object MustBeGhast : DeathCondition {
+  object MustBeGhast : DeathCondition() {
     val conditions = listOf(
       EntityType.GHAST, EntityType.FIREBALL,
     )
@@ -220,7 +245,7 @@ interface DeathCondition {
 
   }
 
-  object MustBeRavager : DeathCondition {
+  object MustBeRavager : DeathCondition() {
 
     override val description: String = "to a Ravager"
     override val summary: String = "Die to Ravager"
@@ -231,7 +256,7 @@ interface DeathCondition {
 
   }
 
-  object MustBeIronGolem : DeathCondition {
+  object MustBeIronGolem : DeathCondition() {
 
     override val description: String = "to an Iron Golem"
     override val summary: String = "Die to Iron Golem"
@@ -242,7 +267,7 @@ interface DeathCondition {
 
   }
 
-  object MustBeSilverfish : DeathCondition {
+  object MustBeSilverfish : DeathCondition() {
 
     override val description: String = "to Silverfish"
     override val summary: String = "Die to Silverfish"
@@ -253,7 +278,7 @@ interface DeathCondition {
 
   }
 
-  object MustBeBlaze : DeathCondition {
+  object MustBeBlaze : DeathCondition() {
 
     override val description: String = "to a Blaze"
     override val summary: String = "Die to Blaze"

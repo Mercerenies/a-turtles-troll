@@ -45,12 +45,6 @@ class DailyDemandManager(
 
     val COMMAND_PERMISSION = "com.mercerenies.turtletroll.command.demand"
 
-    fun requestMessage(condition: DeathCondition): Component =
-      Component.text("Today, the gods would like to see someone die ${condition.description}")
-
-    fun appeasedMessage(player: Player): Component =
-      Component.text("").append(player.displayName()).append(" has appeased the gods! You may sleep tonight.")
-
     val STATES = listOf(
       Event(State.Daytime, DAWN_TIME),
       Event(State.Nighttime, DUSK_TIME),
@@ -69,7 +63,7 @@ class DailyDemandManager(
 
   private var isAppeased: Boolean = true
 
-  private var condition: DeathCondition = DeathCondition.True
+  private var condition: DailyDemandEvent = DeathCondition.True
 
   private val bossBarKey: NamespacedKey = NamespacedKey(plugin, "com.mercerenies.turtletroll.demand.DailyDemandManager.bossBarKey")
   private val bossBar: DailyDemandBossBarUpdater = DailyDemandBossBarUpdater(bossBarKey)
@@ -84,7 +78,7 @@ class DailyDemandManager(
       } else {
         when (currentState) {
           State.Daytime -> {
-            requestMessage(condition)
+            condition.getRequestMessage()
           }
           State.Nighttime -> {
             ANGRY_MESSAGE
@@ -112,7 +106,11 @@ class DailyDemandManager(
     }
 
   override fun setGodsAppeased(isAppeased: Boolean) {
+    if (isAppeased && !this.isAppeased) {
+      eventSelector.onGodsAppeased()
+    }
     this.isAppeased = isAppeased
+    bossBar.updateCondition(getGodsStatus())
   }
 
   override fun enable() {
@@ -137,7 +135,7 @@ class DailyDemandManager(
         isAppeased = false
         condition = eventSelector.chooseCondition()
         bossBar.updateCondition(GodsStatus.IDLE, condition)
-        Messages.broadcastMessage(requestMessage(condition))
+        condition.onDayStart(this)
       }
       State.Nighttime -> {
         if (!isAppeased) {
@@ -155,14 +153,8 @@ class DailyDemandManager(
       return
     }
 
-    if ((currentState == State.Daytime) && (!isAppeased)) {
-      val cause = CauseOfDeath.identify(event)
-      if (condition.test(cause)) {
-        Messages.broadcastMessage(appeasedMessage(event.entity))
-        eventSelector.onGodsAppeased()
-        bossBar.updateCondition(GodsStatus.APPEASED)
-        isAppeased = true
-      }
+    if (currentState == State.Daytime) {
+      condition.onDaytimePlayerDeath(event, this)
     }
 
   }

@@ -3,10 +3,10 @@ package com.mercerenies.turtletroll.demand.event
 
 import com.mercerenies.turtletroll.demand.DeathCondition
 
-// TODO Validate precondition (conditions is not empty) here, and
+// TODO Validate precondition (events is not empty) here, and
 // provide a function to sample (with the non-null assertion)
 data class DifficultyClass(
-  val conditions: List<DeathCondition>,
+  val events: List<DeathCondition>,
 ) {
   companion object {
 
