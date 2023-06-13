@@ -292,6 +292,7 @@
   + Killing one vector saves everyone
   + Can we make the lava haste force you to move forward?
   + Lore on items when things happen?
+  + Piglins take diamonds and give awesome armor
 ** HATCRAFTER'S IDEAS
    + Polar bears have Haste 3
    + Every hostile mob has a very small chance of dropping a random item
