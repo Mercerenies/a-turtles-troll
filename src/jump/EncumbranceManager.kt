@@ -33,7 +33,6 @@ class EncumbranceManager(
     }
     val player = event.player
     val chanceOfFailure = calculator.calculateEncumbrance(player)
-    println(chanceOfFailure)
     if (Random.nextDouble() < chanceOfFailure) {
       Messages.sendMessage(player, "You are over-encumbered.")
       event.setCancelled(true)
