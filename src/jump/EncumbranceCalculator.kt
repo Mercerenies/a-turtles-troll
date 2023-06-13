@@ -13,7 +13,7 @@ interface EncumbranceCalculator {
 
   companion object {
     fun formatPercent(value: Double): Component =
-      Component.text(String.format("%2.2f%%", value), NamedTextColor.GOLD)
+      Component.text(String.format("%2.2f%%", value * 100), NamedTextColor.GOLD)
   }
 
   class Sum(val elements: List<EncumbranceStat>) : EncumbranceCalculator {

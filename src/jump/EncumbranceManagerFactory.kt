@@ -21,7 +21,11 @@ abstract class EncumbranceManagerFactory() : FeatureContainerFactory<FeatureCont
     val COMMAND_PERMISSION = "com.mercerenies.turtletroll.encumbrance"
 
     override fun getCalculator(plugin: Plugin): EncumbranceCalculator =
-      EncumbranceCalculator.Sum(InventoryCountStat(0.05))
+      EncumbranceCalculator.Sum(
+        InventoryCountStat(0.0003),
+        ArmorCountStat.Leather(0.001),
+        ArmorCountStat.NonLeather(0.0025),
+      )
 
   }
 
