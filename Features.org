@@ -53,6 +53,13 @@
      - +10% if the player is Slowed
      - +5% if the player is Confused
      - +1% if the gods are currently angry
+   + sweetdreams :: After lying in a bed, the player cures all status
+     effects and is then given three out of five of the following:
+     - Slowness 2
+     - Confusion 1
+     - Blindness 1
+     - Mining Fatigue 5
+     - Regeneration 5
 ** CUSTOM SPAWNING FEATURES
    + weepingangel :: Armor stands will chase you when you're not
                      looking at them, and armor stands will rarely

@@ -148,6 +148,7 @@ object AllFeatureFactories {
       SolidSwapListener,
       SpillageListener,
       StoneRecipeDeleter,
+      SweetDreamsListener,
       UnfinishedBusinessListener,
       VillagerDeathListener,
       WanderingTraderListener,
