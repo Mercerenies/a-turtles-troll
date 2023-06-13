@@ -9,6 +9,7 @@ import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 import com.mercerenies.turtletroll.command.withPermission
 import com.mercerenies.turtletroll.Weight
 
+import org.bukkit.potion.PotionEffectType
 import org.bukkit.plugin.Plugin
 
 abstract class EncumbranceManagerFactory() : FeatureContainerFactory<FeatureContainer> {
@@ -25,6 +26,8 @@ abstract class EncumbranceManagerFactory() : FeatureContainerFactory<FeatureCont
         InventoryCountStat(0.0003),
         ArmorCountStat.Leather(0.001),
         ArmorCountStat.NonLeather(0.0025),
+        StatusEffectStat("Slowness", PotionEffectType.SLOW, 0.10),
+        StatusEffectStat("Nausea", PotionEffectType.CONFUSION, 0.05),
       )
 
   }
