@@ -205,6 +205,8 @@
      - Crafting a melon slice gives pumpkin seeds, not melon seeds
      - When a melon block is broken, it drops a pumpkin block
      - When a pumpkin block is broken, it drops melon slices
+   + mossrevenge :: When a moss block is broken, small chance of small
+     slime to spawn
 ** CUSTOM RECIPE FEATURES
    + stonetools :: All recipes which produce stone tools are disabled
    + dirtrecipe :: Nine dirt can be crafted into a stick; nine sticks
@@ -330,8 +332,6 @@
      in chat. Any player who answers correctly gets an appropriate
      item. Any player who fails to answer is struck by lightning.
      Players who answer wrongly are not rewarded or punished.
-   + Moss Revenge: When a moss block is broken, small chance of small
-     slime to spawn
    + Mundane potions can be crafted into gold nuggets
    + Gold nuggets can be eaten for nutrition. They act like sweet
      berries

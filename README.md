@@ -43,6 +43,7 @@ A Turtle's Troll also depends on the following libraries.
 * Killing a pillager summons slimes.
 * Lava running on water creates obsidian, while water running on lava
   created cobblestone.
+* When a moss block is broken, small chance of small slime to spawn.
 * The Warden summon condition has been increased to seven seconds.
 * Added a warning message if the player has been in darkness for more
   than 3.5 seconds.

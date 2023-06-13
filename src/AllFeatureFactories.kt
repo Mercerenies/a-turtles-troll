@@ -33,6 +33,7 @@ import com.mercerenies.turtletroll.egg.EggListenerFactory
 import com.mercerenies.turtletroll.overgrowth.OvergrowthListenerFactory
 import com.mercerenies.turtletroll.overgrowth.OvergrowthListener
 import com.mercerenies.turtletroll.ghastlava.GhastLavaListenerFactory
+import com.mercerenies.turtletroll.drop.MossRevengeFeatureFactory
 import com.mercerenies.turtletroll.drop.DirtDropFeatureFactory
 import com.mercerenies.turtletroll.drop.SilverfishAttackFeatureFactory
 import com.mercerenies.turtletroll.drop.BeeAttackFeatureFactory
@@ -59,6 +60,7 @@ object AllFeatureFactories {
       DirtDropFeatureFactory,
       EndermiteSpawnFeatureFactory,
       MelompkinFeatureFactory,
+      MossRevengeFeatureFactory,
       NetherrackBoomFeatureFactory,
       ShuffleLogsFeatureFactory,
       SilverfishAttackFeatureFactory,
