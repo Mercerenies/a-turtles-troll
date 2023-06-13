@@ -1,5 +1,5 @@
 
-package com.mercerenies.turtletroll.demand.condition
+package com.mercerenies.turtletroll.demand.event
 
 import com.mercerenies.turtletroll.demand.DeathCondition
 import com.mercerenies.turtletroll.Weight
@@ -7,12 +7,12 @@ import com.mercerenies.turtletroll.sample
 import com.mercerenies.turtletroll.ext.*
 import com.mercerenies.turtletroll.util.clamp
 
-// This condition selector always starts at the lowest difficulty and
+// This event selector always starts at the lowest difficulty and
 // then ramps up the more times you successfully appease the gods. If
 // you ever fail, the difficulty drops instead.
-open class DifficultyTierConditionSelector(
+open class DifficultyTierEventSelector(
   val difficultyClasses: List<DifficultyClass>,
-) : ConditionSelector {
+) : EventSelector {
 
   init {
     if (difficultyClasses.isEmpty()) {

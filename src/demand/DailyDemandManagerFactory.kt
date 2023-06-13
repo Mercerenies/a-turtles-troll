@@ -2,24 +2,24 @@
 package com.mercerenies.turtletroll.demand
 
 import com.mercerenies.turtletroll.Weight
-import com.mercerenies.turtletroll.demand.condition.ConditionSelector
-import com.mercerenies.turtletroll.demand.condition.DifficultyTierConditionSelector
-import com.mercerenies.turtletroll.demand.condition.DifficultyClass
-import com.mercerenies.turtletroll.demand.condition.WeightedDifficultyConditionSelector
+import com.mercerenies.turtletroll.demand.event.EventSelector
+import com.mercerenies.turtletroll.demand.event.DifficultyTierEventSelector
+import com.mercerenies.turtletroll.demand.event.DifficultyClass
+import com.mercerenies.turtletroll.demand.event.WeightedDifficultyEventSelector
 import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 import com.mercerenies.turtletroll.feature.builder.BuilderState
 import com.mercerenies.turtletroll.feature.container.AbstractFeatureContainer
 import com.mercerenies.turtletroll.feature.container.FeatureContainer
 
 class DailyDemandManagerFactory(
-  private val conditionSelectorFactory: () -> ConditionSelector,
+  private val eventSelectorFactory: () -> EventSelector,
 ) : FeatureContainerFactory<FeatureContainer> {
 
   companion object {
     val GODS_FEATURE_KEY = "com.mercerenies.turtletroll.demand.DailyDemandManagerFactory.GODS_FEATURE_KEY"
 
-    fun basicDifficultySelector(): ConditionSelector =
-      WeightedDifficultyConditionSelector(
+    fun basicDifficultySelector(): EventSelector =
+      WeightedDifficultyEventSelector(
         listOf(
           Weight(DifficultyClass.EASY, 5.0),
           Weight(DifficultyClass.MEDIUM, 3.0),
@@ -27,8 +27,8 @@ class DailyDemandManagerFactory(
         )
       )
 
-    fun tieredDifficultySelector(): ConditionSelector =
-      DifficultyTierConditionSelector(
+    fun tieredDifficultySelector(): EventSelector =
+      DifficultyTierEventSelector(
         listOf(
           DifficultyClass.EASY,
           DifficultyClass.EASY,
@@ -59,8 +59,8 @@ class DailyDemandManagerFactory(
   }
 
   override fun create(state: BuilderState): FeatureContainer {
-    val conditionSelector = conditionSelectorFactory()
-    val manager = DailyDemandManager(state.plugin, conditionSelector)
+    val eventSelector = eventSelectorFactory()
+    val manager = DailyDemandManager(state.plugin, eventSelector)
     state.registerSharedData(GODS_FEATURE_KEY, manager)
     return Container(manager)
   }

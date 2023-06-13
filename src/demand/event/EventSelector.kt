@@ -1,9 +1,9 @@
 
-package com.mercerenies.turtletroll.demand.condition
+package com.mercerenies.turtletroll.demand.event
 
 import com.mercerenies.turtletroll.demand.DeathCondition
 
-interface ConditionSelector {
+interface EventSelector {
 
   fun chooseCondition(): DeathCondition
 

@@ -1,14 +1,14 @@
 
-package com.mercerenies.turtletroll.demand.condition
+package com.mercerenies.turtletroll.demand.event
 
 import com.mercerenies.turtletroll.demand.DeathCondition
 import com.mercerenies.turtletroll.Weight
 import com.mercerenies.turtletroll.sample
 import com.mercerenies.turtletroll.ext.*
 
-class WeightedDifficultyConditionSelector(
+class WeightedDifficultyEventSelector(
   val difficultyClasses: List<Weight<DifficultyClass>>,
-) : ConditionSelector {
+) : EventSelector {
 
   init {
     if (difficultyClasses.isEmpty()) {

@@ -1,13 +1,13 @@
 
-package com.mercerenies.turtletroll.demand.condition
+package com.mercerenies.turtletroll.demand.event
 
 import com.mercerenies.turtletroll.demand.DeathCondition
 import com.mercerenies.turtletroll.Weight
 import com.mercerenies.turtletroll.sample
 
-class WeightedListConditionSelector(
+class WeightedListEventSelector(
   val conditionList: List<Weight<DeathCondition>>,
-) : ConditionSelector {
+) : EventSelector {
 
   init {
     if (conditionList.isEmpty()) {

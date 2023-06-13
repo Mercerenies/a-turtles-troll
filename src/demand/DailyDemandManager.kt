@@ -10,7 +10,7 @@ import com.mercerenies.turtletroll.Weight
 import com.mercerenies.turtletroll.sample
 import com.mercerenies.turtletroll.ext.*
 import com.mercerenies.turtletroll.Messages
-import com.mercerenies.turtletroll.demand.condition.ConditionSelector
+import com.mercerenies.turtletroll.demand.event.EventSelector
 import com.mercerenies.turtletroll.gravestone.CauseOfDeath
 
 import org.bukkit.plugin.Plugin
@@ -30,7 +30,7 @@ import net.kyori.adventure.text.Component
 
 class DailyDemandManager(
   plugin: Plugin,
-  private val conditionSelector: ConditionSelector,
+  private val eventSelector: EventSelector,
 ) : ScheduledEventRunnable<DailyDemandManager.State>(plugin), Listener, GodsState {
 
   companion object {
@@ -135,14 +135,14 @@ class DailyDemandManager(
     when (newState) {
       State.Daytime -> {
         isAppeased = false
-        condition = conditionSelector.chooseCondition()
+        condition = eventSelector.chooseCondition()
         bossBar.updateCondition(GodsStatus.IDLE, condition)
         Messages.broadcastMessage(requestMessage(condition))
       }
       State.Nighttime -> {
         if (!isAppeased) {
           bossBar.updateCondition(GodsStatus.ANGRY)
-          conditionSelector.onGodsAngered()
+          eventSelector.onGodsAngered()
           Messages.broadcastMessage(ANGRY_MESSAGE)
         }
       }
@@ -159,7 +159,7 @@ class DailyDemandManager(
       val cause = CauseOfDeath.identify(event)
       if (condition.test(cause)) {
         Messages.broadcastMessage(appeasedMessage(event.entity))
-        conditionSelector.onGodsAppeased()
+        eventSelector.onGodsAppeased()
         bossBar.updateCondition(GodsStatus.APPEASED)
         isAppeased = true
       }
