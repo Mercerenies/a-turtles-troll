@@ -30,7 +30,7 @@ import net.kyori.adventure.text.Component
 class BedtimeManager(
   plugin: Plugin,
   private val conditionSelector: BedtimeConditionSelector,
-) : ScheduledEventRunnable<BedtimeManager.State>(plugin), Listener {
+) : ScheduledEventRunnable<BedtimeManager.State>(plugin), Listener, GodsConditionAccessor {
 
   companion object {
     val DAWN_TIME = 0L
@@ -101,6 +101,14 @@ class BedtimeManager(
 
   val command: Pair<String, PermittedCommand<Command>>
     get() = "bedtime" to BedtimeCommand.withPermission(COMMAND_PERMISSION)
+
+  override fun getGodsStatus(): GodsStatus =
+    when {
+      !isEnabled() -> GodsStatus.IDLE
+      isAppeased -> GodsStatus.APPEASED
+      currentState == State.Daytime -> GodsStatus.IDLE
+      else -> GodsStatus.ANGRY
+    }
 
   override fun enable() {
     super.enable()

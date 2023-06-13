@@ -73,7 +73,6 @@ object AllFeatureFactories {
       AnvilRunnableFactory,
       AxolotlListener,
       BambooSpreadListener,
-      BedtimeManagerFactory(BedtimeManagerFactory::tieredDifficultySelector),
       BlazeAttackListener,
       BoatBombListener,
       BucketRouletteRunnable,
@@ -98,7 +97,6 @@ object AllFeatureFactories {
       EggDropListener,
       EggListenerFactory,
       EggshellsListener,
-      EncumbranceManagerFactory,
       EndCrystalListener,
       EndDirtListener,
       EnderChestListener,
@@ -175,6 +173,9 @@ object AllFeatureFactories {
       RedstoneWorldListenerFactory(CustomDeathMessageListener.DEATH_MESSAGE_KEY),
       TemperatureManagerFactory(CustomDeathMessageListener.DEATH_MESSAGE_KEY),
       WeepingAngelManagerFactory(CustomDeathMessageListener.DEATH_MESSAGE_KEY),
+      // Bedtime (gods) manager and the things that depend on it
+      BedtimeManagerFactory(BedtimeManagerFactory::tieredDifficultySelector),
+      EncumbranceManagerFactory.Default(BedtimeManagerFactory.GODS_FEATURE_KEY),
     )
 
   fun createComposite(builderState: BuilderState): FeatureContainer {

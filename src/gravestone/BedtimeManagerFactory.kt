@@ -16,6 +16,7 @@ class BedtimeManagerFactory(
 ) : FeatureContainerFactory<FeatureContainer> {
 
   companion object {
+    val GODS_FEATURE_KEY = "com.mercerenies.turtletroll.gravestone.BedtimeManagerFactory.GODS_FEATURE_KEY"
 
     fun basicDifficultySelector(): BedtimeConditionSelector =
       WeightedDifficultyConditionSelector(
@@ -59,7 +60,9 @@ class BedtimeManagerFactory(
 
   override fun create(state: BuilderState): FeatureContainer {
     val conditionSelector = conditionSelectorFactory()
-    return Container(BedtimeManager(state.plugin, conditionSelector))
+    val manager = BedtimeManager(state.plugin, conditionSelector)
+    state.registerSharedData(GODS_FEATURE_KEY, manager)
+    return Container(manager)
   }
 
 }
