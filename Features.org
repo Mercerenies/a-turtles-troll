@@ -83,8 +83,11 @@
    + endcrystal :: Ender Crystals spawn with Blaze spawners beneath
                    them
    + pufferfish :: At high noon, pufferfish rain from the sky on all
-                   players; pufferfish are not damaged by drowning,
-                   dryout, or fall damage
+                   players
+     - Pufferfish are not damaged by drowning, dryout, or fall damage
+     - Pufferfish have one health and explode on death (blocks are not
+       damaged)
+     - The explosion is larger if the pufferfish is underwater
    + ak47 :: Pillagers spawn with a crossbow called "AK47" which has
              Quick Charge V
    + drowned :: Whenever a fish spawns, a Drowned spawns alongside it;
@@ -347,10 +350,6 @@
          and apples
      - Whenever a gold item loses durability, that specific item has a
        small chance of breaking
-   + Pufferfish have reduced health
-     - When a pufferfish dies, it will explode, damaging entities but
-       not blocks. This explosion is stronger if the pufferfish dies
-       while in water
    + After using a bed to pass time, the player will gain either
      slowness, nausea, or blindness for a short time
    + When a player harvests beetroot, small chance a rabbit will spawn

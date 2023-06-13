@@ -7,6 +7,7 @@ import org.bukkit.plugin.Plugin
 import org.bukkit.Bukkit
 import org.bukkit.event.EventHandler
 import org.bukkit.event.entity.EntityDamageEvent
+import org.bukkit.event.entity.EntityDeathEvent
 import org.bukkit.event.Listener
 import com.mercerenies.turtletroll.feature.container.FeatureContainer
 import com.mercerenies.turtletroll.feature.container.ManagerContainer
@@ -23,6 +24,10 @@ class PufferfishRainManager(plugin: Plugin) : ScheduledEventRunnable<PufferfishR
 
     override fun create(state: BuilderState): FeatureContainer =
       ManagerContainer(PufferfishRainManager(state.plugin))
+
+    fun initializePufferfish(pufferfish: PufferFish) {
+      pufferfish.setHealth(1.0)
+    }
 
     fun spawnPufferfishOn(player: Player) {
       val world = player.getWorld()
@@ -70,6 +75,20 @@ class PufferfishRainManager(plugin: Plugin) : ScheduledEventRunnable<PufferfishR
         }
       }
     }
+  }
+
+  @EventHandler
+  fun onEntityDeath(event: EntityDeathEvent) {
+    if (!isEnabled()) {
+      return
+    }
+
+    val entity = event.getEntity()
+    if (entity is PufferFish) {
+      var explosionPower = if (entity.isInWater) { 10.0F } else { 5.0F }
+      entity.world.createExplosion(entity.location, explosionPower, false, false, entity)
+    }
+
   }
 
   @EventHandler
