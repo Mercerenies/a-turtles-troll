@@ -11,7 +11,7 @@ commands:
 permissions:
   com.mercerenies.turtletroll.command:
     default: true
-  com.mercerenies.turtletroll.command.bedtime:
+  com.mercerenies.turtletroll.command.demand:
     default: true
   com.mercerenies.turtletroll.command.encumbrance:
     default: true

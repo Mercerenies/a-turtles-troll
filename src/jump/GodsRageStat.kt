@@ -2,7 +2,7 @@
 package com.mercerenies.turtletroll.jump
 
 import com.mercerenies.turtletroll.util.*
-import com.mercerenies.turtletroll.gravestone.GodsConditionAccessor
+import com.mercerenies.turtletroll.demand.GodsConditionAccessor
 
 import org.bukkit.Material
 import org.bukkit.entity.Player

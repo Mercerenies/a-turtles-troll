@@ -1,5 +1,12 @@
 
-package com.mercerenies.turtletroll.gravestone
+package com.mercerenies.turtletroll.demand
+
+import com.mercerenies.turtletroll.gravestone.CauseOfDeath
+import com.mercerenies.turtletroll.gravestone.Vanilla
+import com.mercerenies.turtletroll.gravestone.VanillaMob
+import com.mercerenies.turtletroll.gravestone.Angel
+import com.mercerenies.turtletroll.gravestone.Mimic
+import com.mercerenies.turtletroll.gravestone.Redstone
 
 import org.bukkit.entity.EntityType
 import org.bukkit.event.entity.EntityDamageEvent

@@ -1,24 +1,24 @@
 
-package com.mercerenies.turtletroll.gravestone
+package com.mercerenies.turtletroll.demand
 
 import com.mercerenies.turtletroll.Weight
-import com.mercerenies.turtletroll.gravestone.condition.BedtimeConditionSelector
-import com.mercerenies.turtletroll.gravestone.condition.DifficultyTierConditionSelector
-import com.mercerenies.turtletroll.gravestone.condition.DifficultyClass
-import com.mercerenies.turtletroll.gravestone.condition.WeightedDifficultyConditionSelector
+import com.mercerenies.turtletroll.demand.condition.ConditionSelector
+import com.mercerenies.turtletroll.demand.condition.DifficultyTierConditionSelector
+import com.mercerenies.turtletroll.demand.condition.DifficultyClass
+import com.mercerenies.turtletroll.demand.condition.WeightedDifficultyConditionSelector
 import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 import com.mercerenies.turtletroll.feature.builder.BuilderState
 import com.mercerenies.turtletroll.feature.container.AbstractFeatureContainer
 import com.mercerenies.turtletroll.feature.container.FeatureContainer
 
-class BedtimeManagerFactory(
-  private val conditionSelectorFactory: () -> BedtimeConditionSelector,
+class DailyDemandManagerFactory(
+  private val conditionSelectorFactory: () -> ConditionSelector,
 ) : FeatureContainerFactory<FeatureContainer> {
 
   companion object {
-    val GODS_FEATURE_KEY = "com.mercerenies.turtletroll.gravestone.BedtimeManagerFactory.GODS_FEATURE_KEY"
+    val GODS_FEATURE_KEY = "com.mercerenies.turtletroll.demand.DailyDemandManagerFactory.GODS_FEATURE_KEY"
 
-    fun basicDifficultySelector(): BedtimeConditionSelector =
+    fun basicDifficultySelector(): ConditionSelector =
       WeightedDifficultyConditionSelector(
         listOf(
           Weight(DifficultyClass.EASY, 5.0),
@@ -27,7 +27,7 @@ class BedtimeManagerFactory(
         )
       )
 
-    fun tieredDifficultySelector(): BedtimeConditionSelector =
+    fun tieredDifficultySelector(): ConditionSelector =
       DifficultyTierConditionSelector(
         listOf(
           DifficultyClass.EASY,
@@ -41,7 +41,7 @@ class BedtimeManagerFactory(
   }
 
   private class Container(
-    private val manager: BedtimeManager,
+    private val manager: DailyDemandManager,
   ) : AbstractFeatureContainer() {
 
     override val listeners =
@@ -60,7 +60,7 @@ class BedtimeManagerFactory(
 
   override fun create(state: BuilderState): FeatureContainer {
     val conditionSelector = conditionSelectorFactory()
-    val manager = BedtimeManager(state.plugin, conditionSelector)
+    val manager = DailyDemandManager(state.plugin, conditionSelector)
     state.registerSharedData(GODS_FEATURE_KEY, manager)
     return Container(manager)
   }

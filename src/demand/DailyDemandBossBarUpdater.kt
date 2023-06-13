@@ -1,5 +1,5 @@
 
-package com.mercerenies.turtletroll.gravestone
+package com.mercerenies.turtletroll.demand
 
 import com.mercerenies.turtletroll.ext.*
 
@@ -9,7 +9,7 @@ import org.bukkit.boss.BarColor
 import org.bukkit.boss.BarStyle
 import org.bukkit.entity.Player
 
-class BedtimeBossBarUpdater(
+class DailyDemandBossBarUpdater(
   val namespacedKey: NamespacedKey,
 ) {
 
@@ -72,7 +72,7 @@ class BedtimeBossBarUpdater(
 
   // Assume the player list is invalid and get a completely new one.
   // This is called when the object is first constructed but should
-  // also be called if the BedtimeManager feature has just been
+  // also be called if the DailyDemandManager feature has just been
   // enabled, for instance, and has not been sending player join/leave
   // events during the time it was disabled.
   fun updatePlayerList() {

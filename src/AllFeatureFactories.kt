@@ -17,7 +17,7 @@ import com.mercerenies.turtletroll.mimic.MimicListenerFactory
 import com.mercerenies.turtletroll.gravestone.CustomDeathMessageListener
 import com.mercerenies.turtletroll.gravestone.GravestoneListener
 import com.mercerenies.turtletroll.gravestone.DeathScoreboardListener
-import com.mercerenies.turtletroll.gravestone.BedtimeManagerFactory
+import com.mercerenies.turtletroll.demand.DailyDemandManagerFactory
 import com.mercerenies.turtletroll.spillage.SpillageListener
 import com.mercerenies.turtletroll.falling.SandAttackRunnable
 import com.mercerenies.turtletroll.cookie.FreeCookieRunnable
@@ -175,9 +175,9 @@ object AllFeatureFactories {
       RedstoneWorldListenerFactory(CustomDeathMessageListener.DEATH_MESSAGE_KEY),
       TemperatureManagerFactory(CustomDeathMessageListener.DEATH_MESSAGE_KEY),
       WeepingAngelManagerFactory(CustomDeathMessageListener.DEATH_MESSAGE_KEY),
-      // Bedtime (gods) manager and the things that depend on it
-      BedtimeManagerFactory(BedtimeManagerFactory::tieredDifficultySelector),
-      EncumbranceManagerFactory.Default(BedtimeManagerFactory.GODS_FEATURE_KEY),
+      // Daily demands (gods) manager and the things that depend on it
+      DailyDemandManagerFactory(DailyDemandManagerFactory::tieredDifficultySelector),
+      EncumbranceManagerFactory.Default(DailyDemandManagerFactory.GODS_FEATURE_KEY),
     )
 
   fun createComposite(builderState: BuilderState): FeatureContainer {

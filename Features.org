@@ -245,8 +245,8 @@
                        diamond
    + gravestone :: Whenever a player dies, a gravestone appears at the
                    site of death
-   + bedtime :: At dawn, a demand is made by the gods; if that demand
-                is not met, then players cannot sleep that night
+   + demand :: At dawn, a demand is made by the gods; if that demand
+     is not met, then players cannot sleep that night
    + goddesshoe :: Netherite hoes can one-shot any enemy in the game
                    except the Dragon and the Wither
    + oldage :: A player who reaches level 100 dies of old age

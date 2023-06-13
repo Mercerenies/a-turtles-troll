@@ -1,7 +1,7 @@
 
-package com.mercerenies.turtletroll.gravestone.condition
+package com.mercerenies.turtletroll.demand.condition
 
-import com.mercerenies.turtletroll.gravestone.DeathCondition
+import com.mercerenies.turtletroll.demand.DeathCondition
 import com.mercerenies.turtletroll.Weight
 import com.mercerenies.turtletroll.sample
 import com.mercerenies.turtletroll.ext.*
@@ -12,7 +12,7 @@ import com.mercerenies.turtletroll.util.clamp
 // you ever fail, the difficulty drops instead.
 open class DifficultyTierConditionSelector(
   val difficultyClasses: List<DifficultyClass>,
-) : BedtimeConditionSelector {
+) : ConditionSelector {
 
   init {
     if (difficultyClasses.isEmpty()) {

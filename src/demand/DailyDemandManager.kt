@@ -1,5 +1,5 @@
 
-package com.mercerenies.turtletroll.gravestone
+package com.mercerenies.turtletroll.demand
 
 import com.mercerenies.turtletroll.ScheduledEventRunnable
 import com.mercerenies.turtletroll.command.PermittedCommand
@@ -10,7 +10,8 @@ import com.mercerenies.turtletroll.Weight
 import com.mercerenies.turtletroll.sample
 import com.mercerenies.turtletroll.ext.*
 import com.mercerenies.turtletroll.Messages
-import com.mercerenies.turtletroll.gravestone.condition.BedtimeConditionSelector
+import com.mercerenies.turtletroll.demand.condition.ConditionSelector
+import com.mercerenies.turtletroll.gravestone.CauseOfDeath
 
 import org.bukkit.plugin.Plugin
 import org.bukkit.Bukkit
@@ -27,10 +28,10 @@ import org.bukkit.command.CommandSender
 
 import net.kyori.adventure.text.Component
 
-class BedtimeManager(
+class DailyDemandManager(
   plugin: Plugin,
-  private val conditionSelector: BedtimeConditionSelector,
-) : ScheduledEventRunnable<BedtimeManager.State>(plugin), Listener, GodsConditionAccessor {
+  private val conditionSelector: ConditionSelector,
+) : ScheduledEventRunnable<DailyDemandManager.State>(plugin), Listener, GodsConditionAccessor {
 
   companion object {
     val DAWN_TIME = 0L
@@ -42,7 +43,7 @@ class BedtimeManager(
 
     val DISABLED_MESSAGE = Component.text("This feature is currently disabled; the gods are not interfering with your sleep.")
 
-    val COMMAND_PERMISSION = "com.mercerenies.turtletroll.command.bedtime"
+    val COMMAND_PERMISSION = "com.mercerenies.turtletroll.command.demand"
 
     fun requestMessage(condition: DeathCondition): Component =
       Component.text("Today, the gods would like to see someone die ${condition.description}")
@@ -62,7 +63,7 @@ class BedtimeManager(
     Nighttime,
   }
 
-  override val name: String = "bedtime"
+  override val name: String = "demand"
 
   override val description: String = "The gods must be appeased with a condition in order to allow players to sleep"
 
@@ -70,10 +71,10 @@ class BedtimeManager(
 
   private var condition: DeathCondition = DeathCondition.True
 
-  private val bossBarKey: NamespacedKey = NamespacedKey(plugin, "com.mercerenies.turtletroll.bedtime.BedtimeManager.bossBarKey")
-  private val bossBar: BedtimeBossBarUpdater = BedtimeBossBarUpdater(bossBarKey)
+  private val bossBarKey: NamespacedKey = NamespacedKey(plugin, "com.mercerenies.turtletroll.demand.DailyDemandManager.bossBarKey")
+  private val bossBar: DailyDemandBossBarUpdater = DailyDemandBossBarUpdater(bossBarKey)
 
-  val BedtimeCommand = object : TerminalCommand() {
+  val DemandCommand = object : TerminalCommand() {
 
     private fun getMessageToSend(): Component =
       if (!isEnabled()) {
@@ -100,7 +101,7 @@ class BedtimeManager(
   }
 
   val command: Pair<String, PermittedCommand<Command>>
-    get() = "bedtime" to BedtimeCommand.withPermission(COMMAND_PERMISSION)
+    get() = "demand" to DemandCommand.withPermission(COMMAND_PERMISSION)
 
   override fun getGodsStatus(): GodsStatus =
     when {
@@ -131,12 +132,12 @@ class BedtimeManager(
       State.Daytime -> {
         isAppeased = false
         condition = conditionSelector.chooseCondition()
-        bossBar.updateCondition(BedtimeBossBarUpdater.Status.WAITING, condition)
+        bossBar.updateCondition(DailyDemandBossBarUpdater.Status.WAITING, condition)
         Messages.broadcastMessage(requestMessage(condition))
       }
       State.Nighttime -> {
         if (!isAppeased) {
-          bossBar.updateCondition(BedtimeBossBarUpdater.Status.ANGRY)
+          bossBar.updateCondition(DailyDemandBossBarUpdater.Status.ANGRY)
           conditionSelector.onGodsAngered()
           Messages.broadcastMessage(ANGRY_MESSAGE)
         }
@@ -155,7 +156,7 @@ class BedtimeManager(
       if (condition.test(cause)) {
         Messages.broadcastMessage(appeasedMessage(event.entity))
         conditionSelector.onGodsAppeased()
-        bossBar.updateCondition(BedtimeBossBarUpdater.Status.APPEASED)
+        bossBar.updateCondition(DailyDemandBossBarUpdater.Status.APPEASED)
         isAppeased = true
       }
     }

@@ -1,7 +1,7 @@
 
-package com.mercerenies.turtletroll.gravestone.condition
+package com.mercerenies.turtletroll.demand.condition
 
-import com.mercerenies.turtletroll.gravestone.DeathCondition
+import com.mercerenies.turtletroll.demand.DeathCondition
 
 // TODO Validate precondition (conditions is not empty) here, and
 // provide a function to sample (with the non-null assertion)

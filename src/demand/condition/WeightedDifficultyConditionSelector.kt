@@ -1,14 +1,14 @@
 
-package com.mercerenies.turtletroll.gravestone.condition
+package com.mercerenies.turtletroll.demand.condition
 
-import com.mercerenies.turtletroll.gravestone.DeathCondition
+import com.mercerenies.turtletroll.demand.DeathCondition
 import com.mercerenies.turtletroll.Weight
 import com.mercerenies.turtletroll.sample
 import com.mercerenies.turtletroll.ext.*
 
 class WeightedDifficultyConditionSelector(
   val difficultyClasses: List<Weight<DifficultyClass>>,
-) : BedtimeConditionSelector {
+) : ConditionSelector {
 
   init {
     if (difficultyClasses.isEmpty()) {
