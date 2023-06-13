@@ -31,7 +31,7 @@ import net.kyori.adventure.text.Component
 class DailyDemandManager(
   plugin: Plugin,
   private val conditionSelector: ConditionSelector,
-) : ScheduledEventRunnable<DailyDemandManager.State>(plugin), Listener, GodsConditionAccessor {
+) : ScheduledEventRunnable<DailyDemandManager.State>(plugin), Listener, GodsState {
 
   companion object {
     val DAWN_TIME = 0L
@@ -111,6 +111,10 @@ class DailyDemandManager(
       else -> GodsStatus.ANGRY
     }
 
+  override fun setGodsAppeased(isAppeased: Boolean) {
+    this.isAppeased = isAppeased
+  }
+
   override fun enable() {
     super.enable()
     isAppeased = true
@@ -132,12 +136,12 @@ class DailyDemandManager(
       State.Daytime -> {
         isAppeased = false
         condition = conditionSelector.chooseCondition()
-        bossBar.updateCondition(DailyDemandBossBarUpdater.Status.WAITING, condition)
+        bossBar.updateCondition(GodsStatus.IDLE, condition)
         Messages.broadcastMessage(requestMessage(condition))
       }
       State.Nighttime -> {
         if (!isAppeased) {
-          bossBar.updateCondition(DailyDemandBossBarUpdater.Status.ANGRY)
+          bossBar.updateCondition(GodsStatus.ANGRY)
           conditionSelector.onGodsAngered()
           Messages.broadcastMessage(ANGRY_MESSAGE)
         }
@@ -156,7 +160,7 @@ class DailyDemandManager(
       if (condition.test(cause)) {
         Messages.broadcastMessage(appeasedMessage(event.entity))
         conditionSelector.onGodsAppeased()
-        bossBar.updateCondition(DailyDemandBossBarUpdater.Status.APPEASED)
+        bossBar.updateCondition(GodsStatus.APPEASED)
         isAppeased = true
       }
     }

@@ -15,17 +15,13 @@ class DailyDemandBossBarUpdater(
 
   companion object {
 
-    fun barColor(state: Status): BarColor =
+    fun barColor(state: GodsStatus): BarColor =
       when (state) {
-        Status.WAITING -> BarColor.YELLOW
-        Status.APPEASED -> BarColor.YELLOW
-        Status.ANGRY -> BarColor.RED
+        GodsStatus.IDLE -> BarColor.YELLOW
+        GodsStatus.APPEASED -> BarColor.YELLOW
+        GodsStatus.ANGRY -> BarColor.RED
       }
 
-  }
-
-  enum class Status {
-    WAITING, APPEASED, ANGRY,
   }
 
   private var isSetToVisible = true
@@ -36,7 +32,7 @@ class DailyDemandBossBarUpdater(
     BarStyle.SOLID,
   )
   private var deathCondition: DeathCondition = DeathCondition.True
-  private var status: Status = Status.APPEASED
+  private var status: GodsStatus = GodsStatus.APPEASED
 
   init {
     this.setVisible(true)
@@ -46,13 +42,13 @@ class DailyDemandBossBarUpdater(
 
   val barMessage: String
     get() = when (status) {
-      Status.WAITING -> deathCondition.summary
-      Status.APPEASED -> "Appeased"
-      Status.ANGRY -> "The gods are angry!"
+      GodsStatus.IDLE -> deathCondition.summary
+      GodsStatus.APPEASED -> "Appeased"
+      GodsStatus.ANGRY -> "The gods are angry!"
     }
 
   private fun updateStats() {
-    bossBar.setVisible(isSetToVisible && (status != Status.APPEASED))
+    bossBar.setVisible(isSetToVisible && (status != GodsStatus.APPEASED))
     bossBar.setColor(barColor(status))
     bossBar.setTitle(barMessage)
   }
@@ -62,7 +58,7 @@ class DailyDemandBossBarUpdater(
     updateStats()
   }
 
-  fun updateCondition(state: Status, condition: DeathCondition? = null) {
+  fun updateCondition(state: GodsStatus, condition: DeathCondition? = null) {
     if (condition != null) {
       deathCondition = condition
     }
