@@ -29,7 +29,11 @@ abstract class DeathCondition : DailyDemandEvent {
     Messages.broadcastMessage(getRequestMessage())
   }
 
-  open override fun onDayEnd(godsState: GodsState): Unit {}
+  open override fun onDayEnd(godsState: GodsState): Unit {
+    if (!godsState.isAppeased()) {
+      Messages.broadcastMessage(DailyDemandManager.ANGRY_MESSAGE)
+    }
+  }
 
   override fun onDaytimePlayerDeath(event: PlayerDeathEvent, godsState: GodsState): Unit {
     if (!godsState.isAppeased()) {

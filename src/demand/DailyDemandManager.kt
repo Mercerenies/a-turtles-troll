@@ -138,10 +138,10 @@ class DailyDemandManager(
         condition.onDayStart(this)
       }
       State.Nighttime -> {
+        condition.onDayEnd(this)
         if (!isAppeased) {
           bossBar.updateCondition(GodsStatus.ANGRY)
           eventSelector.onGodsAngered()
-          Messages.broadcastMessage(ANGRY_MESSAGE)
         }
       }
     }
