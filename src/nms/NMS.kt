@@ -35,16 +35,16 @@ object NMS {
   // Go to org.bukkit.craftbukkit.*.entity.CraftFallingBlock and look
   // at the implementation of canHurtEntities(). It returns a Boolean.
   // Remember the name of that Boolean (in 1.17, it's 'ap'; in 1.18
-  // and 1.19.2, it's 'aq'). Now go to
+  // and 1.19.2, it's 'aq'; in 1.20.1 it's 'i'). Now go to
   // net.minecraft.world.entity.item.EntityFallingBlock. There should
   // be a method with signature
   //
   // public void ???(float, int)
   //
   // Which sets that variable (again, `ap` in 1.17; 'aq' in
-  // 1.18/1.19.2) to true and sets two other variables to the
-  // arguments. We want to call that function (`b` in 1.17, 1.18,
-  // 1.19.2) with 1.0f and 40.
+  // 1.18/1.19.2; `i` in 1.20.1) to true and sets two other variables
+  // to the arguments. We want to call that function (`b` in 1.17,
+  // 1.18, 1.19.2, and 1.20.1) with 1.0f and 40.
   fun makeFallingBlockHurt(block: FallingBlock) {
     val cls = getClass("entity.CraftFallingBlock")
     val mcBlock = cls.getMethod("getHandle").invoke(block)
@@ -60,9 +60,9 @@ object NMS {
   //
   // There should only be one, and its body should be a large
   // try-catch block which loads a bunch of fields into the NBT
-  // argument and then returns it. (In 1.18 and 1.19.2, this method is
-  // called `f`). That method needs to be called below when we
-  // reassign to mcNbt.
+  // argument and then returns it. (In 1.18, 1.19.2, and 1.20.1, this
+  // method is called `f`). That method needs to be called below when
+  // we reassign to mcNbt.
   //
   // Now go to net.minecraft.nbt.NBTTagCompound and find the method
   // with signature
@@ -71,8 +71,8 @@ object NMS {
   //
   // Again, it should be unique. The body is a one-liner and calls
   // .get on an instance variable of type Map<String, NBTBase>. (This
-  // method is called `c` in 1.18/1.19.2). That method needs to be
-  // accessed as mcNbtGetter below.
+  // method is called `c` in 1.18/1.19.2/1.20.1). That method needs to
+  // be accessed as mcNbtGetter below.
   fun getPlayerParrotInfo(player: Player): ParrotInformation {
     val cls = getClass("entity.CraftPlayer")
     val mcEntity = cls.getMethod("getHandle").invoke(player)
@@ -95,25 +95,27 @@ object NMS {
   //
   // protected EnumInteractionResult ???(EntityHuman, EnumHand)
   //
-  // It is called b on 1.19.2. In this method there should be a few if
-  // statements. We'll use some lines in the second if statement as a
-  // guide. Specifically, the line that uses a MemoryModuleType.
+  // It is called b on 1.19.2/1.20.1. In this method there should be a
+  // few if statements. We'll use some lines in the second if
+  // statement as a guide. Specifically, the line that uses a
+  // MemoryModuleType.
   //
   // Now, go to net.minecraft.world.entity.ai.memory.MemoryModuleType
   // and find the static final field with value "liked_player". This
-  // is aK on 1.19.2.
+  // is aK on 1.19.2, aL on 1.20.1.
   //
   // Go to net.minecraft.world.entity.animal.allay.Allay. Find the
   // method that takes no arguments and returns
-  // BehaviorController<Allay>. It's called dy on 1.19.2.
+  // BehaviorController<Allay>. It's called dy on 1.19.2, dK on
+  // 1.20.1.
   //
   // Now go to net.minecraft.world.entity.Entity and find the
   // zero-argument method that returns a java.util.UUID. It's called
-  // co on 1.19.2.
+  // co on 1.19.2, ct on 1.20.1.
   //
   // Finally, go to net.minecraft.world.entity.ai.BehaviorController
   // and find the non-static method that takes a MemoryModuleType<U>
-  // and a (nullable) U. It's called a on 1.19.2 (and is one of
+  // and a (nullable) U. It's called a on 1.19.2/1.20.1 (and is one of
   // several overloads).
   fun setAllayFriend(allay: Allay, player: Player): Unit {
     val playerCls = getClass("entity.CraftPlayer")
@@ -125,9 +127,9 @@ object NMS {
 
     val mcPlayerEntity = playerCls.getMethod("getHandle").invoke(player)
     val mcAllayEntity = allayCls.getMethod("getHandle").invoke(allay)
-    val memoryModuleType = memoryModuleTypeCls.getField("aK").get(null)
-    val controller = mcAllayCls.getMethod("dy").invoke(mcAllayEntity)
-    val playerUuid = entityCls.getMethod("co").invoke(mcPlayerEntity)
+    val memoryModuleType = memoryModuleTypeCls.getField("aL").get(null)
+    val controller = mcAllayCls.getMethod("dK").invoke(mcAllayEntity)
+    val playerUuid = entityCls.getMethod("ct").invoke(mcPlayerEntity)
     behaviorControllerCls.getMethod("a", memoryModuleTypeCls, Object::class.java).invoke(controller, memoryModuleType, playerUuid)
   }
 

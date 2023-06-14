@@ -67,6 +67,7 @@ class AllayManager(_plugin: Plugin) : RunnableFeature(_plugin), Listener {
       // Make sure the allay is holding flowers.
       val flowerType = FLOWER_BLOCKS_LIST.sample()!!
       inventory.setItem(0, ItemStack(flowerType, 64))
+      allay.equipment.setItemInMainHand(ItemStack(flowerType, 64))
     }
 
   }

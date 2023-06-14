@@ -74,7 +74,7 @@ dependencies {
   // Use the Kotlin JDK 8 standard library.
   implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
-  compileOnly("io.papermc.paper:paper-api:1.19.2-R0.1-SNAPSHOT")
+  compileOnly("io.papermc.paper:paper-api:1.20.1-R0.1-SNAPSHOT")
   compileOnly("net.kyori:adventure-text-serializer-plain:4.14.0")
 
   implementation(
