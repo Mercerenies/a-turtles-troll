@@ -1,6 +1,7 @@
 
 package com.mercerenies.turtletroll
 
+import com.mercerenies.turtletroll.telegraph.MessageTelegrapher
 import com.mercerenies.turtletroll.feature.AbstractFeature
 import com.mercerenies.turtletroll.feature.container.FeatureContainer
 import com.mercerenies.turtletroll.feature.container.ListenerContainer
@@ -26,6 +27,8 @@ class GrassPoisonListener(
 
   private val bootsDamager = BootsDamager(_bootsDamageChance)
 
+  private val telegrapher = MessageTelegrapher("The grass rubs uncomfortably along your legs... was that poison?!")
+
   override val name = "tallgrass"
 
   override val description = "Tall grass poisons and slows its victims"
@@ -39,6 +42,7 @@ class GrassPoisonListener(
     if (BlockTypes.TALL_GRASS.contains(block.type)) {
       val player = event.player
       if (!bootsDamager.tryWearDownBoots(player)) {
+        telegrapher.trigger(player)
         player.addPotionEffect(PotionEffect(PotionEffectType.POISON, Constants.TICKS_PER_SECOND * 5, 0))
         player.addPotionEffect(PotionEffect(PotionEffectType.SLOW, Constants.TICKS_PER_SECOND * 10, 1))
       }
