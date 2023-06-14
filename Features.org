@@ -142,6 +142,8 @@
      "Johnny"
    + solidswap :: Lava running on water creates obsidian, while water
      running on lava created cobblestone
+   + piglins :: Piglins accept diamonds, not gold for bartering;
+     piglins give enchanted armor as a result of bartering
 ** EGG FEATURES
    + eggs :: Almost any mob (or diamonds) can spawn from an egg
    + eggarrow :: Skeletons will fire eggs in addition to arrows
@@ -302,7 +304,8 @@
   + Killing one vector saves everyone
   + Can we make the lava haste force you to move forward?
   + Lore on items when things happen?
-  + Piglins take diamonds and give awesome armor
+  + Enderman only killable with fist
+  + Nethergrass go boom
 ** HATCRAFTER'S IDEAS
    + Polar bears have Haste 3
    + Every hostile mob has a very small chance of dropping a random item
@@ -357,8 +360,6 @@
          and apples
      - Whenever a gold item loses durability, that specific item has a
        small chance of breaking
-   + After using a bed to pass time, the player will gain either
-     slowness, nausea, or blindness for a short time
    + When a player harvests beetroot, small chance a rabbit will spawn
    + When a player damages a zombie pigman, there's a small chance of
      another zombie pigman spawning

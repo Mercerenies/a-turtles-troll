@@ -29,7 +29,7 @@ class AllayManager(_plugin: Plugin) : RunnableFeature(_plugin), Listener {
 
   companion object : FeatureContainerFactory<FeatureContainer> {
 
-    private val FLOWER_BLOCKS_LIST = WitherRoseListener.BLOCKS.toList()
+    private val FLOWER_BLOCKS_LIST = BlockTypes.FLOWERS.toList()
 
     val DISTANCE_SQUARED_LIMIT = 16384.0 // 128 blocks (squared)
 
@@ -63,7 +63,7 @@ class AllayManager(_plugin: Plugin) : RunnableFeature(_plugin), Listener {
 
     val inventory = allay.inventory
     val item = inventory.getItem(0)
-    if ((item == null) || (!WitherRoseListener.BLOCKS.contains(item.type))) {
+    if ((item == null) || (!BlockTypes.FLOWERS.contains(item.type))) {
       // Make sure the allay is holding flowers.
       val flowerType = FLOWER_BLOCKS_LIST.sample()!!
       inventory.setItem(0, ItemStack(flowerType, 64))

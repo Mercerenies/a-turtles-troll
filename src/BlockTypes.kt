@@ -112,6 +112,24 @@ object BlockTypes {
     Material.WATER_BUCKET,
   )
 
+  val ARMORS = setOf(
+    Material.CHAINMAIL_HELMET, Material.CHAINMAIL_CHESTPLATE, Material.CHAINMAIL_LEGGINGS, Material.CHAINMAIL_BOOTS,
+    Material.LEATHER_HELMET, Material.LEATHER_CHESTPLATE, Material.LEATHER_LEGGINGS, Material.LEATHER_BOOTS,
+    Material.IRON_HELMET, Material.IRON_CHESTPLATE, Material.IRON_LEGGINGS, Material.IRON_BOOTS,
+    Material.GOLDEN_HELMET, Material.GOLDEN_CHESTPLATE, Material.GOLDEN_LEGGINGS, Material.GOLDEN_BOOTS,
+    Material.DIAMOND_HELMET, Material.DIAMOND_CHESTPLATE, Material.DIAMOND_LEGGINGS, Material.DIAMOND_BOOTS,
+    Material.NETHERITE_HELMET, Material.NETHERITE_CHESTPLATE, Material.NETHERITE_LEGGINGS, Material.NETHERITE_BOOTS,
+  )
+
+  val FLOWERS = setOf(
+    Material.DANDELION, Material.POPPY, Material.BLUE_ORCHID,
+    Material.ALLIUM, Material.AZURE_BLUET, Material.RED_TULIP, Material.OXEYE_DAISY,
+    Material.CORNFLOWER, Material.LILY_OF_THE_VALLEY, Material.WITHER_ROSE,
+    Material.SUNFLOWER, Material.LILAC, Material.ROSE_BUSH, Material.PEONY,
+    Material.PINK_TULIP, Material.WHITE_TULIP, Material.ORANGE_TULIP,
+    Material.SWEET_BERRY_BUSH,
+  )
+
   // Takes an ore block and turns it into the non-ore block type it's
   // most similar to. Returns the block itself if given a non-ore.
   fun removeOreFrom(material: Material): Material =

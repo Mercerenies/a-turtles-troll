@@ -19,18 +19,8 @@ import org.bukkit.potion.PotionEffectType
 class WitherRoseListener : AbstractFeature(), Listener {
 
   companion object : FeatureContainerFactory<FeatureContainer> {
-    val BLOCKS = setOf(
-      Material.DANDELION, Material.POPPY, Material.BLUE_ORCHID,
-      Material.ALLIUM, Material.AZURE_BLUET, Material.RED_TULIP, Material.OXEYE_DAISY,
-      Material.CORNFLOWER, Material.LILY_OF_THE_VALLEY, Material.WITHER_ROSE,
-      Material.SUNFLOWER, Material.LILAC, Material.ROSE_BUSH, Material.PEONY,
-      Material.PINK_TULIP, Material.WHITE_TULIP, Material.ORANGE_TULIP,
-      Material.SWEET_BERRY_BUSH,
-    )
-
     override fun create(state: BuilderState): FeatureContainer =
       ListenerContainer(WitherRoseListener())
-
   }
 
   private val bootsDamager = BootsDamager()
@@ -45,7 +35,7 @@ class WitherRoseListener : AbstractFeature(), Listener {
       return
     }
     val block = event.getTo().getBlock()
-    if (BLOCKS.contains(block.type)) {
+    if (BlockTypes.FLOWERS.contains(block.type)) {
       if (!bootsDamager.tryWearDownBoots(event.player)) {
         applyWither(event.player)
       }
@@ -63,7 +53,7 @@ class WitherRoseListener : AbstractFeature(), Listener {
     }
 
     val itemStack = event.item.itemStack
-    if (BLOCKS.contains(itemStack.type)) {
+    if (BlockTypes.FLOWERS.contains(itemStack.type)) {
       applyWither(entity)
     }
 

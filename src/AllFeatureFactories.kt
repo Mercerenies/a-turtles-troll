@@ -130,6 +130,7 @@ object AllFeatureFactories {
       ParrotDeathListener,
       ParrotManager,
       PetPhantomManager,
+      PiglinBarterListener,
       PillagerDeathListener,
       PillagerGunListener,
       PokeballManager,
