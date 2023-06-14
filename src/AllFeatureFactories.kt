@@ -105,6 +105,7 @@ object AllFeatureFactories {
       EndStoneListener,
       EscalationListener,
       ExpirationDateListener,
+      ExplodingNyliumListener,
       ExplosiveArrowManager,
       FallDamageListener,
       ForestFireListener,

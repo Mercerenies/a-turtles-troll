@@ -219,6 +219,7 @@
      - When a pumpkin block is broken, it drops melon slices
    + mossrevenge :: When a moss block is broken, small chance of small
      slime to spawn
+   + nylium :: Looking at nylium transforms it into primed TNT
 ** CUSTOM RECIPE FEATURES
    + stonetools :: All recipes which produce stone tools are disabled
    + dirtrecipe :: Nine dirt can be crafted into a stick; nine sticks
