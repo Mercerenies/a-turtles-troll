@@ -10,13 +10,11 @@ import org.bukkit.event.block.BlockPlaceEvent
 import org.bukkit.entity.Player
 import org.bukkit.block.Block
 import org.bukkit.Location
+import org.bukkit.FluidCollisionMode
 import org.bukkit.plugin.Plugin
 
 abstract class OnSightListener(val plugin: Plugin) : AbstractFeature(), Listener {
   val memory = CooldownMemory<Location>(plugin)
-
-  companion object {
-  }
 
   // How many ticks is a block safe after being placed?
   open val safetyDelay: Int = Constants.TICKS_PER_SECOND * 3
@@ -31,8 +29,8 @@ abstract class OnSightListener(val plugin: Plugin) : AbstractFeature(), Listener
       return
     }
     val player = event.getPlayer()
-    val targetBlock = player.getTargetBlock(null, 32)
-    if ((shouldTrigger(player, targetBlock)) && (!memory.contains(targetBlock.location))) {
+    val targetBlock = player.getTargetBlockExact(16, FluidCollisionMode.ALWAYS)
+    if ((targetBlock != null) && (shouldTrigger(player, targetBlock)) && (!memory.contains(targetBlock.location))) {
       performEffect(player, targetBlock)
     }
   }

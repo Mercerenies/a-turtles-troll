@@ -54,6 +54,7 @@ A Turtle's Troll also depends on the following libraries.
 * The gods' death condition feature has been renamed from `bedtime` to
   `demand`.
 * Fixed a bug with the "Lightning" death condition.
+* Fixed a bug with raytracing for `torches`.
 * All messages originating from the plugin have a common prefix now.
 * A Turtle's Troll now depends on Paper, not just Spigot.
 * Switched to Gradle build system, massively improving build times.
