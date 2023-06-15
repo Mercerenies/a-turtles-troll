@@ -42,6 +42,7 @@ A Turtle's Troll also depends on the following libraries.
 * After getting out of bed, you get some random status effects.
 * Any bucket without a custom name will randomly change its contents
   every eight seconds.
+* If a fish is drying out, it will create water to survive.
 * The gods' death conditions are now tiered; harder conditions only
   appear if you've satisfied them a lot recently.
 * When shearing a sheep, the color of wool dropped is randomized.
