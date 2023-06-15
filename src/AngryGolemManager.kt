@@ -8,20 +8,13 @@ import com.mercerenies.turtletroll.feature.container.ManagerContainer
 import com.mercerenies.turtletroll.feature.builder.BuilderState
 import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 import com.mercerenies.turtletroll.location.PlayerSelector
-import com.mercerenies.turtletroll.location.BlockSelector
 
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.entity.EntityTargetEvent
-import org.bukkit.event.entity.CreatureSpawnEvent
 import org.bukkit.entity.IronGolem
-import org.bukkit.entity.TraderLlama
-import org.bukkit.entity.LlamaSpit
-import org.bukkit.entity.Entity
 import org.bukkit.entity.EntityType
-import org.bukkit.World
 import org.bukkit.Bukkit
-import org.bukkit.scheduler.BukkitRunnable
 import org.bukkit.plugin.Plugin
 import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType

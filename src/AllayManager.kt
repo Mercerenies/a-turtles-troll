@@ -12,16 +12,12 @@ import com.mercerenies.turtletroll.ext.*
 
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
-import org.bukkit.event.player.PlayerMoveEvent
 import org.bukkit.event.entity.EntitySpawnEvent
-import org.bukkit.event.entity.EntityDamageEvent
-import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
 import org.bukkit.entity.Entity
 import org.bukkit.entity.Allay
 import org.bukkit.entity.Player
 import org.bukkit.plugin.Plugin
-import org.bukkit.attribute.Attribute
 import org.bukkit.inventory.ItemStack
 import org.bukkit.Bukkit
 

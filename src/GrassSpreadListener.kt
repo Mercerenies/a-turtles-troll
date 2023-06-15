@@ -10,8 +10,6 @@ import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.block.BlockSpreadEvent
-import org.bukkit.potion.PotionEffect
-import org.bukkit.potion.PotionEffectType
 import org.bukkit.Material
 
 import kotlin.random.Random
