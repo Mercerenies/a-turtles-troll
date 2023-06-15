@@ -6,11 +6,12 @@ import org.bukkit.Material
 
 fun toSpawnEgg(entityType: EntityType): Material? =
   when (entityType) {
-    //EntityType.ALLAY -> Material.ALLAY_SPAWN_EGG // <- When we update to 1.19
+    EntityType.ALLAY -> Material.ALLAY_SPAWN_EGG
     EntityType.AXOLOTL -> Material.AXOLOTL_SPAWN_EGG
     EntityType.BAT -> Material.BAT_SPAWN_EGG
     EntityType.BEE -> Material.BEE_SPAWN_EGG
     EntityType.BLAZE -> Material.BLAZE_SPAWN_EGG
+    EntityType.CAMEL -> Material.CAMEL_SPAWN_EGG
     EntityType.CAT -> Material.CAT_SPAWN_EGG
     EntityType.CAVE_SPIDER -> Material.CAVE_SPIDER_SPAWN_EGG
     EntityType.CHICKEN -> Material.CHICKEN_SPAWN_EGG
@@ -26,7 +27,7 @@ fun toSpawnEgg(entityType: EntityType): Material? =
     EntityType.ENDERMITE -> Material.ENDERMITE_SPAWN_EGG
     EntityType.EVOKER -> Material.EVOKER_SPAWN_EGG
     EntityType.FOX -> Material.FOX_SPAWN_EGG
-    //EntityType.FROG -> Material.FROG_SPAWN_EGG // <- When we update to 1.19
+    EntityType.FROG -> Material.FROG_SPAWN_EGG
     EntityType.GHAST -> Material.GHAST_SPAWN_EGG
     EntityType.GIANT -> null
     EntityType.GLOW_SQUID -> Material.GLOW_SQUID_SPAWN_EGG
@@ -60,12 +61,13 @@ fun toSpawnEgg(entityType: EntityType): Material? =
     EntityType.SKELETON -> Material.SKELETON_SPAWN_EGG
     EntityType.SKELETON_HORSE -> Material.SKELETON_HORSE_SPAWN_EGG
     EntityType.SLIME -> Material.SLIME_SPAWN_EGG
+    EntityType.SNIFFER -> Material.SNIFFER_SPAWN_EGG
     EntityType.SNOWMAN -> null
     EntityType.SPIDER -> Material.SPIDER_SPAWN_EGG
     EntityType.SQUID -> Material.SQUID_SPAWN_EGG
     EntityType.STRAY -> Material.STRAY_SPAWN_EGG
     EntityType.STRIDER -> Material.STRIDER_SPAWN_EGG
-    //EntityType.TADPOLE -> Material.TADPOLE_SPAWN_EGG // <- When we update to 1.19
+    EntityType.TADPOLE -> Material.TADPOLE_SPAWN_EGG
     EntityType.TRADER_LLAMA -> Material.TRADER_LLAMA_SPAWN_EGG
     EntityType.TROPICAL_FISH -> Material.TROPICAL_FISH_SPAWN_EGG
     EntityType.TURTLE -> Material.TURTLE_SPAWN_EGG
@@ -73,7 +75,7 @@ fun toSpawnEgg(entityType: EntityType): Material? =
     EntityType.VILLAGER -> Material.VILLAGER_SPAWN_EGG
     EntityType.VINDICATOR -> Material.VINDICATOR_SPAWN_EGG
     EntityType.WANDERING_TRADER -> Material.WANDERING_TRADER_SPAWN_EGG
-    //EntityType.WARDEN -> Material.WARDEN_SPAWN_EGG // <- When we update to 1.19
+    EntityType.WARDEN -> Material.WARDEN_SPAWN_EGG
     EntityType.WITCH -> Material.WITCH_SPAWN_EGG
     EntityType.WITHER -> null
     EntityType.WITHER_SKELETON -> Material.WITHER_SKELETON_SPAWN_EGG

@@ -5,11 +5,12 @@ import org.bukkit.entity.EntityType
 
 fun speciesCaptureRate(entityType: EntityType): Int =
   when (entityType) {
-    //EntityType.ALLAY -> 220 // <- When we update to 1.19
+    EntityType.ALLAY -> 220
     EntityType.AXOLOTL -> 240
     EntityType.BAT -> 255
     EntityType.BEE -> 245
     EntityType.BLAZE -> 40
+    EntityType.CAMEL -> 210
     EntityType.CAT -> 230
     EntityType.CAVE_SPIDER -> 80
     EntityType.CHICKEN -> 180
@@ -25,7 +26,7 @@ fun speciesCaptureRate(entityType: EntityType): Int =
     EntityType.ENDERMITE -> 200
     EntityType.EVOKER -> 50
     EntityType.FOX -> 255
-    //EntityType.FROG -> 255 // <- When we update to 1.19
+    EntityType.FROG -> 255
     EntityType.GHAST -> 65
     EntityType.GIANT -> 70
     EntityType.GLOW_SQUID -> 240
@@ -59,12 +60,13 @@ fun speciesCaptureRate(entityType: EntityType): Int =
     EntityType.SKELETON -> 120
     EntityType.SKELETON_HORSE -> 130
     EntityType.SLIME -> 150
+    EntityType.SNIFFER -> 220
     EntityType.SNOWMAN -> 255
     EntityType.SPIDER -> 100
     EntityType.SQUID -> 255
     EntityType.STRAY -> 120
     EntityType.STRIDER -> 255
-    //EntityType.TADPOLE -> 255 // <- When we update to 1.19
+    EntityType.TADPOLE -> 255
     EntityType.TRADER_LLAMA -> 190
     EntityType.TROPICAL_FISH -> 255
     EntityType.TURTLE -> 240
@@ -72,7 +74,7 @@ fun speciesCaptureRate(entityType: EntityType): Int =
     EntityType.VILLAGER -> 255
     EntityType.VINDICATOR -> 90
     EntityType.WANDERING_TRADER -> 255
-    //EntityType.WARDEN -> 3 // <- When we update to 1.19
+    EntityType.WARDEN -> 3
     EntityType.WITCH -> 100
     EntityType.WITHER -> 0
     EntityType.WITHER_SKELETON -> 10
