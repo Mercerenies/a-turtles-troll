@@ -8,6 +8,7 @@ import org.bukkit.block.BlockFace
 import org.bukkit.block.Sign
 import org.bukkit.block.`data`.`type`.WallSign
 import org.bukkit.Material
+import org.bukkit.block.sign.Side
 
 object ClassicGravestoneSpawner : GravestoneSpawner() {
 
@@ -34,9 +35,7 @@ object ClassicGravestoneSpawner : GravestoneSpawner() {
 
     val blockState = signBlock.state
     if (blockState is Sign) {
-      for (index in 0..3) {
-        blockState.line(index, inscriptions.getLine(index))
-      }
+      inscriptions.printTo(blockState.getSide(Side.FRONT))
     }
     blockState.update()
 

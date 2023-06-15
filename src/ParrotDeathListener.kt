@@ -23,6 +23,7 @@ import org.bukkit.entity.HumanEntity
 import org.bukkit.scheduler.BukkitRunnable
 import org.bukkit.block.`data`.`type`.WallSign
 import org.bukkit.block.Sign
+import org.bukkit.block.sign.Side
 import org.bukkit.plugin.Plugin
 
 import net.kyori.adventure.text.Component
@@ -60,9 +61,7 @@ class ParrotDeathListener(val plugin: Plugin) : AbstractFeature(), Listener {
 
       val blockState = signBlock.state
       if (blockState is Sign) {
-        for (index in 0..3) {
-          blockState.line(index, inscriptions.getLine(index))
-        }
+        inscriptions.printTo(blockState.getSide(Side.FRONT))
       }
       blockState.update()
 
