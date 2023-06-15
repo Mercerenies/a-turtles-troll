@@ -6,17 +6,12 @@ import com.mercerenies.turtletroll.command.PermittedCommand
 import com.mercerenies.turtletroll.command.Command
 import com.mercerenies.turtletroll.command.TerminalCommand
 import com.mercerenies.turtletroll.command.withPermission
-import com.mercerenies.turtletroll.Weight
-import com.mercerenies.turtletroll.sample
 import com.mercerenies.turtletroll.ext.*
 import com.mercerenies.turtletroll.Messages
 import com.mercerenies.turtletroll.demand.event.EventSelector
-import com.mercerenies.turtletroll.gravestone.CauseOfDeath
 
 import org.bukkit.plugin.Plugin
-import org.bukkit.Bukkit
 import org.bukkit.NamespacedKey
-import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
 import org.bukkit.event.entity.PlayerDeathEvent

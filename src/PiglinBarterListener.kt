@@ -14,24 +14,16 @@ import org.bukkit.scheduler.BukkitRunnable
 import org.bukkit.enchantments.Enchantment
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
-import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.bukkit.event.entity.CreatureSpawnEvent
 import org.bukkit.event.entity.PiglinBarterEvent
 import org.bukkit.event.world.ChunkPopulateEvent
-import org.bukkit.entity.Chicken
-import org.bukkit.entity.PufferFish
-import org.bukkit.entity.Zombie
 import org.bukkit.entity.EntityType
 import org.bukkit.entity.Entity
 import org.bukkit.entity.Piglin
-import org.bukkit.Location
 import org.bukkit.Chunk
-import org.bukkit.GameRule
 import org.bukkit.Material
 import org.bukkit.plugin.Plugin
 import org.bukkit.inventory.ItemStack
-
-import kotlin.random.Random
 
 class PiglinBarterListener(
   val plugin: Plugin,

@@ -17,9 +17,7 @@ import org.bukkit.block.BlockFace
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.entity.EntityDeathEvent
-import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.bukkit.entity.Parrot
-import org.bukkit.entity.HumanEntity
 import org.bukkit.scheduler.BukkitRunnable
 import org.bukkit.block.`data`.`type`.WallSign
 import org.bukkit.block.Sign

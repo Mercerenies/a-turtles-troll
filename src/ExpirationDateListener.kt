@@ -6,14 +6,12 @@ import com.mercerenies.turtletroll.feature.container.FeatureContainer
 import com.mercerenies.turtletroll.feature.container.ListenerContainer
 import com.mercerenies.turtletroll.feature.builder.BuilderState
 import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
-import com.mercerenies.turtletroll.location.PlayerSelector
 
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerItemConsumeEvent
 import org.bukkit.entity.Slime
 import org.bukkit.Material
-import org.bukkit.Bukkit
 
 import kotlin.random.Random
 

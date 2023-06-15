@@ -11,18 +11,13 @@ import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.entity.PlayerDeathEvent
-import org.bukkit.event.entity.EntityDamageByEntityEvent
-import org.bukkit.entity.EntityType
 import org.bukkit.entity.Player
 import org.bukkit.scheduler.BukkitRunnable
 import org.bukkit.plugin.Plugin
-import org.bukkit.Location
 import org.bukkit.Bukkit
 import org.bukkit.GameRule
 
 import net.kyori.adventure.text.Component
-
-import kotlin.random.Random
 
 class GrievingWidowListener(
   val plugin: Plugin,

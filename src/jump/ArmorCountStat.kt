@@ -6,7 +6,6 @@ import com.mercerenies.turtletroll.util.*
 import org.bukkit.Material
 import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
-import org.bukkit.inventory.Inventory
 
 abstract class ArmorCountStat() : EncumbranceStat {
 

@@ -2,7 +2,6 @@
 package com.mercerenies.turtletroll.demand.event
 
 import com.mercerenies.turtletroll.demand.DailyDemandEvent
-import com.mercerenies.turtletroll.Weight
 import com.mercerenies.turtletroll.sample
 import com.mercerenies.turtletroll.ext.*
 import com.mercerenies.turtletroll.util.clamp

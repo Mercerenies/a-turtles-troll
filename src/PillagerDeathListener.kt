@@ -10,12 +10,8 @@ import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.entity.EntityDeathEvent
-import org.bukkit.event.entity.EntityExplodeEvent
-import org.bukkit.entity.EntityType
 import org.bukkit.entity.Pillager
 import org.bukkit.entity.Slime
-import org.bukkit.inventory.ItemStack
-import org.bukkit.Material
 import org.bukkit.plugin.Plugin
 import org.bukkit.scheduler.BukkitRunnable
 import org.bukkit.Location

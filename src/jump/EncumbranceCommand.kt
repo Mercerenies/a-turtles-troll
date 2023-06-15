@@ -3,10 +3,8 @@ package com.mercerenies.turtletroll.jump
 
 import com.mercerenies.turtletroll.feature.HasEnabledStatus
 import com.mercerenies.turtletroll.command.TerminalCommand
-import com.mercerenies.turtletroll.Constants
 import com.mercerenies.turtletroll.Messages
 
-import org.bukkit.entity.ArmorStand
 import org.bukkit.entity.Player
 import org.bukkit.command.CommandSender
 

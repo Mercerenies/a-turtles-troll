@@ -7,21 +7,13 @@ import com.mercerenies.turtletroll.feature.container.FeatureContainer
 import com.mercerenies.turtletroll.feature.container.ListenerContainer
 import com.mercerenies.turtletroll.feature.builder.BuilderState
 import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
-import com.mercerenies.turtletroll.location.PlayerSelector
-import com.mercerenies.turtletroll.location.BlockSelector
 
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.entity.ProjectileHitEvent
-import org.bukkit.event.entity.CreatureSpawnEvent
-import org.bukkit.entity.Llama
-import org.bukkit.entity.TraderLlama
 import org.bukkit.entity.Snowball
 import org.bukkit.entity.Entity
 import org.bukkit.entity.Player
-import org.bukkit.entity.EntityType
-import org.bukkit.World
-import org.bukkit.Bukkit
 import org.bukkit.scheduler.BukkitRunnable
 import org.bukkit.plugin.Plugin
 

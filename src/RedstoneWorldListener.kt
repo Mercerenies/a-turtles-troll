@@ -6,10 +6,6 @@ import com.mercerenies.turtletroll.gravestone.CustomDeathMessageRegistry
 import com.mercerenies.turtletroll.gravestone.CustomDeathMessage
 import com.mercerenies.turtletroll.gravestone.Redstone
 import com.mercerenies.turtletroll.feature.AbstractFeature
-import com.mercerenies.turtletroll.feature.container.FeatureContainer
-import com.mercerenies.turtletroll.feature.container.ListenerContainer
-import com.mercerenies.turtletroll.feature.builder.BuilderState
-import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 import com.mercerenies.turtletroll.util.lerp
 import com.mercerenies.turtletroll.util.clamp
 
@@ -18,7 +14,6 @@ import org.bukkit.event.Listener
 import org.bukkit.event.entity.EntityDeathEvent
 import org.bukkit.event.entity.EntityPickupItemEvent
 import org.bukkit.entity.Entity
-import org.bukkit.entity.EntityType
 import org.bukkit.inventory.ItemStack
 import org.bukkit.Material
 import org.bukkit.entity.Player

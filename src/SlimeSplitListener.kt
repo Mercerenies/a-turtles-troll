@@ -10,14 +10,7 @@ import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.entity.CreatureSpawnEvent
-import org.bukkit.entity.EntityType
-import org.bukkit.entity.Player
 import org.bukkit.entity.Slime
-import org.bukkit.scheduler.BukkitRunnable
-import org.bukkit.plugin.Plugin
-import org.bukkit.Location
-
-import kotlin.random.Random
 
 class SlimeSplitListener() : AbstractFeature(), Listener {
 

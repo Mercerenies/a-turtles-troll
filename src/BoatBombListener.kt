@@ -10,14 +10,10 @@ import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 import org.bukkit.event.EventHandler
 import org.bukkit.event.vehicle.VehicleMoveEvent
 import org.bukkit.event.Listener
-import org.bukkit.event.entity.ProjectileLaunchEvent
-import org.bukkit.entity.Blaze
-import org.bukkit.entity.EntityType
 import org.bukkit.entity.Boat
 import org.bukkit.plugin.Plugin
 import org.bukkit.metadata.FixedMetadataValue
 import org.bukkit.GameRule
-import org.bukkit.Bukkit
 
 import kotlin.math.max
 import kotlin.math.abs

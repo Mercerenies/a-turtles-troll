@@ -7,12 +7,9 @@ import com.mercerenies.turtletroll.command.TerminalCommand
 import com.mercerenies.turtletroll.command.UnaryCommand
 import com.mercerenies.turtletroll.Messages
 
-import org.bukkit.Bukkit
 import org.bukkit.command.CommandSender
 
 import net.kyori.adventure.text.Component
-
-import kotlin.collections.joinToString
 
 class FeatureManager(val features: List<Feature>) {
 

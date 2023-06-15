@@ -9,7 +9,6 @@ import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 
 import org.bukkit.entity.Warden
 import org.bukkit.entity.Player
-import org.bukkit.entity.EntityType
 import org.bukkit.plugin.Plugin
 import org.bukkit.scheduler.BukkitRunnable
 import org.bukkit.block.Block

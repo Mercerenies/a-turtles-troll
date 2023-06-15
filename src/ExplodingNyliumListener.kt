@@ -13,11 +13,6 @@ import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerMoveEvent
 import org.bukkit.FluidCollisionMode
-import org.bukkit.Location
-import org.bukkit.scheduler.BukkitRunnable
-import org.bukkit.plugin.Plugin
-
-import kotlin.collections.HashSet
 
 class ExplodingNyliumListener() : AbstractFeature(), Listener {
 

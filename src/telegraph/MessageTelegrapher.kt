@@ -7,10 +7,6 @@ import org.bukkit.entity.Player
 
 import net.kyori.adventure.text.Component
 
-import kotlin.collections.HashSet
-
-import java.util.UUID
-
 // A Telegrapher which sends a message
 class MessageTelegrapher(
   val messageSupplier: (Player) -> Component,

@@ -2,8 +2,6 @@
 package com.mercerenies.turtletroll.gravestone
 
 import net.kyori.adventure.text.Component
-import org.bukkit.block.Sign
-import org.bukkit.block.sign.Side
 import org.bukkit.block.sign.SignSide
 
 interface Inscriptions {

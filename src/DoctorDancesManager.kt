@@ -11,19 +11,11 @@ import com.mercerenies.turtletroll.util.*
 
 import org.bukkit.plugin.Plugin
 import org.bukkit.Bukkit
-import org.bukkit.NamespacedKey
 import org.bukkit.Material
 import org.bukkit.entity.Player
-import org.bukkit.entity.EnderDragon
-import org.bukkit.entity.EnderCrystal
-import org.bukkit.entity.TNTPrimed
 import org.bukkit.event.Listener
 import org.bukkit.event.EventHandler
-import org.bukkit.event.entity.EntityDamageEvent
 import org.bukkit.event.entity.PlayerDeathEvent
-import org.bukkit.event.player.PlayerQuitEvent
-import org.bukkit.persistence.PersistentDataType
-import org.bukkit.attribute.Attribute
 import org.bukkit.inventory.ItemStack
 import org.bukkit.inventory.meta.Damageable
 import org.bukkit.enchantments.Enchantment

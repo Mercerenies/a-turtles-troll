@@ -3,8 +3,6 @@ package com.mercerenies.turtletroll.jump
 
 import com.mercerenies.turtletroll.ext.*
 
-import org.bukkit.entity.Player
-
 import net.kyori.adventure.text.Component
 
 interface EncumbranceContribution {
