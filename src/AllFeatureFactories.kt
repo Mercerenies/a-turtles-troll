@@ -140,6 +140,7 @@ object AllFeatureFactories {
       RavagerSpawnerListener,
       SaddleListener,
       SandAttackRunnable,
+      SheepColorListener,
       ShieldSurfListener,
       SilverfishBurnRunnable,
       SkeletonWitherListener,

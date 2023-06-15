@@ -144,6 +144,8 @@
      running on lava created cobblestone
    + piglins :: Piglins accept diamonds, not gold for bartering;
      piglins give enchanted armor as a result of bartering
+   + sheepcolor :: When shearing a sheep, the color of wool dropped is
+     randomized
 ** EGG FEATURES
    + eggs :: Almost any mob (or diamonds) can spawn from an egg
    + eggarrow :: Skeletons will fire eggs in addition to arrows
