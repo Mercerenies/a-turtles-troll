@@ -63,4 +63,3 @@ abstract class ArmorCountStat() : EncumbranceStat {
   }
 
 }
-

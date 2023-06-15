@@ -79,7 +79,7 @@ class WardenSummonRunnable(plugin: Plugin) : RunnableFeature(plugin) {
     }
   }
 
-  private fun summonWarden(sourcePlayer: Player): Unit {
+  private fun summonWarden(sourcePlayer: Player) {
     if (recentSummons.contains(sourcePlayer)) {
       // In the name of sanity, don't spam wardens on the same player
       // in rapid succession.

@@ -102,7 +102,7 @@ class DoctorDancesManager(
 
   private fun rewardPlayer(player: Player, reward: Reward) {
     val message = Component.text("The Doctor dances, and you're rewarded with ")
-                    .append(reward.toComponent())
+      .append(reward.toComponent())
     Messages.sendMessage(player, message)
     reward.giveToPlayer(player)
   }

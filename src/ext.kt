@@ -90,5 +90,5 @@ infix fun<K, V> Map<K, V>.union(that: Map<K, V>): Map<K, V> {
 fun Component.append(text: String): Component =
   this.append(Component.text(text))
 
-fun<C: BuildableComponent<C, B>, B: ComponentBuilder<C, B>> ComponentBuilder<C, B>.append(text: String): B =
+fun<C : BuildableComponent<C, B>, B : ComponentBuilder<C, B>> ComponentBuilder<C, B>.append(text: String): B =
   this.append(Component.text(text))

@@ -91,13 +91,12 @@ class PetPhantomManager(
     // Protect phantoms from fire
     if (entity is Phantom) {
       if (knownPhantoms.containsValue(entity)) {
-          event.setCancelled(true)
-          entity.setFireTicks(0)
+        event.setCancelled(true)
+        entity.setFireTicks(0)
       }
     }
 
   }
-
 
   private fun spawnPhantom(player: Player): Phantom? {
     val loc = player.location.clone()

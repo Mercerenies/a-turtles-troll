@@ -97,7 +97,7 @@ fun joinWithCommas(components: List<Component>): Component {
   val builder = Component.text()
   for (component in components) {
     if (first) {
-      first = false;
+      first = false
     } else {
       builder.append(", ")
     }

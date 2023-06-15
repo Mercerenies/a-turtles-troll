@@ -14,7 +14,7 @@ object Hats {
 
   private val customHatNames: Set<String> =
     setOf(
-      //Evanski hats
+      // Evanski's Hats
       "arrow hat",
       "barrel hat",
       "cauldron hat",

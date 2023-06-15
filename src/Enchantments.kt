@@ -11,7 +11,7 @@ object Enchantments {
     val level: Int,
   )
 
-  fun ItemStack.addEnchantment(enchantmentData: EnchantmentData): Unit {
+  fun ItemStack.addEnchantment(enchantmentData: EnchantmentData) {
     addEnchantment(enchantmentData.enchantment, enchantmentData.level)
   }
 

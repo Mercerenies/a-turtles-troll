@@ -65,7 +65,7 @@ class PiglinBarterListener(
     override fun create(state: BuilderState): FeatureContainer =
       ListenerContainer(PiglinBarterListener(state.plugin))
 
-    private fun removeAllBarters(piglin: Piglin): Unit {
+    private fun removeAllBarters(piglin: Piglin) {
       val barters = piglin.barterList.toList()
       for (barter in barters) {
         piglin.removeBarterMaterial(barter)
@@ -76,7 +76,7 @@ class PiglinBarterListener(
       }
     }
 
-    private fun setupPiglin(piglin: Piglin): Unit {
+    private fun setupPiglin(piglin: Piglin) {
       removeAllBarters(piglin)
       piglin.addBarterMaterial(Material.DIAMOND)
       piglin.addMaterialOfInterest(Material.DIAMOND)

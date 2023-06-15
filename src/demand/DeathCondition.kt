@@ -25,17 +25,17 @@ abstract class DeathCondition : DailyDemandEvent {
   open fun appeasedMessage(player: Player): Component =
     Component.text("").append(player.displayName()).append(" has appeased the gods! You may sleep tonight.")
 
-  open override fun onDayStart(godsState: GodsState): Unit {
+  open override fun onDayStart(godsState: GodsState) {
     Messages.broadcastMessage(getRequestMessage())
   }
 
-  open override fun onDayEnd(godsState: GodsState): Unit {
+  open override fun onDayEnd(godsState: GodsState) {
     if (!godsState.isAppeased()) {
       Messages.broadcastMessage(DailyDemandManager.ANGRY_MESSAGE)
     }
   }
 
-  override fun onDaytimePlayerDeath(event: PlayerDeathEvent, godsState: GodsState): Unit {
+  override fun onDaytimePlayerDeath(event: PlayerDeathEvent, godsState: GodsState) {
     if (!godsState.isAppeased()) {
       val cause = CauseOfDeath.identify(event)
       if (this.test(cause)) {

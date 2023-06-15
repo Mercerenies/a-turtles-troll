@@ -117,7 +117,7 @@ object NMS {
   // and find the non-static method that takes a MemoryModuleType<U>
   // and a (nullable) U. It's called a on 1.19.2/1.20.1 (and is one of
   // several overloads).
-  fun setAllayFriend(allay: Allay, player: Player): Unit {
+  fun setAllayFriend(allay: Allay, player: Player) {
     val playerCls = getClass("entity.CraftPlayer")
     val allayCls = getClass("entity.CraftAllay")
     val memoryModuleTypeCls = Class.forName("net.minecraft.world.entity.ai.memory.MemoryModuleType")

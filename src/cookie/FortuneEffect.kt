@@ -44,10 +44,10 @@ class FortuneEffect(
     val player = action.player
     val fortune = chooseFortune()
     val book = makeBook(fortune)
-    Messages.sendMessage(player,
-                         Component.text("That cookie had a fortune inside it: \"")
-                         .append(fortune)
-                         .append("\"!"))
+    val fortuneMessage = Component.text("That cookie had a fortune inside it: \"")
+      .append(fortune)
+      .append("\"!")
+    Messages.sendMessage(player, fortuneMessage)
     AllItems.give(player, book)
   }
 
