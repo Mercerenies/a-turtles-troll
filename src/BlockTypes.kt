@@ -58,7 +58,7 @@ object BlockTypes {
     Material.OXIDIZED_CUT_COPPER_SLAB, Material.POLISHED_DEEPSLATE_SLAB,
     Material.WAXED_CUT_COPPER_SLAB, Material.WAXED_EXPOSED_CUT_COPPER_SLAB,
     Material.WAXED_OXIDIZED_CUT_COPPER_SLAB, Material.WEATHERED_CUT_COPPER_SLAB,
-    Material.MANGROVE_SLAB,
+    Material.MANGROVE_SLAB, Material.BAMBOO_SLAB, Material.CHERRY_SLAB,
   )
 
   val STAIRS = setOf(
@@ -81,7 +81,7 @@ object BlockTypes {
     Material.OXIDIZED_CUT_COPPER_STAIRS, Material.POLISHED_DEEPSLATE_STAIRS,
     Material.WAXED_CUT_COPPER_STAIRS, Material.WAXED_EXPOSED_CUT_COPPER_STAIRS,
     Material.WAXED_OXIDIZED_CUT_COPPER_STAIRS, Material.WEATHERED_CUT_COPPER_STAIRS,
-    Material.MANGROVE_STAIRS,
+    Material.MANGROVE_STAIRS, Material.BAMBOO_STAIRS, Material.CHERRY_STAIRS,
   )
 
   val LOGS = setOf(
@@ -89,6 +89,8 @@ object BlockTypes {
     Material.OAK_LOG, Material.SPRUCE_LOG, Material.STRIPPED_ACACIA_LOG, Material.STRIPPED_BIRCH_LOG,
     Material.STRIPPED_DARK_OAK_LOG, Material.STRIPPED_JUNGLE_LOG, Material.STRIPPED_OAK_LOG,
     Material.STRIPPED_SPRUCE_LOG, Material.MANGROVE_LOG, Material.STRIPPED_MANGROVE_LOG,
+    Material.BAMBOO_BLOCK, Material.STRIPPED_BAMBOO_BLOCK, Material.CHERRY_LOG,
+    Material.STRIPPED_CHERRY_LOG,
   )
 
   val PLANKS = setOf(
@@ -96,13 +98,14 @@ object BlockTypes {
     Material.OAK_PLANKS, Material.SPRUCE_PLANKS, Material.MANGROVE_PLANKS,
     Material.STRIPPED_ACACIA_WOOD, Material.STRIPPED_BIRCH_WOOD, Material.STRIPPED_DARK_OAK_WOOD,
     Material.STRIPPED_JUNGLE_WOOD, Material.STRIPPED_OAK_WOOD, Material.STRIPPED_SPRUCE_WOOD,
-    Material.STRIPPED_MANGROVE_WOOD,
+    Material.STRIPPED_MANGROVE_WOOD, Material.BAMBOO_PLANKS, Material.CHERRY_WOOD,
+    Material.STRIPPED_CHERRY_WOOD,
   )
 
   val LEAVES = setOf(
     Material.ACACIA_LEAVES, Material.AZALEA_LEAVES, Material.BIRCH_LEAVES, Material.DARK_OAK_LEAVES,
     Material.FLOWERING_AZALEA_LEAVES, Material.OAK_LEAVES, Material.JUNGLE_LEAVES, Material.SPRUCE_LEAVES,
-    Material.MANGROVE_LEAVES,
+    Material.MANGROVE_LEAVES, Material.CHERRY_LEAVES,
   )
 
   val BUCKETS = setOf(
@@ -127,7 +130,7 @@ object BlockTypes {
     Material.CORNFLOWER, Material.LILY_OF_THE_VALLEY, Material.WITHER_ROSE,
     Material.SUNFLOWER, Material.LILAC, Material.ROSE_BUSH, Material.PEONY,
     Material.PINK_TULIP, Material.WHITE_TULIP, Material.ORANGE_TULIP,
-    Material.SWEET_BERRY_BUSH,
+    Material.SWEET_BERRY_BUSH, Material.TORCHFLOWER,
   )
 
   // Takes an ore block and turns it into the non-ore block type it's
