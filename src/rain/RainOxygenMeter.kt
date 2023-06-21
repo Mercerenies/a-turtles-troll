@@ -9,9 +9,13 @@ import com.mercerenies.turtletroll.gravestone.Vanilla
 
 import org.bukkit.entity.Player
 import org.bukkit.event.entity.EntityDamageEvent
+import org.bukkit.potion.PotionEffectType
+import org.bukkit.enchantments.Enchantment
 import org.bukkit.GameRule
 
 import net.kyori.adventure.text.Component
+
+import kotlin.random.Random
 
 class RainOxygenMeter(
   private val player: Player,
@@ -44,12 +48,37 @@ class RainOxygenMeter(
       if (airAmount <= 0) {
         dealDamage()
       } else {
-        airAmount -= 1
+        depleteOxygen()
       }
     } else {
       airAmount += 2
     }
     println("" + player + " " + airAmount)
+  }
+
+  private fun hasWaterBreathing(): Boolean =
+    player.getPotionEffect(PotionEffectType.WATER_BREATHING) != null
+
+  private fun getRespirationLevel(): Int {
+    val helmet = player.equipment.helmet
+    if (helmet != null) {
+      return helmet.getEnchantmentLevel(Enchantment.OXYGEN)
+    } else {
+      return 0
+    }
+  }
+
+  private fun depleteOxygen() {
+    if (hasWaterBreathing()) {
+      // Totally immune; skip
+      return
+    }
+    val respirationLevel = getRespirationLevel().toDouble()
+    if (Random.nextDouble() < respirationLevel / (respirationLevel + 1)) {
+      // Got the respiration tick; skip
+      return
+    }
+    airAmount -= 1
   }
 
   private fun dealDamage() {
