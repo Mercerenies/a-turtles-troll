@@ -33,6 +33,8 @@ A Turtle's Troll also depends on the following libraries.
 
 ### Version 1.20
 
+* Starting with version 1.20, A Turtle's Troll is now licensed under
+  the GNU GPL v3 or later.
 * A Turtle's Troll has been updated to run in Minecraft 1.20.1.
 * Looking at nylium transforms it into primed TNT.
 * Jumps may fail if you're overencumbered.
@@ -367,3 +369,20 @@ A Turtle's Troll also depends on the following libraries.
 ### Version 1.0
 
 * Initial release
+
+## Licensing
+
+Copyright 2022, 2023 Silvio Mayolo
+
+A Turtle's Troll is free software licensed under the GNU General
+Public License as published by the Free Software Foundation, either
+version 3 of the License, or (at your option) any later version.
+
+A Turtle's Troll is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with A Turtle's Troll. If not, see
+https://www.gnu.org/licenses/.
