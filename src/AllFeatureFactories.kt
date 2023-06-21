@@ -8,6 +8,7 @@ import com.mercerenies.turtletroll.feature.container.CompositeDropFeatureContain
 import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 import com.mercerenies.turtletroll.feature.builder.BuilderState
 import com.mercerenies.turtletroll.chicken.ChickenDamageListener
+import com.mercerenies.turtletroll.rain.RainwaterManagerFactory
 import com.mercerenies.turtletroll.transformed.GhastSpawnerListener
 import com.mercerenies.turtletroll.transformed.RavagerSpawnerListener
 import com.mercerenies.turtletroll.transformed.DrownedSpawnerListener
@@ -180,6 +181,7 @@ object AllFeatureFactories {
       RedstoneWorldListenerFactory(CustomDeathMessageListener.DEATH_MESSAGE_KEY),
       TemperatureManagerFactory(CustomDeathMessageListener.DEATH_MESSAGE_KEY),
       WeepingAngelManagerFactory(CustomDeathMessageListener.DEATH_MESSAGE_KEY),
+      RainwaterManagerFactory(CustomDeathMessageListener.DEATH_MESSAGE_KEY),
       // Daily demands (gods) manager and the things that depend on it
       DailyDemandManagerFactory(DailyDemandManagerFactory::tieredDifficultySelector),
       EncumbranceManagerFactory.Default(DailyDemandManagerFactory.GODS_FEATURE_KEY),

@@ -60,6 +60,7 @@
      - Blindness 1
      - Mining Fatigue 5
      - Regeneration 5
+   + rainwater :: Players deplete oxygen in the rain
 ** CUSTOM SPAWNING FEATURES
    + weepingangel :: Armor stands will chase you when you're not
                      looking at them, and armor stands will rarely

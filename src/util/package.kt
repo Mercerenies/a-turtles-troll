@@ -5,6 +5,8 @@ import com.mercerenies.turtletroll.ext.*
 
 import org.bukkit.inventory.ItemStack
 import org.bukkit.inventory.meta.ItemMeta
+import org.bukkit.World
+import org.bukkit.GameRule
 
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer
@@ -105,3 +107,6 @@ fun joinWithCommas(components: List<Component>): Component {
   }
   return builder.build()
 }
+
+fun<T> World.getGameRuleValueOrDefault(rule: GameRule<T>): T =
+  getGameRuleValue(rule) ?: getGameRuleDefault(rule)!!
