@@ -13,6 +13,8 @@ import com.mercerenies.turtletroll.Weight
 
 import org.bukkit.event.Listener
 
+import com.comphenix.protocol.events.PacketListener
+
 // As CompositeFeatureContianer but for DropFeatureContainer.
 class CompositeDropFeatureContainer(
   private val allContainers: Iterable<DropFeatureContainer>,
@@ -26,6 +28,9 @@ class CompositeDropFeatureContainer(
 
   override val runnables: Iterable<RunnableFeature> =
     allContainers.map { it.runnables }.lazyFlatten()
+
+  override val packetListeners: Iterable<PacketListener> =
+    allContainers.map { it.packetListeners }.lazyFlatten()
 
   override val recipes: Iterable<RecipeFeature> =
     allContainers.map { it.recipes }.lazyFlatten()

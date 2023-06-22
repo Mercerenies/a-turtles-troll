@@ -1,8 +1,6 @@
 
 package com.mercerenies.turtletroll.nms
 
-import com.mercerenies.turtletroll.ParrotInformation
-
 import org.bukkit.Bukkit
 import org.bukkit.entity.FallingBlock
 import org.bukkit.entity.Player
@@ -21,6 +19,38 @@ object NMS {
     override fun hasLeftShoulderPerch(): Boolean = left
 
     override fun hasRightShoulderPerch(): Boolean = right
+
+  }
+
+  private class RawEntityMetadata(
+    private var handle: Any,
+  ) : EntityMetadata {
+
+    // I seriously doubt these field names will change, given that
+    // it's a Java record. But just in case: We want the integer, then
+    // the data watcher serializer, then the T. All of these are
+    // constructor parameters to the record type identified by
+    // getEntityMetadataClass below.
+
+    override val id: Int
+      get() =
+        getEntityMetadataClass().getMethod("a").invoke(handle) as Int
+
+    override val serializer: Any?
+      get() =
+        getEntityMetadataClass().getMethod("b").invoke(handle)
+
+    override var value: Any?
+      get() =
+        getEntityMetadataClass().getMethod("c").invoke(handle)
+      set(newValue) {
+        val serializerCls = Class.forName("net.minecraft.network.syncher.DataWatcherSerializer")
+        val ctor = getEntityMetadataClass().getConstructor(java.lang.Integer.TYPE, serializerCls, Object::class.java)
+        handle = ctor.newInstance(id, serializer, newValue)
+      }
+
+    override fun getHandle(): Any =
+      handle
 
   }
 
@@ -131,6 +161,33 @@ object NMS {
     val controller = mcAllayCls.getMethod("dK").invoke(mcAllayEntity)
     val playerUuid = entityCls.getMethod("ct").invoke(mcPlayerEntity)
     behaviorControllerCls.getMethod("a", memoryModuleTypeCls, Object::class.java).invoke(controller, memoryModuleType, playerUuid)
+  }
+
+  // Go to
+  // net.minecraft.network.protocol.game.PacketPlayOutEntityMetadata.
+  // Look for a private final field of List type. This class name
+  // should match the type of elements in that list. It's
+  // DataWatcher.b in 1.20.1. Remember to translate using the Java
+  // naming convention, so inner class scoping is replaced with '$'.
+  fun getEntityMetadataClass(): Class<*> =
+    Class.forName("net.minecraft.network.syncher.DataWatcher\$b")
+
+  fun getEntityMetadata(handle: Any): EntityMetadata? {
+    if (getEntityMetadataClass().isInstance(handle)) {
+      return RawEntityMetadata(handle)
+    } else {
+      return null
+    }
+  }
+
+  // Go to net.minecraft.network.syncher and find the
+  // DataWatcherSerializer<Integer> field. It's b in 1.20.1.
+  fun constructEntityMetadataInt(id: Int, value: Int): EntityMetadata {
+    val serializerCls = Class.forName("net.minecraft.network.syncher.DataWatcherSerializer")
+    val ctor = getEntityMetadataClass().getConstructor(java.lang.Integer.TYPE, serializerCls, Object::class.java)
+    val serializer = Class.forName("net.minecraft.network.syncher.DataWatcherRegistry").getField("b").get(null)
+    val handle = ctor.newInstance(id, serializer, value)
+    return RawEntityMetadata(handle)
   }
 
 }

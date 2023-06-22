@@ -11,6 +11,8 @@ import com.mercerenies.turtletroll.util.lazyFlatten
 
 import org.bukkit.event.Listener
 
+import com.comphenix.protocol.events.PacketListener
+
 class CompositeFeatureContainer(
   private val allContainers: Iterable<FeatureContainer>,
 ) : FeatureContainer {
@@ -23,6 +25,9 @@ class CompositeFeatureContainer(
 
   override val runnables: Iterable<RunnableFeature> =
     allContainers.map { it.runnables }.lazyFlatten()
+
+  override val packetListeners: Iterable<PacketListener> =
+    allContainers.map { it.packetListeners }.lazyFlatten()
 
   override val recipes: Iterable<RecipeFeature> =
     allContainers.map { it.recipes }.lazyFlatten()

@@ -10,6 +10,8 @@ import com.mercerenies.turtletroll.command.PermittedCommand
 
 import org.bukkit.event.Listener
 
+import com.comphenix.protocol.events.PacketListener
+
 // Common super-interface for FeatureContainer and
 // DropFeatureContainer. I don't want one to inherit from the other
 // since I don't want to accidentally discard information about the
@@ -23,6 +25,8 @@ interface BaseFeatureContainer {
   val features: Iterable<Feature>
 
   val runnables: Iterable<RunnableFeature>
+
+  val packetListeners: Iterable<PacketListener>
 
   val recipes: Iterable<RecipeFeature>
 

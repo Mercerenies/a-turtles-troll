@@ -26,6 +26,10 @@ class RainOxygenMeter(
     val MAX_AIR: Int = 20
     val DAMAGE_CAUSE: EntityDamageEvent.DamageCause = EntityDamageEvent.DamageCause.DROWNING
     val DROWNING_DAMAGE_RULE: GameRule<Boolean> = GameRule.DROWNING_DAMAGE
+
+    fun getHudBubbleValue(bubbleCount: Int): Int =
+      30 * (bubbleCount - 1) + 3
+
   }
 
   private var airAmount: Int = MAX_AIR
@@ -53,8 +57,10 @@ class RainOxygenMeter(
     } else {
       airAmount += 2
     }
-    println("" + player + " " + airAmount)
   }
+
+  fun getDesiredHudBubbleValue(): Int =
+    getHudBubbleValue(airAmount / 2)
 
   private fun hasWaterBreathing(): Boolean =
     player.getPotionEffect(PotionEffectType.WATER_BREATHING) != null

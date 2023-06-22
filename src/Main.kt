@@ -14,6 +14,8 @@ import com.mercerenies.turtletroll.storage.GlobalFileDataHolder
 import org.bukkit.plugin.java.JavaPlugin
 import org.bukkit.Bukkit
 
+import com.comphenix.protocol.ProtocolLibrary
+
 class Main : JavaPlugin() {
 
   private val dataHolder = GlobalFileDataHolder(this)
@@ -43,8 +45,15 @@ class Main : JavaPlugin() {
     dataHolder.reload()
 
     // Initialize all listeners
+    val pluginManager = Bukkit.getPluginManager()
     for (listener in mainContainer.listeners) {
-      Bukkit.getPluginManager().registerEvents(listener, this)
+      pluginManager.registerEvents(listener, this)
+    }
+
+    // Initialize all packet listeners
+    val protocolManager = ProtocolLibrary.getProtocolManager()
+    for (listener in mainContainer.packetListeners) {
+      protocolManager.addPacketListener(listener)
     }
 
     // Recipe modifications
@@ -74,6 +83,12 @@ class Main : JavaPlugin() {
     }
     for (recipe in mainContainer.recipes) {
       recipe.removeRecipes()
+    }
+
+    // Remove all packet listeners
+    val protocolManager = ProtocolLibrary.getProtocolManager()
+    for (listener in mainContainer.packetListeners) {
+      protocolManager.removePacketListener(listener)
     }
 
     // Runnables

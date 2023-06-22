@@ -10,6 +10,8 @@ import com.mercerenies.turtletroll.command.PermittedCommand
 
 import org.bukkit.event.Listener
 
+import com.comphenix.protocol.events.PacketListener
+
 // Adapts a DropFeatureContainer to be a FeatureContainer.
 class DropFeatureContainerAdaptor(
   private val impl: DropFeatureContainer,
@@ -23,6 +25,9 @@ class DropFeatureContainerAdaptor(
 
   override val runnables: Iterable<RunnableFeature>
     get() = impl.runnables
+
+  override val packetListeners: Iterable<PacketListener>
+    get() = impl.packetListeners
 
   override val recipes: Iterable<RecipeFeature>
     get() = impl.recipes

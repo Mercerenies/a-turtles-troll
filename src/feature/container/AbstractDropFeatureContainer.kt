@@ -12,6 +12,8 @@ import com.mercerenies.turtletroll.Weight
 
 import org.bukkit.event.Listener
 
+import com.comphenix.protocol.events.PacketListener
+
 // Abstract parent version of DropFeatureContainer which has trivially
 // empty implementations for all methods
 open class AbstractDropFeatureContainer() : DropFeatureContainer {
@@ -23,6 +25,9 @@ open class AbstractDropFeatureContainer() : DropFeatureContainer {
     get() = listOf()
 
   open override val runnables: Iterable<RunnableFeature>
+    get() = listOf()
+
+  open override val packetListeners: Iterable<PacketListener>
     get() = listOf()
 
   open override val recipes: Iterable<RecipeFeature>

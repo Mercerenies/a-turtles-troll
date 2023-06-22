@@ -10,6 +10,8 @@ import com.mercerenies.turtletroll.command.PermittedCommand
 
 import org.bukkit.event.Listener
 
+import com.comphenix.protocol.events.PacketListener
+
 // Abstract parent version of FeatureContainer which has trivially
 // empty implementations for all methods
 open class AbstractFeatureContainer() : FeatureContainer {
@@ -21,6 +23,9 @@ open class AbstractFeatureContainer() : FeatureContainer {
     get() = listOf()
 
   open override val runnables: Iterable<RunnableFeature>
+    get() = listOf()
+
+  open override val packetListeners: Iterable<PacketListener>
     get() = listOf()
 
   open override val recipes: Iterable<RecipeFeature>
