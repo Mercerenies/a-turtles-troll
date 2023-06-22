@@ -89,11 +89,7 @@ data class Stalactite(val blocks: Set<EqBlock>) {
       val location = block.block.location.clone().add(0.5, 0.0, 0.5)
       block.block.type = Material.AIR
       val fallingBlock = block.block.world.spawnFallingBlock(location, blockData)
-      try {
-        NMS.makeFallingBlockHurt(fallingBlock)
-      } catch (e: Exception) {
-        println("Oh no! Something went wrong during my horrible NMS hack. Please report: ${e}")
-      }
+      NMS.makeFallingBlockHurt(fallingBlock)
     }
   }
 
