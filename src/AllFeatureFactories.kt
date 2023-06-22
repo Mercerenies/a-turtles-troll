@@ -173,6 +173,7 @@ object AllFeatureFactories {
       PumpkinSlownessManager,
       BreakLightOnSightListenerFactory(PumpkinSlownessManager.PUMPKIN_FEATURE_KEY),
       ElectricWaterListenerFactory(PumpkinSlownessManager.PUMPKIN_FEATURE_KEY),
+      CactusKickListenerFactory(PumpkinSlownessManager.PUMPKIN_FEATURE_KEY),
       // Custom death message and the things that depend on it
       CustomDeathMessageListener,
       CookieListenerFactory.Default(CustomDeathMessageListener.DEATH_MESSAGE_KEY),

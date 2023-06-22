@@ -41,6 +41,7 @@ A Turtle's Troll also depends on the following libraries.
 * Jumps may fail if you're overencumbered.
 * Eating the last bite of a cake causes it to explode.
 * Pufferfish explode on death.
+* Looking at a cactus causes the player to be kicked.
 * Piglins accept diamonds and give enchanted armor in exchange
 * After getting out of bed, you get some random status effects.
 * Any bucket without a custom name will randomly change its contents
