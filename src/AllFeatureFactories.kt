@@ -103,6 +103,7 @@ object AllFeatureFactories {
       EndCrystalListener,
       EndDirtListener,
       EnderChestListener,
+      EndermanGodListener,
       EndStoneListener,
       EscalationListener,
       ExpirationDateListener,
@@ -172,17 +173,17 @@ object AllFeatureFactories {
       // Pumpkin slowness and the things that depend on it
       PumpkinSlownessManager,
       BreakLightOnSightListenerFactory(PumpkinSlownessManager.PUMPKIN_FEATURE_KEY),
-      ElectricWaterListenerFactory(PumpkinSlownessManager.PUMPKIN_FEATURE_KEY),
       CactusKickListenerFactory(PumpkinSlownessManager.PUMPKIN_FEATURE_KEY),
+      ElectricWaterListenerFactory(PumpkinSlownessManager.PUMPKIN_FEATURE_KEY),
       // Custom death message and the things that depend on it
       CustomDeathMessageListener,
       CookieListenerFactory.Default(CustomDeathMessageListener.DEATH_MESSAGE_KEY),
       MimicListenerFactory(CustomDeathMessageListener.DEATH_MESSAGE_KEY),
       OldAgeListenerFactory(CustomDeathMessageListener.DEATH_MESSAGE_KEY),
+      RainwaterManagerFactory(CustomDeathMessageListener.DEATH_MESSAGE_KEY),
       RedstoneWorldListenerFactory(CustomDeathMessageListener.DEATH_MESSAGE_KEY),
       TemperatureManagerFactory(CustomDeathMessageListener.DEATH_MESSAGE_KEY),
       WeepingAngelManagerFactory(CustomDeathMessageListener.DEATH_MESSAGE_KEY),
-      RainwaterManagerFactory(CustomDeathMessageListener.DEATH_MESSAGE_KEY),
       // Daily demands (gods) manager and the things that depend on it
       DailyDemandManagerFactory(DailyDemandManagerFactory::tieredDifficultySelector),
       EncumbranceManagerFactory.Default(DailyDemandManagerFactory.GODS_FEATURE_KEY),

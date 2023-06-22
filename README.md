@@ -50,6 +50,7 @@ A Turtle's Troll also depends on the following libraries.
 * The gods' death conditions are now tiered; harder conditions only
   appear if you've satisfied them a lot recently.
 * When shearing a sheep, the color of wool dropped is randomized.
+* Endermen can only be damaged by a player's bare fist.
 * Breeding animals sometimes spawns a Vindicator named "Johnny".
 * Killing a pillager summons slimes.
 * Lava running on water creates obsidian, while water running on lava

@@ -150,6 +150,8 @@
      randomized
    + fishsanctuary :: If a fish is drying out, it will create water to
      survive
+   + endermangod :: Endermen can only be damaged by a player's bare
+     fist
 ** EGG FEATURES
    + eggs :: Almost any mob (or diamonds) can spawn from an egg
    + eggarrow :: Skeletons will fire eggs in addition to arrows
@@ -312,7 +314,6 @@
   + Can we make the lava haste force you to move forward?
   + Lore on items when things happen?
   + Enderman only killable with fist
-  + Nethergrass go boom
 ** HATCRAFTER'S IDEAS
    + Polar bears have Haste 3
    + Every hostile mob has a very small chance of dropping a random item
