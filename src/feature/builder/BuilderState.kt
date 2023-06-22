@@ -5,8 +5,6 @@ import com.mercerenies.turtletroll.storage.GlobalDataHolder
 
 import org.bukkit.plugin.Plugin
 
-import com.comphenix.protocol.ProtocolManager
-
 import kotlin.reflect.KClass
 
 // A feature builder has access to the plugin it's building for, as

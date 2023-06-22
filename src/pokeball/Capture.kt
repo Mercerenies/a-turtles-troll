@@ -52,7 +52,7 @@ object Capture {
     }
 
     val x = captureRate(ball, mob)
-    println("${x} (${ball} ${mob})")
+    //println("${x} (${ball} ${mob})")
     if (x >= 255) {
       // Automatic success.
       return true

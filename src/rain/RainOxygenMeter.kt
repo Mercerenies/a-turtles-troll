@@ -28,7 +28,11 @@ class RainOxygenMeter(
     val DROWNING_DAMAGE_RULE: GameRule<Boolean> = GameRule.DROWNING_DAMAGE
 
     fun getHudBubbleValue(bubbleCount: Int): Int =
-      30 * (bubbleCount - 1) + 3
+      if (bubbleCount == 10) {
+        300
+      } else {
+        30 * (bubbleCount - 1) + 3
+      }
 
   }
 

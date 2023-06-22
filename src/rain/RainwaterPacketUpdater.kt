@@ -45,7 +45,6 @@ object RainwaterPacketUpdater {
   }
 
   fun updateBubbleCount(packet: PacketContainer, newBubbleCount: Int) {
-    println("update " + newBubbleCount)
     val list = packet.getLists(TrivialConverter).read(0)
     var found = false
     for (idx in list.indices) {
@@ -69,7 +68,6 @@ object RainwaterPacketUpdater {
   }
 
   fun createBubbleCountPacket(entity: Entity, bubbleCount: Int): PacketContainer {
-    println("create " + bubbleCount)
     val packet = PacketContainer(PacketType.Play.Server.ENTITY_METADATA)
     packet.getModifier().write(0, entity.getEntityId())
     val lst = listOf(NMS.constructEntityMetadataInt(ADDRESS_ID, bubbleCount).getHandle())
