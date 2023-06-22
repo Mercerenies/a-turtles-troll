@@ -1,5 +1,5 @@
 
-package com.mercerenies.turtletroll
+package com.mercerenies.turtletroll.nms
 
 // Right now, we just use Booleans to indicate "yes" or "no". We might
 // try to extract more info later, but for now that's good enough.
