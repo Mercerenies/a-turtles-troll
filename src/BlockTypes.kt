@@ -150,6 +150,15 @@ object BlockTypes {
     Material.ACACIA_SIGN, Material.CHERRY_SIGN, Material.DARK_OAK_SIGN, Material.BAMBOO_SIGN,
   )
 
+  val CONCRETE_POWDERS = setOf(
+    Material.WHITE_CONCRETE_POWDER, Material.ORANGE_CONCRETE_POWDER, Material.MAGENTA_CONCRETE_POWDER,
+    Material.LIGHT_BLUE_CONCRETE_POWDER, Material.YELLOW_CONCRETE_POWDER,
+    Material.LIME_CONCRETE_POWDER, Material.PINK_CONCRETE_POWDER, Material.GRAY_CONCRETE_POWDER,
+    Material.LIGHT_GRAY_CONCRETE_POWDER, Material.CYAN_CONCRETE_POWDER,
+    Material.PURPLE_CONCRETE_POWDER, Material.BLUE_CONCRETE_POWDER, Material.BROWN_CONCRETE_POWDER,
+    Material.GREEN_CONCRETE_POWDER, Material.RED_CONCRETE_POWDER, Material.BLACK_CONCRETE_POWDER,
+  )
+
   // Takes an ore block and turns it into the non-ore block type it's
   // most similar to. Returns the block itself if given a non-ore.
   fun removeOreFrom(material: Material): Material =

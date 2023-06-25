@@ -9,16 +9,16 @@ import org.bukkit.entity.Player
 
 import net.kyori.adventure.text.Component
 
-class ItemReward(
+open class ItemReward(
   private val itemStack: ItemStack
 ) : TriviaQuestionReward {
 
   constructor(material: Material) : this(ItemStack(material))
 
-  override val name: Component
+  open override val name: Component
     get() = AllItems.getName(itemStack)
 
-  override fun rewardPlayer(player: Player) {
+  open override fun rewardPlayer(player: Player) {
     AllItems.give(player, itemStack.clone())
   }
 
