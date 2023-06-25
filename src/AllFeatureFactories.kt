@@ -57,7 +57,6 @@ object AllFeatureFactories {
       AmethystBlockDropFactory,
       BedrockFeatureFactory,
       BeeAttackFeatureFactory,
-      BeeAttackFeatureFactory,
       CancelDropFeatureFactory,
       DirtDropFeatureFactory,
       EndermiteSpawnFeatureFactory,
