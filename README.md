@@ -36,6 +36,7 @@ A Turtle's Troll also depends on the following libraries.
 * Starting with version 1.20, A Turtle's Troll is now licensed under
   the GNU GPL v3 or later.
 * A Turtle's Troll has been updated to run in Minecraft 1.20.1.
+* Minecraft Trivia! Every ten minutes, the game asks a trivia question.
 * Players deplete oxygen in the rain.
 * Looking at nylium transforms it into primed TNT.
 * Jumps may fail if you're overencumbered.

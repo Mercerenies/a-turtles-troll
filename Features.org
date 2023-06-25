@@ -300,6 +300,12 @@
    + bucketroulette :: Any bucket without a custom name will randomly
      change its contents every eight seconds
    + pillagerdeath :: Killing a pillager summons slimes
+   + minecraftrivia :: Every ten minutes, the game asks a trivia question
+     - Those who answer correctly are rewarded with an item related to
+       the question
+     - Those who do not answer are struck by lightning
+     - Those who answer incorrectly suffer no penalty but gain no
+       reward
 * IDEAS (UNIMPLEMENTED)
   + Wolves?
   + Fishing?
@@ -350,10 +356,6 @@
      different dimension has a 35% chance to die as well
    + Stardew Slime Loot - Slimes have an increased loot pool. They may
      drop the following (see chat)
-   + Minecraft Trivia: Every 30 mins a random trivia question is asked
-     in chat. Any player who answers correctly gets an appropriate
-     item. Any player who fails to answer is struck by lightning.
-     Players who answer wrongly are not rewarded or punished.
    + Mundane potions can be crafted into gold nuggets
    + Gold nuggets can be eaten for nutrition. They act like sweet
      berries
