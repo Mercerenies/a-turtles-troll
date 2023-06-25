@@ -47,14 +47,13 @@ class MultipleChoiceQuestion(
 
   private val correctAnswerBody: String = answers[correctAnswerIndex]
 
-  override val canonicalAnswer: String
-  init {
+  override val canonicalAnswer: String = run {
     val index = answersList.indexOf(correctAnswerBody)
     if (index < 0) {
       throw IllegalArgumentException("Answer ${correctAnswerBody} is not in answers list ${answersList}")
     }
     val letter = LETTERS[index]
-    canonicalAnswer = "$letter. $correctAnswerBody"
+    "$letter. $correctAnswerBody"
   }
 
   override fun askQuestion() {
