@@ -21,6 +21,7 @@ class MinecraftTriviaManager(
 
   // Run once per minute
   override val taskPeriod = Constants.TICKS_PER_SECOND * 60L
+  override val taskDelay = Constants.TICKS_PER_SECOND * 60L
 
   private var state: TriviaState = config.initialState
 

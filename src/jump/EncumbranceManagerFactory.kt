@@ -14,7 +14,7 @@ import org.bukkit.Bukkit
 abstract class EncumbranceManagerFactory() : FeatureContainerFactory<FeatureContainer> {
 
   companion object {
-    val COMMAND_PERMISSION = "com.mercerenies.turtletroll.encumbrance"
+    val COMMAND_PERMISSION = "com.mercerenies.turtletroll.command.encumbrance"
   }
 
   class Default(

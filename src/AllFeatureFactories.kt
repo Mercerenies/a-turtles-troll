@@ -47,6 +47,7 @@ import com.mercerenies.turtletroll.drop.ShuffleLogsFeatureFactory
 import com.mercerenies.turtletroll.drop.StrongholdAttackFeatureFactory
 import com.mercerenies.turtletroll.pokeball.PokeballManager
 import com.mercerenies.turtletroll.jump.EncumbranceManagerFactory
+import com.mercerenies.turtletroll.trivia.MinecraftTriviaManagerFactory
 
 object AllFeatureFactories {
 
@@ -128,6 +129,7 @@ object AllFeatureFactories {
       LearningFromFailureListener,
       LevitationListener,
       LlamaHunterManager,
+      MinecraftTriviaManagerFactory,
       NamedZombieListener,
       OvergrowthListenerFactory(OvergrowthListener::randomWood),
       ParrotCookieListener,
