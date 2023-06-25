@@ -17,7 +17,7 @@ class StrongholdSilverfishAttackAction(
       probability = 1.0,
       radius = 4,
       releaseChance = 0.5,
-      infestationChance = 0.5,
+      infestationChance = 1.0,
     )
 
     val BLOCKS = setOf(

@@ -10,7 +10,7 @@ import org.bukkit.entity.EntityType
 import kotlin.random.Random
 
 data class SilverfishAttackBomb(
-  val probability: Double,
+  val probability: Double, // TODO Unused?
   val radius: Int,
   val releaseChance: Double,
   val infestationChance: Double,
