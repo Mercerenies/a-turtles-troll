@@ -313,7 +313,7 @@
   + Killing one vector saves everyone
   + Can we make the lava haste force you to move forward?
   + Lore on items when things happen?
-  + Enderman only killable with fist
+  + Exploding bed always fatal to whoever placed it?
 ** HATCRAFTER'S IDEAS
    + Polar bears have Haste 3
    + Every hostile mob has a very small chance of dropping a random item
