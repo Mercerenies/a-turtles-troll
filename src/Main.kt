@@ -8,6 +8,7 @@ import com.mercerenies.turtletroll.feature.builder.BuilderState
 import com.mercerenies.turtletroll.command.CommandDispatcher
 import com.mercerenies.turtletroll.command.Subcommand
 import com.mercerenies.turtletroll.command.withPermission
+import com.mercerenies.turtletroll.command.Permissions
 import com.mercerenies.turtletroll.storage.GlobalDataHolder
 import com.mercerenies.turtletroll.storage.GlobalFileDataHolder
 
@@ -30,12 +31,12 @@ class Main : JavaPlugin() {
   val featureManager = FeatureManager(mainContainer.features)
   val turtleCommand = Subcommand(
     "turtle" to Subcommand(
-      "on" to featureManager.OnCommand.withPermission("com.mercerenies.turtletroll.feature.toggle"),
-      "off" to featureManager.OffCommand.withPermission("com.mercerenies.turtletroll.feature.toggle"),
-      "list" to featureManager.ListCommand.withPermission("com.mercerenies.turtletroll.feature.list"),
-      "describe" to featureManager.DescribeCommand.withPermission("com.mercerenies.turtletroll.feature.describe"),
+      "on" to featureManager.OnCommand.withPermission(Permissions.FEATURE_TOGGLE),
+      "off" to featureManager.OffCommand.withPermission(Permissions.FEATURE_TOGGLE),
+      "list" to featureManager.ListCommand.withPermission(Permissions.FEATURE_LIST),
+      "describe" to featureManager.DescribeCommand.withPermission(Permissions.FEATURE_DESCRIBE),
       *mainContainer.commands.toList().toTypedArray(),
-    ).withPermission("com.mercerenies.turtletroll.command"),
+    ).withPermission(Permissions.BASE_COMMAND),
   )
   val commandDispatcher = CommandDispatcher(turtleCommand)
 

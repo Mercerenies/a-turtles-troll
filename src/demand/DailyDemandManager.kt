@@ -6,6 +6,7 @@ import com.mercerenies.turtletroll.command.PermittedCommand
 import com.mercerenies.turtletroll.command.Command
 import com.mercerenies.turtletroll.command.TerminalCommand
 import com.mercerenies.turtletroll.command.withPermission
+import com.mercerenies.turtletroll.command.Permissions
 import com.mercerenies.turtletroll.ext.*
 import com.mercerenies.turtletroll.Messages
 import com.mercerenies.turtletroll.demand.event.EventSelector
@@ -37,8 +38,6 @@ class DailyDemandManager(
     val SATISFIED_MESSAGE = Component.text("The gods are appeased today; everyone is free to sleep.")
 
     val DISABLED_MESSAGE = Component.text("This feature is currently disabled; the gods are not interfering with your sleep.")
-
-    val COMMAND_PERMISSION = "com.mercerenies.turtletroll.command.demand"
 
     val STATES = listOf(
       Event(State.Daytime, DAWN_TIME),
@@ -90,7 +89,7 @@ class DailyDemandManager(
   }
 
   val command: Pair<String, PermittedCommand<Command>>
-    get() = "demand" to DemandCommand.withPermission(COMMAND_PERMISSION)
+    get() = "demand" to DemandCommand.withPermission(Permissions.DEMAND)
 
   override fun getGodsStatus(): GodsStatus =
     when {

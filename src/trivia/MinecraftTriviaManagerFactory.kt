@@ -6,13 +6,13 @@ import com.mercerenies.turtletroll.feature.container.AbstractFeatureContainer
 import com.mercerenies.turtletroll.feature.builder.BuilderState
 import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 import com.mercerenies.turtletroll.command.withPermission
+import com.mercerenies.turtletroll.command.Permissions
 import com.mercerenies.turtletroll.trivia.question.TriviaQuestionSupplier
 import com.mercerenies.turtletroll.trivia.question.QuestionLibrary
 
 abstract class MinecraftTriviaManagerFactory() : FeatureContainerFactory<FeatureContainer> {
 
   companion object : MinecraftTriviaManagerFactory() {
-    val COMMAND_PERMISSION = "com.mercerenies.turtletroll.command.answer"
 
     override val config: TriviaConfig =
       TriviaConfig.DEFAULT
@@ -34,7 +34,7 @@ abstract class MinecraftTriviaManagerFactory() : FeatureContainerFactory<Feature
 
     override val commands =
       listOf(
-        "answer" to manager.answerCommand.withPermission(COMMAND_PERMISSION),
+        "answer" to manager.answerCommand.withPermission(Permissions.ANSWER),
       )
 
   }

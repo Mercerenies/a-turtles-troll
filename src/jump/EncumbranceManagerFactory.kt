@@ -6,16 +6,13 @@ import com.mercerenies.turtletroll.feature.container.AbstractFeatureContainer
 import com.mercerenies.turtletroll.feature.builder.BuilderState
 import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 import com.mercerenies.turtletroll.command.withPermission
+import com.mercerenies.turtletroll.command.Permissions
 import com.mercerenies.turtletroll.demand.GodsConditionAccessor
 
 import org.bukkit.potion.PotionEffectType
 import org.bukkit.Bukkit
 
 abstract class EncumbranceManagerFactory() : FeatureContainerFactory<FeatureContainer> {
-
-  companion object {
-    val COMMAND_PERMISSION = "com.mercerenies.turtletroll.command.encumbrance"
-  }
 
   class Default(
     private val godsFeatureId: String,
@@ -53,7 +50,7 @@ abstract class EncumbranceManagerFactory() : FeatureContainerFactory<FeatureCont
 
     override val commands =
       listOf(
-        "encumbrance" to command.withPermission(COMMAND_PERMISSION),
+        "encumbrance" to command.withPermission(Permissions.ENCUMBRANCE),
       )
 
   }
