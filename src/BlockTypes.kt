@@ -145,6 +145,11 @@ object BlockTypes {
     Material.ACACIA_DOOR, Material.CHERRY_DOOR, Material.DARK_OAK_DOOR, Material.BAMBOO_DOOR,
   )
 
+  val WOODEN_SIGNS = setOf(
+    Material.OAK_SIGN, Material.SPRUCE_SIGN, Material.BIRCH_SIGN, Material.JUNGLE_SIGN,
+    Material.ACACIA_SIGN, Material.CHERRY_SIGN, Material.DARK_OAK_SIGN, Material.BAMBOO_SIGN,
+  )
+
   // Takes an ore block and turns it into the non-ore block type it's
   // most similar to. Returns the block itself if given a non-ore.
   fun removeOreFrom(material: Material): Material =
