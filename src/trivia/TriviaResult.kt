@@ -2,7 +2,6 @@
 package com.mercerenies.turtletroll.trivia
 
 import com.mercerenies.turtletroll.trivia.question.TriviaQuestionReward
-import com.mercerenies.turtletroll.trivia.question.TriviaQuestion
 import com.mercerenies.turtletroll.Messages
 import com.mercerenies.turtletroll.ext.*
 import com.mercerenies.turtletroll.util.*
