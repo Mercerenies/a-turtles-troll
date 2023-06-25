@@ -22,4 +22,6 @@ interface TriviaQuestion {
   // of the question.
   val canonicalAnswer: String
 
+  fun chooseReward(): TriviaQuestionReward
+
 }

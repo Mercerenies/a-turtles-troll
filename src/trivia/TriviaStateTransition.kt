@@ -7,7 +7,7 @@ interface TriviaStateTransition {
     override val nextState: TriviaState
   ) : TriviaStateTransition {
 
-    override fun perform() {}
+    override fun perform(engine: TriviaEngine) {}
 
   }
 
@@ -16,8 +16,8 @@ interface TriviaStateTransition {
     override val nextState: TriviaState =
       TriviaState.Asking(0)
 
-    override fun perform() {
-      // TODO
+    override fun perform(engine: TriviaEngine) {
+      engine.askNewQuestion()
     }
 
   }
@@ -27,13 +27,15 @@ interface TriviaStateTransition {
     override val nextState: TriviaState =
       TriviaState.Idle(0)
 
-    override fun perform() {
-      // TODO
+    override fun perform(engine: TriviaEngine) {
+      val result = engine.judgeAnswers()
+      val reward = engine.chooseReward()
+      TriviaResult.assignRewards(result, reward)
     }
 
   }
 
-  fun perform(): Unit
+  fun perform(engine: TriviaEngine): Unit
 
   val nextState: TriviaState
 

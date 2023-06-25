@@ -10,6 +10,7 @@ class MultipleChoiceQuestion(
   private val questionBody: String,
   answers: List<String>,
   correctAnswerIndex: Int,
+  rewards: List<TriviaQuestionReward>,
   shuffleAnswers: Boolean = true,
 ) : TriviaQuestion {
 
@@ -47,7 +48,6 @@ class MultipleChoiceQuestion(
   private val correctAnswerBody: String = answers[correctAnswerIndex]
 
   override val canonicalAnswer: String
-
   init {
     val index = answersList.indexOf(correctAnswerBody)
     if (index < 0) {
@@ -56,6 +56,9 @@ class MultipleChoiceQuestion(
     val letter = LETTERS[index]
     canonicalAnswer = "$letter. $correctAnswerBody"
   }
+
+  private val reward: TriviaQuestionReward =
+    rewards.sample()!!
 
   override fun askQuestion() {
     Messages.broadcastMessage(questionBody)
@@ -77,5 +80,8 @@ class MultipleChoiceQuestion(
     val actualAnswer = answersList[index]
     return (actualAnswer == correctAnswerBody)
   }
+
+  override fun chooseReward(): TriviaQuestionReward =
+    reward
 
 }

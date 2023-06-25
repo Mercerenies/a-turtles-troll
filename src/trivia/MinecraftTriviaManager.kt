@@ -9,6 +9,7 @@ import com.mercerenies.turtletroll.gravestone.Angel
 import com.mercerenies.turtletroll.feature.RunnableFeature
 import com.mercerenies.turtletroll.SpawnReason
 import com.mercerenies.turtletroll.Constants
+import com.mercerenies.turtletroll.trivia.question.TriviaQuestionSupplier
 
 import org.bukkit.entity.Player
 import org.bukkit.entity.ArmorStand
@@ -35,6 +36,7 @@ import kotlin.random.Random
 class MinecraftTriviaManager(
   plugin: Plugin,
   val config: TriviaConfig,
+  questionSupplier: TriviaQuestionSupplier,
 ) : RunnableFeature(plugin) {
 
   override val name = "minecrafttrivia"
@@ -46,13 +48,15 @@ class MinecraftTriviaManager(
 
   private var state: TriviaState = config.initialState
 
+  private val engine: TriviaEngine = TriviaEngine(questionSupplier)
+
   override fun run() {
     if (!isEnabled()) {
       return
     }
 
     val transition = state.advance(config)
-    transition.perform()
+    transition.perform(engine)
     state = transition.nextState
   }
 
