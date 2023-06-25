@@ -12,7 +12,7 @@ import com.mercerenies.turtletroll.trivia.question.QuestionLibrary
 abstract class MinecraftTriviaManagerFactory() : FeatureContainerFactory<FeatureContainer> {
 
   companion object : MinecraftTriviaManagerFactory() {
-    val COMMAND_PERMISSION = "com.mercerenies.turtletroll.answer"
+    val COMMAND_PERMISSION = "com.mercerenies.turtletroll.command.answer"
 
     override val config: TriviaConfig =
       TriviaConfig.DEFAULT
