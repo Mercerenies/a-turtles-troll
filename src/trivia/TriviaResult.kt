@@ -49,9 +49,15 @@ data class TriviaResult(
           }
         }
       }
-      Messages.broadcastMessage(correctLine(reward, result.correctAnswerers))
-      Messages.broadcastMessage(incorrectLine(result.incorrectAnswerers))
-      Messages.broadcastMessage(abstainLine(punishedPlayers))
+      if (!result.correctAnswerers.isEmpty()) {
+        Messages.broadcastMessage(correctLine(reward, result.correctAnswerers))
+      }
+      if (!result.incorrectAnswerers.isEmpty()) {
+        Messages.broadcastMessage(incorrectLine(result.incorrectAnswerers))
+      }
+      if (!punishedPlayers.isEmpty()) {
+        Messages.broadcastMessage(abstainLine(punishedPlayers))
+      }
     }
 
   }
