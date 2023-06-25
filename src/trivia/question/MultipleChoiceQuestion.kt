@@ -10,7 +10,7 @@ class MultipleChoiceQuestion(
   private val questionBody: String,
   answers: List<String>,
   correctAnswerIndex: Int,
-  rewards: List<TriviaQuestionReward>,
+  private val rewards: List<TriviaQuestionReward>,
   shuffleAnswers: Boolean = true,
 ) : TriviaQuestion {
 
@@ -23,7 +23,7 @@ class MultipleChoiceQuestion(
 
     fun letterToIndex(letter: Char): Int? =
       when {
-        letter.isUpperCase() -> letterToIndex(letter.lowercaseChar())
+        letter.isLowerCase() -> letterToIndex(letter.uppercaseChar())
         (letter >= 'A') && (letter <= 'Z') -> (letter - 'A').toInt()
         else -> null
       }
@@ -57,9 +57,6 @@ class MultipleChoiceQuestion(
     canonicalAnswer = "$letter. $correctAnswerBody"
   }
 
-  private val reward: TriviaQuestionReward =
-    rewards.sample()!!
-
   override fun askQuestion() {
     Messages.broadcastMessage(questionBody)
     for ((letter, answer) in LETTERS.zip(answersList)) {
@@ -82,6 +79,6 @@ class MultipleChoiceQuestion(
   }
 
   override fun chooseReward(): TriviaQuestionReward =
-    reward
+    rewards.sample()!!
 
 }

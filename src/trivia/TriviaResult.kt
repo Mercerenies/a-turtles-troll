@@ -26,11 +26,11 @@ data class TriviaResult(
         .append(pluralize(players.map { it.displayName() }))
 
     private fun incorrectLine(players: List<Player>): Component =
-      Component.text("The following players guessed incorrectly:")
+      Component.text("The following players guessed incorrectly: ")
         .append(pluralize(players.map { it.displayName() }))
 
     private fun abstainLine(players: List<Player>): Component =
-      Component.text("The following players failed to answer and should be shamed publicly:")
+      Component.text("The following players failed to answer and should be shamed publicly: ")
         .append(pluralize(players.map { it.displayName() }))
 
     fun assignRewards(result: TriviaResult, reward: TriviaQuestionReward) {

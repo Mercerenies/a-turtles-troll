@@ -6,7 +6,10 @@ import com.mercerenies.turtletroll.util.*
 import com.mercerenies.turtletroll.feature.RunnableFeature
 import com.mercerenies.turtletroll.Constants
 import com.mercerenies.turtletroll.trivia.question.TriviaQuestionSupplier
+import com.mercerenies.turtletroll.command.Command
+import com.mercerenies.turtletroll.command.TerminalCommand
 
+import org.bukkit.command.CommandSender
 import org.bukkit.plugin.Plugin
 
 class MinecraftTriviaManager(
@@ -27,16 +30,34 @@ class MinecraftTriviaManager(
 
   private val engine: TriviaEngine = TriviaEngine(questionSupplier)
 
-  val answerCommand: TriviaAnswerCommand =
+  val answerCommand: Command =
     TriviaAnswerCommand(this, engine)
+
+  val triviaAskCommand: Command = object : TerminalCommand() {
+    override fun onCommand(sender: CommandSender): Boolean {
+      runTransition(TriviaStateTransition.AskQuestion)
+      return true
+    }
+  }
+
+  val triviaJudgeCommand: Command = object : TerminalCommand() {
+    override fun onCommand(sender: CommandSender): Boolean {
+      runTransition(TriviaStateTransition.JudgeQuestion)
+      return true
+    }
+  }
+
+  private fun runTransition(transition: TriviaStateTransition) {
+    transition.perform(engine)
+    state = transition.nextState
+  }
 
   override fun run() {
     if (!isEnabled()) {
       return
     }
     val transition = state.advance(config)
-    transition.perform(engine)
-    state = transition.nextState
+    runTransition(transition)
   }
 
 }
