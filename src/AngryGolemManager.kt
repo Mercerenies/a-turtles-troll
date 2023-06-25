@@ -82,6 +82,7 @@ class AngryGolemManager(
       if ((golem.vehicle == null) && (!spiderMemory.contains(golem))) {
         val spider = golem.location.world!!.spawnEntity(golem.location, EntityType.SPIDER)
         spider.addPassenger(golem)
+        spiderMemory.add(golem, SPIDER_COOLDOWN_TIME)
       }
 
     }
