@@ -29,10 +29,12 @@ class TriviaEngine(
   private val answers: HashMap<Player, String> = HashMap()
 
   fun askNewQuestion() {
+    Messages.broadcastMessage("*** TRIVIA TIME! ***")
     val newQuestion = questionSupplier.supply()
     newQuestion.askQuestion()
     currentQuestion = newQuestion
     answers.clear()
+    Messages.broadcastMessage("Use `/turtle answer <your_answer>` to answer the question!")
   }
 
   fun acceptAnswer(player: Player, answer: String): Boolean {
