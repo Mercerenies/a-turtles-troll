@@ -18,7 +18,7 @@ anvil:
   period: 10 # In seconds
 axolotl:
   enabled: true
-  radius: 32
+  radius: 32.0
 bamboo:
   enabled: true
 bedrock:

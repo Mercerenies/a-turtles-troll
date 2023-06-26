@@ -3,7 +3,7 @@ global:
   difficulty: normal
 ak47:
   enabled: true
-  quick_charge_level: 5
+  quick_charge_level: 6
 allays:
   enabled: true
 amethyst:
@@ -18,7 +18,7 @@ anvil:
   period: 10 # In seconds
 axolotl:
   enabled: true
-  radius: 32
+  radius: 32.0
 bamboo:
   enabled: true
 bedrock:
