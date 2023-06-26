@@ -25,9 +25,6 @@ import org.bukkit.inventory.PlayerInventory
 
 import net.kyori.adventure.text.Component
 
-// TODO The name "manager" implies "listener" and "runnable" in every
-// other case, where this is really "listener" and "recipe". Should we
-// rename this?
 class ExplosiveArrowManager(plugin: Plugin) : RecipeFeature(plugin), Listener {
 
   companion object : FeatureContainerFactory<FeatureContainer> {

@@ -26,7 +26,7 @@ import net.kyori.adventure.text.Component
 
 class DailyDemandManager(
   plugin: Plugin,
-  private val eventSelector: EventSelector,
+  private val eventSelector: EventSelector, // TODO Customize in configuration
 ) : ScheduledEventRunnable<DailyDemandManager.State>(plugin), Listener, GodsState {
 
   companion object {

@@ -29,7 +29,7 @@ class PillagerDeathListener(val plugin: Plugin) : AbstractFeature(), Listener {
     override fun run() {
       for (i in 1..count) {
         val entity = location.world!!.spawn(location, Slime::class.java)
-        entity.setSize(listOf(1, 2).random())
+        entity.setSize(2)
       }
     }
   }

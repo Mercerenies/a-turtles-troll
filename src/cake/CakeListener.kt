@@ -88,7 +88,7 @@ class CakeListener(
     fun compatibility(positivity: Double, recentCakesEaten: Int): Double {
       val p = positivity
       val r = recentCakesEaten.toDouble()
-      val base = (1 - p) / 2 + p * (2.0).pow(- r / 7.0)
+      val base = (1 - p) / 2 + p * (2.0).pow(- r / 7.0) // TODO Make half life configurable w/ config.yml
       return base.pow(3.0)
     }
 
