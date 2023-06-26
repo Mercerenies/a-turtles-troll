@@ -17,12 +17,14 @@ import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
 import org.bukkit.World
 
-class SkeletonWitherListener : AbstractFeature(), Listener {
+class SkeletonWitherListener(
+  private val witherSeconds: Int,
+) : AbstractFeature(), Listener {
 
   companion object : FeatureContainerFactory<FeatureContainer> {
 
     override fun create(state: BuilderState): FeatureContainer =
-      ListenerContainer(SkeletonWitherListener())
+      ListenerContainer(SkeletonWitherListener(state.config.getInt("witherarrow.wither_seconds")))
 
   }
 
@@ -41,7 +43,7 @@ class SkeletonWitherListener : AbstractFeature(), Listener {
       if ((victim is Player) && (damager is Arrow)) {
         val shooter = damager.shooter
         if (shooter is AbstractSkeleton) {
-          victim.addPotionEffect(PotionEffect(PotionEffectType.WITHER, Constants.TICKS_PER_SECOND * 10, 0))
+          victim.addPotionEffect(PotionEffect(PotionEffectType.WITHER, Constants.TICKS_PER_SECOND * witherSeconds, 0))
         }
       }
     }

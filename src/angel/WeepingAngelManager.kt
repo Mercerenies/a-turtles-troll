@@ -35,6 +35,8 @@ import kotlin.random.Random
 class WeepingAngelManager(
   plugin: Plugin,
   private val deathRegistry: CustomDeathMessageRegistry,
+  val spawnProbability: Double = 0.05,
+  val maxAngelsPerChunk: Int = 2,
   val movementSpeed: Double = 1.0, // Meters per tick
 ) : RunnableFeature(plugin), Listener {
   private val activeAngels = HashMap<ArmorStand, AngelInfo>()
@@ -56,10 +58,8 @@ class WeepingAngelManager(
     val DEATH_SQUARED_THRESHOLD = 1.5
     val TOUCHING_SQUARED_THRESHOLD = 0.75
 
-    val MAX_ANGELS_PER_CHUNK = 2
     val CHUNK_SIZE = 16
 
-    val MOB_REPLACE_CHANCE = 0.05
     val MOBS_TO_REPLACE = setOf(
       EntityType.ZOMBIE, EntityType.SKELETON, EntityType.SPIDER, EntityType.ZOMBIFIED_PIGLIN,
       EntityType.STRAY, EntityType.HUSK,
@@ -240,8 +240,8 @@ class WeepingAngelManager(
       return
     }
     if (MOBS_TO_REPLACE.contains(event.entity.type)) {
-      if (getNearbyAngels(event.location).size < MAX_ANGELS_PER_CHUNK) {
-        if (Random.nextDouble() < MOB_REPLACE_CHANCE) {
+      if (getNearbyAngels(event.location).size < maxAngelsPerChunk) {
+        if (Random.nextDouble() < spawnProbability) {
           event.setCancelled(true)
           val angel = ArmorStandSpawner.spawn(event.location)
           assignIdlePose(angel)

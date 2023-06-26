@@ -58,8 +58,15 @@ class WeepingAngelManagerFactory(
       Bukkit.getLogger().warning("Could not find death registry, got null")
       deathRegistry = CustomDeathMessageRegistry.Unit
     }
+    val manager = WeepingAngelManager(
+      plugin = state.plugin,
+      deathRegistry = deathRegistry,
+      spawnProbability = state.config.getDouble("weepingangel.spawn_probability"),
+      maxAngelsPerChunk = state.config.getInt("weepingangel.max_angels_per_chunk"),
+      movementSpeed = state.config.getDouble("weepingangel.movement_speed"),
+    )
     return WeepingAngelContainer(
-      angelManager = WeepingAngelManager(state.plugin, deathRegistry),
+      angelManager = manager,
       angelRecipe = AngelRecipeFeature(state.plugin),
     )
   }

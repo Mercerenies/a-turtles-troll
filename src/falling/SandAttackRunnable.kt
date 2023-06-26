@@ -17,6 +17,7 @@ import kotlin.random.Random
 class SandAttackRunnable(
   plugin: Plugin,
   val redSandChance: Double = 0.1,
+  override val maxDropHeight: Int = 15,
   val targetBlocks: Set<Material> = DEFAULT_TRIGGERS,
 ) : FallingObjectRunnable(plugin) {
 
@@ -35,15 +36,19 @@ class SandAttackRunnable(
     )
 
     override fun create(state: BuilderState): FeatureContainer =
-      RunnableContainer(SandAttackRunnable(state.plugin))
+      RunnableContainer(
+        SandAttackRunnable(
+          plugin = state.plugin,
+          redSandChance = state.config.getDouble("sandattack.red_sand_probability"),
+          maxDropHeight = state.config.getInt("sandattack.max_drop_height"),
+        )
+      )
 
   }
 
   override val name = "sandattack"
 
   override val description = "Sand drops on players' heads when standing on certain block types"
-
-  override val maxDropHeight = 15
 
   override fun getBlockToDrop() =
     if (Random.nextDouble() < redSandChance) {

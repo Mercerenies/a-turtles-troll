@@ -12,14 +12,14 @@ import org.bukkit.event.Listener
 import org.bukkit.event.entity.CreatureSpawnEvent
 import org.bukkit.entity.Slime
 
-class SlimeSplitListener() : AbstractFeature(), Listener {
+class SlimeSplitListener(
+  private val maxSlimeSize: Int, // TODO Cap this for safety reasons
+) : AbstractFeature(), Listener {
 
   companion object : FeatureContainerFactory<FeatureContainer> {
 
-    val MAX_SLIME_SIZE = 10
-
     override fun create(state: BuilderState): FeatureContainer =
-      ListenerContainer(SlimeSplitListener())
+      ListenerContainer(SlimeSplitListener(state.config.getInt("slimesplit.max_slime_size")))
 
   }
 
@@ -49,7 +49,7 @@ class SlimeSplitListener() : AbstractFeature(), Listener {
         // the child would be larger than the maximum (0-indexed)
         val parentSize = entity.size * 2 + 1
         val childSize = parentSize + 1
-        if (childSize > MAX_SLIME_SIZE) {
+        if (childSize > maxSlimeSize) {
           event.setCancelled(true)
         } else {
           entity.size = childSize

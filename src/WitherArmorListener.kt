@@ -22,7 +22,7 @@ class WitherArmorListener(val chance: Double = 1.0) : AbstractFeature(), Listene
   companion object : FeatureContainerFactory<FeatureContainer> {
 
     override fun create(state: BuilderState): FeatureContainer =
-      ListenerContainer(WitherArmorListener())
+      ListenerContainer(WitherArmorListener(state.config.getDouble("witherskele.probability")))
 
   }
 

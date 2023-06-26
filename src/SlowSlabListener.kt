@@ -13,13 +13,21 @@ import org.bukkit.event.player.PlayerMoveEvent
 import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
 
-class SlowSlabListener : AbstractFeature(), Listener {
+class SlowSlabListener(
+  private val slowTimeSeconds: Int,
+  private val slownessLevel: Int,
+) : AbstractFeature(), Listener {
 
   companion object : FeatureContainerFactory<FeatureContainer> {
     val BLOCKS = BlockTypes.SLABS union BlockTypes.STAIRS
 
     override fun create(state: BuilderState): FeatureContainer =
-      ListenerContainer(SlowSlabListener())
+      ListenerContainer(
+        SlowSlabListener(
+          slowTimeSeconds = state.config.getInt("slowslab.slow_time_seconds"),
+          slownessLevel = state.config.getInt("slowslab.slowness_level") - 1,
+        )
+      )
 
   }
 
@@ -38,7 +46,7 @@ class SlowSlabListener : AbstractFeature(), Listener {
     if (BLOCKS.contains(block.type)) {
       val player = event.player
       if (!bootsDamager.tryWearDownBoots(player)) {
-        player.addPotionEffect(PotionEffect(PotionEffectType.SLOW, Constants.TICKS_PER_SECOND * 10, 3))
+        player.addPotionEffect(PotionEffect(PotionEffectType.SLOW, Constants.TICKS_PER_SECOND * slowTimeSeconds, slownessLevel))
       }
     }
   }

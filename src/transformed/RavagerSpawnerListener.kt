@@ -27,7 +27,7 @@ class RavagerSpawnerListener(
   companion object : FeatureContainerFactory<FeatureContainer> {
 
     override fun create(state: BuilderState): FeatureContainer =
-      ListenerContainer(RavagerSpawnerListener(state.plugin))
+      ListenerContainer(RavagerSpawnerListener(state.plugin, state.config.getDouble("ravagers.probability")))
 
   }
 

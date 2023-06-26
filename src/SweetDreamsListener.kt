@@ -16,7 +16,7 @@ import org.bukkit.potion.PotionEffectType
 
 class SweetDreamsListener(
   val effectsPool: List<(Int) -> PotionEffect>,
-  val effectsCount: Int = 3
+  val effectsCount: Int = 3,
 ) : AbstractFeature(), Listener {
 
   companion object : FeatureContainerFactory<FeatureContainer> {
@@ -30,7 +30,12 @@ class SweetDreamsListener(
     )
 
     override fun create(state: BuilderState): FeatureContainer =
-      ListenerContainer(SweetDreamsListener(effectsPool = DEFAULT_EFFECTS_POOL))
+      ListenerContainer(
+        SweetDreamsListener(
+          effectsPool = DEFAULT_EFFECTS_POOL,
+          effectsCount = state.config.getInt("sweetdreams.effects_count"),
+        )
+      )
 
     fun cureAllEffects(entity: LivingEntity) {
       for (effect in entity.getActivePotionEffects().toList()) {

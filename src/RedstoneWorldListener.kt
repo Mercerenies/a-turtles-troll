@@ -30,6 +30,8 @@ class RedstoneWorldListener(
   val dropChance: Double = 0.5,
   val minItems: Int = 1,
   val maxItems: Int = 64,
+  val minDamage: Double = 0.0,
+  val maxDamage: Double = 20.0,
 ) : AbstractFeature(), Listener {
 
   override val name = "redstoneworld"
@@ -73,7 +75,7 @@ class RedstoneWorldListener(
 
   private fun dealDamage(player: Player, damager: Entity?, redstoneAmount: Int) {
     val lerpAmount = clamp(redstoneAmount / 64.0, 0.0, 1.0)
-    val damageAmount = max(lerp(0.0, 20.0, lerpAmount), 1.0)
+    val damageAmount = max(lerp(minDamage, maxDamage, lerpAmount), 1.0)
     val customMessage = CustomDeathMessage(
       Redstone,
       Component.text("").append(player.displayName()).append(" picked up some strange dust."),

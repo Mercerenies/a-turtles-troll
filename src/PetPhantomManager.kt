@@ -21,20 +21,27 @@ import kotlin.random.Random
 
 class PetPhantomManager(
   plugin: Plugin,
-  val spawnChance: Double = 0.33,
+  val spawnChance: Double,
+  val secondsCooldownAfterKill: Int,
+  val minSpawnHeight: Int,
+  val maxSpawnHeight: Int,
   val random: Random = Random.Default,
 ) : RunnableFeature(plugin), Listener {
 
   companion object : FeatureContainerFactory<FeatureContainer> {
-    val SECONDS_COOLDOWN_AFTER_KILL = 600
-
-    val MIN_SPAWN_HEIGHT = 6
-    val MAX_SPAWN_HEIGHT = 20
 
     val MAX_DISTANCE_SQUARED = 4096.0
 
     override fun create(state: BuilderState): FeatureContainer =
-      ManagerContainer(PetPhantomManager(state.plugin))
+      ManagerContainer(
+        PetPhantomManager(
+          plugin = state.plugin,
+          spawnChance = state.config.getDouble("phantoms.spawn_probability"),
+          secondsCooldownAfterKill = state.config.getInt("phantoms.cooldown_after_kill_seconds"),
+          minSpawnHeight = state.config.getInt("phantoms.min_spawn_height"),
+          maxSpawnHeight = state.config.getInt("phantoms.max_spawn_height"),
+        )
+      )
 
     private fun shouldRespawn(player: Player, phantom: Phantom): Boolean {
       val dz = player.location.z - phantom.location.z
@@ -70,7 +77,7 @@ class PetPhantomManager(
         if (phantom.health <= 0) {
           knownPhantoms.remove(player)
           // The phantom died, so give the player a cooldown
-          safePlayers.add(player, (Constants.TICKS_PER_SECOND * SECONDS_COOLDOWN_AFTER_KILL).toLong())
+          safePlayers.add(player, (Constants.TICKS_PER_SECOND * secondsCooldownAfterKill).toLong())
         }
       }
     }
@@ -100,8 +107,8 @@ class PetPhantomManager(
 
   private fun spawnPhantom(player: Player): Phantom? {
     val loc = player.location.clone()
-    loc.y += MIN_SPAWN_HEIGHT
-    var maxDistLeft = (MAX_SPAWN_HEIGHT - MIN_SPAWN_HEIGHT)
+    loc.y += minSpawnHeight
+    var maxDistLeft = (maxSpawnHeight - minSpawnHeight)
     while ((maxDistLeft > 0) && (!loc.block.isEmpty())) {
       maxDistLeft -= 1
       loc.y += 1

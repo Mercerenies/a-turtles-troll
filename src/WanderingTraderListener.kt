@@ -78,7 +78,7 @@ class WanderingTraderListener(
     }
 
     override fun create(state: BuilderState): FeatureContainer =
-      ListenerContainer(WanderingTraderListener())
+      ListenerContainer(WanderingTraderListener(state.config.getDouble("trader.chaos_trader_probability")))
 
   }
 

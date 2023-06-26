@@ -27,7 +27,7 @@ class WitchSummonManager(
     val CHANCE_INTERVAL = Constants.TICKS_PER_SECOND * 30L
 
     override fun create(state: BuilderState): FeatureContainer =
-      ManagerContainer(WitchSummonManager(state.plugin))
+      ManagerContainer(WitchSummonManager(state.plugin, state.config.getDouble("witches.probability")))
 
   }
 

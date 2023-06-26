@@ -20,7 +20,16 @@ class RedstoneWorldListenerFactory(
       Bukkit.getLogger().warning("Could not find death registry, got null")
       deathRegistry = CustomDeathMessageRegistry.Unit
     }
-    return ListenerContainer(RedstoneWorldListener(deathRegistry))
+    return ListenerContainer(
+      RedstoneWorldListener(
+        deathRegistry = deathRegistry,
+        dropChance = state.config.getDouble("redstoneworld.drop_probability"),
+        minItems = state.config.getInt("redstoneworld.min_items"),
+        maxItems = state.config.getInt("redstoneworld.max_items"),
+        minDamage = state.config.getDouble("redstoneworld.min_damage"),
+        maxDamage = state.config.getDouble("redstoneworld.max_damage"),
+      )
+    )
   }
 
 }

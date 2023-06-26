@@ -26,7 +26,7 @@ class WitchAttackListener(
     val COOLDOWN_TIME = Constants.TICKS_PER_SECOND * 10
 
     override fun create(state: BuilderState): FeatureContainer =
-      ListenerContainer(WitchAttackListener(state.plugin))
+      ListenerContainer(WitchAttackListener(state.plugin, state.config.getDouble("witchattack.probability")))
 
   }
 

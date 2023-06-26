@@ -21,7 +21,7 @@ class ZombieSpeedListener(
   companion object : FeatureContainerFactory<FeatureContainer> {
     val DEFAULT_SPEED = 0.2738638
     override fun create(state: BuilderState): FeatureContainer =
-      ListenerContainer(ZombieSpeedListener())
+      ListenerContainer(ZombieSpeedListener(state.config.getDouble("zombiespeed.speed")))
 
   }
 

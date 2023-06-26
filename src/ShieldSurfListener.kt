@@ -16,7 +16,9 @@ import org.bukkit.event.entity.EntityCombustByBlockEvent
 import org.bukkit.entity.Player
 import org.bukkit.Material
 
-class ShieldSurfListener() : AbstractFeature(), Listener {
+class ShieldSurfListener(
+  private val damageMultiplier: Double
+) : AbstractFeature(), Listener {
 
   companion object : FeatureContainerFactory<FeatureContainer> {
     val MIN_PITCH = 45
@@ -40,7 +42,7 @@ class ShieldSurfListener() : AbstractFeature(), Listener {
     }
 
     override fun create(state: BuilderState): FeatureContainer =
-      ListenerContainer(ShieldSurfListener())
+      ListenerContainer(ShieldSurfListener(state.config.getDouble("shieldsurf.damage_multiplier")))
 
   }
 
@@ -59,7 +61,7 @@ class ShieldSurfListener() : AbstractFeature(), Listener {
         if ((event.cause == EntityDamageEvent.DamageCause.FALL) || (event.cause == EntityDamageEvent.DamageCause.LAVA)) {
           if (isShieldingDownward(victim)) {
             event.setCancelled(true)
-            damageShield(victim, event.getDamage())
+            damageShield(victim, damageMultiplier * event.getDamage())
           }
         }
       }
@@ -77,7 +79,7 @@ class ShieldSurfListener() : AbstractFeature(), Listener {
         if (event.combuster?.type == Material.LAVA) {
           if (isShieldingDownward(victim)) {
             event.setCancelled(true)
-            damageShield(victim, 1.0)
+            damageShield(victim, damageMultiplier)
           }
         }
       }

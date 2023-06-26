@@ -1,6 +1,7 @@
 
 package com.mercerenies.turtletroll
 
+import org.bukkit.entity.Entity
 import org.bukkit.entity.Player
 import org.bukkit.entity.PufferFish
 import org.bukkit.plugin.Plugin
@@ -16,14 +17,26 @@ import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 
 import kotlin.random.Random
 
-class PufferfishRainManager(plugin: Plugin) : ScheduledEventRunnable<PufferfishRainManager.State>(plugin), Listener {
+class PufferfishRainManager(
+  plugin: Plugin,
+  private val pufferfishCount: Int,
+  private val explosionPower: Double,
+  private val explosionPowerInWater: Double,
+) : ScheduledEventRunnable<PufferfishRainManager.State>(plugin), Listener {
 
   companion object : FeatureContainerFactory<FeatureContainer> {
     val WARNING_TIME = 5700L
     val DROP_TIME = 6000L
 
     override fun create(state: BuilderState): FeatureContainer =
-      ManagerContainer(PufferfishRainManager(state.plugin))
+      ManagerContainer(
+        PufferfishRainManager(
+          plugin = state.plugin,
+          pufferfishCount = state.config.getInt("pufferfish.pufferfish_count"),
+          explosionPower = state.config.getDouble("pufferfish.explosion_power"),
+          explosionPowerInWater = state.config.getDouble("pufferfish.explosion_power_in_water"),
+        )
+      )
 
     fun initializePufferfish(pufferfish: PufferFish) {
       pufferfish.setHealth(1.0)
@@ -85,8 +98,7 @@ class PufferfishRainManager(plugin: Plugin) : ScheduledEventRunnable<PufferfishR
 
     val entity = event.getEntity()
     if (entity is PufferFish) {
-      var explosionPower = if (entity.isInWater) { 10.0F } else { 5.0F }
-      entity.world.createExplosion(entity.location, explosionPower, false, false, entity)
+      entity.world.createExplosion(entity.location, explosionPower(entity), false, false, entity)
     }
 
   }
@@ -107,5 +119,12 @@ class PufferfishRainManager(plugin: Plugin) : ScheduledEventRunnable<PufferfishR
     }
 
   }
+
+  private fun explosionPower(entity: Entity): Float =
+    if (entity.isInWater) {
+      explosionPowerInWater.toFloat()
+    } else {
+      explosionPower.toFloat()
+    }
 
 }

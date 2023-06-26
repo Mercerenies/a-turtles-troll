@@ -31,7 +31,7 @@ class PressurePlateFireListener(
       Material.STONE_PRESSURE_PLATE, Material.WARPED_PRESSURE_PLATE,
     )
     override fun create(state: BuilderState): FeatureContainer =
-      ListenerContainer(PressurePlateFireListener())
+      ListenerContainer(PressurePlateFireListener(state.config.getDouble("platefire.probability")))
 
   }
 

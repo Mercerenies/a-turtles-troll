@@ -25,7 +25,7 @@ class SnowballListener(
   companion object : FeatureContainerFactory<FeatureContainer> {
 
     override fun create(state: BuilderState): FeatureContainer =
-      ListenerContainer(SnowballListener(state.plugin))
+      ListenerContainer(SnowballListener(state.plugin, state.config.getDouble("snowball.speed_multiplier")))
 
   }
 

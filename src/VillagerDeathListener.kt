@@ -14,7 +14,9 @@ import org.bukkit.entity.EntityType
 import org.bukkit.inventory.ItemStack
 import org.bukkit.Material
 
-class VillagerDeathListener() : AbstractFeature(), Listener {
+class VillagerDeathListener(
+  private val leatherCount: Int,
+) : AbstractFeature(), Listener {
 
   companion object : FeatureContainerFactory<FeatureContainer> {
 
@@ -23,7 +25,7 @@ class VillagerDeathListener() : AbstractFeature(), Listener {
     )
 
     override fun create(state: BuilderState): FeatureContainer =
-      ListenerContainer(VillagerDeathListener())
+      ListenerContainer(VillagerDeathListener(state.config.getInt("villagerdeath.leather_count")))
 
   }
 
@@ -38,7 +40,7 @@ class VillagerDeathListener() : AbstractFeature(), Listener {
     }
     val entity = event.entity
     if (AFFECTED_ENTITY_TYPES.contains(entity.getType())) {
-      event.getDrops().add(ItemStack(Material.LEATHER))
+      event.getDrops().add(ItemStack(Material.LEATHER, leatherCount))
     }
   }
 

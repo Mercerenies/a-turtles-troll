@@ -21,7 +21,7 @@ class GrassPoisonListener(
   companion object : FeatureContainerFactory<FeatureContainer> {
 
     override fun create(state: BuilderState): FeatureContainer =
-      ListenerContainer(GrassPoisonListener())
+      ListenerContainer(GrassPoisonListener(state.config.getDouble("tallgrass.boots_damage_probability")))
 
   }
 
