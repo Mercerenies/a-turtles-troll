@@ -2,6 +2,7 @@
 package com.mercerenies.turtletroll
 
 import com.mercerenies.turtletroll.feature.FeatureManager
+import com.mercerenies.turtletroll.feature.FeatureConfig
 import com.mercerenies.turtletroll.feature.container.FeatureContainer
 import com.mercerenies.turtletroll.feature.builder.SimpleBuilderState
 import com.mercerenies.turtletroll.feature.builder.BuilderState
@@ -49,6 +50,10 @@ class Main : JavaPlugin() {
   )
   val commandDispatcher = CommandDispatcher(turtleCommand)
 
+  override fun onLoad() {
+    this.saveDefaultConfig()
+  }
+
   override fun onEnable() {
 
     // Reload the data file
@@ -82,6 +87,9 @@ class Main : JavaPlugin() {
     // Setup command
     this.getCommand("turtle")!!.setExecutor(commandDispatcher)
     this.getCommand("turtle")!!.setTabCompleter(commandDispatcher)
+
+    // Disable features as requested by config
+    disableFeaturesFromConfig()
 
   }
 
@@ -119,5 +127,15 @@ class Main : JavaPlugin() {
 
   fun createBuilderState(): BuilderState =
     SimpleBuilderState(this, this.pluginData, this.configOptions)
+
+  private fun disableFeaturesFromConfig() {
+    val config = this.configOptions
+    for (feature in featureManager.features) {
+      val enabled = config.getBoolean(FeatureConfig.featureEnabledPath(feature))
+      if (!enabled) {
+        feature.disable()
+      }
+    }
+  }
 
 }
