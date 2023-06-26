@@ -102,6 +102,30 @@ object QuestionLibrary {
       )
     },
     {
+      MultipleChoiceQuestion(
+        questionBody = "Which of these items has no smelting recipe when placed in a furnace?",
+        answers = listOf("Steak", "Ancient Debris", "Iron Horse Armor", "Sea Pickle"),
+        correctAnswerIndex = 0,
+        rewards = listOf(ItemReward(ItemStack(Material.COOKED_BEEF, 2)), ItemReward(Material.FURNACE)),
+      )
+    },
+    {
+      MultipleChoiceQuestion(
+        questionBody = "Which of the following can a fox NOT eat?",
+        answers = listOf("Beetroot", "Honey Bottle", "Cake", "Chorus Fruit"),
+        correctAnswerIndex = 2,
+        rewards = listOf(ItemReward(Material.CAKE), ItemReward(Material.FOX_SPAWN_EGG)),
+      )
+    },
+    {
+      MultipleChoiceQuestion(
+        questionBody = "Which of the following will NOT appear in a desert pyramid chest?",
+        answers = listOf("Bone", "Sand", "Sandstone", "Saddle"),
+        correctAnswerIndex = 2,
+        rewards = listOf(ItemReward(ItemStack(Material.SANDSTONE, 64)), ItemReward(ItemStack(Material.BONE, 32)), ItemReward(Material.SADDLE)),
+      )
+    },
+    {
       NumericalQuestion(
         questionBody = "How many signs can be stacked in a single inventory slot?",
         correctAnswer = 16,
