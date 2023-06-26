@@ -258,7 +258,7 @@ redstoneworld:
   max_damage: 20.0
 sandattack:
   enabled: true
-  red_sand_probabiity: 0.1
+  red_sand_probability: 0.1
   max_drop_height: 15
 sheepcolor:
   enabled: true
