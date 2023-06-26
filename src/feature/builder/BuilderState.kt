@@ -2,7 +2,7 @@
 package com.mercerenies.turtletroll.feature.builder
 
 import com.mercerenies.turtletroll.storage.GlobalDataHolder
-import com.mercerenies.turtletroll.config.ConfigOptions
+import com.mercerenies.turtletroll.config.CheckedConfigOptions
 
 import org.bukkit.plugin.Plugin
 
@@ -13,7 +13,7 @@ import kotlin.reflect.KClass
 interface BuilderState {
   val plugin: Plugin
   val dataStore: GlobalDataHolder
-  val config: ConfigOptions
+  val config: CheckedConfigOptions
 
   fun registerSharedData(key: String, value: Any)
 

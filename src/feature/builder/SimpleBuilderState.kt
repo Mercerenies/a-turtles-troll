@@ -2,7 +2,7 @@
 package com.mercerenies.turtletroll.feature.builder
 
 import com.mercerenies.turtletroll.storage.GlobalDataHolder
-import com.mercerenies.turtletroll.config.ConfigOptions
+import com.mercerenies.turtletroll.config.CheckedConfigOptions
 
 import org.bukkit.plugin.Plugin
 
@@ -13,7 +13,7 @@ import kotlin.reflect.safeCast
 class SimpleBuilderState(
   override val plugin: Plugin,
   override val dataStore: GlobalDataHolder,
-  override val config: ConfigOptions,
+  override val config: CheckedConfigOptions,
 ) : BuilderState {
 
   private val storage: HashMap<String, Any> = HashMap()

@@ -6,6 +6,7 @@ import org.bukkit.configuration.ConfigurationSection
 interface Class<T> {
 
   object BOOLEAN : Class<Boolean> {
+    override val name = "Boolean"
     override fun fromBukkitConfig(config: ConfigurationSection, path: String): Boolean? =
       if (config.isBoolean(path)) {
         config.getBoolean(path)
@@ -15,6 +16,7 @@ interface Class<T> {
   }
 
   object INT : Class<Int> {
+    override val name = "Integer"
     override fun fromBukkitConfig(config: ConfigurationSection, path: String): Int? =
       if (config.isInt(path)) {
         config.getInt(path)
@@ -27,6 +29,7 @@ interface Class<T> {
   }
 
   object DOUBLE : Class<Double> {
+    override val name = "Double"
     override fun fromBukkitConfig(config: ConfigurationSection, path: String): Double? =
       if (config.isDouble(path)) {
         config.getDouble(path)
@@ -37,6 +40,7 @@ interface Class<T> {
   }
 
   object STRING : Class<String> {
+    override val name = "String"
     override fun fromBukkitConfig(config: ConfigurationSection, path: String): String? =
       if (config.isString(path)) {
         config.getString(path)!!
@@ -44,6 +48,8 @@ interface Class<T> {
         null
       }
   }
+
+  val name: String
 
   fun fromBukkitConfig(config: ConfigurationSection, path: String): T?
 

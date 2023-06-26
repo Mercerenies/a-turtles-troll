@@ -11,8 +11,8 @@ import com.mercerenies.turtletroll.command.withPermission
 import com.mercerenies.turtletroll.command.Permissions
 import com.mercerenies.turtletroll.storage.GlobalDataHolder
 import com.mercerenies.turtletroll.storage.GlobalFileDataHolder
-import com.mercerenies.turtletroll.config.ConfigOptions
 import com.mercerenies.turtletroll.config.BukkitConfigOptions
+import com.mercerenies.turtletroll.config.CheckedConfigOptions
 import com.mercerenies.turtletroll.config.DifficultyBackedConfigOptions
 
 import org.bukkit.plugin.java.JavaPlugin
@@ -29,10 +29,10 @@ class Main : JavaPlugin() {
   val pluginData: GlobalDataHolder
     get() = dataHolder
 
-  val configOptions: ConfigOptions
+  val configOptions: CheckedConfigOptions
     get() {
       val bukkitConfig = BukkitConfigOptions(this.getConfig())
-      return DifficultyBackedConfigOptions(bukkitConfig)
+      return CheckedConfigOptions(DifficultyBackedConfigOptions(bukkitConfig))
     }
 
   val mainContainer: FeatureContainer =
