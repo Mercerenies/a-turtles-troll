@@ -16,6 +16,8 @@ sourceSets {
     resources {
       setSrcDirs(listOf("."))
       include("plugin.yml")
+      include("config.yml")
+      include("config-*.yml")
       include("README.md")
       include("LICENSE.txt")
       include("data/*.txt")
