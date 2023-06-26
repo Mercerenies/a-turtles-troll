@@ -27,7 +27,7 @@ class JohnnyListener(
   companion object : FeatureContainerFactory<FeatureContainer> {
 
     override fun create(state: BuilderState): FeatureContainer =
-      ListenerContainer(JohnnyListener(state.plugin))
+      ListenerContainer(JohnnyListener(state.plugin, state.config.getDouble("johnny.probability")))
 
   }
 

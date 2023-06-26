@@ -28,6 +28,7 @@ import kotlin.random.Random
 class MimicListener(
   val plugin: Plugin,
   private val deathRegistry: CustomDeathMessageRegistry,
+  private val mobReplaceChance: Double,
 ) : AbstractFeature(), Listener {
 
   companion object {
@@ -35,7 +36,6 @@ class MimicListener(
 
     val SAFETY_RADIUS = 8
 
-    val MOB_REPLACE_CHANCE = 0.05
     val MOBS_TO_REPLACE = setOf(
       EntityType.ZOMBIE, EntityType.SKELETON, EntityType.SPIDER, EntityType.ZOMBIFIED_PIGLIN,
       EntityType.STRAY, EntityType.HUSK,
@@ -72,7 +72,7 @@ class MimicListener(
     }
     if (MOBS_TO_REPLACE.contains(event.entity.type)) {
       if (BlockSelector.countNearbyMatching(event.location.block, SAFETY_RADIUS, BlockSelector::isMimicOrCake) < 1) {
-        if (Random.nextDouble() < MOB_REPLACE_CHANCE) {
+        if (Random.nextDouble() < mobReplaceChance) {
           val below = event.location.clone().add(0.0, -1.0, 0.0)
           if (below.block.type != Material.AIR) {
             event.setCancelled(true)

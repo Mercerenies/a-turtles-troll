@@ -18,6 +18,13 @@ class OldAgeListener(
   val ageLimit: Int = 100,
 ) : AbstractFeature(), Listener {
 
+  companion object {
+    // This is public because LearningFromFailureListener needs to
+    // know where we get our config from, so that it can prevent
+    // infinite loops between itself and this listener.
+    val AGE_LIMIT_CONFIG_PATH: String = "oldage.age_limit"
+  }
+
   override val name = "oldage"
 
   override val description = "Players above a certain level die of old age"

@@ -14,9 +14,6 @@ abstract class MinecraftTriviaManagerFactory() : FeatureContainerFactory<Feature
 
   companion object : MinecraftTriviaManagerFactory() {
 
-    override val config: TriviaConfig =
-      TriviaConfig.DEFAULT
-
     override val questionSupplier: TriviaQuestionSupplier =
       QuestionLibrary.SUPPLIER
 
@@ -41,11 +38,10 @@ abstract class MinecraftTriviaManagerFactory() : FeatureContainerFactory<Feature
 
   }
 
-  abstract val config: TriviaConfig
-
   abstract val questionSupplier: TriviaQuestionSupplier
 
   override fun create(state: BuilderState): FeatureContainer {
+    val config = TriviaConfig.fromGlobalConfig(state.config)
     val manager = MinecraftTriviaManager(state.plugin, config, questionSupplier)
     return Container(manager)
   }

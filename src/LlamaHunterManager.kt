@@ -33,7 +33,13 @@ class LlamaHunterManager(
   companion object : FeatureContainerFactory<FeatureContainer> {
 
     override fun create(state: BuilderState): FeatureContainer =
-      ManagerContainer(LlamaHunterManager(state.plugin))
+      ManagerContainer(
+        LlamaHunterManager(
+          plugin = state.plugin,
+          speedMultiplier = state.config.getDouble("llamahunter.speed_multiplier"),
+          minLlamas = state.config.getInt("llamahunter.min_llamas"),
+        )
+      )
 
     fun getAllLlamas(): List<Llama> =
       Bukkit.getWorlds().flatMap { it.getEntitiesByClass(Llama::class.java) }

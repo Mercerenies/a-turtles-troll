@@ -13,12 +13,14 @@ import org.bukkit.event.player.PlayerMoveEvent
 import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
 
-class LevitationListener : AbstractFeature(), Listener {
+class LevitationListener(
+  private val effectSeconds: Int,
+) : AbstractFeature(), Listener {
 
   companion object : FeatureContainerFactory<FeatureContainer> {
 
     override fun create(state: BuilderState): FeatureContainer =
-      ListenerContainer(LevitationListener())
+      ListenerContainer(LevitationListener(state.config.getInt("levitation.levitation_seconds")))
 
   }
 
@@ -35,7 +37,7 @@ class LevitationListener : AbstractFeature(), Listener {
     val block = loc.clone().add(0.0, -1.0, 0.0).getBlock()
     if (BlockTypes.ORES.contains(block.type)) {
       val player = event.player
-      player.addPotionEffect(PotionEffect(PotionEffectType.LEVITATION, Constants.TICKS_PER_SECOND * 5, 0))
+      player.addPotionEffect(PotionEffect(PotionEffectType.LEVITATION, Constants.TICKS_PER_SECOND * effectSeconds, 0))
     }
   }
 

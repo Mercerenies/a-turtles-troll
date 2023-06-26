@@ -23,7 +23,11 @@ class LearningFromFailureListener(
   companion object : FeatureContainerFactory<FeatureContainer> {
 
     override fun create(state: BuilderState): FeatureContainer =
-      ListenerContainer(LearningFromFailureListener())
+      ListenerContainer(
+        LearningFromFailureListener(
+          ageLimit = state.config.getInt(OldAgeListener.AGE_LIMIT_CONFIG_PATH),
+        )
+      )
 
     private fun lessonMessage(player: Player): Component =
       Component.text("You learned an important lesson from ")

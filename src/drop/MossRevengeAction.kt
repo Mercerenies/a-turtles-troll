@@ -5,7 +5,9 @@ import org.bukkit.Material
 import org.bukkit.event.block.BlockBreakEvent
 import org.bukkit.entity.Slime
 
-object MossRevengeAction : BlockBreakAction {
+class MossRevengeAction(
+  private val slimeSize: Int,
+) : BlockBreakAction {
 
   override fun shouldTrigger(event: BlockBreakEvent): Boolean =
     event.block.type == Material.MOSS_BLOCK
@@ -18,7 +20,7 @@ object MossRevengeAction : BlockBreakAction {
     event.setCancelled(true)
 
     val slime = w.spawn(loc, Slime::class.java)
-    slime.setSize(2)
+    slime.setSize(slimeSize)
 
   }
 

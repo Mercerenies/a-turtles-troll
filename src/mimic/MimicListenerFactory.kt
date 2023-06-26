@@ -20,7 +20,8 @@ class MimicListenerFactory(
       Bukkit.getLogger().warning("Could not find death registry, got null")
       deathRegistry = CustomDeathMessageRegistry.Unit
     }
-    return ListenerContainer(MimicListener(state.plugin, deathRegistry))
+    val replaceChance = state.config.getDouble("mimics.probability")
+    return ListenerContainer(MimicListener(state.plugin, deathRegistry, replaceChance))
   }
 
 }

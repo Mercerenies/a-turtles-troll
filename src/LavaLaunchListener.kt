@@ -14,12 +14,14 @@ import org.bukkit.entity.Player
 import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
 
-class LavaLaunchListener() : AbstractFeature(), Listener {
+class LavaLaunchListener(
+  private val velocityY: Double,
+) : AbstractFeature(), Listener {
 
   companion object : FeatureContainerFactory<FeatureContainer> {
 
     override fun create(state: BuilderState): FeatureContainer =
-      ListenerContainer(LavaLaunchListener())
+      ListenerContainer(LavaLaunchListener(state.config.getDouble("lavalaunch.velocity_y")))
 
   }
 
@@ -36,7 +38,7 @@ class LavaLaunchListener() : AbstractFeature(), Listener {
     if (victim is Player) {
       if (event.cause == EntityDamageEvent.DamageCause.LAVA) {
         val velocity = victim.getVelocity().clone()
-        velocity.setY(1.3)
+        velocity.setY(velocityY)
         victim.setVelocity(velocity)
         victim.addPotionEffect(PotionEffect(PotionEffectType.SPEED, Constants.TICKS_PER_SECOND * 10, 4))
       }

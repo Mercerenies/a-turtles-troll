@@ -11,14 +11,18 @@ object MossRevengeFeatureFactory : FeatureContainerFactory<DropFeatureContainer>
 
   override fun create(state: BuilderState): DropFeatureContainer = object : AbstractDropFeatureContainer() {
 
-    private val mossRevengeAction = MossRevengeAction.asFeature(
+    private val mossRevengeAction = MossRevengeAction(
+      slimeSize = state.config.getInt("mossrevenge.slime_size"),
+    ).asFeature(
       "mossrevenge",
       "Moss blocks will sometimes spawn slimes when broken",
     )
 
+    private val probability: Double = state.config.getDouble("mossrevenge.probability")
+
     override val features = listOf(mossRevengeAction)
 
-    override val actions = listOf(Weight(mossRevengeAction, 0.2))
+    override val actions = listOf(Weight(mossRevengeAction, probability))
 
   }
 

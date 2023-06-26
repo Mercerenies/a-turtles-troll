@@ -20,7 +20,12 @@ class OldAgeListenerFactory(
       Bukkit.getLogger().warning("Could not find death registry, got null")
       deathRegistry = CustomDeathMessageRegistry.Unit
     }
-    return ListenerContainer(OldAgeListener(deathRegistry))
+    return ListenerContainer(
+      OldAgeListener(
+        deathRegistry = deathRegistry,
+        ageLimit = state.config.getInt(OldAgeListener.AGE_LIMIT_CONFIG_PATH),
+      )
+    )
   }
 
 }

@@ -26,7 +26,11 @@ class NamedZombieListener(
       "Lukasmah", "niko474",
     )
     override fun create(state: BuilderState): FeatureContainer =
-      ListenerContainer(NamedZombieListener())
+      ListenerContainer(
+        NamedZombieListener(
+          chance = state.config.getDouble("namedzombie.probability"),
+        )
+      )
 
   }
 
