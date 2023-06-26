@@ -22,7 +22,11 @@ class EscalationListener(
   companion object : FeatureContainerFactory<FeatureContainer> {
 
     override fun create(state: BuilderState): FeatureContainer =
-      ListenerContainer(EscalationListener())
+      ListenerContainer(
+        EscalationListener(
+          featureCount = state.config.getInt("escalation.effect_count"),
+        )
+      )
 
   }
 

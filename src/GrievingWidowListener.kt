@@ -21,6 +21,7 @@ import net.kyori.adventure.text.Component
 
 class GrievingWidowListener(
   val plugin: Plugin,
+  private val secondsToDisable: Long,
 ) : AbstractFeature(), Listener {
 
   companion object : FeatureContainerFactory<FeatureContainer> {
@@ -33,7 +34,12 @@ class GrievingWidowListener(
         .append(", mobGriefing is now on.")
 
     override fun create(state: BuilderState): FeatureContainer =
-      ListenerContainer(GrievingWidowListener(state.plugin))
+      ListenerContainer(
+        GrievingWidowListener(
+          plugin = state.plugin,
+          secondsToDisable = state.config.getInt("grievingwidow.minutes_to_disable").toLong() * 60L,
+        )
+      )
 
   }
 
@@ -69,7 +75,7 @@ class GrievingWidowListener(
       // If it wasn't scheduled or has already been canceled, don't care.
     }
     val newRunnable = DeactivateMobGriefingRunnable()
-    newRunnable.runTaskLater(plugin, Constants.TICKS_PER_SECOND * 600L) // Ten minutes
+    newRunnable.runTaskLater(plugin, Constants.TICKS_PER_SECOND * secondsToDisable)
     scheduledRunnable = newRunnable
   }
 

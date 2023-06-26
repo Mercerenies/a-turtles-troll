@@ -17,12 +17,17 @@ import kotlin.random.Random
 
 class ExpirationDateListener(
   val chance: Double = 0.1,
+  val slimeSize: Int = 2,
 ) : AbstractFeature(), Listener {
 
   companion object : FeatureContainerFactory<FeatureContainer> {
-    val SLIME_SIZE = 2
     override fun create(state: BuilderState): FeatureContainer =
-      ListenerContainer(ExpirationDateListener())
+      ListenerContainer(
+        ExpirationDateListener(
+          chance = state.config.getDouble("expirationdate.probability"),
+          slimeSize = state.config.getInt("expirationdate.slime_size"),
+        )
+      )
 
   }
 
@@ -39,7 +44,7 @@ class ExpirationDateListener(
     if (event.item.type == Material.BREAD) {
       if (Random.nextDouble() <= chance) {
         val slime = event.player.world.spawn(event.player.location, Slime::class.java)
-        slime.size = SLIME_SIZE
+        slime.size = slimeSize
       }
     }
 

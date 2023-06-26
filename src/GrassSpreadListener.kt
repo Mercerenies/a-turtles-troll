@@ -14,12 +14,14 @@ import org.bukkit.Material
 
 import kotlin.random.Random
 
-class GrassSpreadListener() : AbstractFeature(), Listener {
+class GrassSpreadListener(
+  val cancelChance: Double,
+) : AbstractFeature(), Listener {
 
   companion object : FeatureContainerFactory<FeatureContainer> {
 
     override fun create(state: BuilderState): FeatureContainer =
-      ListenerContainer(GrassSpreadListener())
+      ListenerContainer(GrassSpreadListener(state.config.getDouble("grassspread.probability")))
 
   }
 
@@ -33,8 +35,7 @@ class GrassSpreadListener() : AbstractFeature(), Listener {
       return
     }
     if (event.newState.blockData.material == Material.GRASS_BLOCK) {
-      // 50% chance of canceling
-      if (Random.nextDouble() < 0.5) {
+      if (Random.nextDouble() < cancelChance) {
         event.setCancelled(true)
       }
     }

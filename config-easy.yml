@@ -125,7 +125,7 @@ endspeed:
   enabled: true
 escalation:
   enabled: true
-  feature_count: 4
+  effect_count: 4
 expirationdate:
   enabled: true
   probability: 0.1

@@ -28,7 +28,7 @@ class FunHatListener(
     )
 
     override fun create(state: BuilderState): FeatureContainer =
-      ListenerContainer(FunHatListener())
+      ListenerContainer(FunHatListener(state.config.getDouble("funhat.probability")))
 
   }
 

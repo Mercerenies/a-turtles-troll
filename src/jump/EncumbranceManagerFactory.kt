@@ -26,12 +26,12 @@ abstract class EncumbranceManagerFactory() : FeatureContainerFactory<FeatureCont
         godsFeature = GodsConditionAccessor.AlwaysAppeased
       }
       return EncumbranceCalculator.Sum(
-        InventoryCountStat(0.0003),
-        ArmorCountStat.Leather(0.001),
-        ArmorCountStat.NonLeather(0.0025),
-        StatusEffectStat("Slowness", PotionEffectType.SLOW, 0.10),
-        StatusEffectStat("Nausea", PotionEffectType.CONFUSION, 0.05),
-        GodsRageStat(0.01, godsFeature),
+        InventoryCountStat(state.config.getDouble("encumbrance.penalties.occupied_inventory_slot")),
+        ArmorCountStat.Leather(state.config.getDouble("encumbrance.penalties.leather_armor")),
+        ArmorCountStat.NonLeather(state.config.getDouble("encumbrance.penalties.non_leather_armor")),
+        StatusEffectStat("Slowness", PotionEffectType.SLOW, state.config.getDouble("encumbrance.penalties.slowness")),
+        StatusEffectStat("Nausea", PotionEffectType.CONFUSION, state.config.getDouble("encumbrance.penalties.confusion")),
+        GodsRageStat(state.config.getDouble("encumbrance.penalties.gods_rage"), godsFeature),
       )
     }
 

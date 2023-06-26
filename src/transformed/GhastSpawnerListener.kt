@@ -36,7 +36,7 @@ class GhastSpawnerListener(
     )
 
     override fun create(state: BuilderState): FeatureContainer =
-      ListenerContainer(GhastSpawnerListener(state.plugin))
+      ListenerContainer(GhastSpawnerListener(state.plugin, state.config.getDouble("ghasts.probability")))
 
   }
 
