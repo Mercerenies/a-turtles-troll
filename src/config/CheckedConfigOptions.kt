@@ -16,4 +16,16 @@ class CheckedConfigOptions(
     return result
   }
 
+  override fun getBoolean(path: String): Boolean =
+    getValue(Class.BOOLEAN, path)
+
+  override fun getInt(path: String): Int =
+    getValue(Class.INT, path)
+
+  override fun getDouble(path: String): Double =
+    getValue(Class.DOUBLE, path)
+
+  override fun getString(path: String): String =
+    getValue(Class.STRING, path)
+
 }

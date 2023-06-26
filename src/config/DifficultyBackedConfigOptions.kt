@@ -9,7 +9,7 @@ class DifficultyBackedConfigOptions(
 ) : ConfigOptions {
 
   private val difficultySetting: DifficultyTier by lazy {
-    val setting = config.getValue(Class.STRING, "global.difficulty")
+    val setting = config.getString("global.difficulty")
     if (setting == null) {
       Bukkit.getLogger().warning("No difficulty was set in config, assuming \"normal\"")
       DifficultyTier.NORMAL
@@ -33,7 +33,7 @@ class DifficultyBackedConfigOptions(
     readFromDifficulty(classType, path) ?: config.getValue(classType, path)
 
   private fun<T> readFromDifficulty(classType: Class<T>, path: String): T? =
-    config.getValue(Class.STRING, path).let { stringValue ->
+    config.getString(path).let { stringValue ->
       when (stringValue) {
         "default" -> difficultySetting.configOptions.getValue(classType, path)
         in difficultyTiers -> difficultyTiers[stringValue]!!.configOptions.getValue(classType, path)
