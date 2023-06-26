@@ -11,7 +11,9 @@ import org.bukkit.command.CommandSender
 
 import net.kyori.adventure.text.Component
 
-class FeatureManager(val features: List<Feature>) {
+class FeatureManager(
+  val features: List<Feature>,
+) {
 
   constructor(_features: Iterable<Feature>) :
     this(_features.toList()) {}
