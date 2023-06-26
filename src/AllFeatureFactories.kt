@@ -130,7 +130,7 @@ object AllFeatureFactories {
       LlamaHunterManager,
       MinecraftTriviaManagerFactory,
       NamedZombieListener,
-      OvergrowthListenerFactory(OvergrowthListener::randomWood),
+      OvergrowthListenerFactory.Default(),
       ParrotCookieListener,
       ParrotDeathListener,
       ParrotManager,

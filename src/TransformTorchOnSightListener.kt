@@ -9,6 +9,7 @@ import org.bukkit.block.Block
 import org.bukkit.block.`data`.Directional
 import org.bukkit.plugin.Plugin
 
+// TODO Use this as an "insane" mode for dropping torches in config?
 class TransformTorchOnSightListener(
   _plugin: Plugin,
   val pumpkinFeature: HasEnabledStatus,

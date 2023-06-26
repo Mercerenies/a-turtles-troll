@@ -34,6 +34,9 @@ class OvergrowthListener(
     fun randomWood(): Material =
       WOOD_BLOCKS.sample()!!
 
+    fun alwaysObsidian(): Material =
+      Material.OBSIDIAN
+
   }
 
   private inner class TurnInto(val location: Location, val blockType: Material) : BukkitRunnable() {

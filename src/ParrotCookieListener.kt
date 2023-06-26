@@ -16,7 +16,9 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent
 import org.bukkit.entity.Parrot
 import org.bukkit.entity.HumanEntity
 
-class ParrotCookieListener() : AbstractFeature(), Listener {
+class ParrotCookieListener(
+  private val parrotDuplicateCount: Int,
+) : AbstractFeature(), Listener {
 
   companion object : FeatureContainerFactory<FeatureContainer> {
 
@@ -41,7 +43,7 @@ class ParrotCookieListener() : AbstractFeature(), Listener {
     }
 
     override fun create(state: BuilderState): FeatureContainer =
-      ListenerContainer(ParrotCookieListener())
+      ListenerContainer(ParrotCookieListener(state.config.getInt("parrotcookie.parrot_duplicate_count")))
 
   }
 
@@ -58,7 +60,7 @@ class ParrotCookieListener() : AbstractFeature(), Listener {
     val entity = event.entity
     if (entity is Parrot) {
       if (wasDamagedByCookie(entity)) {
-        repeat(5) {
+        repeat(parrotDuplicateCount) {
           val newParrot = entity.location.world!!.spawn(entity.location, Parrot::class.java)
           newParrot.variant = Parrot.Variant.values().toList().sample()!!
           newParrot.isTamed = entity.isTamed
