@@ -11,6 +11,9 @@ import com.mercerenies.turtletroll.command.withPermission
 import com.mercerenies.turtletroll.command.Permissions
 import com.mercerenies.turtletroll.storage.GlobalDataHolder
 import com.mercerenies.turtletroll.storage.GlobalFileDataHolder
+import com.mercerenies.turtletroll.config.ConfigOptions
+import com.mercerenies.turtletroll.config.BukkitConfigOptions
+import com.mercerenies.turtletroll.config.DifficultyBackedConfigOptions
 
 import org.bukkit.plugin.java.JavaPlugin
 import org.bukkit.Bukkit
@@ -25,6 +28,12 @@ class Main : JavaPlugin() {
   // implementation is private.
   val pluginData: GlobalDataHolder
     get() = dataHolder
+
+  val configOptions: ConfigOptions
+    get() {
+      val bukkitConfig = BukkitConfigOptions(this.getConfig())
+      return DifficultyBackedConfigOptions(bukkitConfig)
+    }
 
   val mainContainer: FeatureContainer =
     AllFeatureFactories.createComposite(this.createBuilderState())
@@ -109,6 +118,6 @@ class Main : JavaPlugin() {
   }
 
   fun createBuilderState(): BuilderState =
-    SimpleBuilderState(this, this.pluginData)
+    SimpleBuilderState(this, this.pluginData, this.configOptions)
 
 }
