@@ -270,7 +270,8 @@ shufflelogs:
 silverfish:
   enabled: true
   probability: 0.2
-  radius: 3
+  bomb_probability: 0.2
+  bomb_radius: 3
   release_chance: 0.2
   infestation_chance: 0.2 # NOTE: Stack on release_chance in the code
 silverfishburn:
@@ -295,7 +296,8 @@ stonetools:
   enabled: true
 stronghold:
   enabled: true
-  radius: 4
+  bomb_probability: 0.2
+  bomb_radius: 4
   release_chance: 0.5
   infestation_chance: 0.5
 sweetdreams:
