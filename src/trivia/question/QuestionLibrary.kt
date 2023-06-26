@@ -138,10 +138,162 @@ object QuestionLibrary {
       )
     },
     {
+      MultipleChoiceQuestion(
+        questionBody = "Which of the following is NOT a way to obtain rotten flesh?",
+        answers = listOf("Cat Gifts", "Fishing", "Buried Treasure", "Mob Loot"),
+        correctAnswerIndex = 2,
+        rewards = listOf(
+          ItemReward(ItemStack(Material.ROTTEN_FLESH, 64)),
+          ItemReward(Material.POTATO),
+          ItemReward(Material.CARROT),
+        ),
+      )
+    },
+    {
+      MultipleChoiceQuestion(
+        questionBody = "How tall is the player?",
+        answers = listOf("1.6 blocks", "1.7 blocks", "1.8 blocks", "1.9 blocks"),
+        correctAnswerIndex = 2,
+        rewards = listOf(
+          ItemReward(Material.CAT_SPAWN_EGG),
+          ItemReward(Material.WOLF_SPAWN_EGG),
+        ),
+        shuffleAnswers = false,
+      )
+    },
+    {
+      MultipleChoiceQuestion(
+        questionBody = "Which of the following mobs has NEVER existed in any Minecraft version or official Mojang spinoff title?",
+        answers = listOf("Horned Sheep", "Moon Cow", "Pony", "Rat"),
+        correctAnswerIndex = 3,
+        rewards = listOf(
+          ItemReward(Material.SHEEP_SPAWN_EGG),
+          ItemReward(Material.COW_SPAWN_EGG),
+          ItemReward(Material.HORSE_SPAWN_EGG),
+        ),
+      )
+    },
+    {
+      MultipleChoiceQuestion(
+        questionBody = "Which of the following subtitles can a creeper produce?",
+        answers = listOf("Dying", "Creeper Chirps", "Creeper Purrs", "Splashing"),
+        correctAnswerIndex = 3,
+        rewards = listOf(
+          ItemReward(Material.CREEPER_SPAWN_EGG),
+          ItemReward(Material.WATER_BUCKET),
+        ),
+      )
+    },
+    {
+      MultipleChoiceQuestion(
+        questionBody = "Which of the following CANNOT be waterlogged?",
+        answers = listOf("Amethyst Cluster", "Small Dripleaf", "Candle", "Ladder", "Lectern"),
+        correctAnswerIndex = 4,
+        rewards = listOf(
+          ItemReward(Material.LECTERN),
+        ),
+      )
+    },
+    {
+      MultipleChoiceQuestion(
+        questionBody = "In which of the following biomes will polar bears NOT spawn naturally?",
+        answers = listOf("Snowy Plains", "Ice Spikes", "Deep Frozen Ocean", "Tundra"),
+        correctAnswerIndex = 3,
+        rewards = listOf(
+          ItemReward(Material.POLAR_BEAR_SPAWN_EGG),
+        ),
+      )
+    },
+    {
+      MultipleChoiceQuestion(
+        questionBody = "What is the longest delay a single redstone repeater can be set to?",
+        answers = listOf("0.1 seconds", "0.4 seconds", "0.8 seconds", "1.0 seconds"),
+        correctAnswerIndex = 1,
+        rewards = listOf(
+          ItemReward(Material.REPEATER),
+        ),
+        shuffleAnswers = false,
+      )
+    },
+    {
+      MultipleChoiceQuestion(
+        questionBody = "Which of the following blocks can a redstone comparator NOT read the state of?",
+        answers = listOf("Beehive", "Composter", "Respawn Anchor", "Cake", "Beacon"),
+        correctAnswerIndex = 4,
+        rewards = listOf(
+          ItemReward(Material.COMPARATOR),
+        ),
+      )
+    },
+    {
+      MultipleChoiceQuestion(
+        questionBody = "Which of the following is NOT a villager profession?",
+        answers = listOf("Teacher", "Leatherworker", "Farmer", "Cartographer", "Toolsmith"),
+        correctAnswerIndex = 0,
+        rewards = listOf(
+          ItemReward(Material.VILLAGER_SPAWN_EGG),
+        ),
+      )
+    },
+    {
       NumericalQuestion(
         questionBody = "How many signs can be stacked in a single inventory slot?",
         correctAnswer = 16,
         rewards = toRewards(BlockTypes.WOODEN_SIGNS),
+      )
+    },
+    {
+      NumericalQuestion(
+        questionBody = "What light level is emitted by an Ender Chest?",
+        correctAnswer = 7,
+        rewards = listOf(
+          ItemReward(Material.ENDER_CHEST),
+        ),
+      )
+    },
+    {
+      NumericalQuestion(
+        questionBody = "What light level is emitted by an Amethyst Cluster?",
+        correctAnswer = 5,
+        rewards = listOf(
+          ItemReward(ItemStack(Material.AMETHYST_CLUSTER, 4)),
+        ),
+      )
+    },
+    {
+      NumericalQuestion(
+        questionBody = "What light level is emitted by a Magma Block?",
+        correctAnswer = 3,
+        rewards = listOf(
+          ItemReward(ItemStack(Material.MAGMA_BLOCK, 16)),
+        ),
+      )
+    },
+    {
+      NumericalQuestion(
+        questionBody = "How many stages of oxidation does a copper block undergo (including the original \"unoxidized\" state)?",
+        correctAnswer = 4,
+        rewards = listOf(
+          ItemReward(Material.COPPER_BLOCK),
+        ),
+      )
+    },
+    {
+      NumericalQuestion(
+        questionBody = "What is the highest Y coordinate where deepslate can replace a stone block?",
+        correctAnswer = 8,
+        rewards = listOf(
+          ItemReward(ItemStack(Material.DEEPSLATE, 64)),
+        ),
+      )
+    },
+    {
+      NumericalQuestion(
+        questionBody = "How many minecart rails are produced by the crafting recipe for rails?",
+        correctAnswer = 16,
+        rewards = listOf(
+          ItemReward(ItemStack(Material.RAIL, 16)),
+        ),
       )
     },
     {
