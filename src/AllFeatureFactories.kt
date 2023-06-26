@@ -7,6 +7,9 @@ import com.mercerenies.turtletroll.feature.container.CompositeFeatureContainer
 import com.mercerenies.turtletroll.feature.container.CompositeDropFeatureContainer
 import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 import com.mercerenies.turtletroll.feature.builder.BuilderState
+import com.mercerenies.turtletroll.parrot.ParrotCookieListener
+import com.mercerenies.turtletroll.parrot.ParrotDeathListener
+import com.mercerenies.turtletroll.parrot.ParrotManager
 import com.mercerenies.turtletroll.chicken.ChickenDamageListener
 import com.mercerenies.turtletroll.rain.RainwaterManagerFactory
 import com.mercerenies.turtletroll.transformed.GhastSpawnerListener
@@ -32,7 +35,6 @@ import com.mercerenies.turtletroll.dripstone.DripstoneManagerFactory
 import com.mercerenies.turtletroll.cake.CakeListenerFactory
 import com.mercerenies.turtletroll.egg.EggListenerFactory
 import com.mercerenies.turtletroll.overgrowth.OvergrowthListenerFactory
-import com.mercerenies.turtletroll.overgrowth.OvergrowthListener
 import com.mercerenies.turtletroll.ghastlava.GhastLavaListenerFactory
 import com.mercerenies.turtletroll.drop.MossRevengeFeatureFactory
 import com.mercerenies.turtletroll.drop.DirtDropFeatureFactory

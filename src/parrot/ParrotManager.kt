@@ -1,6 +1,10 @@
 
-package com.mercerenies.turtletroll
+package com.mercerenies.turtletroll.parrot
 
+import com.mercerenies.turtletroll.Constants
+import com.mercerenies.turtletroll.NameSource
+import com.mercerenies.turtletroll.Messages
+import com.mercerenies.turtletroll.CooldownMemory
 import com.mercerenies.turtletroll.feature.RunnableFeature
 import com.mercerenies.turtletroll.feature.container.FeatureContainer
 import com.mercerenies.turtletroll.feature.container.ManagerContainer
