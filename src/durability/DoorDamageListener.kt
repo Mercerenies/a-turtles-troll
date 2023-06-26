@@ -33,7 +33,11 @@ class DoorDamageListener(
     )
 
     override fun create(state: BuilderState): FeatureContainer =
-      ListenerContainer(DoorDamageListener())
+      ListenerContainer(
+        DoorDamageListener(
+          maxUses = state.config.getInt("doordrop.max_uses"),
+        )
+      )
 
   }
 

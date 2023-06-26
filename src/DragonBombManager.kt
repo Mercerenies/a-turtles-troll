@@ -20,23 +20,24 @@ import org.bukkit.event.entity.EntityDamageEvent
 import org.bukkit.persistence.PersistentDataType
 import org.bukkit.attribute.Attribute
 
-class DragonBombManager(plugin: Plugin) : RunnableFeature(plugin), Listener {
+class DragonBombManager(
+  plugin: Plugin,
+  private val minTimerTriggersPerAttack: Int,
+  private val maxTimerTriggersPerAttack: Int,
+) : RunnableFeature(plugin), Listener {
 
   companion object : FeatureContainerFactory<FeatureContainer> {
-    val MIN_TIMER_TRIGGERS_PER_ATTACK = 3L
-    val MAX_TIMER_TRIGGERS_PER_ATTACK = 12L
     val BOMB_MARKER_KEY = "dragon_bomb_manager_tag"
     val VELOCITY_EPSILON = 0.0001
 
     override fun create(state: BuilderState): FeatureContainer =
-      ManagerContainer(DragonBombManager(state.plugin))
-
-    fun currentTriggersPerAttack(dragon: EnderDragon): Long {
-      val maxHealth = dragon.getAttribute(Attribute.GENERIC_MAX_HEALTH)!!.getValue()
-      val healthFraction = dragon.getHealth().toDouble() / maxHealth
-      val triggers = healthFraction * MAX_TIMER_TRIGGERS_PER_ATTACK + (1 - healthFraction) * MIN_TIMER_TRIGGERS_PER_ATTACK
-      return triggers.toLong()
-    }
+      ManagerContainer(
+        DragonBombManager(
+          plugin = state.plugin,
+          minTimerTriggersPerAttack = state.config.getInt("dragonbomb.min_timer_triggers_per_attack"),
+          maxTimerTriggersPerAttack = state.config.getInt("dragonbomb.max_timer_triggers_per_attack"),
+        )
+      )
 
   }
 
@@ -75,6 +76,13 @@ class DragonBombManager(plugin: Plugin) : RunnableFeature(plugin), Listener {
       }
     }
 
+  }
+
+  private fun currentTriggersPerAttack(dragon: EnderDragon): Long {
+    val maxHealth = dragon.getAttribute(Attribute.GENERIC_MAX_HEALTH)!!.getValue()
+    val healthFraction = dragon.getHealth().toDouble() / maxHealth
+    val triggers = healthFraction * maxTimerTriggersPerAttack + (1 - healthFraction) * minTimerTriggersPerAttack
+    return triggers.toLong()
   }
 
   private fun doDragonAttack() {

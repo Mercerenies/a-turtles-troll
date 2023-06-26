@@ -14,12 +14,18 @@ import org.bukkit.entity.Creeper
 import org.bukkit.inventory.ItemStack
 import org.bukkit.Material
 
-class ChargedCreeperListener() : AbstractFeature(), Listener {
+class ChargedCreeperListener(
+  private val diamondCount: Int,
+) : AbstractFeature(), Listener {
 
   companion object : FeatureContainerFactory<FeatureContainer> {
 
     override fun create(state: BuilderState): FeatureContainer =
-      ListenerContainer(ChargedCreeperListener())
+      ListenerContainer(
+        ChargedCreeperListener(
+          diamondCount = state.config.getInt("chargedcreeper.diamond_count"),
+        )
+      )
 
   }
 
@@ -35,7 +41,7 @@ class ChargedCreeperListener() : AbstractFeature(), Listener {
     val entity = event.entity
     if (entity is Creeper) {
       if (entity.isPowered()) {
-        event.getDrops().add(ItemStack(Material.DIAMOND))
+        event.getDrops().add(ItemStack(Material.DIAMOND, diamondCount))
       }
     }
   }

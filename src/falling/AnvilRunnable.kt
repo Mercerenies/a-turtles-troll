@@ -10,20 +10,21 @@ import org.bukkit.plugin.Plugin
 
 import kotlin.collections.HashMap
 
-class AnvilRunnable(plugin: Plugin) : FallingObjectRunnable(plugin) {
+class AnvilRunnable(
+  plugin: Plugin,
+  override val minDropHeight: Int = 7,
+  override val maxDropHeight: Int = 15,
+  taskPeriodSecs: Int = 10,
+) : FallingObjectRunnable(plugin) {
   private var memory = HashMap<Player, Location>()
 
   override val name = "anvil"
 
   override val description = "Drops an anvil on players who forget to move"
 
-  override val minDropHeight = 7
-
-  override val maxDropHeight = 15
-
   override fun getBlockToDrop() = Material.ANVIL
 
-  override val taskPeriod = 10L * Constants.TICKS_PER_SECOND.toLong()
+  override val taskPeriod = taskPeriodSecs.toLong() * Constants.TICKS_PER_SECOND.toLong()
 
   override fun shouldDropOn(player: Player): Boolean {
     val loc = player.location

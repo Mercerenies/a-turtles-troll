@@ -17,12 +17,20 @@ import org.bukkit.plugin.Plugin
 import org.bukkit.scheduler.BukkitRunnable
 import org.bukkit.Location
 
-class CreeperDeathListener(val plugin: Plugin) : AbstractFeature(), Listener {
+class CreeperDeathListener(
+  val plugin: Plugin,
+  private val allayCount: Int,
+) : AbstractFeature(), Listener {
 
   companion object : FeatureContainerFactory<FeatureContainer> {
 
     override fun create(state: BuilderState): FeatureContainer =
-      ListenerContainer(CreeperDeathListener(state.plugin))
+      ListenerContainer(
+        CreeperDeathListener(
+          plugin = state.plugin,
+          allayCount = state.config.getInt("creeperdeath.allay_count"),
+        )
+      )
 
   }
 
@@ -47,7 +55,7 @@ class CreeperDeathListener(val plugin: Plugin) : AbstractFeature(), Listener {
     if (entity is Creeper) {
       if (!entity.isPowered()) {
         val location = entity.location
-        SummonEntityRunnable(EntityType.ALLAY, location, 3).runTaskLater(plugin, 2L)
+        SummonEntityRunnable(EntityType.ALLAY, location, allayCount).runTaskLater(plugin, 2L)
       }
     }
   }

@@ -33,12 +33,12 @@ import kotlin.math.pow
 class CakeListener(
   val plugin: Plugin,
   val effects: List<Weight<CakeEffect>>,
+  val mobReplaceChance: Double,
 ) : AbstractFeature(), Listener {
 
   companion object {
     val FIVE_MINUTES = 300 * Constants.TICKS_PER_SECOND
 
-    val MOB_REPLACE_CHANCE = 0.05
     val MOBS_TO_REPLACE = setOf(
       EntityType.ZOMBIE, EntityType.SKELETON, EntityType.SPIDER, EntityType.ZOMBIFIED_PIGLIN,
       EntityType.STRAY, EntityType.HUSK,
@@ -134,7 +134,7 @@ class CakeListener(
     }
     if (MOBS_TO_REPLACE.contains(event.entity.type)) {
       if (BlockSelector.countNearbyMatching(event.location.block, MimicListener.SAFETY_RADIUS, BlockSelector::isMimicOrCake) < 1) {
-        if (Random.nextDouble() < MOB_REPLACE_CHANCE) {
+        if (Random.nextDouble() < mobReplaceChance) {
           val below = event.location.clone().add(0.0, -1.0, 0.0)
           if (below.block.type != Material.AIR) {
             event.setCancelled(true)

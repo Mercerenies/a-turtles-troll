@@ -25,6 +25,12 @@ abstract class CakeListenerFactory() : FeatureContainerFactory<FeatureContainer>
   abstract fun getEffects(plugin: Plugin): List<Weight<CakeEffect>>
 
   override fun create(state: BuilderState): FeatureContainer =
-    ListenerContainer(CakeListener(state.plugin, getEffects(state.plugin)))
+    ListenerContainer(
+      CakeListener(
+        plugin = state.plugin,
+        effects = getEffects(state.plugin),
+        mobReplaceChance = state.config.getDouble("cakes.probability"),
+      )
+    )
 
 }

@@ -12,14 +12,17 @@ object BeeAttackFeatureFactory : FeatureContainerFactory<DropFeatureContainer> {
 
   override fun create(state: BuilderState): DropFeatureContainer = object : AbstractDropFeatureContainer() {
 
-    private val beeAttackAction = BeeAttackAction().asFeature(
+    private val radius = state.config.getInt("bees.radius")
+    private val probability = state.config.getDouble("bees.probability")
+
+    private val beeAttackAction = BeeAttackAction(radius = radius).asFeature(
       "bees",
       "Breaking wood will sometimes result in a bee attack",
     )
 
     override val features = listOf(beeAttackAction)
 
-    override val actions = listOf(Weight(beeAttackAction, 0.2))
+    override val actions = listOf(Weight(beeAttackAction, probability))
 
   }
 

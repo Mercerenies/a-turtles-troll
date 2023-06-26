@@ -34,7 +34,12 @@ class CatBatListener(
       }
 
     override fun create(state: BuilderState): FeatureContainer =
-      ListenerContainer(CatBatListener(state.plugin))
+      ListenerContainer(
+        CatBatListener(
+          plugin = state.plugin,
+          chance = state.config.getDouble("catbat.probability"),
+        )
+      )
 
   }
 

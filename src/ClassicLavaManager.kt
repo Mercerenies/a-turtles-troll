@@ -2,6 +2,7 @@
 package com.mercerenies.turtletroll
 
 import com.mercerenies.turtletroll.ext.*
+import com.mercerenies.turtletroll.config.CheckedConfigOptions
 import com.mercerenies.turtletroll.feature.RunnableFeature
 import com.mercerenies.turtletroll.feature.container.FeatureContainer
 import com.mercerenies.turtletroll.feature.container.ManagerContainer
@@ -20,7 +21,10 @@ import org.bukkit.block.Block
 import org.bukkit.block.`data`.Levelled
 import org.bukkit.metadata.FixedMetadataValue
 
-class ClassicLavaManager(plugin: Plugin) : RunnableFeature(plugin), Listener {
+class ClassicLavaManager(
+  plugin: Plugin,
+  private val worldSpreadMap: Map<World.Environment, Int>,
+) : RunnableFeature(plugin), Listener {
 
   companion object : FeatureContainerFactory<FeatureContainer> {
 
@@ -30,19 +34,18 @@ class ClassicLavaManager(plugin: Plugin) : RunnableFeature(plugin), Listener {
 
     private val metadataTag = "com.mercerenies.turtletroll.ClassicLavaManager.metadataTag"
 
-    fun getDefaultSpreadForWorld(env: World.Environment): Int =
-      when (env) {
-        World.Environment.CUSTOM -> 0 // *shrug* idk what this world is
-        World.Environment.NETHER -> 8
-        World.Environment.NORMAL -> 4
-        World.Environment.THE_END -> 0 // The End is chaotic enough already
-      }
-
     override fun create(state: BuilderState): FeatureContainer {
-      val manager = ClassicLavaManager(state.plugin)
+      val manager = ClassicLavaManager(state.plugin, loadWorldSpreadMap(state.config))
       state.registerSharedData(STORAGE_IGNORER_KEY, manager.ignorer)
       return ManagerContainer(manager)
     }
+
+    private fun loadWorldSpreadMap(config: CheckedConfigOptions): Map<World.Environment, Int> =
+      mapOf(
+        World.Environment.NORMAL to config.getInt("classiclava.normal_spread"),
+        World.Environment.NETHER to config.getInt("classiclava.nether_spread"),
+        World.Environment.THE_END to config.getInt("classiclava.end_spread"),
+      )
 
   }
 
@@ -57,6 +60,9 @@ class ClassicLavaManager(plugin: Plugin) : RunnableFeature(plugin), Listener {
       setBlockSpread(block, 0)
     }
   }
+
+  private fun getDefaultSpreadForWorld(env: World.Environment): Int =
+    worldSpreadMap[env] ?: 0
 
   private fun removeBlockSpread(block: Block) {
     block.removeMetadata(metadataTag, plugin)

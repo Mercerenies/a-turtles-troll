@@ -21,9 +21,11 @@ object AmethystBlockDropFactory : FeatureContainerFactory<DropFeatureContainer> 
       "Amethyst blocks have a small chance of dropping golden apples when mined",
     )
 
+    private val probability = state.config.getDouble("amethyst.probability")
+
     override val features = listOf(amethystBlockDrop)
 
-    override val actions = listOf(Weight(amethystBlockDrop, 0.1))
+    override val actions = listOf(Weight(amethystBlockDrop, probability))
 
   }
 

@@ -16,12 +16,18 @@ import org.bukkit.enchantments.Enchantment
 
 import net.kyori.adventure.text.Component
 
-class PillagerGunListener() : AbstractFeature(), Listener {
+class PillagerGunListener(
+  private val quickChargeLevel: Int = 5,
+) : AbstractFeature(), Listener {
 
   companion object : FeatureContainerFactory<FeatureContainer> {
 
     override fun create(state: BuilderState): FeatureContainer =
-      ListenerContainer(PillagerGunListener())
+      ListenerContainer(
+        PillagerGunListener(
+          quickChargeLevel = state.config.getInt("ak47.quick_charge_level"),
+        )
+      )
 
   }
 
@@ -37,7 +43,7 @@ class PillagerGunListener() : AbstractFeature(), Listener {
       val mainHand = equipment.getItemInMainHand()
       val meta = mainHand.getItemMeta()!!
       meta.displayName(Component.text("AK47"))
-      meta.addEnchant(Enchantment.QUICK_CHARGE, 5, true)
+      meta.addEnchant(Enchantment.QUICK_CHARGE, quickChargeLevel, true)
       mainHand.setItemMeta(meta)
       equipment.setItemInMainHand(mainHand)
     }

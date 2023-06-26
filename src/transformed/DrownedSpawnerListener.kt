@@ -34,7 +34,12 @@ class DrownedSpawnerListener(
     }
 
     override fun create(state: BuilderState): FeatureContainer =
-      ListenerContainer(DrownedSpawnerListener(state.plugin))
+      ListenerContainer(
+        DrownedSpawnerListener(
+          plugin = state.plugin,
+          chance = state.config.getDouble("drowned.probability"),
+        )
+      )
 
   }
 

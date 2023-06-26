@@ -39,7 +39,10 @@ object DirtDropFeatureFactory : FeatureContainerFactory<DropFeatureContainer> {
 
     override val features = listOf(dirtDropFeature)
 
-    override val actions = listOf(Weight(regularDirtDrop, 0.3), Weight(frequentDirtDrop, 1.0))
+    override val actions = listOf(
+      Weight(regularDirtDrop, state.config.getDouble("dirtstacks.regular_probability")),
+      Weight(frequentDirtDrop, state.config.getDouble("dirtstacks.frequent_probability")),
+    )
 
   }
 

@@ -23,7 +23,11 @@ class ButtonDamageListener(
     )
 
     override fun create(state: BuilderState): FeatureContainer =
-      ListenerContainer(ButtonDamageListener())
+      ListenerContainer(
+        ButtonDamageListener(
+          maxUses = state.config.getInt("buttondrop.max_uses"),
+        )
+      )
 
   }
 

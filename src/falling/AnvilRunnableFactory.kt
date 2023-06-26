@@ -33,10 +33,17 @@ object AnvilRunnableFactory : FeatureContainerFactory<FeatureContainer> {
 
   }
 
-  override fun create(state: BuilderState): FeatureContainer =
-    AnvilContainer(
-      anvilRunnable = AnvilRunnable(state.plugin),
+  override fun create(state: BuilderState): FeatureContainer {
+    val runnable = AnvilRunnable(
+      plugin = state.plugin,
+      minDropHeight = state.config.getInt("anvil.min_drop_height"),
+      maxDropHeight = state.config.getInt("anvil.max_drop_height"),
+      taskPeriodSecs = state.config.getInt("anvil.period"),
+    )
+    return AnvilContainer(
+      anvilRunnable = runnable,
       anvilRecipe = AnvilRecipeFeature(state.plugin),
     )
+  }
 
 }

@@ -11,7 +11,9 @@ object NetherrackBoomFeatureFactory : FeatureContainerFactory<DropFeatureContain
 
   override fun create(state: BuilderState): DropFeatureContainer = object : AbstractDropFeatureContainer() {
 
-    private val netherrackBoomAction = NetherrackBoomAction().asFeature(
+    private val netherrackBoomAction = NetherrackBoomAction(
+      radius = state.config.getInt("netherrack.radius"),
+    ).asFeature(
       "netherrack",
       "Common nether materials cause a cascading effect, breaking nearby blocks when broken",
     )

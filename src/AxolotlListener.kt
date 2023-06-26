@@ -17,7 +17,9 @@ import org.bukkit.entity.Player
 
 import net.kyori.adventure.text.Component
 
-class AxolotlListener() : AbstractFeature(), Listener {
+class AxolotlListener(
+  val radiusSquaredLimit: Double,
+) : AbstractFeature(), Listener {
 
   companion object : FeatureContainerFactory<FeatureContainer> {
 
@@ -29,10 +31,10 @@ class AxolotlListener() : AbstractFeature(), Listener {
         .append(player.displayName())
         .append(" with them")
 
-    val DISTANCE_SQUARED_LIMIT = 1024.0 // 32 blocks (squared)
-
-    override fun create(state: BuilderState): FeatureContainer =
-      ListenerContainer(AxolotlListener())
+    override fun create(state: BuilderState): FeatureContainer {
+      val radius = state.config.getDouble("axolotl.radius")
+      return ListenerContainer(AxolotlListener(radius * radius))
+    }
 
   }
 
@@ -47,7 +49,7 @@ class AxolotlListener() : AbstractFeature(), Listener {
     }
     val entity = event.entity
     if (entity is Axolotl) {
-      val nearestPlayer = PlayerSelector.findNearestPlayer(entity.location, DISTANCE_SQUARED_LIMIT)
+      val nearestPlayer = PlayerSelector.findNearestPlayer(entity.location, radiusSquaredLimit)
 
       if (nearestPlayer == null) {
         Messages.broadcastMessage(PEACEFUL_DEATH_MESSAGE)

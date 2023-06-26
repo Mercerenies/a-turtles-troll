@@ -41,7 +41,12 @@ class ChickenDamageListener(
     )
 
     override fun create(state: BuilderState): FeatureContainer =
-      ListenerContainer(ChickenDamageListener(state.plugin))
+      ListenerContainer(
+        ChickenDamageListener(
+          plugin = state.plugin,
+          zombieRiderChance = state.config.getDouble("chickens.zombie_rider_chance"),
+        )
+      )
 
   }
 

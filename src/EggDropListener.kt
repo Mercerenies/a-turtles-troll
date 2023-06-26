@@ -30,7 +30,13 @@ class EggDropListener(
       EntityType.PIGLIN,
     )
     override fun create(state: BuilderState): FeatureContainer =
-      ListenerContainer(EggDropListener())
+      ListenerContainer(
+        EggDropListener(
+          chance = state.config.getDouble("eggdrop.probability"),
+          minEggs = state.config.getInt("eggdrop.min_eggs"),
+          maxEggs = state.config.getInt("eggdrop.max_eggs"),
+        )
+      )
 
   }
 
