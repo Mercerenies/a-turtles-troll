@@ -18,8 +18,6 @@ class SheepColorListener() : AbstractFeature(), Listener {
 
   companion object : FeatureContainerFactory<FeatureContainer> {
 
-    private val WOOLS_LIST = BlockTypes.WOOLS.toList()
-
     override fun create(state: BuilderState): FeatureContainer =
       ListenerContainer(SheepColorListener())
 
@@ -37,7 +35,7 @@ class SheepColorListener() : AbstractFeature(), Listener {
     if (event.entity is Sheep) {
       val item = event.itemDrop
       val count = item.itemStack.amount
-      item.itemStack = ItemStack(WOOLS_LIST.sample()!!, count)
+      item.itemStack = ItemStack(BlockTypes.WOOLS.sample()!!, count)
     }
   }
 

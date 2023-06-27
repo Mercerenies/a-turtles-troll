@@ -16,8 +16,6 @@ class BucketRouletteRunnable(plugin: Plugin) : RunnableFeature(plugin) {
 
   companion object : FeatureContainerFactory<FeatureContainer> {
 
-    private val BUCKETS_LIST = BlockTypes.BUCKETS.toList()
-
     override fun create(state: BuilderState): FeatureContainer =
       RunnableContainer(BucketRouletteRunnable(state.plugin))
 
@@ -33,9 +31,9 @@ class BucketRouletteRunnable(plugin: Plugin) : RunnableFeature(plugin) {
     }
 
     private fun cycleBucketType(itemStack: ItemStack) {
-      var newBucketType = BUCKETS_LIST.sample()!!
+      var newBucketType = BlockTypes.BUCKETS.sample()!!
       while (newBucketType == itemStack.type) {
-        newBucketType = BUCKETS_LIST.sample()!!
+        newBucketType = BlockTypes.BUCKETS.sample()!!
       }
       itemStack.type = newBucketType
     }

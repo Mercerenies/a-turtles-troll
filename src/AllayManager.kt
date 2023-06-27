@@ -25,8 +25,6 @@ class AllayManager(_plugin: Plugin) : RunnableFeature(_plugin), Listener {
 
   companion object : FeatureContainerFactory<FeatureContainer> {
 
-    private val FLOWER_BLOCKS_LIST = BlockTypes.FLOWERS.toList()
-
     val DISTANCE_SQUARED_LIMIT = 16384.0 // 128 blocks (squared)
 
     override fun create(state: BuilderState): FeatureContainer =
@@ -61,7 +59,7 @@ class AllayManager(_plugin: Plugin) : RunnableFeature(_plugin), Listener {
     val item = inventory.getItem(0)
     if ((item == null) || (!BlockTypes.FLOWERS.contains(item.type))) {
       // Make sure the allay is holding flowers.
-      val flowerType = FLOWER_BLOCKS_LIST.sample()!!
+      val flowerType = BlockTypes.FLOWERS.sample()!!
       inventory.setItem(0, ItemStack(flowerType, 64))
       allay.equipment.setItemInMainHand(ItemStack(flowerType, 64))
     }

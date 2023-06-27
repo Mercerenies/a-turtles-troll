@@ -1,11 +1,13 @@
 
 package com.mercerenies.turtletroll
 
+import com.mercerenies.turtletroll.util.SetListAllomorph
+
 import org.bukkit.Material
 
 object BlockTypes {
 
-  val GLASS = setOf(
+  val GLASS = SetListAllomorph.of(
     Material.BLACK_STAINED_GLASS, Material.BLACK_STAINED_GLASS_PANE, Material.BLUE_STAINED_GLASS,
     Material.BLUE_STAINED_GLASS_PANE, Material.BROWN_STAINED_GLASS,
     Material.BROWN_STAINED_GLASS_PANE, Material.CYAN_STAINED_GLASS,
@@ -24,12 +26,12 @@ object BlockTypes {
     Material.YELLOW_STAINED_GLASS_PANE,
   )
 
-  val TALL_GRASS = setOf(
+  val TALL_GRASS = SetListAllomorph.of(
     Material.GRASS, Material.TALL_GRASS, Material.FERN,
     Material.LARGE_FERN, Material.DEAD_BUSH, Material.CRIMSON_ROOTS, Material.WARPED_ROOTS,
   )
 
-  val ORES = setOf(
+  val ORES = SetListAllomorph.of(
     Material.COAL_ORE, Material.IRON_ORE, Material.LAPIS_ORE,
     Material.GOLD_ORE, Material.DIAMOND_ORE, Material.EMERALD_ORE,
     Material.NETHER_QUARTZ_ORE, Material.NETHER_GOLD_ORE, Material.ANCIENT_DEBRIS,
@@ -38,7 +40,7 @@ object BlockTypes {
     Material.DEEPSLATE_IRON_ORE, Material.DEEPSLATE_LAPIS_ORE, Material.DEEPSLATE_REDSTONE_ORE,
   )
 
-  val SLABS = setOf(
+  val SLABS = SetListAllomorph.of(
     Material.ACACIA_SLAB, Material.ANDESITE_SLAB, Material.BIRCH_SLAB, Material.BLACKSTONE_SLAB,
     Material.BRICK_SLAB, Material.COBBLESTONE_SLAB, Material.CRIMSON_SLAB,
     Material.CUT_RED_SANDSTONE_SLAB, Material.CUT_SANDSTONE_SLAB, Material.DARK_OAK_SLAB,
@@ -61,7 +63,7 @@ object BlockTypes {
     Material.MANGROVE_SLAB, Material.BAMBOO_SLAB, Material.CHERRY_SLAB,
   )
 
-  val STAIRS = setOf(
+  val STAIRS = SetListAllomorph.of(
     Material.ACACIA_STAIRS, Material.ANDESITE_STAIRS, Material.BIRCH_STAIRS,
     Material.BLACKSTONE_STAIRS, Material.BRICK_STAIRS, Material.COBBLESTONE_STAIRS,
     Material.CRIMSON_STAIRS, Material.DARK_OAK_STAIRS,
@@ -84,7 +86,7 @@ object BlockTypes {
     Material.MANGROVE_STAIRS, Material.BAMBOO_STAIRS, Material.CHERRY_STAIRS,
   )
 
-  val LOGS = setOf(
+  val LOGS = SetListAllomorph.of(
     Material.ACACIA_LOG, Material.BIRCH_LOG, Material.DARK_OAK_LOG, Material.JUNGLE_LOG,
     Material.OAK_LOG, Material.SPRUCE_LOG, Material.STRIPPED_ACACIA_LOG, Material.STRIPPED_BIRCH_LOG,
     Material.STRIPPED_DARK_OAK_LOG, Material.STRIPPED_JUNGLE_LOG, Material.STRIPPED_OAK_LOG,
@@ -93,7 +95,7 @@ object BlockTypes {
     Material.STRIPPED_CHERRY_LOG,
   )
 
-  val PLANKS = setOf(
+  val PLANKS = SetListAllomorph.of(
     Material.ACACIA_PLANKS, Material.BIRCH_PLANKS, Material.DARK_OAK_PLANKS, Material.JUNGLE_PLANKS,
     Material.OAK_PLANKS, Material.SPRUCE_PLANKS, Material.MANGROVE_PLANKS,
     Material.STRIPPED_ACACIA_WOOD, Material.STRIPPED_BIRCH_WOOD, Material.STRIPPED_DARK_OAK_WOOD,
@@ -102,20 +104,20 @@ object BlockTypes {
     Material.STRIPPED_CHERRY_WOOD,
   )
 
-  val LEAVES = setOf(
+  val LEAVES = SetListAllomorph.of(
     Material.ACACIA_LEAVES, Material.AZALEA_LEAVES, Material.BIRCH_LEAVES, Material.DARK_OAK_LEAVES,
     Material.FLOWERING_AZALEA_LEAVES, Material.OAK_LEAVES, Material.JUNGLE_LEAVES, Material.SPRUCE_LEAVES,
     Material.MANGROVE_LEAVES, Material.CHERRY_LEAVES,
   )
 
-  val BUCKETS = setOf(
+  val BUCKETS = SetListAllomorph.of(
     Material.AXOLOTL_BUCKET, Material.BUCKET, Material.COD_BUCKET, Material.LAVA_BUCKET,
     Material.MILK_BUCKET, Material.POWDER_SNOW_BUCKET, Material.PUFFERFISH_BUCKET,
     Material.SALMON_BUCKET, Material.TADPOLE_BUCKET, Material.TROPICAL_FISH_BUCKET,
     Material.WATER_BUCKET,
   )
 
-  val ARMORS = setOf(
+  val ARMORS = SetListAllomorph.of(
     Material.CHAINMAIL_HELMET, Material.CHAINMAIL_CHESTPLATE, Material.CHAINMAIL_LEGGINGS, Material.CHAINMAIL_BOOTS,
     Material.LEATHER_HELMET, Material.LEATHER_CHESTPLATE, Material.LEATHER_LEGGINGS, Material.LEATHER_BOOTS,
     Material.IRON_HELMET, Material.IRON_CHESTPLATE, Material.IRON_LEGGINGS, Material.IRON_BOOTS,
@@ -124,7 +126,7 @@ object BlockTypes {
     Material.NETHERITE_HELMET, Material.NETHERITE_CHESTPLATE, Material.NETHERITE_LEGGINGS, Material.NETHERITE_BOOTS,
   )
 
-  val FLOWERS = setOf(
+  val FLOWERS = SetListAllomorph.of(
     Material.DANDELION, Material.POPPY, Material.BLUE_ORCHID,
     Material.ALLIUM, Material.AZURE_BLUET, Material.RED_TULIP, Material.OXEYE_DAISY,
     Material.CORNFLOWER, Material.LILY_OF_THE_VALLEY, Material.WITHER_ROSE,
@@ -133,24 +135,24 @@ object BlockTypes {
     Material.SWEET_BERRY_BUSH, Material.TORCHFLOWER,
   )
 
-  val WOOLS = setOf(
+  val WOOLS = SetListAllomorph.of(
     Material.BLACK_WOOL, Material.BLUE_WOOL, Material.BROWN_WOOL, Material.CYAN_WOOL,
     Material.GRAY_WOOL, Material.GREEN_WOOL, Material.LIGHT_BLUE_WOOL, Material.LIGHT_GRAY_WOOL,
     Material.LIME_WOOL, Material.MAGENTA_WOOL, Material.ORANGE_WOOL, Material.PINK_WOOL,
     Material.PURPLE_WOOL, Material.RED_WOOL, Material.WHITE_WOOL, Material.YELLOW_WOOL,
   )
 
-  val WOODEN_DOORS = setOf(
+  val WOODEN_DOORS = SetListAllomorph.of(
     Material.OAK_DOOR, Material.SPRUCE_DOOR, Material.BIRCH_DOOR, Material.JUNGLE_DOOR,
     Material.ACACIA_DOOR, Material.CHERRY_DOOR, Material.DARK_OAK_DOOR, Material.BAMBOO_DOOR,
   )
 
-  val WOODEN_SIGNS = setOf(
+  val WOODEN_SIGNS = SetListAllomorph.of(
     Material.OAK_SIGN, Material.SPRUCE_SIGN, Material.BIRCH_SIGN, Material.JUNGLE_SIGN,
     Material.ACACIA_SIGN, Material.CHERRY_SIGN, Material.DARK_OAK_SIGN, Material.BAMBOO_SIGN,
   )
 
-  val CONCRETE_POWDERS = setOf(
+  val CONCRETE_POWDERS = SetListAllomorph.of(
     Material.WHITE_CONCRETE_POWDER, Material.ORANGE_CONCRETE_POWDER, Material.MAGENTA_CONCRETE_POWDER,
     Material.LIGHT_BLUE_CONCRETE_POWDER, Material.YELLOW_CONCRETE_POWDER,
     Material.LIME_CONCRETE_POWDER, Material.PINK_CONCRETE_POWDER, Material.GRAY_CONCRETE_POWDER,

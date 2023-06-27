@@ -31,10 +31,6 @@ class PiglinBarterListener(
 
   companion object : FeatureContainerFactory<FeatureContainer> {
 
-    private val ARMOR_TYPES = BlockTypes.ARMORS.toList()
-
-    private val FLOWERS_LIST = BlockTypes.FLOWERS.toList()
-
     private val ENCHANTMENT_CHOICES = listOf(
       EnchantmentData(Enchantment.MENDING, 1),
       EnchantmentData(Enchantment.THORNS, 1),
@@ -75,7 +71,7 @@ class PiglinBarterListener(
     }
 
     private fun generateBarterResult(): ItemStack {
-      val armorMaterial = ARMOR_TYPES.sample()!!
+      val armorMaterial = BlockTypes.ARMORS.sample()!!
       val itemStack = ItemStack(armorMaterial, 1)
       for (_i in 1..3) {
         itemStack.addEnchantment(ENCHANTMENT_CHOICES.sample()!!)
@@ -150,7 +146,7 @@ class PiglinBarterListener(
     // that's baked into Minecraft. So instead, I'll just have them
     // give you a nice flower if you give them gold :)
     if (event.input.type == Material.GOLD_INGOT) {
-      outcome.add(ItemStack(FLOWERS_LIST.sample()!!, 3))
+      outcome.add(ItemStack(BlockTypes.FLOWERS.sample()!!, 3))
     } else {
       outcome.add(generateBarterResult())
     }
