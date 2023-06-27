@@ -8,6 +8,20 @@ import java.util.Spliterator
 // ordered iteration.
 sealed interface SetListAllomorph<out E> : Set<E>, List<E> {
 
+  companion object {
+
+    operator fun<E> invoke(elementsList: List<E>): SetListAllomorph<E> =
+      FromList(elementsList)
+
+    operator fun<E> invoke(elementsSet: Set<E>): SetListAllomorph<E> =
+      FromSet(elementsSet)
+
+    // Starting from a list preserves the order, guaranteed.
+    fun<E> of(vararg elements: E): SetListAllomorph<E> =
+      FromList(elements.toList())
+
+  }
+
   private class FromSet<out E>(
     private val setImpl: Set<E>,
   ) : SetListAllomorph<E> {
@@ -62,7 +76,6 @@ sealed interface SetListAllomorph<out E> : Set<E>, List<E> {
 
   override fun spliterator(): Spliterator<@UnsafeVariance E> =
     toList().spliterator()
-
 
   override fun listIterator(index: Int): ListIterator<E> =
     toList().listIterator(index)
