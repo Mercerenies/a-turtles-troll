@@ -1,107 +1,178 @@
 
+# Welcome to the configuration for A Turtle's Troll! Here, you can
+# tweak the various parameters of the plugin to your own personal
+# preferences.
+#
+# The first thing you need to know is that there are four difficulty
+# levels: easy, normal, hard, and insane. Your global.difficulty flag
+# can be any of these four values. Any values in this file except
+# those in the global.* namespace can be supplied with any of the
+# following.
+#
+# * A concrete value of the required type. This will override all
+#   difficulty settings.
+#
+# * The string "default" will pull from the global.difficulty
+#   setting's default value for this field.
+#
+# * The string "easy", "normal", "hard", or "insane" will pull from
+#   that particular difficulty setting's default value, regardless of
+#   the value of global.difficulty.
+#
+# A missing field is equivalent to a field whose value is "default".
+#
+# NOTE: This is a plugin that's designed to be difficult and chaotic.
+# If you play on "easy", "normal", or "hard" difficulty, the game is
+# intended to be playable and winnable by a sufficiently skilled
+# gamer. The "insane" difficulty is not intended to be playable. I
+# just cranked all the difficulty settings up as high as I could. You
+# will get killed. A lot. I have not playtested "insane" at all and I
+# do not expect it to be playable.
+
 global:
+  # (String) The global difficulty. One of "easy", "normal", "hard",
+  # or "insane". Any field outside of the global namespace whose value
+  # is "default" will pull from the difficulty indicated here.
   difficulty: normal
+
 ak47:
   enabled: true
   quick_charge_level: 6
+
 allays:
   enabled: true
+
 amethyst:
   enabled: true
   probability: 0.1
+
 angrygolems:
   enabled: true
+
 anvil:
   enabled: true
   min_drop_height: 7
   max_drop_height: 15
   period: 10 # In seconds
+
 axolotl:
   enabled: true
   radius: 32.0
+
 bamboo:
   enabled: true
+
 bedrock:
   enabled: true
+
 bees:
   enabled: true
   probability: 0.2
   radius: 5
+
 blazepower:
   enabled: true
+
 boatbomb:
   enabled: true
+
 bucketroulette:
   enabled: true
+
 butterfingers:
   enabled: true
+
 buttondrop:
   enabled: true
   max_uses: 4
+
 cactuskick:
   enabled: true
+
 cakes:
   enabled: true
   probability: 0.05
+
 catbat:
   enabled: true
   probability: 1.0
+
 chainmailrecipe:
   enabled: true
+
 chargedcreeper:
   enabled: true
   diamond_count: 1
+
 chestshuffle:
   enabled: true
+
 chickens:
   enabled: true
   zombie_rider_chance: 0.1
+
 classiclava:
   enabled: true
   normal_spread: 4
   nether_spread: 8
   end_spread: 0
+
 cookies:
   enabled: true
+
 creeperdeath:
   enabled: true
   allay_count: 3
+
 deathscoreboard:
   enabled: true
+
 demand:
   enabled: true
+
 dirtrecipe:
   enabled: true
+
 dirtstacks:
   enabled: true
   regular_probability: 0.3
   frequent_probability: 1.0
+
 doctordances:
   enabled: true
+
 doordrop:
   enabled: true
   max_uses: 16
+
 dragonbomb:
   enabled: true
   min_timer_triggers_per_attack: 3
   max_timer_triggers_per_attack: 12
+
 dripstone:
   enabled: true
+
 drowned:
   enabled: true
   probability: 1.0
+
 eggarrow:
   enabled: true
   probability: 1.0
+
 eggdrop:
   enabled: true
   probability: 1.0
   min_eggs: 1
   max_eggs: 4
+
 eggs:
   enabled: true
+
 eggshells:
   enabled: true
+
 encumbrance:
   enabled: true
   penalties:
@@ -111,144 +182,197 @@ encumbrance:
     slowness: 0.10
     confusion: 0.05
     gods_rage: 0.01
+
 endcrystal:
   enabled: true
+
 enddirt:
   enabled: true
+
 enderchest:
   enabled: true
+
 endermangod:
   enabled: true
+
 endermites:
   enabled: true
+
 endspeed:
   enabled: true
+
 escalation:
   enabled: true
   effect_count: 4
+
 expirationdate:
   enabled: true
   probability: 0.1
   slime_size: 2
+
 explosivearrow:
   enabled: true
+
 fall:
   enabled: true
+
 fishsanctuary:
   enabled: true
+
 forestfire:
   enabled: true
+
 freecookie:
   enabled: true
+
 funhat:
   enabled: true
   probability: 0.1
+
 ghastburn:
   enabled: true
+
 ghastlava:
   enabled: true
+
 ghasts:
   enabled: true
   probability: 0.2
+
 glass:
   enabled: true
+
 goddesshoe:
   enabled: true
+
 grassspread:
   enabled: true
   probability: 0.5
+
 gravestone:
   enabled: true
+
 grievingwidow:
   enabled: true
   minutes_to_disable: 10
+
 johnny:
   enabled: true
   probability: 0.1
+
 killerrabbit:
   enabled: true
+
 lavalaunch:
   enabled: true
   velocity_y: 1.3
+
 learning:
   enabled: true
+
 levitation:
   enabled: true
   levitation_seconds: 5
+
 llamahunter:
   enabled: true
   speed_multiplier: 5.5
   min_llamas: 2
+
 melompkin:
   enabled: true
+
 mimics:
   enabled: true
   probability: 0.05
+
 minecrafttrivia:
   enabled: true
   minutes_between_questions: 10
   minutes_to_answer: 2
+
 moss:
   enabled: true
+
 mossrevenge:
   enabled: true
   probability: 0.2
   slime_size: 2
+
 namedzombie:
   enabled: true
   probability: 0.2
+
 netherrack:
   enabled: true
   radius: 5
+
 nodrops:
   enabled: true
+
 nylium:
   enabled: true
+
 oldage:
   enabled: true
   age_limit: 100 # NOTE: Read this in LearningFromFailureListener as well
+
 overgrowth:
   enabled: true
   delay_seconds: 600
   obsidian: false
+
 parrotcookie:
   enabled: true
   parrot_duplicate_count: 5
+
 parrotdeath:
   enabled: true
+
 parrots:
   enabled: true
+
 phantoms:
   enabled: true
   spawn_probability: 0.33
   cooldown_after_kill_seconds: 600
   min_spawn_height: 6
   max_spawn_height: 20
+
 piglins:
   enabled: true
+
 pigs:
   enabled: true
+
 pillagerdeath:
   enabled: true
   slime_count: 3
   slime_size: 2
+
 pokeball:
   enabled: true
+
 platefire:
   enabled: true
   probability: 0.05
+
 pufferfish:
   enabled: true
   pufferfish_count: 5
   explosion_power: 5.0
   explosion_power_in_water: 10.0
+
 pumpkins:
   enabled: true
+
 rainwater:
   enabled: true
+
 ravagers:
   enabled: true
   probability: 0.5
+
 redstoneworld:
   enabled: true
   drop_probability: 0.5
@@ -256,17 +380,22 @@ redstoneworld:
   max_items: 64
   min_damage: 0.0
   max_damage: 20.0
+
 sandattack:
   enabled: true
   red_sand_probability: 0.1
   max_drop_height: 15
+
 sheepcolor:
   enabled: true
+
 shieldsurf:
   enabled: true
   damage_multiplier: 1.0
+
 shufflelogs:
   enabled: true
+
 silverfish:
   enabled: true
   probability: 0.2
@@ -274,80 +403,108 @@ silverfish:
   bomb_radius: 3
   release_chance: 0.2
   infestation_chance: 0.2 # NOTE: Stack on release_chance in the code
+
 silverfishburn:
   enabled: true
+
 slimesplit:
   enabled: true
   max_slime_size: 10 # NOTE: Put a cap on this in the code
+
 slowslab:
   enabled: true
   slow_time_seconds: 10
   slowness_level: 4
+
 snowspeed:
   enabled: true
+
 snowball:
   enabled: true
   speed_multiplier: 5.5
+
 solidswap:
   enabled: true
+
 spillage:
   enabled: true
+
 stonetools:
   enabled: true
+
 stronghold:
   enabled: true
   bomb_probability: 0.2
   bomb_radius: 4
   release_chance: 0.5
   infestation_chance: 0.5
+
 sweetdreams:
   enabled: true
   effects_count: 3
+
 tallgrass:
   enabled: true
   boots_damage_probability: 1.0
+
 temperature:
   enabled: true
+
 torches:
   enabled: true
+
 trader:
   enabled: true
   chaos_trader_probability: 0.05
+
 unfinished:
   enabled: true
+
 villagerdeath:
   enabled: true
   leather_count: 1
+
 wardensummon:
   enabled: true
+
 weepingangel:
   enabled: true
   spawn_probability: 0.05
   max_angels_per_chunk: 2
   movement_speed: 1.0 # Meters per tick
+
 witchattack:
   enabled: true
   probability: 0.5
+
 witches:
   enabled: true
   probability: 0.05
+
 witherarrow:
   enabled: true
   wither_seconds: 10
+
 witherbow:
   enabled: true
   probability: 0.5
+
 witherrose:
   enabled: true
+
 witherskele:
   enabled: true
   probability: 1.0
+
 zapwater:
   enabled: true
+
 zombiedrowning:
   enabled: true
+
 zombiespeed:
   enabled: true
   speed: 0.2738638
+
 zombietrade:
   enabled: true
