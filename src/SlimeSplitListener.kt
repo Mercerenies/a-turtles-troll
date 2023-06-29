@@ -12,8 +12,10 @@ import org.bukkit.event.Listener
 import org.bukkit.event.entity.CreatureSpawnEvent
 import org.bukkit.entity.Slime
 
+import kotlin.math.min
+
 class SlimeSplitListener(
-  private val maxSlimeSize: Int, // TODO Cap this for safety reasons
+  _maxSlimeSize: Int,
 ) : AbstractFeature(), Listener {
 
   companion object : FeatureContainerFactory<FeatureContainer> {
@@ -22,6 +24,8 @@ class SlimeSplitListener(
       ListenerContainer(SlimeSplitListener(state.config.getInt("slimesplit.max_slime_size")))
 
   }
+
+  private val maxSlimeSize = min(_maxSlimeSize, 15)
 
   override val name = "slimesplit"
 
