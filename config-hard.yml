@@ -3,22 +3,22 @@ global:
   difficulty: hard
 ak47:
   enabled: true
-  quick_charge_level: 5
+  quick_charge_level: 6
 allays:
   enabled: true
 amethyst:
   enabled: true
-  probability: 0.1
+  probability: 0.08
 angrygolems:
   enabled: true
 anvil:
   enabled: true
-  min_drop_height: 7
+  min_drop_height: 5
   max_drop_height: 15
-  period: 10 # In seconds
+  period: 8
 axolotl:
   enabled: true
-  radius: 32.0
+  radius: 64.0
 bamboo:
   enabled: true
 bedrock:
@@ -26,7 +26,7 @@ bedrock:
 bees:
   enabled: true
   probability: 0.2
-  radius: 5
+  radius: 6
 blazepower:
   enabled: true
 boatbomb:
@@ -37,7 +37,7 @@ butterfingers:
   enabled: true
 buttondrop:
   enabled: true
-  max_uses: 4
+  max_uses: 3
 cactuskick:
   enabled: true
 cakes:
@@ -55,17 +55,17 @@ chestshuffle:
   enabled: true
 chickens:
   enabled: true
-  zombie_rider_chance: 0.1
+  zombie_rider_chance: 0.2
 classiclava:
   enabled: true
-  normal_spread: 4
-  nether_spread: 8
+  normal_spread: 6
+  nether_spread: 12
   end_spread: 0
 cookies:
   enabled: true
 creeperdeath:
   enabled: true
-  allay_count: 3
+  allay_count: 4
 deathscoreboard:
   enabled: true
 demand:
@@ -74,17 +74,17 @@ dirtrecipe:
   enabled: true
 dirtstacks:
   enabled: true
-  regular_probability: 0.3
-  frequent_probability: 1.0
+  regular_probability: 0.5
+  frequent_probability: 1.1
 doctordances:
   enabled: true
 doordrop:
   enabled: true
-  max_uses: 16
+  max_uses: 12
 dragonbomb:
   enabled: true
-  min_timer_triggers_per_attack: 3
-  max_timer_triggers_per_attack: 12
+  min_timer_triggers_per_attack: 2
+  max_timer_triggers_per_attack: 10
 dripstone:
   enabled: true
 drowned:
@@ -97,7 +97,7 @@ eggdrop:
   enabled: true
   probability: 1.0
   min_eggs: 1
-  max_eggs: 4
+  max_eggs: 5
 eggs:
   enabled: true
 eggshells:
@@ -105,12 +105,12 @@ eggshells:
 encumbrance:
   enabled: true
   penalties:
-    occupied_inventory_slot: 0.0003
-    leather_armor: 0.001
-    non_leather_armor: 0.0025
-    slowness: 0.10
-    confusion: 0.05
-    gods_rage: 0.01
+    occupied_inventory_slot: 0.0004
+    leather_armor: 0.0015
+    non_leather_armor: 0.003
+    slowness: 0.15
+    confusion: 0.10
+    gods_rage: 0.02
 endcrystal:
   enabled: true
 enddirt:
@@ -128,7 +128,7 @@ escalation:
   effect_count: 4
 expirationdate:
   enabled: true
-  probability: 0.1
+  probability: 0.2
   slime_size: 2
 explosivearrow:
   enabled: true
@@ -149,41 +149,41 @@ ghastlava:
   enabled: true
 ghasts:
   enabled: true
-  probability: 0.2
+  probability: 0.25
 glass:
   enabled: true
 goddesshoe:
   enabled: true
 grassspread:
   enabled: true
-  probability: 0.5
+  probability: 0.6
 gravestone:
   enabled: true
 grievingwidow:
   enabled: true
-  minutes_to_disable: 10
+  minutes_to_disable: 8
 johnny:
   enabled: true
-  probability: 0.1
+  probability: 0.2
 killerrabbit:
   enabled: true
 lavalaunch:
   enabled: true
-  velocity_y: 1.3
+  velocity_y: 1.9
 learning:
   enabled: true
 levitation:
   enabled: true
-  levitation_seconds: 5
+  levitation_seconds: 10
 llamahunter:
   enabled: true
-  speed_multiplier: 5.5
-  min_llamas: 2
+  speed_multiplier: 7.0
+  min_llamas: 3
 melompkin:
   enabled: true
 mimics:
   enabled: true
-  probability: 0.05
+  probability: 0.1
 minecrafttrivia:
   enabled: true
   minutes_between_questions: 10
@@ -192,7 +192,7 @@ moss:
   enabled: true
 mossrevenge:
   enabled: true
-  probability: 0.2
+  probability: 0.3
   slime_size: 2
 namedzombie:
   enabled: true
@@ -209,18 +209,18 @@ oldage:
   age_limit: 100 # NOTE: Read this in LearningFromFailureListener as well
 overgrowth:
   enabled: true
-  delay_seconds: 600
-  obsidian: false
+  delay_seconds: 450
+  obsidian: true
 parrotcookie:
   enabled: true
-  parrot_duplicate_count: 5
+  parrot_duplicate_count: 6
 parrotdeath:
   enabled: true
 parrots:
   enabled: true
 phantoms:
   enabled: true
-  spawn_probability: 0.33
+  spawn_probability: 0.5
   cooldown_after_kill_seconds: 600
   min_spawn_height: 6
   max_spawn_height: 20
@@ -230,18 +230,18 @@ pigs:
   enabled: true
 pillagerdeath:
   enabled: true
-  slime_count: 3
+  slime_count: 4
   slime_size: 2
 pokeball:
   enabled: true
 platefire:
   enabled: true
-  probability: 0.05
+  probability: 0.1
 pufferfish:
   enabled: true
-  pufferfish_count: 5
-  explosion_power: 5.0
-  explosion_power_in_water: 10.0
+  pufferfish_count: 6
+  explosion_power: 6.0
+  explosion_power_in_water: 12.0
 pumpkins:
   enabled: true
 rainwater:
@@ -254,8 +254,8 @@ redstoneworld:
   drop_probability: 0.5
   min_items: 1
   max_items: 64
-  min_damage: 0.0
-  max_damage: 20.0
+  min_damage: 4.0
+  max_damage: 30.0
 sandattack:
   enabled: true
   red_sand_probability: 0.1
@@ -264,24 +264,24 @@ sheepcolor:
   enabled: true
 shieldsurf:
   enabled: true
-  damage_multiplier: 1.0
+  damage_multiplier: 2.0
 shufflelogs:
   enabled: true
 silverfish:
   enabled: true
   probability: 0.2
-  bomb_probability: 0.2
-  bomb_radius: 3
-  release_chance: 0.2
-  infestation_chance: 0.2 # NOTE: Stack on release_chance in the code
+  bomb_probability: 0.4
+  bomb_radius: 4
+  release_chance: 0.3
+  infestation_chance: 0.3
 silverfishburn:
   enabled: true
 slimesplit:
   enabled: true
-  max_slime_size: 10 # NOTE: Put a cap on this in the code
+  max_slime_size: 10
 slowslab:
   enabled: true
-  slow_time_seconds: 10
+  slow_time_seconds: 15
   slowness_level: 4
 snowspeed:
   enabled: true
@@ -297,12 +297,12 @@ stonetools:
 stronghold:
   enabled: true
   bomb_probability: 0.2
-  bomb_radius: 4
+  bomb_radius: 6
   release_chance: 0.5
   infestation_chance: 0.5
 sweetdreams:
   enabled: true
-  effects_count: 3
+  effects_count: 4
 tallgrass:
   enabled: true
   boots_damage_probability: 1.0
@@ -323,17 +323,17 @@ wardensummon:
 weepingangel:
   enabled: true
   spawn_probability: 0.05
-  max_angels_per_chunk: 2
-  movement_speed: 1.0 # Meters per tick
+  max_angels_per_chunk: 3
+  movement_speed: 1.2
 witchattack:
   enabled: true
   probability: 0.5
 witches:
   enabled: true
-  probability: 0.05
+  probability: 0.10
 witherarrow:
   enabled: true
-  wither_seconds: 10
+  wither_seconds: 15
 witherbow:
   enabled: true
   probability: 0.5
