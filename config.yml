@@ -256,6 +256,10 @@ explosivearrow:
 fall:
   enabled: default
 
+fishhook:
+  enabled: default
+  speed: default
+
 fishsanctuary:
   enabled: default
 

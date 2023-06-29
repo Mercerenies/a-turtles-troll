@@ -62,6 +62,8 @@
      - Regeneration 5
    + rainwater :: Players deplete oxygen in the rain
    + cactuskick :: Looking at a cactus causes the player to be kicked
+   + fishhook :: When you pull a fish hook in, you're launched in that
+     direction
 ** CUSTOM SPAWNING FEATURES
    + weepingangel :: Armor stands will chase you when you're not
                      looking at them, and armor stands will rarely

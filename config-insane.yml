@@ -134,6 +134,9 @@ explosivearrow:
   enabled: true
 fall:
   enabled: true
+fishhook:
+  enabled: true
+  speed: 100.0
 fishsanctuary:
   enabled: true
 forestfire:

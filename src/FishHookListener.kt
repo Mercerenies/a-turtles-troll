@@ -2,6 +2,10 @@
 package com.mercerenies.turtletroll
 
 import com.mercerenies.turtletroll.feature.AbstractFeature
+import com.mercerenies.turtletroll.feature.container.FeatureContainer
+import com.mercerenies.turtletroll.feature.container.ListenerContainer
+import com.mercerenies.turtletroll.feature.builder.BuilderState
+import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
@@ -14,10 +18,18 @@ class FishHookListener(
   val speed: Double = 20.0
 ) : AbstractFeature(), Listener {
 
-  companion object {
+  companion object : FeatureContainerFactory<FeatureContainer> {
+
     val RELEVANT_STATES = setOf(
       PlayerFishEvent.State.CAUGHT_ENTITY, PlayerFishEvent.State.IN_GROUND,
+      PlayerFishEvent.State.REEL_IN,
     )
+
+    override fun create(state: BuilderState): FeatureContainer {
+      val speed = state.config.getDouble("fishhook.speed")
+      return ListenerContainer(FishHookListener(speed))
+    }
+
   }
 
   override val name = "fishhook"
@@ -41,7 +53,7 @@ class FishHookListener(
       } else {
         null
       }
-    val delta = hook.location.subtract(player.location).getDirection().multiply(speed)
+    val delta = hook.location.clone().subtract(player.location).toVector().normalize().multiply(speed)
     player.setVelocity(delta)
     entity?.setVelocity(delta.clone().multiply(-1.0))
   }

@@ -45,6 +45,7 @@ A Turtle's Troll also depends on the following libraries.
 * Jumps may fail if you're overencumbered.
 * Tools enchanted with Silk Touch negate most block-breaking effects
   this plugin provides.
+* When you pull a fish hook in, you're launched in that direction.
 * Eating the last bite of a cake causes it to explode.
 * Pufferfish explode on death.
 * Looking at a cactus causes the player to be kicked.
