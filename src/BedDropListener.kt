@@ -2,6 +2,7 @@
 package com.mercerenies.turtletroll
 
 import com.mercerenies.turtletroll.feature.AbstractFeature
+import com.mercerenies.turtletroll.drop.BlockBreakEventListener
 
 import org.bukkit.Material
 import org.bukkit.Location
@@ -40,6 +41,11 @@ class BedDropListener() : AbstractFeature(), Listener {
   @EventHandler
   fun onBlockBreak(event: BlockBreakEvent) {
     if (!isEnabled()) {
+      return
+    }
+
+    if (BlockBreakEventListener.isUsingSilkTouch(event.player)) {
+      // Silk touch blocks this effect.
       return
     }
 

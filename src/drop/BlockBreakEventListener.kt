@@ -8,12 +8,21 @@ import com.mercerenies.turtletroll.feature.container.DropFeatureContainer
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.block.BlockBreakEvent
+import org.bukkit.entity.Player
+import org.bukkit.enchantments.Enchantment
 
 class BlockBreakEventListener(
   private val preRules: List<BlockBreakAction>,
   private val actions: List<Weight<BlockBreakAction>>,
   private val postRules: List<BlockBreakAction>,
 ) : Listener {
+
+  companion object {
+
+    fun isUsingSilkTouch(player: Player): Boolean =
+      player.inventory.getItemInMainHand().containsEnchantment(Enchantment.SILK_TOUCH)
+
+  }
 
   // Note: We add in a unit weight NullAction here, since that won't
   // be provided as a "feature" in any sense.
@@ -25,6 +34,12 @@ class BlockBreakEventListener(
 
   @EventHandler
   fun onBlockBreak(event: BlockBreakEvent) {
+
+    if (isUsingSilkTouch(event.player)) {
+      // Silk Touch negates all drop-based events. Allow it to pass
+      // unscathed.
+      return
+    }
 
     for (action in preRules) {
       if (action.shouldTrigger(event)) {

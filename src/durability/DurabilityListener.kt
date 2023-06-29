@@ -2,6 +2,7 @@
 package com.mercerenies.turtletroll.durability
 
 import com.mercerenies.turtletroll.feature.AbstractFeature
+import com.mercerenies.turtletroll.drop.BlockBreakEventListener
 
 import org.bukkit.Material
 import org.bukkit.Location
@@ -56,6 +57,10 @@ abstract class DurabilityListener() : AbstractFeature(), Listener {
     // (this class is smart enough to understand how to properly
     // destroy doors, unlike CancelDropAction.
     if (!isEnabled()) {
+      return
+    }
+    if (BlockBreakEventListener.isUsingSilkTouch(event.player)) {
+      // Silk touch blocks this effect.
       return
     }
     if (shouldAffect(event.block)) {

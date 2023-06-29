@@ -37,9 +37,14 @@ A Turtle's Troll also depends on the following libraries.
   the GNU GPL v3 or later.
 * A Turtle's Troll has been updated to run in Minecraft 1.20.1.
 * Minecraft Trivia! Every ten minutes, the game asks a trivia question.
+* Lots of stats are configurable now, and A Turtle's Troll now has
+  difficulty tiers. The "default" gameplay up to this point is now
+  called "normal" mode.
 * Players deplete oxygen in the rain.
 * Looking at nylium transforms it into primed TNT.
 * Jumps may fail if you're overencumbered.
+* Tools enchanted with Silk Touch negate most block-breaking effects
+  this plugin provides.
 * Eating the last bite of a cake causes it to explode.
 * Pufferfish explode on death.
 * Looking at a cactus causes the player to be kicked.

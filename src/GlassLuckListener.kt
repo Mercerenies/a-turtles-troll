@@ -6,6 +6,7 @@ import com.mercerenies.turtletroll.feature.container.FeatureContainer
 import com.mercerenies.turtletroll.feature.container.ListenerContainer
 import com.mercerenies.turtletroll.feature.builder.BuilderState
 import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
+import com.mercerenies.turtletroll.drop.BlockBreakEventListener
 
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
@@ -29,6 +30,10 @@ class GlassLuckListener() : AbstractFeature(), Listener {
   @EventHandler
   fun onBlockBreak(event: BlockBreakEvent) {
     if (!isEnabled()) {
+      return
+    }
+    if (BlockBreakEventListener.isUsingSilkTouch(event.player)) {
+      // Silk touch blocks this effect.
       return
     }
     val block = event.getBlock()
