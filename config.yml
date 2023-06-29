@@ -35,68 +35,108 @@ global:
   # is "default" will pull from the difficulty indicated here.
   difficulty: normal
 
+# Pillagers spawn with a crossbow called "AK57".
 ak47:
   enabled: true
-  quick_charge_level: 6
+  # (Integer) The level of Quick Charge the crossbow should have.
+  quick_charge_level: 5
 
+# Allays automatically bond to the nearest player and have an infinite
+# supply of flowers.
 allays:
   enabled: true
 
+# When an amethyst block is broken, there is a chance of dropping
+# golden apples.
 amethyst:
   enabled: true
+  # (Float) The weight given to this event.
   probability: 0.1
 
+# Iron golems are always angry at the nearest player.
 angrygolems:
   enabled: true
 
+# If a player stands still for long enough, an anvil will drop on
+# their head. Anvils can be smelted into iron nuggets.
 anvil:
   enabled: true
+  # (Integer) The minimum height at which the anvil will drop,
+  # relative to the player.
   min_drop_height: 7
+  # (Integer) The maximum height at which the anvil will drop,
+  # relative to the player. The anvil will fall from this height or
+  # the nearest ceiling above the player, whichever is shorter.
   max_drop_height: 15
-  period: 10 # In seconds
+  # (Integer) How often the anvil check is performed, in seconds.
+  period: 10
 
+# When an axolotl dies, the nearest player also dies.
 axolotl:
   enabled: true
+  # (Float) The maximum block distance from the axolotl to the player
+  # affected by this. If no player is within this radius, no one dies.
   radius: 32.0
 
+# When bamboo grows, it has a chance to spread.
 bamboo:
   enabled: true
 
+# Certain blocks transform into bedrock when mined.
 bedrock:
   enabled: true
 
+# All wood blocks have a chance of spawning bees.
 bees:
   enabled: true
+  # (Float) The weight given to this event.
   probability: 0.2
+  # (Integer) The radius of wood blocks to turn into bees.
   radius: 5
 
+# Blazes spawn evokers during their attack sequence.
 blazepower:
   enabled: true
 
+# If a boat hits the ground hard enough, it explodes.
 boatbomb:
   enabled: true
 
+# Any bucket without a custom name will randomly change its contents
+# every eight seconds.
 bucketroulette:
   enabled: true
 
+# If you open an inventory screen, the item in your main hand is
+# dropped.
 butterfingers:
   enabled: true
 
+# Buttons in the world have durability and break after a certain
+# number of uses.
 buttondrop:
   enabled: true
+  # (Integer) The number of uses before a button breaks.
   max_uses: 4
 
+# Looking at a cactus causes the player to be kicked.
 cactuskick:
   enabled: true
 
+# Cakes spawn in the wild and grant effects when eaten. Eating the
+# last bite of a cake causes it to explode.
 cakes:
   enabled: true
+  # (Float) The probability of replacing a given mob spawn with a cake.
   probability: 0.05
 
+# Cats and bats transform into each other when killed.
 catbat:
   enabled: true
+  # (Float) The probability of this event occurring.
   probability: 1.0
 
+# Chainmail armor can be crafted from lava buckets.
 chainmailrecipe:
   enabled: true
 
