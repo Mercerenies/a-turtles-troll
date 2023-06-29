@@ -37,514 +37,514 @@ global:
 
 # Pillagers spawn with a crossbow called "AK57".
 ak47:
-  enabled: true
+  enabled: default
   # (Integer) The level of Quick Charge the crossbow should have.
-  quick_charge_level: 5
+  quick_charge_level: default
 
 # Allays automatically bond to the nearest player and have an infinite
 # supply of flowers.
 allays:
-  enabled: true
+  enabled: default
 
 # When an amethyst block is broken, there is a chance of dropping
 # golden apples.
 amethyst:
-  enabled: true
+  enabled: default
   # (Float) The weight given to this event.
-  probability: 0.1
+  probability: default
 
 # Iron golems are always angry at the nearest player.
 angrygolems:
-  enabled: true
+  enabled: default
 
 # If a player stands still for long enough, an anvil will drop on
 # their head. Anvils can be smelted into iron nuggets.
 anvil:
-  enabled: true
+  enabled: default
   # (Integer) The minimum height at which the anvil will drop,
   # relative to the player.
-  min_drop_height: 7
+  min_drop_height: default
   # (Integer) The maximum height at which the anvil will drop,
   # relative to the player. The anvil will fall from this height or
   # the nearest ceiling above the player, whichever is shorter.
-  max_drop_height: 15
+  max_drop_height: default
   # (Integer) How often the anvil check is performed, in seconds.
-  period: 10
+  period: default
 
 # When an axolotl dies, the nearest player also dies.
 axolotl:
-  enabled: true
+  enabled: default
   # (Float) The maximum block distance from the axolotl to the player
   # affected by this. If no player is within this radius, no one dies.
-  radius: 32.0
+  radius: default
 
 # When bamboo grows, it has a chance to spread.
 bamboo:
-  enabled: true
+  enabled: default
 
 # Certain blocks transform into bedrock when mined.
 bedrock:
-  enabled: true
+  enabled: default
 
 # All wood blocks have a chance of spawning bees.
 bees:
-  enabled: true
+  enabled: default
   # (Float) The weight given to this event.
-  probability: 0.2
+  probability: default
   # (Integer) The radius of wood blocks to turn into bees.
-  radius: 5
+  radius: default
 
 # Blazes spawn evokers during their attack sequence.
 blazepower:
-  enabled: true
+  enabled: default
 
 # If a boat hits the ground hard enough, it explodes.
 boatbomb:
-  enabled: true
+  enabled: default
 
 # Any bucket without a custom name will randomly change its contents
 # every eight seconds.
 bucketroulette:
-  enabled: true
+  enabled: default
 
 # If you open an inventory screen, the item in your main hand is
 # dropped.
 butterfingers:
-  enabled: true
+  enabled: default
 
 # Buttons in the world have durability and break after a certain
 # number of uses.
 buttondrop:
-  enabled: true
+  enabled: default
   # (Integer) The number of uses before a button breaks.
-  max_uses: 4
+  max_uses: default
 
 # Looking at a cactus causes the player to be kicked.
 cactuskick:
-  enabled: true
+  enabled: default
 
 # Cakes spawn in the wild and grant effects when eaten. Eating the
 # last bite of a cake causes it to explode.
 cakes:
-  enabled: true
+  enabled: default
   # (Float) The probability of replacing a given mob spawn with a cake.
-  probability: 0.05
+  probability: default
 
 # Cats and bats transform into each other when killed.
 catbat:
-  enabled: true
+  enabled: default
   # (Float) The probability of this event occurring.
-  probability: 1.0
+  probability: default
 
 # Chainmail armor can be crafted from lava buckets.
 chainmailrecipe:
-  enabled: true
+  enabled: default
 
 chargedcreeper:
-  enabled: true
-  diamond_count: 1
+  enabled: default
+  diamond_count: default
 
 chestshuffle:
-  enabled: true
+  enabled: default
 
 chickens:
-  enabled: true
-  zombie_rider_chance: 0.1
+  enabled: default
+  zombie_rider_chance: default
 
 classiclava:
-  enabled: true
-  normal_spread: 4
-  nether_spread: 8
-  end_spread: 0
+  enabled: default
+  normal_spread: default
+  nether_spread: default
+  end_spread: default
 
 cookies:
-  enabled: true
+  enabled: default
 
 creeperdeath:
-  enabled: true
-  allay_count: 3
+  enabled: default
+  allay_count: default
 
 deathscoreboard:
-  enabled: true
+  enabled: default
 
 demand:
-  enabled: true
+  enabled: default
 
 dirtrecipe:
-  enabled: true
+  enabled: default
 
 dirtstacks:
-  enabled: true
-  regular_probability: 0.3
-  frequent_probability: 1.0
+  enabled: default
+  regular_probability: default
+  frequent_probability: default
 
 doctordances:
-  enabled: true
+  enabled: default
 
 doordrop:
-  enabled: true
-  max_uses: 16
+  enabled: default
+  max_uses: default
 
 dragonbomb:
-  enabled: true
-  min_timer_triggers_per_attack: 3
-  max_timer_triggers_per_attack: 12
+  enabled: default
+  min_timer_triggers_per_attack: default
+  max_timer_triggers_per_attack: default
 
 dripstone:
-  enabled: true
+  enabled: default
 
 drowned:
-  enabled: true
-  probability: 1.0
+  enabled: default
+  probability: default
 
 eggarrow:
-  enabled: true
-  probability: 1.0
+  enabled: default
+  probability: default
 
 eggdrop:
-  enabled: true
-  probability: 1.0
-  min_eggs: 1
-  max_eggs: 4
+  enabled: default
+  probability: default
+  min_eggs: default
+  max_eggs: default
 
 eggs:
-  enabled: true
+  enabled: default
 
 eggshells:
-  enabled: true
+  enabled: default
 
 encumbrance:
-  enabled: true
+  enabled: default
   penalties:
-    occupied_inventory_slot: 0.0003
-    leather_armor: 0.001
-    non_leather_armor: 0.0025
-    slowness: 0.10
-    confusion: 0.05
-    gods_rage: 0.01
+    occupied_inventory_slot: default
+    leather_armor: default
+    non_leather_armor: default
+    slowness: default
+    confusion: default
+    gods_rage: default
 
 endcrystal:
-  enabled: true
+  enabled: default
 
 enddirt:
-  enabled: true
+  enabled: default
 
 enderchest:
-  enabled: true
+  enabled: default
 
 endermangod:
-  enabled: true
+  enabled: default
 
 endermites:
-  enabled: true
+  enabled: default
 
 endspeed:
-  enabled: true
+  enabled: default
 
 escalation:
-  enabled: true
-  effect_count: 4
+  enabled: default
+  effect_count: default
 
 expirationdate:
-  enabled: true
-  probability: 0.1
-  slime_size: 2
+  enabled: default
+  probability: default
+  slime_size: default
 
 explosivearrow:
-  enabled: true
+  enabled: default
 
 fall:
-  enabled: true
+  enabled: default
 
 fishsanctuary:
-  enabled: true
+  enabled: default
 
 forestfire:
-  enabled: true
+  enabled: default
 
 freecookie:
-  enabled: true
+  enabled: default
 
 funhat:
-  enabled: true
-  probability: 0.1
+  enabled: default
+  probability: default
 
 ghastburn:
-  enabled: true
+  enabled: default
 
 ghastlava:
-  enabled: true
+  enabled: default
 
 ghasts:
-  enabled: true
-  probability: 0.2
+  enabled: default
+  probability: default
 
 glass:
-  enabled: true
+  enabled: default
 
 goddesshoe:
-  enabled: true
+  enabled: default
 
 grassspread:
-  enabled: true
-  probability: 0.5
+  enabled: default
+  probability: default
 
 gravestone:
-  enabled: true
+  enabled: default
 
 grievingwidow:
-  enabled: true
-  minutes_to_disable: 10
+  enabled: default
+  minutes_to_disable: default
 
 johnny:
-  enabled: true
-  probability: 0.1
+  enabled: default
+  probability: default
 
 killerrabbit:
-  enabled: true
+  enabled: default
 
 lavalaunch:
-  enabled: true
-  velocity_y: 1.3
+  enabled: default
+  velocity_y: default
 
 learning:
-  enabled: true
+  enabled: default
 
 levitation:
-  enabled: true
-  levitation_seconds: 5
+  enabled: default
+  levitation_seconds: default
 
 llamahunter:
-  enabled: true
-  speed_multiplier: 5.5
-  min_llamas: 2
+  enabled: default
+  speed_multiplier: default
+  min_llamas: default
 
 melompkin:
-  enabled: true
+  enabled: default
 
 mimics:
-  enabled: true
-  probability: 0.05
+  enabled: default
+  probability: default
 
 minecrafttrivia:
-  enabled: true
-  minutes_between_questions: 10
-  minutes_to_answer: 2
+  enabled: default
+  minutes_between_questions: default
+  minutes_to_answer: default
 
 moss:
-  enabled: true
+  enabled: default
 
 mossrevenge:
-  enabled: true
-  probability: 0.2
-  slime_size: 2
+  enabled: default
+  probability: default
+  slime_size: default
 
 namedzombie:
-  enabled: true
-  probability: 0.2
+  enabled: default
+  probability: default
 
 netherrack:
-  enabled: true
-  radius: 5
+  enabled: default
+  radius: default
 
 nodrops:
-  enabled: true
+  enabled: default
 
 nylium:
-  enabled: true
+  enabled: default
 
 oldage:
-  enabled: true
-  age_limit: 100 # NOTE: Read this in LearningFromFailureListener as well
+  enabled: default
+  age_limit: default
 
 overgrowth:
-  enabled: true
-  delay_seconds: 600
-  obsidian: false
+  enabled: default
+  delay_seconds: default
+  obsidian: default
 
 parrotcookie:
-  enabled: true
-  parrot_duplicate_count: 5
+  enabled: default
+  parrot_duplicate_count: default
 
 parrotdeath:
-  enabled: true
+  enabled: default
 
 parrots:
-  enabled: true
+  enabled: default
 
 phantoms:
-  enabled: true
-  spawn_probability: 0.33
-  cooldown_after_kill_seconds: 600
-  min_spawn_height: 6
-  max_spawn_height: 20
+  enabled: default
+  spawn_probability: default
+  cooldown_after_kill_seconds: default
+  min_spawn_height: default
+  max_spawn_height: default
 
 piglins:
-  enabled: true
+  enabled: default
 
 pigs:
-  enabled: true
+  enabled: default
 
 pillagerdeath:
-  enabled: true
-  slime_count: 3
-  slime_size: 2
+  enabled: default
+  slime_count: default
+  slime_size: default
 
 pokeball:
-  enabled: true
+  enabled: default
 
 platefire:
-  enabled: true
-  probability: 0.05
+  enabled: default
+  probability: default
 
 pufferfish:
-  enabled: true
-  pufferfish_count: 5
-  explosion_power: 5.0
-  explosion_power_in_water: 10.0
+  enabled: default
+  pufferfish_count: default
+  explosion_power: default
+  explosion_power_in_water: default
 
 pumpkins:
-  enabled: true
+  enabled: default
 
 rainwater:
-  enabled: true
+  enabled: default
 
 ravagers:
-  enabled: true
-  probability: 0.5
+  enabled: default
+  probability: default
 
 redstoneworld:
-  enabled: true
-  drop_probability: 0.5
-  min_items: 1
-  max_items: 64
-  min_damage: 0.0
-  max_damage: 20.0
+  enabled: default
+  drop_probability: default
+  min_items: default
+  max_items: default
+  min_damage: default
+  max_damage: default
 
 sandattack:
-  enabled: true
-  red_sand_probability: 0.1
-  max_drop_height: 15
+  enabled: default
+  red_sand_probability: default
+  max_drop_height: default
 
 sheepcolor:
-  enabled: true
+  enabled: default
 
 shieldsurf:
-  enabled: true
-  damage_multiplier: 1.0
+  enabled: default
+  damage_multiplier: default
 
 shufflelogs:
-  enabled: true
+  enabled: default
 
 silverfish:
-  enabled: true
-  probability: 0.2
-  bomb_probability: 0.2
-  bomb_radius: 3
-  release_chance: 0.2
-  infestation_chance: 0.2 # NOTE: Stack on release_chance in the code
+  enabled: default
+  probability: default
+  bomb_probability: default
+  bomb_radius: default
+  release_chance: default
+  infestation_chance: default
 
 silverfishburn:
-  enabled: true
+  enabled: default
 
 slimesplit:
-  enabled: true
-  max_slime_size: 10 # NOTE: Put a cap on this in the code
+  enabled: default
+  max_slime_size: default
 
 slowslab:
-  enabled: true
-  slow_time_seconds: 10
-  slowness_level: 4
+  enabled: default
+  slow_time_seconds: default
+  slowness_level: default
 
 snowspeed:
-  enabled: true
+  enabled: default
 
 snowball:
-  enabled: true
-  speed_multiplier: 5.5
+  enabled: default
+  speed_multiplier: default
 
 solidswap:
-  enabled: true
+  enabled: default
 
 spillage:
-  enabled: true
+  enabled: default
 
 stonetools:
-  enabled: true
+  enabled: default
 
 stronghold:
-  enabled: true
-  bomb_probability: 0.2
-  bomb_radius: 4
-  release_chance: 0.5
-  infestation_chance: 0.5
+  enabled: default
+  bomb_probability: default
+  bomb_radius: default
+  release_chance: default
+  infestation_chance: default
 
 sweetdreams:
-  enabled: true
-  effects_count: 3
+  enabled: default
+  effects_count: default
 
 tallgrass:
-  enabled: true
-  boots_damage_probability: 1.0
+  enabled: default
+  boots_damage_probability: default
 
 temperature:
-  enabled: true
+  enabled: default
 
 torches:
-  enabled: true
+  enabled: default
 
 trader:
-  enabled: true
-  chaos_trader_probability: 0.05
+  enabled: default
+  chaos_trader_probability: default
 
 unfinished:
-  enabled: true
+  enabled: default
 
 villagerdeath:
-  enabled: true
-  leather_count: 1
+  enabled: default
+  leather_count: default
 
 wardensummon:
-  enabled: true
+  enabled: default
 
 weepingangel:
-  enabled: true
-  spawn_probability: 0.05
-  max_angels_per_chunk: 2
-  movement_speed: 1.0 # Meters per tick
+  enabled: default
+  spawn_probability: default
+  max_angels_per_chunk: default
+  movement_speed: default
 
 witchattack:
-  enabled: true
-  probability: 0.5
+  enabled: default
+  probability: default
 
 witches:
-  enabled: true
-  probability: 0.05
+  enabled: default
+  probability: default
 
 witherarrow:
-  enabled: true
-  wither_seconds: 10
+  enabled: default
+  wither_seconds: default
 
 witherbow:
-  enabled: true
-  probability: 0.5
+  enabled: default
+  probability: default
 
 witherrose:
-  enabled: true
+  enabled: default
 
 witherskele:
-  enabled: true
-  probability: 1.0
+  enabled: default
+  probability: default
 
 zapwater:
-  enabled: true
+  enabled: default
 
 zombiedrowning:
-  enabled: true
+  enabled: default
 
 zombiespeed:
-  enabled: true
-  speed: 0.2738638
+  enabled: default
+  speed: default
 
 zombietrade:
-  enabled: true
+  enabled: default
