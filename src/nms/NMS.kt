@@ -6,6 +6,8 @@ import org.bukkit.entity.FallingBlock
 import org.bukkit.entity.Player
 import org.bukkit.entity.Allay
 
+import com.mojang.authlib.GameProfile
+
 import java.util.logging.Logger
 
 // https://riptutorial.com/bukkit/example/29589/accessing-the-current-minecraft-version :)
@@ -221,5 +223,27 @@ object NMS {
     val handle = ctor.newInstance(id, serializer, value)
     return RawEntityMetadata(handle)
   }
+
+  // Go to
+  // net.minecraft.network.protocol.game.ClientboundPlayerInfoUpdatePacket.
+  // There should be a private final instance variable of List type.
+  // This class name should match the type of elements in that list.
+  // It's b in 1.20.1. Remember to translate using the Java naming
+  // convention, so the inner class scope is replaced with '$'.
+  fun getPlayerInfoUpdateClass(): Class<*> =
+    Class.forName("net.minecraft.network.protocol.game.ClientboundPlayerInfoUpdatePacket\$b")
+
+  // Go to the class from getPlayerInfoUpdateClass() above. Look for
+  // the nullary method which returns a GameProfile (should be a
+  // record accessor). It's b in 1.20.1.
+  fun infoPacketToGameProfile(infoPacketData: Any): GameProfile? =
+    safely(null) {
+      val infoCls = getPlayerInfoUpdateClass()
+      if (infoCls.isInstance(infoPacketData)) {
+        infoCls.getMethod("b").invoke(infoPacketData) as? GameProfile
+      } else {
+        null
+      }
+    }
 
 }

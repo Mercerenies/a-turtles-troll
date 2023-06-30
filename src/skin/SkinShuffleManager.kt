@@ -9,6 +9,9 @@ import com.mercerenies.turtletroll.feature.builder.BuilderState
 import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 import com.mercerenies.turtletroll.location.PlayerSelector
 import com.mercerenies.turtletroll.packet.TrivialConverter
+import com.mercerenies.turtletroll.nms.NMS
+import com.mercerenies.turtletroll.http.MojangApi
+import com.mercerenies.turtletroll.http.PluginUserAgentSupplier
 
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
@@ -27,6 +30,8 @@ import com.comphenix.protocol.events.PacketListener
 import com.comphenix.protocol.events.ListenerPriority
 import com.comphenix.protocol.events.PacketEvent
 
+import java.util.UUID
+
 class SkinShuffleManager(
   plugin: Plugin,
 ) : AbstractFeature() {
@@ -34,6 +39,11 @@ class SkinShuffleManager(
   override val name: String = "skinshuffle"
 
   override val description: String = "Player skins are shuffled regularly"
+
+  private val skinServer: SkinServer = run {
+    val mojangApi = MojangApi(PluginUserAgentSupplier(plugin))
+    SkinServer(mojangApi)
+  }
 
   val playerInfoPacketListener: PacketListener = object : PacketAdapter(
     plugin,
@@ -46,23 +56,17 @@ class SkinShuffleManager(
       }
       val packet = event.packet
       val list = packet.getLists(TrivialConverter).read(0)
-      println("------------")
       for (elem in list) {
-        println(elem)
-        val cls = Class.forName("net.minecraft.network.protocol.game.ClientboundPlayerInfoUpdatePacket\$b")
-        val profileCls = Class.forName("com.mojang.authlib.GameProfile")
-        val propMapCls = Class.forName("com.mojang.authlib.properties.PropertyMap")
-        val propCls = Class.forName("com.mojang.authlib.properties.Property")
-        if (cls.isInstance(elem)) {
-          val profile = cls.getMethod("b").invoke(elem)
-          val map = profileCls.getMethod("getProperties").invoke(profile)
-          val props = propMapCls.getMethod("get", Object::class.java).invoke(map, "textures") as Collection<*>
-          for (prop in props) {
-            println(propCls.getMethod("getValue").invoke(prop))
+        val profile = NMS.infoPacketToGameProfile(elem!!)
+        println("-----")
+        println(profile)
+        if (profile != null) {
+          val newSkin = skinServer.querySkin(UUID.fromString("5d1e680a-18c7-4ec4-8bb6-ff2f2a842dec"))
+          if (newSkin != null) {
+            PlayerInfoPacketUpdater.replaceSkinTexture(profile, newSkin)
           }
-        } else {
-          println("not relevant")
         }
+        println(profile)
       }
     }
 

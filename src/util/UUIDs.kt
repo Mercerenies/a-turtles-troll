@@ -5,6 +5,8 @@ import java.util.UUID
 
 object UUIDs {
 
+  private val UUID_DASH_REGEX = Regex("(\\p{XDigit}{8})(\\p{XDigit}{4})(\\p{XDigit}{4})(\\p{XDigit}{4})(\\p{XDigit}+)")
+
   fun stringToUuid(string: String): UUID {
     val dashedString =
       if (string.contains("-")) {
@@ -12,7 +14,7 @@ object UUIDs {
       } else {
         // https://stackoverflow.com/a/19399768/2288659
         string.replaceFirst(
-          "(\\p{XDigit}{8})(\\p{XDigit}{4})(\\p{XDigit}{4})(\\p{XDigit}{4})(\\p{XDigit}+)",
+          UUID_DASH_REGEX,
           "$1-$2-$3-$4-$5",
         )
       }

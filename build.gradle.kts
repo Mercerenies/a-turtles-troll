@@ -80,6 +80,7 @@ dependencies {
   compileOnly("io.papermc.paper:paper-api:1.20.1-R0.1-SNAPSHOT")
   compileOnly("net.kyori:adventure-text-serializer-plain:4.14.0")
   compileOnly("com.comphenix.protocol:ProtocolLib:5.0.0")
+  compileOnly("com.mojang:authlib:3.17.30")
 
   implementation(
     fileTree("lib/") {
