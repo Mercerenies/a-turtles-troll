@@ -1,7 +1,8 @@
 
 package com.mercerenies.turtletroll.http
 
-import com.mercerenies.turtletroll.util.*
+import com.mercerenies.turtletroll.util.andThen
+import com.mercerenies.turtletroll.util.UUIDs
 
 import org.json.JSONObject
 import org.json.JSONException
@@ -28,9 +29,6 @@ class MojangApi(
         null
       }
 
-    private fun uuidToString(uuid: UUID): String =
-      uuid.toString().replace(Regex("-"), "").lowercase()
-
   }
 
   private fun httpRequest(uri: String): HttpRequest =
@@ -56,7 +54,7 @@ class MojangApi(
   }
 
   fun readSessionProfile(userId: UUID): SessionProfile? {
-    val userIdString = uuidToString(userId)
+    val userIdString = UUIDs.uuidToString(userId, dashes = false)
     val url = "https://sessionserver.mojang.com/session/minecraft/profile/$userIdString"
     val response = httpClient.send(httpRequest(url), HttpResponse.BodyHandlers.ofString())
     val statusCode = response.statusCode()

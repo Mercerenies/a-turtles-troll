@@ -1,7 +1,7 @@
 
 package com.mercerenies.turtletroll.http
 
-import com.mercerenies.turtletroll.util.stringToUuid
+import com.mercerenies.turtletroll.util.UUIDs
 
 import org.bukkit.Bukkit
 
@@ -18,7 +18,7 @@ data class UserProfile(
     fun fromJson(obj: JSONObject): UserProfile? =
       try {
         UserProfile(
-          id = stringToUuid(obj.getString("id")),
+          id = UUIDs.stringToUuid(obj.getString("id")),
           name = obj.getString("name"),
         )
       } catch (e: JSONException) {

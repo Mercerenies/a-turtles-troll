@@ -1,7 +1,7 @@
 
 package com.mercerenies.turtletroll.http
 
-import com.mercerenies.turtletroll.util.stringToUuid
+import com.mercerenies.turtletroll.util.UUIDs
 
 import org.bukkit.Bukkit
 
@@ -22,7 +22,7 @@ data class SessionProfile(
     fun fromJson(obj: JSONObject): SessionProfile? =
       try {
         SessionProfile(
-          id = stringToUuid(obj.getString("id")),
+          id = UUIDs.stringToUuid(obj.getString("id")),
           name = obj.getString("name"),
           properties = parseProperties(obj.getJSONArray("properties")),
         )
