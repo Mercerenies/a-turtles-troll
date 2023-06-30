@@ -12,6 +12,7 @@ import java.net.http.HttpClient
 import java.net.http.HttpRequest
 import java.net.http.HttpResponse
 import java.net.URI
+import java.util.UUID
 
 class MojangApi(
   private val userAgentSupplier: UserAgentSupplier,
@@ -26,6 +27,9 @@ class MojangApi(
         Bukkit.getLogger().severe("Error during JSON parsing: $e")
         null
       }
+
+    private fun uuidToString(uuid: UUID): String =
+      uuid.toString().replace(Regex("-"), "").lowercase()
 
   }
 
@@ -49,6 +53,18 @@ class MojangApi(
       return null
     }
     return toJson(response.body()).andThen { UserProfile.fromJson(it) }
+  }
+
+  fun readSessionProfile(userId: UUID): SessionProfile? {
+    val userIdString = uuidToString(userId)
+    val url = "https://sessionserver.mojang.com/session/minecraft/profile/$userIdString"
+    val response = httpClient.send(httpRequest(url), HttpResponse.BodyHandlers.ofString())
+    val statusCode = response.statusCode()
+    if (!StatusCodes.isSuccessful(statusCode)) {
+      Bukkit.getLogger().severe("Got status code $statusCode at $url")
+      return null
+    }
+    return toJson(response.body()).andThen { SessionProfile.fromJson(it) }
   }
 
 }
