@@ -13,6 +13,7 @@ import kotlin.math.min
 
 object RainwaterPacketUpdater {
 
+  // TODO Move this to a 'packet' package.
   object TrivialConverter : EquivalentConverter<Any?> {
 
     override fun getGeneric(specific: Any?): Any? =

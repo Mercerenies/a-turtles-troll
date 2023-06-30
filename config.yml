@@ -451,6 +451,10 @@ silverfish:
 silverfishburn:
   enabled: default
 
+# /////
+skinshuffle:
+  enabled: true
+
 slimesplit:
   enabled: default
   max_slime_size: default

@@ -50,6 +50,7 @@ import com.mercerenies.turtletroll.drop.StrongholdAttackFeatureFactory
 import com.mercerenies.turtletroll.pokeball.PokeballManager
 import com.mercerenies.turtletroll.jump.EncumbranceManagerFactory
 import com.mercerenies.turtletroll.trivia.MinecraftTriviaManagerFactory
+import com.mercerenies.turtletroll.skin.SkinShuffleManagerFactory
 
 object AllFeatureFactories {
 
@@ -151,6 +152,7 @@ object AllFeatureFactories {
       ShieldSurfListener,
       SilverfishBurnRunnable,
       SkeletonWitherListener,
+      SkinShuffleManagerFactory,
       SlimeSplitListener,
       SlowSlabListener,
       SnowListener,
