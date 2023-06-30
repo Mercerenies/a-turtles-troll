@@ -8,7 +8,7 @@ import com.mercerenies.turtletroll.feature.container.ManagerContainer
 import com.mercerenies.turtletroll.feature.builder.BuilderState
 import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 import com.mercerenies.turtletroll.location.PlayerSelector
-import com.mercerenies.turtletroll.rain.RainwaterPacketUpdater
+import com.mercerenies.turtletroll.packet.TrivialConverter
 
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
@@ -45,7 +45,7 @@ class SkinShuffleManager(
         return
       }
       val packet = event.packet
-      val list = packet.getLists(RainwaterPacketUpdater.TrivialConverter).read(0)
+      val list = packet.getLists(TrivialConverter).read(0)
       println("------------")
       for (elem in list) {
         println(elem)

@@ -1,5 +1,5 @@
 
-package com.mercerenies.turtletroll.rain
+package com.mercerenies.turtletroll.skin
 
 import com.mercerenies.turtletroll.nms.NMS
 import com.mercerenies.turtletroll.packet.TrivialConverter
@@ -11,7 +11,7 @@ import org.bukkit.entity.Entity
 
 import kotlin.math.min
 
-object RainwaterPacketUpdater {
+object PlayerInfoPacketUpdater {
 
   private val ADDRESS_ID: Int = 1
 
