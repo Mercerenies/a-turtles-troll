@@ -50,4 +50,7 @@ data class SessionProfile(
     val value: String,
   )
 
+  fun getProperty(name: String): String? =
+    properties.find { it.name == name }?.value
+
 }
