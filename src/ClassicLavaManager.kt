@@ -107,6 +107,12 @@ class ClassicLavaManager(
         // Done spreading; ignore
         return
       }
+      if (to.type == Material.WATER) {
+        // Do not do classic lava when spreading onto water, as that
+        // interrupts Minecraft's (and SolidSwapListener's) block form
+        // events.
+        return
+      }
       to.type = Material.LAVA
       val blockData = to.getBlockData()
       if (blockData is Levelled) {

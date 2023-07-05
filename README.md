@@ -31,6 +31,10 @@ A Turtle's Troll also depends on the following libraries.
 
 ## Changelog
 
+### Version 1.21
+
+* Fixed some bugs with the lava/water fluid mechanics.
+
 ### Version 1.20
 
 * Starting with version 1.20, A Turtle's Troll is now licensed under

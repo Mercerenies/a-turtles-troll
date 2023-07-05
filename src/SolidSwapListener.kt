@@ -18,6 +18,7 @@ class SolidSwapListener() : AbstractFeature(), Listener {
 
     private val MATERIALS_MAP = mapOf(
       Material.COBBLESTONE to Material.OBSIDIAN,
+      Material.STONE to Material.OBSIDIAN,
       Material.OBSIDIAN to Material.COBBLESTONE,
     )
 
