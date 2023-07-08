@@ -98,6 +98,9 @@ bees:
 blazepower:
   enabled: default
 
+blood:
+  enabled: default
+
 # If a boat hits the ground hard enough, it explodes.
 boatbomb:
   enabled: default

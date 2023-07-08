@@ -156,6 +156,8 @@
      fist
    + bouncyprojectile :: Arrows duplicate and bounce off of blocks
      when they hit them
+   + blood :: Whenever a player takes damage, redstone wire is placed
+     at their feet
 ** EGG FEATURES
    + eggs :: Almost any mob (or diamonds) can spawn from an egg
    + eggarrow :: Skeletons will fire eggs in addition to arrows

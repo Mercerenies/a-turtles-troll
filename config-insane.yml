@@ -29,6 +29,8 @@ bees:
   radius: 10
 blazepower:
   enabled: true
+blood:
+  enabled: true
 boatbomb:
   enabled: true
 bouncyprojectile:

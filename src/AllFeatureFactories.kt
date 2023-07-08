@@ -79,6 +79,7 @@ object AllFeatureFactories {
       AxolotlListener,
       BambooSpreadListener,
       BlazeAttackListener,
+      BloodListener,
       BoatBombListener,
       BouncyProjectileListener,
       BucketRouletteRunnable,
