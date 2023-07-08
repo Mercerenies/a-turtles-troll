@@ -236,6 +236,134 @@ object QuestionLibrary {
       )
     },
     {
+      MultipleChoiceQuestion(
+        questionBody = "In which of the following biomes do cacti NOT generate naturally?",
+        answers = listOf("Desert", "Badlands", "Wooded Badlands", "Ice Desert", "Desert Lakes"),
+        correctAnswerIndex = 3,
+        rewards = listOf(
+          ItemReward(ItemStack(Material.CACTUS, 32)),
+        ),
+      )
+    },
+    {
+      MultipleChoiceQuestion(
+        questionBody = "Piglins can give enchanted books during bartering. Which enchantment is on books obtained this way?",
+        answers = listOf("Soul Speed", "Fire Aspect", "Fire Protection", "Mending", "Power"),
+        correctAnswerIndex = 0,
+        rewards = listOf(
+          EnchantedItemReward(
+            ItemStack(Material.ENCHANTED_BOOK).withEnchantment(Enchantment.SOUL_SPEED, 2)
+          )
+        ),
+      )
+    },
+    {
+      MultipleChoiceQuestion(
+        questionBody = "At roughly what X and Z coordinate did the famous \"Far Lands\" glitch occur in old versions of Minecraft?",
+        answers = listOf("12,550,000", "13,300,000", "15,001,000", "11,910,000", "14,014,000", "19"),
+        correctAnswerIndex = 0,
+        rewards = listOf(
+          ItemReward(ItemStack(Material.STONE, 64)), ItemReward(ItemStack(Material.DIRT, 64)),
+        ),
+      )
+    },
+    {
+      MultipleChoiceQuestion(
+        questionBody = "Which Minecraft Java Edition version fixed the Far Lands glitch?",
+        answers = listOf("Beta 1.6", "Beta 1.7", "Beta 1.8", "Beta 1.9"),
+        correctAnswerIndex = 2,
+        rewards = listOf(
+          ItemReward(ItemStack(Material.STONE, 64)), ItemReward(ItemStack(Material.DIRT, 64)),
+        ),
+        shuffleAnswers = false,
+      )
+    },
+    {
+      MultipleChoiceQuestion(
+        questionBody = "Which type of wood is NOT present in Woodland Mansions?",
+        answers = listOf("Oak", "Birch", "Dark Oak", "Acacia"),
+        correctAnswerIndex = 3,
+        rewards = listOf(
+          ItemReward(ItemStack(Material.ACACIA_PLANKS, 16)),
+        ),
+      )
+    },
+    {
+      MultipleChoiceQuestion(
+        questionBody = "Which of the following CANNOT be placed inside a minecart?",
+        answers = listOf("Chest", "Furnace", "Hopper", "TNT", "Dispenser"),
+        correctAnswerIndex = 4,
+        rewards = listOf(
+          ItemReward(Material.DISPENSER),
+          ItemReward(Material.MINECART),
+        ),
+      )
+    },
+    {
+      MultipleChoiceQuestion(
+        questionBody = "Which of the following do pufferfish have a chance to drop in Java Edition?",
+        answers = listOf("Bone Meal", "Rotten Flesh", "Bone", "Bone Block"),
+        correctAnswerIndex = 0,
+        rewards = listOf(
+          ItemReward(ItemStack(Material.BONE_MEAL, 8)),
+        ),
+      )
+    },
+    {
+      MultipleChoiceQuestion(
+        questionBody = "Which of the following enchantments has NO effect when worn by an armor stand?",
+        answers = listOf("Frost Walker", "Depth Strider", "Thorns", "Protection"),
+        correctAnswerIndex = 3,
+        rewards = listOf(
+          ItemReward(Material.ARMOR_STAND),
+        ),
+      )
+    },
+    {
+      MultipleChoiceQuestion(
+        questionBody = "Which of the following is NOT the name of a default Minecraft player skin?",
+        answers = listOf("Steve", "Alex", "Sunny", "Zuri", "Efe", "Garth"),
+        correctAnswerIndex = 5,
+        rewards = run {
+          val names = listOf("Steve", "Alex", "Noor", "Sunny", "Ari", "Zuri", "Makena", "Kai", "Efe")
+          names.map { PlayerHeadReward(it) }
+        },
+      )
+    },
+    {
+      MultipleChoiceQuestion(
+        questionBody = "Which of the following is NOT a gameRule?",
+        answers = listOf("updateLightRadius", "maxEntityCramming", "keepInventory", "universalAnger", "waterSourceConversion"),
+        correctAnswerIndex = 0,
+        rewards = listOf(
+          ItemReward(ItemStack(Material.TORCH, 16)),
+          ItemReward(ItemStack(Material.BLACK_CANDLE, 8)),
+          ItemReward(ItemStack(Material.LANTERN, 4)),
+        ),
+      )
+    },
+    {
+      MultipleChoiceQuestion(
+        questionBody = "What is the correct spelling of the command to ban an IP address from the server?",
+        answers = listOf("/ban-ip", "/banip", "/ban_ip", "/ip-ban", "/ipban", "/ip_ban"),
+        correctAnswerIndex = 0,
+        rewards = listOf(
+          ItemReward(Material.WOODEN_AXE),
+        ),
+      )
+    },
+    {
+      MultipleChoiceQuestion(
+        questionBody = "The 2020 April Fools update included a stair block made of netherite. What was it called?",
+        answers = listOf("Netherite Stairs", "Nether Stairs", "Floop", "Swaggiest Stairs Ever", "Dark Stairs"),
+        correctAnswerIndex = 3,
+        rewards = listOf(
+          ItemReward(ItemStack(Material.SANDSTONE_STAIRS, 32)),
+          ItemReward(ItemStack(Material.ANDESITE_STAIRS, 32)),
+        ),
+      )
+    },
+    {
       NumericalQuestion(
         questionBody = "How many signs can be stacked in a single inventory slot?",
         correctAnswer = 16,
@@ -293,6 +421,15 @@ object QuestionLibrary {
         correctAnswer = 16,
         rewards = listOf(
           ItemReward(ItemStack(Material.RAIL, 16)),
+        ),
+      )
+    },
+    {
+      NumericalQuestion(
+        questionBody = "Excluding \"Unemployed\" and \"Nitwit\", how many villager professions are there?",
+        correctAnswer = 13,
+        rewards = listOf(
+          ItemReward(Material.VILLAGER_SPAWN_EGG),
         ),
       )
     },

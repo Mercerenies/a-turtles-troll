@@ -39,6 +39,7 @@ A Turtle's Troll also depends on the following libraries.
 * Temperature mechanics no longer consider the "helmet" slot when
   computing player temperature.
 * Fixed some bugs with the lava/water fluid mechanics.
+* Added several new trivia questions.
 
 ### Version 1.20
 
