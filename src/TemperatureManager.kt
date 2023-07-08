@@ -52,11 +52,10 @@ class TemperatureManager(
     fun getArmorCount(player: Player): Int {
       val inv = player.inventory
       var count = 0
-      val helmet = inv.helmet
+      // Note: Because so many other things interact with the helmet
+      // slot, we don't consider the helmet slot at all when counting
+      // armor here.
       if (inv.boots != null) {
-        count += 1
-      }
-      if ((helmet != null) && (helmet.type != Material.CARVED_PUMPKIN)) {
         count += 1
       }
       if (inv.chestplate != null) {

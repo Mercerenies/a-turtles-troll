@@ -34,6 +34,8 @@ A Turtle's Troll also depends on the following libraries.
 ### Version 1.21
 
 * Arrows duplicate and bounce off of blocks when they hit them.
+* Temperature mechanics no longer consider the "helmet" slot when
+  computing player temperature.
 * Fixed some bugs with the lava/water fluid mechanics.
 
 ### Version 1.20
