@@ -154,6 +154,8 @@
      survive
    + endermangod :: Endermen can only be damaged by a player's bare
      fist
+   + bouncyprojectile :: Arrows duplicate and bounce off of blocks
+     when they hit them
 ** EGG FEATURES
    + eggs :: Almost any mob (or diamonds) can spawn from an egg
    + eggarrow :: Skeletons will fire eggs in addition to arrows

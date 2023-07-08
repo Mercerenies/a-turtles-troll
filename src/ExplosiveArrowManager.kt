@@ -18,6 +18,7 @@ import org.bukkit.inventory.Recipe
 import org.bukkit.inventory.ShapelessRecipe
 import org.bukkit.inventory.ItemStack
 import org.bukkit.persistence.PersistentDataType
+import org.bukkit.entity.Entity
 import org.bukkit.entity.AbstractArrow
 import org.bukkit.entity.Trident
 import org.bukkit.entity.Player
@@ -60,6 +61,16 @@ class ExplosiveArrowManager(plugin: Plugin) : RecipeFeature(plugin), Listener {
         else -> ""
       }
 
+    fun getMarkerKey(plugin: Plugin): NamespacedKey =
+      NamespacedKey(plugin, ARROW_MARKER_KEY)
+
+    fun getExplosionStrength(plugin: Plugin, entity: Entity): Int? =
+      entity.persistentDataContainer.get(getMarkerKey(plugin), PersistentDataType.INTEGER)
+
+    fun isExplosiveArrow(plugin: Plugin, entity: Entity): Boolean =
+      entity is AbstractArrow &&
+        getExplosionStrength(plugin, entity) != null
+
     override fun create(state: BuilderState): FeatureContainer =
       Container(ExplosiveArrowManager(state.plugin))
 
@@ -84,7 +95,7 @@ class ExplosiveArrowManager(plugin: Plugin) : RecipeFeature(plugin), Listener {
 
   override val description = "Explosive arrows can be crafted, and tridents explode"
 
-  val markerKey = NamespacedKey(plugin, ARROW_MARKER_KEY)
+  val markerKey = getMarkerKey(plugin)
 
   private fun getRecipe(n: Int): UnkeyedRecipe<Recipe> =
     UnkeyedRecipe<Recipe> { key: NamespacedKey ->

@@ -80,6 +80,7 @@ object AllFeatureFactories {
       BambooSpreadListener,
       BlazeAttackListener,
       BoatBombListener,
+      BouncyProjectileListener,
       BucketRouletteRunnable,
       ButterfingersListener,
       ButtonDamageListener,

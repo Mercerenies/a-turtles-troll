@@ -31,6 +31,10 @@ blazepower:
   enabled: true
 boatbomb:
   enabled: true
+bouncyprojectile:
+  enabled: true
+  split_count: 2
+  split_iterations: 1
 bucketroulette:
   enabled: true
 butterfingers:

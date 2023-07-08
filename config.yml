@@ -102,6 +102,11 @@ blazepower:
 boatbomb:
   enabled: default
 
+bouncyprojectile:
+  enabled: default
+  split_count: default
+  split_iterations: default
+
 # Any bucket without a custom name will randomly change its contents
 # every eight seconds.
 bucketroulette:
