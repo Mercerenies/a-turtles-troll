@@ -31,6 +31,7 @@ class BlazeEyeManager(plugin: Plugin) : RecipeFeature(plugin), Listener {
 
   companion object : FeatureContainerFactory<FeatureContainer> {
     val EYE_MARKER_KEY = "blaze_eye_tag"
+    val CUSTOM_MODEL_ID = 1
 
     private val STRUCTURE_SEARCH_RADIUS = 32
 
@@ -76,6 +77,7 @@ class BlazeEyeManager(plugin: Plugin) : RecipeFeature(plugin), Listener {
     val meta = result.itemMeta!!
     meta.displayName(Component.text("Eye of Blaze"))
     meta.persistentDataContainer.set(markerKey, PersistentDataType.BOOLEAN, true)
+    meta.setCustomModelData(CUSTOM_MODEL_ID)
     result.itemMeta = meta
     return result
   }
