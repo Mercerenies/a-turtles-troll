@@ -27,6 +27,8 @@ bees:
   enabled: true
   probability: 0.2
   radius: 6
+blazeeye:
+  enabled: true
 blazepower:
   enabled: true
 blood:

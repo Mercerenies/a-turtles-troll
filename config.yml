@@ -94,6 +94,9 @@ bees:
   # (Integer) The radius of wood blocks to turn into bees.
   radius: default
 
+blazeeye:
+  enabled: default
+
 # Blazes spawn evokers during their attack sequence.
 blazepower:
   enabled: default

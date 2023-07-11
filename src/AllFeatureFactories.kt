@@ -50,6 +50,7 @@ import com.mercerenies.turtletroll.drop.StrongholdAttackFeatureFactory
 import com.mercerenies.turtletroll.pokeball.PokeballManager
 import com.mercerenies.turtletroll.jump.EncumbranceManagerFactory
 import com.mercerenies.turtletroll.trivia.MinecraftTriviaManagerFactory
+import com.mercerenies.turtletroll.blazeeye.BlazeEyeManager
 
 object AllFeatureFactories {
 
@@ -79,6 +80,7 @@ object AllFeatureFactories {
       AxolotlListener,
       BambooSpreadListener,
       BlazeAttackListener,
+      BlazeEyeManager,
       BloodListener,
       BoatBombListener,
       BouncyProjectileListener,
