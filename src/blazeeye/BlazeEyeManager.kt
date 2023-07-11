@@ -7,6 +7,7 @@ import com.mercerenies.turtletroll.feature.container.AbstractFeatureContainer
 import com.mercerenies.turtletroll.feature.builder.BuilderState
 import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 
+import org.bukkit.generator.structure.StructureType
 import org.bukkit.plugin.Plugin
 import org.bukkit.Location
 import org.bukkit.World
@@ -31,6 +32,8 @@ class BlazeEyeManager(plugin: Plugin) : RecipeFeature(plugin), Listener {
   companion object : FeatureContainerFactory<FeatureContainer> {
     val EYE_MARKER_KEY = "blaze_eye_tag"
 
+    private val STRUCTURE_SEARCH_RADIUS = 32
+
     private val ACTIONS =
       listOf(Action.RIGHT_CLICK_AIR, Action.RIGHT_CLICK_BLOCK)
 
@@ -40,9 +43,9 @@ class BlazeEyeManager(plugin: Plugin) : RecipeFeature(plugin), Listener {
     override fun create(state: BuilderState): FeatureContainer =
       Container(BlazeEyeManager(state.plugin))
 
-    private fun findNearestFortress(origin: Location): Location {
-      // TODO
-      return origin.clone().add(100.0, 100.0, 100.0)
+    private fun findNearestFortress(origin: Location): Location? {
+      val structureResult = origin.world.locateNearestStructure(origin, StructureType.FORTRESS, STRUCTURE_SEARCH_RADIUS, false)
+      return structureResult?.location
     }
 
   }
@@ -106,19 +109,27 @@ class BlazeEyeManager(plugin: Plugin) : RecipeFeature(plugin), Listener {
 
     val item = event.item
     val player = event.player
-    if ((item != null) && (isBlazeEye(item)) && (event.action in ACTIONS) && (player.world.environment == World.Environment.NETHER)) {
-      spawnEnderSignal(player)
-      // event.hand cannot be null, as event.action is not Action.PHYSICAL.
-      decrementBlazeEyes(player, event.hand!!)
+    if ((item != null) && (isBlazeEye(item)) && (event.action in ACTIONS)) {
+      event.setCancelled(true)
+      if (player.world.environment == World.Environment.NETHER) {
+        spawnEnderSignal(player)
+        // event.hand cannot be null, as event.action is not Action.PHYSICAL.
+        decrementBlazeEyes(player, event.hand!!)
+      }
     }
   }
 
-  private fun spawnEnderSignal(player: Player): EnderSignal {
-    val targetLocation = player.location.clone().add(0.0, 1.0, 0.0)
-    val enderSignal = player.world.spawn(targetLocation, EnderSignal::class.java)
-    enderSignal.setItem(makeEnderEye())
-    enderSignal.targetLocation = findNearestFortress(player.location)
-    return enderSignal
+  private fun spawnEnderSignal(player: Player): EnderSignal? {
+    val signalLocation = player.location.clone().add(0.0, 1.0, 0.0)
+    val targetLocation = findNearestFortress(player.location)
+    if (targetLocation != null) {
+      val enderSignal = player.world.spawn(signalLocation, EnderSignal::class.java)
+      enderSignal.setItem(makeEnderEye())
+      enderSignal.targetLocation = targetLocation
+      return enderSignal
+    } else {
+      return null
+    }
   }
 
   private fun decrementBlazeEyes(player: Player, equipmentSlot: EquipmentSlot) {

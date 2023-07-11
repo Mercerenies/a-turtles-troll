@@ -34,6 +34,8 @@ A Turtle's Troll also depends on the following libraries.
 ### Version 1.21
 
 * Arrows duplicate and bounce off of blocks when they hit them.
+* Flint and steel + an ender pearl crafts a Blaze Eye, which can be
+  used in the Nether to find a fortress.
 * Whenever a player takes damage, redstone wire is placed at their
   feet.
 * Temperature mechanics no longer consider the "helmet" slot when

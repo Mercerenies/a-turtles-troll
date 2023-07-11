@@ -240,6 +240,8 @@
                    can be crafted into dirt
    + chainmailrecipe :: Lava buckets can be crafted into chainmail
      armor
+   + blazeeye :: Flint and steel + an ender pearl crafts a Blaze Eye,
+     which can be used in the Nether to find a fortress
 ** BLOCK GROWTH FEATURES
    + enddirt :: Dirt placed in the End turns into a Shulker
    + overgrowth :: Several crops turn to a random log if not harvested
