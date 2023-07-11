@@ -2,6 +2,7 @@
 package com.mercerenies.turtletroll.cake
 
 import com.mercerenies.turtletroll.feature.AbstractFeature
+import com.mercerenies.turtletroll.RaccoonBridge
 import com.mercerenies.turtletroll.SpawnReason
 import com.mercerenies.turtletroll.ext.*
 import com.mercerenies.turtletroll.Weight
@@ -14,6 +15,7 @@ import org.bukkit.GameRule
 import org.bukkit.entity.Player
 import org.bukkit.entity.EntityType
 import org.bukkit.plugin.Plugin
+import org.bukkit.inventory.ItemStack
 import org.bukkit.Material
 import org.bukkit.Location
 import org.bukkit.block.Block
@@ -21,7 +23,9 @@ import org.bukkit.event.Listener
 import org.bukkit.event.EventHandler
 import org.bukkit.event.block.Action
 import org.bukkit.event.player.PlayerInteractEvent
+import org.bukkit.event.player.PlayerItemConsumeEvent
 import org.bukkit.event.entity.CreatureSpawnEvent
+import org.bukkit.persistence.PersistentDataType
 import org.bukkit.scheduler.BukkitRunnable
 import org.bukkit.block.`data`.Lightable
 import org.bukkit.block.`data`.`type`.Cake
@@ -57,6 +61,21 @@ class CakeListener(
 
     fun isCake(material: Material): Boolean =
       CAKE_TYPES.contains(material)
+
+    private fun isRaccoonCakeSlice(item: ItemStack): Boolean {
+
+      if (item.type != Material.SWEET_BERRIES) {
+        return false
+      }
+
+      val cakeKey = RaccoonBridge.namespacedKey("is_CakeSlice")
+      if (cakeKey == null) {
+        return false // Raccoon Mischief is not loaded.
+      }
+
+      val dataContainer = item.itemMeta.persistentDataContainer
+      return (dataContainer.getOrDefault(cakeKey, PersistentDataType.DOUBLE, 0.0) > 0.0)
+    }
 
     private fun isLastBite(block: Block): Boolean {
       val blockData = block.blockData
@@ -169,6 +188,20 @@ class CakeListener(
             event.setCancelled(true)
           }
         }
+      }
+    }
+  }
+
+  @EventHandler
+  fun onPlayerItemConsume(event: PlayerItemConsumeEvent) {
+    if (!isEnabled()) {
+      return
+    }
+    val item = event.getItem()
+    if (isRaccoonCakeSlice(item)) {
+      val cancelsDefault = applyEffect(event.player.location, event.player)
+      if (cancelsDefault) {
+        event.setCancelled(true)
       }
     }
   }
