@@ -51,7 +51,7 @@ class ButterfingersListener() : AbstractFeature(), Listener {
         val droppedItemEntity = player.world.spawn(player.location, Item::class.java)
         droppedItemEntity.itemStack = heldObject
         droppedItemEntity.pickupDelay = Constants.TICKS_PER_SECOND * 3
-        droppedItemEntity.velocity = Vector(0.3, 2.0, 0.3).rotateAroundY(Random.nextDouble() * 2 * PI)
+        droppedItemEntity.velocity = Vector(0.1, 0.2, 0.1).rotateAroundY(Random.nextDouble() * 2 * PI)
       }
     }
   }
