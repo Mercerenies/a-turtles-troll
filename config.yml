@@ -94,6 +94,9 @@ bees:
   # (Integer) The radius of wood blocks to turn into bees.
   radius: default
 
+# Eyes of Blaze can be crafted from Flint & Steel and an Ender Pearl.
+# These work like Eyes of Ender, but they only work in the Nether and
+# find fortresses, not strongholds.
 blazeeye:
   enabled: default
 
@@ -101,6 +104,7 @@ blazeeye:
 blazepower:
   enabled: default
 
+# When a player takes damage, bluestone wire is placed at their feet.
 blood:
   enabled: default
 
@@ -108,9 +112,13 @@ blood:
 boatbomb:
   enabled: default
 
+# When an arrow hits a wall, it duplicates and bounces off it.
 bouncyprojectile:
   enabled: default
+  # (Integer) The number of duplicate arrows to make at each
+  # collision.
   split_count: default
+  # (Integer) The number of times a single arrow can duplicate.
   split_iterations: default
 
 # Any bucket without a custom name will randomly change its contents
@@ -141,8 +149,11 @@ cakes:
   # (Float) The probability of replacing a given mob spawn with a cake.
   probability: default
 
+# When you mine a block, there's a small chance that the game treats
+# you as though you had silk touch, even if you didn't.
 carefulhands:
   enabled: default
+  # (Float) The probability of this happening, from 0 to 1.
   probability: default
 
 # Cats and bats transform into each other when killed.
@@ -155,51 +166,87 @@ catbat:
 chainmailrecipe:
   enabled: default
 
+# Killing a charged creeper is guaranteed to drop diamonds.
 chargedcreeper:
   enabled: default
+  # (Integer) The number of diamonds to drop.
   diamond_count: default
 
+# When you attempt to open a chest, a different nearby chest might
+# accidentally be opened instead.
 chestshuffle:
   enabled: default
 
+# Chickens explode when they take damage for any reason. Several
+# passive mob types are replaced with chickens. All chickens that
+# spawn have a higher-than-usual chance of spawning with a baby zombie
+# rider.
 chickens:
   enabled: default
+  # (Float) The chance that a baby zombie will spawn on a given
+  # chicken, from 0 to 1.
   zombie_rider_chance: default
 
+# Lava spreads further than usual.
 classiclava:
   enabled: default
+  # (Integer) The amount to increase lava spread in the overworld.
   normal_spread: default
+  # (Integer) The amount to increase lava spread in the Nether.
   nether_spread: default
+  # (Integer) The amount to increase lava spread in the End.
   end_spread: default
 
+# Eating a cookie gives the player one of several effects at random.
 cookies:
   enabled: default
 
+# Killing a non-charged creeper summons allays. Exploding a
+# non-charged creeper also summons allays.
 creeperdeath:
   enabled: default
+  # (Integer) The number of allays to spawn.
   allay_count: default
 
+# A scoreboard shows on the right side of the screen, indicating the
+# number of times each player has died.
 deathscoreboard:
   enabled: default
 
+# At dawn, a demand is made by the gods. If that demand is not met,
+# then players are not permitted to sleep on the following night.
 demand:
   enabled: default
 
+# Nine dirt can be crafted into a stick. Nine sticks can be crafted
+# into dirt.
 dirtrecipe:
   enabled: default
 
+# All blocks have a chance of dropping 64 dirt blocks instead of their
+# intended drop.
 dirtstacks:
   enabled: default
+  # The weight given to this drop event, for normal blocks.
   regular_probability: default
+  # The weight given to this drop event, for "special" blocks such as
+  # ores.
   frequent_probability: default
 
+# If a full Minecraft day goes by with no one dying, then every player
+# receives a small reward.
 doctordances:
   enabled: default
 
+# Doors in the world have durability and break after a certain number
+# of uses.
 doordrop:
   enabled: default
+  # (Integer) The number of uses before a door breaks.
   max_uses: default
 
+# The Ender Dragon drops TNT at regular intervals. The Ender Dragon is
+# immune to explosion damage.
 dragonbomb:
   enabled: default
   min_timer_triggers_per_attack: default
