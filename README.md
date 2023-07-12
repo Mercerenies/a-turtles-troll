@@ -43,6 +43,7 @@ A Turtle's Troll also depends on the following libraries.
 * Raccoon-style cake slices are now detected as being cake.
 * When you mine a block, there's a small chance the game will treat it
   as though you had Silk Touch.
+* Bees have a chance of spawning named "Apache".
 * Fixed some bugs with the lava/water fluid mechanics.
 * Added several new trivia questions.
 
