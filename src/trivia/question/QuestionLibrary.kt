@@ -474,10 +474,4 @@ object QuestionLibrary {
   ): List<TriviaQuestionReward> =
     toRewards(collection, stackSize = 1, block)
 
-  // ItemStack.addEnchantment, but fluent
-  private fun ItemStack.withEnchantment(enchantment: Enchantment, level: Int): ItemStack {
-    this.addEnchantment(enchantment, level)
-    return this
-  }
-
 }

@@ -4,6 +4,7 @@ package com.mercerenies.turtletroll.ext
 import org.bukkit.Location
 import org.bukkit.event.block.BlockBreakEvent
 import org.bukkit.inventory.ItemStack
+import org.bukkit.enchantments.Enchantment
 
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.ComponentBuilder
@@ -92,3 +93,9 @@ fun Component.append(text: String): Component =
 
 fun<C : BuildableComponent<C, B>, B : ComponentBuilder<C, B>> ComponentBuilder<C, B>.append(text: String): B =
   this.append(Component.text(text))
+
+// ItemStack.addEnchantment, but fluent
+fun ItemStack.withEnchantment(enchantment: Enchantment, level: Int): ItemStack {
+  this.addEnchantment(enchantment, level)
+  return this
+}
