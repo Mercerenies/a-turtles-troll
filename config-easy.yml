@@ -148,6 +148,8 @@ explosivearrow:
   enabled: true
 fall:
   enabled: true
+feastupontheweak:
+  enabled: true
 fishhook:
   enabled: true
   speed: 10.0

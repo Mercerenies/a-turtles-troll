@@ -322,6 +322,10 @@ explosivearrow:
 fall:
   enabled: default
 
+# When a player dies, nearby entities get Regeneration.
+feastupontheweak:
+  enabled: default
+
 fishhook:
   enabled: default
   speed: default

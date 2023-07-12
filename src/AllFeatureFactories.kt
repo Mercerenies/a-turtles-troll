@@ -118,6 +118,7 @@ object AllFeatureFactories {
       ExplodingNyliumListener,
       ExplosiveArrowManager,
       FallDamageListener,
+      FeastListener,
       FishHookListener,
       FishSanctuaryListener,
       ForestFireListener,

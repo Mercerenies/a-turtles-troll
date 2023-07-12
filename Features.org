@@ -159,6 +159,8 @@
    + blood :: Whenever a player takes damage, redstone wire is placed
      at their feet
    + apache :: Bees have a chance of spawning named "Apache"
+   + feastupontheweak :: When a player dies, nearby entities get
+     Regeneration
 ** EGG FEATURES
    + eggs :: Almost any mob (or diamonds) can spawn from an egg
    + eggarrow :: Skeletons will fire eggs in addition to arrows
