@@ -77,6 +77,7 @@ object AllFeatureFactories {
       AllayManager,
       AngryGolemManager,
       AnvilRunnableFactory,
+      ApacheBeeListener,
       AxolotlListener,
       BambooSpreadListener,
       BlazeAttackListener,

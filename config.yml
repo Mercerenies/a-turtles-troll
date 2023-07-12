@@ -71,6 +71,10 @@ anvil:
   # (Integer) How often the anvil check is performed, in seconds.
   period: default
 
+apache:
+  enabled: default
+  probability: default
+
 # When an axolotl dies, the nearest player also dies.
 axolotl:
   enabled: default

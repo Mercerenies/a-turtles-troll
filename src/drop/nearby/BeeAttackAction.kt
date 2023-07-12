@@ -3,11 +3,11 @@ package com.mercerenies.turtletroll.drop.nearby
 
 import com.mercerenies.turtletroll.ext.*
 import com.mercerenies.turtletroll.BlockTypes
+import com.mercerenies.turtletroll.EntitySpawner
 
 import org.bukkit.Material
 import org.bukkit.Location
 import org.bukkit.event.block.BlockBreakEvent
-import org.bukkit.entity.EntityType
 import org.bukkit.entity.Bee
 
 class BeeAttackAction(
@@ -27,9 +27,11 @@ class BeeAttackAction(
     BLOCKS.contains(event.block.type)
 
   private fun spawnBees(event: BlockBreakEvent, loc: Location) {
-    val bee = event.block.world.spawnEntity(loc, EntityType.BEE) as Bee
-    bee.anger = 100
-    bee.target = event.player
+    val bee = EntitySpawner.spawnCreature(loc, Bee::class.java)
+    if (bee != null) {
+      bee.anger = 100
+      bee.target = event.player
+    }
   }
 
   override fun onActivate(event: BlockBreakEvent) {

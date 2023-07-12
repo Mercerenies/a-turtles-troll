@@ -16,6 +16,9 @@ anvil:
   min_drop_height: 4
   max_drop_height: 15
   period: 2
+apache:
+  enabled: true
+  probability: 0.5
 axolotl:
   enabled: true
   radius: 9999.0
