@@ -141,6 +141,10 @@ cakes:
   # (Float) The probability of replacing a given mob spawn with a cake.
   probability: default
 
+carefulhands:
+  enabled: default
+  probability: default
+
 # Cats and bats transform into each other when killed.
 catbat:
   enabled: default

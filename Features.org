@@ -314,6 +314,8 @@
      - Those who do not answer are struck by lightning
      - Those who answer incorrectly suffer no penalty but gain no
        reward
+   + carefulhands :: When you mine a block, there's a small chance the
+     game will treat it as though you had Silk Touch
 * IDEAS (UNIMPLEMENTED)
   + Wolves?
   + Fishing?

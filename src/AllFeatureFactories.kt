@@ -88,6 +88,7 @@ object AllFeatureFactories {
       ButterfingersListener,
       ButtonDamageListener,
       CakeListenerFactory,
+      CarefulHandsListener,
       CatBatListener,
       ChainmailRecipeFeature,
       ChargedCreeperListener,

@@ -35,6 +35,11 @@ class BlockBreakEventListener(
   @EventHandler
   fun onBlockBreak(event: BlockBreakEvent) {
 
+    if (event.isCancelled()) {
+      // If something else already interrupted this event, don't fire.
+      return
+    }
+
     if (isUsingSilkTouch(event.player)) {
       // Silk Touch negates all drop-based events. Allow it to pass
       // unscathed.

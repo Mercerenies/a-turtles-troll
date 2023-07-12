@@ -51,6 +51,9 @@ cactuskick:
 cakes:
   enabled: true
   probability: 0.05
+carefulhands:
+  enabled: true
+  probability: 0.01
 catbat:
   enabled: true
   probability: 1.0
