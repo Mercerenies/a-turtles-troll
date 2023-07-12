@@ -24,7 +24,7 @@ import org.bukkit.potion.PotionEffectType
 class FeastListener() : AbstractFeature(), Listener {
 
   companion object : FeatureContainerFactory<FeatureContainer> {
-    val POTION_EFFECT_DURATION = Constants.TICKS_PER_SECOND * 12
+    val POTION_EFFECT_DURATION = Constants.TICKS_PER_SECOND * 20
 
     override fun create(state: BuilderState): FeatureContainer =
       ListenerContainer(FeastListener())
