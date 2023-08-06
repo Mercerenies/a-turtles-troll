@@ -1,5 +1,6 @@
 
 package com.mercerenies.turtletroll.banish
+
 import com.mercerenies.turtletroll.feature.container.FeatureContainer
 import com.mercerenies.turtletroll.feature.container.AbstractFeatureContainer
 import com.mercerenies.turtletroll.feature.builder.BuilderState
@@ -14,7 +15,11 @@ object BanishmentManagerFactory : FeatureContainerFactory<FeatureContainer> {
     private val manager: BanishmentManager,
   ) : AbstractFeatureContainer() {
 
+    override val features = listOf(manager)
+
     override val listeners = listOf(manager)
+
+    override val commands = manager.commands
 
   }
 

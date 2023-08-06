@@ -7,6 +7,7 @@ import com.mercerenies.turtletroll.feature.container.CompositeFeatureContainer
 import com.mercerenies.turtletroll.feature.container.CompositeDropFeatureContainer
 import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 import com.mercerenies.turtletroll.feature.builder.BuilderState
+import com.mercerenies.turtletroll.banish.BanishmentManagerFactory
 import com.mercerenies.turtletroll.parrot.ParrotCookieListener
 import com.mercerenies.turtletroll.parrot.ParrotDeathListener
 import com.mercerenies.turtletroll.parrot.ParrotManager
@@ -80,6 +81,7 @@ object AllFeatureFactories {
       ApacheBeeListener,
       AxolotlListener,
       BambooSpreadListener,
+      BanishmentManagerFactory,
       BlazeAttackListener,
       BlazeEyeManager,
       BloodListener,

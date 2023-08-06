@@ -24,6 +24,9 @@ axolotl:
   radius: 9999.0
 bamboo:
   enabled: true
+banishment:
+  enabled: true
+  probability: 0.10
 bedrock:
   enabled: true
 bees:

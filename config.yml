@@ -86,6 +86,10 @@ axolotl:
 bamboo:
   enabled: default
 
+banishment:
+  enabled: default
+  probability: default
+
 # Certain blocks transform into bedrock when mined.
 bedrock:
   enabled: default
