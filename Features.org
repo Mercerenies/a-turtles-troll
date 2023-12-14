@@ -319,6 +319,10 @@
        reward
    + carefulhands :: When you mine a block, there's a small chance the
      game will treat it as though you had Silk Touch
+   + banishment :: Every time a player dies, there's a small
+     percentage chance that they respawn in a special superflat world
+     instead of the regular one; dying returns them to the regular
+     world
 * IDEAS (UNIMPLEMENTED)
   + Wolves?
   + Fishing?

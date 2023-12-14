@@ -31,6 +31,11 @@ A Turtle's Troll also depends on the following libraries.
 
 ## Changelog
 
+### Version 1.22
+
+* When a player dies, they might be banished to a superflat world
+  instead of the regular one.
+
 ### Version 1.21
 
 * Arrows duplicate and bounce off of blocks when they hit them.
