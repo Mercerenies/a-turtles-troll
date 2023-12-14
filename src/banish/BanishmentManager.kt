@@ -22,6 +22,7 @@ import org.bukkit.entity.Player
 import org.bukkit.event.Listener
 import org.bukkit.event.EventHandler
 import org.bukkit.event.player.PlayerRespawnEvent
+import org.bukkit.event.world.WorldInitEvent
 import org.bukkit.event.block.Action
 import org.bukkit.inventory.EquipmentSlot
 import org.bukkit.inventory.Recipe
@@ -53,6 +54,17 @@ class BanishmentManager(plugin: Plugin) : AbstractFeature(), Listener {
       "tobanish" to toBanishCommand.withPermission(Permissions.DEBUG),
       "frombanish" to fromBanishCommand.withPermission(Permissions.DEBUG),
     )
+
+  @EventHandler
+  fun onWorldInit(event: WorldInitEvent) {
+    if (!isEnabled()) {
+      return
+    }
+
+    if (event.world == worldController.world) {
+      event.world.populators.add(worldController.blockPopulator)
+    }
+  }
 
   @EventHandler
   fun onPlayerRespawn(event: PlayerRespawnEvent) {

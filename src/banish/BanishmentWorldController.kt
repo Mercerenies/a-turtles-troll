@@ -6,6 +6,7 @@ import org.bukkit.WorldType
 import org.bukkit.World
 import org.bukkit.Bukkit
 import org.bukkit.block.Biome
+import org.bukkit.generator.BlockPopulator
 
 class BanishmentWorldController {
 
@@ -35,6 +36,12 @@ class BanishmentWorldController {
       .generateStructures(false)
       .generatorSettings(generatorSettings.toJsonString())
       .type(WorldType.FLAT)
+
+  val blockPopulator: BlockPopulator =
+    BanishmentBlockPopulator(
+      lowerGrassHeight = LOWER_GRASS_HEIGHT,
+      upperGrassHeight = UPPER_GRASS_HEIGHT,
+    )
 
   val world: World by lazy {
     Bukkit.createWorld(creator)!!
