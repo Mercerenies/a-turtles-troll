@@ -8,10 +8,12 @@ import com.mercerenies.turtletroll.command.withPermission
 import com.mercerenies.turtletroll.command.Permissions
 import com.mercerenies.turtletroll.Constants
 import com.mercerenies.turtletroll.Messages
+import com.mercerenies.turtletroll.Worlds
 
 import org.bukkit.plugin.Plugin
 import org.bukkit.Location
 import org.bukkit.World
+import org.bukkit.GameRule
 import org.bukkit.entity.Player
 import org.bukkit.event.Listener
 import org.bukkit.event.EventHandler
@@ -65,6 +67,13 @@ class BanishmentManager(
 
     if (event.world == worldController.world) {
       event.world.populators.add(worldController.blockPopulator)
+      val overworld = Worlds.getOverworld()
+      if (overworld != null) {
+        // Sync keepInventory, so that we don't lose inventories
+        // stupidly.
+        val keepInventory = overworld.getGameRuleValue(GameRule.KEEP_INVENTORY) ?: false
+        worldController.world.setGameRule(GameRule.KEEP_INVENTORY, keepInventory)
+      }
     }
   }
 
@@ -82,11 +91,10 @@ class BanishmentManager(
     if (Random.nextDouble() < banishChance) {
       // Banish them!
       Messages.sendMessage(event.player, BanishCommandConfiguration.BANISHMENT_MESSAGE)
-      val world = worldController.world!!
       val x = Random.nextDouble(-100.0, 100.0)
       val y = BanishmentWorldController.LOWER_GRASS_HEIGHT + 32.0
       val z = Random.nextDouble(-100.0, 100.0)
-      event.respawnLocation = Location(world, x, y, z)
+      event.respawnLocation = Location(worldController.world, x, y, z)
       SlowFallingRunnable(event.player).runTaskLater(plugin, 1)
     }
   }
