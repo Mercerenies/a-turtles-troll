@@ -13,8 +13,8 @@ class BanishmentWorldController {
   companion object {
     val WORLD_NAME = "world_turtle_banishment"
 
-    private val LOWER_GRASS_HEIGHT = -60
-    private val UPPER_GRASS_HEIGHT = -59
+    val LOWER_GRASS_HEIGHT = -60
+    val UPPER_GRASS_HEIGHT = -59
 
     private val generatorSettings =
       GeneratorSettings(
@@ -46,7 +46,5 @@ class BanishmentWorldController {
   val world: World by lazy {
     Bukkit.createWorld(creator)!!
   }
-
-  ///// generate tall grass using BlockPopulator here :) (probably WorldInitEvent)
 
 }

@@ -1,13 +1,8 @@
 
 package com.mercerenies.turtletroll.banish
 
-import org.bukkit.WorldCreator
-import org.bukkit.WorldType
-import org.bukkit.World
-import org.bukkit.Bukkit
 import org.bukkit.Material
 import org.bukkit.RegionAccessor
-import org.bukkit.block.Biome
 import org.bukkit.block.`data`.Bisected
 import org.bukkit.generator.BlockPopulator
 import org.bukkit.generator.WorldInfo

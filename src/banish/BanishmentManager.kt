@@ -2,37 +2,39 @@
 package com.mercerenies.turtletroll.banish
 
 import com.mercerenies.turtletroll.feature.AbstractFeature
-import com.mercerenies.turtletroll.feature.container.FeatureContainer
-import com.mercerenies.turtletroll.feature.container.AbstractFeatureContainer
-import com.mercerenies.turtletroll.feature.builder.BuilderState
-import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 import com.mercerenies.turtletroll.command.PermittedCommand
 import com.mercerenies.turtletroll.command.Command
 import com.mercerenies.turtletroll.command.withPermission
 import com.mercerenies.turtletroll.command.Permissions
+import com.mercerenies.turtletroll.Constants
+import com.mercerenies.turtletroll.Messages
 
-import org.bukkit.generator.structure.StructureType
 import org.bukkit.plugin.Plugin
 import org.bukkit.Location
 import org.bukkit.World
-import org.bukkit.entity.EnderSignal
-import org.bukkit.NamespacedKey
-import org.bukkit.Material
 import org.bukkit.entity.Player
 import org.bukkit.event.Listener
 import org.bukkit.event.EventHandler
 import org.bukkit.event.player.PlayerRespawnEvent
 import org.bukkit.event.world.WorldInitEvent
-import org.bukkit.event.block.Action
-import org.bukkit.inventory.EquipmentSlot
-import org.bukkit.inventory.Recipe
-import org.bukkit.inventory.ShapelessRecipe
-import org.bukkit.inventory.ItemStack
-import org.bukkit.persistence.PersistentDataType
+import org.bukkit.potion.PotionEffect
+import org.bukkit.potion.PotionEffectType
+import org.bukkit.scheduler.BukkitRunnable
 
-import net.kyori.adventure.text.Component
+import kotlin.random.Random
 
-class BanishmentManager(plugin: Plugin) : AbstractFeature(), Listener {
+class BanishmentManager(
+  val plugin: Plugin,
+  val banishChance: Double,
+) : AbstractFeature(), Listener {
+
+  private class SlowFallingRunnable(
+    private val player: Player,
+  ) : BukkitRunnable() {
+    override fun run() {
+      player.addPotionEffect(PotionEffect(PotionEffectType.SLOW_FALLING, Constants.TICKS_PER_SECOND * 30, 0))
+    }
+  }
 
   override val name = "banishment"
 
@@ -71,7 +73,22 @@ class BanishmentManager(plugin: Plugin) : AbstractFeature(), Listener {
     if (!isEnabled()) {
       return
     }
-    /////
+
+    if (event.respawnReason != PlayerRespawnEvent.RespawnReason.DEATH) {
+      // We only banish players for dying.
+      return
+    }
+
+    if (Random.nextDouble() < banishChance) {
+      // Banish them!
+      Messages.sendMessage(event.player, BanishCommandConfiguration.BANISHMENT_MESSAGE)
+      val world = worldController.world!!
+      val x = Random.nextDouble(-100.0, 100.0)
+      val y = BanishmentWorldController.LOWER_GRASS_HEIGHT + 32.0
+      val z = Random.nextDouble(-100.0, 100.0)
+      event.respawnLocation = Location(world, x, y, z)
+      SlowFallingRunnable(event.player).runTaskLater(plugin, 1)
+    }
   }
 
 }
