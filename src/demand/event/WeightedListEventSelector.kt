@@ -6,8 +6,17 @@ import com.mercerenies.turtletroll.Weight
 import com.mercerenies.turtletroll.sample
 
 class WeightedListEventSelector(
-  val conditionList: List<Weight<DailyDemandEvent>>,
+  val conditionList: List<Weight<() -> DailyDemandEvent>>,
 ) : EventSelector {
+
+  companion object {
+
+    fun uniform(events: List<() -> DailyDemandEvent>) =
+      WeightedListEventSelector(
+        events.map { Weight(it, 1.0) },
+      )
+
+  }
 
   init {
     if (conditionList.isEmpty()) {
@@ -15,7 +24,9 @@ class WeightedListEventSelector(
     }
   }
 
-  override fun chooseCondition(): DailyDemandEvent =
-    sample(conditionList)
+  override fun chooseCondition(): DailyDemandEvent {
+    val factory = sample(conditionList)
+    return factory()
+  }
 
 }
