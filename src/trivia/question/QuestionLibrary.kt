@@ -7,6 +7,7 @@ import com.mercerenies.turtletroll.BlockTypes
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 import org.bukkit.enchantments.Enchantment
+import org.bukkit.inventory.`meta`.EnchantmentStorageMeta
 
 object QuestionLibrary {
 
@@ -250,11 +251,13 @@ object QuestionLibrary {
         questionBody = "Piglins can give enchanted books during bartering. Which enchantment is on books obtained this way?",
         answers = listOf("Soul Speed", "Fire Aspect", "Fire Protection", "Mending", "Power"),
         correctAnswerIndex = 0,
-        rewards = listOf(
-          EnchantedItemReward(
-            ItemStack(Material.ENCHANTED_BOOK).withEnchantment(Enchantment.SOUL_SPEED, 2)
-          )
-        ),
+        rewards = run {
+          val book = ItemStack(Material.ENCHANTED_BOOK)
+          val meta = book.itemMeta as EnchantmentStorageMeta
+          meta.addStoredEnchant(Enchantment.SOUL_SPEED, 2, true)
+          book.itemMeta = meta
+          listOf(ItemReward(book))
+        },
       )
     },
     {
