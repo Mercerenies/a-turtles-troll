@@ -72,6 +72,11 @@ class PufferfishRainManager(
 
   override fun getAllStates() = STATES
 
+  // Starting in the Idle2 state (rather than Idle1) makes it less
+  // likely that pufferfish will randomly spam everybody the moment
+  // the server starts up.
+  override fun getDefaultState() = State.Idle2
+
   override fun onStateShift(newState: State) {
     when (newState) {
       State.Idle1 -> {
