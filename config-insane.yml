@@ -87,6 +87,7 @@ deathscoreboard:
   enabled: true
 demand:
   enabled: true
+  bowser_chance: 0.1
 dirtrecipe:
   enabled: true
 dirtstacks:

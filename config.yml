@@ -225,6 +225,7 @@ deathscoreboard:
 # then players are not permitted to sleep on the following night.
 demand:
   enabled: default
+  bowser_chance: default
 
 # Nine dirt can be crafted into a stick. Nine sticks can be crafted
 # into dirt.

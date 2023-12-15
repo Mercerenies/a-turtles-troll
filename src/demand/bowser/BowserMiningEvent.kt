@@ -5,11 +5,15 @@ import com.mercerenies.turtletroll.AllItems
 import com.mercerenies.turtletroll.demand.GodsState
 
 import org.bukkit.Material
+import org.bukkit.Bukkit
 import org.bukkit.block.Block
 import org.bukkit.event.block.BlockBreakEvent
 import org.bukkit.entity.Player
 
 import net.kyori.adventure.text.Component
+
+import kotlin.random.Random
+import kotlin.math.max
 
 class BowserMiningEvent(
   val rewardsPool: List<BowserReward>,
@@ -17,6 +21,26 @@ class BowserMiningEvent(
   val blockName: String,
   val requiredAmount: Int,
 ) : BowserEvent() {
+
+  companion object {
+
+    fun miningEventFactory(
+      rewardsPool: List<BowserReward>,
+      material: Material,
+      requiredAmountPerPlayer: Int,
+      requiredAmountNoise: Int,
+    ): () -> BowserMiningEvent =
+      {
+        val onlinePlayers = Bukkit.getOnlinePlayers().size
+        val requiredAmount = requiredAmountPerPlayer * onlinePlayers + Random.nextInt(- requiredAmountNoise, requiredAmountNoise)
+        BowserMiningEvent(
+          rewardsPool = rewardsPool,
+          material = material,
+          requiredAmount = max(requiredAmount, 1),
+        )
+      }
+
+  }
 
   constructor(rewardsPool: List<BowserReward>, materials: Collection<Material>, blockName: String, requiredAmount: Int) :
     this(rewardsPool, { block -> materials.contains(block.type) }, blockName, requiredAmount)

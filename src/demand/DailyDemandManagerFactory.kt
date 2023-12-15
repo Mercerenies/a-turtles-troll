@@ -2,17 +2,20 @@
 package com.mercerenies.turtletroll.demand
 
 import com.mercerenies.turtletroll.Weight
+import com.mercerenies.turtletroll.config.CheckedConfigOptions
 import com.mercerenies.turtletroll.demand.event.EventSelector
 import com.mercerenies.turtletroll.demand.event.DifficultyTierEventSelector
 import com.mercerenies.turtletroll.demand.event.DifficultyClass
 import com.mercerenies.turtletroll.demand.event.WeightedDifficultyEventSelector
+import com.mercerenies.turtletroll.demand.bowser.BowserInterruptSelector
+import com.mercerenies.turtletroll.demand.bowser.BowserEventsLibrary
 import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 import com.mercerenies.turtletroll.feature.builder.BuilderState
 import com.mercerenies.turtletroll.feature.container.AbstractFeatureContainer
 import com.mercerenies.turtletroll.feature.container.FeatureContainer
 
 class DailyDemandManagerFactory(
-  private val eventSelectorFactory: () -> EventSelector,
+  private val eventSelectorFactory: (CheckedConfigOptions) -> EventSelector,
 ) : FeatureContainerFactory<FeatureContainer> {
 
   companion object {
@@ -38,6 +41,15 @@ class DailyDemandManagerFactory(
         )
       )
 
+    fun bowserEventSelector(config: CheckedConfigOptions): EventSelector {
+      val bowserChance = config.getDouble("demand.bowser_chance")
+      return BowserInterruptSelector(
+        regularEventSelector = tieredDifficultySelector(),
+        bowserEventSelector = BowserEventsLibrary.DEFAULT.eventSelector,
+        bowserEventChance = bowserChance,
+      )
+    }
+
   }
 
   private class Container(
@@ -59,7 +71,7 @@ class DailyDemandManagerFactory(
   }
 
   override fun create(state: BuilderState): FeatureContainer {
-    val eventSelector = eventSelectorFactory()
+    val eventSelector = eventSelectorFactory(state.config)
     val manager = DailyDemandManager(state.plugin, eventSelector)
     state.registerSharedData(GODS_FEATURE_KEY, manager)
     return Container(manager)

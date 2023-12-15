@@ -9,7 +9,6 @@ import org.bukkit.entity.Player
 
 import net.kyori.adventure.text.Component
 
-///// Make a rewards pool
 interface BowserReward {
 
   companion object {

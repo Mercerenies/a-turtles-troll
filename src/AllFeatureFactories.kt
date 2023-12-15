@@ -199,7 +199,7 @@ object AllFeatureFactories {
       TemperatureManagerFactory(CustomDeathMessageListener.DEATH_MESSAGE_KEY),
       WeepingAngelManagerFactory(CustomDeathMessageListener.DEATH_MESSAGE_KEY),
       // Daily demands (gods) manager and the things that depend on it
-      DailyDemandManagerFactory(DailyDemandManagerFactory::tieredDifficultySelector),
+      DailyDemandManagerFactory(DailyDemandManagerFactory::bowserEventSelector),
       EncumbranceManagerFactory.Default(DailyDemandManagerFactory.GODS_FEATURE_KEY),
     )
 
