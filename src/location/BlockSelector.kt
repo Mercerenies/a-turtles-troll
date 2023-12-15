@@ -13,6 +13,11 @@ import kotlin.collections.ArrayList
 // Various helper functions for getting locations relative to blocks
 object BlockSelector {
 
+  data class Column(
+    val x: Int,
+    val z: Int,
+  )
+
   val BEDROCK = -64
   val SEA_LEVEL = 64
 
@@ -21,6 +26,12 @@ object BlockSelector {
     val y = Random.nextInt(min_y, max_y)
     val z = Random.nextInt(16)
     return chunk.getBlock(x, y, z)
+  }
+
+  fun getRandomColumn(chunk: Chunk): Column {
+    val x = Random.nextInt(16)
+    val z = Random.nextInt(16)
+    return Column(16 * chunk.x + x, 16 * chunk.z + z)
   }
 
   fun getRandomBlockNear(block: Block): Block {

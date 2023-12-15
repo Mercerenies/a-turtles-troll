@@ -300,7 +300,9 @@ silverfishburn:
   enabled: true
 sinkhole:
   enabled: true
-  chance: 0.50
+  normal_chance: 1.0
+  nether_chance: 1.0
+  end_chance: 1.0
 slimesplit:
   enabled: true
   max_slime_size: 15

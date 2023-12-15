@@ -1,6 +1,7 @@
 
 package com.mercerenies.turtletroll
 
+import com.mercerenies.turtletroll.config.CheckedConfigOptions
 import com.mercerenies.turtletroll.feature.AbstractFeature
 import com.mercerenies.turtletroll.feature.container.FeatureContainer
 import com.mercerenies.turtletroll.feature.container.ListenerContainer
@@ -18,7 +19,7 @@ import org.bukkit.event.world.ChunkPopulateEvent
 import kotlin.random.Random
 
 class SinkholeListener(
-  val chancePerChunk: Double,
+  val chancePerChunk: Map<World.Environment, Double>,
 ) : AbstractFeature(), Listener {
 
   companion object : FeatureContainerFactory<FeatureContainer> {
@@ -29,15 +30,22 @@ class SinkholeListener(
     )
 
     override fun create(state: BuilderState): FeatureContainer =
-      ListenerContainer(SinkholeListener(state.config.getDouble("sinkhole.chance")))
+      ListenerContainer(SinkholeListener(loadWorldProbabilityMap(state.config)))
 
-    private fun obliterateColumn(world: World, x: Int, z: Int) {
+    private fun obliterateColumn(world: World, column: BlockSelector.Column) {
       for (y in world.minHeight..world.maxHeight) {
-        if (!SAFE_BLOCK_TYPES.contains(world.getType(x, y, z))) {
-          world.setType(x, y, z, Material.AIR)
+        if (!SAFE_BLOCK_TYPES.contains(world.getType(column.x, y, column.z))) {
+          world.setType(column.x, y, column.z, Material.AIR)
         }
       }
     }
+
+    private fun loadWorldProbabilityMap(config: CheckedConfigOptions): Map<World.Environment, Double> =
+      mapOf(
+        World.Environment.NORMAL to config.getDouble("sinkhole.normal_chance"),
+        World.Environment.NETHER to config.getDouble("sinkhole.nether_chance"),
+        World.Environment.THE_END to config.getDouble("sinkhole.end_chance"),
+      )
 
   }
 
@@ -50,9 +58,9 @@ class SinkholeListener(
     if (!isEnabled()) {
       return
     }
-    if (Random.nextDouble() < chancePerChunk) {
-      val block = BlockSelector.getRandomBlock(event.chunk)
-      obliterateColumn(event.world, block.x, block.z)
+    val probability = chancePerChunk[event.world.environment] ?: 0.0
+    if (Random.nextDouble() < probability) {
+      obliterateColumn(event.world, BlockSelector.getRandomColumn(event.chunk))
     }
   }
 

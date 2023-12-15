@@ -527,7 +527,9 @@ silverfishburn:
 
 sinkhole:
   enabled: default
-  chance: default
+  normal_chance: default
+  nether_chance: default
+  end_chance: default
 
 slimesplit:
   enabled: default

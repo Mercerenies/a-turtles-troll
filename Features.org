@@ -323,6 +323,7 @@
      percentage chance that they respawn in a special superflat world
      instead of the regular one; dying returns them to the regular
      world
+   + sinkhole :: There are random 1x1 holes in every world
 * IDEAS (UNIMPLEMENTED)
   + Wolves?
   + Fishing?
