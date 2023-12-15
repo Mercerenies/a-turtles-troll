@@ -42,6 +42,7 @@ A Turtle's Troll also depends on the following libraries.
   players.
 * Nylium does not explode if you're wearing a pumpkin when you look at
   it.
+* Added Herobrine.
 
 ### Version 1.21
 

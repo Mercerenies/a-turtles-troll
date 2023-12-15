@@ -32,7 +32,7 @@ data class DifficultyClass(
       listOf(
         DeathCondition.Drowning, DeathCondition.MustBeEnderman,
         DeathCondition.MustBeIronGolem, DeathCondition.MustBeBlaze,
-        DeathCondition.MustBeLlama,
+        DeathCondition.MustBeLlama, DeathCondition.MustBeHerobrine,
       )
     )
 

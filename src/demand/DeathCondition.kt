@@ -3,6 +3,7 @@ package com.mercerenies.turtletroll.demand
 
 import com.mercerenies.turtletroll.Messages
 import com.mercerenies.turtletroll.ext.*
+import com.mercerenies.turtletroll.util.*
 import com.mercerenies.turtletroll.gravestone.CauseOfDeath
 import com.mercerenies.turtletroll.gravestone.Vanilla
 import com.mercerenies.turtletroll.gravestone.VanillaMob
@@ -38,7 +39,7 @@ abstract class DeathCondition : DailyDemandEvent {
   override fun onDaytimePlayerDeath(event: PlayerDeathEvent, godsState: GodsState) {
     if (!godsState.isAppeased()) {
       val cause = CauseOfDeath.identify(event)
-      if (this.test(cause)) {
+      if (this.test(event, cause)) {
         Messages.broadcastMessage(appeasedMessage(event.player))
         godsState.setGodsAppeased(true)
       }
@@ -48,13 +49,13 @@ abstract class DeathCondition : DailyDemandEvent {
   // Should be a prepositional phrase
   abstract val description: String
 
-  abstract fun test(cause: CauseOfDeath): Boolean
+  abstract fun test(event: PlayerDeathEvent, cause: CauseOfDeath): Boolean
 
   object True : DeathCondition() {
     override val description: String = "for any reason"
     override val summary: String = "Die"
 
-    override fun test(cause: CauseOfDeath): Boolean = true
+    override fun test(event: PlayerDeathEvent, cause: CauseOfDeath): Boolean = true
 
   }
 
@@ -62,7 +63,7 @@ abstract class DeathCondition : DailyDemandEvent {
     override val description: String = "to a Weeping Angel"
     override val summary: String = "Die to Weeping Angel"
 
-    override fun test(cause: CauseOfDeath): Boolean =
+    override fun test(event: PlayerDeathEvent, cause: CauseOfDeath): Boolean =
       cause is Angel
 
   }
@@ -71,7 +72,7 @@ abstract class DeathCondition : DailyDemandEvent {
     override val description: String = "to a Mimic"
     override val summary: String = "Die to Mimic"
 
-    override fun test(cause: CauseOfDeath): Boolean =
+    override fun test(event: PlayerDeathEvent, cause: CauseOfDeath): Boolean =
       cause is Mimic
 
   }
@@ -80,7 +81,7 @@ abstract class DeathCondition : DailyDemandEvent {
     override val description: String = "to Vector"
     override val summary: String = "Die to Vector"
 
-    override fun test(cause: CauseOfDeath): Boolean =
+    override fun test(event: PlayerDeathEvent, cause: CauseOfDeath): Boolean =
       cause is VanillaMob &&
         cause.entityType == EntityType.PHANTOM
 
@@ -90,8 +91,23 @@ abstract class DeathCondition : DailyDemandEvent {
     override val description: String = "to redstone dust"
     override val summary: String = "Die to Redstone"
 
-    override fun test(cause: CauseOfDeath): Boolean =
+    override fun test(event: PlayerDeathEvent, cause: CauseOfDeath): Boolean =
       cause is Redstone
+
+  }
+
+  object MustBeHerobrine : DeathCondition() {
+    override val description: String = "to Herobrine"
+    override val summary: String = "Die to Herobrine"
+
+    override fun test(event: PlayerDeathEvent, cause: CauseOfDeath): Boolean {
+      val deathMessage = event.deathMessage()?.asPlainText()
+      if (deathMessage == null) {
+        return false
+      } else {
+        return deathMessage.lowercase().contains("herobrine")
+      }
+    }
 
   }
 
@@ -104,7 +120,7 @@ abstract class DeathCondition : DailyDemandEvent {
     override val description: String = "to fire damage"
     override val summary: String = "Die to Fire"
 
-    override fun test(cause: CauseOfDeath): Boolean =
+    override fun test(event: PlayerDeathEvent, cause: CauseOfDeath): Boolean =
       cause is Vanilla &&
         conditions.contains(cause.cause)
 
@@ -118,7 +134,7 @@ abstract class DeathCondition : DailyDemandEvent {
     override val description: String = "to lightning"
     override val summary: String = "Die to Lightning"
 
-    override fun test(cause: CauseOfDeath): Boolean =
+    override fun test(event: PlayerDeathEvent, cause: CauseOfDeath): Boolean =
       (cause is Vanilla && conditions.contains(cause.cause)) ||
         (cause is VanillaMob && cause.entityType == EntityType.LIGHTNING)
 
@@ -132,7 +148,7 @@ abstract class DeathCondition : DailyDemandEvent {
     override val description: String = "to starvation"
     override val summary: String = "Die to Starvation"
 
-    override fun test(cause: CauseOfDeath): Boolean =
+    override fun test(event: PlayerDeathEvent, cause: CauseOfDeath): Boolean =
       (cause is Vanilla && conditions.contains(cause.cause))
 
   }
@@ -145,7 +161,7 @@ abstract class DeathCondition : DailyDemandEvent {
     override val description: String = "to an explosion"
     override val summary: String = "Die to Explosion"
 
-    override fun test(cause: CauseOfDeath): Boolean =
+    override fun test(event: PlayerDeathEvent, cause: CauseOfDeath): Boolean =
       (cause is Vanilla && conditions.contains(cause.cause)) ||
         (cause is VanillaMob && cause.entityType == EntityType.CREEPER)
 
@@ -156,7 +172,7 @@ abstract class DeathCondition : DailyDemandEvent {
     override val description: String = "by drowning"
     override val summary: String = "Die by Drowning"
 
-    override fun test(cause: CauseOfDeath): Boolean =
+    override fun test(event: PlayerDeathEvent, cause: CauseOfDeath): Boolean =
       cause is Vanilla &&
         cause.cause == EntityDamageEvent.DamageCause.DROWNING
 
@@ -167,7 +183,7 @@ abstract class DeathCondition : DailyDemandEvent {
     override val description: String = "by falling"
     override val summary: String = "Die by Falling"
 
-    override fun test(cause: CauseOfDeath): Boolean =
+    override fun test(event: PlayerDeathEvent, cause: CauseOfDeath): Boolean =
       cause is Vanilla &&
         cause.cause == EntityDamageEvent.DamageCause.FALL
 
@@ -182,7 +198,7 @@ abstract class DeathCondition : DailyDemandEvent {
     override val description: String = "to a zombie"
     override val summary: String = "Die to Zombie"
 
-    override fun test(cause: CauseOfDeath): Boolean =
+    override fun test(event: PlayerDeathEvent, cause: CauseOfDeath): Boolean =
       cause is VanillaMob &&
         conditions.contains(cause.entityType)
 
@@ -196,7 +212,7 @@ abstract class DeathCondition : DailyDemandEvent {
     override val description: String = "to a llama"
     override val summary: String = "Die to Llama"
 
-    override fun test(cause: CauseOfDeath): Boolean =
+    override fun test(event: PlayerDeathEvent, cause: CauseOfDeath): Boolean =
       cause is VanillaMob &&
         conditions.contains(cause.entityType)
 
@@ -207,7 +223,7 @@ abstract class DeathCondition : DailyDemandEvent {
     override val description: String = "to a bee"
     override val summary: String = "Die to Bee"
 
-    override fun test(cause: CauseOfDeath): Boolean =
+    override fun test(event: PlayerDeathEvent, cause: CauseOfDeath): Boolean =
       cause is VanillaMob &&
         cause.entityType == EntityType.BEE
 
@@ -218,7 +234,7 @@ abstract class DeathCondition : DailyDemandEvent {
     override val description: String = "to a spider"
     override val summary: String = "Die to Spider"
 
-    override fun test(cause: CauseOfDeath): Boolean =
+    override fun test(event: PlayerDeathEvent, cause: CauseOfDeath): Boolean =
       cause is VanillaMob &&
         (cause.entityType == EntityType.SPIDER || cause.entityType == EntityType.CAVE_SPIDER)
 
@@ -229,7 +245,7 @@ abstract class DeathCondition : DailyDemandEvent {
     override val description: String = "to an Enderman"
     override val summary: String = "Die to Enderman"
 
-    override fun test(cause: CauseOfDeath): Boolean =
+    override fun test(event: PlayerDeathEvent, cause: CauseOfDeath): Boolean =
       cause is VanillaMob &&
         cause.entityType == EntityType.ENDERMAN
 
@@ -243,7 +259,7 @@ abstract class DeathCondition : DailyDemandEvent {
     override val description: String = "to a Ghast"
     override val summary: String = "Die to Ghast"
 
-    override fun test(cause: CauseOfDeath): Boolean =
+    override fun test(event: PlayerDeathEvent, cause: CauseOfDeath): Boolean =
       cause is VanillaMob &&
         conditions.contains(cause.entityType)
 
@@ -254,7 +270,7 @@ abstract class DeathCondition : DailyDemandEvent {
     override val description: String = "to a Ravager"
     override val summary: String = "Die to Ravager"
 
-    override fun test(cause: CauseOfDeath): Boolean =
+    override fun test(event: PlayerDeathEvent, cause: CauseOfDeath): Boolean =
       cause is VanillaMob &&
         cause.entityType == EntityType.RAVAGER
 
@@ -265,7 +281,7 @@ abstract class DeathCondition : DailyDemandEvent {
     override val description: String = "to an Iron Golem"
     override val summary: String = "Die to Iron Golem"
 
-    override fun test(cause: CauseOfDeath): Boolean =
+    override fun test(event: PlayerDeathEvent, cause: CauseOfDeath): Boolean =
       cause is VanillaMob &&
         cause.entityType == EntityType.IRON_GOLEM
 
@@ -276,7 +292,7 @@ abstract class DeathCondition : DailyDemandEvent {
     override val description: String = "to Silverfish"
     override val summary: String = "Die to Silverfish"
 
-    override fun test(cause: CauseOfDeath): Boolean =
+    override fun test(event: PlayerDeathEvent, cause: CauseOfDeath): Boolean =
       cause is VanillaMob &&
         cause.entityType == EntityType.SILVERFISH
 
@@ -287,7 +303,7 @@ abstract class DeathCondition : DailyDemandEvent {
     override val description: String = "to a Blaze"
     override val summary: String = "Die to Blaze"
 
-    override fun test(cause: CauseOfDeath): Boolean =
+    override fun test(event: PlayerDeathEvent, cause: CauseOfDeath): Boolean =
       cause is VanillaMob &&
         cause.entityType == EntityType.BLAZE
 
