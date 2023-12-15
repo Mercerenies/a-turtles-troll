@@ -55,6 +55,9 @@ fun<T> MutableIterator<T>.retainAll(func: (T) -> Boolean): List<T> {
   return result
 }
 
+// TODO This is deprecated because Kotlin supplies it built-in (it's
+// called List.random or List.randomOrNull). Remove all uses of this and delete the
+// function.
 fun<T> List<T>.sample(): T? =
   if (this.size == 0) {
     null

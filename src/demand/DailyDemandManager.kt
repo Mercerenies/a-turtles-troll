@@ -15,6 +15,7 @@ import org.bukkit.plugin.Plugin
 import org.bukkit.NamespacedKey
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
+import org.bukkit.event.block.BlockBreakEvent
 import org.bukkit.event.entity.PlayerDeathEvent
 import org.bukkit.event.player.PlayerBedEnterEvent
 import org.bukkit.event.player.PlayerJoinEvent
@@ -143,14 +144,24 @@ class DailyDemandManager(
 
   @EventHandler(priority = EventPriority.HIGH)
   fun onPlayerDeath(event: PlayerDeathEvent) {
-    if (!isEnabled()) {
+    if ((!isEnabled()) || (event.isCancelled())) {
       return
     }
 
     if (currentState == State.Daytime) {
       condition.onDaytimePlayerDeath(event, this)
     }
+  }
 
+  @EventHandler(priority = EventPriority.HIGH)
+  fun onBlockBreak(event: BlockBreakEvent) {
+    if ((!isEnabled()) || (event.isCancelled())) {
+      return
+    }
+
+    if (currentState == State.Daytime) {
+      condition.onDaytimeBlockBreak(event, this)
+    }
   }
 
   @EventHandler(priority = EventPriority.HIGH)

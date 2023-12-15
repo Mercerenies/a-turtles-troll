@@ -10,8 +10,16 @@ import net.kyori.adventure.text.Component
 abstract class BowserEvent : DailyDemandEvent {
 
   companion object {
-    val GENERIC_DAY_START_MESSAGE = "<Bowser> Gwahahaha! It's me, losers! I've got a job for you all today, and you'd better listen up."
-    val GENERIC_FAILURE_MESSAGE = "<Bowser> Nightfall already. You losers couldn't even do a simple task! Maybe next time."
+    val BOWSER_HEADER = "<Bowser>"
+    val GENERIC_DAY_START_MESSAGE = "${BOWSER_HEADER} Gwahahaha! It's me, losers! I've got a job for you all today, and you'd better listen up."
+    val GENERIC_FAILURE_MESSAGE = "${BOWSER_HEADER} Nightfall already. You losers couldn't even do a simple task! Maybe next time."
+
+    fun bowserMessage(component: Component): Component =
+      Component.text(BOWSER_HEADER + " ").append(component)
+
+    fun bowserMessage(text: String): Component =
+      bowserMessage(Component.text(text))
+
   }
 
   abstract fun getDayStartMessage(): Component

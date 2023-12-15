@@ -2,6 +2,7 @@
 package com.mercerenies.turtletroll.demand
 
 import org.bukkit.event.entity.PlayerDeathEvent
+import org.bukkit.event.block.BlockBreakEvent
 
 import net.kyori.adventure.text.Component
 
@@ -17,6 +18,8 @@ interface DailyDemandEvent {
 
   fun onDayEnd(godsState: GodsState): Unit
 
-  fun onDaytimePlayerDeath(event: PlayerDeathEvent, godsState: GodsState): Unit
+  fun onDaytimePlayerDeath(event: PlayerDeathEvent, godsState: GodsState) {}
+
+  fun onDaytimeBlockBreak(event: BlockBreakEvent, godsState: GodsState) {}
 
 }
