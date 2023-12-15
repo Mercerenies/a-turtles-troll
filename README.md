@@ -36,6 +36,8 @@ A Turtle's Troll also depends on the following libraries.
 * When a player dies, they might be banished to a superflat world
   instead of the regular one.
 * There are now random 1x1 holes in every world.
+* Bowser events sometimes fire now in place of the usual gods'
+  demands.
 * If you have Invisibility or Night Vision, then the Warden will not
   appear in the dark.
 * When a trivia question is asked, a sound effect plays for all online

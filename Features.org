@@ -279,6 +279,10 @@
                    site of death
    + demand :: At dawn, a demand is made by the gods; if that demand
      is not met, then players cannot sleep that night
+     - Sometimes the event will be replaced by a Bowser event. Bowser
+       events are challenging, but they reward success and do not
+       punish failure (you can always sleep the night after a Bowser
+       event, even if you failed it).
    + goddesshoe :: Netherite hoes can one-shot any enemy in the game
                    except the Dragon and the Wither
    + oldage :: A player who reaches level 100 dies of old age
