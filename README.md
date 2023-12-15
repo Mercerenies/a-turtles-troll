@@ -40,6 +40,8 @@ A Turtle's Troll also depends on the following libraries.
   appear in the dark.
 * When a trivia question is asked, a sound effect plays for all online
   players.
+* Nylium does not explode if you're wearing a pumpkin when you look at
+  it.
 
 ### Version 1.21
 

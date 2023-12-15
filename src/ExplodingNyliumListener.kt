@@ -1,11 +1,8 @@
 
 package com.mercerenies.turtletroll
 
+import com.mercerenies.turtletroll.feature.HasEnabledStatus
 import com.mercerenies.turtletroll.feature.AbstractFeature
-import com.mercerenies.turtletroll.feature.container.FeatureContainer
-import com.mercerenies.turtletroll.feature.container.ListenerContainer
-import com.mercerenies.turtletroll.feature.builder.BuilderState
-import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 
 import org.bukkit.Material
 import org.bukkit.entity.TNTPrimed
@@ -14,17 +11,16 @@ import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerMoveEvent
 import org.bukkit.FluidCollisionMode
 
-class ExplodingNyliumListener() : AbstractFeature(), Listener {
+class ExplodingNyliumListener(
+  val pumpkinFeature: HasEnabledStatus,
+) : AbstractFeature(), Listener {
 
-  companion object : FeatureContainerFactory<FeatureContainer> {
+  companion object {
 
     private val MAX_SIGHT_DISTANCE: Int = 16
 
     private fun isNylium(material: Material): Boolean =
       (material == Material.CRIMSON_NYLIUM) || (material == Material.WARPED_NYLIUM)
-
-    override fun create(state: BuilderState): FeatureContainer =
-      ListenerContainer(ExplodingNyliumListener())
 
   }
 
@@ -37,6 +33,10 @@ class ExplodingNyliumListener() : AbstractFeature(), Listener {
     if (!isEnabled()) {
       return
     }
+    if ((Hats.isWearingOrdinaryHat(event.player)) && (pumpkinFeature.isEnabled())) {
+      return
+    }
+
     val targetBlock = event.player.getTargetBlockExact(MAX_SIGHT_DISTANCE, FluidCollisionMode.ALWAYS)
     if ((targetBlock != null) && (isNylium(targetBlock.type))) {
       targetBlock.type = Material.AIR
