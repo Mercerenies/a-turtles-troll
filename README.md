@@ -35,6 +35,8 @@ A Turtle's Troll also depends on the following libraries.
 
 * When a player dies, they might be banished to a superflat world
   instead of the regular one.
+* If you have Invisibility or Night Vision, then the Warden will not
+  appear in the dark.
 
 ### Version 1.21
 

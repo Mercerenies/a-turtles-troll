@@ -14,6 +14,7 @@ import org.bukkit.scheduler.BukkitRunnable
 import org.bukkit.block.Block
 import org.bukkit.Bukkit
 import org.bukkit.World
+import org.bukkit.potion.PotionEffectType
 
 import kotlin.collections.HashSet
 import kotlin.math.max
@@ -60,6 +61,11 @@ class WardenSummonRunnable(plugin: Plugin) : RunnableFeature(plugin) {
       if (player.location.world?.environment != World.Environment.NORMAL) {
         // Do NOT try this in the nether or the end. It's basically
         // always dark in both of those.
+        continue
+      }
+      if (player.hasPotionEffect(PotionEffectType.NIGHT_VISION) || player.hasPotionEffect(PotionEffectType.INVISIBILITY)) {
+        // If the player can see in the dark or is invisible, ignore
+        // this effect.
         continue
       }
       val block = player.location.block
