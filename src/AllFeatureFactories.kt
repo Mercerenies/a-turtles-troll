@@ -159,6 +159,7 @@ object AllFeatureFactories {
       SheepColorListener,
       ShieldSurfListener,
       SilverfishBurnRunnable,
+      SinkholeListener,
       SkeletonWitherListener,
       SlimeSplitListener,
       SlowSlabListener,

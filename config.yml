@@ -525,6 +525,10 @@ silverfish:
 silverfishburn:
   enabled: default
 
+sinkhole:
+  enabled: default
+  chance: default
+
 slimesplit:
   enabled: default
   max_slime_size: default

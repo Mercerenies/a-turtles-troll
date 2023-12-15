@@ -298,6 +298,9 @@ silverfish:
   infestation_chance: 0.3
 silverfishburn:
   enabled: true
+sinkhole:
+  enabled: true
+  chance: 0.30
 slimesplit:
   enabled: true
   max_slime_size: 10

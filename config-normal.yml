@@ -298,6 +298,9 @@ silverfish:
   infestation_chance: 0.2 # NOTE: Stack on release_chance in the code
 silverfishburn:
   enabled: true
+sinkhole:
+  enabled: true
+  chance: 0.15
 slimesplit:
   enabled: true
   max_slime_size: 10 # NOTE: Put a cap on this in the code
