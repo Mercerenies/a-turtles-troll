@@ -1,6 +1,9 @@
 
 package com.mercerenies.turtletroll.trivia
 
+import org.bukkit.Bukkit
+import org.bukkit.SoundCategory
+
 interface TriviaStateTransition {
 
   class Simple(
@@ -13,11 +16,20 @@ interface TriviaStateTransition {
 
   object AskQuestion : TriviaStateTransition {
 
+    val TRIVIA_START_SOUND = "custom.event.trivia"
+
     override val nextState: TriviaState =
       TriviaState.Asking(0)
 
     override fun perform(engine: TriviaEngine) {
       engine.askNewQuestion()
+      notifyAllPlayers()
+    }
+
+    private fun notifyAllPlayers() {
+      for (player in Bukkit.getOnlinePlayers()) {
+        player.playSound(player.location, TRIVIA_START_SOUND, SoundCategory.NEUTRAL, 1.0f, 1.0f)
+      }
     }
 
   }
