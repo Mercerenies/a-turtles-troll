@@ -5,9 +5,12 @@ import com.mercerenies.turtletroll.ext.*
 import com.mercerenies.turtletroll.BlockTypes
 
 import org.bukkit.Material
+import org.bukkit.potion.PotionType
+import org.bukkit.potion.PotionData
 import org.bukkit.inventory.ItemStack
 import org.bukkit.enchantments.Enchantment
 import org.bukkit.inventory.`meta`.EnchantmentStorageMeta
+import org.bukkit.inventory.`meta`.PotionMeta
 
 object QuestionLibrary {
 
@@ -364,6 +367,20 @@ object QuestionLibrary {
           ItemReward(ItemStack(Material.SANDSTONE_STAIRS, 32)),
           ItemReward(ItemStack(Material.ANDESITE_STAIRS, 32)),
         ),
+      )
+    },
+    {
+      MultipleChoiceQuestion(
+        questionBody = "As defined by the game's source code, what is the name of the bullet entity that Shulkers shoot?",
+        answers = listOf("Spark", "Shulker Bullet", "Hunter", "Shulker Seeker"),
+        correctAnswerIndex = 0,
+        rewards = run {
+          val itemStack = ItemStack(Material.POTION)
+          val meta = itemStack.itemMeta as PotionMeta
+          meta.setBasePotionData(PotionData(PotionType.SLOW_FALLING))
+          itemStack.itemMeta = meta
+          listOf(ItemReward(itemStack))
+        },
       )
     },
     {
