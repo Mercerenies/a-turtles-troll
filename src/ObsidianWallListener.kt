@@ -77,15 +77,9 @@ class ObsidianWallListener(
         return
       }
 
-      val chunkXValue = chunkX * 16
-      val chunkZValue = chunkZ * 16
-
-      for (x in chunkXValue..chunkXValue + 15) {
-        for (z in chunkZValue..chunkZValue + 15) {
-          val column = BlockSelector.Column(x, z)
-          if (needsObsidian(column)) {
-            replaceWithObsidian(worldInfo, limitedRegion, column)
-          }
+      for (column in BlockSelector.columnsInChunk(chunkX, chunkZ)) {
+        if (needsObsidian(column)) {
+          replaceWithObsidian(worldInfo, limitedRegion, column)
         }
       }
     }

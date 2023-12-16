@@ -7,7 +7,7 @@ import com.mercerenies.turtletroll.feature.container.ListenerContainer
 import com.mercerenies.turtletroll.feature.builder.BuilderState
 import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 import com.mercerenies.turtletroll.ext.*
-import com.mercerenies.turtletroll.banish.BanishmentWorldController
+import com.mercerenies.turtletroll.location.BlockSelector
 
 import org.bukkit.Material
 import org.bukkit.World
@@ -50,13 +50,8 @@ class NiceListener(
         return
       }
 
-      val chunkXValue = chunkX * 16
-      val chunkZValue = chunkZ * 16
-
-      for (x in chunkXValue..chunkXValue + 15) {
-        for (z in chunkZValue..chunkZValue + 15) {
-          limitedRegion.setType(x, targetHeight, z, Material.AIR)
-        }
+      for (column in BlockSelector.columnsInChunk(chunkX, chunkZ)) {
+        limitedRegion.setType(column.x, targetHeight, column.z, Material.AIR)
       }
     }
   }

@@ -1,6 +1,8 @@
 
 package com.mercerenies.turtletroll.banish
 
+import com.mercerenies.turtletroll.location.BlockSelector
+
 import org.bukkit.Material
 import org.bukkit.RegionAccessor
 import org.bukkit.block.`data`.Bisected
@@ -33,13 +35,9 @@ class BanishmentBlockPopulator(
     chunkZ: Int,
     limitedRegion: LimitedRegion,
   ) {
-    val minX = chunkX * 16
-    val minZ = chunkZ * 16
-    for (x in minX..minX + 15) {
-      for (z in minZ..minZ + 15) {
-        putGrass(limitedRegion, x, lowerGrassHeight, z, Bisected.Half.BOTTOM)
-        putGrass(limitedRegion, x, upperGrassHeight, z, Bisected.Half.TOP)
-      }
+    for (column in BlockSelector.columnsInChunk(chunkX, chunkZ)) {
+      putGrass(limitedRegion, column.x, lowerGrassHeight, column.z, Bisected.Half.BOTTOM)
+      putGrass(limitedRegion, column.x, upperGrassHeight, column.z, Bisected.Half.TOP)
     }
   }
 

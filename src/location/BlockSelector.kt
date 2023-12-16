@@ -64,6 +64,19 @@ object BlockSelector {
     return matches
   }
 
+  fun columnsInChunk(chunkX: Int, chunkZ: Int): List<Column> {
+    val columns = ArrayList<Column>()
+    for (x in 0 until 16) {
+      for (z in 0 until 16) {
+        columns.add(Column(16 * chunkX + x, 16 * chunkZ + z))
+      }
+    }
+    return columns
+  }
+
+  fun columnsInChunk(chunk: Chunk): List<Column> =
+    columnsInChunk(chunk.x, chunk.z)
+
   fun countNearbyMatching(block: Block, distance: Int, condition: (Block) -> Boolean): Int {
     fun matcher(block: Block): Unit? =
       if (condition(block)) Unit else null
