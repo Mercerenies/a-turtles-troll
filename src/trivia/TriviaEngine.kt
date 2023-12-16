@@ -7,6 +7,7 @@ import com.mercerenies.turtletroll.trivia.question.TriviaQuestionReward
 import com.mercerenies.turtletroll.trivia.question.ItemReward
 import com.mercerenies.turtletroll.ext.*
 import com.mercerenies.turtletroll.Messages
+import com.mercerenies.turtletroll.Players
 
 import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
@@ -16,17 +17,21 @@ import net.kyori.adventure.text.Component
 
 import kotlin.collections.HashMap
 
+import java.util.UUID
+
 class TriviaEngine(
   private val questionSupplier: TriviaQuestionSupplier,
 ) {
 
   companion object {
+
     private val TRIVIAL_REWARD: TriviaQuestionReward =
       ItemReward(ItemStack(Material.DIRT, 1))
+
   }
 
   private var currentQuestion: TriviaQuestion? = null
-  private val answers: HashMap<Player, String> = HashMap()
+  private val answers: HashMap<UUID, String> = HashMap()
 
   fun askNewQuestion() {
     Messages.broadcastMessage("*** TRIVIA TIME! ***")
@@ -42,7 +47,7 @@ class TriviaEngine(
     if ((question == null) || (!question.acceptAnswer(answer))) {
       return false
     }
-    answers[player] = answer
+    answers[player.uniqueId] = answer
     return true
   }
 
@@ -53,9 +58,15 @@ class TriviaEngine(
       return TriviaResult.EMPTY
     }
     Messages.broadcastMessage(Component.text("End of trivia! The correct answer was ").append(question.canonicalAnswer))
+    val playerMap = Players.makePlayerMap()
     val correctAnswerers = ArrayList<Player>()
     val incorrectAnswerers = ArrayList<Player>()
-    for ((player, answer) in answers) {
+    for ((playerUuid, answer) in answers) {
+      val player = playerMap[playerUuid]
+      if (player == null) {
+        // Player is not online anymore; they probably logged off
+        continue
+      }
       if (question.checkAnswer(answer)) {
         correctAnswerers.add(player)
       } else {
