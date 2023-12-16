@@ -7,6 +7,8 @@ import org.bukkit.Location
 import org.bukkit.Bukkit
 import org.bukkit.entity.Player
 
+import java.util.UUID
+
 // Various helper functions for identifying players
 object PlayerSelector {
 
@@ -29,5 +31,8 @@ object PlayerSelector {
 
   fun chooseRandomPlayer(): Player? =
     Bukkit.getOnlinePlayers().toList().sample()
+
+  fun makePlayerMap(): Map<UUID, Player> =
+    Bukkit.getOnlinePlayers().associateBy { it.uniqueId }
 
 }

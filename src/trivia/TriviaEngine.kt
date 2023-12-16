@@ -7,7 +7,7 @@ import com.mercerenies.turtletroll.trivia.question.TriviaQuestionReward
 import com.mercerenies.turtletroll.trivia.question.ItemReward
 import com.mercerenies.turtletroll.ext.*
 import com.mercerenies.turtletroll.Messages
-import com.mercerenies.turtletroll.Players
+import com.mercerenies.turtletroll.location.PlayerSelector
 
 import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
@@ -58,7 +58,7 @@ class TriviaEngine(
       return TriviaResult.EMPTY
     }
     Messages.broadcastMessage(Component.text("End of trivia! The correct answer was ").append(question.canonicalAnswer))
-    val playerMap = Players.makePlayerMap()
+    val playerMap = PlayerSelector.makePlayerMap()
     val correctAnswerers = ArrayList<Player>()
     val incorrectAnswerers = ArrayList<Player>()
     for ((playerUuid, answer) in answers) {
