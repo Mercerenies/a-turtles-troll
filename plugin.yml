@@ -1,9 +1,10 @@
 main: com.mercerenies.turtletroll.Main
 name: A_Turtles_Troll
-version: "1.22"
+version: "1.23"
 api-version: "1.19"
 author: Mercerenies
 description: Have fun :)
+load: STARTUP
 depend:
   - ProtocolLib
 commands:

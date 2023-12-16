@@ -61,10 +61,6 @@ class BanishmentManager(
 
   @EventHandler
   fun onWorldInit(event: WorldInitEvent) {
-    if (!isEnabled()) {
-      return
-    }
-
     if (event.world == worldController.world) {
       event.world.populators.add(worldController.blockPopulator)
       val overworld = Worlds.getOverworld()

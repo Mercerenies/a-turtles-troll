@@ -328,6 +328,8 @@
      instead of the regular one; dying returns them to the regular
      world
    + sinkhole :: There are random 1x1 holes in every world
+   + obsidianwall :: 3-block high obsidian walls spawn in a grid shape
+     in the overworld
 * IDEAS (UNIMPLEMENTED)
   + Wolves?
   + Fishing?

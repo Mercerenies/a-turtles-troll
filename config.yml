@@ -432,6 +432,10 @@ nodrops:
 nylium:
   enabled: default
 
+obsidianwall:
+  enabled: default
+  wall_distance: default
+
 oldage:
   enabled: default
   age_limit: default

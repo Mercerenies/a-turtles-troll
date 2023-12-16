@@ -31,6 +31,10 @@ A Turtle's Troll also depends on the following libraries.
 
 ## Changelog
 
+### Version 1.23
+
+* Obsidian walls generate uniformly in a grid shape around the map.
+
 ### Version 1.22
 
 * When a player dies, they might be banished to a superflat world

@@ -227,6 +227,9 @@ nodrops:
   enabled: true
 nylium:
   enabled: true
+obsidianwall:
+  enabled: true
+  wall_distance: 400
 oldage:
   enabled: true
   age_limit: 2
