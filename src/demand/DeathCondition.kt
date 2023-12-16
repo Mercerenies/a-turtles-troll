@@ -15,8 +15,11 @@ import org.bukkit.entity.EntityType
 import org.bukkit.entity.Player
 import org.bukkit.event.entity.EntityDamageEvent
 import org.bukkit.event.entity.PlayerDeathEvent
+import org.bukkit.event.entity.EntityDamageByEntityEvent
 
 import net.kyori.adventure.text.Component
+
+import java.util.UUID
 
 abstract class DeathCondition : DailyDemandEvent {
 
@@ -223,9 +226,23 @@ abstract class DeathCondition : DailyDemandEvent {
     override val description: String = "to a bee"
     override val summary: String = "Die to Bee"
 
-    override fun test(event: PlayerDeathEvent, cause: CauseOfDeath): Boolean =
-      cause is VanillaMob &&
-        cause.entityType == EntityType.BEE
+    val LIL_BEE_UUID = UUID.fromString("09f50998-f3b6-4655-9e28-7b730346009d")
+
+    override fun test(event: PlayerDeathEvent, cause: CauseOfDeath): Boolean {
+      // Regular case: A bee damaged you
+      if (cause is VanillaMob && cause.entityType == EntityType.BEE) {
+        return true
+      }
+      // Special case: Lil_Bee damaged you
+      val lastDamageCause = event.entity.lastDamageCause
+      if (lastDamageCause is EntityDamageByEntityEvent) {
+        if (lastDamageCause.damager.uniqueId == LIL_BEE_UUID) {
+          return true
+        }
+      }
+      // Otherwise, no
+      return false
+    }
 
   }
 
