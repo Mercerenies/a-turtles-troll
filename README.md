@@ -34,6 +34,7 @@ A Turtle's Troll also depends on the following libraries.
 ### Version 1.23
 
 * Obsidian walls generate uniformly in a grid shape around the map.
+* Y=69 never generates anything at world generation time
 
 ### Version 1.22
 

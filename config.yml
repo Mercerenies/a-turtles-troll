@@ -426,6 +426,9 @@ netherrack:
   enabled: default
   radius: default
 
+nice:
+  enabled: default
+
 nodrops:
   enabled: default
 

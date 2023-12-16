@@ -141,7 +141,8 @@ object AllFeatureFactories {
       LlamaHunterManager,
       MinecraftTriviaManagerFactory,
       NamedZombieListener,
-      ObsidianWallListener, /////
+      NiceListener,
+      ObsidianWallListener,
       OvergrowthListenerFactory.Default(),
       ParrotCookieListener,
       ParrotDeathListener,

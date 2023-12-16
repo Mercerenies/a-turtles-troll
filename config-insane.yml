@@ -223,6 +223,8 @@ namedzombie:
 netherrack:
   enabled: true
   radius: 10
+nice:
+  enabled: true
 nodrops:
   enabled: true
 nylium:
