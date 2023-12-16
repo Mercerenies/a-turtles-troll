@@ -31,7 +31,7 @@ class BowserMiningEvent(
       requiredAmountNoise: Int,
     ): () -> BowserMiningEvent =
       {
-        val onlinePlayers = Bukkit.getOnlinePlayers().size
+        val onlinePlayers = max(Bukkit.getOnlinePlayers().size, 1)
         val requiredAmount = requiredAmountPerPlayer * onlinePlayers + Random.nextInt(- requiredAmountNoise, requiredAmountNoise)
         BowserMiningEvent(
           rewardsPool = rewardsPool,
