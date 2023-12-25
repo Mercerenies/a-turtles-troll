@@ -5,6 +5,7 @@ import com.mercerenies.turtletroll.ext.*
 import com.mercerenies.turtletroll.Messages
 
 class NumericalQuestion(
+  override val questionId: String,
   private val questionBody: String,
   private val correctAnswer: Int,
   private val rewards: List<TriviaQuestionReward>,
