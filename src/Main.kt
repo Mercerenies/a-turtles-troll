@@ -21,6 +21,7 @@ import org.bukkit.Bukkit
 
 import com.comphenix.protocol.ProtocolLibrary
 
+// TODO Rename this to TurtleTrollPlugin or something sensible.
 class Main : JavaPlugin() {
 
   private val dataHolder = GlobalFileDataHolder(this)
@@ -45,6 +46,9 @@ class Main : JavaPlugin() {
       "off" to featureManager.OffCommand.withPermission(Permissions.FEATURE_TOGGLE),
       "list" to featureManager.ListCommand.withPermission(Permissions.FEATURE_LIST),
       "describe" to featureManager.DescribeCommand.withPermission(Permissions.FEATURE_DESCRIBE),
+      "dbg" to Subcommand(
+        mainContainer.debugCommands.toMap().mapValues { it.value.withPermission(Permissions.DEBUG) }
+      ).withPermission(Permissions.DEBUG),
       *mainContainer.commands.toList().toTypedArray(),
     ).withPermission(Permissions.BASE_COMMAND),
   )
