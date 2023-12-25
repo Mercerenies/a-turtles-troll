@@ -14,7 +14,7 @@ interface BowserReward {
   companion object {
 
     fun deliverRewardFromPool(rewardsPool: List<BowserReward>, specialPlayer: Player) {
-      val reward = rewardsPool.random()!!
+      val reward = rewardsPool.random()
       Messages.broadcastMessage(reward.getMainRewardText())
       Messages.broadcastMessage(reward.getSpecialRewardText(specialPlayer))
       for (player in Bukkit.getOnlinePlayers()) {
