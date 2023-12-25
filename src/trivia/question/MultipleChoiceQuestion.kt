@@ -78,6 +78,6 @@ class MultipleChoiceQuestion(
   }
 
   override fun chooseReward(): TriviaQuestionReward =
-    rewards.sample()!!
+    rewards.random()
 
 }

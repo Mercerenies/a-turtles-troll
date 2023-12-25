@@ -1,7 +1,6 @@
 
 package com.mercerenies.turtletroll.trivia.question
 
-import com.mercerenies.turtletroll.ext.*
 import com.mercerenies.turtletroll.Messages
 
 class NumericalQuestion(
@@ -24,6 +23,6 @@ class NumericalQuestion(
     answer.toInt() == correctAnswer
 
   override fun chooseReward(): TriviaQuestionReward =
-    rewards.sample()!!
+    rewards.random()
 
 }

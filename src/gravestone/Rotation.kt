@@ -1,8 +1,6 @@
 
 package com.mercerenies.turtletroll.gravestone
 
-import com.mercerenies.turtletroll.ext.*
-
 import org.bukkit.block.BlockFace
 import org.bukkit.util.Vector
 
@@ -35,7 +33,7 @@ enum class Rotation(private val count: Int) {
     }
 
     fun random() =
-      listOf(NONE, NINETY, ONE_EIGHTY, TWO_SEVENTY).sample()!!
+      listOf(NONE, NINETY, ONE_EIGHTY, TWO_SEVENTY).random()
 
   }
 

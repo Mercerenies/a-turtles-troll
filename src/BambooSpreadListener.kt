@@ -7,7 +7,6 @@ import com.mercerenies.turtletroll.feature.container.ListenerContainer
 import com.mercerenies.turtletroll.feature.builder.BuilderState
 import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 import com.mercerenies.turtletroll.location.BlockSelector
-import com.mercerenies.turtletroll.ext.*
 
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
@@ -52,7 +51,7 @@ class BambooSpreadListener(
     fun turnToBamboo(block: Block) {
       block.type = Material.BAMBOO
       val dat = block.getBlockData() as Bamboo
-      dat.setLeaves(listOf(Bamboo.Leaves.NONE, Bamboo.Leaves.SMALL, Bamboo.Leaves.LARGE).sample()!!)
+      dat.setLeaves(listOf(Bamboo.Leaves.NONE, Bamboo.Leaves.SMALL, Bamboo.Leaves.LARGE).random())
       block.setBlockData(dat)
     }
 

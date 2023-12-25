@@ -37,7 +37,7 @@ abstract class GivenItemEffect(private val plugin: Plugin) : CookieEffect {
       AllItems.allItems.filter { AllItems.getRarity(it) != Rarity.EPIC }
 
     override fun chooseItem(): ItemStack {
-      val material = candidates.sample()!!
+      val material = candidates.random()
       return ItemStack(material, 1)
     }
 

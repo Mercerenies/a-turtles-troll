@@ -6,7 +6,6 @@ import com.mercerenies.turtletroll.feature.container.FeatureContainer
 import com.mercerenies.turtletroll.feature.container.ListenerContainer
 import com.mercerenies.turtletroll.feature.builder.BuilderState
 import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
-import com.mercerenies.turtletroll.ext.*
 
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
@@ -45,7 +44,7 @@ class WitchAttackListener(
       if (Random.nextDouble() < chance) {
         event.setCancelled(true)
         val parrot = projectile.location.world!!.spawn(projectile.location, Parrot::class.java)
-        parrot.variant = Parrot.Variant.values().toList().sample()!!
+        parrot.variant = Parrot.Variant.values().toList().random()
       }
     }
   }

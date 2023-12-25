@@ -3,7 +3,6 @@ package com.mercerenies.turtletroll.demand.event
 
 import com.mercerenies.turtletroll.demand.DailyDemandEvent
 import com.mercerenies.turtletroll.sample
-import com.mercerenies.turtletroll.ext.*
 import com.mercerenies.turtletroll.util.clamp
 
 // This event selector always starts at the lowest difficulty and
@@ -28,7 +27,7 @@ open class DifficultyTierEventSelector(
   open val difficultyChangeOnAnger: Int = -9999 // Default = go back to the lowest difficulty
 
   override fun chooseCondition(): DailyDemandEvent {
-    return difficultyClasses[currentDifficulty].events.sample()!!
+    return difficultyClasses[currentDifficulty].events.random()
   }
 
   open override fun onGodsAppeased() {

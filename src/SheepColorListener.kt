@@ -6,7 +6,6 @@ import com.mercerenies.turtletroll.feature.container.FeatureContainer
 import com.mercerenies.turtletroll.feature.container.ListenerContainer
 import com.mercerenies.turtletroll.feature.builder.BuilderState
 import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
-import com.mercerenies.turtletroll.ext.*
 
 import org.bukkit.entity.Sheep
 import org.bukkit.inventory.ItemStack
@@ -35,7 +34,7 @@ class SheepColorListener() : AbstractFeature(), Listener {
     if (event.entity is Sheep) {
       val item = event.itemDrop
       val count = item.itemStack.amount
-      item.itemStack = ItemStack(BlockTypes.WOOLS.sample()!!, count)
+      item.itemStack = ItemStack(BlockTypes.WOOLS.random(), count)
     }
   }
 

@@ -1,7 +1,6 @@
 
 package com.mercerenies.turtletroll
 
-import com.mercerenies.turtletroll.ext.*
 import com.mercerenies.turtletroll.util.*
 
 import org.bukkit.Material
@@ -71,7 +70,7 @@ object Hats {
 
   fun sampleRandomHat(): ItemStack {
     val stack = ItemStack(Material.CARVED_PUMPKIN)
-    val name = customHatNamesList.sample()!!
+    val name = customHatNamesList.random()
     val meta = stack.itemMeta
     if (meta != null) {
       meta.displayName(Component.text(name))

@@ -48,7 +48,7 @@ class ContagiousMossManager(plugin: Plugin) : RunnableFeature(plugin), Listener 
     }
     val onlinePlayers = Bukkit.getOnlinePlayers().toList()
     repeat(100) {
-      val player = onlinePlayers.sample()
+      val player = onlinePlayers.randomOrNull()
       if (player != null) {
         if (player.world.environment == World.Environment.NORMAL) {
           val playerPosBlock = player.location.block

@@ -3,7 +3,6 @@ package com.mercerenies.turtletroll.overgrowth
 
 import com.mercerenies.turtletroll.feature.AbstractFeature
 import com.mercerenies.turtletroll.Constants
-import com.mercerenies.turtletroll.ext.*
 
 import org.bukkit.Material
 import org.bukkit.event.EventHandler
@@ -32,7 +31,7 @@ class OvergrowthListener(
     )
 
     fun randomWood(): Material =
-      WOOD_BLOCKS.sample()!!
+      WOOD_BLOCKS.random()
 
     fun alwaysObsidian(): Material =
       Material.OBSIDIAN

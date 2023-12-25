@@ -1,8 +1,6 @@
 
 package com.mercerenies.turtletroll
 
-import com.mercerenies.turtletroll.ext.*
-
 import org.bukkit.Bukkit
 
 import net.kyori.adventure.text.Component
@@ -12,7 +10,7 @@ fun interface NameSource {
 
   object OnlinePlayers : NameSource {
     override fun sampleName(): Component {
-      val player = Bukkit.getOnlinePlayers().toList().sample()
+      val player = Bukkit.getOnlinePlayers().toList().randomOrNull()
       if (player == null) {
         // No one is online :(
         return Component.text("")
@@ -33,7 +31,7 @@ fun interface NameSource {
     constructor(vararg args: String) : this(args.toList()) {}
 
     override fun sampleName(): Component =
-      Component.text(list.sample()!!)
+      Component.text(list.random())
 
   }
 

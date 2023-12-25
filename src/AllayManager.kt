@@ -8,7 +8,6 @@ import com.mercerenies.turtletroll.feature.builder.BuilderState
 import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 import com.mercerenies.turtletroll.nms.NMS
 import com.mercerenies.turtletroll.location.PlayerSelector
-import com.mercerenies.turtletroll.ext.*
 
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
@@ -59,7 +58,7 @@ class AllayManager(_plugin: Plugin) : RunnableFeature(_plugin), Listener {
     val item = inventory.getItem(0)
     if ((item == null) || (!BlockTypes.FLOWERS.contains(item.type))) {
       // Make sure the allay is holding flowers.
-      val flowerType = BlockTypes.FLOWERS.sample()!!
+      val flowerType = BlockTypes.FLOWERS.random()
       inventory.setItem(0, ItemStack(flowerType, 64))
       allay.equipment.setItemInMainHand(ItemStack(flowerType, 64))
     }

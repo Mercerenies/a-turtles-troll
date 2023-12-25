@@ -1,7 +1,6 @@
 
 package com.mercerenies.turtletroll
 
-import com.mercerenies.turtletroll.ext.*
 import com.mercerenies.turtletroll.Enchantments.addEnchantment
 import com.mercerenies.turtletroll.Enchantments.EnchantmentData
 import com.mercerenies.turtletroll.feature.AbstractFeature
@@ -71,10 +70,10 @@ class PiglinBarterListener(
     }
 
     private fun generateBarterResult(): ItemStack {
-      val armorMaterial = BlockTypes.ARMORS.sample()!!
+      val armorMaterial = BlockTypes.ARMORS.random()
       val itemStack = ItemStack(armorMaterial, 1)
       for (_i in 1..3) {
-        itemStack.addEnchantment(ENCHANTMENT_CHOICES.sample()!!)
+        itemStack.addEnchantment(ENCHANTMENT_CHOICES.random())
       }
       return itemStack
     }
@@ -146,7 +145,7 @@ class PiglinBarterListener(
     // that's baked into Minecraft. So instead, I'll just have them
     // give you a nice flower if you give them gold :)
     if (event.input.type == Material.GOLD_INGOT) {
-      outcome.add(ItemStack(BlockTypes.FLOWERS.sample()!!, 3))
+      outcome.add(ItemStack(BlockTypes.FLOWERS.random(), 3))
     } else {
       outcome.add(generateBarterResult())
     }

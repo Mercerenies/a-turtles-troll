@@ -1,8 +1,6 @@
 
 package com.mercerenies.turtletroll.location
 
-import com.mercerenies.turtletroll.ext.*
-
 import org.bukkit.Location
 import org.bukkit.Bukkit
 import org.bukkit.entity.Player
@@ -30,7 +28,7 @@ object PlayerSelector {
   }
 
   fun chooseRandomPlayer(): Player? =
-    Bukkit.getOnlinePlayers().toList().sample()
+    Bukkit.getOnlinePlayers().toList().randomOrNull()
 
   fun makePlayerMap(): Map<UUID, Player> =
     Bukkit.getOnlinePlayers().associateBy { it.uniqueId }

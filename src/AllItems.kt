@@ -1,8 +1,6 @@
 
 package com.mercerenies.turtletroll
 
-import com.mercerenies.turtletroll.ext.*
-
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 import org.bukkit.entity.HumanEntity
@@ -19,11 +17,8 @@ object AllItems {
   val allItems: List<Material> =
     allMaterials.filter { it.isItem() && !it.isLegacy() }
 
-  private fun sampleUnchecked(): Material =
-    allMaterials.sample()!!
-
   fun sample(): Material =
-    allItems.sample()!!
+    allItems.random()
 
   /* ktlint-disable no-multi-spaces */
   fun getRarity(item: Material): Rarity =

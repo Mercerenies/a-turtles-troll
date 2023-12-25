@@ -4,7 +4,6 @@ package com.mercerenies.turtletroll.cake
 import com.mercerenies.turtletroll.feature.AbstractFeature
 import com.mercerenies.turtletroll.RaccoonBridge
 import com.mercerenies.turtletroll.SpawnReason
-import com.mercerenies.turtletroll.ext.*
 import com.mercerenies.turtletroll.Weight
 import com.mercerenies.turtletroll.sample
 import com.mercerenies.turtletroll.Constants
@@ -57,7 +56,7 @@ class CakeListener(
     )
 
     fun makeCake(): Material =
-      CAKE_TYPES.sample()!!
+      CAKE_TYPES.random()
 
     fun isCake(material: Material): Boolean =
       CAKE_TYPES.contains(material)

@@ -4,7 +4,6 @@ package com.mercerenies.turtletroll.demand.event
 import com.mercerenies.turtletroll.demand.DailyDemandEvent
 import com.mercerenies.turtletroll.Weight
 import com.mercerenies.turtletroll.sample
-import com.mercerenies.turtletroll.ext.*
 
 class WeightedDifficultyEventSelector(
   val difficultyClasses: List<Weight<DifficultyClass>>,
@@ -22,6 +21,6 @@ class WeightedDifficultyEventSelector(
   }
 
   override fun chooseCondition(): DailyDemandEvent =
-    sample(difficultyClasses).events.sample()!!
+    sample(difficultyClasses).events.random()
 
 }

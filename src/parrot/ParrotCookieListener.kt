@@ -6,7 +6,6 @@ import com.mercerenies.turtletroll.feature.container.FeatureContainer
 import com.mercerenies.turtletroll.feature.container.ListenerContainer
 import com.mercerenies.turtletroll.feature.builder.BuilderState
 import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
-import com.mercerenies.turtletroll.ext.*
 
 import org.bukkit.Material
 import org.bukkit.event.EventHandler
@@ -62,7 +61,7 @@ class ParrotCookieListener(
       if (wasDamagedByCookie(entity)) {
         repeat(parrotDuplicateCount) {
           val newParrot = entity.location.world!!.spawn(entity.location, Parrot::class.java)
-          newParrot.variant = Parrot.Variant.values().toList().sample()!!
+          newParrot.variant = Parrot.Variant.values().toList().random()
           newParrot.isTamed = entity.isTamed
           newParrot.owner = entity.owner
         }

@@ -6,7 +6,6 @@ import com.mercerenies.turtletroll.feature.container.FeatureContainer
 import com.mercerenies.turtletroll.feature.container.RunnableContainer
 import com.mercerenies.turtletroll.feature.builder.BuilderState
 import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
-import com.mercerenies.turtletroll.ext.*
 
 import org.bukkit.Bukkit
 import org.bukkit.plugin.Plugin
@@ -31,9 +30,9 @@ class BucketRouletteRunnable(plugin: Plugin) : RunnableFeature(plugin) {
     }
 
     private fun cycleBucketType(itemStack: ItemStack) {
-      var newBucketType = BlockTypes.BUCKETS.sample()!!
+      var newBucketType = BlockTypes.BUCKETS.random()
       while (newBucketType == itemStack.type) {
-        newBucketType = BlockTypes.BUCKETS.sample()!!
+        newBucketType = BlockTypes.BUCKETS.random()
       }
       itemStack.type = newBucketType
     }

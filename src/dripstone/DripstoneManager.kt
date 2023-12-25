@@ -68,7 +68,7 @@ class DripstoneManager(plugin: Plugin) : RunnableFeature(plugin), Listener {
 
   private fun tryGrowExisting(onlinePlayers: List<Player>) {
     repeat(100) {
-      val player = onlinePlayers.sample()
+      val player = onlinePlayers.randomOrNull()
       if (player != null) {
         val playerPosBlock = player.location.block
         val randBlock = BlockSelector.getRandomBlockNear(playerPosBlock)
@@ -88,7 +88,7 @@ class DripstoneManager(plugin: Plugin) : RunnableFeature(plugin), Listener {
 
   private fun tryGrowNew(onlinePlayers: List<Player>) {
     repeat(50) {
-      val player = onlinePlayers.sample()
+      val player = onlinePlayers.randomOrNull()
       if (player != null) {
         val playerPosBlock = player.location.block
         val randBlock = BlockSelector.getRandomBlockNear(playerPosBlock)

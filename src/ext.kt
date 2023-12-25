@@ -10,9 +10,11 @@ import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.ComponentBuilder
 import net.kyori.adventure.text.BuildableComponent
 
-import kotlin.random.Random
 import kotlin.collections.Map
 import kotlin.collections.HashMap
+
+// TODO This entire file is deprecated. Move all helpers into
+// appropriate classes or into util package.
 
 fun Location.nearby(distance: Int): List<Location> {
   val result = ArrayList<Location>()
@@ -54,16 +56,6 @@ fun<T> MutableIterator<T>.retainAll(func: (T) -> Boolean): List<T> {
   }
   return result
 }
-
-// TODO This is deprecated because Kotlin supplies it built-in (it's
-// called List.random or List.randomOrNull). Remove all uses of this and delete the
-// function.
-fun<T> List<T>.sample(): T? =
-  if (this.size == 0) {
-    null
-  } else {
-    this[Random.nextInt(this.size)]
-  }
 
 fun BlockBreakEvent.getDefaultDrops(): Collection<ItemStack> =
   block.getDrops(player.inventory.itemInMainHand, player)
