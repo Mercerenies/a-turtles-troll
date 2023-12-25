@@ -33,11 +33,20 @@ class TriviaEngine(
   private var currentQuestion: TriviaQuestion? = null
   private val answers: HashMap<UUID, String> = HashMap()
 
-  fun askNewQuestion() {
-    Messages.broadcastMessage("*** TRIVIA TIME! ***")
+  fun askNewRandomQuestion() {
     val newQuestion = questionSupplier.supply()
-    newQuestion.askQuestion()
-    currentQuestion = newQuestion
+    askQuestion(newQuestion)
+  }
+
+  fun askQuestion(questionId: String) {
+    val newQuestion = questionSupplier.supply(questionId)
+    askQuestion(newQuestion)
+  }
+
+  fun askQuestion(question: TriviaQuestion) {
+    Messages.broadcastMessage("*** TRIVIA TIME! ***")
+    question.askQuestion()
+    currentQuestion = question
     answers.clear()
     Messages.broadcastMessage("Use `/turtle answer <your_answer>` to answer the question!")
   }

@@ -37,6 +37,7 @@ A Turtle's Troll also depends on the following libraries.
 * Y=69 never generates anything at world generation time.
 * Umbrella hats will protect you from the rain.
 * Fixed bug with trivia if a player logs out during a question.
+* Improved some debugging capabilities.
 
 ### Version 1.22
 

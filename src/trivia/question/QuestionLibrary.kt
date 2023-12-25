@@ -474,10 +474,8 @@ object QuestionLibrary {
     },
   )
 
-  val SUPPLIER: TriviaQuestionSupplier = TriviaQuestionSupplier {
-    val questionFunction = QUESTIONS.values.random()
-    questionFunction()
-  }
+  val SUPPLIER: TriviaQuestionSupplier =
+    MapQuestionSupplier(QUESTIONS)
 
   private fun toRewards(
     collection: Iterable<Material>,

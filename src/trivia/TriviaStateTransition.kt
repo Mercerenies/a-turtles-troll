@@ -22,7 +22,12 @@ interface TriviaStateTransition {
       TriviaState.Asking(0)
 
     override fun perform(engine: TriviaEngine) {
-      engine.askNewQuestion()
+      engine.askNewRandomQuestion()
+      notifyAllPlayers()
+    }
+
+    fun performSpecificQuestion(engine: TriviaEngine, questionId: String) {
+      engine.askQuestion(questionId)
       notifyAllPlayers()
     }
 

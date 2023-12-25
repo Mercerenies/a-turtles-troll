@@ -5,17 +5,23 @@ import com.mercerenies.turtletroll.ext.*
 import com.mercerenies.turtletroll.util.*
 import com.mercerenies.turtletroll.feature.RunnableFeature
 import com.mercerenies.turtletroll.Constants
+import com.mercerenies.turtletroll.Messages
 import com.mercerenies.turtletroll.trivia.question.TriviaQuestionSupplier
 import com.mercerenies.turtletroll.command.Command
 import com.mercerenies.turtletroll.command.TerminalCommand
+import com.mercerenies.turtletroll.command.OptionalUnaryCommand
 
 import org.bukkit.command.CommandSender
 import org.bukkit.plugin.Plugin
+import org.bukkit.Bukkit
+
+import net.kyori.adventure.text.Component
+import net.kyori.adventure.text.format.NamedTextColor
 
 class MinecraftTriviaManager(
   plugin: Plugin,
   val config: TriviaConfig,
-  questionSupplier: TriviaQuestionSupplier,
+  private val questionSupplier: TriviaQuestionSupplier,
 ) : RunnableFeature(plugin) {
 
   override val name = "minecrafttrivia"
@@ -33,11 +39,31 @@ class MinecraftTriviaManager(
   val answerCommand: Command =
     TriviaAnswerCommand(this, engine)
 
-  val triviaAskCommand: Command = object : TerminalCommand() {
-    override fun onCommand(sender: CommandSender): Boolean {
-      runTransition(TriviaStateTransition.AskQuestion)
-      return true
+  val triviaAskCommand: Command = object : OptionalUnaryCommand() {
+
+    override fun onCommand(sender: CommandSender, arg: String?): Boolean {
+      val transition = TriviaStateTransition.AskQuestion
+      if (arg == null) {
+        // Ask a random question, like normal
+        runTransition(transition)
+        return true
+      } else {
+        try {
+          transition.performSpecificQuestion(engine, arg)
+        } catch (exc: NoSuchElementException) {
+          Messages.sendMessage(sender, Component.text("Invalid question ID: $arg", NamedTextColor.RED))
+          Bukkit.getLogger().warning("User $sender attempted to ask for an invalid question ID: $arg")
+          return false
+        }
+        state = transition.nextState
+        return true
+      }
     }
+
+    override fun onTabComplete(sender: CommandSender, arg: String?): List<String>? =
+      arg?.let {
+        questionSupplier.ids.filter { id -> id.startsWith(it) }
+      }
   }
 
   val triviaJudgeCommand: Command = object : TerminalCommand() {
