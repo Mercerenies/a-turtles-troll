@@ -38,8 +38,7 @@ fun FeatureContainer.withDebugCommand(commandName: String, callback: (CommandSen
   return withDebugCommand(commandName, command)
 }
 
-@JvmName("withDebugCommandPlayer")
-fun FeatureContainer.withDebugCommand(commandName: String, callback: (Player) -> Boolean): DebugCommandFeatureContainer =
+fun FeatureContainer.withPlayerDebugCommand(commandName: String, callback: (Player) -> Boolean): DebugCommandFeatureContainer =
   withDebugCommand(commandName) { sender: CommandSender ->
     if (sender is Player) {
       callback(sender)
@@ -48,7 +47,3 @@ fun FeatureContainer.withDebugCommand(commandName: String, callback: (Player) ->
       true
     }
   }
-
-@JvmName("withDebugCommandNullary")
-fun FeatureContainer.withDebugCommand(commandName: String, callback: () -> Boolean): DebugCommandFeatureContainer =
-  withDebugCommand(commandName) { _: CommandSender -> callback() }
