@@ -18,10 +18,10 @@ fun blockBreakListenerContainer(dropFeature: DropFeatureContainer): FeatureConta
 
   // Now combine that with anything else provided by the drop feature
   // containers.
-  val existingFeatures = DropFeatureContainerAdaptor(dropFeature)
+  val existingFeature = DropFeatureContainerAdaptor(dropFeature)
   val listenerFeature = object : AbstractFeatureContainer() {
     override val listeners = listOf(eventListener)
   }
-  return CompositeFeatureContainer(listOf(listenerFeature) + existingFeatures)
+  return CompositeFeatureContainer(listOf(listenerFeature, existingFeature))
 
 }
