@@ -2,7 +2,6 @@
 package com.mercerenies.turtletroll.banish
 
 import com.mercerenies.turtletroll.feature.AbstractFeature
-import com.mercerenies.turtletroll.command.PermittedCommand
 import com.mercerenies.turtletroll.command.Command
 import com.mercerenies.turtletroll.Constants
 import com.mercerenies.turtletroll.Messages
