@@ -7,7 +7,6 @@ import com.mercerenies.turtletroll.Messages
 import net.kyori.adventure.text.Component
 
 class MultipleChoiceQuestion(
-  override val questionId: String,
   private val questionBody: String,
   answers: List<String>,
   correctAnswerIndex: Int,

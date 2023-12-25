@@ -3,10 +3,6 @@ package com.mercerenies.turtletroll.trivia.question
 
 interface TriviaQuestion {
 
-  // Used for debugging purposes. This should be a unique lowercase
-  // alphanumeric string.
-  val questionId: String
-
   fun askQuestion(): Unit
 
   // Returns true if the answer is acceptable for this question. A
