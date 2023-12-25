@@ -36,6 +36,7 @@ A Turtle's Troll also depends on the following libraries.
 * Obsidian walls generate uniformly in a grid shape around the map.
 * Y=69 never generates anything at world generation time.
 * Umbrella hats will protect you from the rain.
+* Removed a particularly obnoxious cookie effect.
 * Fixed bug with trivia if a player logs out during a question.
 * Improved some debugging capabilities.
 

@@ -30,7 +30,6 @@ object CookieEat {
     Weight(GivenItemEffect.TenMoreCookies(plugin), 0.35),
     Weight(fillWithDirtEffect(plugin), 0.3),
     Weight(DeathEffect(plugin), 0.2),
-    Weight(fillAllWithDirtEffect(plugin), 0.1),
     // Status Effects (sum = 1.0)
     Weight(ApplyPotionEffect("Absorption", PotionEffectType.ABSORPTION), 0.031),
     Weight(ApplyPotionEffect("Damage Resistance", PotionEffectType.DAMAGE_RESISTANCE), 0.031),
