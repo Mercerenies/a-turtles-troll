@@ -38,4 +38,7 @@ class CompositeFeatureContainer(
   override val commands: Iterable<Pair<String, PermittedCommand<Command>>> =
     allContainers.map { it.commands }.lazyFlatten()
 
+  override val debugCommands: Iterable<Pair<String, Command>> =
+    allContainers.map { it.debugCommands }.lazyFlatten()
+
 }

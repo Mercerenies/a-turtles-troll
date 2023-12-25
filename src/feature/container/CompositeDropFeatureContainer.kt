@@ -41,6 +41,9 @@ class CompositeDropFeatureContainer(
   override val commands: Iterable<Pair<String, PermittedCommand<Command>>> =
     allContainers.map { it.commands }.lazyFlatten()
 
+  override val debugCommands: Iterable<Pair<String, Command>> =
+    allContainers.map { it.debugCommands }.lazyFlatten()
+
   override val preRules: Iterable<BlockBreakAction> =
     allContainers.map { it.preRules }.lazyFlatten()
 

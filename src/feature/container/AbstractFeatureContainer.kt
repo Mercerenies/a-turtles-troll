@@ -37,4 +37,7 @@ open class AbstractFeatureContainer() : FeatureContainer {
   open override val commands: Iterable<Pair<String, PermittedCommand<Command>>>
     get() = listOf()
 
+  open override val debugCommands: Iterable<Pair<String, Command>>
+    get() = listOf()
+
 }

@@ -38,4 +38,7 @@ class DropFeatureContainerAdaptor(
   override val commands: Iterable<Pair<String, PermittedCommand<Command>>>
     get() = impl.commands
 
+  override val debugCommands: Iterable<Pair<String, Command>>
+    get() = impl.debugCommands
+
 }

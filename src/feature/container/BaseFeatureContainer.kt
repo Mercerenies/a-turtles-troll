@@ -34,4 +34,9 @@ interface BaseFeatureContainer {
 
   val commands: Iterable<Pair<String, PermittedCommand<Command>>>
 
+  // As `commands`, but goes in the `/turtle dbg` namespace rather
+  // than `/turtle`. All commands in `debugCommands` automatically get
+  // the "DEBUG" permission level.
+  val debugCommands: Iterable<Pair<String, Command>>
+
 }

@@ -39,6 +39,9 @@ open class AbstractDropFeatureContainer() : DropFeatureContainer {
   open override val commands: Iterable<Pair<String, PermittedCommand<Command>>>
     get() = listOf()
 
+  open override val debugCommands: Iterable<Pair<String, Command>>
+    get() = listOf()
+
   open override val preRules: List<BlockBreakAction>
     get() = listOf()
 
