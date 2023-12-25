@@ -39,6 +39,7 @@ A Turtle's Troll also depends on the following libraries.
 * Removed a particularly obnoxious cookie effect.
 * Fixed bug with trivia if a player logs out during a question.
 * Improved some debugging capabilities.
+* Debug commands are now in the `/turtle dbg` namespace.
 
 ### Version 1.22
 

@@ -21,7 +21,7 @@ object BanishmentManagerFactory : FeatureContainerFactory<FeatureContainer> {
 
     override val listeners = listOf(manager)
 
-    override val commands = manager.commands
+    override val debugCommands = manager.debugCommands
 
   }
 

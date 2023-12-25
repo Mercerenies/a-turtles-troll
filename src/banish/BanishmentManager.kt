@@ -4,8 +4,6 @@ package com.mercerenies.turtletroll.banish
 import com.mercerenies.turtletroll.feature.AbstractFeature
 import com.mercerenies.turtletroll.command.PermittedCommand
 import com.mercerenies.turtletroll.command.Command
-import com.mercerenies.turtletroll.command.withPermission
-import com.mercerenies.turtletroll.command.Permissions
 import com.mercerenies.turtletroll.Constants
 import com.mercerenies.turtletroll.Messages
 import com.mercerenies.turtletroll.Worlds
@@ -53,10 +51,10 @@ class BanishmentManager(
   private val toBanishCommand = ToBanishCommand(commandConfig)
   private val fromBanishCommand = FromBanishCommand(commandConfig)
 
-  val commands: List<Pair<String, PermittedCommand<Command>>> =
+  val debugCommands: List<Pair<String, Command>> =
     listOf(
-      "tobanish" to toBanishCommand.withPermission(Permissions.DEBUG),
-      "frombanish" to fromBanishCommand.withPermission(Permissions.DEBUG),
+      "tobanish" to toBanishCommand,
+      "frombanish" to fromBanishCommand,
     )
 
   @EventHandler

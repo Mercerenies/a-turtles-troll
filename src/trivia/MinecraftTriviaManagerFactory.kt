@@ -32,8 +32,12 @@ abstract class MinecraftTriviaManagerFactory() : FeatureContainerFactory<Feature
     override val commands =
       listOf(
         "answer" to manager.answerCommand.withPermission(Permissions.ANSWER),
-        "triviaask" to manager.triviaAskCommand.withPermission(Permissions.DEBUG),
-        "triviajudge" to manager.triviaJudgeCommand.withPermission(Permissions.DEBUG),
+      )
+
+    override val debugCommands =
+      listOf(
+        "triviaask" to manager.triviaAskCommand,
+        "triviajudge" to manager.triviaJudgeCommand,
       )
 
   }
