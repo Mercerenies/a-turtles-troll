@@ -60,7 +60,8 @@
      - Blindness 1
      - Mining Fatigue 5
      - Regeneration 5
-   + rainwater :: Players deplete oxygen in the rain
+   + rainwater :: Players deplete oxygen in the rain, unless wearing
+     an umbrella hat
    + cactuskick :: Looking at a cactus causes the player to be kicked
    + fishhook :: When you pull a fish hook in, you're launched in that
      direction

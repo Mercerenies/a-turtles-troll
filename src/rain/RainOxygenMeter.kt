@@ -3,6 +3,7 @@ package com.mercerenies.turtletroll.rain
 
 import com.mercerenies.turtletroll.ext.*
 import com.mercerenies.turtletroll.util.*
+import com.mercerenies.turtletroll.Hats
 import com.mercerenies.turtletroll.gravestone.CustomDeathMessageRegistry
 import com.mercerenies.turtletroll.gravestone.CustomDeathMessage
 import com.mercerenies.turtletroll.gravestone.Vanilla
@@ -34,6 +35,17 @@ class RainOxygenMeter(
         30 * (bubbleCount - 1) + 3
       }
 
+    fun isInRain(player: Player): Boolean {
+      // If we're wearing an umbrella hat, then we're safe from the rain.
+      val playerHat = player.inventory.helmet?.let(Hats::getCustomHatName)
+      if (playerHat == Hats.UMBRELLA_HAT_NAME) {
+        return false
+      } else {
+        // Delegate to vanilla Minecraft logic.
+        return player.isInRain()
+      }
+    }
+
   }
 
   private var airAmount: Int = MAX_AIR
@@ -52,7 +64,7 @@ class RainOxygenMeter(
   }
 
   fun runTick() {
-    if (player.isInRain()) {
+    if (isInRain(player)) {
       if (airAmount <= 0) {
         dealDamage()
       } else {

@@ -28,24 +28,35 @@ object Hats {
       "slime hat",
       "squid hat",
       "witch hat",
+      "umbrella hat",
     )
 
   private val customHatNamesList = customHatNames.toList()
 
+  val UMBRELLA_HAT_NAME = "umbrella hat"
+
   fun isCustomHat(hatName: String): Boolean =
     customHatNames.contains(hatName)
 
-  fun isCustomHat(stack: ItemStack): Boolean {
+  fun isCustomHat(stack: ItemStack): Boolean =
+    getCustomHatName(stack) != null
 
+  fun getCustomHatName(stack: ItemStack): String? {
     if (stack.getType() != Material.CARVED_PUMPKIN) {
-      return false
+      return null
     }
 
     val meta = stack.itemMeta
-    if (meta == null) {
-      return false
+    if ((meta == null) || (!meta.hasDisplayName())) {
+      return null
     }
-    return (meta.hasDisplayName()) && (isCustomHat(meta.displayName()!!.asPlainText()))
+
+    val hatName = meta.displayName()!!.asPlainText()
+    if (isCustomHat(hatName)) {
+      return hatName
+    } else {
+      return null
+    }
   }
 
   fun isWearingOrdinaryHat(player: Player): Boolean {
