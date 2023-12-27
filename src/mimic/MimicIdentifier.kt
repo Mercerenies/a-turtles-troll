@@ -5,6 +5,7 @@ import org.bukkit.Material
 import org.bukkit.block.Block
 import org.bukkit.block.Chest
 import org.bukkit.inventory.ItemStack
+import org.bukkit.inventory.Inventory
 
 object MimicIdentifier {
 
@@ -36,5 +37,8 @@ object MimicIdentifier {
     val contents = state.getBlockInventory().contents
     return (contents contentEquals chestPattern())
   }
+
+  fun belongsToMimic(inventory: Inventory): Boolean =
+    isMimic(inventory.location?.block)
 
 }

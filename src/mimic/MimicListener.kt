@@ -17,6 +17,7 @@ import org.bukkit.Material
 import org.bukkit.event.Listener
 import org.bukkit.event.EventHandler
 import org.bukkit.event.block.Action
+import org.bukkit.event.inventory.InventoryClickEvent
 import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.event.entity.CreatureSpawnEvent
 import org.bukkit.scheduler.BukkitRunnable
@@ -94,6 +95,18 @@ class MimicListener(
       KillPlayerRunnable(event.player).runTaskLater(plugin, KILL_DELAY.toLong())
     }
 
+  }
+
+  @EventHandler
+  fun onInventoryClick(event: InventoryClickEvent) {
+    if (!isEnabled()) {
+      return
+    }
+
+    val inventory = event.clickedInventory
+    if ((inventory != null) && (MimicIdentifier.belongsToMimic(inventory))) {
+      event.setCancelled(true)
+    }
   }
 
 }
