@@ -14,6 +14,13 @@ class MimicListenerFactory(
   private val deathFeatureId: String,
 ) : FeatureContainerFactory<FeatureContainer> {
 
+  companion object {
+    val CONTENTS_FACTORY_OPTIONS: List<MimicContentsFactory> = listOf(
+      ConstantContentsFactory(LegacyMimicIdentifier.chestPattern()),
+    )
+    val CONTENTS_FACTORY = MimicContentsFactory.several(CONTENTS_FACTORY_OPTIONS)
+  }
+
   override fun create(state: BuilderState): FeatureContainer {
     var deathRegistry = state.getSharedData(deathFeatureId, CustomDeathMessageRegistry::class)
     if (deathRegistry == null) {
@@ -22,7 +29,7 @@ class MimicListenerFactory(
       deathRegistry = CustomDeathMessageRegistry.Unit
     }
     val replaceChance = state.config.getDouble("mimics.probability")
-    val mimicListener = MimicListener(state.plugin, deathRegistry, replaceChance)
+    val mimicListener = MimicListener(state.plugin, deathRegistry, replaceChance, CONTENTS_FACTORY)
     return ListenerContainer(mimicListener).withPlayerDebugCommand("mimic") { player ->
       MimicIdentifier(state.plugin).spawnMimic(player.location.block)
       true

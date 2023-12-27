@@ -122,7 +122,11 @@ class MimicIdentifier(
     return persistentDataContainer.get(identifierKey, PersistentDataType.INTEGER) == 1
   }
 
+  // Returns true if the block corresponding to the inventory is a
+  // mimic, or if the inventory was synthetically created to look like
+  // a mimic per MimicInventoryHolder.
   fun belongsToMimic(inventory: Inventory): Boolean =
-    isMimic(inventory.location?.block)
+    inventory.holder is MimicInventoryHolder ||
+      isMimic(inventory.location?.block)
 
 }

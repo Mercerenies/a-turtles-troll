@@ -30,6 +30,7 @@ class MimicListener(
   val plugin: Plugin,
   private val deathRegistry: CustomDeathMessageRegistry,
   private val mobReplaceChance: Double,
+  private val contentsFactory: MimicContentsFactory,
 ) : AbstractFeature(), Listener {
 
   companion object {
@@ -97,7 +98,13 @@ class MimicListener(
 
     val block = event.getClickedBlock()
     if ((mimicIdentifier.isMimic(block)) && (event.getAction() == Action.RIGHT_CLICK_BLOCK)) {
+      // Plan to kill the player.
       KillPlayerRunnable(event.player).runTaskLater(plugin, KILL_DELAY.toLong())
+      // Replace the inventory contents with something from our
+      // factory.
+      event.setCancelled(true)
+      val inventoryHolder = MimicInventoryHolder(contentsFactory)
+      event.player.openInventory(inventoryHolder.getInventory())
     }
 
   }
