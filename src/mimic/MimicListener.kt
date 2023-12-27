@@ -18,9 +18,13 @@ import org.bukkit.event.Listener
 import org.bukkit.event.EventHandler
 import org.bukkit.event.block.Action
 import org.bukkit.event.inventory.InventoryClickEvent
+import org.bukkit.event.inventory.InventoryOpenEvent
+import org.bukkit.event.inventory.InventoryType
 import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.event.entity.CreatureSpawnEvent
 import org.bukkit.scheduler.BukkitRunnable
+import org.bukkit.inventory.Inventory
+import org.bukkit.inventory.ItemStack
 
 import net.kyori.adventure.text.Component
 
@@ -42,6 +46,17 @@ class MimicListener(
       EntityType.ZOMBIE, EntityType.SKELETON, EntityType.SPIDER, EntityType.ZOMBIFIED_PIGLIN,
       EntityType.STRAY, EntityType.HUSK,
     )
+
+    // Returns an array of the current contents of the inventory,
+    // which will not change even if the inventory's contents are
+    // later changed.
+    fun takeSnapshot(inventory: Inventory): Array<ItemStack?> {
+      val contents: Array<ItemStack?> = inventory.contents!!.copyOf()
+      for (i in contents.indices) {
+        contents[i] = contents[i]?.clone()
+      }
+      return contents
+    }
 
   }
 
@@ -65,6 +80,8 @@ class MimicListener(
   override val description = "Chests randomly spawn in the wild which, if opened, kill you"
 
   private val mimicIdentifier = MimicIdentifier(plugin)
+
+  private val contentsStore = ChestContentsMemoryStore()
 
   @EventHandler
   fun onCreatureSpawn(event: CreatureSpawnEvent) {
@@ -103,10 +120,31 @@ class MimicListener(
       // Replace the inventory contents with something from our
       // factory.
       event.setCancelled(true)
-      val inventoryHolder = MimicInventoryHolder(contentsFactory)
+      val inventoryHolder = MimicInventoryHolder(contentsStore, contentsFactory)
       event.player.openInventory(inventoryHolder.getInventory())
     }
 
+  }
+
+  @EventHandler
+  fun onInventoryOpen(event: InventoryOpenEvent) {
+    if (!isEnabled()) {
+      return
+    }
+    val player = event.player
+    val inventory = event.inventory
+
+    if (player !is Player) {
+      return // An NPC opened an inventory(?). Ignore it.
+    }
+    if (inventory.getType() != InventoryType.CHEST) {
+      return // Ignore non-chests
+    }
+
+    // Take an immutable snapshot and remember the contents for later
+    // mimics.
+    val contents = takeSnapshot(inventory)
+    contentsStore.setContents(player, contents)
   }
 
   @EventHandler

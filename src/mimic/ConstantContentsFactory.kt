@@ -16,8 +16,8 @@ class ConstantContentsFactory(
     }
   }
 
-  override fun makeInventory(inventoryHolder: InventoryHolder): Inventory {
-    val inventory = Bukkit.createInventory(inventoryHolder, contents.size)
+  override fun makeInventory(holder: InventoryHolder, store: ChestContentsStore): Inventory {
+    val inventory = Bukkit.createInventory(holder, contents.size)
     inventory.contents = contents
     return inventory
   }

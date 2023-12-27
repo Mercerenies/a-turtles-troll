@@ -37,6 +37,7 @@ A Turtle's Troll also depends on the following libraries.
 * Y=69 never generates anything at world generation time.
 * Umbrella hats will protect you from the rain.
 * Mimic chests can now spawn as trapped or double chests.
+* Mimic chests now show a variety of different possible displays.
 * Removed a particularly obnoxious cookie effect.
 * Fixed bug with trivia if a player logs out during a question.
 * Improved some debugging capabilities.

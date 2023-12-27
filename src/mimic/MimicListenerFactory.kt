@@ -15,8 +15,10 @@ class MimicListenerFactory(
 ) : FeatureContainerFactory<FeatureContainer> {
 
   companion object {
-    val CONTENTS_FACTORY_OPTIONS: List<MimicContentsFactory> = listOf(
+    val CONTENTS_FACTORY_OPTIONS = listOf(
       ConstantContentsFactory(LegacyMimicIdentifier.chestPattern()),
+      LastChestContentsFactory,
+      CraftingContentsFactory,
     )
     val CONTENTS_FACTORY = MimicContentsFactory.several(CONTENTS_FACTORY_OPTIONS)
   }

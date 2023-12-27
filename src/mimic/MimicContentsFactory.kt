@@ -16,7 +16,7 @@ fun interface MimicContentsFactory {
       if (factories.isEmpty()) {
         throw IllegalArgumentException("At least one factory must be provided")
       }
-      return MimicContentsFactory { holder -> factories.random().makeInventory(holder) }
+      return MimicContentsFactory { holder, store -> factories.random().makeInventory(holder, store) }
     }
 
     fun several(factories: List<MimicContentsFactory>): MimicContentsFactory =
@@ -24,6 +24,6 @@ fun interface MimicContentsFactory {
 
   }
 
-  fun makeInventory(inventoryHolder: InventoryHolder): Inventory
+  fun makeInventory(holder: InventoryHolder, store: ChestContentsStore): Inventory
 
 }
