@@ -15,41 +15,27 @@ import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.event.block.Action
 import org.bukkit.block.Block
 import org.bukkit.block.Chest
+import org.bukkit.plugin.Plugin
 import org.bukkit.Material
 
-class ChestShuffleListener() : AbstractFeature(), Listener {
+class ChestShuffleListener(
+  private val plugin: Plugin,
+) : AbstractFeature(), Listener {
 
   companion object : FeatureContainerFactory<FeatureContainer> {
 
     private val ATTEMPTS = 500
 
-    private fun isChest(block: Block): Boolean {
-      if (MimicIdentifier.isMimic(block)) {
-        // Never consider mimics to be chests, by the definition
-        // needed for this listener.
-        return false
-      }
-      return block.getType() == Material.CHEST || block.getType() == Material.TRAPPED_CHEST
-    }
-
-    private fun findNearbyChest(block: Block): Block? {
-      for (i in 1..ATTEMPTS) {
-        val attempt = BlockSelector.getRandomBlockNearDims(block, distance = 8)
-        if (isChest(attempt)) {
-          return attempt
-        }
-      }
-      return null
-    }
-
     override fun create(state: BuilderState): FeatureContainer =
-      ListenerContainer(ChestShuffleListener())
+      ListenerContainer(ChestShuffleListener(state.plugin))
 
   }
 
   override val name = "chestshuffle"
 
   override val description = "When you attempt to open a chest, a different nearby chest might accidentally be opened instead"
+
+  private val mimicIdentifier = MimicIdentifier(plugin)
 
   @EventHandler
   fun onPlayerInteract(event: PlayerInteractEvent) {
@@ -68,6 +54,25 @@ class ChestShuffleListener() : AbstractFeature(), Listener {
       }
     }
 
+  }
+
+  private fun isChest(block: Block): Boolean {
+    if (mimicIdentifier.isMimic(block)) {
+      // Never consider mimics to be chests, by the definition
+      // needed for this listener.
+      return false
+    }
+    return block.getType() == Material.CHEST || block.getType() == Material.TRAPPED_CHEST
+  }
+
+  private fun findNearbyChest(block: Block): Block? {
+    for (i in 1..ATTEMPTS) {
+      val attempt = BlockSelector.getRandomBlockNearDims(block, distance = 8)
+      if (isChest(attempt)) {
+        return attempt
+      }
+    }
+    return null
   }
 
 }

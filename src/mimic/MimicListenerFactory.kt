@@ -24,7 +24,7 @@ class MimicListenerFactory(
     val replaceChance = state.config.getDouble("mimics.probability")
     val mimicListener = MimicListener(state.plugin, deathRegistry, replaceChance)
     return ListenerContainer(mimicListener).withPlayerDebugCommand("mimic") { player ->
-      MimicIdentifier.spawnMimic(player.location.block)
+      MimicIdentifier(state.plugin).spawnMimic(player.location.block)
       true
     }
   }

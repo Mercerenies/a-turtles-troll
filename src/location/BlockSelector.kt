@@ -84,7 +84,11 @@ object BlockSelector {
   }
 
   // Used to detect mimics and cakes for spawn limits
-  fun isMimicOrCake(block: Block): Boolean =
-    MimicIdentifier.isMimic(block) || CakeListener.isCake(block.type)
+  //
+  // TODO I don't like that we have to explicitly take MimicIdentifier
+  // here. Can this method go somewhere better where we already have
+  // access to things?
+  fun isMimicOrCake(mimicIdentifier: MimicIdentifier, block: Block): Boolean =
+    mimicIdentifier.isMimic(block) || CakeListener.isCake(block.type)
 
 }

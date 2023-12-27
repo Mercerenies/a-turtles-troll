@@ -8,6 +8,7 @@ import com.mercerenies.turtletroll.Weight
 import com.mercerenies.turtletroll.sample
 import com.mercerenies.turtletroll.Constants
 import com.mercerenies.turtletroll.mimic.MimicListener
+import com.mercerenies.turtletroll.mimic.MimicIdentifier
 import com.mercerenies.turtletroll.location.BlockSelector
 
 import org.bukkit.GameRule
@@ -151,7 +152,10 @@ class CakeListener(
       return
     }
     if (MOBS_TO_REPLACE.contains(event.entity.type)) {
-      if (BlockSelector.countNearbyMatching(event.location.block, MimicListener.SAFETY_RADIUS, BlockSelector::isMimicOrCake) < 1) {
+      val nearbyMatching = BlockSelector.countNearbyMatching(event.location.block, MimicListener.SAFETY_RADIUS) {
+        BlockSelector.isMimicOrCake(MimicIdentifier(plugin), it)
+      }
+      if (nearbyMatching < 1) {
         if (Random.nextDouble() < mobReplaceChance) {
           val below = event.location.clone().add(0.0, -1.0, 0.0)
           if (below.block.type != Material.AIR) {

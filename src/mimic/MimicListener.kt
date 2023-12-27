@@ -63,6 +63,8 @@ class MimicListener(
 
   override val description = "Chests randomly spawn in the wild which, if opened, kill you"
 
+  private val mimicIdentifier = MimicIdentifier(plugin)
+
   @EventHandler
   fun onCreatureSpawn(event: CreatureSpawnEvent) {
     if (!isEnabled()) {
@@ -72,12 +74,15 @@ class MimicListener(
       return
     }
     if (MOBS_TO_REPLACE.contains(event.entity.type)) {
-      if (BlockSelector.countNearbyMatching(event.location.block, SAFETY_RADIUS, BlockSelector::isMimicOrCake) < 1) {
+      val nearbyMatching = BlockSelector.countNearbyMatching(event.location.block, MimicListener.SAFETY_RADIUS) {
+        BlockSelector.isMimicOrCake(mimicIdentifier, it)
+      }
+      if (nearbyMatching < 1) {
         if (Random.nextDouble() < mobReplaceChance) {
           val below = event.location.clone().add(0.0, -1.0, 0.0)
           if (below.block.type != Material.AIR) {
             event.setCancelled(true)
-            MimicIdentifier.spawnMimic(event.location.block)
+            mimicIdentifier.spawnMimic(event.location.block)
           }
         }
       }
@@ -91,7 +96,7 @@ class MimicListener(
     }
 
     val block = event.getClickedBlock()
-    if ((MimicIdentifier.isMimic(block)) && (event.getAction() == Action.RIGHT_CLICK_BLOCK)) {
+    if ((mimicIdentifier.isMimic(block)) && (event.getAction() == Action.RIGHT_CLICK_BLOCK)) {
       KillPlayerRunnable(event.player).runTaskLater(plugin, KILL_DELAY.toLong())
     }
 
@@ -104,7 +109,7 @@ class MimicListener(
     }
 
     val inventory = event.clickedInventory
-    if ((inventory != null) && (MimicIdentifier.belongsToMimic(inventory))) {
+    if ((inventory != null) && (mimicIdentifier.belongsToMimic(inventory))) {
       event.setCancelled(true)
     }
   }
