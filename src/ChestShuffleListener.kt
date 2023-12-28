@@ -13,10 +13,14 @@ import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerInteractEvent
 import org.bukkit.event.block.Action
+import org.bukkit.entity.Player
 import org.bukkit.block.Block
 import org.bukkit.block.Chest
 import org.bukkit.plugin.Plugin
 import org.bukkit.Material
+
+import kotlin.collections.HashMap
+import kotlin.random.Random
 
 class ChestShuffleListener(
   private val plugin: Plugin,
@@ -26,6 +30,9 @@ class ChestShuffleListener(
 
     private val ATTEMPTS = 500
 
+    // TODO Move this to config file
+    private val RECENT_PLAYER_CHEST_PROBABILITY = 0.1
+
     override fun create(state: BuilderState): FeatureContainer =
       ListenerContainer(ChestShuffleListener(state.plugin))
 
@@ -33,9 +40,11 @@ class ChestShuffleListener(
 
   override val name = "chestshuffle"
 
-  override val description = "When you attempt to open a chest, a different nearby chest might accidentally be opened instead"
+  override val description = "When you attempt to open a chest, a different chest might accidentally be opened instead"
 
   private val mimicIdentifier = MimicIdentifier(plugin)
+
+  private val recentChestLocations = HashMap<Player, Block>()
 
   @EventHandler
   fun onPlayerInteract(event: PlayerInteractEvent) {
@@ -51,6 +60,10 @@ class ChestShuffleListener(
         event.setCancelled(true)
         val inv = (newBlock.getState() as Chest).getBlockInventory()
         event.player.openInventory(inv)
+      } else {
+        // If we don't replace it, then remember the location of this
+        // chest for later.
+        recentChestLocations[event.player] = block
       }
     }
 
@@ -66,12 +79,23 @@ class ChestShuffleListener(
   }
 
   private fun findNearbyChest(block: Block): Block? {
+    // Small probability to roll a recent player's chest
+    if (Random.nextDouble() < RECENT_PLAYER_CHEST_PROBABILITY) {
+      val recentBlock = recentChestLocations.values.randomOrNull()
+      if ((recentBlock != null) && (isChest(recentBlock))) {
+        return block
+      }
+    }
+
+    // Roll nearby locations
     for (i in 1..ATTEMPTS) {
       val attempt = BlockSelector.getRandomBlockNearDims(block, distance = 8)
       if (isChest(attempt)) {
         return attempt
       }
     }
+
+    // Failed to find a chest, return null
     return null
   }
 

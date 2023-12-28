@@ -39,6 +39,7 @@ A Turtle's Troll also depends on the following libraries.
 * Mimic chests can now spawn as trapped or double chests.
 * Mimic chests now show a variety of different possible displays.
 * Removed a particularly obnoxious cookie effect.
+* Improved logic of `chestshuffle` effect.
 * Fixed bug with trivia if a player logs out during a question.
 * Improved some debugging capabilities.
 * Debug commands are now in the `/turtle dbg` namespace.
