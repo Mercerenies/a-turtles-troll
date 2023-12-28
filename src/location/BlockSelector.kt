@@ -5,6 +5,7 @@ import com.mercerenies.turtletroll.mimic.MimicIdentifier
 import com.mercerenies.turtletroll.cake.CakeListener
 
 import org.bukkit.Chunk
+import org.bukkit.Location
 import org.bukkit.block.Block
 
 import kotlin.random.Random
@@ -47,6 +48,35 @@ object BlockSelector {
     val z = block.getZ() + Random.nextInt(- distance - 1, distance)
     return block.location.world!!.getBlockAt(x, y, z)
   }
+
+  fun getNearby(location: Location, distance: Int): List<Location> {
+    val result = ArrayList<Location>()
+    for (z in -distance..distance) {
+      for (y in -distance..distance) {
+        for (x in -distance..distance) {
+          if (Math.abs(x) + Math.abs(y) + Math.abs(z) <= distance) {
+            result.add(Location(location.world, x.toDouble(), y.toDouble(), z.toDouble()).add(location))
+          }
+        }
+      }
+    }
+    return result
+  }
+
+  fun getNearbyXZ(location: Location, distance: Int): List<Location> {
+    val result = ArrayList<Location>()
+    for (z in -distance..distance) {
+      for (x in -distance..distance) {
+        if (Math.abs(x) + Math.abs(z) <= distance) {
+          result.add(Location(location.world, x.toDouble(), 0.0, z.toDouble()).add(location))
+        }
+      }
+    }
+    return result
+  }
+
+  fun isExposedToSky(block: Block): Boolean =
+    block.getLightFromSky() == 15.toByte()
 
   fun<T> selectNearbyMatching(block: Block, distance: Int, matcher: (Block) -> T?): List<T> {
     val matches = ArrayList<T>()

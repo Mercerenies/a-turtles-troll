@@ -4,7 +4,6 @@ package com.mercerenies.turtletroll.dripstone
 import com.mercerenies.turtletroll.feature.RunnableFeature
 import com.mercerenies.turtletroll.CooldownMemory
 import com.mercerenies.turtletroll.Constants
-import com.mercerenies.turtletroll.ext.*
 import com.mercerenies.turtletroll.location.BlockSelector
 
 import org.bukkit.entity.Player
@@ -124,7 +123,7 @@ class DripstoneManager(plugin: Plugin) : RunnableFeature(plugin), Listener {
     }
     val location = event.getTo().block.location
 
-    for (local in location.nearbyXZ(2)) {
+    for (local in BlockSelector.getNearbyXZ(location, 2)) {
       // Look for a stalactite
       val stalactite = findStalactite(local.block)
       if ((stalactite != null) && (!_placedBlocks.contains(stalactite))) {

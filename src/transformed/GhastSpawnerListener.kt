@@ -1,7 +1,7 @@
 
 package com.mercerenies.turtletroll.transformed
 
-import com.mercerenies.turtletroll.ext.*
+import com.mercerenies.turtletroll.location.BlockSelector
 import com.mercerenies.turtletroll.SpawnReason
 import com.mercerenies.turtletroll.ReplaceMobsRunnable
 import com.mercerenies.turtletroll.feature.container.FeatureContainer
@@ -65,7 +65,7 @@ class GhastSpawnerListener(
     val entity = event.entity
     val world = event.location.world!!
     if ((HOSTILES.contains(entity.type)) && (WORLDS.contains(world.environment))) {
-      if ((event.location.isExposedToSky()) || (world.environment == World.Environment.THE_END)) {
+      if ((BlockSelector.isExposedToSky(event.location.block)) || (world.environment == World.Environment.THE_END)) {
         return true
       }
     }

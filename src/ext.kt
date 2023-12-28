@@ -1,7 +1,6 @@
 
 package com.mercerenies.turtletroll.ext
 
-import org.bukkit.Location
 import org.bukkit.event.block.BlockBreakEvent
 import org.bukkit.inventory.ItemStack
 import org.bukkit.enchantments.Enchantment
@@ -15,35 +14,6 @@ import kotlin.collections.HashMap
 
 // TODO This entire file is deprecated. Move all helpers into
 // appropriate classes or into util package.
-
-fun Location.nearby(distance: Int): List<Location> {
-  val result = ArrayList<Location>()
-  for (z in -distance..distance) {
-    for (y in -distance..distance) {
-      for (x in -distance..distance) {
-        if (Math.abs(x) + Math.abs(y) + Math.abs(z) <= distance) {
-          result.add(Location(this.world, x.toDouble(), y.toDouble(), z.toDouble()).add(this))
-        }
-      }
-    }
-  }
-  return result
-}
-
-fun Location.nearbyXZ(distance: Int): List<Location> {
-  val result = ArrayList<Location>()
-  for (z in -distance..distance) {
-    for (x in -distance..distance) {
-      if (Math.abs(x) + Math.abs(z) <= distance) {
-        result.add(Location(this.world, x.toDouble(), 0.0, z.toDouble()).add(this))
-      }
-    }
-  }
-  return result
-}
-
-fun Location.isExposedToSky(): Boolean =
-  this.getBlock().getLightFromSky() == 15.toByte()
 
 fun<T> MutableIterator<T>.retainAll(func: (T) -> Boolean): List<T> {
   val result = ArrayList<T>()

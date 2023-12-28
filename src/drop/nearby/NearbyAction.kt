@@ -1,7 +1,7 @@
 
 package com.mercerenies.turtletroll.drop.nearby
 
-import com.mercerenies.turtletroll.ext.*
+import com.mercerenies.turtletroll.location.BlockSelector
 import com.mercerenies.turtletroll.drop.BlockBreakAction
 
 import org.bukkit.Location
@@ -16,7 +16,7 @@ interface NearbyAction : BlockBreakAction {
 
     val radius = getRadius(event)
     if (radius > 0) {
-      for (loc in brokenLoc.nearby(radius)) {
+      for (loc in BlockSelector.getNearby(brokenLoc, radius)) {
         if (loc != brokenLoc) {
           onActivateNearby(event, loc)
         }

@@ -6,7 +6,6 @@ import com.mercerenies.turtletroll.feature.container.FeatureContainer
 import com.mercerenies.turtletroll.feature.container.ManagerContainer
 import com.mercerenies.turtletroll.feature.builder.BuilderState
 import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
-import com.mercerenies.turtletroll.ext.*
 import com.mercerenies.turtletroll.location.BlockSelector
 
 import org.bukkit.plugin.Plugin
@@ -26,7 +25,7 @@ class ContagiousMossManager(plugin: Plugin) : RunnableFeature(plugin), Listener 
       ManagerContainer(ContagiousMossManager(state.plugin))
 
     fun isAdjacentToMoss(block: Block): Boolean {
-      for (loc in block.location.nearby(1)) {
+      for (loc in BlockSelector.getNearby(block.location, 1)) {
         if (loc.block.type == Material.MOSS_BLOCK) {
           return true
         }
