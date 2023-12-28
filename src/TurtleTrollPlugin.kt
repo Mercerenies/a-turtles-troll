@@ -21,8 +21,7 @@ import org.bukkit.Bukkit
 
 import com.comphenix.protocol.ProtocolLibrary
 
-// TODO Rename this to TurtleTrollPlugin or something sensible.
-class Main : JavaPlugin() {
+class TurtleTrollPlugin : JavaPlugin() {
 
   private val dataHolder = GlobalFileDataHolder(this)
 
