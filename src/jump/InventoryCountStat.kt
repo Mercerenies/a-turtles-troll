@@ -11,7 +11,7 @@ class InventoryCountStat(
 ) : EncumbranceStat {
 
   private fun countOccupiedSlots(inventory: Inventory): Int =
-    // TODO (HACK) getStorageContents() nullability annotation cannot
+    // HACK getStorageContents() nullability annotation cannot
     // be understood by Kotlin.
     inventory.getStorageContents()!!.filter { it != null }.size
 
