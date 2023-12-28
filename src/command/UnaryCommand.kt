@@ -1,7 +1,7 @@
 
 package com.mercerenies.turtletroll.command
 
-import com.mercerenies.turtletroll.ext.*
+import com.mercerenies.turtletroll.util.head
 
 import org.bukkit.command.CommandSender
 

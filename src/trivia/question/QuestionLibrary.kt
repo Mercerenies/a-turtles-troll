@@ -1,7 +1,8 @@
 
 package com.mercerenies.turtletroll.trivia.question
 
-import com.mercerenies.turtletroll.ext.*
+import com.mercerenies.turtletroll.util.component.*
+import com.mercerenies.turtletroll.util.withEnchantment
 import com.mercerenies.turtletroll.BlockTypes
 
 import org.bukkit.Material

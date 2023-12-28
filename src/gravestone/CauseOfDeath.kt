@@ -1,7 +1,7 @@
 
 package com.mercerenies.turtletroll.gravestone
 
-import com.mercerenies.turtletroll.util.*
+import com.mercerenies.turtletroll.util.component.*
 
 import org.bukkit.event.entity.PlayerDeathEvent
 import org.bukkit.event.entity.EntityDamageEvent

@@ -1,7 +1,7 @@
 
 package com.mercerenies.turtletroll.jump
 
-import com.mercerenies.turtletroll.ext.*
+import com.mercerenies.turtletroll.util.component.*
 import com.mercerenies.turtletroll.Messages
 
 import org.bukkit.entity.Player

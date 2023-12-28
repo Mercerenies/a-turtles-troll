@@ -3,7 +3,7 @@ package com.mercerenies.turtletroll.demand.bowser
 
 import com.mercerenies.turtletroll.demand.DailyDemandEvent
 import com.mercerenies.turtletroll.demand.event.EventSelector
-import com.mercerenies.turtletroll.ext.*
+import com.mercerenies.turtletroll.util.component.*
 
 import kotlin.random.Random
 

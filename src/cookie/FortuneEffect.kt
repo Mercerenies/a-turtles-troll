@@ -2,7 +2,7 @@
 package com.mercerenies.turtletroll.cookie
 
 import com.mercerenies.turtletroll.Messages
-import com.mercerenies.turtletroll.ext.*
+import com.mercerenies.turtletroll.util.component.*
 import com.mercerenies.turtletroll.AllItems
 import com.mercerenies.turtletroll.BookBuilder
 import com.mercerenies.turtletroll.NameSource

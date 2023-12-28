@@ -1,7 +1,7 @@
 
 package com.mercerenies.turtletroll.transformed
 
-import com.mercerenies.turtletroll.ext.*
+import com.mercerenies.turtletroll.util.component.*
 import com.mercerenies.turtletroll.feature.AbstractFeature
 
 import org.bukkit.event.EventHandler

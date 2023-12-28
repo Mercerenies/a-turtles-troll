@@ -2,7 +2,7 @@
 package com.mercerenies.turtletroll.demand.bowser
 
 import com.mercerenies.turtletroll.Messages
-import com.mercerenies.turtletroll.ext.*
+import com.mercerenies.turtletroll.util.component.*
 
 import org.bukkit.Bukkit
 import org.bukkit.entity.Player

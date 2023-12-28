@@ -1,7 +1,7 @@
 
 package com.mercerenies.turtletroll
 
-import com.mercerenies.turtletroll.ext.*
+import com.mercerenies.turtletroll.util.component.*
 import com.mercerenies.turtletroll.config.CheckedConfigOptions
 import com.mercerenies.turtletroll.feature.RunnableFeature
 import com.mercerenies.turtletroll.feature.container.FeatureContainer

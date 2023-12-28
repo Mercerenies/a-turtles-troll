@@ -2,7 +2,7 @@
 package com.mercerenies.turtletroll.cookie
 
 import com.mercerenies.turtletroll.feature.AbstractFeature
-import com.mercerenies.turtletroll.ext.*
+import com.mercerenies.turtletroll.util.component.*
 import com.mercerenies.turtletroll.Weight
 import com.mercerenies.turtletroll.sample
 import com.mercerenies.turtletroll.gravestone.CustomDeathMessageRegistry

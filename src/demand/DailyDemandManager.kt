@@ -7,7 +7,7 @@ import com.mercerenies.turtletroll.command.Command
 import com.mercerenies.turtletroll.command.TerminalCommand
 import com.mercerenies.turtletroll.command.withPermission
 import com.mercerenies.turtletroll.command.Permissions
-import com.mercerenies.turtletroll.ext.*
+import com.mercerenies.turtletroll.util.component.*
 import com.mercerenies.turtletroll.Messages
 import com.mercerenies.turtletroll.demand.event.EventSelector
 

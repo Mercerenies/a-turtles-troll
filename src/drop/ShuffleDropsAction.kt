@@ -1,7 +1,7 @@
 
 package com.mercerenies.turtletroll.drop
 
-import com.mercerenies.turtletroll.ext.*
+import com.mercerenies.turtletroll.util.EventUtils
 
 import org.bukkit.Material
 import org.bukkit.event.block.BlockBreakEvent
@@ -14,7 +14,7 @@ class ShuffleDropsAction(
 ) : BlockBreakAction {
 
   override fun shouldTrigger(event: BlockBreakEvent): Boolean {
-    val defaultDrops = event.getDefaultDrops()
+    val defaultDrops = EventUtils.getDefaultDrops(event)
     return !defaultDrops.isEmpty() && defaultDrops.all { types.contains(it.type) }
   }
 
@@ -22,7 +22,7 @@ class ShuffleDropsAction(
     val w = event.block.world
     val loc = event.block.location.add(0.5, 0.5, 0.5)
 
-    val defaultDrops = event.getDefaultDrops()
+    val defaultDrops = EventUtils.getDefaultDrops(event)
     val dropCount = defaultDrops.map { it.amount }.sum()
 
     event.block.type = Material.AIR

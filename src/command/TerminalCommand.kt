@@ -1,8 +1,6 @@
 
 package com.mercerenies.turtletroll.command
 
-import com.mercerenies.turtletroll.ext.*
-
 import org.bukkit.command.CommandSender
 
 abstract class TerminalCommand() : Command {

@@ -2,7 +2,7 @@
 package com.mercerenies.turtletroll.demand
 
 import com.mercerenies.turtletroll.Messages
-import com.mercerenies.turtletroll.ext.*
+import com.mercerenies.turtletroll.util.component.*
 import com.mercerenies.turtletroll.util.*
 import com.mercerenies.turtletroll.gravestone.CauseOfDeath
 import com.mercerenies.turtletroll.gravestone.Vanilla

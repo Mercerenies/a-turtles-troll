@@ -1,7 +1,7 @@
 
 package com.mercerenies.turtletroll
 
-import com.mercerenies.turtletroll.util.*
+import com.mercerenies.turtletroll.util.component.*
 
 import org.bukkit.Material
 import org.bukkit.inventory.ItemStack

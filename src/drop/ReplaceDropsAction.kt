@@ -1,7 +1,7 @@
 
 package com.mercerenies.turtletroll.drop
 
-import com.mercerenies.turtletroll.ext.*
+import com.mercerenies.turtletroll.util.EventUtils
 
 import org.bukkit.Material
 import org.bukkit.event.block.BlockBreakEvent
@@ -12,7 +12,7 @@ import org.bukkit.entity.EntityType
 class ReplaceDropsAction(val itemStack: ItemStack) : BlockBreakAction {
 
   override fun shouldTrigger(event: BlockBreakEvent): Boolean {
-    return !event.getDefaultDrops().isEmpty()
+    return !EventUtils.getDefaultDrops(event).isEmpty()
   }
 
   override fun trigger(event: BlockBreakEvent) {

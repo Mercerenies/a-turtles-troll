@@ -1,7 +1,7 @@
 
 package com.mercerenies.turtletroll.demand
 
-import com.mercerenies.turtletroll.ext.*
+import com.mercerenies.turtletroll.util.component.*
 
 import org.bukkit.Bukkit
 import org.bukkit.NamespacedKey

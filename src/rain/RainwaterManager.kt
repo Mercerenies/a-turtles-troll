@@ -1,7 +1,7 @@
 
 package com.mercerenies.turtletroll.rain
 
-import com.mercerenies.turtletroll.ext.*
+import com.mercerenies.turtletroll.util.component.*
 import com.mercerenies.turtletroll.util.*
 import com.mercerenies.turtletroll.Constants
 import com.mercerenies.turtletroll.gravestone.CustomDeathMessageRegistry

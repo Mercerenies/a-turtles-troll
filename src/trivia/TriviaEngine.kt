@@ -5,7 +5,7 @@ import com.mercerenies.turtletroll.trivia.question.TriviaQuestion
 import com.mercerenies.turtletroll.trivia.question.TriviaQuestionSupplier
 import com.mercerenies.turtletroll.trivia.question.TriviaQuestionReward
 import com.mercerenies.turtletroll.trivia.question.ItemReward
-import com.mercerenies.turtletroll.ext.*
+import com.mercerenies.turtletroll.util.component.*
 import com.mercerenies.turtletroll.Messages
 import com.mercerenies.turtletroll.location.PlayerSelector
 

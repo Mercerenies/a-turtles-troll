@@ -1,7 +1,7 @@
 
 package com.mercerenies.turtletroll.drop.nearby
 
-import com.mercerenies.turtletroll.ext.*
+import com.mercerenies.turtletroll.util.component.*
 
 import org.bukkit.Material
 import org.bukkit.Location

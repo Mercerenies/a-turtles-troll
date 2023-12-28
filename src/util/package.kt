@@ -1,15 +1,13 @@
 
 package com.mercerenies.turtletroll.util
 
-import com.mercerenies.turtletroll.ext.*
+import com.mercerenies.turtletroll.util.component.*
 
 import org.bukkit.inventory.ItemStack
 import org.bukkit.inventory.meta.ItemMeta
 import org.bukkit.World
 import org.bukkit.GameRule
-
-import net.kyori.adventure.text.Component
-import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer
+import org.bukkit.enchantments.Enchantment
 
 import kotlin.math.min
 import kotlin.math.max
@@ -54,27 +52,6 @@ fun pluralize(items: List<String>, conjunction: String = "and"): String =
     }
   }
 
-fun pluralize(items: List<Component>, conjunction: String = "and"): Component =
-  when (items.size) {
-    0 -> Component.text("")
-    1 -> items[0]
-    2 -> items[0].append(" ${conjunction} ").append(items[1])
-    else -> {
-      val itemCount = items.size
-      val result = Component.text()
-      for ((i, s) in items.withIndex()) {
-        if (i == 0) {
-          result.append(s)
-        } else if (i == itemCount - 1) {
-          result.append(", ${conjunction} ").append(s)
-        } else {
-          result.append(", ").append(s)
-        }
-      }
-      result.build()
-    }
-  }
-
 fun amounts(n: Int, unit: String, suffix: String = "s") =
   if (n == 1) {
     unit
@@ -91,22 +68,45 @@ fun ItemStack.withItemMeta(f: (ItemMeta?) -> Unit): ItemStack {
   return this
 }
 
-fun Component.asPlainText(): String =
-  PlainTextComponentSerializer.plainText().serialize(this)
-
-fun joinWithCommas(components: List<Component>): Component {
-  var first = true
-  val builder = Component.text()
-  for (component in components) {
-    if (first) {
-      first = false
-    } else {
-      builder.append(", ")
-    }
-    builder.append(component)
-  }
-  return builder.build()
-}
-
 fun<T> World.getGameRuleValueOrDefault(rule: GameRule<T>): T =
   getGameRuleValue(rule) ?: getGameRuleDefault(rule)!!
+
+fun<T> MutableIterator<T>.retainAll(func: (T) -> Boolean): List<T> {
+  val result = ArrayList<T>()
+  while (this.hasNext()) {
+    val curr = this.next()
+    if (!func(curr)) {
+      result.add(curr)
+      this.remove()
+    }
+  }
+  return result
+}
+val<T> List<T>.tail: List<T>?
+  get() =
+    if (this.size == 0) {
+      null
+    } else {
+      this.subList(1, this.size)
+    }
+
+val<T> List<T>.head: T?
+  get() =
+    if (this.size == 0) {
+      null
+    } else {
+      this[0]
+    }
+
+// Left-biased union
+infix fun<K, V> Map<K, V>.union(that: Map<K, V>): Map<K, V> {
+  val merged = HashMap(that)
+  merged.putAll(this)
+  return merged
+}
+
+// ItemStack.addEnchantment, but fluent
+fun ItemStack.withEnchantment(enchantment: Enchantment, level: Int): ItemStack {
+  this.addEnchantment(enchantment, level)
+  return this
+}

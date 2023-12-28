@@ -1,7 +1,7 @@
 
 package com.mercerenies.turtletroll.demand
 
-import com.mercerenies.turtletroll.ext.*
+import com.mercerenies.turtletroll.util.component.*
 
 // Interface for things capable of asking how the gods are feeling
 // right now.

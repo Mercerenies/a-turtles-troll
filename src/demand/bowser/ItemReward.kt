@@ -1,7 +1,7 @@
 
 package com.mercerenies.turtletroll.demand.bowser
 
-import com.mercerenies.turtletroll.ext.*
+import com.mercerenies.turtletroll.util.component.*
 import com.mercerenies.turtletroll.AllItems
 
 import org.bukkit.inventory.ItemStack

@@ -3,7 +3,7 @@ package com.mercerenies.turtletroll.trivia
 
 import com.mercerenies.turtletroll.trivia.question.TriviaQuestionReward
 import com.mercerenies.turtletroll.Messages
-import com.mercerenies.turtletroll.ext.*
+import com.mercerenies.turtletroll.util.component.*
 import com.mercerenies.turtletroll.util.*
 
 import org.bukkit.entity.Player
