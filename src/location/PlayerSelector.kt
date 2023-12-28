@@ -4,6 +4,7 @@ package com.mercerenies.turtletroll.location
 import org.bukkit.Location
 import org.bukkit.Bukkit
 import org.bukkit.entity.Player
+import org.bukkit.entity.Entity
 
 import java.util.UUID
 
@@ -26,6 +27,9 @@ object PlayerSelector {
     }
     return best
   }
+
+  fun findNearestPlayer(targetEntity: Entity, maxDistSq: Double = Double.MAX_VALUE): Player? =
+    findNearestPlayer(targetEntity.location, maxDistSq)
 
   fun chooseRandomPlayer(): Player? =
     Bukkit.getOnlinePlayers().toList().randomOrNull()

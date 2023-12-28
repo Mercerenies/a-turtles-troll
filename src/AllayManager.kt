@@ -36,10 +36,6 @@ class AllayManager(_plugin: Plugin) : RunnableFeature(_plugin), Listener {
         it.getEntitiesByClass(Allay::class.java)
       }
 
-    // TODO Move to PlayerSelector (this and ParrotManager's function)
-    fun nearestPlayer(entity: Entity): Player? =
-      PlayerSelector.findNearestPlayer(entity.location, DISTANCE_SQUARED_LIMIT)
-
   }
 
   override val name = "allays"
@@ -49,7 +45,7 @@ class AllayManager(_plugin: Plugin) : RunnableFeature(_plugin), Listener {
   override val taskPeriod = 2L * Constants.TICKS_PER_SECOND + 2L
 
   private fun manageAllay(allay: Allay) {
-    val nearestPlayerToAllay = nearestPlayer(allay)
+    val nearestPlayerToAllay = PlayerSelector.findNearestPlayer(allay, DISTANCE_SQUARED_LIMIT)
     if (nearestPlayerToAllay != null) {
       NMS.setAllayFriend(allay, nearestPlayerToAllay)
     }

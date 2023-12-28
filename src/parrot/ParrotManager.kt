@@ -42,9 +42,6 @@ class ParrotManager(_plugin: Plugin) : RunnableFeature(_plugin), Listener {
         it.getEntitiesByClass(Parrot::class.java)
       }
 
-    fun nearestPlayer(entity: Entity): Player? =
-      PlayerSelector.findNearestPlayer(entity.location, DISTANCE_SQUARED_LIMIT)
-
     val DEFAULT_NAME_SOURCE = NameSource.FromList(
       listOf(
         "Iago", "Polly", "Captain Flint", "Blu",
@@ -69,7 +66,7 @@ class ParrotManager(_plugin: Plugin) : RunnableFeature(_plugin), Listener {
     parrot.addPotionEffect(PotionEffect(PotionEffectType.HEALTH_BOOST, Constants.TICKS_PER_SECOND * 999, 2))
     parrot.setSitting(false)
     if (parrot.owner == null) {
-      parrot.owner = nearestPlayer(parrot)
+      parrot.owner = PlayerSelector.findNearestPlayer(parrot, DISTANCE_SQUARED_LIMIT)
       if (parrot.customName() == null) {
         parrot.customName(nameSource.sampleName())
       }
