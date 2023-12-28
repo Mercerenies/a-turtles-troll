@@ -5,6 +5,7 @@ import com.mercerenies.turtletroll.trivia.question.TriviaQuestion
 import com.mercerenies.turtletroll.trivia.question.TriviaQuestionSupplier
 import com.mercerenies.turtletroll.trivia.question.TriviaQuestionReward
 import com.mercerenies.turtletroll.trivia.question.ItemReward
+import com.mercerenies.turtletroll.trivia.question.AnswerResult
 import com.mercerenies.turtletroll.util.component.*
 import com.mercerenies.turtletroll.Messages
 import com.mercerenies.turtletroll.location.PlayerSelector
@@ -51,13 +52,16 @@ class TriviaEngine(
     Messages.broadcastMessage("Use `/turtle answer <your_answer>` to answer the question!")
   }
 
-  fun acceptAnswer(player: Player, answer: String): Boolean {
+  fun acceptAnswer(player: Player, answer: String): AnswerResult {
     val question = currentQuestion
-    if ((question == null) || (!question.acceptAnswer(answer))) {
-      return false
+    if (question == null) {
+      return AnswerResult.ErrorResult("There is no active trivia question at this time.")
     }
-    answers[player.uniqueId] = answer
-    return true
+    val acceptance = question.acceptAnswer(answer)
+    if (acceptance.isSuccessful()) {
+      answers[player.uniqueId] = answer
+    }
+    return acceptance
   }
 
   fun judgeAnswers(): TriviaResult {
@@ -82,6 +86,7 @@ class TriviaEngine(
         incorrectAnswerers.add(player)
       }
     }
+    currentQuestion = null // Clear the current question field
     return TriviaResult(
       correctAnswerers = correctAnswerers,
       incorrectAnswerers = incorrectAnswerers,

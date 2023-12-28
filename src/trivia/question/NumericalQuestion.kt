@@ -16,8 +16,12 @@ class NumericalQuestion(
     Messages.broadcastMessage(questionBody)
   }
 
-  override fun acceptAnswer(answer: String): Boolean =
-    answer.toIntOrNull() != null
+  override fun acceptAnswer(answer: String): AnswerResult {
+    if (answer.toIntOrNull() == null) {
+      return AnswerResult.ErrorResult("Please enter a valid integer.")
+    }
+    return AnswerResult.SuccessResult
+  }
 
   override fun checkAnswer(answer: String): Boolean =
     answer.toInt() == correctAnswer

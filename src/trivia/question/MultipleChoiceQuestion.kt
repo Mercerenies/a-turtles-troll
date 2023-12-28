@@ -63,12 +63,16 @@ class MultipleChoiceQuestion(
     }
   }
 
-  override fun acceptAnswer(answer: String): Boolean {
+  override fun acceptAnswer(answer: String): AnswerResult {
     if (answer.length != 1) {
-      return false
+      return AnswerResult.ErrorResult(failureMessage())
     }
     val index = letterToIndex(answer.first())
-    return (index != null) && (index < answersList.size)
+    if ((index != null) && (index < answersList.size)) {
+      return AnswerResult.SuccessResult
+    } else {
+      return AnswerResult.ErrorResult(failureMessage())
+    }
   }
 
   override fun checkAnswer(answer: String): Boolean {
@@ -79,5 +83,11 @@ class MultipleChoiceQuestion(
 
   override fun chooseReward(): TriviaQuestionReward =
     rewards.random()
+
+  private fun acceptableAnswers(): List<Char> =
+    LETTERS.take(answersList.size)
+
+  private fun failureMessage(): String =
+    "Please enter one of ${acceptableAnswers().joinToString(", ")}."
 
 }

@@ -25,11 +25,11 @@ class TriviaAnswerCommand(
       Messages.sendMessage(sender, "That command can only be used by players.")
       return false
     }
-    if (engine.acceptAnswer(sender, arg)) {
+    val acceptance = engine.acceptAnswer(sender, arg)
+    if (acceptance.isSuccessful()) {
       Messages.sendMessage(sender, "Answer accepted!")
     } else {
-      // TODO More specific error from the question itself.
-      Messages.sendMessage(sender, "That is not a valid answer to this question.")
+      Messages.sendMessage(sender, acceptance.errorMessage)
     }
     return true
   }
