@@ -19,7 +19,7 @@ import org.bukkit.event.player.PlayerMoveEvent
 import org.bukkit.event.entity.EntitySpawnEvent
 import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
-import org.bukkit.entity.Entity
+import org.bukkit.entity.HumanEntity
 import org.bukkit.entity.Parrot
 import org.bukkit.entity.Player
 import org.bukkit.plugin.Plugin
@@ -35,12 +35,25 @@ class ParrotManager(_plugin: Plugin) : RunnableFeature(_plugin), Listener {
     override fun create(state: BuilderState): FeatureContainer =
       ManagerContainer(ParrotManager(state.plugin))
 
-    private val targetEffectType: PotionEffectType = PotionEffectType.LEVITATION
+    private val TARGET_EFFECT_TYPE: PotionEffectType = PotionEffectType.LEVITATION
 
     fun getAllParrots(): List<Parrot> =
       Bukkit.getWorlds().flatMap {
         it.getEntitiesByClass(Parrot::class.java)
       }
+
+    @Suppress("DEPRECATION")
+    private fun getPerchedParrot(entity: HumanEntity): Parrot? {
+      val left = entity.getShoulderEntityLeft()
+      val right = entity.getShoulderEntityRight()
+      if (left is Parrot) {
+        return left
+      } else if (right is Parrot) {
+        return right
+      } else {
+        return null
+      }
+    }
 
     val DEFAULT_NAME_SOURCE = NameSource.FromList(
       listOf(
@@ -78,13 +91,12 @@ class ParrotManager(_plugin: Plugin) : RunnableFeature(_plugin), Listener {
   }
 
   private fun checkPlayer(player: Player) {
-    val info = NMS.getPlayerParrotInfo(player)
-    val hasPerchedParrot = info.hasAnyShoulderPerch()
-    if (hasPerchedParrot) {
+    val parrot = getPerchedParrot(player)
+    if (parrot != null) {
       if (!safePlayers.contains(player)) {
-        if (!player.hasPotionEffect(targetEffectType)) {
+        if (!player.hasPotionEffect(TARGET_EFFECT_TYPE)) {
           Messages.sendMessage(player, "SQUAAAAAAWK! Yer comin' with me!") // TODO Get the parrot's name (from NMS) for this message
-          player.addPotionEffect(PotionEffect(PotionEffectType.LEVITATION, Constants.TICKS_PER_SECOND * 3, 100))
+          player.addPotionEffect(PotionEffect(TARGET_EFFECT_TYPE, Constants.TICKS_PER_SECOND * 3, 100))
           safePlayers.add(player, Constants.TICKS_PER_SECOND * 10L)
         }
       }

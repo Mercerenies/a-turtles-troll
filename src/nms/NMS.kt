@@ -16,14 +16,6 @@ import java.util.logging.Logger
 // alleviate that as much as possible.
 object NMS {
 
-  private class ParrotInfo(val left: Boolean, val right: Boolean) : ParrotInformation {
-
-    override fun hasLeftShoulderPerch(): Boolean = left
-
-    override fun hasRightShoulderPerch(): Boolean = right
-
-  }
-
   private class RawEntityMetadata(
     private var handle: Any,
   ) : EntityMetadata {
@@ -108,45 +100,6 @@ object NMS {
       Class.forName("net.minecraft.world.entity.item.EntityFallingBlock")
         .getMethod("b", java.lang.Float.TYPE, java.lang.Integer.TYPE)
         .invoke(mcBlock, 1.0f, 40)
-    }
-  }
-
-  // Go to net.minecraft.world.entity.Entity and find the method with
-  // signature
-  //
-  // public NBTTagCompound ???(NBTTagCompound nbt)
-  //
-  // There should only be one, and its body should be a large
-  // try-catch block which loads a bunch of fields into the NBT
-  // argument and then returns it. (In 1.18, 1.19.2, and 1.20.1, this
-  // method is called `f`). That method needs to be called below when
-  // we reassign to mcNbt.
-  //
-  // Now go to net.minecraft.nbt.NBTTagCompound and find the method
-  // with signature
-  //
-  // public NBTBase ???(String key)
-  //
-  // Again, it should be unique. The body is a one-liner and calls
-  // .get on an instance variable of type Map<String, NBTBase>. (This
-  // method is called `c` in 1.18/1.19.2/1.20.1). That method needs to
-  // be accessed as mcNbtGetter below.
-  fun getPlayerParrotInfo(player: Player): ParrotInformation {
-    return safely(ParrotInfo(false, false)) {
-      val cls = getClass("entity.CraftPlayer")
-      val mcEntity = cls.getMethod("getHandle").invoke(player)
-      val mcNbtClass = Class.forName("net.minecraft.nbt.NBTTagCompound")
-      var mcNbt = mcNbtClass
-        .getConstructor()
-        .newInstance()
-      mcNbt = Class.forName("net.minecraft.world.entity.Entity")
-        .getMethod("f", mcNbtClass)
-        .invoke(mcEntity, mcNbt)
-      val mcNbtGetter = mcNbtClass
-        .getMethod("c", String::class.java)
-      val leftShoulder = mcNbtGetter.invoke(mcNbt, "ShoulderEntityLeft")
-      val rightShoulder = mcNbtGetter.invoke(mcNbt, "ShoulderEntityRight")
-      ParrotInfo(leftShoulder != null, rightShoulder != null)
     }
   }
 
