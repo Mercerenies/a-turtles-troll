@@ -10,8 +10,8 @@ import com.mercerenies.turtletroll.feature.container.FeatureContainer
 import com.mercerenies.turtletroll.feature.container.ManagerContainer
 import com.mercerenies.turtletroll.feature.builder.BuilderState
 import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
-import com.mercerenies.turtletroll.nms.NMS
 import com.mercerenies.turtletroll.location.PlayerSelector
+import com.mercerenies.turtletroll.util.component.*
 
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
@@ -25,6 +25,8 @@ import org.bukkit.entity.Player
 import org.bukkit.plugin.Plugin
 import org.bukkit.attribute.Attribute
 import org.bukkit.Bukkit
+
+import net.kyori.adventure.text.Component
 
 class ParrotManager(_plugin: Plugin) : RunnableFeature(_plugin), Listener {
 
@@ -54,6 +56,9 @@ class ParrotManager(_plugin: Plugin) : RunnableFeature(_plugin), Listener {
         return null
       }
     }
+
+    private fun attackMessage(parrot: Parrot): Component =
+      Component.text("<").append(parrot.customName() ?: Component.text("Parrot")).append("> SQUAAAAAAWK! Yer comin' with me!")
 
     val DEFAULT_NAME_SOURCE = NameSource.FromList(
       listOf(
@@ -95,7 +100,7 @@ class ParrotManager(_plugin: Plugin) : RunnableFeature(_plugin), Listener {
     if (parrot != null) {
       if (!safePlayers.contains(player)) {
         if (!player.hasPotionEffect(TARGET_EFFECT_TYPE)) {
-          Messages.sendMessage(player, "SQUAAAAAAWK! Yer comin' with me!") // TODO Get the parrot's name (from NMS) for this message
+          Messages.sendMessage(player, attackMessage(parrot))
           player.addPotionEffect(PotionEffect(TARGET_EFFECT_TYPE, Constants.TICKS_PER_SECOND * 3, 100))
           safePlayers.add(player, Constants.TICKS_PER_SECOND * 10L)
         }
