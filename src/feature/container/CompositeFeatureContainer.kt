@@ -7,6 +7,8 @@ import com.mercerenies.turtletroll.feature.GameModification
 import com.mercerenies.turtletroll.command.Command
 import com.mercerenies.turtletroll.command.PermittedCommand
 import com.mercerenies.turtletroll.util.lazyFlatten
+import com.mercerenies.turtletroll.drop.BlockBreakAction
+import com.mercerenies.turtletroll.Weight
 
 import org.bukkit.event.Listener
 
@@ -36,5 +38,14 @@ class CompositeFeatureContainer(
 
   override val debugCommands: Iterable<Pair<String, Command>> =
     allContainers.map { it.debugCommands }.lazyFlatten()
+
+  override val preRules: Iterable<BlockBreakAction> =
+    allContainers.map { it.preRules }.lazyFlatten()
+
+  override val actions: Iterable<Weight<BlockBreakAction>> =
+    allContainers.map { it.actions }.lazyFlatten()
+
+  override val postRules: Iterable<BlockBreakAction> =
+    allContainers.map { it.postRules }.lazyFlatten()
 
 }

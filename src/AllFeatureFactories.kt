@@ -1,10 +1,9 @@
 
 package com.mercerenies.turtletroll
 
-import com.mercerenies.turtletroll.feature.container.DropFeatureContainer
 import com.mercerenies.turtletroll.feature.container.FeatureContainer
 import com.mercerenies.turtletroll.feature.container.CompositeFeatureContainer
-import com.mercerenies.turtletroll.feature.container.CompositeDropFeatureContainer
+import com.mercerenies.turtletroll.feature.container.AbstractFeatureContainer
 import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 import com.mercerenies.turtletroll.feature.builder.BuilderState
 import com.mercerenies.turtletroll.banish.BanishmentManagerFactory
@@ -37,6 +36,7 @@ import com.mercerenies.turtletroll.cake.CakeListenerFactory
 import com.mercerenies.turtletroll.egg.EggListenerFactory
 import com.mercerenies.turtletroll.overgrowth.OvergrowthListenerFactory
 import com.mercerenies.turtletroll.ghastlava.GhastLavaListenerFactory
+import com.mercerenies.turtletroll.drop.BlockBreakEventListener
 import com.mercerenies.turtletroll.drop.MossRevengeFeatureFactory
 import com.mercerenies.turtletroll.drop.DirtDropFeatureFactory
 import com.mercerenies.turtletroll.drop.SilverfishAttackFeatureFactory
@@ -55,33 +55,19 @@ import com.mercerenies.turtletroll.blazeeye.BlazeEyeManager
 
 object AllFeatureFactories {
 
-  private val allDropFactories: List<FeatureContainerFactory<DropFeatureContainer>> =
-    listOf(
-      // Drop features
-      AmethystBlockDropFactory,
-      BedrockFeatureFactory,
-      BeeAttackFeatureFactory,
-      CancelDropFeatureFactory,
-      DirtDropFeatureFactory,
-      EndermiteSpawnFeatureFactory,
-      MelompkinFeatureFactory,
-      MossRevengeFeatureFactory,
-      NetherrackBoomFeatureFactory,
-      ShuffleLogsFeatureFactory,
-      SilverfishAttackFeatureFactory,
-      StrongholdAttackFeatureFactory,
-    )
-
   private val allFactories: List<FeatureContainerFactory<FeatureContainer>> =
     listOf(
       // Independent features
       AllayManager,
+      AmethystBlockDropFactory,
       AngryGolemManager,
       AnvilRunnableFactory,
       ApacheBeeListener,
       AxolotlListener,
       BambooSpreadListener,
       BanishmentManagerFactory,
+      BedrockFeatureFactory,
+      BeeAttackFeatureFactory,
       BlazeAttackListener,
       BlazeEyeManager,
       BloodListener,
@@ -91,6 +77,7 @@ object AllFeatureFactories {
       ButterfingersListener,
       ButtonDamageListener,
       CakeListenerFactory,
+      CancelDropFeatureFactory,
       CarefulHandsListener,
       CatBatListener,
       ChainmailRecipeFeature,
@@ -100,6 +87,7 @@ object AllFeatureFactories {
       ContagiousMossManager,
       CreeperDeathListener,
       DeathScoreboardListener,
+      DirtDropFeatureFactory,
       DirtRecipeFeature,
       DoctorDancesManager,
       DoorDamageListener,
@@ -112,9 +100,10 @@ object AllFeatureFactories {
       EggshellsListener,
       EndCrystalListener,
       EndDirtListener,
+      EndStoneListener,
       EnderChestListener,
       EndermanGodListener,
-      EndStoneListener,
+      EndermiteSpawnFeatureFactory,
       EscalationListener,
       ExpirationDateListener,
       ExplosiveArrowManager,
@@ -139,8 +128,11 @@ object AllFeatureFactories {
       LearningFromFailureListener,
       LevitationListener,
       LlamaHunterManager,
+      MelompkinFeatureFactory,
       MinecraftTriviaManagerFactory,
+      MossRevengeFeatureFactory,
       NamedZombieListener,
+      NetherrackBoomFeatureFactory,
       NiceListener,
       ObsidianWallListener,
       OvergrowthListenerFactory.Default(),
@@ -159,6 +151,8 @@ object AllFeatureFactories {
       SandAttackRunnable,
       SheepColorListener,
       ShieldSurfListener,
+      ShuffleLogsFeatureFactory,
+      SilverfishAttackFeatureFactory,
       SilverfishBurnRunnable,
       SinkholeListener,
       SkeletonWitherListener,
@@ -169,6 +163,7 @@ object AllFeatureFactories {
       SolidSwapListener,
       SpillageListener,
       StoneRecipeDeleter,
+      StrongholdAttackFeatureFactory,
       SweetDreamsListener,
       UnfinishedBusinessListener,
       VillagerDeathListener,
@@ -206,10 +201,17 @@ object AllFeatureFactories {
     )
 
   fun createComposite(builderState: BuilderState): FeatureContainer {
-    val dropFeatures = FeatureContainerFactory.createComposite(this.allDropFactories, builderState, { CompositeDropFeatureContainer(it) })
-    val regularFeatures = FeatureContainerFactory.createComposite(this.allFactories, builderState, { CompositeFeatureContainer(it) })
+    val allFeatures = FeatureContainerFactory.createComposite(this.allFactories, builderState) {
+      CompositeFeatureContainer(it)
+    }
+
+    // BlockBreakEventListener
+    val blockBreakEventListener = BlockBreakEventListener(allFeatures)
+    val blockBreakEventListenerContainer = object : AbstractFeatureContainer() {
+      override val listeners = listOf(blockBreakEventListener)
+    }
     return CompositeFeatureContainer(
-      listOf(blockBreakListenerContainer(dropFeatures), regularFeatures),
+      listOf(blockBreakEventListenerContainer, allFeatures),
     )
   }
 

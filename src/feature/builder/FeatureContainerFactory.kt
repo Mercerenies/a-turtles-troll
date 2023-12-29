@@ -1,13 +1,14 @@
 
 package com.mercerenies.turtletroll.feature.builder
 
-import com.mercerenies.turtletroll.feature.container.BaseFeatureContainer
+import com.mercerenies.turtletroll.feature.container.FeatureContainer
 
-fun interface FeatureContainerFactory<out T : BaseFeatureContainer> {
+// TODO No need to be generic anymore; there's only one feature container type
+fun interface FeatureContainerFactory<out T : FeatureContainer> {
 
   companion object {
 
-    fun<T : BaseFeatureContainer, U> createComposite(
+    fun<T : FeatureContainer, U> createComposite(
       factories: Iterable<FeatureContainerFactory<T>>,
       builderState: BuilderState,
       finalBuilder: (List<T>) -> U,

@@ -3,7 +3,7 @@ package com.mercerenies.turtletroll.drop
 
 import com.mercerenies.turtletroll.Weight
 import com.mercerenies.turtletroll.sample
-import com.mercerenies.turtletroll.feature.container.DropFeatureContainer
+import com.mercerenies.turtletroll.feature.container.FeatureContainer
 
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
@@ -25,8 +25,10 @@ class BlockBreakEventListener(
   }
 
   // Note: We add in a unit weight NullAction here, since that won't
-  // be provided as a "feature" in any sense.
-  constructor(dropFeature: DropFeatureContainer) : this(
+  // be provided as a "feature" in any sense. (TODO Is this the best
+  // place for this? Can we do it as part of the feature container
+  // API?)
+  constructor(dropFeature: FeatureContainer) : this(
     dropFeature.preRules.toList(),
     listOf(Weight(NullAction, 1.0)) + dropFeature.actions.toList(),
     dropFeature.postRules.toList(),

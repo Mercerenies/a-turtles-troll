@@ -20,8 +20,10 @@ class RandomEventRunnableFactory() : FeatureContainerFactory<FeatureContainer> {
       listOf(runnable)
   }
 
+  private val events = listOf(NothingEvent(40.0)) //// TODO
+
   override fun create(state: BuilderState): FeatureContainer {
-    val runnable = RandomEventRunnable(state.plugin)
+    val runnable = RandomEventRunnable(state.plugin, RandomEventPool(events))
     return Container(runnable).withDebugCommand("event") { _ ->
       runnable.run()
       true

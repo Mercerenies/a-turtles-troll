@@ -3,21 +3,21 @@ package com.mercerenies.turtletroll.drop
 
 import com.mercerenies.turtletroll.BedDropListener
 import com.mercerenies.turtletroll.feature.CompositeFeature
-import com.mercerenies.turtletroll.feature.container.DropFeatureContainer
-import com.mercerenies.turtletroll.feature.container.AbstractDropFeatureContainer
+import com.mercerenies.turtletroll.feature.container.FeatureContainer
+import com.mercerenies.turtletroll.feature.container.AbstractFeatureContainer
 import com.mercerenies.turtletroll.feature.builder.BuilderState
 import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 
 import org.bukkit.Material
 
-object CancelDropFeatureFactory : FeatureContainerFactory<DropFeatureContainer> {
+object CancelDropFeatureFactory : FeatureContainerFactory<FeatureContainer> {
 
   val NO_DROP_ON = setOf(
     Material.CRAFTING_TABLE, Material.FURNACE,
     Material.SMOKER, Material.BLAST_FURNACE,
   )
 
-  override fun create(state: BuilderState): DropFeatureContainer = object : AbstractDropFeatureContainer() {
+  override fun create(state: BuilderState): FeatureContainer = object : AbstractFeatureContainer() {
 
     private val cancelDropAction = CancelDropAction.filter {
       NO_DROP_ON.contains(it.block.type)

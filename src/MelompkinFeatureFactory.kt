@@ -2,8 +2,9 @@
 package com.mercerenies.turtletroll
 
 import com.mercerenies.turtletroll.feature.CompositeFeature
-import com.mercerenies.turtletroll.feature.container.DropFeatureContainer
-import com.mercerenies.turtletroll.feature.container.AbstractDropFeatureContainer
+import com.mercerenies.turtletroll.feature.GameModification
+import com.mercerenies.turtletroll.feature.container.FeatureContainer
+import com.mercerenies.turtletroll.feature.container.AbstractFeatureContainer
 import com.mercerenies.turtletroll.feature.builder.BuilderState
 import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 import com.mercerenies.turtletroll.drop.ReplaceDropsAction
@@ -16,9 +17,9 @@ import org.bukkit.inventory.ItemStack
 import org.bukkit.Material
 import org.bukkit.Bukkit
 
-object MelompkinFeatureFactory : FeatureContainerFactory<DropFeatureContainer> {
+object MelompkinFeatureFactory : FeatureContainerFactory<FeatureContainer> {
 
-  override fun create(state: BuilderState): DropFeatureContainer = object : AbstractDropFeatureContainer() {
+  override fun create(state: BuilderState): FeatureContainer = object : AbstractFeatureContainer() {
 
     private val replaceMelonsAction = ReplaceDropsAction(ItemStack(Material.PUMPKIN)).filter {
       it.block.type == Material.MELON
@@ -47,9 +48,8 @@ object MelompkinFeatureFactory : FeatureContainerFactory<DropFeatureContainer> {
 
     override val features = listOf(melompkinFeature)
 
-    override val recipes = listOf(melonRecipeFeature)
-
-    override val recipeDeleters = listOf(melonRecipeDeleter)
+    override val gameModifications: List<GameModification> =
+      listOf(melonRecipeFeature, melonRecipeDeleter)
 
     override val preRules = listOf(replaceMelonsAction, replacePumpkinsAction)
 

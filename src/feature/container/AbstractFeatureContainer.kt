@@ -6,6 +6,8 @@ import com.mercerenies.turtletroll.feature.Schedulable
 import com.mercerenies.turtletroll.feature.GameModification
 import com.mercerenies.turtletroll.command.Command
 import com.mercerenies.turtletroll.command.PermittedCommand
+import com.mercerenies.turtletroll.drop.BlockBreakAction
+import com.mercerenies.turtletroll.Weight
 
 import org.bukkit.event.Listener
 
@@ -34,6 +36,15 @@ open class AbstractFeatureContainer() : FeatureContainer {
     get() = listOf()
 
   open override val debugCommands: Iterable<Pair<String, Command>>
+    get() = listOf()
+
+  open override val preRules: List<BlockBreakAction>
+    get() = listOf()
+
+  open override val actions: List<Weight<BlockBreakAction>>
+    get() = listOf()
+
+  open override val postRules: List<BlockBreakAction>
     get() = listOf()
 
 }

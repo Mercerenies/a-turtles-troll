@@ -2,16 +2,16 @@
 package com.mercerenies.turtletroll.drop
 
 import com.mercerenies.turtletroll.Weight
-import com.mercerenies.turtletroll.feature.container.DropFeatureContainer
-import com.mercerenies.turtletroll.feature.container.AbstractDropFeatureContainer
+import com.mercerenies.turtletroll.feature.container.FeatureContainer
+import com.mercerenies.turtletroll.feature.container.AbstractFeatureContainer
 import com.mercerenies.turtletroll.feature.builder.BuilderState
 import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 import com.mercerenies.turtletroll.drop.nearby.SilverfishAttackAction
 import com.mercerenies.turtletroll.drop.nearby.SilverfishAttackBomb
 
-object SilverfishAttackFeatureFactory : FeatureContainerFactory<DropFeatureContainer> {
+object SilverfishAttackFeatureFactory : FeatureContainerFactory<FeatureContainer> {
 
-  override fun create(state: BuilderState): DropFeatureContainer = object : AbstractDropFeatureContainer() {
+  override fun create(state: BuilderState): FeatureContainer = object : AbstractFeatureContainer() {
 
     private val bomb = SilverfishAttackBomb(
       probability = state.config.getDouble("silverfish.bomb_probability"),
