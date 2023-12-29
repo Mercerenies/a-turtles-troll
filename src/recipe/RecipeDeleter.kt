@@ -3,17 +3,19 @@ package com.mercerenies.turtletroll.recipe
 
 import com.mercerenies.turtletroll.util.retainAll
 import com.mercerenies.turtletroll.feature.AbstractFeature
+import com.mercerenies.turtletroll.feature.GameModification
 
 import org.bukkit.Server
 import org.bukkit.Material
 import org.bukkit.inventory.Recipe
+import org.bukkit.plugin.Plugin
 
 import kotlin.collections.ArrayList
 
 open class RecipeDeleter(
   private val server: Server,
   val materials: List<Material>
-) : AbstractFeature() {
+) : AbstractFeature(), GameModification {
 
   var storedRecipes: List<Recipe> = ArrayList()
     private set
@@ -29,6 +31,14 @@ open class RecipeDeleter(
 
   override fun disable() {
     super.disable()
+    addRecipes()
+  }
+
+  override fun onPluginEnable(plugin: Plugin) {
+    removeRecipes()
+  }
+
+  override fun onPluginDisable(plugin: Plugin) {
     addRecipes()
   }
 

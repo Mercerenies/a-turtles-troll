@@ -2,6 +2,7 @@
 package com.mercerenies.turtletroll.recipe
 
 import com.mercerenies.turtletroll.feature.AbstractFeature
+import com.mercerenies.turtletroll.feature.GameModification
 
 import org.bukkit.plugin.Plugin
 import org.bukkit.Bukkit
@@ -10,7 +11,7 @@ import org.bukkit.inventory.Recipe
 
 import kotlin.reflect.KClass
 
-abstract class RecipeFeature(val plugin: Plugin) : AbstractFeature() {
+abstract class RecipeFeature(val plugin: Plugin) : AbstractFeature(), GameModification {
 
   companion object {
 
@@ -42,6 +43,14 @@ abstract class RecipeFeature(val plugin: Plugin) : AbstractFeature() {
       removeRecipes()
     }
     super.disable()
+  }
+
+  override fun onPluginEnable(plugin: Plugin) {
+    addRecipes()
+  }
+
+  override fun onPluginDisable(plugin: Plugin) {
+    removeRecipes()
   }
 
   fun addRecipes() {
