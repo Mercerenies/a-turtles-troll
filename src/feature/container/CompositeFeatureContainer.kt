@@ -2,7 +2,7 @@
 package com.mercerenies.turtletroll.feature.container
 
 import com.mercerenies.turtletroll.feature.Feature
-import com.mercerenies.turtletroll.feature.RunnableFeature
+import com.mercerenies.turtletroll.feature.Schedulable
 import com.mercerenies.turtletroll.recipe.RecipeFeature
 import com.mercerenies.turtletroll.recipe.RecipeDeleter
 import com.mercerenies.turtletroll.command.Command
@@ -23,7 +23,7 @@ class CompositeFeatureContainer(
   override val features: Iterable<Feature> =
     allContainers.map { it.features }.lazyFlatten()
 
-  override val runnables: Iterable<RunnableFeature> =
+  override val runnables: Iterable<Schedulable> =
     allContainers.map { it.runnables }.lazyFlatten()
 
   override val packetListeners: Iterable<PacketListener> =
