@@ -3,8 +3,7 @@ package com.mercerenies.turtletroll.feature.container
 
 import com.mercerenies.turtletroll.feature.Feature
 import com.mercerenies.turtletroll.feature.Schedulable
-import com.mercerenies.turtletroll.recipe.RecipeFeature
-import com.mercerenies.turtletroll.recipe.RecipeDeleter
+import com.mercerenies.turtletroll.feature.GameModification
 import com.mercerenies.turtletroll.command.Command
 import com.mercerenies.turtletroll.command.PermittedCommand
 
@@ -28,10 +27,7 @@ open class AbstractFeatureContainer() : FeatureContainer {
   open override val packetListeners: Iterable<PacketListener>
     get() = listOf()
 
-  open override val recipes: Iterable<RecipeFeature>
-    get() = listOf()
-
-  open override val recipeDeleters: Iterable<RecipeDeleter>
+  open override val gameModifications: Iterable<GameModification>
     get() = listOf()
 
   open override val commands: Iterable<Pair<String, PermittedCommand<Command>>>

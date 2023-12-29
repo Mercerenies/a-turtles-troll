@@ -95,7 +95,7 @@ class PokeballManager(plugin: Plugin) : RecipeFeature(plugin), Listener {
     override val features =
       listOf(manager)
 
-    override val recipes =
+    override val gameModifications =
       listOf(manager)
 
   }

@@ -39,7 +39,7 @@ class WeepingAngelManagerFactory(
     override val runnables =
       listOf(angelManager)
 
-    override val recipes =
+    override val gameModifications =
       listOf(angelRecipe)
 
     override val debugCommands =

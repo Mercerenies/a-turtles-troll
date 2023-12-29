@@ -31,7 +31,7 @@ object DripstoneManagerFactory : FeatureContainerFactory<FeatureContainer> {
     override val runnables =
       listOf(dripstoneManager)
 
-    override val recipes =
+    override val gameModifications =
       listOf(dripstoneRecipe)
 
   }

@@ -28,7 +28,7 @@ object AnvilRunnableFactory : FeatureContainerFactory<FeatureContainer> {
     override val runnables =
       listOf(anvilRunnable)
 
-    override val recipes =
+    override val gameModifications =
       listOf(anvilRecipe)
 
   }

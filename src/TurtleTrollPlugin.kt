@@ -74,12 +74,9 @@ class TurtleTrollPlugin : JavaPlugin() {
       protocolManager.addPacketListener(listener)
     }
 
-    // Recipe modifications
-    for (deleter in mainContainer.recipeDeleters) {
-      deleter.removeRecipes()
-    }
-    for (recipe in mainContainer.recipes) {
-      recipe.addRecipes()
+    // Game modifications
+    for (mod in mainContainer.gameModifications) {
+      mod.onPluginEnable(this)
     }
 
     // Runnables
@@ -98,12 +95,9 @@ class TurtleTrollPlugin : JavaPlugin() {
 
   override fun onDisable() {
 
-    // Recipe modifications
-    for (deleter in mainContainer.recipeDeleters) {
-      deleter.addRecipes()
-    }
-    for (recipe in mainContainer.recipes) {
-      recipe.removeRecipes()
+    // Game modifications
+    for (mod in mainContainer.gameModifications) {
+      mod.onPluginDisable(this)
     }
 
     // Remove all packet listeners

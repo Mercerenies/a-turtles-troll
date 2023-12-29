@@ -11,7 +11,7 @@ class RecipeDeleterContainer(
   override val features: Iterable<Feature>
     get() = listOf(recipeDeleter)
 
-  override val recipeDeleters: Iterable<RecipeDeleter>
+  override val gameModifications: Iterable<RecipeDeleter>
     get() = listOf(recipeDeleter)
 
 }

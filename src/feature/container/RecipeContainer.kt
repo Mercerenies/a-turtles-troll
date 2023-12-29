@@ -11,7 +11,7 @@ class RecipeContainer(
   override val features: Iterable<Feature>
     get() = listOf(recipe)
 
-  override val recipes: Iterable<RecipeFeature>
+  override val gameModifications: Iterable<RecipeFeature>
     get() = listOf(recipe)
 
 }
