@@ -8,6 +8,7 @@ import com.mercerenies.turtletroll.command.Command
 import com.mercerenies.turtletroll.command.PermittedCommand
 import com.mercerenies.turtletroll.Weight
 import com.mercerenies.turtletroll.drop.BlockBreakAction
+import com.mercerenies.turtletroll.happening.RandomEvent
 
 import org.bukkit.event.Listener
 
@@ -37,5 +38,7 @@ interface FeatureContainer {
   val actions: Iterable<Weight<BlockBreakAction>>
 
   val postRules: Iterable<BlockBreakAction>
+
+  val randomEvents: Iterable<RandomEvent>
 
 }

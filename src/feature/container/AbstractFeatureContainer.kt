@@ -8,6 +8,7 @@ import com.mercerenies.turtletroll.command.Command
 import com.mercerenies.turtletroll.command.PermittedCommand
 import com.mercerenies.turtletroll.drop.BlockBreakAction
 import com.mercerenies.turtletroll.Weight
+import com.mercerenies.turtletroll.happening.RandomEvent
 
 import org.bukkit.event.Listener
 
@@ -45,6 +46,9 @@ open class AbstractFeatureContainer() : FeatureContainer {
     get() = listOf()
 
   open override val postRules: List<BlockBreakAction>
+    get() = listOf()
+
+  open override val randomEvents: Iterable<RandomEvent>
     get() = listOf()
 
 }

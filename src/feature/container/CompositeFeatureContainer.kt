@@ -9,6 +9,7 @@ import com.mercerenies.turtletroll.command.PermittedCommand
 import com.mercerenies.turtletroll.util.lazyFlatten
 import com.mercerenies.turtletroll.drop.BlockBreakAction
 import com.mercerenies.turtletroll.Weight
+import com.mercerenies.turtletroll.happening.RandomEvent
 
 import org.bukkit.event.Listener
 
@@ -47,5 +48,8 @@ class CompositeFeatureContainer(
 
   override val postRules: Iterable<BlockBreakAction> =
     allContainers.map { it.postRules }.lazyFlatten()
+
+  override val randomEvents: Iterable<RandomEvent> =
+    allContainers.map { it.randomEvents }.lazyFlatten()
 
 }

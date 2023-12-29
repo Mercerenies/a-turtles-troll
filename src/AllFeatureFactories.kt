@@ -52,6 +52,7 @@ import com.mercerenies.turtletroll.pokeball.PokeballManager
 import com.mercerenies.turtletroll.jump.EncumbranceManagerFactory
 import com.mercerenies.turtletroll.trivia.MinecraftTriviaManagerFactory
 import com.mercerenies.turtletroll.blazeeye.BlazeEyeManager
+import com.mercerenies.turtletroll.happening.RandomEventRunnable
 
 object AllFeatureFactories {
 
@@ -210,8 +211,18 @@ object AllFeatureFactories {
     val blockBreakEventListenerContainer = object : AbstractFeatureContainer() {
       override val listeners = listOf(blockBreakEventListener)
     }
+
+    // RandomEventRunnable
+    val randomEventRunnable = RandomEventRunnable(builderState.plugin, allFeatures.randomEvents)
+    val randomEventRunnableContainer = object : AbstractFeatureContainer() {
+      override val runnables = listOf(randomEventRunnable)
+      override val debugCommands = listOf(
+        "event" to randomEventRunnable.debugCommand,
+      )
+    }
+
     return CompositeFeatureContainer(
-      listOf(blockBreakEventListenerContainer, allFeatures),
+      listOf(blockBreakEventListenerContainer, randomEventRunnableContainer, allFeatures),
     )
   }
 
