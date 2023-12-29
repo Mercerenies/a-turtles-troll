@@ -31,6 +31,8 @@ import net.kyori.adventure.text.Component
 
 class PokeballManager(plugin: Plugin) : RecipeFeature(plugin), Listener {
 
+  // TODO This is complicated enough that the factory part should
+  // probably be its own class.
   companion object : FeatureContainerFactory<FeatureContainer> {
     val POKEBALL_MARKER_KEY = "pokeball_tag"
 
