@@ -209,7 +209,6 @@ mimics:
   probability: 0.01
 minecrafttrivia:
   enabled: true
-  minutes_between_questions: 10
   minutes_to_answer: 2
 moss:
   enabled: true

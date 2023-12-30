@@ -407,7 +407,6 @@ mimics:
 
 minecrafttrivia:
   enabled: default
-  minutes_between_questions: default
   minutes_to_answer: default
 
 moss:

@@ -94,7 +94,7 @@ class PufferfishRainManager(
 
   override val description: String = "Pufferfish rain on all players periodically"
 
-  val pufferfishRainEvent =
+  val pufferfishRainEvent: RandomEvent =
     PufferfishRainEvent().withCooldown(24).boundToFeature(this)
 
   @EventHandler

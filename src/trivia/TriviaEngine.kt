@@ -34,6 +34,9 @@ class TriviaEngine(
   private var currentQuestion: TriviaQuestion? = null
   private val answers: HashMap<UUID, String> = HashMap()
 
+  fun hasQuestion(): Boolean =
+    currentQuestion != null
+
   fun askNewRandomQuestion() {
     val newQuestion = questionSupplier.supply()
     askQuestion(newQuestion)

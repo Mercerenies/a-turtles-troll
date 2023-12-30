@@ -6,11 +6,11 @@ class CooldownRandomEvent(
   val cooldownTime: Int,
 ) : RandomEvent by event {
 
-  private var lastTimeFired: Int? = 0
+  private var lastTimeFired: Int? = null
 
   private fun isWithinCooldownPeriod(currentTurn: Int): Boolean {
     val lastFire = lastTimeFired
-    return (lastFire != null) && (lastFire + cooldownTime <= currentTurn)
+    return (lastFire != null) && (currentTurn <= lastFire + cooldownTime)
   }
 
   override fun canFire(state: RandomEventState): Boolean =

@@ -3,36 +3,40 @@ package com.mercerenies.turtletroll.trivia
 
 import com.mercerenies.turtletroll.util.component.*
 import com.mercerenies.turtletroll.util.*
-import com.mercerenies.turtletroll.feature.RunnableFeature
 import com.mercerenies.turtletroll.Constants
+import com.mercerenies.turtletroll.feature.AbstractFeature
 import com.mercerenies.turtletroll.Messages
 import com.mercerenies.turtletroll.trivia.question.TriviaQuestionSupplier
 import com.mercerenies.turtletroll.command.Command
 import com.mercerenies.turtletroll.command.TerminalCommand
 import com.mercerenies.turtletroll.command.OptionalUnaryCommand
+import com.mercerenies.turtletroll.happening.RandomEvent
+import com.mercerenies.turtletroll.happening.RandomEventState
+import com.mercerenies.turtletroll.happening.withCooldown
+import com.mercerenies.turtletroll.happening.boundToFeature
 
 import org.bukkit.command.CommandSender
 import org.bukkit.plugin.Plugin
 import org.bukkit.Bukkit
+import org.bukkit.SoundCategory
+import org.bukkit.scheduler.BukkitRunnable
 
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.format.NamedTextColor
 
 class MinecraftTriviaManager(
-  plugin: Plugin,
+  private val plugin: Plugin,
   val config: TriviaConfig,
   private val questionSupplier: TriviaQuestionSupplier,
-) : RunnableFeature(plugin) {
+) : AbstractFeature() {
+
+  companion object {
+    val TRIVIA_START_SOUND = "custom.event.trivia"
+  }
 
   override val name = "minecrafttrivia"
 
   override val description = "The game will regularly ask trivia questions and reward those who get it right"
-
-  // Run once per minute
-  override val taskPeriod = Constants.TICKS_PER_SECOND * 60L
-  override val taskDelay = Constants.TICKS_PER_SECOND * 60L
-
-  private var state: TriviaState = config.initialState
 
   private val engine: TriviaEngine = TriviaEngine(questionSupplier)
 
@@ -42,20 +46,17 @@ class MinecraftTriviaManager(
   val triviaAskCommand: Command = object : OptionalUnaryCommand() {
 
     override fun onCommand(sender: CommandSender, arg: String?): Boolean {
-      val transition = TriviaStateTransition.AskQuestion
       if (arg == null) {
-        // Ask a random question, like normal
-        runTransition(transition)
+        askRandomQuestion()
         return true
       } else {
         try {
-          transition.performSpecificQuestion(engine, arg)
+          askSpecificQuestion(arg)
         } catch (exc: NoSuchElementException) {
           Messages.sendMessage(sender, Component.text("Invalid question ID: $arg", NamedTextColor.RED))
           Bukkit.getLogger().warning("User $sender attempted to ask for an invalid question ID: $arg")
           return false
         }
-        state = transition.nextState
         return true
       }
     }
@@ -68,22 +69,83 @@ class MinecraftTriviaManager(
 
   val triviaJudgeCommand: Command = object : TerminalCommand() {
     override fun onCommand(sender: CommandSender): Boolean {
-      runTransition(TriviaStateTransition.JudgeQuestion)
+      cancelExistingJudgeRunnable()
+      judgeQuestion()
       return true
     }
   }
 
-  private fun runTransition(transition: TriviaStateTransition) {
-    transition.perform(engine)
-    state = transition.nextState
+  private var judgmentRunnable: TriviaJudgeRunnable? = null
+
+  val triviaRandomEvent: RandomEvent =
+    TriviaEvent().withCooldown(4).boundToFeature(this)
+
+  private inner class TriviaEvent() : RandomEvent {
+    override val name = "trivia"
+    override val baseWeight = 1.0
+    override val deltaWeight = 0.1
+
+    override fun canFire(state: RandomEventState): Boolean =
+      !engine.hasQuestion()
+
+    override fun fire(state: RandomEventState) {
+      askRandomQuestion()
+    }
+
   }
 
-  override fun run() {
-    if (!isEnabled()) {
+  private inner class TriviaJudgeRunnable() : BukkitRunnable() {
+    override fun run() {
+      judgeQuestion()
+    }
+  }
+
+  private fun cancelExistingJudgeRunnable() {
+    // If we run the command to judge trivia prematurely via debug
+    // commands, then we should cancel the "normal" flow of judging
+    // trivia.
+    val runnable = judgmentRunnable
+    if (runnable != null) {
+      try {
+        runnable.cancel()
+      } catch (exc: IllegalStateException) {
+        // Ignore
+      }
+    }
+  }
+
+  private fun askRandomQuestion() {
+    engine.askNewRandomQuestion()
+    notifyAllPlayers()
+    scheduleJudgment()
+  }
+
+  private fun askSpecificQuestion(questionId: String) {
+    engine.askQuestion(questionId)
+    notifyAllPlayers()
+    scheduleJudgment()
+  }
+
+  private fun scheduleJudgment() {
+    val runnable = TriviaJudgeRunnable()
+    judgmentRunnable = runnable
+    runnable.runTaskLater(plugin, Constants.TICKS_PER_MINUTE.toLong() * config.minutesToAnswer)
+  }
+
+  private fun notifyAllPlayers() {
+    for (player in Bukkit.getOnlinePlayers()) {
+      player.playSound(player.location, TRIVIA_START_SOUND, SoundCategory.NEUTRAL, 1.0f, 1.0f)
+    }
+  }
+
+  private fun judgeQuestion() {
+    if (!engine.hasQuestion()) {
+      // Nothing to judge
       return
     }
-    val transition = state.advance(config)
-    runTransition(transition)
+    val result = engine.judgeAnswers()
+    val reward = engine.chooseReward()
+    TriviaResult.assignRewards(result, reward)
   }
 
 }
