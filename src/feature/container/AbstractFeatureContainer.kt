@@ -2,7 +2,6 @@
 package com.mercerenies.turtletroll.feature.container
 
 import com.mercerenies.turtletroll.feature.Feature
-import com.mercerenies.turtletroll.feature.Schedulable
 import com.mercerenies.turtletroll.feature.GameModification
 import com.mercerenies.turtletroll.command.Command
 import com.mercerenies.turtletroll.command.PermittedCommand
