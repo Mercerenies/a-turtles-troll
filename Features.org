@@ -202,6 +202,7 @@
                    chance of spawning several silverfish
    + bees :: All wood blocks have a chance of spawning bees in all
              nearby wood blocks
+     - Effect is negated if the player is using a wooden axe
    + nodrops :: The following blocks will never drop anything:
                 crafting table, furnace, blast furnace, smoker, bed
    + endermites :: End stone will always spawn an endermite when

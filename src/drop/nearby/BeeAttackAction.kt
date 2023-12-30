@@ -23,8 +23,13 @@ class BeeAttackAction(
         )
   }
 
-  override fun shouldTrigger(event: BlockBreakEvent): Boolean =
-    BLOCKS.contains(event.block.type)
+  override fun shouldTrigger(event: BlockBreakEvent): Boolean {
+    if (!BLOCKS.contains(event.block.type)) {
+      return false
+    }
+    // Disable if the player is using a wooden axe
+    return (event.player.inventory.itemInMainHand.type != Material.WOODEN_AXE)
+  }
 
   private fun spawnBees(event: BlockBreakEvent, loc: Location) {
     val bee = EntitySpawner.spawnCreature(loc, Bee::class.java)
