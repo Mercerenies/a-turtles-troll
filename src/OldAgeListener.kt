@@ -10,6 +10,7 @@ import com.mercerenies.turtletroll.feature.AbstractFeature
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerLevelChangeEvent
+import org.bukkit.event.entity.PlayerDeathEvent
 
 import net.kyori.adventure.text.Component
 
@@ -42,6 +43,17 @@ class OldAgeListener(
       deathRegistry.withCustomDeathMessage(message) {
         event.player.damage(9999.0, null)
       }
+    }
+  }
+
+  @EventHandler
+  fun onPlayerDeath(event: PlayerDeathEvent) {
+    if (!isEnabled()) {
+      return
+    }
+    if (event.player.level >= ageLimit) {
+      event.player.level = 0
+      Messages.sendMessage(event.player, "You are too old to die!")
     }
   }
 
