@@ -65,6 +65,8 @@
    + cactuskick :: Looking at a cactus causes the player to be kicked
    + fishhook :: When you pull a fish hook in, you're launched in that
      direction
+   + birchglare :: If you're near a birch tree and not staring at it,
+     you take damage
 ** CUSTOM SPAWNING FEATURES
    + weepingangel :: Armor stands will chase you when you're not
                      looking at them, and armor stands will rarely

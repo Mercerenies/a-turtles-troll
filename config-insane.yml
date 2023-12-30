@@ -34,6 +34,8 @@ bees:
   probability: 1.0
   radius: 10
   friendly_axe: false
+birchglare:
+  enabled: true
 blazeeye:
   enabled: true
 blazepower:

@@ -11,6 +11,7 @@ import com.mercerenies.turtletroll.parrot.ParrotCookieListener
 import com.mercerenies.turtletroll.parrot.ParrotDeathListener
 import com.mercerenies.turtletroll.parrot.ParrotManager
 import com.mercerenies.turtletroll.chicken.ChickenDamageListener
+import com.mercerenies.turtletroll.birch.BirchGlareRunnableFactory
 import com.mercerenies.turtletroll.rain.RainwaterManagerFactory
 import com.mercerenies.turtletroll.transformed.GhastSpawnerListener
 import com.mercerenies.turtletroll.transformed.RavagerSpawnerListener
@@ -193,6 +194,7 @@ object AllFeatureFactories {
       ExplodingNyliumListenerFactory(PumpkinSlownessManager.PUMPKIN_FEATURE_KEY),
       // Custom death message and the things that depend on it
       CustomDeathMessageListener,
+      BirchGlareRunnableFactory(CustomDeathMessageListener.DEATH_MESSAGE_KEY),
       CookieListenerFactory.Default(CustomDeathMessageListener.DEATH_MESSAGE_KEY),
       MimicListenerFactory(CustomDeathMessageListener.DEATH_MESSAGE_KEY),
       OldAgeListenerFactory(CustomDeathMessageListener.DEATH_MESSAGE_KEY),

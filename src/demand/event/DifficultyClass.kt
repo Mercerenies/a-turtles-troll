@@ -25,6 +25,7 @@ data class DifficultyClass(
         DeathCondition.Explosion, DeathCondition.MustBeZombie,
         DeathCondition.MustBeGhast, DeathCondition.MustBeRavager,
         DeathCondition.Hunger, DeathCondition.MustBeSpider,
+        DeathCondition.MustBeBirch,
       )
     )
 

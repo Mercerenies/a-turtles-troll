@@ -99,6 +99,15 @@ abstract class DeathCondition : DailyDemandEvent {
 
   }
 
+  object MustBeBirch : DeathCondition() {
+    override val description: String = "to a birch tree"
+    override val summary: String = "Die to Birch"
+
+    override fun test(event: PlayerDeathEvent, cause: CauseOfDeath): Boolean =
+      cause is Redstone
+
+  }
+
   object MustBeHerobrine : DeathCondition() {
     override val description: String = "to Herobrine"
     override val summary: String = "Die to Herobrine"
