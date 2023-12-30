@@ -44,6 +44,7 @@ class PufferfishRainManager(
           explosionPowerInWater = state.config.getDouble("pufferfish.explosion_power_in_water"),
         )
       return object : AbstractFeatureContainer() {
+        override val features = listOf(manager)
         override val listeners = listOf(manager)
         override val randomEvents = listOf(manager.pufferfishRainEvent)
       }
