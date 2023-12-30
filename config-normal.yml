@@ -322,6 +322,8 @@ snowball:
   speed_multiplier: 5.5
 solidswap:
   enabled: true
+spatialrend:
+  enabled: true
 spillage:
   enabled: true
 stonetools:

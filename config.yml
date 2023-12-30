@@ -557,6 +557,9 @@ snowball:
 solidswap:
   enabled: default
 
+spatialrend:
+  enabled: default
+
 spillage:
   enabled: default
 

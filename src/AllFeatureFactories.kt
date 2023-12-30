@@ -165,6 +165,7 @@ object AllFeatureFactories {
       SnowListener,
       SnowballListener,
       SolidSwapListener,
+      SpatialRendFeature,
       SpillageListener,
       StoneRecipeDeleter,
       StrongholdAttackFeatureFactory,
