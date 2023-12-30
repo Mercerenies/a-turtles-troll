@@ -2,6 +2,7 @@
 package com.mercerenies.turtletroll
 
 import com.mercerenies.turtletroll.util.component.*
+import com.mercerenies.turtletroll.util.tryCancel
 import com.mercerenies.turtletroll.feature.AbstractFeature
 import com.mercerenies.turtletroll.feature.container.FeatureContainer
 import com.mercerenies.turtletroll.feature.container.ListenerContainer
@@ -69,11 +70,7 @@ class GrievingWidowListener(
   }
 
   private fun resetTimer() {
-    try {
-      scheduledRunnable?.cancel()
-    } catch (_: IllegalStateException) {
-      // If it wasn't scheduled or has already been canceled, don't care.
-    }
+    scheduledRunnable?.tryCancel()
     val newRunnable = DeactivateMobGriefingRunnable()
     newRunnable.runTaskLater(plugin, Constants.TICKS_PER_SECOND * secondsToDisable)
     scheduledRunnable = newRunnable

@@ -8,6 +8,7 @@ import org.bukkit.inventory.meta.ItemMeta
 import org.bukkit.World
 import org.bukkit.GameRule
 import org.bukkit.enchantments.Enchantment
+import org.bukkit.scheduler.BukkitRunnable
 
 import kotlin.math.min
 import kotlin.math.max
@@ -109,4 +110,13 @@ infix fun<K, V> Map<K, V>.union(that: Map<K, V>): Map<K, V> {
 fun ItemStack.withEnchantment(enchantment: Enchantment, level: Int): ItemStack {
   this.addEnchantment(enchantment, level)
   return this
+}
+
+// BukkitRunnable.cancel(), but don't throw if it's already cancelled.
+fun BukkitRunnable.tryCancel() {
+  try {
+    this.cancel()
+  } catch (_: IllegalStateException) {
+    // Ignore.
+  }
 }

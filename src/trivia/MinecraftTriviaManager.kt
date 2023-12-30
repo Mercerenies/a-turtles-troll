@@ -2,7 +2,7 @@
 package com.mercerenies.turtletroll.trivia
 
 import com.mercerenies.turtletroll.util.component.*
-import com.mercerenies.turtletroll.util.*
+import com.mercerenies.turtletroll.util.tryCancel
 import com.mercerenies.turtletroll.Constants
 import com.mercerenies.turtletroll.feature.AbstractFeature
 import com.mercerenies.turtletroll.Messages
@@ -104,14 +104,7 @@ class MinecraftTriviaManager(
     // If we run the command to judge trivia prematurely via debug
     // commands, then we should cancel the "normal" flow of judging
     // trivia.
-    val runnable = judgmentRunnable
-    if (runnable != null) {
-      try {
-        runnable.cancel()
-      } catch (exc: IllegalStateException) {
-        // Ignore
-      }
-    }
+    judgmentRunnable?.tryCancel()
   }
 
   private fun askRandomQuestion() {
