@@ -11,7 +11,7 @@ import com.mercerenies.turtletroll.demand.bowser.BowserInterruptSelector
 import com.mercerenies.turtletroll.demand.bowser.BowserEventsLibrary
 import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 import com.mercerenies.turtletroll.feature.builder.BuilderState
-import com.mercerenies.turtletroll.feature.container.AbstractFeatureContainer
+import com.mercerenies.turtletroll.feature.builder.FeatureBuilder
 import com.mercerenies.turtletroll.feature.container.FeatureContainer
 
 class DailyDemandManagerFactory(
@@ -52,29 +52,16 @@ class DailyDemandManagerFactory(
 
   }
 
-  private class Container(
-    private val manager: DailyDemandManager,
-  ) : AbstractFeatureContainer() {
-
-    override val listeners =
-      listOf(manager)
-
-    override val features =
-      listOf(manager)
-
-    override val gameModifications =
-      listOf(manager)
-
-    override val commands =
-      listOf(manager.command)
-
-  }
-
   override fun create(state: BuilderState): FeatureContainer {
     val eventSelector = eventSelectorFactory(state.config)
     val manager = DailyDemandManager(state.plugin, eventSelector)
     state.registerSharedData(GODS_FEATURE_KEY, manager)
-    return Container(manager)
+    return FeatureBuilder()
+      .addListener(manager)
+      .addFeature(manager)
+      .addGameModification(manager)
+      .addCommand(manager.command)
+      .build()
   }
 
 }

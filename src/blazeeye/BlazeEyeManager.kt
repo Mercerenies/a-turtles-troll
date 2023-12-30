@@ -3,7 +3,7 @@ package com.mercerenies.turtletroll.blazeeye
 
 import com.mercerenies.turtletroll.recipe.RecipeFeature
 import com.mercerenies.turtletroll.feature.container.FeatureContainer
-import com.mercerenies.turtletroll.feature.container.AbstractFeatureContainer
+import com.mercerenies.turtletroll.feature.builder.FeatureBuilder
 import com.mercerenies.turtletroll.feature.builder.BuilderState
 import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 
@@ -41,28 +41,19 @@ class BlazeEyeManager(plugin: Plugin) : RecipeFeature(plugin), Listener {
     fun getMarkerKey(plugin: Plugin): NamespacedKey =
       NamespacedKey(plugin, EYE_MARKER_KEY)
 
-    override fun create(state: BuilderState): FeatureContainer =
-      Container(BlazeEyeManager(state.plugin))
+    override fun create(state: BuilderState): FeatureContainer {
+      val manager = BlazeEyeManager(state.plugin)
+      return FeatureBuilder()
+        .addFeature(manager)
+        .addListener(manager)
+        .addGameModification(manager)
+        .build()
+    }
 
     private fun findNearestFortress(origin: Location): Location? {
       val structureResult = origin.world.locateNearestStructure(origin, StructureType.FORTRESS, STRUCTURE_SEARCH_RADIUS, false)
       return structureResult?.location
     }
-
-  }
-
-  private class Container(
-    private val manager: BlazeEyeManager,
-  ) : AbstractFeatureContainer() {
-
-    override val listeners =
-      listOf(manager)
-
-    override val features =
-      listOf(manager)
-
-    override val gameModifications =
-      listOf(manager)
 
   }
 
