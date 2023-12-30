@@ -94,12 +94,6 @@
    + witherskele :: Wither skeletons spawn with full diamond armor
    + endcrystal :: Ender Crystals spawn with Blaze spawners beneath
                    them
-   + pufferfish :: At high noon, pufferfish rain from the sky on all
-                   players
-     - Pufferfish are not damaged by drowning, dryout, or fall damage
-     - Pufferfish have one health and explode on death (blocks are not
-       damaged)
-     - The explosion is larger if the pufferfish is underwater
    + ak47 :: Pillagers spawn with a crossbow called "AK47" which has
              Quick Charge V
    + drowned :: Whenever a fish spawns, a Drowned spawns alongside it;
@@ -255,6 +249,13 @@
    + bamboo :: When bamboo grows, it has a chance to spread in a
                random place in a 32x32x32 box of the original bamboo
    + grassspread :: Grass spreads slower than normal
+** RANDOM EVENT FEATURES
+   + pufferfish :: Pufferfish randomly rain from the sky on all
+     players, with 15 seconds of notice given
+     - Pufferfish are not damaged by drowning, dryout, or fall damage
+     - Pufferfish have one health and explode on death (blocks are not
+       damaged)
+     - The explosion is larger if the pufferfish is underwater
 ** MISCELLANEOUS FEATURES
    + anvil :: If you stand still for more than ten seconds, an anvil
               will drop on your head; anvils can be smelted into iron

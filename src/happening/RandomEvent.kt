@@ -1,6 +1,8 @@
 
 package com.mercerenies.turtletroll.happening
 
+import com.mercerenies.turtletroll.feature.HasEnabledStatus
+
 interface RandomEvent {
 
   // The event's name. Must be globally unique among all events in the
@@ -21,3 +23,6 @@ interface RandomEvent {
 
 fun RandomEvent.withCooldown(cooldownTime: Int) =
   CooldownRandomEvent(this, cooldownTime)
+
+fun RandomEvent.boundToFeature(feature: HasEnabledStatus) =
+  FeatureBoundRandomEvent(this, feature)

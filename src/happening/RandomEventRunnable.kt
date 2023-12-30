@@ -5,6 +5,7 @@ import com.mercerenies.turtletroll.util.component.*
 import com.mercerenies.turtletroll.feature.TurtleRunnable
 import com.mercerenies.turtletroll.command.Command
 import com.mercerenies.turtletroll.command.OptionalUnaryCommand
+import com.mercerenies.turtletroll.command.TerminalCommand
 import com.mercerenies.turtletroll.Constants
 import com.mercerenies.turtletroll.Messages
 
@@ -55,6 +56,16 @@ class RandomEventRunnable(
 
   }
 
+  private inner class DebugStatusCommand() : TerminalCommand() {
+
+    override fun onCommand(sender: CommandSender): Boolean {
+      val entriesSummary = eventPool.toJSON()
+      Messages.sendMessage(sender, entriesSummary.toString())
+      return true
+    }
+
+  }
+
   constructor(plugin: Plugin, events: Iterable<RandomEvent>) :
     this(plugin, RandomEventPool(events))
 
@@ -63,7 +74,8 @@ class RandomEventRunnable(
   override val currentTurn: Int
     get() = _currentTurn
 
-  val debugCommand: Command = DebugFireCommand()
+  val debugFireCommand: Command = DebugFireCommand()
+  val debugStatusCommand: Command = DebugStatusCommand()
 
   override val taskPeriod = Constants.IN_GAME_HOUR_TICKS.toLong()
 

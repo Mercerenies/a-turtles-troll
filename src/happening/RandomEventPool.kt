@@ -3,6 +3,9 @@ package com.mercerenies.turtletroll.happening
 
 import com.mercerenies.turtletroll.sample
 
+import org.json.JSONObject
+import org.json.JSONArray
+
 class RandomEventPool(
   events: Iterable<RandomEvent>,
 ) {
@@ -44,6 +47,23 @@ class RandomEventPool(
     }
     // Fire the chosen event and reset its weight.
     eventEntry.fireAndReset(state)
+  }
+
+  // Returns a debug-friendly JSON object representing this pool's
+  // current status. The output of this function is NOT stable and
+  // should only be used for debugging.
+  fun toJSON(): JSONObject {
+    val arr = JSONArray(
+      entries.map { entry ->
+        JSONObject(
+          mapOf(
+            "name" to entry.event.name,
+            "weight" to entry.currentWeight,
+          )
+        )
+      }
+    )
+    return JSONObject(mapOf("entries" to arr))
   }
 
 }

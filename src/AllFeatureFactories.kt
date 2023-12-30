@@ -53,8 +53,11 @@ import com.mercerenies.turtletroll.jump.EncumbranceManagerFactory
 import com.mercerenies.turtletroll.trivia.MinecraftTriviaManagerFactory
 import com.mercerenies.turtletroll.blazeeye.BlazeEyeManager
 import com.mercerenies.turtletroll.happening.RandomEventRunnable
+import com.mercerenies.turtletroll.happening.NothingEvent
 
 object AllFeatureFactories {
+
+  val NULL_RANDOM_EVENT_WEIGHT = 70.0
 
   private val allFactories: List<FeatureContainerFactory<FeatureContainer>> =
     listOf(
@@ -213,11 +216,13 @@ object AllFeatureFactories {
     }
 
     // RandomEventRunnable
-    val randomEventRunnable = RandomEventRunnable(builderState.plugin, allFeatures.randomEvents)
+    val allRandomEvents = allFeatures.randomEvents + NothingEvent(NULL_RANDOM_EVENT_WEIGHT)
+    val randomEventRunnable = RandomEventRunnable(builderState.plugin, allRandomEvents)
     val randomEventRunnableContainer = object : AbstractFeatureContainer() {
       override val runnables = listOf(randomEventRunnable)
       override val debugCommands = listOf(
-        "event" to randomEventRunnable.debugCommand,
+        "event" to randomEventRunnable.debugFireCommand,
+        "eventstatus" to randomEventRunnable.debugStatusCommand,
       )
     }
 
