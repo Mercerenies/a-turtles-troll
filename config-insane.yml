@@ -33,6 +33,7 @@ bees:
   enabled: true
   probability: 1.0
   radius: 10
+  friendly_axe: false
 blazeeye:
   enabled: true
 blazepower:

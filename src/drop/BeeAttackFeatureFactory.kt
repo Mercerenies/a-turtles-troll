@@ -14,8 +14,9 @@ object BeeAttackFeatureFactory : FeatureContainerFactory<FeatureContainer> {
 
     private val radius = state.config.getInt("bees.radius")
     private val probability = state.config.getDouble("bees.probability")
+    private val friendlyAxe = state.config.getBoolean("bees.friendly_axe")
 
-    private val beeAttackAction = BeeAttackAction(radius = radius).asFeature(
+    private val beeAttackAction = BeeAttackAction(radius = radius, friendlyAxe = friendlyAxe).asFeature(
       "bees",
       "Breaking wood will sometimes result in a bee attack",
     )

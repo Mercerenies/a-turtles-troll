@@ -11,7 +11,8 @@ import org.bukkit.event.block.BlockBreakEvent
 import org.bukkit.entity.Bee
 
 class BeeAttackAction(
-  private val radius: Int = 5
+  private val radius: Int,
+  private val friendlyAxe: Boolean,
 ) : NearbyAction {
 
   companion object {
@@ -28,7 +29,10 @@ class BeeAttackAction(
       return false
     }
     // Disable if the player is using a wooden axe
-    return (event.player.inventory.itemInMainHand.type != Material.WOODEN_AXE)
+    if ((friendlyAxe) && (event.player.inventory.itemInMainHand.type == Material.WOODEN_AXE)) {
+      return false
+    }
+    return true
   }
 
   private fun spawnBees(event: BlockBreakEvent, loc: Location) {

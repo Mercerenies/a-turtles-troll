@@ -101,6 +101,8 @@ bees:
   probability: default
   # (Integer) The radius of wood blocks to turn into bees.
   radius: default
+  # (Boolean) Whether a wooden axe negates the effect.
+  friendly_axe: default
 
 # Eyes of Blaze can be crafted from Flint & Steel and an Ender Pearl.
 # These work like Eyes of Ender, but they only work in the Nether and
