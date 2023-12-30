@@ -25,9 +25,6 @@ class CompositeFeatureContainer(
   override val features: Iterable<Feature> =
     allContainers.map { it.features }.lazyFlatten()
 
-  override val runnables: Iterable<Schedulable> =
-    allContainers.map { it.runnables }.lazyFlatten()
-
   override val packetListeners: Iterable<PacketListener> =
     allContainers.map { it.packetListeners }.lazyFlatten()
 

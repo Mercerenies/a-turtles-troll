@@ -6,6 +6,7 @@ import com.mercerenies.turtletroll.feature.container.AbstractFeatureContainer
 import com.mercerenies.turtletroll.feature.builder.BuilderState
 import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 import com.mercerenies.turtletroll.feature.CompositeFeature
+import com.mercerenies.turtletroll.feature.GameModification
 import com.mercerenies.turtletroll.recipe.AnvilRecipeFeature
 
 object AnvilRunnableFactory : FeatureContainerFactory<FeatureContainer> {
@@ -25,11 +26,8 @@ object AnvilRunnableFactory : FeatureContainerFactory<FeatureContainer> {
     override val features =
       listOf(compositeFeature)
 
-    override val runnables =
-      listOf(anvilRunnable)
-
-    override val gameModifications =
-      listOf(anvilRecipe)
+    override val gameModifications: List<GameModification> =
+      listOf(anvilRunnable, anvilRecipe)
 
   }
 

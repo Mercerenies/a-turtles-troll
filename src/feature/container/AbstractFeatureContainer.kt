@@ -24,9 +24,6 @@ open class AbstractFeatureContainer() : FeatureContainer {
   open override val features: Iterable<Feature>
     get() = listOf()
 
-  open override val runnables: Iterable<Schedulable>
-    get() = listOf()
-
   open override val packetListeners: Iterable<PacketListener>
     get() = listOf()
 

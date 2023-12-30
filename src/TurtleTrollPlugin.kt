@@ -79,11 +79,6 @@ class TurtleTrollPlugin : JavaPlugin() {
       mod.onPluginEnable(this)
     }
 
-    // Runnables
-    for (runnable in mainContainer.runnables) {
-      runnable.register()
-    }
-
     // Setup command
     this.getCommand("turtle")!!.setExecutor(commandDispatcher)
     this.getCommand("turtle")!!.setTabCompleter(commandDispatcher)
@@ -104,13 +99,6 @@ class TurtleTrollPlugin : JavaPlugin() {
     val protocolManager = ProtocolLibrary.getProtocolManager()
     for (listener in mainContainer.packetListeners) {
       protocolManager.removePacketListener(listener)
-    }
-
-    // Runnables
-    for (runnable in mainContainer.runnables) {
-      try {
-        runnable.cancel()
-      } catch (_: IllegalStateException) {}
     }
 
     // Remove command

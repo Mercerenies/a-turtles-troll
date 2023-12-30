@@ -23,7 +23,7 @@ class RainwaterManagerFactory(
     override val features =
       listOf(manager)
 
-    override val runnables =
+    override val gameModifications =
       listOf(manager)
 
     override val packetListeners =

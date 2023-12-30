@@ -11,7 +11,7 @@ class RunnableContainer(
   override val features: Iterable<Feature>
     get() = listOf(runnable)
 
-  override val runnables: Iterable<RunnableFeature>
+  override val gameModifications: Iterable<RunnableFeature>
     get() = listOf(runnable)
 
 }

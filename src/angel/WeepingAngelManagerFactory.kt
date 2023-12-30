@@ -6,6 +6,7 @@ import com.mercerenies.turtletroll.feature.container.AbstractFeatureContainer
 import com.mercerenies.turtletroll.feature.builder.BuilderState
 import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 import com.mercerenies.turtletroll.feature.CompositeFeature
+import com.mercerenies.turtletroll.feature.GameModification
 import com.mercerenies.turtletroll.recipe.AngelRecipeFeature
 import com.mercerenies.turtletroll.gravestone.CustomDeathMessageRegistry
 
@@ -36,11 +37,8 @@ class WeepingAngelManagerFactory(
     override val features =
       listOf(compositeFeature)
 
-    override val runnables =
-      listOf(angelManager)
-
-    override val gameModifications =
-      listOf(angelRecipe)
+    override val gameModifications: List<GameModification> =
+      listOf(angelManager, angelRecipe)
 
     override val debugCommands =
       listOf(

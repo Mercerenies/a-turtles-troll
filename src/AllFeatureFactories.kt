@@ -220,7 +220,7 @@ object AllFeatureFactories {
     val allRandomEvents = allFeatures.randomEvents + NothingEvent(NULL_RANDOM_EVENT_WEIGHT)
     val randomEventRunnable = RandomEventRunnable(builderState.plugin, allRandomEvents)
     val randomEventRunnableContainer = object : AbstractFeatureContainer() {
-      override val runnables = listOf(randomEventRunnable)
+      override val gameModifications = listOf(randomEventRunnable)
       override val debugCommands = listOf(
         "event" to randomEventRunnable.debugFireCommand,
         "eventstatus" to randomEventRunnable.debugStatusCommand,

@@ -17,7 +17,7 @@ where T : RunnableFeature, T : Listener {
   override val features: Iterable<Feature>
     get() = listOf(manager)
 
-  override val runnables: Iterable<RunnableFeature>
+  override val gameModifications: Iterable<RunnableFeature>
     get() = listOf(manager)
 
 }

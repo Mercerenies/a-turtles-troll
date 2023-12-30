@@ -20,8 +20,6 @@ interface FeatureContainer {
 
   val features: Iterable<Feature>
 
-  val runnables: Iterable<Schedulable>
-
   val packetListeners: Iterable<PacketListener>
 
   val gameModifications: Iterable<GameModification>

@@ -6,6 +6,7 @@ import com.mercerenies.turtletroll.feature.container.AbstractFeatureContainer
 import com.mercerenies.turtletroll.feature.builder.BuilderState
 import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 import com.mercerenies.turtletroll.feature.CompositeFeature
+import com.mercerenies.turtletroll.feature.GameModification
 import com.mercerenies.turtletroll.recipe.DripstoneRecipeFeature
 
 object DripstoneManagerFactory : FeatureContainerFactory<FeatureContainer> {
@@ -28,11 +29,8 @@ object DripstoneManagerFactory : FeatureContainerFactory<FeatureContainer> {
     override val features =
       listOf(compositeFeature)
 
-    override val runnables =
-      listOf(dripstoneManager)
-
-    override val gameModifications =
-      listOf(dripstoneRecipe)
+    override val gameModifications: List<GameModification> =
+      listOf(dripstoneManager, dripstoneRecipe)
 
   }
 
