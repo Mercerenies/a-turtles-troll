@@ -77,6 +77,10 @@ class FeatureBuilder {
     return this
   }
 
+  fun addDebugCommands(commands: List<Pair<String, Command>>): FeatureBuilder {
+    return addDebugCommand(*commands.toTypedArray())
+  }
+
   fun addPreRule(vararg actions: BlockBreakAction): FeatureBuilder {
     assertNotBuilt()
     container.preRules.addAll(actions)
