@@ -257,12 +257,14 @@
      - Pufferfish have one health and explode on death (blocks are not
        damaged)
      - The explosion is larger if the pufferfish is underwater
-   + minecraftrivia :: Every ten minutes, the game asks a trivia question
+   + minecraftrivia :: Every few minutes, the game asks a trivia question
      - Those who answer correctly are rewarded with an item related to
        the question
      - Those who do not answer are struck by lightning
      - Those who answer incorrectly suffer no penalty but gain no
        reward
+   + spatialrend :: Players will be teleported to each other's
+     positions at random intervals
 ** MISCELLANEOUS FEATURES
    + anvil :: If you stand still for more than ten seconds, an anvil
               will drop on your head; anvils can be smelted into iron

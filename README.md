@@ -41,6 +41,7 @@ A Turtle's Troll also depends on the following libraries.
 * The "Old Age" effect resets your level to zero when you exceed the age limit.
 * Pufferfish and trivia events are now fired by a central event
   manager, rather than on their own timers.
+* Players might get teleported to each other's positions at random.
 * Bees never spawn on trees if you break the wood with a wooden axe.
 * Removed a particularly obnoxious cookie effect.
 * Improved logic of `chestshuffle` effect.
