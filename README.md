@@ -38,6 +38,9 @@ A Turtle's Troll also depends on the following libraries.
 * Umbrella hats will protect you from the rain.
 * Mimic chests can now spawn as trapped or double chests.
 * Mimic chests now show a variety of different possible displays.
+* The "Old Age" effect resets your level to zero when you exceed the age limit.
+* Pufferfish and trivia events are now fired by a central event
+  manager, rather than on their own timers.
 * Removed a particularly obnoxious cookie effect.
 * Improved logic of `chestshuffle` effect.
 * The parrot launch message now includes the parrot's name.
