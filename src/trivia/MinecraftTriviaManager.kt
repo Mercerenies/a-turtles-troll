@@ -4,8 +4,9 @@ package com.mercerenies.turtletroll.trivia
 import com.mercerenies.turtletroll.util.component.*
 import com.mercerenies.turtletroll.util.tryCancel
 import com.mercerenies.turtletroll.Constants
-import com.mercerenies.turtletroll.feature.AbstractFeature
+import com.mercerenies.turtletroll.Sounds
 import com.mercerenies.turtletroll.Messages
+import com.mercerenies.turtletroll.feature.AbstractFeature
 import com.mercerenies.turtletroll.trivia.question.TriviaQuestionSupplier
 import com.mercerenies.turtletroll.command.Command
 import com.mercerenies.turtletroll.command.TerminalCommand
@@ -29,10 +30,6 @@ class MinecraftTriviaManager(
   val config: TriviaConfig,
   private val questionSupplier: TriviaQuestionSupplier,
 ) : AbstractFeature() {
-
-  companion object {
-    val TRIVIA_START_SOUND = "custom.event.trivia"
-  }
 
   override val name = "minecrafttrivia"
 
@@ -127,7 +124,7 @@ class MinecraftTriviaManager(
 
   private fun notifyAllPlayers() {
     for (player in Bukkit.getOnlinePlayers()) {
-      player.playSound(player.location, TRIVIA_START_SOUND, SoundCategory.NEUTRAL, 1.0f, 1.0f)
+      player.playSound(player.location, Sounds.TRIVIA_START, SoundCategory.NEUTRAL, 1.0f, 1.0f)
     }
   }
 

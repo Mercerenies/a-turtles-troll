@@ -14,6 +14,7 @@ import com.mercerenies.turtletroll.happening.boundToFeature
 
 import org.bukkit.plugin.Plugin
 import org.bukkit.Bukkit
+import org.bukkit.Sound
 import org.bukkit.entity.Player
 import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerTeleportEvent
@@ -54,6 +55,7 @@ class SpatialRendFeature(
         val player = onlinePlayers[i]
         val destination = positions[(i + 1) % positions.size]
         player.teleport(destination, PlayerTeleportEvent.TeleportCause.PLUGIN)
+        player.world.playSound(player.location, Sound.ITEM_CHORUS_FRUIT_TELEPORT, 1.0f, 0.0f)
       }
     }
   }

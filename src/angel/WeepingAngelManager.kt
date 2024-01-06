@@ -8,6 +8,7 @@ import com.mercerenies.turtletroll.gravestone.Angel
 import com.mercerenies.turtletroll.feature.RunnableFeature
 import com.mercerenies.turtletroll.SpawnReason
 import com.mercerenies.turtletroll.CooldownMemory
+import com.mercerenies.turtletroll.Sounds
 
 import org.bukkit.entity.Player
 import org.bukkit.entity.ArmorStand
@@ -23,7 +24,6 @@ import org.bukkit.event.EventHandler
 import org.bukkit.event.player.PlayerMoveEvent
 import org.bukkit.event.entity.EntityDeathEvent
 import org.bukkit.event.entity.CreatureSpawnEvent
-import org.bukkit.Sound
 import org.bukkit.util.EulerAngle
 
 import net.kyori.adventure.text.Component
@@ -198,7 +198,7 @@ class WeepingAngelManager(
       val pitch = Math.toDegrees(Math.atan2(- targetVec.getY(), Math.sqrt(targetVec.getX() * targetVec.getX() + targetVec.getZ() * targetVec.getZ()))).toFloat()
       angel.setRotation(yaw, pitch)
       angel.setVelocity(targetVec.normalize().multiply(movementSpeed))
-      angel.world.playSound(angel.location, Sound.ENTITY_GHAST_SCREAM, 1.0f, 0.0f)
+      angel.world.playSound(angel.location, Sounds.WEEPING_ANGEL_ATTACK, 1.0f, 0.0f)
       assignAttackPose(angel)
     }
 

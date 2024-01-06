@@ -60,7 +60,7 @@ abstract class TeleportToEffect(private val plugin: Plugin) : CookieEffect {
   abstract val message: String
 
   open val sound: Sound?
-    get() = null
+    get() = Sound.ITEM_CHORUS_FRUIT_TELEPORT
 
   open val cause: PlayerTeleportEvent.TeleportCause
     get() = PlayerTeleportEvent.TeleportCause.PLUGIN
