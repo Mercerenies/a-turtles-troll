@@ -136,8 +136,8 @@ class MinecraftTriviaManager(
       // Nothing to judge
       return
     }
-    val result = engine.judgeAnswers()
     val reward = engine.chooseReward()
+    val result = engine.judgeAnswers()
     TriviaResult.assignRewards(result, reward)
   }
 
