@@ -161,6 +161,24 @@ object BlockTypes {
     Material.GREEN_CONCRETE_POWDER, Material.RED_CONCRETE_POWDER, Material.BLACK_CONCRETE_POWDER,
   )
 
+  val BEDS = SetListAllomorph.of(
+    Material.WHITE_BED, Material.ORANGE_BED, Material.MAGENTA_BED,
+    Material.LIGHT_BLUE_BED, Material.YELLOW_BED,
+    Material.LIME_BED, Material.PINK_BED, Material.GRAY_BED,
+    Material.LIGHT_GRAY_BED, Material.CYAN_BED,
+    Material.PURPLE_BED, Material.BLUE_BED, Material.BROWN_BED,
+    Material.GREEN_BED, Material.RED_BED, Material.BLACK_BED,
+  )
+
+  val DYES = SetListAllomorph.of(
+    Material.WHITE_DYE, Material.ORANGE_DYE, Material.MAGENTA_DYE,
+    Material.LIGHT_BLUE_DYE, Material.YELLOW_DYE,
+    Material.LIME_DYE, Material.PINK_DYE, Material.GRAY_DYE,
+    Material.LIGHT_GRAY_DYE, Material.CYAN_DYE,
+    Material.PURPLE_DYE, Material.BLUE_DYE, Material.BROWN_DYE,
+    Material.GREEN_DYE, Material.RED_DYE, Material.BLACK_DYE,
+  )
+
   // Takes an ore block and turns it into the non-ore block type it's
   // most similar to. Returns the block itself if given a non-ore.
   fun removeOreFrom(material: Material): Material =

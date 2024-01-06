@@ -3,6 +3,7 @@ package com.mercerenies.turtletroll.trivia.question
 
 import com.mercerenies.turtletroll.util.component.*
 import com.mercerenies.turtletroll.util.withEnchantment
+import com.mercerenies.turtletroll.util.withCustomName
 import com.mercerenies.turtletroll.BlockTypes
 
 import org.bukkit.Material
@@ -12,10 +13,12 @@ import org.bukkit.inventory.ItemStack
 import org.bukkit.enchantments.Enchantment
 import org.bukkit.inventory.`meta`.EnchantmentStorageMeta
 import org.bukkit.inventory.`meta`.PotionMeta
+import org.bukkit.inventory.`meta`.Damageable
 
 import kotlin.collections.Map
 
 object QuestionLibrary {
+  // TODO Write a version of mapOf that checks for duplicate keys, as a sanity check.
 
   // Question IDs (the strings in this map) shall be lowercase
   // alphanumeric and are used for debugging purposes only.
@@ -386,6 +389,145 @@ object QuestionLibrary {
           itemStack.itemMeta = meta
           listOf(ItemReward(itemStack))
         },
+      )
+    },
+    "realdye" to {
+      MultipleChoiceQuestion(
+        questionBody = "Which of these is NOT a real dye color in Minecraft?",
+        answers = listOf("Brown", "Magenta", "Turquoise", "Lime"),
+        correctAnswerIndex = 2,
+        rewards = toRewards(BlockTypes.DYES, stackSize = 64),
+      )
+    },
+    "jebsecret" to {
+      MultipleChoiceQuestion(
+        questionBody = "On October 15, 2015, Tommaso Checchi tweeted that Jeb was working on a secret feature which was like...",
+        answers = listOf("Star Trek: Deep Space Nine", "Dungeons and Dragons 5th edition", "Super Mario 64", "Crash Bandicoot Nitro Kart 2"),
+        correctAnswerIndex = 2,
+        rewards = run {
+          val itemStack = ItemStack(Material.ELYTRA, 1)
+          val meta = itemStack.itemMeta as Damageable
+          meta.setDamage(Material.ELYTRA.maxDurability - 1)
+          itemStack.itemMeta = meta
+          listOf(ItemReward(itemStack))
+        },
+      )
+    },
+    "horsearmor" to {
+      MultipleChoiceQuestion(
+        questionBody = "Which horse armor is craftable?",
+        answers = listOf("Leather", "Iron", "Gold", "Diamond"),
+        correctAnswerIndex = 0,
+        rewards = listOf(
+          ItemReward(Material.LEATHER_HORSE_ARMOR),
+          ItemReward(Material.HORSE_SPAWN_EGG),
+        ),
+        shuffleAnswers = false,
+      )
+    },
+    "witherfact" to {
+      MultipleChoiceQuestion(
+        questionBody = "Which of the following statements about the Wither is TRUE?",
+        answers = listOf(
+          "The Wither has 6 armor",
+          "The Wither will not attack Ghasts",
+          "The Wither has the most health of all mobs in Minecraft Java Edition",
+          "The Wither can't break half slabs",
+        ),
+        correctAnswerIndex = 1,
+        rewards = listOf(
+          ItemReward(ItemStack(Material.SOUL_SAND, 64)),
+          ItemReward(Material.WITHER_SKELETON_SKULL),
+        ),
+      )
+    },
+    "catgift" to {
+      MultipleChoiceQuestion(
+        questionBody = "Which of the following is NOT a cat gift",
+        answers = listOf("Rabbit's Foot", "Feather", "Phantom Membrane", "Raw Cod"),
+        correctAnswerIndex = 3,
+        rewards = run {
+          // Duplicate the catSpawnEggs reward enough times that it's
+          // 50/50 between the beds and spawn eggs.
+          val beds = toRewards(BlockTypes.BEDS)
+          val catSpawnEggs = List(BlockTypes.BEDS.size) { ItemReward(Material.CAT_SPAWN_EGG) }
+          beds + catSpawnEggs
+        },
+      )
+    },
+    "javarelease" to {
+      MultipleChoiceQuestion(
+        questionBody = "When was Minecraft's 1.0 Java release date?",
+        answers = listOf("November 12, 2011", "November 14, 2011", "November 16, 2011", "November 18, 2011"),
+        correctAnswerIndex = 3,
+        rewards = listOf(
+          ItemReward(Material.ENCHANTING_TABLE),
+          ItemReward(ItemStack(Material.END_STONE, 64)),
+          ItemReward(ItemStack(Material.ENDER_EYE, 6)),
+          ItemReward(Material.VILLAGER_SPAWN_EGG),
+        ),
+        shuffleAnswers = false,
+      )
+    },
+    "javadays" to {
+      MultipleChoiceQuestion(
+        questionBody = "How many days was Minecraft in development before its 1.0 Java release?",
+        answers = listOf("916 days", "1024 days", "1186 days", "1200 days"),
+        correctAnswerIndex = 0,
+        rewards = listOf(
+          ItemReward(Material.LILY_PAD),
+          ItemReward(ItemStack(Material.NETHER_BRICK, 64)),
+          ItemReward(ItemStack(Material.BLAZE_ROD, 8)),
+          ItemReward(Material.BREWING_STAND),
+        ),
+        shuffleAnswers = false,
+      )
+    },
+    "melee" to {
+      MultipleChoiceQuestion(
+        questionBody = "Which of the following mobs does NOT have a melee attack?",
+        answers = listOf("Blaze", "The Killer Bunny", "Pufferfish", "Skeleton"),
+        correctAnswerIndex = 2,
+        rewards = listOf(
+          ItemReward(ItemStack(Material.BLAZE_ROD, 8)),
+          ItemReward(ItemStack(Material.RABBIT_SPAWN_EGG, 2)),
+          ItemReward(ItemStack(Material.PUFFERFISH_BUCKET).withCustomName("Bucket o' Pufferfish")),
+          BowAndArrowReward(arrowCount = 32),
+        ),
+      )
+    },
+    "hero" to {
+      MultipleChoiceQuestion(
+        questionBody = "Which of these is a Hero in Minecraft Dungeons?",
+        answers = listOf("Bee Bestie", "Diamond Dianne", "Louie", "Warden"),
+        correctAnswerIndex = 0,
+        rewards = listOf(
+          ItemReward(Material.BEE_SPAWN_EGG),
+          ItemReward(ItemStack(Material.HONEY_BOTTLE, 16)),
+          ItemReward(Material.IRON_SWORD),
+        ),
+      )
+    },
+    "maxdamage" to {
+      MultipleChoiceQuestion(
+        questionBody = "Which of the following can theoretically deal the most damage in a single hit?",
+        answers = listOf("An Axe", "An Arrow", "A Fox", "The Warden"),
+        correctAnswerIndex = 1,
+        rewards = listOf(
+          ItemReward(ItemStack(Material.ARROW, 64)),
+          ItemReward(ItemStack(Material.BOW).withCustomName("Particle Accelerator")),
+        ),
+      )
+    },
+    "franchise" to {
+      MultipleChoiceQuestion(
+        questionBody = "Which of these video game franchises has NOT had a Minecraft crossover or homage?",
+        answers = listOf("Fable", "Terraria", "Enter the Gungeon", "The Stanley Parable"),
+        correctAnswerIndex = 2,
+        rewards = listOf(
+          ItemReward(Material.GRASS_BLOCK),
+          ItemReward(Material.STONE_PICKAXE),
+        ),
       )
     },
     "signs" to {

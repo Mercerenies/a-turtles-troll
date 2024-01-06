@@ -10,6 +10,8 @@ import org.bukkit.GameRule
 import org.bukkit.enchantments.Enchantment
 import org.bukkit.scheduler.BukkitRunnable
 
+import net.kyori.adventure.text.Component
+
 import kotlin.math.min
 import kotlin.math.max
 
@@ -113,6 +115,16 @@ fun ItemStack.withEnchantment(enchantment: Enchantment, level: Int): ItemStack {
   this.addEnchantment(enchantment, level)
   return this
 }
+
+fun ItemStack.withCustomName(name: Component): ItemStack {
+  val itemMeta = this.itemMeta
+  itemMeta.displayName(name)
+  this.itemMeta = itemMeta
+  return this
+}
+
+fun ItemStack.withCustomName(name: String): ItemStack =
+  this.withCustomName(Component.text(name))
 
 // BukkitRunnable.cancel(), but don't throw if it's already cancelled.
 fun BukkitRunnable.tryCancel() {
