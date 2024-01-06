@@ -15,6 +15,7 @@ import com.mercerenies.turtletroll.storage.GlobalFileDataHolder
 import com.mercerenies.turtletroll.config.BukkitConfigOptions
 import com.mercerenies.turtletroll.config.CheckedConfigOptions
 import com.mercerenies.turtletroll.config.DifficultyBackedConfigOptions
+import com.mercerenies.turtletroll.integration.TwitchStatistics
 
 import org.bukkit.plugin.java.JavaPlugin
 import org.bukkit.Bukkit
@@ -58,6 +59,9 @@ class TurtleTrollPlugin : JavaPlugin() {
   }
 
   override fun onEnable() {
+
+    // Initialize singleton integrations. (TODO Move this to a proper reload)
+    TwitchStatistics.initializeSingleton(this)
 
     // Reload the data file
     dataHolder.reload()

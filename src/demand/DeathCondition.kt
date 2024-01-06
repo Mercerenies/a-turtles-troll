@@ -5,6 +5,7 @@ import com.mercerenies.turtletroll.Messages
 import com.mercerenies.turtletroll.Sounds
 import com.mercerenies.turtletroll.util.component.*
 import com.mercerenies.turtletroll.util.*
+import com.mercerenies.turtletroll.integration.TwitchStatistics
 import com.mercerenies.turtletroll.gravestone.CauseOfDeath
 import com.mercerenies.turtletroll.gravestone.Vanilla
 import com.mercerenies.turtletroll.gravestone.VanillaMob
@@ -49,9 +50,16 @@ abstract class DeathCondition : DailyDemandEvent {
       val cause = CauseOfDeath.identify(event)
       if (this.test(event, cause)) {
         Messages.broadcastMessage(appeasedMessage(event.player))
+        rewardPlayer(event.player)
         godsState.setGodsAppeased(true)
       }
     }
+  }
+
+  private fun rewardPlayer(player: Player) {
+    val twitchCount = TwitchStatistics.singleton.latestStreamerCount ?: 2L
+    Messages.sendMessage(player, "Thanks to the generous Twitch streams of ${twitchCount} streamers, you've been awarded ${twitchCount} experience points.")
+    player.giveExp(twitchCount.toInt())
   }
 
   // Should be a prepositional phrase

@@ -36,6 +36,7 @@ Your Minecraft server will also require
 
 ### Version 1.24
 
+* The player who appeases the gods gets awarded one experience point for every Twitch streamer currently streaming Minecraft.
 * Added teleport sound effects.
 * Added titles to random events.
 * Added titles and sound effects for gods' demand events.
