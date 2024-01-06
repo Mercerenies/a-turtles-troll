@@ -24,6 +24,7 @@ import org.bukkit.event.Listener
 import org.bukkit.command.CommandSender
 
 import net.kyori.adventure.text.Component
+import net.kyori.adventure.text.format.NamedTextColor
 
 class DailyDemandManager(
   plugin: Plugin,
@@ -39,6 +40,12 @@ class DailyDemandManager(
     val SATISFIED_MESSAGE = Component.text("The gods are appeased today; everyone is free to sleep.")
 
     val DISABLED_MESSAGE = Component.text("This feature is currently disabled; the gods are not interfering with your sleep.")
+
+    val GODS_APPEASED_TITLE = Component.text("Gods are happy!", NamedTextColor.GREEN)
+
+    val GODS_ANGRY_TITLE = Component.text("Gods are furious!", NamedTextColor.RED)
+
+    val GODS_DEMAND_TITLE = Component.text("Gods' Demand!", NamedTextColor.YELLOW)
 
     val STATES = listOf(
       Event(State.Daytime, DAWN_TIME),
@@ -103,7 +110,12 @@ class DailyDemandManager(
   override fun setGodsAppeased(isAppeased: Boolean) {
     if (isAppeased && !this.isAppeased) {
       eventSelector.onGodsAppeased()
+      Messages.broadcastTitle(GODS_APPEASED_TITLE)
     }
+    setGodsAppeasedSilently(isAppeased)
+  }
+
+  override fun setGodsAppeasedSilently(isAppeased: Boolean) {
     this.isAppeased = isAppeased
     bossBar.updateCondition(getGodsStatus())
   }

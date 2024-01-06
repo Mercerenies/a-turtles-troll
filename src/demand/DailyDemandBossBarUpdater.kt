@@ -18,7 +18,7 @@ class DailyDemandBossBarUpdater(
     fun barColor(state: GodsStatus): BarColor =
       when (state) {
         GodsStatus.IDLE -> BarColor.YELLOW
-        GodsStatus.APPEASED -> BarColor.YELLOW
+        GodsStatus.APPEASED -> BarColor.GREEN
         GodsStatus.ANGRY -> BarColor.RED
       }
 

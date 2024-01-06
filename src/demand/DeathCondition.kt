@@ -31,11 +31,13 @@ abstract class DeathCondition : DailyDemandEvent {
 
   open override fun onDayStart(godsState: GodsState) {
     Messages.broadcastMessage(getRequestMessage())
+    Messages.broadcastTitle(DailyDemandManager.GODS_DEMAND_TITLE)
   }
 
   open override fun onDayEnd(godsState: GodsState) {
     if (!godsState.isAppeased()) {
       Messages.broadcastMessage(DailyDemandManager.ANGRY_MESSAGE)
+      Messages.broadcastTitle(DailyDemandManager.GODS_ANGRY_TITLE)
     }
   }
 

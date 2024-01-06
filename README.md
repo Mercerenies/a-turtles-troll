@@ -33,7 +33,8 @@ A Turtle's Troll also depends on the following libraries.
 
 ### Version 1.24
 
-* Fixed a bug with trivia rewards
+* Added titles for Gods' demand events
+* Fixed a bug with trivia rewards.
 
 ### Version 1.23
 

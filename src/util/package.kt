@@ -13,6 +13,8 @@ import org.bukkit.scheduler.BukkitRunnable
 import kotlin.math.min
 import kotlin.math.max
 
+import java.time.Duration
+
 fun lerp(a: Double, b: Double, amount: Double): Double =
   a * (1 - amount) + b * amount
 
@@ -120,3 +122,6 @@ fun BukkitRunnable.tryCancel() {
     // Ignore.
   }
 }
+
+fun durationOfTicks(ticks: Long) =
+  Duration.ofMillis(ticks * 50L)
