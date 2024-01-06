@@ -13,6 +13,7 @@ import com.mercerenies.turtletroll.command.TerminalCommand
 import com.mercerenies.turtletroll.command.OptionalUnaryCommand
 import com.mercerenies.turtletroll.happening.RandomEvent
 import com.mercerenies.turtletroll.happening.RandomEventState
+import com.mercerenies.turtletroll.happening.withTitle
 import com.mercerenies.turtletroll.happening.withCooldown
 import com.mercerenies.turtletroll.happening.boundToFeature
 
@@ -75,7 +76,10 @@ class MinecraftTriviaManager(
   private var judgmentRunnable: TriviaJudgeRunnable? = null
 
   val triviaRandomEvent: RandomEvent =
-    TriviaEvent().withCooldown(4).boundToFeature(this)
+    TriviaEvent()
+      .withTitle("Trivia Time!")
+      .withCooldown(4)
+      .boundToFeature(this)
 
   private inner class TriviaEvent() : RandomEvent {
     override val name = "trivia"

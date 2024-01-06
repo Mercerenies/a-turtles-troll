@@ -9,6 +9,7 @@ import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 import com.mercerenies.turtletroll.happening.RandomEvent
 import com.mercerenies.turtletroll.happening.NotifiedRandomEvent
 import com.mercerenies.turtletroll.happening.RandomEventState
+import com.mercerenies.turtletroll.happening.withTitle
 import com.mercerenies.turtletroll.happening.withCooldown
 import com.mercerenies.turtletroll.happening.boundToFeature
 
@@ -94,7 +95,10 @@ class PufferfishRainManager(
   override val description: String = "Pufferfish rain on all players periodically"
 
   val pufferfishRainEvent: RandomEvent =
-    PufferfishRainEvent().withCooldown(24).boundToFeature(this)
+    PufferfishRainEvent()
+      .withTitle("Pufferfish Rain!")
+      .withCooldown(24)
+      .boundToFeature(this)
 
   @EventHandler
   fun onEntityDeath(event: EntityDeathEvent) {

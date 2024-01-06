@@ -10,6 +10,7 @@ import com.mercerenies.turtletroll.happening.RandomEvent
 import com.mercerenies.turtletroll.happening.NotifiedRandomEvent
 import com.mercerenies.turtletroll.happening.RandomEventState
 import com.mercerenies.turtletroll.happening.withCooldown
+import com.mercerenies.turtletroll.happening.withTitle
 import com.mercerenies.turtletroll.happening.boundToFeature
 
 import org.bukkit.plugin.Plugin
@@ -65,6 +66,9 @@ class SpatialRendFeature(
   override val description: String = "Players will teleport to each other's positions at random"
 
   val randomEvent: RandomEvent =
-    SpatialRendEvent().withCooldown(24).boundToFeature(this)
+    SpatialRendEvent()
+      .withTitle("Spatial Rend!")
+      .withCooldown(24)
+      .boundToFeature(this)
 
 }
