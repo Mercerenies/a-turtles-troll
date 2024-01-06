@@ -34,7 +34,7 @@ A Turtle's Troll also depends on the following libraries.
 ### Version 1.24
 
 * Added teleport sound effects.
-* Added titles for Gods' demand events
+* Added titles and sound effects for Gods' demand events.
 * Fixed a bug with trivia rewards.
 
 ### Version 1.23

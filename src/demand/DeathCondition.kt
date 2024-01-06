@@ -2,6 +2,7 @@
 package com.mercerenies.turtletroll.demand
 
 import com.mercerenies.turtletroll.Messages
+import com.mercerenies.turtletroll.Sounds
 import com.mercerenies.turtletroll.util.component.*
 import com.mercerenies.turtletroll.util.*
 import com.mercerenies.turtletroll.gravestone.CauseOfDeath
@@ -32,12 +33,14 @@ abstract class DeathCondition : DailyDemandEvent {
   open override fun onDayStart(godsState: GodsState) {
     Messages.broadcastMessage(getRequestMessage())
     Messages.broadcastTitle(DailyDemandManager.GODS_DEMAND_TITLE)
+    Messages.broadcastSound(Sounds.GODS_DEMAND)
   }
 
   open override fun onDayEnd(godsState: GodsState) {
     if (!godsState.isAppeased()) {
       Messages.broadcastMessage(DailyDemandManager.ANGRY_MESSAGE)
       Messages.broadcastTitle(DailyDemandManager.GODS_ANGRY_TITLE)
+      Messages.broadcastSound(Sounds.GODS_ANGRY)
     }
   }
 

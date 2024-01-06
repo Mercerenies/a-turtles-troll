@@ -5,6 +5,7 @@ import com.mercerenies.turtletroll.util.component.*
 import com.mercerenies.turtletroll.util.durationOfTicks
 
 import org.bukkit.Bukkit
+import org.bukkit.Sound
 import org.bukkit.command.CommandSender
 import org.bukkit.entity.Player
 
@@ -54,6 +55,18 @@ object Messages {
   fun broadcastTitle(title: Component, subtitle: Component = Component.text("")) {
     for (player in Bukkit.getOnlinePlayers()) {
       sendTitle(player, title, subtitle)
+    }
+  }
+
+  fun broadcastSound(sound: Sound) {
+    for (player in Bukkit.getOnlinePlayers()) {
+      player.world.playSound(player.location, sound, 1.0f, 0.0f)
+    }
+  }
+
+  fun broadcastSound(sound: String) {
+    for (player in Bukkit.getOnlinePlayers()) {
+      player.world.playSound(player.location, sound, 1.0f, 0.0f)
     }
   }
 
