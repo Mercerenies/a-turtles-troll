@@ -62,7 +62,10 @@ class ParrotManager(_plugin: Plugin) : RunnableFeature(_plugin), Listener {
 
     val DEFAULT_NAME_SOURCE = NameSource.FromList(
       listOf(
-        "Iago", "Polly", "Captain Flint", "Blu",
+        // Parrots from media
+        "Iago", "Polly", "Captain Flint", "Blu", "Jewel",
+        "Paulie", "Captain Celaeno", "Short Tom", "Jose Carioca",
+        "Mr. Dinsdale", "Captain Clawbeak", "Hooey",
       )
     )
 

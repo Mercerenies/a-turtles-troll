@@ -36,6 +36,7 @@ A Turtle's Troll also depends on the following libraries.
 * Added teleport sound effects.
 * Added titles to random events.
 * Added titles and sound effects for Gods' demand events.
+* Added more parrot names.
 * Fixed a bug with trivia rewards.
 
 ### Version 1.23
