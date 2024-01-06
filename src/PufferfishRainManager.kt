@@ -72,7 +72,7 @@ class PufferfishRainManager(
   private inner class PufferfishRainEvent() : NotifiedRandomEvent(plugin) {
     override val name = "pufferfish"
     override val baseWeight = 0.5
-    override val deltaWeight = 0.2
+    override val deltaWeight = 0.25
 
     override val messages: List<Component> = listOf(
       Component.text("It's raining... It's pouring..."),
