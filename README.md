@@ -29,13 +29,16 @@ A Turtle's Troll also depends on the following libraries.
 * [org.json](https://github.com/stleary/JSON-java) (Included under the
   JSON License)
 
+Your Minecraft server will also require
+[ProtocolLib](https://www.spigotmc.org/resources/protocollib.1997/).
+
 ## Changelog
 
 ### Version 1.24
 
 * Added teleport sound effects.
 * Added titles to random events.
-* Added titles and sound effects for Gods' demand events.
+* Added titles and sound effects for gods' demand events.
 * Added more parrot names.
 * Fixed a bug with trivia rewards.
 
