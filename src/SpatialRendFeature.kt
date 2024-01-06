@@ -7,6 +7,7 @@ import com.mercerenies.turtletroll.feature.container.AbstractFeatureContainer
 import com.mercerenies.turtletroll.feature.builder.BuilderState
 import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 import com.mercerenies.turtletroll.happening.RandomEvent
+import com.mercerenies.turtletroll.happening.NotifiedRandomEvent
 import com.mercerenies.turtletroll.happening.RandomEventState
 import com.mercerenies.turtletroll.happening.withCooldown
 import com.mercerenies.turtletroll.happening.boundToFeature
@@ -16,7 +17,8 @@ import org.bukkit.Bukkit
 import org.bukkit.entity.Player
 import org.bukkit.event.Listener
 import org.bukkit.event.player.PlayerTeleportEvent
-import org.bukkit.scheduler.BukkitRunnable
+
+import net.kyori.adventure.text.Component
 
 class SpatialRendFeature(
   private val plugin: Plugin,
@@ -35,23 +37,17 @@ class SpatialRendFeature(
 
   }
 
-  private inner class SpatialRendEvent() : RandomEvent {
+  private inner class SpatialRendEvent() : NotifiedRandomEvent(plugin) {
     override val name = "spatialrend"
     override val baseWeight = 0.5
     override val deltaWeight = 0.3
 
+    override val messages = listOf(Component.text("Prepare to be transported!"))
+
     override fun canFire(state: RandomEventState): Boolean =
       true
 
-    override fun fire(state: RandomEventState) {
-      Messages.broadcastMessage("Prepare to be transported!")
-      SpatialRendRunnable().runTaskLater(plugin, DELAY_TIME)
-    }
-
-  }
-
-  private inner class SpatialRendRunnable() : BukkitRunnable() {
-    override fun run() {
+    override fun onAfterDelay(state: RandomEventState) {
       val onlinePlayers: List<Player> = Bukkit.getOnlinePlayers().shuffled()
       val positions = onlinePlayers.map { it.location }
       for (i in onlinePlayers.indices) {

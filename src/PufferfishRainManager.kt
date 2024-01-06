@@ -7,6 +7,7 @@ import com.mercerenies.turtletroll.feature.container.AbstractFeatureContainer
 import com.mercerenies.turtletroll.feature.builder.BuilderState
 import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 import com.mercerenies.turtletroll.happening.RandomEvent
+import com.mercerenies.turtletroll.happening.NotifiedRandomEvent
 import com.mercerenies.turtletroll.happening.RandomEventState
 import com.mercerenies.turtletroll.happening.withCooldown
 import com.mercerenies.turtletroll.happening.boundToFeature
@@ -20,7 +21,8 @@ import org.bukkit.event.EventHandler
 import org.bukkit.event.entity.EntityDamageEvent
 import org.bukkit.event.entity.EntityDeathEvent
 import org.bukkit.event.Listener
-import org.bukkit.scheduler.BukkitRunnable
+
+import net.kyori.adventure.text.Component
 
 import kotlin.random.Random
 
@@ -66,24 +68,20 @@ class PufferfishRainManager(
 
   }
 
-  private inner class PufferfishRainEvent() : RandomEvent {
+  private inner class PufferfishRainEvent() : NotifiedRandomEvent(plugin) {
     override val name = "pufferfish"
     override val baseWeight = 0.5
     override val deltaWeight = 0.2
 
+    override val messages: List<Component> = listOf(
+      Component.text("It's raining... It's pouring..."),
+      Component.text("The pufferfish are soaring..."),
+    )
+
     override fun canFire(state: RandomEventState): Boolean =
       true
 
-    override fun fire(state: RandomEventState) {
-      Messages.broadcastMessage("It's raining... It's pouring...")
-      Messages.broadcastMessage("The pufferfish are soaring...")
-      PufferfishRainRunnable().runTaskLater(plugin, PUFFERFISH_DELAY_TIME)
-    }
-
-  }
-
-  private inner class PufferfishRainRunnable() : BukkitRunnable() {
-    override fun run() {
+    override fun onAfterDelay(state: RandomEventState) {
       val onlinePlayers = Bukkit.getOnlinePlayers()
       for (player in onlinePlayers) {
         spawnPufferfishOn(player)
