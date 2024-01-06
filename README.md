@@ -31,6 +31,10 @@ A Turtle's Troll also depends on the following libraries.
 
 ## Changelog
 
+### Version 1.24
+
+* Fixed a bug with trivia rewards
+
 ### Version 1.23
 
 * Obsidian walls generate uniformly in a grid shape around the map.
