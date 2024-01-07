@@ -382,8 +382,8 @@ grievingwidow:
 
 heavyrain:
   enabled: default
-  ticks_between_anvils: default
-  anvil_count: default
+  ticks_between_drops: default
+  drop_count: default
 
 johnny:
   enabled: default

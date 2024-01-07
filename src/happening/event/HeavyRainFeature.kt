@@ -27,8 +27,8 @@ import java.util.function.Consumer
 
 class HeavyRainFeature(
   private val plugin: Plugin,
-  private val ticksBetweenAnvils: Int,
-  private val anvilCount: Int,
+  private val ticksBetweenDrops: Int,
+  private val dropCount: Int,
   private val minDropHeight: Int,
   private val maxDropHeight: Int,
 ) : AbstractFeature(), Listener {
@@ -38,8 +38,8 @@ class HeavyRainFeature(
     override fun create(state: BuilderState): FeatureContainer {
       val feature = HeavyRainFeature(
         plugin = state.plugin,
-        ticksBetweenAnvils = state.config.getInt("heavyrain.ticks_between_anvils"),
-        anvilCount = state.config.getInt("heavyrain.anvil_count"),
+        ticksBetweenDrops = state.config.getInt("heavyrain.ticks_between_drops"),
+        dropCount = state.config.getInt("heavyrain.drop_count"),
         minDropHeight = state.config.getInt("anvil.min_drop_height"),
         maxDropHeight = state.config.getInt("anvil.max_drop_height"),
       )
@@ -51,45 +51,23 @@ class HeavyRainFeature(
 
   }
 
-  private inner class HeavyRainEvent() : NotifiedRandomEvent(plugin) {
-    override val name = "heavyrain"
+  private inner class HeavyRainEvent() : BlockRainEvent(plugin) {
+    override val name = this@HeavyRainFeature.name
     override val baseWeight = 0.5
     override val deltaWeight = 0.25
+    override val ticksBetweenDrops = this@HeavyRainFeature.ticksBetweenDrops.toLong()
+    override val dropCount = this@HeavyRainFeature.dropCount
 
-    override val messages = listOf(
-      Component.text("Ever eaten an anvil?"),
-      Component.text("They're anvilicious!"),
-    )
-
-    override fun canFire(state: RandomEventState): Boolean =
-      true
-
-    override fun onAfterDelay(state: RandomEventState) {
-      Bukkit.getScheduler().runTaskTimer(plugin, AnvilDropConsumer(anvilCount), 1L, ticksBetweenAnvils.toLong())
-    }
-  }
-
-  private inner class AnvilDropConsumer(
-    private var remaining: Int,
-  ) : Consumer<BukkitTask> {
-
-    private val blockDropper = object : BlockDropper() {
+    override val blockDropper = object : BlockDropper() {
       override val minDropHeight = this@HeavyRainFeature.minDropHeight
       override val maxDropHeight = this@HeavyRainFeature.maxDropHeight
       override fun getBlockToDrop() = Material.ANVIL
     }
 
-    override fun accept(task: BukkitTask) {
-      if (remaining <= 0) {
-        task.cancel()
-        return
-      }
-      remaining--
-      for (player in Bukkit.getOnlinePlayers()) {
-        blockDropper.doDrop(player)
-      }
-    }
-
+    override val messages = listOf(
+      Component.text("Ever eaten an anvil?"),
+      Component.text("They're anvilicious!"),
+    )
   }
 
   override val name: String = "heavyrain"

@@ -190,8 +190,8 @@ grievingwidow:
   minutes_to_disable: 8
 heavyrain:
   enabled: true
-  ticks_between_anvils: 20
-  anvil_count: 30
+  ticks_between_drops: 20
+  drop_count: 30
 johnny:
   enabled: true
   probability: 0.2

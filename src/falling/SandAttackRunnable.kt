@@ -50,18 +50,7 @@ class SandAttackRunnable(
 
   override val description = "Sand drops on players' heads when standing on certain block types"
 
-  override val blockDropper = object : BlockDropper() {
-    override val maxDropHeight = this@SandAttackRunnable.maxDropHeight
-
-    override fun canDropThroughBlock(block: Block): Boolean = true
-
-    override fun getBlockToDrop() =
-      if (Random.nextDouble() < redSandChance) {
-        Material.RED_SAND
-      } else {
-        Material.SAND
-      }
-  }
+  override val blockDropper = SandAttackBlockDropper(maxDropHeight, redSandChance)
 
   override val taskPeriod = Constants.TICKS_PER_SECOND.toLong()
 
