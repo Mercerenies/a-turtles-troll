@@ -3,7 +3,7 @@ package com.mercerenies.turtletroll.happening.event
 
 import com.mercerenies.turtletroll.feature.AbstractFeature
 import com.mercerenies.turtletroll.feature.container.FeatureContainer
-import com.mercerenies.turtletroll.feature.container.AbstractFeatureContainer
+import com.mercerenies.turtletroll.feature.builder.FeatureBuilder
 import com.mercerenies.turtletroll.feature.builder.BuilderState
 import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 import com.mercerenies.turtletroll.happening.RandomEvent
@@ -27,14 +27,13 @@ class SpatialRendFeature(
 ) : AbstractFeature(), Listener {
 
   companion object : FeatureContainerFactory<FeatureContainer> {
-    val DELAY_TIME = 300L // ticks
 
     override fun create(state: BuilderState): FeatureContainer {
       val feature = SpatialRendFeature(state.plugin)
-      return object : AbstractFeatureContainer() {
-        override val features = listOf(feature)
-        override val randomEvents = listOf(feature.randomEvent)
-      }
+      return FeatureBuilder()
+        .addFeature(feature)
+        .addRandomEvent(feature.randomEvent)
+        .build()
     }
 
   }

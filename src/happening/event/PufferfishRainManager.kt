@@ -3,7 +3,7 @@ package com.mercerenies.turtletroll.happening.event
 
 import com.mercerenies.turtletroll.feature.AbstractFeature
 import com.mercerenies.turtletroll.feature.container.FeatureContainer
-import com.mercerenies.turtletroll.feature.container.AbstractFeatureContainer
+import com.mercerenies.turtletroll.feature.builder.FeatureBuilder
 import com.mercerenies.turtletroll.feature.builder.BuilderState
 import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 import com.mercerenies.turtletroll.happening.RandomEvent
@@ -36,8 +36,6 @@ class PufferfishRainManager(
 
   companion object : FeatureContainerFactory<FeatureContainer> {
 
-    val PUFFERFISH_DELAY_TIME = 300L // ticks
-
     override fun create(state: BuilderState): FeatureContainer {
       val manager =
         PufferfishRainManager(
@@ -46,11 +44,11 @@ class PufferfishRainManager(
           explosionPower = state.config.getDouble("pufferfish.explosion_power"),
           explosionPowerInWater = state.config.getDouble("pufferfish.explosion_power_in_water"),
         )
-      return object : AbstractFeatureContainer() {
-        override val features = listOf(manager)
-        override val listeners = listOf(manager)
-        override val randomEvents = listOf(manager.pufferfishRainEvent)
-      }
+      return FeatureBuilder()
+        .addFeature(manager)
+        .addListener(manager)
+        .addRandomEvent(manager.pufferfishRainEvent)
+        .build()
     }
 
     fun initializePufferfish(pufferfish: PufferFish) {
