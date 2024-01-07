@@ -55,6 +55,8 @@ import com.mercerenies.turtletroll.trivia.MinecraftTriviaManagerFactory
 import com.mercerenies.turtletroll.blazeeye.BlazeEyeManager
 import com.mercerenies.turtletroll.happening.RandomEventRunnable
 import com.mercerenies.turtletroll.happening.NothingEvent
+import com.mercerenies.turtletroll.happening.event.PufferfishRainManager
+import com.mercerenies.turtletroll.happening.event.SpatialRendFeature
 
 object AllFeatureFactories {
 

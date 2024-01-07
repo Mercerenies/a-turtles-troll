@@ -1,5 +1,5 @@
 
-package com.mercerenies.turtletroll
+package com.mercerenies.turtletroll.happening.event
 
 import com.mercerenies.turtletroll.feature.AbstractFeature
 import com.mercerenies.turtletroll.feature.container.FeatureContainer
