@@ -57,6 +57,7 @@ import com.mercerenies.turtletroll.happening.RandomEventRunnable
 import com.mercerenies.turtletroll.happening.NothingEvent
 import com.mercerenies.turtletroll.happening.event.PufferfishRainManager
 import com.mercerenies.turtletroll.happening.event.SpatialRendFeature
+import com.mercerenies.turtletroll.happening.event.KameksChaosFeature
 
 object AllFeatureFactories {
 
@@ -130,6 +131,7 @@ object AllFeatureFactories {
       GravestoneListener,
       GrievingWidowListener,
       JohnnyListener,
+      KameksChaosFeature,
       KillerRabbitListener,
       LavaLaunchListener,
       LearningFromFailureListener,

@@ -95,7 +95,7 @@ class PufferfishRainManager(
   val pufferfishRainEvent: RandomEvent =
     PufferfishRainEvent()
       .withTitle("Pufferfish Rain!")
-      .withCooldown(24)
+      .withCooldown(20)
       .boundToFeature(this)
 
   @EventHandler

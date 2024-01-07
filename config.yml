@@ -387,6 +387,9 @@ johnny:
 killerrabbit:
   enabled: default
 
+kamekschaos:
+  enabled: default
+
 lavalaunch:
   enabled: default
   velocity_y: default

@@ -191,6 +191,8 @@ grievingwidow:
 johnny:
   enabled: true
   probability: 0.9
+kamekschaos:
+  enabled: true
 killerrabbit:
   enabled: true
 lavalaunch:
