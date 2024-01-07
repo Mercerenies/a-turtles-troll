@@ -10,6 +10,7 @@ import org.bukkit.World
 import org.bukkit.GameRule
 import org.bukkit.enchantments.Enchantment
 import org.bukkit.scheduler.BukkitRunnable
+import org.bukkit.scheduler.BukkitTask
 import org.bukkit.scheduler.BukkitScheduler
 
 import net.kyori.adventure.text.Component
@@ -18,6 +19,7 @@ import kotlin.math.min
 import kotlin.math.max
 
 import java.time.Duration
+import java.util.function.Consumer
 
 fun lerp(a: Double, b: Double, amount: Double): Double =
   a * (1 - amount) + b * amount
@@ -146,4 +148,8 @@ fun BukkitScheduler.runTaskLater(plugin: Plugin, delay: Long, task: Runnable) =
 
 // Arguments re-ordered to be more Kotlin-friendly.
 fun BukkitScheduler.runTaskTimer(plugin: Plugin, delay: Long, period: Long, task: Runnable) =
+  this.runTaskTimer(plugin, task, delay, period)
+
+// Arguments re-ordered to be more Kotlin-friendly.
+fun BukkitScheduler.runTaskTimer(plugin: Plugin, delay: Long, period: Long, task: Consumer<BukkitTask>) =
   this.runTaskTimer(plugin, task, delay, period)

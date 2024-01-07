@@ -37,6 +37,7 @@ Your Minecraft server will also require
 ### Version 1.24
 
 * New random event: Kamek swaps items in your inventory.
++ New random event: Anvils rain down on everyone continuously for a bit.
 * The player who appeases the gods gets awarded one experience point for every Twitch streamer currently streaming Minecraft.
 * Added several more trivia questions.
 * Added teleport sound effects.

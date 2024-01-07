@@ -380,6 +380,11 @@ grievingwidow:
   enabled: default
   minutes_to_disable: default
 
+heavyrain:
+  enabled: default
+  ticks_between_anvils: default
+  anvil_count: default
+
 johnny:
   enabled: default
   probability: default

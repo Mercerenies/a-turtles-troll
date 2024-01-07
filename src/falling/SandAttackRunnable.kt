@@ -17,7 +17,7 @@ import kotlin.random.Random
 class SandAttackRunnable(
   plugin: Plugin,
   val redSandChance: Double = 0.1,
-  override val maxDropHeight: Int = 15,
+  val maxDropHeight: Int = 15,
   val targetBlocks: Set<Material> = DEFAULT_TRIGGERS,
 ) : FallingObjectRunnable(plugin) {
 
@@ -50,12 +50,18 @@ class SandAttackRunnable(
 
   override val description = "Sand drops on players' heads when standing on certain block types"
 
-  override fun getBlockToDrop() =
-    if (Random.nextDouble() < redSandChance) {
-      Material.RED_SAND
-    } else {
-      Material.SAND
-    }
+  override val blockDropper = object : BlockDropper() {
+    override val maxDropHeight = this@SandAttackRunnable.maxDropHeight
+
+    override fun canDropThroughBlock(block: Block): Boolean = true
+
+    override fun getBlockToDrop() =
+      if (Random.nextDouble() < redSandChance) {
+        Material.RED_SAND
+      } else {
+        Material.SAND
+      }
+  }
 
   override val taskPeriod = Constants.TICKS_PER_SECOND.toLong()
 
@@ -63,7 +69,5 @@ class SandAttackRunnable(
     val blockUnderneath = player.location.clone().add(0.0, -1.0, 0.0).block.type
     return targetBlocks.contains(blockUnderneath) && super.shouldDropOn(player)
   }
-
-  override fun canDropThroughBlock(block: Block): Boolean = true
 
 }

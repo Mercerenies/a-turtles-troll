@@ -13,8 +13,8 @@ angrygolems:
   enabled: true
 anvil:
   enabled: true
-  min_drop_height: 4
-  max_drop_height: 15
+  min_drop_height: 4 # NOTE: Read this in HeavyRainFeature as well
+  max_drop_height: 15 # NOTE: Read this in HeavyRainFeature as well
   period: 2
 apache:
   enabled: true
@@ -188,6 +188,10 @@ gravestone:
 grievingwidow:
   enabled: true
   minutes_to_disable: 5
+heavyrain:
+  enabled: true
+  ticks_between_anvils: 15
+  anvil_count: 40
 johnny:
   enabled: true
   probability: 0.9

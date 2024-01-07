@@ -269,6 +269,7 @@
      positions at random intervals
    + kamekschaos :: Kamek swaps the positions of items in your own
      inventory
+   + heavyrain :: Anvils rain down on everyone continuously for a bit
 ** MISCELLANEOUS FEATURES
    + anvil :: If you stand still for more than ten seconds, an anvil
               will drop on your head; anvils can be smelted into iron
