@@ -38,8 +38,8 @@ class KameksChaosFeature(
 
   }
 
-  private inner class KameksChaosEvent() : NotifiedRandomEvent(plugin) {
-    override val name = "kamek"
+  private class KameksChaosEvent(plugin: Plugin) : NotifiedRandomEvent(plugin) {
+    override val name = "kamekschaos"
     override val baseWeight = 0.4
     override val deltaWeight = 0.2
 
@@ -69,7 +69,7 @@ class KameksChaosFeature(
   override val description: String = "Kamek will occasionally shuffle all player items"
 
   val randomEvent: RandomEvent =
-    KameksChaosEvent()
+    KameksChaosEvent(plugin)
       .withTitle("Kamek's Chaos!")
       .withCooldown(24)
       .boundToFeature(this)

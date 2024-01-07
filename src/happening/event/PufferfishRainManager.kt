@@ -67,7 +67,7 @@ class PufferfishRainManager(
 
   }
 
-  private inner class PufferfishRainEvent() : NotifiedRandomEvent(plugin) {
+  private class PufferfishRainEvent(plugin: Plugin) : NotifiedRandomEvent(plugin) {
     override val name = "pufferfish"
     override val baseWeight = 0.5
     override val deltaWeight = 0.25
@@ -93,7 +93,7 @@ class PufferfishRainManager(
   override val description: String = "Pufferfish rain on all players periodically"
 
   val pufferfishRainEvent: RandomEvent =
-    PufferfishRainEvent()
+    PufferfishRainEvent(plugin)
       .withTitle("Pufferfish Rain!")
       .withCooldown(20)
       .boundToFeature(this)

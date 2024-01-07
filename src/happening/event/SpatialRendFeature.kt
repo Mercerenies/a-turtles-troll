@@ -38,7 +38,7 @@ class SpatialRendFeature(
 
   }
 
-  private inner class SpatialRendEvent() : NotifiedRandomEvent(plugin) {
+  private class SpatialRendEvent(plugin: Plugin) : NotifiedRandomEvent(plugin) {
     override val name = "spatialrend"
     override val baseWeight = 0.4
     override val deltaWeight = 0.2
@@ -65,7 +65,7 @@ class SpatialRendFeature(
   override val description: String = "Players will teleport to each other's positions at random"
 
   val randomEvent: RandomEvent =
-    SpatialRendEvent()
+    SpatialRendEvent(plugin)
       .withTitle("Spatial Rend!")
       .withCooldown(24)
       .boundToFeature(this)
