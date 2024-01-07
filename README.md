@@ -38,6 +38,7 @@ Your Minecraft server will also require
 
 * New random event: Kamek swaps items in your inventory.
 + New random event: Anvils rain down on everyone continuously for a bit.
++ New random event: Sand blocks rain down on everyone continuously for a bit.
 * The player who appeases the gods gets awarded one experience point for every Twitch streamer currently streaming Minecraft.
 * Added several more trivia questions.
 * Added teleport sound effects.

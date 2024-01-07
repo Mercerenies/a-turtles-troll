@@ -295,7 +295,11 @@ redstoneworld:
 sandattack:
   enabled: true
   red_sand_probability: 0.5
-  max_drop_height: 15
+  max_drop_height: 15 # NOTE: Read this in SandstormFeature as well
+sandstorm:
+  enabled: true
+  ticks_between_drops: 240
+  drop_count: 3
 sheepcolor:
   enabled: true
 shieldsurf:

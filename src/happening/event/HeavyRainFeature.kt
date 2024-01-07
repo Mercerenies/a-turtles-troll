@@ -7,23 +7,16 @@ import com.mercerenies.turtletroll.feature.builder.FeatureBuilder
 import com.mercerenies.turtletroll.feature.builder.BuilderState
 import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 import com.mercerenies.turtletroll.happening.RandomEvent
-import com.mercerenies.turtletroll.happening.NotifiedRandomEvent
-import com.mercerenies.turtletroll.happening.RandomEventState
 import com.mercerenies.turtletroll.happening.withCooldown
 import com.mercerenies.turtletroll.happening.withTitle
 import com.mercerenies.turtletroll.happening.boundToFeature
-import com.mercerenies.turtletroll.util.runTaskTimer
 import com.mercerenies.turtletroll.falling.BlockDropper
 
 import org.bukkit.plugin.Plugin
-import org.bukkit.Bukkit
 import org.bukkit.Material
 import org.bukkit.event.Listener
-import org.bukkit.scheduler.BukkitTask
 
 import net.kyori.adventure.text.Component
-
-import java.util.function.Consumer
 
 class HeavyRainFeature(
   private val plugin: Plugin,
