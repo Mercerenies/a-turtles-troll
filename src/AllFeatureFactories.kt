@@ -60,6 +60,7 @@ import com.mercerenies.turtletroll.happening.event.SpatialRendFeature
 import com.mercerenies.turtletroll.happening.event.KameksChaosFeature
 import com.mercerenies.turtletroll.happening.event.HeavyRainFeature
 import com.mercerenies.turtletroll.happening.event.SandstormFeature
+import com.mercerenies.turtletroll.happening.event.SandblasterFeature
 
 object AllFeatureFactories {
 
@@ -161,6 +162,7 @@ object AllFeatureFactories {
       RavagerSpawnerListener,
       SaddleListener,
       SandAttackRunnable,
+      SandblasterFeature,
       SandstormFeature,
       SheepColorListener,
       ShieldSurfListener,

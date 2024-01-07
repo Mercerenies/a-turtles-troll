@@ -10,6 +10,7 @@ import org.bukkit.block.Block
 
 import kotlin.random.Random
 import kotlin.collections.ArrayList
+import kotlin.math.ceil
 
 // Various helper functions for getting locations relative to blocks
 object BlockSelector {
@@ -74,6 +75,10 @@ object BlockSelector {
     }
     return result
   }
+
+  fun getSphere(center: Location, radius: Double): List<Location> =
+    getNearby(center, ceil(radius).toInt())
+      .filter { it.distanceSquared(center) <= radius * radius }
 
   fun isExposedToSky(block: Block): Boolean =
     block.getLightFromSky() == 15.toByte()

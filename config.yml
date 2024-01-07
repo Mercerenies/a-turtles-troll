@@ -524,6 +524,10 @@ sandattack:
   red_sand_probability: default
   max_drop_height: default
 
+sandblaster:
+  enabled: default
+  sand_radius: default
+
 sandstorm:
   enabled: default
   ticks_between_drops: default
