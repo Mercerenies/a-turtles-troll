@@ -22,7 +22,7 @@ object DirtDropFeatureFactory : FeatureContainerFactory<FeatureContainer> {
     Material.DEEPSLATE_IRON_ORE, Material.DEEPSLATE_LAPIS_ORE, Material.DEEPSLATE_REDSTONE_ORE,
   )
 
-  val REGULAR_DIRT_DROP = ReplaceDropsAction(ItemStack(Material.DIRT, 64))
+  val REGULAR_DIRT_DROP = ReplaceDropsAction(ItemStack(Material.DIRT, 64), Positivity.NEGATIVE)
   val FREQUENT_DIRT_DROP = REGULAR_DIRT_DROP.filter {
     FREQUENT_DIRT_DROP_TRIGGERS.contains(it.block.type)
   }

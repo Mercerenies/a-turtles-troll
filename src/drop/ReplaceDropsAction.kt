@@ -9,7 +9,10 @@ import org.bukkit.inventory.ItemStack
 import org.bukkit.entity.Item
 import org.bukkit.entity.EntityType
 
-class ReplaceDropsAction(val itemStack: ItemStack) : BlockBreakAction {
+class ReplaceDropsAction(
+  val itemStack: ItemStack,
+  override val positivity: Positivity,
+) : BlockBreakAction {
 
   override fun shouldTrigger(event: BlockBreakEvent): Boolean {
     return !EventUtils.getDefaultDrops(event).isEmpty()

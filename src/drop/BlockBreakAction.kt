@@ -5,6 +5,8 @@ import org.bukkit.event.block.BlockBreakEvent
 
 interface BlockBreakAction {
 
+  val positivity: Positivity
+
   fun shouldTrigger(event: BlockBreakEvent): Boolean
 
   fun fullyOverridesOthers(): Boolean = true

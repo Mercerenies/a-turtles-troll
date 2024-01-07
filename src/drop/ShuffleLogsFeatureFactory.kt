@@ -13,8 +13,8 @@ object ShuffleLogsFeatureFactory : FeatureContainerFactory<FeatureContainer> {
   override fun create(state: BuilderState): FeatureContainer = object : AbstractFeatureContainer() {
 
     // TODO ShuffleDropsAction for stairs/slabs made of wood as well
-    private val shuffleLogsAction = ShuffleDropsAction(BlockTypes.LOGS).asFeature("", "")
-    private val shufflePlanksAction = ShuffleDropsAction(BlockTypes.PLANKS).asFeature("", "")
+    private val shuffleLogsAction = ShuffleDropsAction(BlockTypes.LOGS, Positivity.NEUTRAL).asFeature("", "")
+    private val shufflePlanksAction = ShuffleDropsAction(BlockTypes.PLANKS, Positivity.NEUTRAL).asFeature("", "")
 
     private val shuffleFeature = CompositeFeature(
       "shufflelogs",

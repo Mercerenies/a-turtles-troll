@@ -11,6 +11,7 @@ import org.bukkit.entity.EntityType
 
 class ShuffleDropsAction(
   val types: List<Material>,
+  override val positivity: Positivity,
 ) : BlockBreakAction {
 
   override fun shouldTrigger(event: BlockBreakEvent): Boolean {

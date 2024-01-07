@@ -9,16 +9,10 @@ class FeatureAction<out T : BlockBreakAction>(
   override val name: String,
   override val description: String,
   val action: T,
-) : AbstractFeature(), BlockBreakAction {
+) : AbstractFeature(), BlockBreakAction by action {
 
   override fun shouldTrigger(event: BlockBreakEvent): Boolean =
     isEnabled() && action.shouldTrigger(event)
-
-  override fun fullyOverridesOthers(): Boolean =
-    action.fullyOverridesOthers()
-
-  override fun trigger(event: BlockBreakEvent) =
-    action.trigger(event)
 
 }
 

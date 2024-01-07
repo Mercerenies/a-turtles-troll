@@ -10,6 +10,7 @@ import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 import com.mercerenies.turtletroll.drop.ReplaceDropsAction
 import com.mercerenies.turtletroll.drop.filter
 import com.mercerenies.turtletroll.drop.asFeature
+import com.mercerenies.turtletroll.drop.Positivity
 import com.mercerenies.turtletroll.recipe.MelonRecipeDeleter
 import com.mercerenies.turtletroll.recipe.MelonRecipeFeature
 
@@ -21,10 +22,10 @@ object MelompkinFeatureFactory : FeatureContainerFactory<FeatureContainer> {
 
   override fun create(state: BuilderState): FeatureContainer = object : AbstractFeatureContainer() {
 
-    private val replaceMelonsAction = ReplaceDropsAction(ItemStack(Material.PUMPKIN)).filter {
+    private val replaceMelonsAction = ReplaceDropsAction(ItemStack(Material.PUMPKIN), Positivity.NEUTRAL).filter {
       it.block.type == Material.MELON
     }.asFeature("replacemelons", "...")
-    private val replacePumpkinsAction = ReplaceDropsAction(ItemStack(Material.MELON_SLICE, 4)).filter {
+    private val replacePumpkinsAction = ReplaceDropsAction(ItemStack(Material.MELON_SLICE, 4), Positivity.NEUTRAL).filter {
       it.block.type == Material.PUMPKIN
     }.asFeature("replacepumpkins", "...")
 

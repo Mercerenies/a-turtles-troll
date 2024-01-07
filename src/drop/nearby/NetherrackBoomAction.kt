@@ -2,6 +2,7 @@
 package com.mercerenies.turtletroll.drop.nearby
 
 import com.mercerenies.turtletroll.util.component.*
+import com.mercerenies.turtletroll.drop.Positivity
 
 import org.bukkit.Material
 import org.bukkit.Location
@@ -19,6 +20,8 @@ class NetherrackBoomAction(
       Material.MOSS_BLOCK,
     )
   }
+
+  override val positivity = Positivity.POSITIVE
 
   override fun shouldTrigger(event: BlockBreakEvent): Boolean =
     BLOCK_TYPES.contains(event.block.type)

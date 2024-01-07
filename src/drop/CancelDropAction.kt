@@ -3,4 +3,5 @@ package com.mercerenies.turtletroll.drop
 
 import org.bukkit.Material
 
-val CancelDropAction = CancelAndReplaceAction(Material.AIR)
+fun CancelDropAction(positivity: Positivity) =
+  CancelAndReplaceAction(Material.AIR, positivity)

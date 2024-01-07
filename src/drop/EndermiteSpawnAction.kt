@@ -7,6 +7,8 @@ import org.bukkit.entity.EntityType
 
 object EndermiteSpawnAction : BlockBreakAction {
 
+  override val positivity = Positivity.NEGATIVE
+
   override fun shouldTrigger(event: BlockBreakEvent): Boolean =
     event.block.type == Material.END_STONE
 

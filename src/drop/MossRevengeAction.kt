@@ -9,6 +9,8 @@ class MossRevengeAction(
   private val slimeSize: Int,
 ) : BlockBreakAction {
 
+  override val positivity = Positivity.NEGATIVE
+
   override fun shouldTrigger(event: BlockBreakEvent): Boolean =
     event.block.type == Material.MOSS_BLOCK
 

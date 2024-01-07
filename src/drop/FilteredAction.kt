@@ -6,17 +6,10 @@ import org.bukkit.event.block.BlockBreakEvent
 class FilteredAction<out T : BlockBreakAction>(
   val value: T,
   val filter: (BlockBreakEvent) -> Boolean,
-) : BlockBreakAction {
+) : BlockBreakAction by value {
 
   override fun shouldTrigger(event: BlockBreakEvent): Boolean {
     return filter(event) && value.shouldTrigger(event)
-  }
-
-  override fun fullyOverridesOthers(): Boolean =
-    value.fullyOverridesOthers()
-
-  override fun trigger(event: BlockBreakEvent) {
-    value.trigger(event)
   }
 
 }

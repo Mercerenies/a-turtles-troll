@@ -4,6 +4,7 @@ package com.mercerenies.turtletroll.drop.nearby
 import com.mercerenies.turtletroll.util.component.*
 import com.mercerenies.turtletroll.BlockTypes
 import com.mercerenies.turtletroll.EntitySpawner
+import com.mercerenies.turtletroll.drop.Positivity
 
 import org.bukkit.Material
 import org.bukkit.Location
@@ -23,6 +24,8 @@ class BeeAttackAction(
           Material.WARPED_HYPHAE, Material.WARPED_PLANKS, Material.WARPED_STEM, Material.WARPED_HYPHAE, Material.WARPED_STEM,
         )
   }
+
+  override val positivity = Positivity.NEGATIVE
 
   override fun shouldTrigger(event: BlockBreakEvent): Boolean {
     if (!BLOCKS.contains(event.block.type)) {

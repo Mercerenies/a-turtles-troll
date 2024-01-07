@@ -13,7 +13,7 @@ import org.bukkit.Material
 object AmethystBlockDropFactory : FeatureContainerFactory<FeatureContainer> {
 
   override fun create(state: BuilderState): FeatureContainer {
-    val amethystBlockDrop = ReplaceDropsAction(ItemStack(Material.GOLDEN_APPLE, 1)).filter {
+    val amethystBlockDrop = ReplaceDropsAction(ItemStack(Material.GOLDEN_APPLE, 1), Positivity.POSITIVE).filter {
       it.block.type == Material.AMETHYST_BLOCK
     }.asFeature(
       "amethyst",

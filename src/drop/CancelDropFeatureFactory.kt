@@ -19,7 +19,7 @@ object CancelDropFeatureFactory : FeatureContainerFactory<FeatureContainer> {
 
   override fun create(state: BuilderState): FeatureContainer = object : AbstractFeatureContainer() {
 
-    private val cancelDropAction = CancelDropAction.filter {
+    private val cancelDropAction = CancelDropAction(Positivity.NEGATIVE).filter {
       NO_DROP_ON.contains(it.block.type)
     }.asFeature(
       "nodrops",

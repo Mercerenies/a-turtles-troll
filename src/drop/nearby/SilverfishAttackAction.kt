@@ -3,6 +3,7 @@ package com.mercerenies.turtletroll.drop.nearby
 
 import com.mercerenies.turtletroll.util.component.*
 import com.mercerenies.turtletroll.Infestation
+import com.mercerenies.turtletroll.drop.Positivity
 
 import org.bukkit.Material
 import org.bukkit.Location
@@ -14,6 +15,8 @@ import kotlin.random.Random
 open class SilverfishAttackAction(
   val bombData: SilverfishAttackBomb = SilverfishAttackBomb.DEFAULT
 ) : NearbyAction {
+
+  override val positivity = Positivity.NEGATIVE
 
   open override fun shouldTrigger(event: BlockBreakEvent): Boolean =
     Infestation.canInfest(event.block.type)
