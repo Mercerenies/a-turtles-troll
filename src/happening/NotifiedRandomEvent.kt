@@ -3,8 +3,9 @@ package com.mercerenies.turtletroll.happening
 
 import com.mercerenies.turtletroll.Constants
 import com.mercerenies.turtletroll.Messages
+import com.mercerenies.turtletroll.util.runTaskLater
 
-import org.bukkit.scheduler.BukkitRunnable
+import org.bukkit.Bukkit
 import org.bukkit.plugin.Plugin
 
 import net.kyori.adventure.text.Component
@@ -14,14 +15,6 @@ import net.kyori.adventure.text.Component
 abstract class NotifiedRandomEvent(
   private val plugin: Plugin,
 ) : RandomEvent {
-
-  private inner class EventRunnable(
-    private val state: RandomEventState,
-  ) : BukkitRunnable() {
-    override fun run() {
-      onAfterDelay(state)
-    }
-  }
 
   abstract val messages: List<Component>
 
@@ -34,7 +27,9 @@ abstract class NotifiedRandomEvent(
     for (message in messages) {
       Messages.broadcastMessage(message)
     }
-    EventRunnable(state).runTaskLater(plugin, delayTime)
+    Bukkit.getScheduler().runTaskLater(plugin, delayTime) {
+      onAfterDelay(state)
+    }
   }
 
 }

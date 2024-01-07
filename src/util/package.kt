@@ -3,12 +3,14 @@ package com.mercerenies.turtletroll.util
 
 import com.mercerenies.turtletroll.util.component.*
 
+import org.bukkit.plugin.Plugin
 import org.bukkit.inventory.ItemStack
 import org.bukkit.inventory.meta.ItemMeta
 import org.bukkit.World
 import org.bukkit.GameRule
 import org.bukkit.enchantments.Enchantment
 import org.bukkit.scheduler.BukkitRunnable
+import org.bukkit.scheduler.BukkitScheduler
 
 import net.kyori.adventure.text.Component
 
@@ -137,3 +139,11 @@ fun BukkitRunnable.tryCancel() {
 
 fun durationOfTicks(ticks: Long) =
   Duration.ofMillis(ticks * 50L)
+
+// Arguments re-ordered to be more Kotlin-friendly.
+fun BukkitScheduler.runTaskLater(plugin: Plugin, delay: Long, task: Runnable) =
+  this.runTaskLater(plugin, task, delay)
+
+// Arguments re-ordered to be more Kotlin-friendly.
+fun BukkitScheduler.runTaskTimer(plugin: Plugin, delay: Long, period: Long, task: Runnable) =
+  this.runTaskTimer(plugin, task, delay, period)
