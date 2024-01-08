@@ -139,6 +139,15 @@ fun BukkitRunnable.tryCancel() {
   }
 }
 
+// BukkitTask.cancel(), but don't throw if it's already cancelled.
+fun BukkitTask.tryCancel() {
+  try {
+    this.cancel()
+  } catch (_: IllegalStateException) {
+    // Ignore.
+  }
+}
+
 fun durationOfTicks(ticks: Long) =
   Duration.ofMillis(ticks * 50L)
 

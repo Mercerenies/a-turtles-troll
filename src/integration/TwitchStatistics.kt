@@ -2,6 +2,7 @@
 package com.mercerenies.turtletroll.integration
 
 import com.mercerenies.turtletroll.Constants
+import com.mercerenies.turtletroll.util.tryCancel
 
 import org.bukkit.Bukkit
 import org.bukkit.scheduler.BukkitTask
@@ -128,7 +129,7 @@ class TwitchStatistics(
   }
 
   fun stopListening() {
-    listenerTask?.cancel()
+    listenerTask?.tryCancel()
     listenerTask = null
   }
 
