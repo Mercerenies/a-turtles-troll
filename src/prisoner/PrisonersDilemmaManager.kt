@@ -103,8 +103,7 @@ class PrisonersDilemmaManager(
       // This only happens if a player logs out on basically the exact
       // wrong frame, putting the player count below 2. In this case,
       // just don't run the event.
-      //return ////
-      Victims(Bukkit.getOnlinePlayers().first(), Bukkit.getOnlinePlayers().first())
+      return
     }
     val newDilemma = PrisonersDilemma(victims, rewardSupplier.chooseReward())
     activeDilemma = newDilemma

@@ -59,15 +59,15 @@ class PrisonersDilemma(
   }
 
   fun acceptResponse(player: Player, response: PlayerResponse): Boolean {
-    //if (player.uniqueId == firstTarget) {
+    if (player.uniqueId == firstTarget) {
       firstTargetResponse = response
-      //return true
-    //} else if (player.uniqueId == secondTarget) {
+      return true
+    } else if (player.uniqueId == secondTarget) {
       secondTargetResponse = response
       return true
-    //} else {
-    //  return false
-    //} ////
+    } else {
+      return false
+    }
   }
 
   fun judgeResponses() {
