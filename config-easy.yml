@@ -273,6 +273,8 @@ pokeball:
 platefire:
   enabled: true
   probability: 0.01
+prisonersdilemma:
+  enabled: true
 pufferfish:
   enabled: true
   pufferfish_count: 3

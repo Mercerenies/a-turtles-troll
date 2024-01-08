@@ -40,6 +40,7 @@ Your Minecraft server will also require
 * New random event: Anvils rain down on everyone continuously for a bit.
 * New random event: Sand blocks rain down on everyone continuously for a bit.
 * New random event: A giant blob of sand falls on everyone at random.
+* New random event: Two players are entered into a prisoner's dilemma.
 * The player who appeases the gods gets awarded one experience point for every Twitch streamer currently streaming Minecraft.
 * Block drop events now change their likelihood based on the player's luck stat.
 * Added several more trivia questions.

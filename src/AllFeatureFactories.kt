@@ -52,6 +52,7 @@ import com.mercerenies.turtletroll.drop.StrongholdAttackFeatureFactory
 import com.mercerenies.turtletroll.pokeball.PokeballManager
 import com.mercerenies.turtletroll.jump.EncumbranceManagerFactory
 import com.mercerenies.turtletroll.trivia.MinecraftTriviaManagerFactory
+import com.mercerenies.turtletroll.prisoner.PrisonersDilemmaManagerFactory
 import com.mercerenies.turtletroll.blazeeye.BlazeEyeManager
 import com.mercerenies.turtletroll.happening.RandomEventRunnable
 import com.mercerenies.turtletroll.happening.NothingEvent
@@ -158,6 +159,7 @@ object AllFeatureFactories {
       PillagerGunListener,
       PokeballManager,
       PressurePlateFireListener,
+      PrisonersDilemmaManagerFactory,
       PufferfishRainManager,
       RavagerSpawnerListener,
       SaddleListener,
