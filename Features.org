@@ -274,6 +274,8 @@
    + sandblaster :: A giant blob of sand falls on everyone at random
    + prisonersdilemma :: Two players are given the opportunity to
      SPLIT or STEAL a bounty
+   + cataclysm :: Blocks near players are replaced by magma and Nether
+     blocks
 ** MISCELLANEOUS FEATURES
    + anvil :: If you stand still for more than ten seconds, an anvil
               will drop on your head; anvils can be smelted into iron

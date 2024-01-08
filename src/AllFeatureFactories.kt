@@ -62,6 +62,7 @@ import com.mercerenies.turtletroll.happening.event.KameksChaosFeature
 import com.mercerenies.turtletroll.happening.event.HeavyRainFeature
 import com.mercerenies.turtletroll.happening.event.SandstormFeature
 import com.mercerenies.turtletroll.happening.event.SandblasterFeature
+import com.mercerenies.turtletroll.happening.event.CataclysmFeature
 
 object AllFeatureFactories {
 
@@ -91,6 +92,7 @@ object AllFeatureFactories {
       CakeListenerFactory,
       CancelDropFeatureFactory,
       CarefulHandsListener,
+      CataclysmFeature,
       CatBatListener,
       ChainmailRecipeFeature,
       ChargedCreeperListener,

@@ -63,6 +63,9 @@ cakes:
 carefulhands:
   enabled: true
   probability: 0.01
+cataclysm:
+  enabled: true
+  radius: 7.0
 catbat:
   enabled: true
   probability: 1.0

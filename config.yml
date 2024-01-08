@@ -169,6 +169,10 @@ carefulhands:
   # (Float) The probability of this happening, from 0 to 1.
   probability: default
 
+cataclysm:
+  enabled: default
+  radius: default
+
 # Cats and bats transform into each other when killed.
 catbat:
   enabled: default
