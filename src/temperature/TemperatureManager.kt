@@ -1,13 +1,15 @@
 
-package com.mercerenies.turtletroll
+package com.mercerenies.turtletroll.temperature
 
+import com.mercerenies.turtletroll.Constants
+import com.mercerenies.turtletroll.Weather
+import com.mercerenies.turtletroll.ObjectiveContainer
 import com.mercerenies.turtletroll.util.component.*
 import com.mercerenies.turtletroll.gravestone.CustomDeathMessageRegistry
 import com.mercerenies.turtletroll.gravestone.CustomDeathMessage
 import com.mercerenies.turtletroll.gravestone.Vanilla
 import com.mercerenies.turtletroll.feature.RunnableFeature
 import com.mercerenies.turtletroll.util.linearRescale
-import com.mercerenies.turtletroll.util.lerp
 
 import org.bukkit.entity.Player
 import org.bukkit.event.Listener
@@ -76,24 +78,13 @@ class TemperatureManager(
       HOT_ITEMS.contains(player.inventory.itemInMainHand.type) ||
         HOT_ITEMS.contains(player.inventory.itemInOffHand.type)
 
-    private fun getAdjustedTempForWorld(env: World.Environment): Double? =
-      when (env) {
-        World.Environment.NETHER -> lerp(COLD_TEMPERATURE, HOT_TEMPERATURE, 0.8)
-        World.Environment.THE_END -> lerp(COLD_TEMPERATURE, HOT_TEMPERATURE, 0.3)
-        else -> null
-      }
-
   }
 
   private class TemperatureObjectiveContainer() : ObjectiveContainer(SCOREBOARD_NAME, "Temperature") {
 
     fun update() {
       for (player in Bukkit.getOnlinePlayers()) {
-        var temp = player.location.block.getTemperature()
-        val adjustedTemp = getAdjustedTempForWorld(player.location.world?.environment ?: World.Environment.NORMAL)
-        if (adjustedTemp != null) {
-          temp = adjustedTemp
-        }
+        var temp = TemperatureCalculator.getTemperature(player)
         // We define COLD_TEMPERATURE to be -10 and HOT_TEMPERATURE to
         // be 10, just so we have some point of reference for the
         // scale.
@@ -109,8 +100,6 @@ class TemperatureManager(
     }
 
   }
-
-  private var deathTick: Boolean = false // For getting a custom death message
 
   private var container: TemperatureObjectiveContainer? = null
 
@@ -141,7 +130,7 @@ class TemperatureManager(
       if (player.location.world!!.environment != World.Environment.NORMAL) {
         continue
       }
-      val temp = player.location.block.getTemperature()
+      val temp = TemperatureCalculator.getTemperature(player)
       val armorCount = getArmorCount(player)
       if (temp < COLD_TEMPERATURE) {
         if ((armorCount <= 0) && (!isPlayerSafeFromCold(player))) {

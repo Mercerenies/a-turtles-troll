@@ -37,6 +37,7 @@ import com.mercerenies.turtletroll.cake.CakeListenerFactory
 import com.mercerenies.turtletroll.egg.EggListenerFactory
 import com.mercerenies.turtletroll.overgrowth.OvergrowthListenerFactory
 import com.mercerenies.turtletroll.ghastlava.GhastLavaListenerFactory
+import com.mercerenies.turtletroll.temperature.TemperatureManagerFactory
 import com.mercerenies.turtletroll.drop.BlockBreakEventListener
 import com.mercerenies.turtletroll.drop.MossRevengeFeatureFactory
 import com.mercerenies.turtletroll.drop.DirtDropFeatureFactory

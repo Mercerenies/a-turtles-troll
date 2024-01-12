@@ -1,5 +1,5 @@
 
-package com.mercerenies.turtletroll
+package com.mercerenies.turtletroll.temperature
 
 import com.mercerenies.turtletroll.gravestone.CustomDeathMessageRegistry
 import com.mercerenies.turtletroll.feature.container.FeatureContainer
