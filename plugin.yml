@@ -18,6 +18,8 @@ permissions:
     default: true
   com.mercerenies.turtletroll.command.encumbrance:
     default: true
+  com.mercerenies.turtletroll.command.temperature:
+    default: true
   com.mercerenies.turtletroll.command.answer:
     default: true
   com.mercerenies.turtletroll.command.prisoner:

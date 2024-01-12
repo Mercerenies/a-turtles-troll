@@ -2,7 +2,6 @@
 package com.mercerenies.turtletroll.temperature
 
 import com.mercerenies.turtletroll.Constants
-import com.mercerenies.turtletroll.Weather
 import com.mercerenies.turtletroll.ObjectiveContainer
 import com.mercerenies.turtletroll.util.component.*
 import com.mercerenies.turtletroll.gravestone.CustomDeathMessageRegistry
@@ -10,6 +9,8 @@ import com.mercerenies.turtletroll.gravestone.CustomDeathMessage
 import com.mercerenies.turtletroll.gravestone.Vanilla
 import com.mercerenies.turtletroll.feature.RunnableFeature
 import com.mercerenies.turtletroll.util.linearRescale
+import com.mercerenies.turtletroll.command.withPermission
+import com.mercerenies.turtletroll.command.Permissions
 
 import org.bukkit.entity.Player
 import org.bukkit.event.Listener
@@ -35,9 +36,6 @@ class TemperatureManager(
 
     val SCOREBOARD_NAME = "com.mercerenies.turtletroll.TemperatureManager.SCOREBOARD_NAME"
 
-    val COLD_TEMPERATURE = 0.2
-    val HOT_TEMPERATURE = 0.8
-
     val DAMAGE_TIME = Constants.TICKS_PER_SECOND * 4L
 
     val COLD_ITEMS = setOf(
@@ -51,57 +49,55 @@ class TemperatureManager(
       Material.LAVA, Material.LAVA_BUCKET, Material.LAVA_CAULDRON,
     )
 
-    fun getArmorCount(player: Player): Int {
-      val inv = player.inventory
-      var count = 0
-      // Note: Because so many other things interact with the helmet
-      // slot, we don't consider the helmet slot at all when counting
-      // armor here.
-      if (inv.boots != null) {
-        count += 1
-      }
-      if (inv.chestplate != null) {
-        count += 1
-      }
-      if (inv.leggings != null) {
-        count += 1
-      }
-      return count
-    }
+    val COLD_CONDITIONS = listOf(
+      WearingBasicOutfitCondition,
+      HoldingItemSafetyCondition("a warm object", HOT_ITEMS),
+    )
 
-    fun isPlayerSafeFromHot(player: Player): Boolean =
-      COLD_ITEMS.contains(player.inventory.itemInMainHand.type) ||
-        COLD_ITEMS.contains(player.inventory.itemInOffHand.type) ||
-        Weather.getCurrentWeatherAt(player.location).isPrecipitating
-
-    fun isPlayerSafeFromCold(player: Player): Boolean =
-      HOT_ITEMS.contains(player.inventory.itemInMainHand.type) ||
-        HOT_ITEMS.contains(player.inventory.itemInOffHand.type)
+    val HOT_CONDITIONS = listOf(
+      DressingLightCondition,
+      HoldingItemSafetyCondition("a cool object", COLD_ITEMS),
+      PrecipitatingSafetyCondition,
+    )
 
   }
 
-  private class TemperatureObjectiveContainer() : ObjectiveContainer(SCOREBOARD_NAME, "Temperature") {
+  private class TemperatureObjectiveContainer(
+    private val calculator: TemperatureCalculator,
+  ) : ObjectiveContainer(SCOREBOARD_NAME, "Temperature") {
 
     fun update() {
       for (player in Bukkit.getOnlinePlayers()) {
-        var temp = TemperatureCalculator.getTemperature(player)
-        // We define COLD_TEMPERATURE to be -10 and HOT_TEMPERATURE to
-        // be 10, just so we have some point of reference for the
-        // scale.
-        var scaledTemp = linearRescale(COLD_TEMPERATURE, HOT_TEMPERATURE, -10.0, 10.0, temp)
-        if (isPlayerSafeFromCold(player)) {
-          scaledTemp = max(scaledTemp, -9.0)
-        }
-        if (isPlayerSafeFromHot(player)) {
-          scaledTemp = min(scaledTemp, 9.0)
-        }
+        val scaledTemp = getScaledTemperature(player)
         this.objective.getScore(player.name).score = scaledTemp.toInt()
       }
+    }
+
+    private fun getScaledTemperature(player: Player): Double {
+      val temp = TemperatureCalculator.getTemperature(player)
+      // We rescale the cold and hot limits to -10 and 10 here, just
+      // so we have some point of reference for the scale.
+      var scaledTemp = linearRescale(calculator.minSafeTemperature, calculator.maxSafeTemperature, -10.0, 10.0, temp)
+      if (calculator.isPlayerSafeFromCold(player)) {
+        scaledTemp = max(scaledTemp, -9.0)
+      }
+      if (calculator.isPlayerSafeFromHot(player)) {
+        scaledTemp = min(scaledTemp, 9.0)
+      }
+      return scaledTemp
     }
 
   }
 
   private var container: TemperatureObjectiveContainer? = null
+
+  private val calculator: TemperatureCalculator =
+    TemperatureCalculator(
+      coldConditions = COLD_CONDITIONS,
+      hotConditions = HOT_CONDITIONS,
+    )
+
+  val temperatureCommand = TemperatureCommand(this, calculator).withPermission(Permissions.TEMPERATURE)
 
   override val name: String = "temperature"
 
@@ -110,7 +106,7 @@ class TemperatureManager(
   override val taskPeriod = Constants.TICKS_PER_SECOND * 4L
 
   private fun loadScoreboard() {
-    val container = TemperatureObjectiveContainer()
+    val container = TemperatureObjectiveContainer(calculator)
     this.container = container
     container.update()
   }
@@ -130,17 +126,17 @@ class TemperatureManager(
       if (player.location.world!!.environment != World.Environment.NORMAL) {
         continue
       }
-      val temp = TemperatureCalculator.getTemperature(player)
-      val armorCount = getArmorCount(player)
-      if (temp < COLD_TEMPERATURE) {
-        if ((armorCount <= 0) && (!isPlayerSafeFromCold(player))) {
+      when (calculator.evaluatePlayerTemperature(player)) {
+        TemperatureCalculator.Result.SAFE -> {
+          // No action.
+        }
+        TemperatureCalculator.Result.TOO_COLD -> {
           player.freezeTicks = player.maxFreezeTicks
           deathRegistry.withCustomDeathMessage(getCustomDeathMessage(player)) {
             player.damage(4.0, null)
           }
         }
-      } else if (temp > HOT_TEMPERATURE) {
-        if ((armorCount > 0) && (!isPlayerSafeFromHot(player))) {
+        TemperatureCalculator.Result.TOO_HOT -> {
           player.fireTicks = max(player.fireTicks, DAMAGE_TIME.toInt())
         }
       }
