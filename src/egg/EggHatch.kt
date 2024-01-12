@@ -34,7 +34,7 @@ object EggHatch {
     Weight(SpawnEntityEffect(Piglin::class).maybeBaby(0.1), 1.0),
     Weight(SpawnEntityEffect(PolarBear::class).maybeBaby(0.1), 0.6),
     Weight(SpawnEntityEffect(PufferFish::class), 7.0),
-    Weight(SpawnEntityEffect(Rabbit::class).maybeBaby(0.1), 0.5),
+    Weight(SpawnEntityEffect(Rabbit::class).maybeBaby(0.1).andThen(this::makeKillerRabbit), 1.2),
     Weight(SpawnEntityEffect(Salmon::class), 7.0),
     Weight(SpawnEntityEffect(Sheep::class).maybeBaby(0.1).andThen(this::randomizeColor), 0.6),
     Weight(SkeletonTrapEffect(3, plugin), 0.2),
@@ -106,6 +106,10 @@ object EggHatch {
 
   private fun randomizeSize(entity: Phantom) {
     entity.setSize(listOf(1, 2, 3, 4).random())
+  }
+
+  private fun makeKillerRabbit(entity: Rabbit) {
+    entity.setRabbitType(Rabbit.Type.THE_KILLER_BUNNY)
   }
 
 }

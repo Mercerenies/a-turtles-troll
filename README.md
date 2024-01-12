@@ -43,6 +43,7 @@ Your Minecraft server will also require
 * New random event: Two players are entered into a prisoner's dilemma.
 * New random event: Blocks near players are replaced by magma and Nether blocks.
 * The player who appeases the gods gets awarded one experience point for every Twitch streamer currently streaming Minecraft.
+* Eggs can now hatch into killer rabbits, not just ordinary ones.
 * Block drop events now change their likelihood based on the player's luck stat.
 * Added several more trivia questions.
 * Added teleport sound effects.
