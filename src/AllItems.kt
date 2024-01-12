@@ -20,6 +20,11 @@ object AllItems {
   fun sample(): Material =
     allItems.random()
 
+  // Note: Most of getRarity matches https://minecraft.wiki/w/Rarity.
+  // However, I also mark dragon spawn eggs and wither spawn eggs as
+  // EPIC, despite them being COMMON according to Minecraft, since I
+  // don't want those spawn eggs appearing in any random drops.
+
   /* ktlint-disable no-multi-spaces */
   fun getRarity(item: Material): Rarity =
     when (item) {
@@ -69,6 +74,8 @@ object AllItems {
       Material.COMMAND_BLOCK_MINECART  -> Rarity.EPIC
       Material.CHAIN_COMMAND_BLOCK     -> Rarity.EPIC
       Material.REPEATING_COMMAND_BLOCK -> Rarity.EPIC
+      Material.WITHER_SPAWN_EGG        -> Rarity.EPIC
+      Material.ENDER_DRAGON_SPAWN_EGG  -> Rarity.EPIC
       else                             -> Rarity.COMMON
     }
   /* ktlint-enable no-multi-spaces */
