@@ -1,11 +1,9 @@
 
-package com.mercerenies.turtletroll
+package com.mercerenies.turtletroll.zombify
 
 import com.mercerenies.turtletroll.feature.AbstractFeature
-import com.mercerenies.turtletroll.feature.container.FeatureContainer
-import com.mercerenies.turtletroll.feature.container.ListenerContainer
-import com.mercerenies.turtletroll.feature.builder.BuilderState
-import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
+import com.mercerenies.turtletroll.feature.HasEnabledStatus
+import com.mercerenies.turtletroll.Hats
 
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
@@ -21,15 +19,13 @@ import org.bukkit.scheduler.BukkitRunnable
 
 import kotlin.collections.HashMap
 
-class ZombifyTradeListener(val plugin: Plugin) : AbstractFeature(), Listener {
+class ZombifyTradeListener(
+  val plugin: Plugin,
+  val pumpkinFeature: HasEnabledStatus,
+) : AbstractFeature(), Listener {
 
-  companion object : FeatureContainerFactory<FeatureContainer> {
-
+  companion object {
     val DELAY = 2L
-
-    override fun create(state: BuilderState): FeatureContainer =
-      ListenerContainer(ZombifyTradeListener(state.plugin))
-
   }
 
   private inner class DelayedZombify(
@@ -62,6 +58,10 @@ class ZombifyTradeListener(val plugin: Plugin) : AbstractFeature(), Listener {
   @EventHandler
   fun onPlayerInteractEntity(event: PlayerInteractEntityEvent) {
     if (!isEnabled()) {
+      return
+    }
+    // Pumpkins provide immunity against this effect.
+    if ((Hats.isWearingOrdinaryHat(event.player)) && (pumpkinFeature.isEnabled())) {
       return
     }
     val target = event.getRightClicked()

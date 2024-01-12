@@ -57,6 +57,7 @@ Your Minecraft server will also require
 * Witches can now spawn allays as well as parrots.
 * The player who appeases the gods gets awarded one experience point for every Twitch streamer currently streaming Minecraft.
 * Eggs can now hatch into killer rabbits, not just ordinary ones.
+* You can now safely trade with villagers if you have a pumpkin on your head.
 * Block drop events now change their likelihood based on the player's luck stat.
 * Added several more trivia questions.
 * Added teleport sound effects.

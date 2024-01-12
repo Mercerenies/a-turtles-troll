@@ -11,6 +11,7 @@ import com.mercerenies.turtletroll.parrot.ParrotCookieListener
 import com.mercerenies.turtletroll.parrot.ParrotDeathListener
 import com.mercerenies.turtletroll.parrot.ParrotManager
 import com.mercerenies.turtletroll.water.ElectricWaterListenerFactory
+import com.mercerenies.turtletroll.zombify.ZombifyTradeListenerFactory
 import com.mercerenies.turtletroll.chicken.ChickenDamageListener
 import com.mercerenies.turtletroll.birch.BirchGlareRunnableFactory
 import com.mercerenies.turtletroll.rain.RainwaterManagerFactory
@@ -197,7 +198,6 @@ object AllFeatureFactories {
       WitherRoseListener,
       ZombieDrowningListener,
       ZombieSpeedListener,
-      ZombifyTradeListener,
       // Classic lava and the things that depend on it
       ClassicLavaManager,
       GhastLavaListenerFactory(ClassicLavaManager.STORAGE_IGNORER_KEY),
@@ -207,6 +207,7 @@ object AllFeatureFactories {
       CactusKickListenerFactory(PumpkinSlownessManager.PUMPKIN_FEATURE_KEY),
       ElectricWaterListenerFactory(PumpkinSlownessManager.PUMPKIN_FEATURE_KEY),
       ExplodingNyliumListenerFactory(PumpkinSlownessManager.PUMPKIN_FEATURE_KEY),
+      ZombifyTradeListenerFactory(PumpkinSlownessManager.PUMPKIN_FEATURE_KEY),
       // Custom death message and the things that depend on it
       CustomDeathMessageListener,
       BirchGlareRunnableFactory(CustomDeathMessageListener.DEATH_MESSAGE_KEY),
