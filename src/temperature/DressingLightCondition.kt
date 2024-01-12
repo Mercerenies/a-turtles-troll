@@ -13,6 +13,8 @@ object DressingLightCondition : BiomeSafetyCondition {
     Material.DIAMOND_LEGGINGS, Material.DIAMOND_BOOTS,
     Material.NETHERITE_HELMET, Material.NETHERITE_CHESTPLATE,
     Material.NETHERITE_LEGGINGS, Material.NETHERITE_BOOTS,
+    Material.CHAINMAIL_HELMET, Material.CHAINMAIL_CHESTPLATE,
+    Material.CHAINMAIL_LEGGINGS, Material.CHAINMAIL_BOOTS,
   )
 
   override fun evaluate(player: Player): BiomeSafetyCondition.Result =
