@@ -45,6 +45,7 @@ Your Minecraft server will also require
     That is, an iron, gold, netherite, or chain helmet will cause you
     to overheat in deserts. Carved pumpkins and other "fun" hats do
     not.
+  * Umbrella hats now protect against the heat.
   * There is now a `/turtle temperature` command that tells you what
     your current temperature is.
 * New random event: Kamek swaps items in your inventory.

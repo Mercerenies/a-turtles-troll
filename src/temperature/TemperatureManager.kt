@@ -57,6 +57,7 @@ class TemperatureManager(
     val HOT_CONDITIONS = listOf(
       DressingLightCondition,
       HoldingItemSafetyCondition("a cool object", COLD_ITEMS),
+      UmbrellaHatCondition,
       PrecipitatingSafetyCondition,
     )
 

@@ -38,8 +38,8 @@
        holding a warm object like a campfire in their hand.
      - Extremely hot biomes will damage the player. They can protect
        themselves by (1) not wearing any heavy (i.e. non-leather)
-       armor, (2) holding a cool object like an ice block, or (3)
-       staying in the rain or snow.
+       armor, (2) holding a cool object like an ice block, (3) wearing
+       an umbrella hat, or (4) staying in the rain or snow.
    + spillage :: When a bucket item is dropped for any reason, its
                  contents will spill on the ground
    + eggshells :: The block two cubes below the player is constantly
