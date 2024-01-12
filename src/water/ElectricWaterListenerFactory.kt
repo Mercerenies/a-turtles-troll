@@ -1,5 +1,5 @@
 
-package com.mercerenies.turtletroll
+package com.mercerenies.turtletroll.water
 
 import com.mercerenies.turtletroll.feature.container.FeatureContainer
 import com.mercerenies.turtletroll.feature.container.ListenerContainer
@@ -9,7 +9,6 @@ import com.mercerenies.turtletroll.feature.HasEnabledStatus
 
 import org.bukkit.Bukkit
 
-// TODO This and ElectricWaterListener into a package
 class ElectricWaterListenerFactory(
   private val pumpkinFeatureSupplier: (BuilderState) -> HasEnabledStatus?,
 ) : FeatureContainerFactory<FeatureContainer> {

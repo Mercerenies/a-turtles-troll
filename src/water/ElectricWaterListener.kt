@@ -1,6 +1,9 @@
 
-package com.mercerenies.turtletroll
+package com.mercerenies.turtletroll.water
 
+import com.mercerenies.turtletroll.CooldownMemory
+import com.mercerenies.turtletroll.Hats
+import com.mercerenies.turtletroll.Constants
 import com.mercerenies.turtletroll.feature.AbstractFeature
 import com.mercerenies.turtletroll.feature.HasEnabledStatus
 

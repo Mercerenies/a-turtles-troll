@@ -10,6 +10,7 @@ import com.mercerenies.turtletroll.banish.BanishmentManagerFactory
 import com.mercerenies.turtletroll.parrot.ParrotCookieListener
 import com.mercerenies.turtletroll.parrot.ParrotDeathListener
 import com.mercerenies.turtletroll.parrot.ParrotManager
+import com.mercerenies.turtletroll.water.ElectricWaterListenerFactory
 import com.mercerenies.turtletroll.chicken.ChickenDamageListener
 import com.mercerenies.turtletroll.birch.BirchGlareRunnableFactory
 import com.mercerenies.turtletroll.rain.RainwaterManagerFactory
