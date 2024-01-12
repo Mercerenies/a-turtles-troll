@@ -135,8 +135,6 @@
      that a small slime spawns near them
    + wardensummon :: If you spend more than five seconds in total
                      darkness, a Warden will appear near you
-   + creeperdeath :: Killing a non-charged creeper summons allays;
-                     exploding creepers also summon allays
    + allays :: Allays automatically bond to the nearest player and
                have an infinite supply of flowers
    + johnny :: Breeding animals sometimes spawns a Vindicator named
@@ -318,8 +316,8 @@
    + deathscoreboard :: A scoreboard on the right side of the screen
         shows the number of times each player has died
    + silverfishburn :: Silverfish burn in daylight
-   + witchattack :: Witches will sometimes throw parrots at you
-                    instead of splash potions
+   + witchattack :: Witches will sometimes throw parrots and allays at
+     you instead of splash potions
    + unfinished :: If you start mining an ore and then stop, it gets
                    mad and turns to cobweb
    + parrotdeath :: Parrots get tiny gravestones when they die

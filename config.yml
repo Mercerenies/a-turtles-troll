@@ -218,13 +218,6 @@ classiclava:
 cookies:
   enabled: default
 
-# Killing a non-charged creeper summons allays. Exploding a
-# non-charged creeper also summons allays.
-creeperdeath:
-  enabled: default
-  # (Integer) The number of allays to spawn.
-  allay_count: default
-
 # A scoreboard shows on the right side of the screen, indicating the
 # number of times each player has died.
 deathscoreboard:
@@ -638,7 +631,8 @@ weepingangel:
 
 witchattack:
   enabled: default
-  probability: default
+  parrot_probability: default
+  allay_probability: default
 
 witches:
   enabled: default

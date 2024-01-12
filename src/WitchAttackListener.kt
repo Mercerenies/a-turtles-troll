@@ -12,20 +12,28 @@ import org.bukkit.event.Listener
 import org.bukkit.event.entity.ProjectileLaunchEvent
 import org.bukkit.entity.Witch
 import org.bukkit.entity.Parrot
+import org.bukkit.entity.Allay
 import org.bukkit.plugin.Plugin
 
 import kotlin.random.Random
 
 class WitchAttackListener(
   val plugin: Plugin,
-  val chance: Double = 0.5,
+  val parrotChance: Double,
+  val allayChance: Double,
 ) : AbstractFeature(), Listener {
 
   companion object : FeatureContainerFactory<FeatureContainer> {
     val COOLDOWN_TIME = Constants.TICKS_PER_SECOND * 10
 
     override fun create(state: BuilderState): FeatureContainer =
-      ListenerContainer(WitchAttackListener(state.plugin, state.config.getDouble("witchattack.probability")))
+      ListenerContainer(
+        WitchAttackListener(
+          plugin = state.plugin,
+          parrotChance = state.config.getDouble("witchattack.parrot_probability"),
+          allayChance = state.config.getDouble("witchattack.allay_probability"),
+        )
+      )
 
   }
 
@@ -41,10 +49,16 @@ class WitchAttackListener(
     val projectile = event.entity
     val source = projectile.shooter
     if (source is Witch) {
-      if (Random.nextDouble() < chance) {
+      val rnd = Random.nextDouble()
+      if (rnd < parrotChance) {
+        // Parrot
         event.setCancelled(true)
         val parrot = projectile.location.world!!.spawn(projectile.location, Parrot::class.java)
         parrot.variant = Parrot.Variant.values().toList().random()
+      } else if (rnd < parrotChance + allayChance) {
+        // Allay
+        event.setCancelled(true)
+        projectile.location.world!!.spawn(projectile.location, Allay::class.java)
       }
     }
   }

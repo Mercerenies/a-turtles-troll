@@ -42,6 +42,7 @@ Your Minecraft server will also require
 * New random event: A giant blob of sand falls on everyone at random.
 * New random event: Two players are entered into a prisoner's dilemma.
 * New random event: Blocks near players are replaced by magma and Nether blocks.
+* Witches can now spawn allays as well as parrots.
 * The player who appeases the gods gets awarded one experience point for every Twitch streamer currently streaming Minecraft.
 * Eggs can now hatch into killer rabbits, not just ordinary ones.
 * Block drop events now change their likelihood based on the player's luck stat.

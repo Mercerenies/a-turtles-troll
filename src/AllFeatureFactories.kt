@@ -99,7 +99,6 @@ object AllFeatureFactories {
       ChestShuffleListener,
       ChickenDamageListener,
       ContagiousMossManager,
-      CreeperDeathListener,
       DeathScoreboardListener,
       DirtDropFeatureFactory,
       DirtRecipeFeature,

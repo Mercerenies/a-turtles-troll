@@ -86,9 +86,6 @@ classiclava:
   end_spread: 0
 cookies:
   enabled: true
-creeperdeath:
-  enabled: true
-  allay_count: 6
 deathscoreboard:
   enabled: true
 demand:
@@ -382,7 +379,8 @@ weepingangel:
   movement_speed: 3.0
 witchattack:
   enabled: true
-  probability: 0.5
+  parrot_probability: 0.2
+  allay_probability: 0.4
 witches:
   enabled: true
   probability: 1.0
