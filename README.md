@@ -36,6 +36,17 @@ Your Minecraft server will also require
 
 ### Version 1.24
 
+* Made several changes to the temperature system.
+  * Leather armor no longer causes you to overheat in hot weather.
+  * Cold weather requires that you're wearing a chestplate and
+    leggings. The other slots don't matter. Leather armor will keep
+    you warm in cold weather.
+  * Helmets that ARE armor count toward overheating in hot weather.
+    That is, an iron, gold, netherite, or chain helmet will cause you
+    to overheat in deserts. Carved pumpkins and other "fun" hats do
+    not.
+  * There is now a `/turtle temperature` command that tells you what
+    your current temperature is.
 * New random event: Kamek swaps items in your inventory.
 * New random event: Anvils rain down on everyone continuously for a bit.
 * New random event: Sand blocks rain down on everyone continuously for a bit.
