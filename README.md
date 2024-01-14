@@ -34,6 +34,10 @@ Your Minecraft server will also require
 
 ## Changelog
 
+### Version 1.24.1
+
+* Patch release: Fix Cataclysm to be less destructive.
+
 ### Version 1.24
 
 * Made several changes to the temperature system.

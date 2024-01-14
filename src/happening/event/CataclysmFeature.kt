@@ -14,6 +14,7 @@ import com.mercerenies.turtletroll.happening.withTitle
 import com.mercerenies.turtletroll.happening.boundToFeature
 import com.mercerenies.turtletroll.location.BlockSelector
 import com.mercerenies.turtletroll.BlockTypes
+import com.mercerenies.turtletroll.EggshellsListener
 
 import org.bukkit.plugin.Plugin
 import org.bukkit.block.Block
@@ -24,6 +25,8 @@ import org.bukkit.entity.Player
 import org.bukkit.event.Listener
 
 import net.kyori.adventure.text.Component
+
+import kotlin.random.Random
 
 class CataclysmFeature(
   private val plugin: Plugin,
@@ -41,7 +44,7 @@ class CataclysmFeature(
 
     private val REPLACEMENT_OPTIONS: Set<Material> =
       setOf(
-        Material.MAGMA_BLOCK, Material.GRAVEL, Material.LAVA, Material.SOUL_SAND,
+        Material.MAGMA_BLOCK, Material.GRAVEL, Material.SOUL_SAND,
         Material.SOUL_SOIL, Material.BLACKSTONE, Material.NETHERRACK,
       )
 
@@ -57,7 +60,13 @@ class CataclysmFeature(
       REPLACEABLE_BLOCKS.contains(block.type)
 
     private fun replaceBlock(block: Block) {
-      block.type = REPLACEMENT_OPTIONS.random()
+      if ((Random.nextDouble() < 0.1) && (EggshellsListener.shouldTurnToLava(block))) {
+        // If it's surrounded by solid blocks, there's a chance of
+        // turning it to lava.
+        block.type = Material.LAVA
+      } else {
+        block.type = REPLACEMENT_OPTIONS.random()
+      }
     }
 
   }
