@@ -1,6 +1,8 @@
 
 package com.mercerenies.turtletroll.bridge
 
+import com.mercerenies.turtletroll.util.ResettableLazy
+
 import org.bukkit.Bukkit
 import org.bukkit.NamespacedKey
 import org.bukkit.plugin.Plugin
@@ -14,9 +16,12 @@ abstract class PluginBridge() {
 
   abstract val pluginName: String
 
-  val plugin: Plugin? by lazy {
+  private val lazyPlugin = ResettableLazy {
     Bukkit.getServer().getPluginManager().getPlugin(pluginName)
   }
+
+  val plugin: Plugin?
+    get() = lazyPlugin.value
 
   fun exists(): Boolean =
     plugin != null
@@ -25,6 +30,10 @@ abstract class PluginBridge() {
     if (!exists()) {
       throw PluginNotFoundException(errorMessage)
     }
+  }
+
+  fun resetLazyState() {
+    lazyPlugin.reset()
   }
 
   fun namespacedKey(key: String): NamespacedKey? =

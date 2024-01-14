@@ -17,6 +17,7 @@ import com.mercerenies.turtletroll.config.CheckedConfigOptions
 import com.mercerenies.turtletroll.config.DifficultyBackedConfigOptions
 import com.mercerenies.turtletroll.integration.TwitchStatistics
 import com.mercerenies.turtletroll.bridge.ProtocolLibBridge
+import com.mercerenies.turtletroll.bridge.DiscordSRVBridge
 
 import org.bukkit.plugin.java.JavaPlugin
 import org.bukkit.Bukkit
