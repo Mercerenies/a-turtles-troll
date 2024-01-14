@@ -33,14 +33,19 @@ object Messages {
       .append("] ")
       .build()
 
+  var shouldMirrorToDiscord: Boolean =
+    true
+
   fun broadcastMessage(message: Component) {
     val finalMessage = prefix.append(message)
     Bukkit.getServer().broadcast(finalMessage)
 
-    // Send to DiscordSRV, if available.
-    DiscordSRVBridge.broadcastMessageIfAvailable(finalMessage.asPlainText())
-    // TODO Consider writing a serializer that takes Component to
-    // Discord markdown :)
+    if (shouldMirrorToDiscord) {
+      // Send to DiscordSRV, if available.
+      DiscordSRVBridge.broadcastMessageIfAvailable(finalMessage.asPlainText())
+      // TODO Consider writing a serializer that takes Component to
+      // Discord markdown :)
+    }
   }
 
   fun broadcastMessage(message: String) {

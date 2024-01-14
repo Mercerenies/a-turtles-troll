@@ -2,6 +2,7 @@
 global:
   difficulty: insane
   suppress_protocollib_warning: false
+  mirror_to_discordsrv: true
 ak47:
   enabled: true
   quick_charge_level: 10

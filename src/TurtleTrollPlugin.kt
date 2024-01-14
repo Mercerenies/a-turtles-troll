@@ -25,6 +25,7 @@ class TurtleTrollPlugin : JavaPlugin() {
 
   companion object {
     val SUPPRESS_PROTOCOLLIB_WARNING = "global.suppress_protocollib_warning"
+    val MIRROR_TO_DISCORDSRV = "global.mirror_to_discordsrv"
   }
 
   private val dataHolder = GlobalFileDataHolder(this)
@@ -98,6 +99,9 @@ class TurtleTrollPlugin : JavaPlugin() {
 
     // Disable features as requested by config
     disableFeaturesFromConfig()
+
+    // Configure Discord integration
+    Messages.shouldMirrorToDiscord = configOptions.getBoolean(MIRROR_TO_DISCORDSRV)
 
   }
 

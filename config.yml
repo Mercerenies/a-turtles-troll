@@ -37,6 +37,10 @@ global:
   # (Boolean) Whether or not a warning should be shown if ProtocolLib
   # cannot be found.
   suppress_protocollib_warning: false
+  # (Boolean) Whether or not messages from this plugin should be
+  # mirrored to DiscordSRV. This setting is ignored if DiscordSRV is
+  # not available.
+  mirror_to_discordsrv: true
 
 # Pillagers spawn with a crossbow called "AK57".
 ak47:
