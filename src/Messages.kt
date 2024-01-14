@@ -33,16 +33,18 @@ object Messages {
       .append("] ")
       .build()
 
+  private val discordPrefix: String =
+    "**[Turtle]** "
+
   var shouldMirrorToDiscord: Boolean =
     true
 
   fun broadcastMessage(message: Component) {
-    val finalMessage = prefix.append(message)
-    Bukkit.getServer().broadcast(finalMessage)
+    Bukkit.getServer().broadcast(prefix.append(message))
 
     if (shouldMirrorToDiscord) {
       // Send to DiscordSRV, if available.
-      DiscordSRVBridge.broadcastMessageIfAvailable(finalMessage.asPlainText())
+      DiscordSRVBridge.broadcastMessageIfAvailable(discordPrefix + message.asPlainText())
       // TODO Consider writing a serializer that takes Component to
       // Discord markdown :)
     }
