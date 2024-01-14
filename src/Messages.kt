@@ -3,6 +3,7 @@ package com.mercerenies.turtletroll
 
 import com.mercerenies.turtletroll.util.component.*
 import com.mercerenies.turtletroll.util.durationOfTicks
+import com.mercerenies.turtletroll.bridge.DiscordSRVBridge
 
 import org.bukkit.Bukkit
 import org.bukkit.Sound
@@ -33,7 +34,13 @@ object Messages {
       .build()
 
   fun broadcastMessage(message: Component) {
-    Bukkit.getServer().broadcast(prefix.append(message))
+    val finalMessage = prefix.append(message)
+    Bukkit.getServer().broadcast(finalMessage)
+
+    // Send to DiscordSRV, if available.
+    DiscordSRVBridge.broadcastMessageIfAvailable(finalMessage.asPlainText())
+    // TODO Consider writing a serializer that takes Component to
+    // Discord markdown :)
   }
 
   fun broadcastMessage(message: String) {

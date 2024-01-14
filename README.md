@@ -41,6 +41,9 @@ these dependencies are not present.
   strictly requires this plugin to be present, but many things either
   make more sense or integrate better if both this as Raccoon-Mischief
   are present.
+* [DiscordSRV](https://www.spigotmc.org/resources/discordsrv.18494/),
+  if present, will mirror any messages from A Turtle's Troll to
+  Discord.
 
 ## Changelog
 
@@ -49,6 +52,8 @@ these dependencies are not present.
 * ProtocolLib is now an optional dependency. If not present,
   `rainwater` will be disabled and a warning will be printed, but all
   other features will still function.
+* Discord integration: If DiscordSRV is present, then messages from
+  this plugin will be shown on Discord.
 
 ### Version 1.24.1
 
