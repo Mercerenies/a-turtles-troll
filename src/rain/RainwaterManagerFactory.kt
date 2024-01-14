@@ -1,6 +1,7 @@
 
 package com.mercerenies.turtletroll.rain
 
+import com.mercerenies.turtletroll.TurtleTrollPlugin
 import com.mercerenies.turtletroll.feature.container.FeatureContainer
 import com.mercerenies.turtletroll.feature.container.NullFeatureContainer
 import com.mercerenies.turtletroll.feature.builder.FeatureBuilder
@@ -23,7 +24,9 @@ class RainwaterManagerFactory(
       deathRegistry = CustomDeathMessageRegistry.Unit
     }
     if (!ProtocolLibBridge.exists()) {
-      Bukkit.getLogger().warning("Cannot construct `rainwater` feature without ProtocolLib")
+      if (!state.config.getBoolean(TurtleTrollPlugin.SUPPRESS_PROTOCOLLIB_WARNING)) {
+        Bukkit.getLogger().warning("Cannot construct `rainwater` feature without ProtocolLib")
+      }
       return NullFeatureContainer
     }
     val manager = RainwaterManager(state.plugin, deathRegistry)

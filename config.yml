@@ -34,6 +34,9 @@ global:
   # or "insane". Any field outside of the global namespace whose value
   # is "default" will pull from the difficulty indicated here.
   difficulty: normal
+  # (Boolean) Whether or not a warning should be shown if ProtocolLib
+  # cannot be found.
+  suppress_protocollib_warning: false
 
 # Pillagers spawn with a crossbow called "AK57".
 ak47:

@@ -1,6 +1,7 @@
 
 global:
   difficulty: easy
+  suppress_protocollib_warning: false
 ak47:
   enabled: true
   quick_charge_level: 0

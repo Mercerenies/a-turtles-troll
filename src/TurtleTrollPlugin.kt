@@ -23,6 +23,10 @@ import org.bukkit.Bukkit
 
 class TurtleTrollPlugin : JavaPlugin() {
 
+  companion object {
+    val SUPPRESS_PROTOCOLLIB_WARNING = "global.suppress_protocollib_warning"
+  }
+
   private val dataHolder = GlobalFileDataHolder(this)
 
   // Expose dataHolder but only as a GlobalDataHolder. The
@@ -74,7 +78,9 @@ class TurtleTrollPlugin : JavaPlugin() {
     // Initialize all packet listeners
     val protocolManager = ProtocolLibBridge.getProtocolManager()
     if (protocolManager == null) {
-      Bukkit.getLogger().warning("ProtocolLib is not installed! Some features of A Turtle's Troll will be unavailable.")
+      if (!configOptions.getBoolean(SUPPRESS_PROTOCOLLIB_WARNING)) {
+        Bukkit.getLogger().warning("ProtocolLib is not installed! Some features of A Turtle's Troll will be unavailable.")
+      }
     } else {
       for (listener in mainContainer.packetListeners) {
         protocolManager.addPacketListener(listener)
