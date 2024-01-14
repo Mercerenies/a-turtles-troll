@@ -18,6 +18,15 @@ abstract class PluginBridge() {
     Bukkit.getServer().getPluginManager().getPlugin(pluginName)
   }
 
+  fun exists(): Boolean =
+    plugin != null
+
+  fun assertExists(errorMessage: String = "${pluginName} does not exist") {
+    if (!exists()) {
+      throw PluginNotFoundException(errorMessage)
+    }
+  }
+
   fun namespacedKey(key: String): NamespacedKey? =
     plugin?.let { NamespacedKey(it, key) }
 

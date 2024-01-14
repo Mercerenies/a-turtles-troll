@@ -29,10 +29,26 @@ A Turtle's Troll also depends on the following libraries.
 * [org.json](https://github.com/stleary/JSON-java) (Included under the
   JSON License)
 
-Your Minecraft server will also require
-[ProtocolLib](https://www.spigotmc.org/resources/protocollib.1997/).
+A Turtle's Troll also provides integrations with a few other plugins.
+None of these are required, but some features may be unavailable if
+these dependencies are not present.
+
+* [ProtocolLib](https://www.spigotmc.org/resources/protocollib.1997/)
+  is required for the `rainwater` feature. If ProtocolLib is not
+  present, this feature will be disabled.
+* [Raccoon-Mischief](https://github.com/EvanSkiStudios/Raccoon-Mischief)
+  is recommended for interoperation with several features. Nothing
+  strictly requires this plugin to be present, but many things either
+  make more sense or integrate better if both this as Raccoon-Mischief
+  are present.
 
 ## Changelog
+
+### Version 1.25
+
+* ProtocolLib is now an optional dependency. If not present,
+  `rainwater` will be disabled and a warning will be printed, but all
+  other features will still function.
 
 ### Version 1.24.1
 

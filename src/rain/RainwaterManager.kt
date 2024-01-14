@@ -6,6 +6,7 @@ import com.mercerenies.turtletroll.util.*
 import com.mercerenies.turtletroll.Constants
 import com.mercerenies.turtletroll.gravestone.CustomDeathMessageRegistry
 import com.mercerenies.turtletroll.feature.RunnableFeature
+import com.mercerenies.turtletroll.bridge.ProtocolLibBridge
 
 import org.bukkit.entity.Player
 import org.bukkit.plugin.Plugin
@@ -27,6 +28,12 @@ class RainwaterManager(
   plugin: Plugin,
   private val deathRegistry: CustomDeathMessageRegistry,
 ) : RunnableFeature(plugin), Listener {
+
+  init {
+    ProtocolLibBridge.assertExists(
+      errorMessage = "RainwaterManager cannot be constructed without ProtocolLib",
+    )
+  }
 
   private val oxygenMeters: HashMap<Player, RainOxygenMeter> = HashMap()
 

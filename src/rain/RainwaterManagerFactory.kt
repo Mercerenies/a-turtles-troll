@@ -2,34 +2,18 @@
 package com.mercerenies.turtletroll.rain
 
 import com.mercerenies.turtletroll.feature.container.FeatureContainer
-import com.mercerenies.turtletroll.feature.container.AbstractFeatureContainer
+import com.mercerenies.turtletroll.feature.container.NullFeatureContainer
+import com.mercerenies.turtletroll.feature.builder.FeatureBuilder
 import com.mercerenies.turtletroll.feature.builder.BuilderState
 import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 import com.mercerenies.turtletroll.gravestone.CustomDeathMessageRegistry
+import com.mercerenies.turtletroll.bridge.ProtocolLibBridge
 
 import org.bukkit.Bukkit
 
 class RainwaterManagerFactory(
   private val deathFeatureId: String,
 ) : FeatureContainerFactory<FeatureContainer> {
-
-  private class Container(
-    private val manager: RainwaterManager,
-  ) : AbstractFeatureContainer() {
-
-    override val listeners =
-      listOf(manager)
-
-    override val features =
-      listOf(manager)
-
-    override val gameModifications =
-      listOf(manager)
-
-    override val packetListeners =
-      listOf(manager.oxygenMeterPacketListener)
-
-  }
 
   override fun create(state: BuilderState): FeatureContainer {
     var deathRegistry = state.getSharedData(deathFeatureId, CustomDeathMessageRegistry::class)
@@ -38,8 +22,17 @@ class RainwaterManagerFactory(
       Bukkit.getLogger().warning("Could not find death registry, got null")
       deathRegistry = CustomDeathMessageRegistry.Unit
     }
+    if (!ProtocolLibBridge.exists()) {
+      Bukkit.getLogger().warning("Cannot construct `rainwater` feature without ProtocolLib")
+      return NullFeatureContainer
+    }
     val manager = RainwaterManager(state.plugin, deathRegistry)
-    return Container(manager)
+    return FeatureBuilder()
+      .addListener(manager)
+      .addFeature(manager)
+      .addGameModification(manager)
+      .addPacketListener(manager.oxygenMeterPacketListener)
+      .build()
   }
 
 }

@@ -16,11 +16,10 @@ import com.mercerenies.turtletroll.config.BukkitConfigOptions
 import com.mercerenies.turtletroll.config.CheckedConfigOptions
 import com.mercerenies.turtletroll.config.DifficultyBackedConfigOptions
 import com.mercerenies.turtletroll.integration.TwitchStatistics
+import com.mercerenies.turtletroll.bridge.ProtocolLibBridge
 
 import org.bukkit.plugin.java.JavaPlugin
 import org.bukkit.Bukkit
-
-import com.comphenix.protocol.ProtocolLibrary
 
 class TurtleTrollPlugin : JavaPlugin() {
 
@@ -73,9 +72,13 @@ class TurtleTrollPlugin : JavaPlugin() {
     }
 
     // Initialize all packet listeners
-    val protocolManager = ProtocolLibrary.getProtocolManager()
-    for (listener in mainContainer.packetListeners) {
-      protocolManager.addPacketListener(listener)
+    val protocolManager = ProtocolLibBridge.getProtocolManager()
+    if (protocolManager == null) {
+      Bukkit.getLogger().warning("ProtocolLib is not installed! Some features of A Turtle's Troll will be unavailable.")
+    } else {
+      for (listener in mainContainer.packetListeners) {
+        protocolManager.addPacketListener(listener)
+      }
     }
 
     // Game modifications
@@ -100,9 +103,11 @@ class TurtleTrollPlugin : JavaPlugin() {
     }
 
     // Remove all packet listeners
-    val protocolManager = ProtocolLibrary.getProtocolManager()
-    for (listener in mainContainer.packetListeners) {
-      protocolManager.removePacketListener(listener)
+    val protocolManager = ProtocolLibBridge.getProtocolManager()
+    if (protocolManager != null) {
+      for (listener in mainContainer.packetListeners) {
+        protocolManager.removePacketListener(listener)
+      }
     }
 
     // Remove command
