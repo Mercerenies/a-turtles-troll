@@ -2,7 +2,7 @@
 package com.mercerenies.turtletroll.cake
 
 import com.mercerenies.turtletroll.feature.AbstractFeature
-import com.mercerenies.turtletroll.RaccoonBridge
+import com.mercerenies.turtletroll.bridge.RaccoonBridge
 import com.mercerenies.turtletroll.SpawnReason
 import com.mercerenies.turtletroll.Weight
 import com.mercerenies.turtletroll.sample

@@ -1,5 +1,5 @@
 
-package com.mercerenies.turtletroll
+package com.mercerenies.turtletroll.bridge
 
 import org.bukkit.Bukkit
 import org.bukkit.NamespacedKey
