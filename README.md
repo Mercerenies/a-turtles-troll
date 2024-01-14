@@ -47,7 +47,7 @@ these dependencies are not present.
 
 ## Changelog
 
-### Version 1.25
+### Version 1.24.2
 
 * ProtocolLib is now an optional dependency. If not present,
   `rainwater` will be disabled and a warning will be printed, but all
