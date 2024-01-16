@@ -42,3 +42,6 @@ fun RandomEvent.withCooldown(cooldownTime: Int) =
 
 fun RandomEvent.boundToFeature(feature: HasEnabledStatus) =
   FeatureBoundRandomEvent(this, feature)
+
+fun RandomEvent.onlyIfPlayersOnline(minPlayerCount: Int = 1) =
+  PlayerCountBoundRandomEvent(this, minPlayerCount)

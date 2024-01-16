@@ -47,6 +47,10 @@ these dependencies are not present.
 
 ## Changelog
 
+### Version 1.25
+
+* Random events that apply to players do not fire if there are no players online (currently this is all random events, though in the future there may be events that make sense with no players)
+
 ### Version 1.24.2
 
 * ProtocolLib is now an optional dependency. If not present,

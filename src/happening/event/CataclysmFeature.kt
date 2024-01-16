@@ -12,6 +12,7 @@ import com.mercerenies.turtletroll.happening.RandomEventState
 import com.mercerenies.turtletroll.happening.withCooldown
 import com.mercerenies.turtletroll.happening.withTitle
 import com.mercerenies.turtletroll.happening.boundToFeature
+import com.mercerenies.turtletroll.happening.onlyIfPlayersOnline
 import com.mercerenies.turtletroll.location.BlockSelector
 import com.mercerenies.turtletroll.BlockTypes
 import com.mercerenies.turtletroll.EggshellsListener
@@ -110,6 +111,7 @@ class CataclysmFeature(
     CataclysmEvent()
       .withTitle("Cataclysm!")
       .withCooldown(24)
+      .onlyIfPlayersOnline()
       .boundToFeature(this)
 
 }

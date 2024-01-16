@@ -12,6 +12,7 @@ import com.mercerenies.turtletroll.happening.RandomEventState
 import com.mercerenies.turtletroll.happening.withTitle
 import com.mercerenies.turtletroll.happening.withCooldown
 import com.mercerenies.turtletroll.happening.boundToFeature
+import com.mercerenies.turtletroll.happening.onlyIfPlayersOnline
 
 import org.bukkit.entity.Entity
 import org.bukkit.entity.Player
@@ -96,6 +97,7 @@ class PufferfishRainManager(
     PufferfishRainEvent(plugin)
       .withTitle("Pufferfish Rain!")
       .withCooldown(20)
+      .onlyIfPlayersOnline()
       .boundToFeature(this)
 
   @EventHandler

@@ -10,6 +10,7 @@ import com.mercerenies.turtletroll.happening.RandomEvent
 import com.mercerenies.turtletroll.happening.withCooldown
 import com.mercerenies.turtletroll.happening.withTitle
 import com.mercerenies.turtletroll.happening.boundToFeature
+import com.mercerenies.turtletroll.happening.onlyIfPlayersOnline
 import com.mercerenies.turtletroll.falling.SandAttackBlockDropper
 
 import org.bukkit.plugin.Plugin
@@ -69,6 +70,7 @@ class SandstormFeature(
     SandstormEvent()
       .withTitle("Sandstorm!")
       .withCooldown(8)
+      .onlyIfPlayersOnline()
       .boundToFeature(this)
 
 }

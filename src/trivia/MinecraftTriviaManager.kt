@@ -16,6 +16,7 @@ import com.mercerenies.turtletroll.happening.RandomEventState
 import com.mercerenies.turtletroll.happening.withTitle
 import com.mercerenies.turtletroll.happening.withCooldown
 import com.mercerenies.turtletroll.happening.boundToFeature
+import com.mercerenies.turtletroll.happening.onlyIfPlayersOnline
 
 import org.bukkit.command.CommandSender
 import org.bukkit.plugin.Plugin
@@ -79,6 +80,7 @@ class MinecraftTriviaManager(
     TriviaEvent()
       .withTitle("Trivia Time!")
       .withCooldown(4)
+      .onlyIfPlayersOnline()
       .boundToFeature(this)
 
   private inner class TriviaEvent() : RandomEvent {

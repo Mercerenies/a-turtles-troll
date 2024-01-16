@@ -11,6 +11,7 @@ import com.mercerenies.turtletroll.happening.NotifiedRandomEvent
 import com.mercerenies.turtletroll.happening.RandomEventState
 import com.mercerenies.turtletroll.happening.withCooldown
 import com.mercerenies.turtletroll.happening.withTitle
+import com.mercerenies.turtletroll.happening.onlyIfPlayersOnline
 import com.mercerenies.turtletroll.happening.boundToFeature
 import com.mercerenies.turtletroll.location.BlockSelector
 
@@ -83,6 +84,7 @@ class SandblasterFeature(
     SandblasterEvent()
       .withTitle("Sandblaster!")
       .withCooldown(12)
+      .onlyIfPlayersOnline()
       .boundToFeature(this)
 
 }

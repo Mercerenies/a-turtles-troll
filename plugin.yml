@@ -1,6 +1,6 @@
 main: com.mercerenies.turtletroll.TurtleTrollPlugin
 name: A_Turtles_Troll
-version: "1.24.2"
+version: "1.25"
 api-version: "1.19"
 author: Mercerenies
 description: Have fun :)

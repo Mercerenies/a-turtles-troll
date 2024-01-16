@@ -11,6 +11,7 @@ import com.mercerenies.turtletroll.happening.NotifiedRandomEvent
 import com.mercerenies.turtletroll.happening.RandomEventState
 import com.mercerenies.turtletroll.happening.withCooldown
 import com.mercerenies.turtletroll.happening.withTitle
+import com.mercerenies.turtletroll.happening.onlyIfPlayersOnline
 import com.mercerenies.turtletroll.happening.boundToFeature
 
 import org.bukkit.plugin.Plugin
@@ -73,6 +74,7 @@ class SpatialRendFeature(
     SpatialRendEvent(plugin)
       .withTitle("Spatial Rend!")
       .withCooldown(24)
+      .onlyIfPlayersOnline(minPlayerCount = 2)
       .boundToFeature(this)
 
 }

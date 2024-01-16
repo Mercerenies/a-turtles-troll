@@ -10,6 +10,7 @@ import com.mercerenies.turtletroll.happening.RandomEvent
 import com.mercerenies.turtletroll.happening.withCooldown
 import com.mercerenies.turtletroll.happening.withTitle
 import com.mercerenies.turtletroll.happening.boundToFeature
+import com.mercerenies.turtletroll.happening.onlyIfPlayersOnline
 import com.mercerenies.turtletroll.falling.BlockDropper
 
 import org.bukkit.plugin.Plugin
@@ -71,6 +72,7 @@ class HeavyRainFeature(
     HeavyRainEvent()
       .withTitle("Heavy Rain!")
       .withCooldown(20)
+      .onlyIfPlayersOnline()
       .boundToFeature(this)
 
 }
