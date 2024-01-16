@@ -25,12 +25,7 @@ class DailyDemandBossBarUpdater(
   }
 
   private var isSetToVisible = true
-  private val bossBar = Bukkit.createBossBar(
-    namespacedKey,
-    "Appeased",
-    BarColor.GREEN,
-    BarStyle.SOLID,
-  )
+  private val bossBar = findBossBar()
   private var summary: String = "Die"
   private var status: GodsStatus = GodsStatus.APPEASED
 
@@ -46,6 +41,17 @@ class DailyDemandBossBarUpdater(
       GodsStatus.APPEASED -> "Appeased"
       GodsStatus.ANGRY -> "The gods are angry!"
     }
+
+  private fun findBossBar() =
+    Bukkit.getBossBar(namespacedKey) ?: createBossBar()
+
+  private fun createBossBar() =
+    Bukkit.createBossBar(
+      namespacedKey,
+      "Appeased",
+      BarColor.GREEN,
+      BarStyle.SOLID,
+    )
 
   private fun updateStats() {
     bossBar.setVisible(isSetToVisible && (status != GodsStatus.APPEASED))
