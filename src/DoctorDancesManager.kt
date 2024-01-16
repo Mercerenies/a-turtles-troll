@@ -86,7 +86,7 @@ class DoctorDancesManager(
 
   override val taskPeriod = 25L * Constants.TICKS_PER_SECOND
 
-  private var lastDeath: Long = 0L
+  private var lastDeath: Long = ScheduledEventRunnable.getAbsoluteSystemTime()
 
   private fun resetTimer() {
     lastDeath = ScheduledEventRunnable.getAbsoluteSystemTime()
