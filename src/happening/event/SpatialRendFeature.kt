@@ -43,7 +43,12 @@ class SpatialRendFeature(
     override val baseWeight = 0.4
     override val deltaWeight = 0.2
 
-    override val messages = listOf(Component.text("Prepare to be transported!"))
+    override val messages = listOf(
+      Component.text("In a twist of fate, a whimsical bend"),
+      Component.text("Spatial Rend, your place to lend"),
+      Component.text("Players swapping, a playful tease"),
+      Component.text("Warping around, wherever I please!"),
+    )
 
     override fun canFire(state: RandomEventState): Boolean =
       true
