@@ -42,7 +42,7 @@ object Messages {
   fun broadcastMessage(message: Component) {
     Bukkit.getServer().broadcast(prefix.append(message))
 
-    if (shouldMirrorToDiscord) {
+    if (shouldMirrorToDiscord && (Bukkit.getOnlinePlayers().size > 0)) {
       // Send to DiscordSRV, if available.
       DiscordSRVBridge.broadcastMessageIfAvailable(discordPrefix + message.asPlainText())
       // TODO Consider writing a serializer that takes Component to
