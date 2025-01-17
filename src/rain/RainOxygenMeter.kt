@@ -77,10 +77,9 @@ class RainOxygenMeter(
   }
 
   fun getAirFraction(): Double =
-    airAmount.toDouble() / MAX_AIR
-
-  fun getDesiredHudBubbleValue(): Int =
-    getHudBubbleValue(airAmount / 2)
+    // Subtracting 0.25 here seems to make the UI less flickery for
+    // whatever reason. It's still flickery, mind, just less so.
+    (airAmount.toDouble() - 0.25) / MAX_AIR
 
   private fun hasWaterBreathing(): Boolean =
     player.getPotionEffect(PotionEffectType.WATER_BREATHING) != null
