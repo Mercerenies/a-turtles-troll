@@ -169,6 +169,9 @@ cakes:
   # (Float) The probability of replacing a given mob spawn with a cake.
   probability: default
 
+candyshop:
+  enabled: default
+
 # When you mine a block, there's a small chance that the game treats
 # you as though you had silk touch, even if you didn't.
 carefulhands:

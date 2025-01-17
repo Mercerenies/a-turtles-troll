@@ -67,6 +67,7 @@ import com.mercerenies.turtletroll.happening.event.SandstormFeature
 import com.mercerenies.turtletroll.happening.event.SandblasterFeature
 import com.mercerenies.turtletroll.happening.event.CataclysmFeature
 import com.mercerenies.turtletroll.happening.event.ServerFireFeature
+import com.mercerenies.turtletroll.candy.CandyShopManagerFactory
 
 object AllFeatureFactories {
 
@@ -95,6 +96,7 @@ object AllFeatureFactories {
       ButtonDamageListener,
       CakeListenerFactory,
       CancelDropFeatureFactory,
+      CandyShopManagerFactory,
       CarefulHandsListener,
       CataclysmFeature,
       CatBatListener,
