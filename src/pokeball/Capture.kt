@@ -26,7 +26,7 @@ object Capture {
   // X in the formula at the above link.
   fun captureRate(ball: PokeballType, mob: Mob): Int {
     val h = mob.getHealth()
-    val m = mob.getAttribute(Attribute.GENERIC_MAX_HEALTH)?.getValue() ?: h
+    val m = mob.getAttribute(Attribute.MAX_HEALTH)?.getValue() ?: h
     val c = speciesCaptureRate(mob.getType())
     val b = ball.ballBonus(mob)
     val s = 1.0
@@ -87,8 +87,8 @@ object Capture {
         PotionEffectType.WITHER -> {
           isIncapacitated = true
         }
-        PotionEffectType.BLINDNESS, PotionEffectType.CONFUSION,
-        PotionEffectType.HARM, PotionEffectType.POISON -> {
+        PotionEffectType.BLINDNESS, PotionEffectType.NAUSEA,
+        PotionEffectType.INSTANT_DAMAGE, PotionEffectType.POISON -> {
           isStunned = true
         }
       }

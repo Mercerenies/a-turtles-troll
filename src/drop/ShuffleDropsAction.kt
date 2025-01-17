@@ -31,7 +31,7 @@ class ShuffleDropsAction(
 
     repeat(dropCount) {
       val itemType = types.random()
-      val item = w.spawnEntity(loc, EntityType.DROPPED_ITEM) as Item
+      val item = w.spawnEntity(loc, EntityType.ITEM) as Item
       item.itemStack = ItemStack(itemType, 1)
     }
 

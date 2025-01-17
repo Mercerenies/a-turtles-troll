@@ -36,7 +36,7 @@ class ZombieSpeedListener(
     }
     val entity = event.entity
     if (entity is Zombie) {
-      val instance = entity.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED)
+      val instance = entity.getAttribute(Attribute.MOVEMENT_SPEED)
       instance?.setBaseValue(desiredSpeed)
     }
   }

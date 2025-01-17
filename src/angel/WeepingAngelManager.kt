@@ -144,7 +144,7 @@ class WeepingAngelManager(
         safeAngels.add(lookingAt)
         val location = lookingAt.location.clone().add(0.0, 1.0, 0.0)
         val world = lookingAt.world
-        world.spawnParticle(Particle.REDSTONE, location, 4, 0.25, 0.5, 0.25, Particle.DustOptions(Color.ORANGE, 1.0f))
+        world.spawnParticle(Particle.DUST, location, 4, 0.25, 0.5, 0.25, Particle.DustOptions(Color.ORANGE, 1.0f))
       }
     }
 

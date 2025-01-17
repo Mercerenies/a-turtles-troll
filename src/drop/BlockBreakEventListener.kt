@@ -106,7 +106,7 @@ class BlockBreakEventListener(
   }
 
   private fun getWeightedActions(event: BlockBreakEvent): List<Weight<BlockBreakAction>> {
-    val playerLuck = event.player.getAttribute(Attribute.GENERIC_LUCK)?.value ?: 0.0
+    val playerLuck = event.player.getAttribute(Attribute.LUCK)?.value ?: 0.0
     return actions
       .filter { it.value.shouldTrigger(event) }
       .map { adjustWeight(it, playerLuck) }

@@ -84,7 +84,7 @@ class RainOxygenMeter(
   private fun getRespirationLevel(): Int {
     val helmet = player.equipment.helmet
     if (helmet != null) {
-      return helmet.getEnchantmentLevel(Enchantment.OXYGEN)
+      return helmet.getEnchantmentLevel(Enchantment.RESPIRATION)
     } else {
       return 0
     }

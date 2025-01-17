@@ -610,7 +610,7 @@ object QuestionLibrary {
             Material.IRON_LEGGINGS, Material.IRON_HELMET,
           )
           toRewards(armorMaterials) {
-            EnchantedItemReward(it.withEnchantment(Enchantment.PROTECTION_EXPLOSIONS, 1))
+            EnchantedItemReward(it.withEnchantment(Enchantment.BLAST_PROTECTION, 1))
           }
         },
       )

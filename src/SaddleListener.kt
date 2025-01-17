@@ -19,8 +19,8 @@ import org.bukkit.Chunk
 import org.bukkit.plugin.Plugin
 import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
-import org.spigotmc.event.entity.EntityMountEvent
-import org.spigotmc.event.entity.EntityDismountEvent
+import org.bukkit.event.entity.EntityMountEvent
+import org.bukkit.event.entity.EntityDismountEvent
 
 class SaddleListener(
   val plugin: Plugin,
@@ -37,7 +37,7 @@ class SaddleListener(
           PotionEffect(PotionEffectType.SPEED, Constants.TICKS_PER_SECOND * 999, 100)
         }
         EntityType.STRIDER -> {
-          PotionEffect(PotionEffectType.SLOW, Constants.TICKS_PER_SECOND * 999, 2)
+          PotionEffect(PotionEffectType.SLOWNESS, Constants.TICKS_PER_SECOND * 999, 2)
         }
         else -> {
           null

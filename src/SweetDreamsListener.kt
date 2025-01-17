@@ -22,10 +22,10 @@ class SweetDreamsListener(
   companion object : FeatureContainerFactory<FeatureContainer> {
 
     val DEFAULT_EFFECTS_POOL: List<(Int) -> PotionEffect> = listOf(
-      { length -> PotionEffect(PotionEffectType.SLOW, length, 1) },
-      { length -> PotionEffect(PotionEffectType.CONFUSION, length, 0) },
+      { length -> PotionEffect(PotionEffectType.SLOWNESS, length, 1) },
+      { length -> PotionEffect(PotionEffectType.NAUSEA, length, 0) },
       { length -> PotionEffect(PotionEffectType.BLINDNESS, length, 0) },
-      { length -> PotionEffect(PotionEffectType.SLOW_DIGGING, length, 4) },
+      { length -> PotionEffect(PotionEffectType.MINING_FATIGUE, length, 4) },
       { length -> PotionEffect(PotionEffectType.REGENERATION, length, 4) },
     )
 

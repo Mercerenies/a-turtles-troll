@@ -44,7 +44,7 @@ class GrassPoisonListener(
       if (!bootsDamager.tryWearDownBoots(player)) {
         telegrapher.trigger(player)
         player.addPotionEffect(PotionEffect(PotionEffectType.POISON, Constants.TICKS_PER_SECOND * 5, 0))
-        player.addPotionEffect(PotionEffect(PotionEffectType.SLOW, Constants.TICKS_PER_SECOND * 10, 1))
+        player.addPotionEffect(PotionEffect(PotionEffectType.SLOWNESS, Constants.TICKS_PER_SECOND * 10, 1))
       }
     }
   }

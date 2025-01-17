@@ -46,7 +46,7 @@ class SlowSlabListener(
     if (BLOCKS.contains(block.type)) {
       val player = event.player
       if (!bootsDamager.tryWearDownBoots(player)) {
-        player.addPotionEffect(PotionEffect(PotionEffectType.SLOW, Constants.TICKS_PER_SECOND * slowTimeSeconds, slownessLevel))
+        player.addPotionEffect(PotionEffect(PotionEffectType.SLOWNESS, Constants.TICKS_PER_SECOND * slowTimeSeconds, slownessLevel))
       }
     }
   }

@@ -91,7 +91,7 @@ class ParrotManager(_plugin: Plugin) : RunnableFeature(_plugin), Listener {
       if (parrot.customName() == null) {
         parrot.customName(nameSource.sampleName())
       }
-      val maxHealth = parrot.getAttribute(Attribute.GENERIC_MAX_HEALTH)?.getValue()
+      val maxHealth = parrot.getAttribute(Attribute.MAX_HEALTH)?.getValue()
       if (maxHealth != null) {
         parrot.setHealth(maxHealth)
       }

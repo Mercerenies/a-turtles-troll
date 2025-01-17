@@ -41,8 +41,8 @@ class PumpkinSlownessManager(plugin: Plugin) : RunnableFeature(plugin), Listener
     }
     for (player in Bukkit.getOnlinePlayers()) {
       if (Hats.isWearingOrdinaryHat(player)) {
-        player.addPotionEffect(PotionEffect(PotionEffectType.SLOW, Constants.TICKS_PER_SECOND * 10, 1))
-        player.addPotionEffect(PotionEffect(PotionEffectType.SLOW_DIGGING, Constants.TICKS_PER_SECOND * 10, 0))
+        player.addPotionEffect(PotionEffect(PotionEffectType.SLOWNESS, Constants.TICKS_PER_SECOND * 10, 1))
+        player.addPotionEffect(PotionEffect(PotionEffectType.MINING_FATIGUE, Constants.TICKS_PER_SECOND * 10, 0))
       }
     }
   }

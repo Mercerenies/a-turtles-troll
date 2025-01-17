@@ -79,7 +79,7 @@ class DragonBombManager(
   }
 
   private fun currentTriggersPerAttack(dragon: EnderDragon): Long {
-    val maxHealth = dragon.getAttribute(Attribute.GENERIC_MAX_HEALTH)!!.getValue()
+    val maxHealth = dragon.getAttribute(Attribute.MAX_HEALTH)!!.getValue()
     val healthFraction = dragon.getHealth().toDouble() / maxHealth
     val triggers = healthFraction * maxTimerTriggersPerAttack + (1 - healthFraction) * minTimerTriggersPerAttack
     return triggers.toLong()

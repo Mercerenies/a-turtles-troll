@@ -27,7 +27,7 @@ object BlockTypes {
   )
 
   val TALL_GRASS = SetListAllomorph.of(
-    Material.GRASS, Material.TALL_GRASS, Material.FERN,
+    Material.GRASS_BLOCK, Material.TALL_GRASS, Material.FERN,
     Material.LARGE_FERN, Material.DEAD_BUSH, Material.CRIMSON_ROOTS, Material.WARPED_ROOTS,
   )
 

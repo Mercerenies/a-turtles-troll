@@ -29,8 +29,8 @@ abstract class EncumbranceManagerFactory() : FeatureContainerFactory<FeatureCont
         InventoryCountStat(state.config.getDouble("encumbrance.penalties.occupied_inventory_slot")),
         ArmorCountStat.Leather(state.config.getDouble("encumbrance.penalties.leather_armor")),
         ArmorCountStat.NonLeather(state.config.getDouble("encumbrance.penalties.non_leather_armor")),
-        StatusEffectStat("Slowness", PotionEffectType.SLOW, state.config.getDouble("encumbrance.penalties.slowness")),
-        StatusEffectStat("Nausea", PotionEffectType.CONFUSION, state.config.getDouble("encumbrance.penalties.confusion")),
+        StatusEffectStat("Slowness", PotionEffectType.SLOWNESS, state.config.getDouble("encumbrance.penalties.slowness")),
+        StatusEffectStat("Nausea", PotionEffectType.NAUSEA, state.config.getDouble("encumbrance.penalties.confusion")),
         GodsRageStat(state.config.getDouble("encumbrance.penalties.gods_rage"), godsFeature),
       )
     }
