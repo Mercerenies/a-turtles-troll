@@ -29,12 +29,12 @@ class BucketRouletteRunnable(plugin: Plugin) : RunnableFeature(plugin) {
       return !itemMeta.hasDisplayName()
     }
 
-    private fun cycleBucketType(itemStack: ItemStack) {
+    private fun cycleBucketType(itemStack: ItemStack): ItemStack {
       var newBucketType = BlockTypes.BUCKETS.random()
       while (newBucketType == itemStack.type) {
         newBucketType = BlockTypes.BUCKETS.random()
       }
-      itemStack.type = newBucketType
+      return ItemStack(newBucketType, itemStack.amount)
     }
 
   }
@@ -53,9 +53,12 @@ class BucketRouletteRunnable(plugin: Plugin) : RunnableFeature(plugin) {
     for (player in onlinePlayers) {
       // TODO (HACK) Kotlin can't parse the more complex nullability
       // annotation on getContents(), so it gets the wrong idea.
-      for (itemStack in player.inventory.contents!!) {
+      var inventoryIter = player.inventory.iterator()
+      while (inventoryIter.hasNext()) {
+        val itemStack = inventoryIter.next()
         if ((itemStack != null) && (shouldCycle(itemStack))) {
-          cycleBucketType(itemStack)
+          val newItemStack = cycleBucketType(itemStack)
+          inventoryIter.set(newItemStack)
         }
       }
     }
