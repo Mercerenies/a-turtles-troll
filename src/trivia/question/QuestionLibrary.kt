@@ -8,7 +8,6 @@ import com.mercerenies.turtletroll.BlockTypes
 
 import org.bukkit.Material
 import org.bukkit.potion.PotionType
-import org.bukkit.potion.PotionData
 import org.bukkit.inventory.ItemStack
 import org.bukkit.enchantments.Enchantment
 import org.bukkit.inventory.`meta`.EnchantmentStorageMeta
@@ -385,7 +384,7 @@ object QuestionLibrary {
         rewards = run {
           val itemStack = ItemStack(Material.POTION)
           val meta = itemStack.itemMeta as PotionMeta
-          meta.setBasePotionData(PotionData(PotionType.SLOW_FALLING))
+          meta.setBasePotionType(PotionType.SLOW_FALLING)
           itemStack.itemMeta = meta
           listOf(ItemReward(itemStack))
         },
@@ -610,7 +609,7 @@ object QuestionLibrary {
             Material.IRON_LEGGINGS, Material.IRON_HELMET,
           )
           toRewards(armorMaterials) {
-            EnchantedItemReward(it.withEnchantment(Enchantment.PROTECTION_EXPLOSIONS, 1))
+            EnchantedItemReward(it.withEnchantment(Enchantment.BLAST_PROTECTION, 1))
           }
         },
       )

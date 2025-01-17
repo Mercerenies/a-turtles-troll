@@ -36,8 +36,8 @@ class FallDamageListener() : AbstractFeature(), Listener {
     if (!event.isCancelled()) {
       if (victim is Player) {
         if (event.cause == EntityDamageEvent.DamageCause.FALL) {
-          victim.addPotionEffect(PotionEffect(PotionEffectType.CONFUSION, Constants.TICKS_PER_SECOND * 10, 1))
-          victim.addPotionEffect(PotionEffect(PotionEffectType.SLOW, Constants.TICKS_PER_SECOND * 10, 0))
+          victim.addPotionEffect(PotionEffect(PotionEffectType.NAUSEA, Constants.TICKS_PER_SECOND * 10, 1))
+          victim.addPotionEffect(PotionEffect(PotionEffectType.SLOWNESS, Constants.TICKS_PER_SECOND * 10, 0))
         }
       }
     }

@@ -5,6 +5,7 @@ import org.bukkit.Material
 import org.bukkit.entity.EntityType
 import org.bukkit.entity.Entity
 import org.bukkit.entity.Item
+import org.bukkit.inventory.ItemStack
 
 open class SpillLiquidAndEntity(
   val itemType: Material,
@@ -16,8 +17,7 @@ open class SpillLiquidAndEntity(
     item.itemStack.type == itemType
 
   open fun revertItem(item: Item) {
-    val itemStack = item.itemStack
-    itemStack.type = Material.BUCKET
+    val itemStack = ItemStack(Material.BUCKET, item.itemStack.amount)
     item.itemStack = itemStack
   }
 

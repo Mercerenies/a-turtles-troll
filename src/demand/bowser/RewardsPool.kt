@@ -25,7 +25,7 @@ object RewardsPool {
   val ALL_REWARDS: List<BowserReward> = listOf(
     ItemReward(
       mainItem = ItemStack(Material.DIAMOND_PICKAXE),
-      specialItem = ItemStack(Material.DIAMOND_PICKAXE).withEnchantment(Enchantment.DURABILITY, 1),
+      specialItem = ItemStack(Material.DIAMOND_PICKAXE).withEnchantment(Enchantment.UNBREAKING, 1),
       mainText = itemRewardText("Diamond Pickaxe"),
       specialText = ::enchantedItemText,
     ),

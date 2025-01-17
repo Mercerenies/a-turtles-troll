@@ -65,6 +65,7 @@ class RainOxygenMeter(
 
   fun runTick() {
     if (isInRain(player)) {
+      println(airAmount)
       if (airAmount <= 0) {
         dealDamage()
       } else {
@@ -75,8 +76,10 @@ class RainOxygenMeter(
     }
   }
 
-  fun getDesiredHudBubbleValue(): Int =
-    getHudBubbleValue(airAmount / 2)
+  fun getAirFraction(): Double =
+    // Subtracting 0.25 here seems to make the UI less flickery for
+    // whatever reason. It's still flickery, mind, just less so.
+    (airAmount.toDouble() - 0.25) / MAX_AIR
 
   private fun hasWaterBreathing(): Boolean =
     player.getPotionEffect(PotionEffectType.WATER_BREATHING) != null
@@ -84,7 +87,7 @@ class RainOxygenMeter(
   private fun getRespirationLevel(): Int {
     val helmet = player.equipment.helmet
     if (helmet != null) {
-      return helmet.getEnchantmentLevel(Enchantment.OXYGEN)
+      return helmet.getEnchantmentLevel(Enchantment.RESPIRATION)
     } else {
       return 0
     }

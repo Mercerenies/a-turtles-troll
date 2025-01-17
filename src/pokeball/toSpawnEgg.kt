@@ -41,7 +41,7 @@ fun toSpawnEgg(entityType: EntityType): Material? =
     EntityType.LLAMA -> Material.LLAMA_SPAWN_EGG
     EntityType.MAGMA_CUBE -> Material.MAGMA_CUBE_SPAWN_EGG
     EntityType.MULE -> Material.MULE_SPAWN_EGG
-    EntityType.MUSHROOM_COW -> Material.MOOSHROOM_SPAWN_EGG
+    EntityType.MOOSHROOM -> Material.MOOSHROOM_SPAWN_EGG
     EntityType.OCELOT -> Material.OCELOT_SPAWN_EGG
     EntityType.PANDA -> Material.PANDA_SPAWN_EGG
     EntityType.PARROT -> Material.PARROT_SPAWN_EGG
@@ -62,7 +62,7 @@ fun toSpawnEgg(entityType: EntityType): Material? =
     EntityType.SKELETON_HORSE -> Material.SKELETON_HORSE_SPAWN_EGG
     EntityType.SLIME -> Material.SLIME_SPAWN_EGG
     EntityType.SNIFFER -> Material.SNIFFER_SPAWN_EGG
-    EntityType.SNOWMAN -> null
+    EntityType.SNOW_GOLEM -> null
     EntityType.SPIDER -> Material.SPIDER_SPAWN_EGG
     EntityType.SQUID -> Material.SQUID_SPAWN_EGG
     EntityType.STRAY -> Material.STRAY_SPAWN_EGG

@@ -161,7 +161,7 @@ abstract class DeathCondition : DailyDemandEvent {
 
     override fun test(event: PlayerDeathEvent, cause: CauseOfDeath): Boolean =
       (cause is Vanilla && conditions.contains(cause.cause)) ||
-        (cause is VanillaMob && cause.entityType == EntityType.LIGHTNING)
+        (cause is VanillaMob && cause.entityType == EntityType.LIGHTNING_BOLT)
 
   }
 

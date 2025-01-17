@@ -67,7 +67,7 @@ class PokeballManager(plugin: Plugin) : RecipeFeature(plugin), Listener {
         summonItem(mob.location, ItemStack(Material.IRON_BLOCK, 6))
       }
       // Exception: Snow golem
-      if (mob.type == EntityType.SNOWMAN) {
+      if (mob.type == EntityType.SNOW_GOLEM) {
         summonItem(mob.location, ItemStack(Material.SNOWBALL, 16))
       }
       // Exception: Giant

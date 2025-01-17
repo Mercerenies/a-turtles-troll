@@ -43,7 +43,7 @@ abstract class TeleportToEffect(private val plugin: Plugin) : CookieEffect {
 
     override fun getTarget(player: Player): Location =
       // If the player doesn't have a bed spawn, use world spawn
-      player.getBedSpawnLocation() ?: fallback.getTarget(player)
+      player.getRespawnLocation() ?: fallback.getTarget(player)
 
   }
 

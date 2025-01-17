@@ -25,7 +25,7 @@ class ReplaceDropsAction(
     event.block.type = Material.AIR
     event.setCancelled(true)
 
-    val item = w.spawnEntity(loc, EntityType.DROPPED_ITEM) as Item
+    val item = w.spawnEntity(loc, EntityType.ITEM) as Item
     item.itemStack = itemStack.clone()
 
   }

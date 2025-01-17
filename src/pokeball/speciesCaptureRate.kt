@@ -40,7 +40,7 @@ fun speciesCaptureRate(entityType: EntityType): Int =
     EntityType.LLAMA -> 190
     EntityType.MAGMA_CUBE -> 120
     EntityType.MULE -> 200
-    EntityType.MUSHROOM_COW -> 210
+    EntityType.MOOSHROOM -> 210
     EntityType.OCELOT -> 220
     EntityType.PANDA -> 240
     EntityType.PARROT -> 190
@@ -61,7 +61,7 @@ fun speciesCaptureRate(entityType: EntityType): Int =
     EntityType.SKELETON_HORSE -> 130
     EntityType.SLIME -> 150
     EntityType.SNIFFER -> 220
-    EntityType.SNOWMAN -> 255
+    EntityType.SNOW_GOLEM -> 255
     EntityType.SPIDER -> 100
     EntityType.SQUID -> 255
     EntityType.STRAY -> 120
