@@ -65,7 +65,6 @@ class RainOxygenMeter(
 
   fun runTick() {
     if (isInRain(player)) {
-      println(airAmount)
       if (airAmount <= 0) {
         dealDamage()
       } else {
