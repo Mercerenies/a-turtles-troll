@@ -280,6 +280,7 @@
      SPLIT or STEAL a bounty
    + cataclysm :: Blocks near players are replaced by magma and Nether
      blocks
+   + serverfire :: Blocks near players catch fire at random
 ** MISCELLANEOUS FEATURES
    + anvil :: If you stand still for more than ten seconds, an anvil
               will drop on your head; anvils can be smelted into iron

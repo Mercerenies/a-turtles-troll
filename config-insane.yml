@@ -307,6 +307,10 @@ sandstorm:
   enabled: true
   ticks_between_drops: 240
   drop_count: 3
+serverfire:
+  enabled: true
+  radius: 20.0
+  rolls: 100
 sheepcolor:
   enabled: true
 shieldsurf:

@@ -540,6 +540,11 @@ sandstorm:
   ticks_between_drops: default
   drop_count: default
 
+serverfire:
+  enabled: default
+  radius: default
+  rolls: default
+
 sheepcolor:
   enabled: default
 
