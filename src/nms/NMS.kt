@@ -2,11 +2,11 @@
 package com.mercerenies.turtletroll.nms
 
 import org.bukkit.Bukkit
-import org.bukkit.entity.FallingBlock
 import org.bukkit.entity.Player
 import org.bukkit.entity.Allay
 
 import java.util.logging.Logger
+import java.util.logging.Level
 
 // https://riptutorial.com/bukkit/example/29589/accessing-the-current-minecraft-version :)
 //
@@ -64,7 +64,7 @@ object NMS {
     try {
       return fn()
     } catch (e: Exception) {
-      logger().severe("Error during NMS: $e")
+      logger().log(Level.SEVERE, "Error during NMS", e)
       return default
     }
   }
@@ -72,13 +72,16 @@ object NMS {
   fun safely(fn: () -> Unit) =
     safely(Unit, fn)
 
-  // This should never need to change.
+  // As of 1.21.3, it looks like the version number doesn't exist
+  // anymore and we just use the base package name, which is much
+  // nicer.
+  @Deprecated("Newer Bukkit versions do not place this information in the package name anymore.")
   fun version(): String =
-    Bukkit.getServer()::class.java.getPackage().getName().substring(23)
+    ""
 
   // This should never need to change.
   fun getClass(suffix: String): Class<*> =
-    Class.forName("org.bukkit.craftbukkit.${version()}.${suffix}")
+    Class.forName("org.bukkit.craftbukkit.${suffix}")
 
   // Go to net.minecraft.world.entity.animal.allay.Allay. Find the
   // method with signature
@@ -113,15 +116,15 @@ object NMS {
       val allayCls = getClass("entity.CraftAllay")
       val memoryModuleTypeCls = Class.forName("net.minecraft.world.entity.ai.memory.MemoryModuleType")
       val mcAllayCls = Class.forName("net.minecraft.world.entity.animal.allay.Allay")
-      val behaviorControllerCls = Class.forName("net.minecraft.world.entity.ai.BehaviorController")
+      val behaviorControllerCls = Class.forName("net.minecraft.world.entity.ai.Brain")
       val entityCls = Class.forName("net.minecraft.world.entity.player.EntityHuman")
 
       val mcPlayerEntity = playerCls.getMethod("getHandle").invoke(player)
       val mcAllayEntity = allayCls.getMethod("getHandle").invoke(allay)
-      val memoryModuleType = memoryModuleTypeCls.getField("aL").get(null)
-      val controller = mcAllayCls.getMethod("dK").invoke(mcAllayEntity)
-      val playerUuid = entityCls.getMethod("ct").invoke(mcPlayerEntity)
-      behaviorControllerCls.getMethod("a", memoryModuleTypeCls, Object::class.java).invoke(controller, memoryModuleType, playerUuid)
+      val memoryModuleType = memoryModuleTypeCls.getField("LIKED_PLAYER").get(null)
+      val controller = mcAllayCls.getMethod("getBrain").invoke(mcAllayEntity)
+      val playerUuid = entityCls.getMethod("getUUID").invoke(mcPlayerEntity)
+      behaviorControllerCls.getMethod("setMemory", memoryModuleTypeCls, Object::class.java).invoke(controller, memoryModuleType, playerUuid)
     }
   }
 
