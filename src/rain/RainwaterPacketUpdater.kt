@@ -36,8 +36,8 @@ object RainwaterPacketUpdater {
     for (elem in list) {
       if (elem != null) {
         val meta = NMS.getEntityMetadata(elem)
-        if ((meta != null) && (meta.id == ADDRESS_ID) && (meta.value is Int)) {
-          return meta.value as Int
+        if ((meta != null) && (meta.id == ADDRESS_ID)) {
+          return meta.value
         }
       }
     }
@@ -51,8 +51,8 @@ object RainwaterPacketUpdater {
       val elem = list[idx]
       if (elem != null) {
         val meta = NMS.getEntityMetadata(elem)
-        if ((meta != null) && (meta.id == ADDRESS_ID) && (meta.value is Int)) {
-          val oldBubbleCount = meta.value as Int
+        if ((meta != null) && (meta.id == ADDRESS_ID)) {
+          val oldBubbleCount = meta.value
           meta.value = min(newBubbleCount, oldBubbleCount)
           found = true
           list[idx] = meta.getHandle()

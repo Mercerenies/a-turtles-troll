@@ -1,11 +1,9 @@
 
 package com.mercerenies.turtletroll.nms
 
-interface EntityMetadata {
+interface EntityMetadata<T> {
   val id: Int
-  val serializer: Any?
-  var value: Any?
+  var value: T
 
   fun getHandle(): Any
-
 }
