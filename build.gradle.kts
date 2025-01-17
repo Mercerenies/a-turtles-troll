@@ -7,6 +7,8 @@
  */
 
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
 
 sourceSets {
   main {
@@ -27,10 +29,10 @@ sourceSets {
 
 tasks {
   withType<KotlinCompile> {
-    kotlinOptions {
-      apiVersion = "2.1"
-      languageVersion = "2.1"
-      jvmTarget = "21"
+    compilerOptions {
+      jvmTarget.set(JvmTarget.JVM_21)
+      apiVersion.set(KotlinVersion.KOTLIN_2_1)
+      languageVersion.set(KotlinVersion.KOTLIN_2_1)
     }
   }
   withType<JavaCompile> {
