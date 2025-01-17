@@ -15,48 +15,6 @@ import java.util.logging.Level
 // version (1.19), then it's going to be a pain. Hopefully I can
 // alleviate that as much as possible.
 object NMS {
-
-  private class RawEntityMetadataInt(
-    private var handle: Any,
-  ) : EntityMetadata<Int> {
-
-    // I seriously doubt these field names will change, given that
-    // it's a Java record. But just in case: We want the integer, then
-    // the data watcher serializer, then the T. All of these are
-    // constructor parameters to the record type identified by
-    // getEntityMetadataClass below.
-    //
-    // Welp, time to eat those words. Methods are named in 1.23.3, AND
-    // the serializer works differently now.
-
-    override val id: Int
-      get() =
-        safely(0) {
-          getEntityMetadataClass().getMethod("id").invoke(handle) as Int
-        }
-
-    private val serializer: Any?
-      get() =
-        safely(null) {
-          getEntityMetadataClass().getMethod("serializer").invoke(handle)
-        }
-
-    override var value: Int
-      get() =
-        safely(0) {
-          getEntityMetadataClass().getMethod("value").invoke(handle) as Int
-        }
-      set(newValue) {
-        safely {
-          handle = constructEntityMetadataInt(id, newValue)
-        }
-      }
-
-    override fun getHandle(): Any =
-      handle
-
-  }
-
   fun logger(): Logger =
     Bukkit.getLogger()
 
@@ -136,41 +94,4 @@ object NMS {
       behaviorControllerCls.getMethod("setMemory", memoryModuleTypeCls, Object::class.java).invoke(controller, memoryModuleType, playerUuid)
     }
   }
-
-  // Go to
-  // net.minecraft.network.protocol.game.PacketPlayOutEntityMetadata.
-  // Look for a private final field of List type. This class name
-  // should match the type of elements in that list. It's
-  // DataWatcher.b in 1.20.1. Remember to translate using the Java
-  // naming convention, so inner class scoping is replaced with '$'.
-  //
-  // In 1.23.3, the packet has been renamed to
-  // ClientboundSetEntityDataPacket, and the relevant record class is
-  // SynchedEntityData.DataValue.
-  fun getEntityMetadataClass(): Class<*> =
-    Class.forName("net.minecraft.network.syncher.SynchedEntityData\$DataValue")
-
-  fun getEntityMetadata(handle: Any): EntityMetadata<Int>? {
-    if (getEntityMetadataClass().isInstance(handle)) {
-      return RawEntityMetadataInt(handle)
-    } else {
-      return null
-    }
-  }
-
-  private fun constructEntityMetadataHandle(id: Int, value: Int): Any {
-    val serializerCls = Class.forName("net.minecraft.network.syncher.EntityDataSerializer")
-    val ctor = getEntityMetadataClass().getConstructor(java.lang.Integer.TYPE, serializerCls, Object::class.java)
-    val serializer = getSyncherSerializer("INT")
-    return ctor.newInstance(id, serializer, value)
-  }
-
-  fun constructEntityMetadataInt(id: Int, value: Int): EntityMetadata<Int> =
-    RawEntityMetadataInt(constructEntityMetadataHandle(id, value))
-
-  private fun getSyncherSerializer(fieldName: String): Any? {
-    val serializerStaticCls = Class.forName("net.minecraft.network.syncher.EntityDataSerializers")
-    return serializerStaticCls.getField(fieldName).get(null)
-  }
-
 }

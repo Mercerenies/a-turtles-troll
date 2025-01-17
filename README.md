@@ -33,9 +33,6 @@ A Turtle's Troll also provides integrations with a few other plugins.
 None of these are required, but some features may be unavailable if
 these dependencies are not present.
 
-* [ProtocolLib](https://www.spigotmc.org/resources/protocollib.1997/)
-  is required for the `rainwater` feature. If ProtocolLib is not
-  present, this feature will be disabled.
 * [Raccoon-Mischief](https://github.com/EvanSkiStudios/Raccoon-Mischief)
   is recommended for interoperation with several features. Nothing
   strictly requires this plugin to be present, but many things either
@@ -49,7 +46,11 @@ these dependencies are not present.
 
 ### Version 1.25
 
-* Random events that apply to players do not fire if there are no players online (currently this is all random events, though in the future there may be events that make sense with no players)
+* A Turtle's Troll has been updated to run in Minecraft 1.21.3.
+* The `rainwater` effect no longer depends on ProtocolLib and will
+  work out-of-the-box.
+* Random events that apply to players do not fire if there are no players online (currently this is all random events, though in the future there may be events that make sense with no players).
+* The allay's flower pool has been adjusted to prevent bugs.
 
 ### Version 1.24.2
 
