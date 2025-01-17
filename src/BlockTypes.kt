@@ -132,7 +132,7 @@ object BlockTypes {
     Material.CORNFLOWER, Material.LILY_OF_THE_VALLEY, Material.WITHER_ROSE,
     Material.SUNFLOWER, Material.LILAC, Material.ROSE_BUSH, Material.PEONY,
     Material.PINK_TULIP, Material.WHITE_TULIP, Material.ORANGE_TULIP,
-    Material.SWEET_BERRY_BUSH, Material.TORCHFLOWER,
+    Material.TORCHFLOWER,
   )
 
   val WOOLS = SetListAllomorph.of(
