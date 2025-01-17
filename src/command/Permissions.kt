@@ -8,6 +8,7 @@ object Permissions {
   val TEMPERATURE = "com.mercerenies.turtletroll.command.temperature"
   val ANSWER = "com.mercerenies.turtletroll.command.answer"
   val PRISONER = "com.mercerenies.turtletroll.command.prisoner"
+  val COIN = "com.mercerenies.turtletroll.command.coin"
   val FEATURE_LIST = "com.mercerenies.turtletroll.feature.list"
   val FEATURE_DESCRIBE = "com.mercerenies.turtletroll.feature.describe"
   val FEATURE_TOGGLE = "com.mercerenies.turtletroll.feature.toggle"

@@ -25,6 +25,8 @@ permissions:
     default: true
   com.mercerenies.turtletroll.command.prisoner:
     default: true
+  com.mercerenies.turtletroll.command.coin:
+    default: true
   com.mercerenies.turtletroll.feature.list:
     default: true
   com.mercerenies.turtletroll.feature.describe:

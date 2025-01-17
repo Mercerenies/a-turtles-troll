@@ -31,6 +31,8 @@ class CandyShopManager(
   override val description = "Coins can be collected and spent at the Candy Shop"
 
   val markerKey = getMarkerKey(plugin)
+  val coinStore: CoinStore = MetadataCoinStore(plugin)
+  val queryCommand = CoinQueryCommand(coinStore, this)
 
   private fun makeCandyShopKey(amount: Int = 1): ItemStack {
     val result = ItemStack(Material.WOODEN_HOE, amount)
