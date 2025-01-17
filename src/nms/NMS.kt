@@ -110,6 +110,14 @@ object NMS {
   // and find the non-static method that takes a MemoryModuleType<U>
   // and a (nullable) U. It's called a on 1.19.2/1.20.1 (and is one of
   // several overloads).
+  //
+  // ----
+  //
+  // As of 1.21.3, the Allay class has been refactored. The
+  // EnumInteractionResult method is gone, and BehaviorController is
+  // now Brain. But more importantly, the methods appear to NOT be
+  // obfuscated, which means (maybe?) we don't have to keep updating
+  // this.
   fun setAllayFriend(allay: Allay, player: Player) {
     safely {
       val playerCls = getClass("entity.CraftPlayer")
