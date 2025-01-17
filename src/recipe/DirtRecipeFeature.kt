@@ -24,20 +24,10 @@ class DirtRecipeFeature(plugin: Plugin) : RecipeFeature(plugin) {
 
   override val name = "dirtrecipe"
 
-  override val description = "Nine dirt can be crafted into a stick; nine sticks can be crafted into dirt"
+  override val description = "Nine sticks can be crafted into dirt"
 
   override fun getRecipes(): List<UnkeyedRecipe<Recipe>> {
     val recipe1 = UnkeyedRecipe<Recipe> { key: NamespacedKey ->
-      val recipe = ShapedRecipe(key, ItemStack(Material.STICK, 1))
-      recipe.shape(
-        "AAA",
-        "AAA",
-        "AAA",
-      )
-      recipe.setIngredient('A', Material.DIRT)
-      recipe
-    }
-    val recipe2 = UnkeyedRecipe<Recipe> { key: NamespacedKey ->
       val recipe = ShapedRecipe(key, ItemStack(Material.DIRT, 1))
       recipe.shape(
         "AAA",
@@ -47,7 +37,7 @@ class DirtRecipeFeature(plugin: Plugin) : RecipeFeature(plugin) {
       recipe.setIngredient('A', Material.STICK)
       recipe
     }
-    return listOf(recipe1, recipe2)
+    return listOf(recipe1)
   }
 
 }
