@@ -28,14 +28,14 @@ sourceSets {
 tasks {
   withType<KotlinCompile> {
     kotlinOptions {
-      apiVersion = "1.5"
-      languageVersion = "1.5"
-      jvmTarget = "17"
+      apiVersion = "2.1"
+      languageVersion = "2.1"
+      jvmTarget = "21"
     }
   }
   withType<JavaCompile> {
-    sourceCompatibility = "17"
-    targetCompatibility = "17"
+    sourceCompatibility = "21"
+    targetCompatibility = "21"
   }
   jar {
     val dependencies = configurations
@@ -57,7 +57,7 @@ tasks {
 
 plugins {
   // Apply the org.jetbrains.kotlin.jvm Plugin to add support for Kotlin.
-  id("org.jetbrains.kotlin.jvm") version "1.8.22"
+  id("org.jetbrains.kotlin.jvm") version "2.1.0"
 
   // Apply the java-library plugin for API and implementation separation.
   `java-library`
@@ -78,9 +78,9 @@ dependencies {
   // Use the Kotlin JDK 8 standard library.
   implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
-  compileOnly("io.papermc.paper:paper-api:1.20.1-R0.1-SNAPSHOT")
+  compileOnly("io.papermc.paper:paper-api:1.21.3-R0.1-SNAPSHOT")
   compileOnly("net.kyori:adventure-text-serializer-plain:4.14.0")
-  compileOnly("com.comphenix.protocol:ProtocolLib:5.0.0")
+  compileOnly("com.comphenix.protocol:ProtocolLib:5.3.0")
   compileOnly("com.discordsrv:discordsrv:1.26.0")
 
   implementation(
