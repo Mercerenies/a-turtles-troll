@@ -10,9 +10,9 @@ import org.bukkit.NamespacedKey
 
 import kotlin.math.max
 
-class CandyShopCoinAccessor(
+class MetadataCoinStore(
   plugin: Plugin,
-) {
+) : CoinStore {
   companion object {
     val COIN_MARKER_KEY = "candy_shop_coin_tag"
 
@@ -22,16 +22,13 @@ class CandyShopCoinAccessor(
 
   val markerKey = getMarkerKey(plugin)
 
-  fun getCoins(player: Player): Int {
+  override fun getCoins(player: Player): Int {
     val container = player.persistentDataContainer
     return container.getOrDefault(markerKey, PersistentDataType.INTEGER, 0)
   }
 
-  fun setCoins(player: Player, coinCount: Int) {
+  override fun setCoins(player: Player, coinCount: Int) {
     val container = player.persistentDataContainer
     container.set(markerKey, PersistentDataType.INTEGER, max(coinCount, 0))
   }
-
-  fun wrap(player: Player): CandyShopPlayerDecorator =
-    CandyShopPlayerDecorator(this, player)
 }
