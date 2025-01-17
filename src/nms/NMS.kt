@@ -80,29 +80,6 @@ object NMS {
   fun getClass(suffix: String): Class<*> =
     Class.forName("org.bukkit.craftbukkit.${version()}.${suffix}")
 
-  // Go to org.bukkit.craftbukkit.*.entity.CraftFallingBlock and look
-  // at the implementation of canHurtEntities(). It returns a Boolean.
-  // Remember the name of that Boolean (in 1.17, it's 'ap'; in 1.18
-  // and 1.19.2, it's 'aq'; in 1.20.1 it's 'i'). Now go to
-  // net.minecraft.world.entity.item.EntityFallingBlock. There should
-  // be a method with signature
-  //
-  // public void ???(float, int)
-  //
-  // Which sets that variable (again, `ap` in 1.17; 'aq' in
-  // 1.18/1.19.2; `i` in 1.20.1) to true and sets two other variables
-  // to the arguments. We want to call that function (`b` in 1.17,
-  // 1.18, 1.19.2, and 1.20.1) with 1.0f and 40.
-  fun makeFallingBlockHurt(block: FallingBlock) {
-    safely {
-      val cls = getClass("entity.CraftFallingBlock")
-      val mcBlock = cls.getMethod("getHandle").invoke(block)
-      Class.forName("net.minecraft.world.entity.item.EntityFallingBlock")
-        .getMethod("b", java.lang.Float.TYPE, java.lang.Integer.TYPE)
-        .invoke(mcBlock, 1.0f, 40)
-    }
-  }
-
   // Go to net.minecraft.world.entity.animal.allay.Allay. Find the
   // method with signature
   //
