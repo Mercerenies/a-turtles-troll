@@ -1,6 +1,8 @@
 
 package com.mercerenies.turtletroll.recipe
 
+import com.mercerenies.turtletroll.util.setBasicCustomModelData
+
 import org.bukkit.plugin.Plugin
 import org.bukkit.NamespacedKey
 import org.bukkit.Material
@@ -24,7 +26,7 @@ class DripstoneRecipeFeature(plugin: Plugin) : RecipeFeature(plugin) {
       val ud_meta = ud_arrow.getItemMeta()!!
 
       ud_meta.displayName(Component.text("Upside Down Arrow"))
-      ud_meta.setCustomModelData(8565)
+      ud_meta.setBasicCustomModelData(8565)
       ud_arrow.setItemMeta(ud_meta)
       // Thought it would be funnier if the recipe was made upside down aswell
 
