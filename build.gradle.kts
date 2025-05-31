@@ -80,7 +80,7 @@ dependencies {
   // Use the Kotlin JDK 8 standard library.
   implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
-  compileOnly("io.papermc.paper:paper-api:1.21.3-R0.1-SNAPSHOT")
+  compileOnly("io.papermc.paper:paper-api:1.21.5-R0.1-SNAPSHOT")
   compileOnly("net.kyori:adventure-text-serializer-plain:4.14.0")
   compileOnly("com.comphenix.protocol:ProtocolLib:5.3.0")
   compileOnly("com.discordsrv:discordsrv:1.26.0")

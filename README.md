@@ -46,7 +46,7 @@ these dependencies are not present.
 
 ### Version 1.25
 
-* A Turtle's Troll has been updated to run in Minecraft 1.21.3.
+* A Turtle's Troll has been updated to run in Minecraft 1.21.5.
 * The `rainwater` effect no longer depends on ProtocolLib and will
   work out-of-the-box.
 * New random event: A random fire starts near each player.
