@@ -9,6 +9,8 @@ import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 import com.mercerenies.turtletroll.nms.NMS
 import com.mercerenies.turtletroll.location.PlayerSelector
 
+import io.papermc.paper.event.player.PrePlayerAttackEntityEvent
+
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.entity.EntitySpawnEvent
@@ -16,11 +18,16 @@ import org.bukkit.potion.PotionEffectType
 import org.bukkit.entity.Allay
 import org.bukkit.plugin.Plugin
 import org.bukkit.inventory.ItemStack
+import org.bukkit.damage.DamageSource
+import org.bukkit.damage.DamageType
 import org.bukkit.Bukkit
+import org.bukkit.Material
 
 class AllayManager(_plugin: Plugin) : RunnableFeature(_plugin), Listener {
 
   companion object : FeatureContainerFactory<FeatureContainer> {
+
+    val GOLDEN_SWORD = Material.GOLDEN_SWORD
 
     val DISTANCE_SQUARED_LIMIT = 16384.0 // 128 blocks (squared)
 
@@ -81,6 +88,23 @@ class AllayManager(_plugin: Plugin) : RunnableFeature(_plugin), Listener {
       manageAllay(entity)
     }
 
+  }
+
+  // The game fires attacks on friendly allays as canceled, so we have
+  // to catch it in the pre-attack event.
+  @EventHandler
+  fun onPrePlayerAttackEntity(event: PrePlayerAttackEntityEvent) {
+    if (!isEnabled()) {
+      return
+    }
+
+    val attackedEntity = event.attacked
+    if (attackedEntity is Allay) {
+      val weapon = event.player.inventory.getItemInMainHand()
+      if (weapon.type == GOLDEN_SWORD) {
+        attackedEntity.damage(99999.0)
+      }
+    }
   }
 
 }
