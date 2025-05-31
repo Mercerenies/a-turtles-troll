@@ -8,20 +8,25 @@ import com.mercerenies.turtletroll.feature.builder.BuilderState
 import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
 import com.mercerenies.turtletroll.nms.NMS
 import com.mercerenies.turtletroll.location.PlayerSelector
+import com.mercerenies.turtletroll.util.component.*
 
 import io.papermc.paper.event.player.PrePlayerAttackEntityEvent
 
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.entity.EntitySpawnEvent
+import org.bukkit.event.entity.EntityDeathEvent
 import org.bukkit.potion.PotionEffectType
 import org.bukkit.entity.Allay
+import org.bukkit.entity.Player
 import org.bukkit.plugin.Plugin
 import org.bukkit.inventory.ItemStack
 import org.bukkit.damage.DamageSource
 import org.bukkit.damage.DamageType
 import org.bukkit.Bukkit
 import org.bukkit.Material
+
+import net.kyori.adventure.text.Component
 
 class AllayManager(_plugin: Plugin) : RunnableFeature(_plugin), Listener {
 
@@ -30,6 +35,8 @@ class AllayManager(_plugin: Plugin) : RunnableFeature(_plugin), Listener {
     val GOLDEN_SWORD = Material.GOLDEN_SWORD
 
     val DISTANCE_SQUARED_LIMIT = 16384.0 // 128 blocks (squared)
+
+    val DEATH_RADIUS_SQUARED = 256.0 // 16 blocks (squared)
 
     override fun create(state: BuilderState): FeatureContainer =
       ManagerContainer(AllayManager(state.plugin))
@@ -40,6 +47,11 @@ class AllayManager(_plugin: Plugin) : RunnableFeature(_plugin), Listener {
       Bukkit.getWorlds().flatMap {
         it.getEntitiesByClass(Allay::class.java)
       }
+
+    private fun allayCleanseMessage(player: Player): Component =
+      Component.text("")
+        .append(player.displayName())
+        .append(" has cleansed themself and is now freed from their allays")
 
   }
 
@@ -103,6 +115,24 @@ class AllayManager(_plugin: Plugin) : RunnableFeature(_plugin), Listener {
       val weapon = event.player.inventory.getItemInMainHand()
       if (weapon.type == GOLDEN_SWORD) {
         attackedEntity.damage(99999.0)
+      }
+    }
+  }
+
+  @EventHandler
+  fun onEntityDeath(event: EntityDeathEvent) {
+    if (!isEnabled()) {
+      return
+    }
+    val entity = event.entity
+    if ((entity is Player) && (event.damageSource.damageType == DamageType.LIGHTNING_BOLT)) {
+      val nearbyAllays = entity.world.getEntitiesByClass(Allay::class.java)
+          .filter { it.location.clone().subtract(entity.location).lengthSquared() < DEATH_RADIUS_SQUARED }
+      for (allay in nearbyAllays) {
+        allay.damage(99999.0)
+      }
+      if (!nearbyAllays.isEmpty()) {
+        Messages.broadcastMessage(allayCleanseMessage(entity))
       }
     }
   }
