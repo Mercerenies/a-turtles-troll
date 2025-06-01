@@ -42,7 +42,7 @@ class TwitchStatistics(
     private val logger: Logger,
   ) : Parser(DTD.getDTD("html")) {
 
-    private val firstMatchText = "Channels now:"
+    private val firstMatchText = "Live Channels:"
     private val secondMatchRegex = """\s*\d[\d\s]*""".toRegex()
 
     // 0 = looking for firstMatchText
