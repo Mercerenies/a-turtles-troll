@@ -162,3 +162,11 @@ fun BukkitScheduler.runTaskTimer(plugin: Plugin, delay: Long, period: Long, task
 // Arguments re-ordered to be more Kotlin-friendly.
 fun BukkitScheduler.runTaskTimer(plugin: Plugin, delay: Long, period: Long, task: Consumer<BukkitTask>) =
   this.runTaskTimer(plugin, task, delay, period)
+
+// Paper 1.21.5 made this complicated when it used to be easy, so
+// we're going to make it easy again.
+fun ItemMeta.setBasicCustomModelData(id: Int) {
+  val component = this.customModelDataComponent
+  component.setFloats(listOf(id.toFloat()))
+  this.setCustomModelDataComponent(component)
+}

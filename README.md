@@ -46,11 +46,13 @@ these dependencies are not present.
 
 ### Version 1.25
 
-* A Turtle's Troll has been updated to run in Minecraft 1.21.3.
+* A Turtle's Troll has been updated to run in Minecraft 1.21.5.
 * The `rainwater` effect no longer depends on ProtocolLib and will
   work out-of-the-box.
 * New random event: A random fire starts near each player.
 * Random events that apply to players do not fire if there are no players online (currently this is all random events, though in the future there may be events that make sense with no players).
+* Dying by lightning kills all nearby allays.
+* Allays can be killed with a golden sword.
 * The allay's flower pool has been adjusted to prevent bugs.
 * Remove two-way dirt-stick crafting, for compatibility with Raccoon Mischief.
 

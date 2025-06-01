@@ -42,7 +42,6 @@ class RainwaterManager(
       return
     }
     val onlinePlayers = Bukkit.getOnlinePlayers()
-    val protocolManager = ProtocolLibrary.getProtocolManager()
     tick = (tick + 1) % 4
     for (player in onlinePlayers) {
       val oxygenMeter = getOxygenMeter(player)

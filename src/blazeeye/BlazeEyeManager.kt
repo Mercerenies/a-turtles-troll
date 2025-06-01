@@ -6,6 +6,7 @@ import com.mercerenies.turtletroll.feature.container.FeatureContainer
 import com.mercerenies.turtletroll.feature.builder.FeatureBuilder
 import com.mercerenies.turtletroll.feature.builder.BuilderState
 import com.mercerenies.turtletroll.feature.builder.FeatureContainerFactory
+import com.mercerenies.turtletroll.util.setBasicCustomModelData
 
 import org.bukkit.generator.structure.StructureType
 import org.bukkit.plugin.Plugin
@@ -68,7 +69,7 @@ class BlazeEyeManager(plugin: Plugin) : RecipeFeature(plugin), Listener {
     val meta = result.itemMeta!!
     meta.displayName(Component.text("Eye of Blaze"))
     meta.persistentDataContainer.set(markerKey, PersistentDataType.BOOLEAN, true)
-    meta.setCustomModelData(CUSTOM_MODEL_ID)
+    meta.setBasicCustomModelData(CUSTOM_MODEL_ID)
     result.itemMeta = meta
     return result
   }
