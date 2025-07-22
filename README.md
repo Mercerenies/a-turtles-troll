@@ -46,6 +46,8 @@ these dependencies are not present.
 
 ### Version 1.26
 
+* Re-implemented tactical dirt feature.
+
 ### Version 1.25
 
 * A Turtle's Troll has been updated to run in Minecraft 1.21.8.

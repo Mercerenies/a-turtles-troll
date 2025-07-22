@@ -12,4 +12,8 @@ object Sounds {
   val GODS_ANGRY = "custom.event.gods.angry"
   val GODS_DEMAND = "custom.event.gods.demand"
   val GODS_PLEASED = "custom.event.gods.pleased"
+  val TACTICAL_DIRT = listOf(
+      "custom.crafting.tacticaldirt_evan",
+      "custom.crafting.tacticaldirt_merc",
+  )
 }

@@ -248,6 +248,8 @@
      armor
    + blazeeye :: Flint and steel + an ender pearl crafts a Blaze Eye,
      which can be used in the Nether to find a fortress
+   + tacticaldirt :: Dirt + Seeds makes Nutrient Dirt, an edible form
+     of dirt
 ** BLOCK GROWTH FEATURES
    + enddirt :: Dirt placed in the End turns into a Shulker
    + overgrowth :: Several crops turn to a random log if not harvested
