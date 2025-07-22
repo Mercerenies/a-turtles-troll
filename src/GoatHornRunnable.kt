@@ -30,12 +30,6 @@ class GoatHornRunnable(plugin: Plugin) : ScheduledEventRunnable<GoatHornRunnable
       Event(State.Nighttime, DUSK_TIME),
     )
 
-    private val INSTRUMENTS: List<MusicInstrument> by lazy {
-      RegistryAccess.registryAccess().getRegistry(RegistryKey.INSTRUMENT).iterator()
-          .asSequence()
-          .toList()
-    }
-
     override fun create(state: BuilderState): FeatureContainer =
       RunnableContainer(GoatHornRunnable(state.plugin))
 
@@ -46,7 +40,7 @@ class GoatHornRunnable(plugin: Plugin) : ScheduledEventRunnable<GoatHornRunnable
     private fun makeHorn(): ItemStack {
       val stack = ItemStack(Material.GOAT_HORN, 1)
       val meta = stack.itemMeta as MusicInstrumentMeta
-      meta.instrument = INSTRUMENTS.random()
+      meta.instrument = PaperRegistry.valuesOf(RegistryKey.INSTRUMENT).random()
       stack.itemMeta = meta
       return stack
     }

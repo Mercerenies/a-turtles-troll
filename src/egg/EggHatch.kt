@@ -2,9 +2,9 @@
 package com.mercerenies.turtletroll.egg
 
 import com.mercerenies.turtletroll.Weight
+import com.mercerenies.turtletroll.PaperRegistry
 
 import io.papermc.paper.registry.RegistryKey
-import io.papermc.paper.registry.RegistryAccess
 
 import org.bukkit.entity.*
 import org.bukkit.material.Colorable
@@ -91,9 +91,7 @@ object EggHatch {
   )
 
   private fun randomizeCatData(entity: Cat) {
-    // TODO Clean this up :(
-    val allCatTypes = RegistryAccess.registryAccess().getRegistry(RegistryKey.CAT_VARIANT).iterator().asSequence().toList()
-    entity.catType = allCatTypes.random()
+    entity.catType = PaperRegistry.valuesOf(RegistryKey.CAT_VARIANT).random()
     entity.collarColor = DyeColor.values().random()
   }
 
