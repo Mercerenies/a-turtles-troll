@@ -73,6 +73,8 @@
      direction
    + birchglare :: If you're near a birch tree and not staring at it,
      you take damage
+   + noyou :: When you kill a mob, there's a small chance it kills you
+     instead
 ** CUSTOM SPAWNING FEATURES
    + weepingangel :: Armor stands will chase you when you're not
                      looking at them, and armor stands will rarely

@@ -47,6 +47,7 @@ these dependencies are not present.
 ### Version 1.26
 
 * Re-implemented tactical dirt feature.
+* When you kill a mob, you might die instead (one in a million chance).
 * Random items fall from the sky sometimes.
 
 ### Version 1.25

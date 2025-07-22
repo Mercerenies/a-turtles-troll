@@ -152,6 +152,7 @@ object AllFeatureFactories {
       MinecraftTriviaManagerFactory,
       MossRevengeFeatureFactory,
       NamedZombieListener,
+      NoYouListener,
       NetherrackBoomFeatureFactory,
       NiceListener,
       ObsidianWallListener,

@@ -453,6 +453,10 @@ nice:
 nodrops:
   enabled: default
 
+noyou:
+  enabled: default
+  odds: default
+
 nylium:
   enabled: default
 

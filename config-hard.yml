@@ -241,6 +241,9 @@ nice:
   enabled: true
 nodrops:
   enabled: true
+noyou:
+  enabled: true
+  odds: 100000
 nylium:
   enabled: true
 obsidianwall:
