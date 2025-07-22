@@ -108,7 +108,7 @@ class TacticalDirtManager(_plugin: Plugin) : RecipeFeature(_plugin), Listener {
       val amountOfDirt = event.currentItem!!.amount
       for (player in Bukkit.getOnlinePlayers()) {
         if (player.entityId != event.whoClicked.entityId) {
-          player.inventory.addItem(makeNutrientDirt(plugin, amountOfDirt))
+          AllItems.give(player, makeNutrientDirt(plugin, amountOfDirt))
         }
         player.world.playSound(player.location, sound, 1.0f, 0.0f)
       }

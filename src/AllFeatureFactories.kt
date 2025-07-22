@@ -135,6 +135,7 @@ object AllFeatureFactories {
       GhastBurnRunnable,
       GhastSpawnerListener,
       GlassLuckListener,
+      GoatHornRunnable,
       GoddessHoeListener,
       GrassPoisonListener,
       GrassSpreadListener,

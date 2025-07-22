@@ -363,6 +363,7 @@
    + nice :: Y=69 never generates anything at world generation time
    + whitedirt :: Placing dirt might place sand instead
    + sponges :: Wet sponges can absorb lava
+   + horny :: Everybody gets a horn at dawn
 * IDEAS (UNIMPLEMENTED)
   + Wolves?
   + Fishing?

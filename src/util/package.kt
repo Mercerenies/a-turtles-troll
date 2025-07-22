@@ -170,3 +170,11 @@ fun ItemMeta.setBasicCustomModelData(id: Int) {
   component.setFloats(listOf(id.toFloat()))
   this.setCustomModelDataComponent(component)
 }
+
+fun<T> removeInPlace(iterator: MutableIterator<T>, pred: (T) -> Boolean) {
+  while (iterator.hasNext()) {
+    if (pred(iterator.next())) {
+      iterator.remove()
+    }
+  }
+}

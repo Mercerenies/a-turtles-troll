@@ -395,6 +395,9 @@ heavyrain:
   ticks_between_drops: default
   drop_count: default
 
+horny:
+  enabled: default
+
 johnny:
   enabled: default
   probability: default

@@ -199,6 +199,8 @@ heavyrain:
   enabled: true
   ticks_between_drops: 20
   drop_count: 30
+horny:
+  enabled: true
 johnny:
   enabled: true
   probability: 0.2
