@@ -362,6 +362,8 @@ spatialrend:
   enabled: true
 spillage:
   enabled: true
+sponges:
+  enabled: true
 stonetools:
   enabled: true
 stronghold:

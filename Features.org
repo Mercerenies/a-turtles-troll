@@ -362,6 +362,7 @@
      in the overworld
    + nice :: Y=69 never generates anything at world generation time
    + whitedirt :: Placing dirt might place sand instead
+   + sponges :: Wet sponges can absorb lava
 * IDEAS (UNIMPLEMENTED)
   + Wolves?
   + Fishing?

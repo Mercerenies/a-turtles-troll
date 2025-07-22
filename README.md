@@ -49,6 +49,7 @@ these dependencies are not present.
 * Re-implemented tactical dirt feature.
 * Placing dirt might place sand instead.
 * When you kill a mob, you might die instead (one in a million chance).
+* Wet sponges absorb lava now.
 * Pottery spawns in the wild now.
 * Random items fall from the sky sometimes.
 * Increase encumbrance chance if you have the Jump Boost status.

@@ -190,6 +190,7 @@ object AllFeatureFactories {
       SolidSwapListener,
       SpatialRendFeature,
       SpillageListener,
+      SpongeManager,
       StoneRecipeDeleter,
       StrongholdAttackFeatureFactory,
       SweetDreamsListener,

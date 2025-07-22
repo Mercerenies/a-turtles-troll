@@ -612,6 +612,9 @@ spatialrend:
 spillage:
   enabled: default
 
+sponges:
+  enabled: default
+
 stonetools:
   enabled: default
 
