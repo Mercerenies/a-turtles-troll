@@ -192,6 +192,8 @@ grievingwidow:
   minutes_to_disable: 20
 happyrain:
   enabled: true
+  drop_probability: 0.1
+  drop_period: 30
 heavyrain:
   enabled: true
   ticks_between_drops: 40

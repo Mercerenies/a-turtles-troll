@@ -386,6 +386,8 @@ grievingwidow:
 
 happyrain:
   enabled: default
+  drop_probability: default
+  drop_period: default
 
 heavyrain:
   enabled: default

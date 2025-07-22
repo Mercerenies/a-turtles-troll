@@ -15,7 +15,11 @@ import org.bukkit.entity.Item
 
 import kotlin.random.Random
 
-class HappyRainRunnable(plugin: Plugin) : RunnableFeature(plugin) {
+class HappyRainRunnable(
+    plugin: Plugin,
+    private val dropProbability: Double,
+    private val dropPeriod: Int,
+) : RunnableFeature(plugin) {
   companion object : FeatureContainerFactory<FeatureContainer> {
     private val DROP_CANDIDATES = listOf(
         Weight(ItemStack(Material.DIRT, 1), 1.0),
@@ -34,21 +38,29 @@ class HappyRainRunnable(plugin: Plugin) : RunnableFeature(plugin) {
         Weight(ItemStack(Material.DIAMOND_BLOCK, 1), 0.001),
     )
 
-    override fun create(state: BuilderState): FeatureContainer =
-      RunnableContainer(HappyRainRunnable(state.plugin))
+    override fun create(state: BuilderState): FeatureContainer {
+      val dropProbability = state.config.getDouble("happyrain.drop_probability")
+      val dropPeriod = state.config.getInt("happyrain.drop_period")
+      val runnable = HappyRainRunnable(
+          plugin = state.plugin,
+          dropProbability = dropProbability,
+          dropPeriod = dropPeriod,
+      )
+      return RunnableContainer(runnable)
+    }
   }
 
   override val name: String = "happyrain"
 
   override val description: String = "Every once in awhile, random items fall from the sky"
 
-  override val taskPeriod = Constants.TICKS_PER_SECOND * 15L
+  override val taskPeriod = Constants.TICKS_PER_SECOND * dropPeriod.toLong()
 
   override fun run() {
     if (!isEnabled()) {
       return
     }
-    if (Random.nextDouble() > 0.10) {
+    if (Random.nextDouble() > dropProbability) {
       return
     }
 
