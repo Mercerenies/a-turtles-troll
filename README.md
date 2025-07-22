@@ -48,8 +48,9 @@ these dependencies are not present.
 
 * Re-implemented tactical dirt feature.
 * When you kill a mob, you might die instead (one in a million chance).
+* Pottery spawns in the wild now.
 * Random items fall from the sky sometimes.
-* Increase encumbrance chance if you have the Jump Boost status
+* Increase encumbrance chance if you have the Jump Boost status.
 
 ### Version 1.25
 

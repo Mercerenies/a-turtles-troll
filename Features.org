@@ -167,6 +167,9 @@
    + feastupontheweak :: When a player dies, nearby entities get
      Regeneration
    + happyrain :: Random items fall from the sky every once in awhile
+   + pottery :: Decorated pots spawn in the wild
+     - They contain one emerald each... except for the small chance of
+       containing an infestation of bugs
 ** EGG FEATURES
    + eggs :: Almost any mob (or diamonds) can spawn from an egg
    + eggarrow :: Skeletons will fire eggs in addition to arrows
