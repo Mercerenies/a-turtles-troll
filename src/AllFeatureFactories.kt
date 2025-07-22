@@ -21,6 +21,7 @@ import com.mercerenies.turtletroll.transformed.DrownedSpawnerListener
 import com.mercerenies.turtletroll.durability.DoorDamageListener
 import com.mercerenies.turtletroll.durability.ButtonDamageListener
 import com.mercerenies.turtletroll.mimic.MimicListenerFactory
+import com.mercerenies.turtletroll.pot.PotteryListenerFactory
 import com.mercerenies.turtletroll.gravestone.CustomDeathMessageListener
 import com.mercerenies.turtletroll.gravestone.GravestoneListener
 import com.mercerenies.turtletroll.gravestone.DeathScoreboardListener
@@ -165,6 +166,7 @@ object AllFeatureFactories {
       PillagerDeathListener,
       PillagerGunListener,
       PokeballManager,
+      PotteryListenerFactory,
       PressurePlateFireListener,
       PrisonersDilemmaManagerFactory,
       PufferfishRainManager,

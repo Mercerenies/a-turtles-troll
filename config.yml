@@ -505,6 +505,11 @@ pillagerdeath:
 pokeball:
   enabled: default
 
+pottery:
+  enabled: default
+  replace_chance: default
+  infected_chance: default
+
 platefire:
   enabled: default
   probability: default

@@ -280,6 +280,10 @@ pillagerdeath:
   slime_size: 2
 pokeball:
   enabled: true
+pottery:
+  enabled: true
+  replace_chance: 0.15
+  infected_chance: 0.8
 platefire:
   enabled: true
   probability: 1.0
