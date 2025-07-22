@@ -301,6 +301,7 @@ encumbrance:
     non_leather_armor: default
     slowness: default
     confusion: default
+    jump_boost: default
     gods_rage: default
 
 endcrystal:

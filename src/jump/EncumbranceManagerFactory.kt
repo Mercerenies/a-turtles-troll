@@ -31,6 +31,7 @@ abstract class EncumbranceManagerFactory() : FeatureContainerFactory<FeatureCont
         ArmorCountStat.NonLeather(state.config.getDouble("encumbrance.penalties.non_leather_armor")),
         StatusEffectStat("Slowness", PotionEffectType.SLOWNESS, state.config.getDouble("encumbrance.penalties.slowness")),
         StatusEffectStat("Nausea", PotionEffectType.NAUSEA, state.config.getDouble("encumbrance.penalties.confusion")),
+        StatusEffectStat("Jump Boost", PotionEffectType.JUMP_BOOST, state.config.getDouble("encumbrance.penalties.jump_boost")),
         GodsRageStat(state.config.getDouble("encumbrance.penalties.gods_rage"), godsFeature),
       )
     }

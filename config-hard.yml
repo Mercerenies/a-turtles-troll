@@ -133,6 +133,7 @@ encumbrance:
     non_leather_armor: 0.003
     slowness: 0.15
     confusion: 0.10
+    jump_boost: 0.10
     gods_rage: 0.02
 endcrystal:
   enabled: true
