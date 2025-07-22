@@ -78,6 +78,9 @@ chargedcreeper:
   diamond_count: 1
 chestshuffle:
   enabled: true
+chickenlay:
+  enabled: true
+  chance: 0.1
 chickens:
   enabled: true
   zombie_rider_chance: 1.0

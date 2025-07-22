@@ -170,6 +170,7 @@
    + pottery :: Decorated pots spawn in the wild
      - They contain one emerald each... except for the small chance of
        containing an infestation of bugs
+   + chickenlay :: Chickens can lay various types of ores
 ** EGG FEATURES
    + eggs :: Almost any mob (or diamonds) can spawn from an egg
    + eggarrow :: Skeletons will fire eggs in addition to arrows

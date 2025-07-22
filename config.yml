@@ -201,6 +201,10 @@ chargedcreeper:
 chestshuffle:
   enabled: default
 
+chickenlay:
+  enabled: default
+  chance: default
+
 # Chickens explode when they take damage for any reason. Several
 # passive mob types are replaced with chickens. All chickens that
 # spawn have a higher-than-usual chance of spawning with a baby zombie

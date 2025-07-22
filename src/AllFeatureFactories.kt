@@ -103,6 +103,7 @@ object AllFeatureFactories {
       ChargedCreeperListener,
       ChestShuffleListener,
       ChickenDamageListener,
+      ChickenLayListener,
       ContagiousMossManager,
       DeathScoreboardListener,
       DirtDropFeatureFactory,

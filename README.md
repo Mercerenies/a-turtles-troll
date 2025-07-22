@@ -50,6 +50,7 @@ these dependencies are not present.
 * Placing dirt might place sand instead.
 * When you kill a mob, you might die instead (one in a million chance).
 * Wet sponges absorb lava now.
+* Chickens can now lay various types of ores
 * Pottery spawns in the wild now.
 * Random items fall from the sky sometimes.
 * The superflat banishment world is permanently locked at midnight.
