@@ -24,8 +24,8 @@ class HappyRainRunnable(
     private val DROP_CANDIDATES = listOf(
         Weight(ItemStack(Material.DIRT, 1), 1.0),
         Weight(ItemStack(Material.DIRT, 64), 0.5),
-        Weight(ItemStack(Material.LIGHT_GRAY_STAINED_GLASS, 1), 1.1),
-        Weight(ItemStack(Material.LIGHT_GRAY_STAINED_GLASS, 64), 0.8),
+        Weight(ItemStack(Material.LIGHT_GRAY_STAINED_GLASS_PANE, 1), 1.1),
+        Weight(ItemStack(Material.LIGHT_GRAY_STAINED_GLASS_PANE, 64), 0.8),
         Weight(ItemStack(Material.REDSTONE, 1), 0.7),
         Weight(ItemStack(Material.POINTED_DRIPSTONE, 8), 0.7),
         Weight(ItemStack(Material.POINTED_DRIPSTONE, 16), 0.7),
