@@ -52,6 +52,7 @@ these dependencies are not present.
 * Wet sponges absorb lava now.
 * Pottery spawns in the wild now.
 * Random items fall from the sky sometimes.
+* The superflat banishment world is permanently locked at midnight.
 * Increase encumbrance chance if you have the Jump Boost status.
 
 ### Version 1.25

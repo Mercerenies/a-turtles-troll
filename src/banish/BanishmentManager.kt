@@ -1,7 +1,7 @@
 
 package com.mercerenies.turtletroll.banish
 
-import com.mercerenies.turtletroll.feature.AbstractFeature
+import com.mercerenies.turtletroll.feature.RunnableFeature
 import com.mercerenies.turtletroll.command.Command
 import com.mercerenies.turtletroll.Constants
 import com.mercerenies.turtletroll.Messages
@@ -23,9 +23,12 @@ import org.bukkit.scheduler.BukkitRunnable
 import kotlin.random.Random
 
 class BanishmentManager(
-  val plugin: Plugin,
+  _plugin: Plugin,
   val banishChance: Double,
-) : AbstractFeature(), Listener {
+) : RunnableFeature(_plugin), Listener {
+  companion object {
+    private val MIDNIGHT = 18_000L
+  }
 
   private class SlowFallingRunnable(
     private val player: Player,
@@ -55,6 +58,8 @@ class BanishmentManager(
       "tobanish" to toBanishCommand,
       "frombanish" to fromBanishCommand,
     )
+
+  override val taskPeriod: Long = Constants.TICKS_PER_SECOND * 11L
 
   @EventHandler
   fun onWorldInit(event: WorldInitEvent) {
@@ -92,4 +97,7 @@ class BanishmentManager(
     }
   }
 
+  override fun run() {
+    worldController.world.setFullTime(MIDNIGHT)
+  }
 }
