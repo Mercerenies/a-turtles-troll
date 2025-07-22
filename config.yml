@@ -659,6 +659,10 @@ weepingangel:
   max_angels_per_chunk: default
   movement_speed: default
 
+whitedirt:
+  enabled: default
+  chance: default
+
 witchattack:
   enabled: default
   parrot_probability: default

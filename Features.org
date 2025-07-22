@@ -361,6 +361,7 @@
    + obsidianwall :: 3-block high obsidian walls spawn in a grid shape
      in the overworld
    + nice :: Y=69 never generates anything at world generation time
+   + whitedirt :: Placing dirt might place sand instead
 * IDEAS (UNIMPLEMENTED)
   + Wolves?
   + Fishing?

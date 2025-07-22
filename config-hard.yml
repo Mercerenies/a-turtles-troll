@@ -397,6 +397,9 @@ weepingangel:
   spawn_probability: 0.05
   max_angels_per_chunk: 3
   movement_speed: 1.2
+whitedirt:
+  enabled: true
+  chance: 0.02
 witchattack:
   enabled: true
   parrot_probability: 0.3

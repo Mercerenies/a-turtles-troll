@@ -47,6 +47,7 @@ these dependencies are not present.
 ### Version 1.26
 
 * Re-implemented tactical dirt feature.
+* Placing dirt might place sand instead.
 * When you kill a mob, you might die instead (one in a million chance).
 * Pottery spawns in the wild now.
 * Random items fall from the sky sometimes.

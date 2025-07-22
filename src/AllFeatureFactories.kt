@@ -198,6 +198,7 @@ object AllFeatureFactories {
       VillagerDeathListener,
       WanderingTraderListener,
       WardenSummonRunnable,
+      WhiteDirtListener,
       WitchAttackListener,
       WitchSummonManager,
       WitherArmorListener,
