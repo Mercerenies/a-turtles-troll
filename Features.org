@@ -439,11 +439,6 @@
    + Naming a rabbit causes them to stop being a killer rabbit.
      - Named chickens and pufferfish won't explode
      - Named axolotls don't take anyone with them
-   + Sometimes Bowser will issue a challenge to the players, rather
-     than the gods. Bowser's challenge is much harder than god
-     challenges, and Bowser will not punish you for failing. But he
-     will reward you for success. Purging ritual cannot be done on
-     Bowser nights.
    + If the gods are pleased multiple nights in a row, some effects
      are disabled.
    + If a player is sprinting, there is a small chance an egg is
