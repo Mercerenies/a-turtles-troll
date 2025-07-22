@@ -190,6 +190,8 @@ gravestone:
 grievingwidow:
   enabled: true
   minutes_to_disable: 5
+happyrain:
+  enabled: true
 heavyrain:
   enabled: true
   ticks_between_drops: 15

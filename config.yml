@@ -384,6 +384,9 @@ grievingwidow:
   enabled: default
   minutes_to_disable: default
 
+happyrain:
+  enabled: default
+
 heavyrain:
   enabled: default
   ticks_between_drops: default

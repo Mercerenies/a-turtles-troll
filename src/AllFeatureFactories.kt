@@ -139,6 +139,7 @@ object AllFeatureFactories {
       GrassSpreadListener,
       GravestoneListener,
       GrievingWidowListener,
+      HappyRainRunnable,
       HeavyRainFeature,
       JohnnyListener,
       KameksChaosFeature,

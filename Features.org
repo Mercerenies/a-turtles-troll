@@ -164,6 +164,7 @@
    + apache :: Bees have a chance of spawning named "Apache"
    + feastupontheweak :: When a player dies, nearby entities get
      Regeneration
+   + happyrain :: Random items fall from the sky every once in awhile
 ** EGG FEATURES
    + eggs :: Almost any mob (or diamonds) can spawn from an egg
    + eggarrow :: Skeletons will fire eggs in addition to arrows
@@ -445,3 +446,13 @@
    + When a skeleton shoots an egg, there's an increased chance that
      the mob spawned will be a saddled pig named dinnerbone
    + All mobs named Dinnerbone gain levitation
+
+
+
+
+
+
+
+
+
+

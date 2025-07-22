@@ -47,6 +47,7 @@ these dependencies are not present.
 ### Version 1.26
 
 * Re-implemented tactical dirt feature.
+* Random items fall from the sky sometimes.
 
 ### Version 1.25
 
