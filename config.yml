@@ -611,6 +611,9 @@ sweetdreams:
   enabled: default
   effects_count: default
 
+tacticaldirt:
+  enabled: default
+
 tallgrass:
   enabled: default
   boots_damage_probability: default

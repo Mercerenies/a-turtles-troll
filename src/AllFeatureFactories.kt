@@ -189,6 +189,7 @@ object AllFeatureFactories {
       StoneRecipeDeleter,
       StrongholdAttackFeatureFactory,
       SweetDreamsListener,
+      TacticalDirtManager,
       UnfinishedBusinessListener,
       VillagerDeathListener,
       WanderingTraderListener,

@@ -44,6 +44,8 @@ these dependencies are not present.
 
 ## Changelog
 
+### Version 1.26
+
 ### Version 1.25
 
 * A Turtle's Troll has been updated to run in Minecraft 1.21.8.

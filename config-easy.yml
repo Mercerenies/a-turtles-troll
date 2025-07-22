@@ -361,6 +361,8 @@ stronghold:
 sweetdreams:
   enabled: true
   effects_count: 1
+tacticaldirt:
+  enabled: true
 tallgrass:
   enabled: true
   boots_damage_probability: 0.5
