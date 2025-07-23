@@ -75,6 +75,8 @@
      you take damage
    + noyou :: When you kill a mob, there's a small chance it kills you
      instead
+   + boombed :: Sleeping in a bed in the Nether or the End is always
+     fatal
 ** CUSTOM SPAWNING FEATURES
    + weepingangel :: Armor stands will chase you when you're not
                      looking at them, and armor stands will rarely
@@ -378,7 +380,6 @@
   + Killing one vector saves everyone
   + Can we make the lava haste force you to move forward?
   + Lore on items when things happen?
-  + Exploding bed always fatal to whoever placed it?
 ** HATCRAFTER'S IDEAS
    + Polar bears have Haste 3
    + Every hostile mob has a very small chance of dropping a random item

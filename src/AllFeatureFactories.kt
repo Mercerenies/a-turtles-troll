@@ -90,6 +90,7 @@ object AllFeatureFactories {
       BlazeEyeManager,
       BloodListener,
       BoatBombListener,
+      BoomBedListener,
       BouncyProjectileListener,
       BucketRouletteRunnable,
       ButterfingersListener,

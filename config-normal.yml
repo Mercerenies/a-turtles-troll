@@ -46,6 +46,8 @@ blood:
   enabled: true
 boatbomb:
   enabled: true
+boombed:
+  enabled: true
 bouncyprojectile:
   enabled: true
   split_count: 2

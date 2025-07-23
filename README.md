@@ -48,6 +48,7 @@ these dependencies are not present.
 
 * Re-implemented tactical dirt feature.
 * Placing dirt might place sand instead.
+* Sleeping in a bed in the Nether or the End is always fatal.
 * When you kill a mob, you might die instead (one in a million chance).
 * Wet sponges absorb lava now.
 * Chickens can now lay various types of ores

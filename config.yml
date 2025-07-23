@@ -132,6 +132,9 @@ blood:
 boatbomb:
   enabled: default
 
+boombed:
+  enabled: default
+
 # When an arrow hits a wall, it duplicates and bounces off it.
 bouncyprojectile:
   enabled: default
