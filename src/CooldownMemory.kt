@@ -7,24 +7,18 @@ import org.bukkit.plugin.Plugin
 import kotlin.collections.HashSet
 
 class CooldownMemory<T>(
-  val plugin: Plugin,
+  plugin: Plugin,
 ) : Iterable<T> {
-  private val memory = HashSet<T>()
-
-  private inner class CooldownRunnable(val value: T) : BukkitRunnable() {
-    override fun run() {
-      memory.remove(value)
-    }
-  }
+  private val impl: CooldownMemoryMap<T, Unit> =
+      CooldownMemoryMap(plugin)
 
   fun contains(value: T): Boolean =
-    memory.contains(value)
+    impl.contains(value)
 
   fun add(value: T, time: Long) {
-    memory.add(value)
-    CooldownRunnable(value).runTaskLater(plugin, time)
+    impl.add(value, Unit, time)
   }
 
-  override fun iterator() = memory.iterator()
+  override fun iterator() = impl.keys.iterator()
 
 }
