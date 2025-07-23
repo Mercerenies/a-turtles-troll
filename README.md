@@ -56,6 +56,7 @@ these dependencies are not present.
 * The superflat banishment world is permanently locked at midnight.
 * Everybody gets a horn at dawn.
 * Increase encumbrance chance if you have the Jump Boost status.
+* Add some fortune cookie authors.
 
 ### Version 1.25
 

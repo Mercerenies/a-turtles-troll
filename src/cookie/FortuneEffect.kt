@@ -22,6 +22,10 @@ class FortuneEffect(
       "Albert Einstein", "Mahatma Gandhi", "Jesus Christ", "Martin Luther King, Jr.",
       "Julius Caesar", "Ulysses S. Grant", "Abraham Lincoln", "George Washington",
       "Barack Obama", "Thomas Jefferson", "Peter Capaldi", "Benedict Cumberbatch",
+      "Socrates", "Napolean Bonaparte", "Winston Churchill", "Nikola Tesla",
+      "Joan of Arc", "David Bowie", "Jeff Goldblum", "George Lucas", "Nelson Mandela",
+      "Danny DeVito", "Nicolas Cage", "Shrek", "Kermit the Frog", "Mr. Rogers",
+      "Yoda", "GLaDOS", "Spock",
     )
 
   }
