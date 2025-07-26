@@ -5,7 +5,7 @@ global:
   mirror_to_discordsrv: true
 ak47:
   enabled: true
-  quick_charge_level: 6
+  quick_charge_level: 3
 allays:
   enabled: true
 amethyst:

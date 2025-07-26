@@ -5,9 +5,9 @@ global:
   mirror_to_discordsrv: true
 ak47:
   enabled: true
-  quick_charge_level: 0
+  quick_charge_level: 1
 allays:
-  enabled: true
+  enabled: false
 amethyst:
   enabled: true
   probability: 0.15
@@ -33,8 +33,8 @@ bedrock:
   enabled: true
 bees:
   enabled: true
-  probability: 0.1
-  radius: 3
+  probability: 0.03
+  radius: 2
   friendly_axe: true
 birchglare:
   enabled: true
@@ -147,7 +147,7 @@ enddirt:
 enderchest:
   enabled: true
 endermangod:
-  enabled: true
+  enabled: false
 endermites:
   enabled: true
 endspeed:
@@ -312,9 +312,9 @@ redstoneworld:
   enabled: true
   drop_probability: 0.2
   min_items: 1
-  max_items: 16
+  max_items: 2
   min_damage: 0.0
-  max_damage: 10.0
+  max_damage: 0.0
 sandattack:
   enabled: true
   red_sand_probability: 0.1
@@ -339,8 +339,8 @@ shufflelogs:
   enabled: true
 silverfish:
   enabled: true
-  probability: 0.1
-  bomb_probability: 0.1
+  probability: 0.05
+  bomb_probability: 0.05
   bomb_radius: 3
   release_chance: 0.1
   infestation_chance: 0.1
@@ -386,9 +386,9 @@ tacticaldirt:
   enabled: true
 tallgrass:
   enabled: true
-  boots_damage_probability: 0.5
+  boots_damage_probability: 0.1
 temperature:
-  enabled: true
+  enabled: false
 torches:
   enabled: true
 trader:
@@ -400,7 +400,7 @@ villagerdeath:
   enabled: true
   leather_count: 1
 wardensummon:
-  enabled: true
+  enabled: false
 weepingangel:
   enabled: true
   spawn_probability: 0.05
@@ -411,11 +411,11 @@ whitedirt:
   chance: 0.005
 witchattack:
   enabled: true
-  parrot_probability: 0.4
-  allay_probability: 0.1
+  parrot_probability: 0.1
+  allay_probability: 0.0
 witches:
   enabled: true
-  probability: 0.01
+  probability: 0.001
 witherarrow:
   enabled: true
   wither_seconds: 4

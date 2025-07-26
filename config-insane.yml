@@ -33,7 +33,7 @@ bedrock:
   enabled: true
 bees:
   enabled: true
-  probability: 1.0
+  probability: 0.8
   radius: 10
   friendly_axe: false
 birchglare:
