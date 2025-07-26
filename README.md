@@ -44,6 +44,11 @@ these dependencies are not present.
 
 ## Changelog
 
+### Version 1.26.1
+
+* Re-adjust a lot of configuration values.
+* Parrots die when they fly off with you.
+
 ### Version 1.26
 
 * Re-implemented tactical dirt feature.
