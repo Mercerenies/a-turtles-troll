@@ -98,6 +98,7 @@ class ParrotManager(_plugin: Plugin) : RunnableFeature(_plugin), Listener {
     }
   }
 
+  @Suppress("DEPRECATION")
   private fun checkPlayer(player: Player) {
     val parrot = getPerchedParrot(player)
     if (parrot != null) {
@@ -105,6 +106,8 @@ class ParrotManager(_plugin: Plugin) : RunnableFeature(_plugin), Listener {
         if (!player.hasPotionEffect(TARGET_EFFECT_TYPE)) {
           Messages.sendMessage(player, attackMessage(parrot))
           player.addPotionEffect(PotionEffect(TARGET_EFFECT_TYPE, Constants.TICKS_PER_SECOND * 3, 100))
+          player.setShoulderEntityLeft(null)
+          player.setShoulderEntityRight(null)
           safePlayers.add(player, Constants.TICKS_PER_SECOND * 10L)
         }
       }
